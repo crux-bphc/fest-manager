@@ -8,6 +8,7 @@ var usersSchema = new Schema({
     institute: { type: String },
     events: [Schema.Types.ObjectId],
     accommodation: Schema.Types.ObjectId,
+    token: String,
     facebookID: { type: String, unique: true },
     googleID: { type: String, unique: true }
 }, {

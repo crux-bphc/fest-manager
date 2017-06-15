@@ -1,81 +1,74 @@
-var passport = require('passport');
-var credentials = require('./credentials');
-var userService = require('./models/users.model');
+const passport = require('passport');
+const configAuth = require('./configAuth');
+const userService = require('./models/users.model');
 
-var configureSerializers = function() {
+var findOrCreate = function(accessToken, profile, provider, done) {
+    userService.findOne({
+        'email': profile.emails[0].value // email is primary key in usersModel
+    }, function(err, user) {
+        if (err) {
+            return done(err);
+        }
+        if (!user) {
+            user = new userService({
+                name: profile.displayName,
+                email: profile.emails[0].value,
+                token: accessToken
+            });
+            user[provider] = profile.id;
+            user.save(function(err) {
+                if (err) console.log(err);
+                return done(err, user);
+            });
+        } else {
+            if (!user[provider]) { //check if same email has connected with a second provider
+                user[provider] = profile.id;
+                userService.update({ _id: user._id }, user, function(err) {});
+            }
+            return done(null, user);
+        }
+    });
+}
+
+var configureSerializers = function() { // internal passport configuration to store users in session
     passport.serializeUser(function(user, done) {
-        done(null, user.id);
+        done(null, user);
     });
 
-    passport.deserializeUser(function(id, done) {
-        userService.findById(id, function(err, user) {
-            done(err, user);
-        });
+    passport.deserializeUser(function(obj, done) {
+        done(null, obj);
     });
 }
 
 var strategies = {
-    _facebook: function() {
+    facebook: function() {
         var FacebookStrategy = require('passport-facebook').Strategy;
 
-        configureSerializers();
-
-        passport.use(new FacebookStrategy(credentials.facebook,
+        passport.use(new FacebookStrategy(configAuth.facebook,
             function(accessToken, refreshToken, profile, done) {
-                console.log(profile);
-                userService.findOne({
-                    'facebookID': profile.id
-                }, function(err, user) {
-                    if (err) {
-                        return done(err);
-                    }
-                    if (!user) {
-                        user = new userService({
-                            name: profile.displayName,
-                            email: profile.emails[0].value,
-                            facebookID: profile.id
-                        });
-                        user.save(function(err) {
-                            if (err) console.log(err);
-                            return done(err, user);
-                        });
-                    } else {
-                        return done(err, user);
-                    }
-                });
+                findOrCreate(accessToken, profile, 'facebookID', done);
             }
         ));
     },
-    _google: function() {
-        var GoogleStrategy = require('passport-google').Strategy;
+    google: function() {
+        var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-        configureSerializers();
-        
-        passport.use(new GoogleStrategy(credentials.google,
+        passport.use(new GoogleStrategy(configAuth.google,
             function(accessToken, refreshToken, profile, done) {
-                console.log(profile);
-                userService.findOne({
-                    'googleID': profile.id
-                }, function(err, user) {
-                    if (err) {
-                        return done(err);
-                    }
-                    if (!user) {
-                        user = new userService({
-                            name: profile.displayName,
-                            email: profile.emails[0].value,
-                            googleID: profile.id
-                        });
-                        user.save(function(err) {
-                            if (err) console.log(err);
-                            return done(err, user);
-                        });
-                    } else {
-                        return done(err, user);
-                    }
-                });
+                findOrCreate(accessToken, profile, 'googleID', done);
             }
         ));
     }
 }
-module.exports = strategies;
+
+var authenticate = function(req, res, next) {	// custom middleware to check if a user 
+    if (req.isAuthenticated())				// is authenticated in the current session
+        return next();
+    res.redirect('/login');
+}
+
+module.exports = {
+    configureSerializers: configureSerializers,
+    strategies: strategies,
+    middleware: authenticate
+}
