@@ -76,6 +76,10 @@ app.get('/auth/google/callback',
     	res.redirect('/registration');
   	});
 app.use('/registration', registration);
+app.use('/logout', function(req, res) {
+	req.logout();
+	res.redirect('/login');
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
