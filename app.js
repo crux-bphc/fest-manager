@@ -16,12 +16,11 @@ strategies.facebook();
 strategies.google();
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var login = require('./routes/login');
 var registration = require('./routes/registration');
 var connection = require('./mongoose');
 connection();
-
+var services = require('./routes/services');
 var app = express();
 
 // view engine setup
@@ -38,12 +37,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(cookieSession({
-  keys: ['qwerty', 'uiop']
+    keys: ['qwerty', 'uiop']
 }));
 app.use(session({
     resave: false,
     saveUninitialized: true,
-    cookie: {secure: true},
+    cookie: { secure: true },
     secret: 'damn ninjas cutting onions'
 }));
 app.use(passport.initialize());
@@ -51,34 +50,38 @@ app.use(passport.session());
 app.use(router);
 
 app.use('/', index);
-app.use('/users', users);
+
+app.use('/users', services.users);
+app.use('/events', services.events);
+app.use('/teams', services.teams);
+app.use('/accomm', services.accomm);
+
 app.use('/login', login);
-app.get('/auth/facebook', 
-	passport.authenticate('facebook', 
-		{ scope: ['public_profile', 'email'] }, 
-		function(req, res) {}
-	));
 
+app.get('/auth/facebook',
+    passport.authenticate('facebook', { scope: ['public_profile', 'email'] },
+        function(req, res) {}
+    ));
 app.get('/auth/facebook/callback',
-	passport.authenticate('facebook', { failureRedirect: '/login' }),
-	function(req, res) {
-    	res.redirect('/registration');
-  	});
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+        res.redirect('/registration');
+    });
 
-app.get('/auth/google', 
-	passport.authenticate('google', 
-		{ scope: ['https://www.googleapis.com/auth/plus.login','profile', 'email'] }, 
-		function(req, res) {}
-	));
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login', 'profile', 'email'] },
+        function(req, res) {}
+    ));
 app.get('/auth/google/callback',
-	passport.authenticate('google', { failureRedirect: '/login' }),
-	function(req, res) {
-    	res.redirect('/registration');
-  	});
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function(req, res) {
+        res.redirect('/registration');
+    });
+
 app.use('/registration', registration);
 app.use('/logout', function(req, res) {
-	req.logout();
-	res.redirect('/login');
+    req.logout();
+    res.redirect('/login');
 })
 
 // catch 404 and forward to error handler
