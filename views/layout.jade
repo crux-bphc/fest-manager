@@ -3,7 +3,18 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:500|Oswald', rel='stylesheet')
   body
-    block content
-    if isSessionActive
-      a(href='/logout') Logout
+    div.main
+      block content
+    div.navbar
+      div.left
+        div.logo
+          img(src="/images/logo.png")
+          span ATMOS
+      div.flow
+      div.right
+        if isSessionActive
+          a(href='/logout') LOGOUT
+        else 
+          a(href='/login') LOGIN
