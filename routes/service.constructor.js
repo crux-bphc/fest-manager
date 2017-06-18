@@ -6,7 +6,8 @@ function service(model) {
     router.get('/', function(req, res, next) {
         model.find(function(err, items) {
             if (err) {
-                res.send('Error');
+                err.status = 500;
+                next(err);
                 return 0;
             }
             res.send(items);
@@ -14,9 +15,10 @@ function service(model) {
     });
 
     router.get('/:id', function(req, res, next) {
-        model.find({ _id: req.params("id") }, function(err, item) {
+        model.find({ _id: req.params.id }, function(err, item) {
             if (err) {
-                res.send('Error');
+                err.status = 404;
+                next(err);
                 return 0;
             }
             res.send(item);
@@ -37,7 +39,8 @@ function service(model) {
     router.put('/', function(req, res, next) {
         model.update({ _id: req.body._id }, req.body, function(err) {
             if (err) {
-                res.send("Error");
+                err.status = 500;
+                next(err);
                 return 0;
             }
             res.send("Success");
@@ -47,7 +50,8 @@ function service(model) {
     router.delete('/:id', function(req, res, next) {
         model.findByIdAndRemove(req.params.id, function(err, item) {
             if (err) {
-                res.send("Error");
+                err.status = 500;
+                next(err);
             }
             res.send("Success");
         })
