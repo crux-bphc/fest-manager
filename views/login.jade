@@ -1,12 +1,13 @@
 extends layout
 
 block content
-	h1= title
 
 	if error
 		div.error
-			h2= error.title
-			p= error.message
+			span.title= error.title
+			span.message= error.message
+			i.cross(class="material-icons") close
+	h1= title
 
 	div.auth-container.parent-center
 		if methods.google

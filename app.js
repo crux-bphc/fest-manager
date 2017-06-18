@@ -14,6 +14,7 @@ var configureSerializers = require('./authentication').configureSerializers;
 configureSerializers();
 strategies.facebook();
 strategies.google();
+strategies.github();
 
 var index = require('./routes/index');
 var login = require('./routes/login');
@@ -78,6 +79,16 @@ app.get('/auth/google/callback',
         res.redirect('/registration');
     });
 
+app.get('/auth/github',
+    passport.authenticate('github', { scope: ['user:email'] },
+        function(req, res) {}
+    ));
+app.get('/auth/github/callback',
+    passport.authenticate('github', { failureRedirect: '/login' }),
+    function(req, res) {
+        res.redirect('/registration');
+    });
+
 app.use('/registration', registration);
 app.use('/logout', function(req, res) {
     req.logout();
@@ -93,6 +104,9 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+    if (err.type = "GITHUB_RESOLUTION_ERROR") {
+        res.redirect('/login?error=github_email_is_private');
+    }
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

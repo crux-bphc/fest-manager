@@ -19,10 +19,37 @@ a {
 }
 
 .error {
-	background: #881111;
+	background: #F44336;
 	color: #ffffff;
+	line-height: 2.5;
+	position:fixed;
+	top:70px;
+	left:0;
+	right: 0;
+	padding:0px 5%;
+	display: flex;
+	align-items: center;
+	font-family: sans-serif;
 }
 
+.error span {
+	display: inline-block;
+}
+
+.error .title {
+	font-weight:bolder;
+	margin-right: 1em;
+}
+.error .message {
+	font-size: 0.9em;
+}
+.error .cross {
+	display: block;
+	right:5%;
+	position:absolute;
+	font-size: 0.9em;
+	font-weight: bolder;
+}
 
 /* Shared */
 .loginBtn {

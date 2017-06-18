@@ -58,10 +58,24 @@ var strategies = {
                 findOrCreate(accessToken, profile, 'googleID', done);
             }
         ));
+    },
+    github: function() {
+        var GithubStrategy = require('passport-github').Strategy;
+
+        passport.use(new GithubStrategy(config.github,
+            function(accessToken, refreshToken, profile, done) {
+                if(!profile.emails) {
+                    let err = new Error("Your email address is hidden. Go to your account settings to make it public or login using some other provider.");
+                    err.type = 'GITHUB_RESOLUTION_ERROR';
+                    return done(err);
+                }
+                findOrCreate(accessToken, profile, 'githubID', done);
+            }
+        ));
     }
 }
 
-var authenticate = function(req, res, next) {	// custom middleware to check if a user 
+var authenticate = function(req, res, next) {	// custom middleware to check if a user  
     if (req.isAuthenticated())		            // is authenticated in the current session
         return next();
     res.redirect('/login');
