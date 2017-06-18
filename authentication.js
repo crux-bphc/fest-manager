@@ -1,5 +1,5 @@
 const passport = require('passport');
-const configAuth = require('./configAuth');
+const config = require('./config');
 const userService = require('./models/users.model');
 
 var findOrCreate = function(accessToken, profile, provider, done) {
@@ -44,7 +44,7 @@ var strategies = {
     facebook: function() {
         var FacebookStrategy = require('passport-facebook').Strategy;
 
-        passport.use(new FacebookStrategy(configAuth.facebook,
+        passport.use(new FacebookStrategy(config.facebook,
             function(accessToken, refreshToken, profile, done) {
                 findOrCreate(accessToken, profile, 'facebookID', done);
             }
@@ -53,7 +53,7 @@ var strategies = {
     google: function() {
         var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-        passport.use(new GoogleStrategy(configAuth.google,
+        passport.use(new GoogleStrategy(config.google,
             function(accessToken, refreshToken, profile, done) {
                 findOrCreate(accessToken, profile, 'googleID', done);
             }

@@ -1,7 +1,7 @@
-#bot configuration file
+# bot configuration file
 config.js*
-config.json*
-node_modules/*
+secrets.json
+
 # Logs
 logs
 *.log
