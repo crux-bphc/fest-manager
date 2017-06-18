@@ -6,7 +6,7 @@ var usersSchema = new Schema({
     name: String,
     email: { type: String, required: true, unique: true },
     institute: { type: String },
-    events: [Schema.Types.ObjectId],
+    teams: [Schema.Types.ObjectId],
     accommodation: Schema.Types.ObjectId,
     token: String,
     facebookID: { type: String, unique: true },
