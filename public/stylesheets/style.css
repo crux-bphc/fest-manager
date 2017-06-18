@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Montserrat", Helvetica, Arial, sans-serif;
+  margin:0; 
 }
 
 a {
@@ -88,4 +88,47 @@ a {
 .loginBtn--google:hover,
 .loginBtn--google:focus {
   background: #E74B37;
+}
+
+div.main {
+	position:relative;
+	margin-top:70px;
+	padding: 20px 5%;
+}
+
+div.navbar {
+	position:fixed;
+	top:0;
+	left: 0;
+	right:0;
+	height: 70px;
+	background:#242428;
+	box-shadow:0px 2px 4px rgba(0,0,0,0.3);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding:0px 5%;
+}
+div.navbar .flow {
+	flex-grow:1;
+}
+div.navbar a {
+	color:#efefef;
+	text-decoration: none;
+	padding: 10px 20px;
+	background:#1565C0;
+	border-radius:1px;
+	box-shadow:0px 2px 5px rgba(0,0,0,0.2);
+}
+
+div.logo {
+	height:80%;
+	display: flex;
+	align-items: center;
+}
+
+div.logo span {
+	color:#efefef;
+	font-size:2.2em;
+	padding: 0px 0.5em;
 }
