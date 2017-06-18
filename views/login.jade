@@ -2,19 +2,23 @@ extends layout
 
 block content
 	h1= title
-	p Choose an authentication method.
 
-	div.auth-container
+	if error
+		div.error
+			h2= error.title
+			p= error.message
+
+	div.auth-container.parent-center
 		if methods.google
-				div.auth-method
+				div.auth-method.child-center
 					a(href="/auth/google")
-						button(type="button") Login with Google
+						button.loginBtn.loginBtn--google(type="button") Login with Google
 
 		if methods.facebook
-			div.auth-method
+			div.auth-method.child-center
 				a(href="/auth/facebook")
-						button(type="button") Login with Facebook
+						button.loginBtn.loginBtn--facebook(type="button") Login with Facebook
 		if methods.github
-			div.auth-method
+			div.auth-method.child-center
 				a(href="/auth/github")
 						button(type="button") Login with GitHub
