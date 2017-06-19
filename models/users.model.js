@@ -10,7 +10,8 @@ var usersSchema = new Schema({
     accommodation: Schema.Types.ObjectId,
     token: String,
     facebookID: { type: String, unique: true },
-    googleID: { type: String, unique: true }
+    googleID: { type: String, unique: true },
+    githubID: { type: String, unique: true }
 }, {
     timestamps: true
 });
