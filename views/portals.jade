@@ -1,0 +1,6 @@
+extends layout
+
+block content
+	each portal in portals
+		a(href=portal.href) 
+			h1= portal.label

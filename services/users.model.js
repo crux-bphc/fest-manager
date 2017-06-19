@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
 
 var usersSchema = new Schema({
@@ -9,11 +8,15 @@ var usersSchema = new Schema({
     teams: [Schema.Types.ObjectId],
     accommodation: Schema.Types.ObjectId,
     token: String,
-    facebookID: { type: String, unique: true },
-    googleID: { type: String, unique: true },
-    githubID: { type: String, unique: true }
+    facebookID: String,
+    googleID: String,
+    githubID: String,
+    privilege: Schema.Types.Mixed
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('usersModel', usersSchema);
+module.exports = {
+    route: '/users',
+    service: mongoose.model('usersModel', usersSchema)
+}

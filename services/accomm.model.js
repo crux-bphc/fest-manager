@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
 
 var accommSchema = new Schema({
@@ -11,4 +10,7 @@ var accommSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('accommModel', accommSchema);
+module.exports = {
+	route: '/accomm',
+	service: mongoose.model('accommModel', accommSchema)
+}
