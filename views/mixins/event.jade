@@ -1,0 +1,14 @@
+mixin eventMixin(data)
+	div.event-container
+		div.image
+			img(src="#{data.img}")
+		div.details
+			div.title-container
+				a.title(href="#{data.link}")
+					span= data.title
+			div.tagline-container
+				span.tagline= data.tagline
+			div.timestamp-container
+				span.timestamp= data.timestamp
+			div.category-container
+				span.category= data.category

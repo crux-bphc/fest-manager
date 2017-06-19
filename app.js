@@ -18,6 +18,7 @@ strategies.github();
 
 var index = require('./routes/index');
 var login = require('./routes/login');
+var events = require('./routes/events');
 var registration = require('./routes/registration');
 var connection = require('./mongoose');
 connection();
@@ -58,6 +59,7 @@ app.use('/teams', services.teams);
 app.use('/accomm', services.accomm);
 
 app.use('/login', login);
+app.use('/events', events);
 
 app.get('/auth/facebook',
     passport.authenticate('facebook', { scope: ['public_profile', 'email'] },
