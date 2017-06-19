@@ -1,6 +1,6 @@
 const passport = require('passport');
 const config = require('./config');
-const userService = require('./models/users.model');
+const userService = require('./services/users.model').service;
 
 var findOrCreate = function(accessToken, profile, provider, done) {
     userService.findOne({
@@ -21,8 +21,9 @@ var findOrCreate = function(accessToken, profile, provider, done) {
                 return done(err, user);
             });
         } else {
-            if (!user[provider]) { //check if same email has connected with a second provider
+            if (!user[provider] || !user.name) { //check if same email has connected with a second provider
                 user[provider] = profile.id;
+                user.name = profile.displayName;
                 userService.update({ _id: user._id }, user, function(err) {});
             }
             return done(null, user);

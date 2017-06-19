@@ -16,13 +16,16 @@ strategies.facebook();
 strategies.google();
 strategies.github();
 
+var connection = require('./mongoose');
+connection();
+
 var index = require('./routes/index');
 var login = require('./routes/login');
 var events = require('./routes/events');
 var registration = require('./routes/registration');
-var connection = require('./mongoose');
-connection();
-var services = require('./routes/services');
+var services = require('./services/index');
+var portals = require('./routes/portals');
+
 var app = express();
 
 // view engine setup
@@ -53,13 +56,12 @@ app.use(router);
 
 app.use('/', index);
 
-app.use('/users', services.users);
-app.use('/events', services.events);
-app.use('/teams', services.teams);
-app.use('/accomm', services.accomm);
+app.use('/api', services);
 
 app.use('/login', login);
+
 app.use('/events', events);
+app.use('/portals', portals);
 
 app.get('/auth/facebook',
     passport.authenticate('facebook', { scope: ['public_profile', 'email'] },
@@ -106,7 +108,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-    if (err.type = "GITHUB_RESOLUTION_ERROR") {
+    if (err.type == "GITHUB_RESOLUTION_ERROR") {
         res.redirect('/login?error=github_email_is_private');
     }
     // set locals, only providing error in development

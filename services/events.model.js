@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
 
 var eventsSchema = new Schema({
@@ -17,4 +16,7 @@ var eventsSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('eventsModel', eventsSchema);
+module.exports = {
+    route: '/events',
+    service: mongoose.model('eventsModel', eventsSchema)
+}
