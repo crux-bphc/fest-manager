@@ -1,25 +1,21 @@
-extends layout
+if error
+	div.error
+		span.title= error.title
+		span.message= error.message
+		i.cross(class="material-icons") close
+h1= title
 
-block content
-
-	if error
-		div.error
-			span.title= error.title
-			span.message= error.message
-			i.cross(class="material-icons") close
-	h1= title
-
-	div.auth-container.parent-center
-		if methods.google
-				div.auth-method.child-center
-					a(href="/auth/google")
-						button.loginBtn.loginBtn--google(type="button") Login with Google
-
-		if methods.facebook
+div.auth-container.parent-center
+	if methods.google
 			div.auth-method.child-center
-				a(href="/auth/facebook")
-						button.loginBtn.loginBtn--facebook(type="button") Login with Facebook
-		if methods.github
-			div.auth-method.child-center
-				a(href="/auth/github")
-						button.loginBtn.loginBtn--github(type="button") Login with GitHub
+				a(href="/auth/google")
+					button.loginBtn.loginBtn--google(type="button") Login with Google
+
+	if methods.facebook
+		div.auth-method.child-center
+			a(href="/auth/facebook")
+					button.loginBtn.loginBtn--facebook(type="button") Login with Facebook
+	if methods.github
+		div.auth-method.child-center
+			a(href="/auth/github")
+					button.loginBtn.loginBtn--github(type="button") Login with GitHub

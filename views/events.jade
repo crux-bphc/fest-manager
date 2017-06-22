@@ -1,19 +1,12 @@
-extends layout
 include mixins/event
-block content
-
-	if error
-		div.error
-			span.title= error.title
-			span.message= error.message
-			i.cross(class="material-icons") close
-	h1= title
-	div.events-container
-		each event in events
-			+eventMixin(event)
-		div
-		div
-		div
-		div
-		div
+link(href="/stylesheets/events.style.css")
+if error
+	div.error
+		span.title= error.title
+		span.message= error.message
+		i.cross(class="material-icons") close
+h1= title
+div.events-container
+	each event in events
+		+eventMixin(event)
 		
