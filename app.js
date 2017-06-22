@@ -67,7 +67,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
     if (err.type == "GITHUB_RESOLUTION_ERROR") {
-        res.redirect('/login?error=github_email_is_private');
+        res.redirect('/inner/login?error=github_email_is_private');
     }
     // set locals, only providing error in development
     res.locals.message = err.message;
@@ -75,7 +75,7 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.render('error', { user: req.user });
 });
 
 module.exports = app;
