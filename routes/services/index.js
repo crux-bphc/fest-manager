@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var constructor = require('../service.constructor');
+var constructor = require('../../service.constructor');
 var services = [];
 
 services.push(require('./users.model'));

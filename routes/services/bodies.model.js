@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var bodiesSchema = new Schema({
     name: {type: String, required: true}, 
     admin: {type: String, required: true},          // email of admin user
-    code: {type: String, required: true}
+    code: {type: String, required: true},
+    portal: {type: Schema.Types.Mixed, required: true}
 }, {
     timestamps: true
 });

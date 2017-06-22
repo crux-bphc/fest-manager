@@ -3,7 +3,9 @@ var Schema = mongoose.Schema;
 
 var eventsSchema = new Schema({
     name: String,
-    department: String,
+    tagline: String,
+    body: Schema.Types.ObjectId,
+    category: String,
     thumbnail: String,
     cover: String,
     about: Schema.Types.Mixed,
@@ -11,7 +13,8 @@ var eventsSchema = new Schema({
     startTime: Date,
     endTime: Date,
     teams: [Schema.Types.ObjectId],
-    price: Number
+    price: Number,  
+    route: String
 }, {
     timestamps: true
 });
