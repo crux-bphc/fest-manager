@@ -147,6 +147,10 @@ div.navbar {
 	align-items: center;
 	padding:0px 5%;
 }
+div.navbar > * {
+	display: inline-flex;
+	align-items: center;
+}
 div.navbar .flow {
 	flex-grow:1;
 }
@@ -169,4 +173,9 @@ div.logo span {
 	color:#efefef;
 	font-size:2.2em;
 	padding: 0px 0.5em;
+}
+
+div.left > * {
+	display: inline-flex;
+	margin-right: 1em;
 }

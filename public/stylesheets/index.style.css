@@ -1,0 +1,317 @@
+@import url('/fonts/icomoon/font.css');
+
+/* entypo */
+
+[class*="icon-"]:before {
+    font-family: 'icomoon', sans-serif;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Proxima Nova', sans-serif;
+}
+
+.window {
+    height: 90vh;
+    width: 80vw;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.5, 0.1, 0, 1);
+    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    background: #202729;
+    font-size: 0.9em;
+}
+
+.window.fullsize {
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0px;
+}
+
+.topbar {
+    height: 4.5vw;
+    min-height: 40px;
+    max-height: 80px;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 0px 0px #2eb398;
+    padding: 0px 2em;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-right: 0;
+}
+
+.topbar .logo {
+    font-size: 1.25em;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.topbar .controls {
+    font-size: 1em;
+    display: flex;
+    flex-grow: 1;
+    color: #a5a8a9;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.topbar .controls > .button {
+    width: 4.5vw;
+    background: #2b3537;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.2s ease-out;
+}
+
+.topbar .controls > .button > div {
+    transition: transform 0.2s ease-out;
+}
+
+.topbar .controls > .button:active > div {
+    transform: scale(0.9);
+}
+
+.topbar .controls > .button.user {
+    background: transparent !important;
+    opacity: 1;
+}
+
+.topbar .controls > .button:hover {
+    opacity: 1;
+}
+
+.topbar .controls > .button.user > div {
+    height: 2.2em;
+    width: 2.2em;
+    position: relative;
+}
+
+.topbar .controls > .button.user > div > img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.topbar .controls > .button.user > div::after {
+    width: 1.75em;
+    height: 1.75em;
+    display: flex;
+    font-weight: 500;
+    content: attr(ticker);
+    position: absolute;
+    background: #E53935;
+    color: white;
+    right: -0.75em;
+    bottom: -0.75em;
+    border-radius: 50%;
+    font-size: 0.5em;
+    justify-content: space-around;
+    align-items: center;
+    border: 0.25em solid #202729;
+}
+
+.remnant {
+    flex-grow: 1;
+}
+
+.window > .remnant {
+    display: flex;
+    flex-direction: row;
+    z-index: +10;
+}
+
+.sidebar {
+    height: 100%;
+    width: 20%;
+    position: relative;
+    display: block;
+    padding: 2em;
+    box-sizing: border-box;
+    color: #a5a8a9;
+    /*background: #202729;*/
+}
+
+.window.loading .sidebar::after {
+    height: 2px;
+    /*background:linear-gradient(50deg,transparent,rgba(255,255,255,0.1),transparent);*/
+    background-image: linear-gradient(50deg, transparent, indigo, transparent);
+    width: 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: +19;
+    background-size: 100px 100%;
+    background-position: 0% 100%;
+    animation: shine 1.2s infinite cubic-bezier(0.5, 0.3, 0.5, 0.7);
+}
+
+@keyframes shine {
+    from {
+        background-position: 0% 100%;
+    }
+    to {
+        background-position: 200px 100%;
+    }
+}
+
+.section {
+    list-style-type: none;
+    padding: 1.25em 0;
+}
+
+.section > label {
+    color: #445256;
+    padding-bottom: 1em;
+    display: block;
+}
+
+.section > li {
+    line-height: 2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+    border-color: #a5a8a9;
+}
+
+.section > li:hover {
+    color: #e5e8e9;
+    padding-left: 0.25em;
+    border-color: #e5e8e9;
+}
+
+.section > li.active {
+    font-weight: 500;
+    color: #e5e8e9;
+    padding-left: 0.5em;
+    border-color: #e5e8e9;
+}
+
+.section > li > span {
+    vertical-align: top;
+}
+
+.section > li > i {
+    border: 2px solid;
+    border-color: inherit;
+    border-radius: 50%;
+    height: 6px;
+    width: 6px;
+    margin-right: 0.5em;
+}
+
+.section > li.active > i {
+    background: #e5e8e9;
+}
+
+.main {
+    box-sizing: border-box;
+    font-weight: 300;
+    background: white;
+    z-index: +10;
+    border-radius: 2px 0px 0px 0px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    color: #202729;
+    padding: 2em;
+}
+
+.main * {
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+}
+
+.stretch {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.main .controls {
+    font-size: 1em;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.main .controls [class*="icon-"] {
+    width: 2em;
+    height: 2em;
+    color: #2eb398;
+    box-sizing: border-box;
+    border: 2px solid #2eb398;
+    display: inline-flex;
+    vertical-align: top;
+    margin-right: 0.5em;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: space-around;
+    cursor:pointer;
+}
+.main .controls .disabled[class*="icon-"] {
+    color:#a5a8a9;
+    border-color:#a5a8a9;
+    cursor: default;
+}
+
+.header .stretch {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#filter {
+    height: 4em;
+    display: flex;
+    align-items: center;
+    width: 25%;
+    min-width: 200px;
+}
+
+#filter input {
+    height: 3em;
+    width: 100%;
+    border-radius: 20px;
+    color: #505057;
+    font-size: 0.9em;
+    font-family: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    outline: none;
+    padding: 0% 7%;
+}
+
+#filter input:hover {
+    border-color: rgba(0, 0, 0, 0.075);
+}
+
+#filter input:focus {
+    border-color: rgba(0, 0, 10, 0.1);
+}
+
+#filter i {
+    height: 2em;
+    width: 2em;
+    position: absolute;
+    right: 0.5em;
+    line-height: 2em;
+    text-align: center;
+    color:#505057;
+}
