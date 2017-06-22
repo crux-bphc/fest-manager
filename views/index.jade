@@ -1,5 +1,65 @@
-extends layout
+doctype html
+html
+	head
+		title Dashboard
+		link(href="/stylesheets/index.style.css" rel="stylesheet")
+		link(href="/fonts/Proxima Nova/font.css" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet")
+		//- script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		script(type="text/javascript" src="/scripts/jquery.min.js")
+body
+	div.window(route= route)
+		div.topbar
+			span.logo atmos ~
+			div.controls
+				div.button.user
+					div(ticker=12)
+						img(src="https://lorempixel.com/50/50/people")
+				div.button
+					div.icon-shopping_cart
+				div.button(href="/logout")
+					div.icon-power_settings_new
+				div.button#fullscreen
+					div.icon-call_made
+		div.remnant
+			div.sidebar
+				div.section
+					label MAIN
+					li
+						i
+						span Portals
+					li.active
+						i
+						span Events
+					li
+						i
+						span Cart
+					li
+						i
+						span Account
+					li
+						i
+						span Settings
+				div.section
+					label CATEGORY
+					li
+						i
+						span Programming
+					li
+						i
+						span Robotics
+					li
+						i
+						span Literature
+					li
+						i
+						span Art
+					li
+						i
+						span Music
+					li
+						i
+						span Dance
+			div.remnant.main
 
-block content
-  h1= title
-  p Welcome to #{title}
+script(type="text/javascript" src="/scripts/index.main.js")

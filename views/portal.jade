@@ -1,0 +1,20 @@
+link(href="/stylesheets/portals.style.css" rel="stylesheet")
+div.section.header
+	h1.title Department of Technical Arts
+	div.stretch
+		div.remnant
+			ul.controls
+				li.icon-add
+				li.icon-autorenew
+				li.icon-delete.disabled
+		div#filter
+			input#_filter(type="text", placeholder="Search")
+			i.icon-search
+div.table
+	each field in portal.fields
+		div.field(id=field.property)
+			span.title= field.label
+			div.list 
+				li
+				li
+				li
