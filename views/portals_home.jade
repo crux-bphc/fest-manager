@@ -1,3 +1,4 @@
+i.meta(_routed_at="/portals")
 each body in bodies
-	a(href= 'portals/' + body.code) 
+	a(_route= 'portals/' + body.code) 
 		h1= body.name

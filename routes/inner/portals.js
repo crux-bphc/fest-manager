@@ -17,7 +17,7 @@ router.get('/', authenticate, elevate, function(req, res, next) {
             res.render('portals_home', {bodies: items, user: req.user });
         });
     else if (req.user.privilege.level == 1) {
-        res.redirect('/inner/portals/' + req.user.privilege.body)
+        res.redirect('/portals/' + req.user.privilege.body)
     }
 });
 

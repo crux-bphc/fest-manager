@@ -8,9 +8,9 @@ var login = require('./login');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     if(req.isAuthenticated())
-    	res.redirect('/inner/dashboard');
+    	res.redirect('/dashboard');
     else 
-    	res.redirect('/inner/events');
+    	res.redirect('/events');
 });
 router.use('/events', events);
 router.use('/dashboard', dashboard);
@@ -18,7 +18,7 @@ router.use('/portals', portals);
 router.use('/login', login);
 router.use('/logout', function(req, res, next) {
     req.logout();
-    res.redirect('/inner/login');
+    res.redirect('/login');
 })
 
 module.exports = router;
