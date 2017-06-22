@@ -20,11 +20,9 @@ var connection = require('./mongoose');
 connection();
 
 var index = require('./routes/index');
-var login = require('./routes/login');
-var events = require('./routes/events');
-var registration = require('./routes/registration');
-var services = require('./services/index');
-var portals = require('./routes/portals');
+var inner = require('./routes/inner');
+var services = require('./routes/services');
+var auth = require('./routes/auth');
 
 var app = express();
 
@@ -55,49 +53,9 @@ app.use(passport.session());
 app.use(router);
 
 app.use('/', index);
-
 app.use('/api', services);
-
-app.use('/login', login);
-
-app.use('/events', events);
-app.use('/portals', portals);
-
-app.get('/auth/facebook',
-    passport.authenticate('facebook', { scope: ['public_profile', 'email'] },
-        function(req, res) {}
-    ));
-app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/login' }),
-    function(req, res) {
-        res.redirect('/registration');
-    });
-
-app.get('/auth/google',
-    passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login', 'profile', 'email'] },
-        function(req, res) {}
-    ));
-app.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: '/login' }),
-    function(req, res) {
-        res.redirect('/registration');
-    });
-
-app.get('/auth/github',
-    passport.authenticate('github', { scope: ['user:email'] },
-        function(req, res) {}
-    ));
-app.get('/auth/github/callback',
-    passport.authenticate('github', { failureRedirect: '/login' }),
-    function(req, res) {
-        res.redirect('/registration');
-    });
-
-app.use('/registration', registration);
-app.use('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/login');
-})
+app.use('/inner', inner);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
