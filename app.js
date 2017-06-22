@@ -7,15 +7,15 @@ var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var strategies = require('./authentication').strategies;
+var strategies = require('./utils/authentication').strategies;
 var router = require('express').Router();
-var configureSerializers = require('./authentication').configureSerializers;
+var configureSerializers = require('./utils/authentication').configureSerializers;
 configureSerializers();
 strategies.facebook();
 strategies.google();
 strategies.github();
 
-var connection = require('./mongoose');
+var connection = require('./utils/mongoose');
 connection();
 
 var index = require('./routes/index');

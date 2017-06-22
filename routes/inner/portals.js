@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var authenticate = require('../../authentication').middleware;
+var authenticate = require('../../utils/authentication').middleware;
 var bodiesService = require('../services/bodies.model').service;
 
 var elevate = function(req, res, next) {
