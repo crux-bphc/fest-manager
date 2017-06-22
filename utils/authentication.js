@@ -1,5 +1,5 @@
 const passport = require('passport');
-const config = require('./config');
+const config = require('../config');
 const userService = require('../routes/services/users.model').service;
 
 var findOrCreate = function(accessToken, profile, provider, done) {
