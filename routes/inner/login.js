@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
             }
         }
     }
-    res.render('login', params);
+    res.renderState('login', params);
 });
 
 module.exports = router;

@@ -17,7 +17,7 @@
         $.ajax({
             type: 'GET',
             url: 'http://localhost:3000' + route,
-            dataType: 'html',
+            dataType: 'json',
             contentType: 'application/json',
             beforeSend: function(request) {
                 request.setRequestHeader("Client", "Fest-Manager/dash");
@@ -25,9 +25,9 @@
         }).done(function(data, textStatus, req) {
             let url = req.getResponseHeader('Location');
             if (status)
-                window.history.pushState(url, "", req.getResponseHeader('Location'));
+                window.history.pushState(url, "", data.state.location);
             this.activeRoute = route;
-            this.main.html(data);
+            this.main.html(data.html);
             $("[_route='" + this.main.find('.meta').attr("_routed_at") + "']").addClass('active').siblings().removeClass('active');
             this.main.initialize();
             this.main.stageEventHandlers();

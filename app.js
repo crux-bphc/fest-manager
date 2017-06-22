@@ -58,11 +58,19 @@ let clientCheckpoint = function(req, res, next) {
 };
 
 app.use(function(req, res, next) {
-    res.setHeader('Location', req.url);
+    req.appState = {
+        isAuthenticated: req.isAuthenticated(),
+        location: req.url
+    };
+    res.renderState = function(filename, options) {
+        res.render(filename, options, function(err, string) {
+            res.send({html: string, state: req.appState});
+        });
+    }
     return next();
 });
 
-app.use('/w/', index);
+app.use('/w', index);
 app.use('/auth', auth);
 app.use('/', clientCheckpoint, inner);
 app.use('/api', clientCheckpoint, services);

@@ -14,7 +14,7 @@ var elevate = function(req, res, next) {
 router.get('/', authenticate, elevate, function(req, res, next) {
     if (req.user.privilege.level == 2)
         bodiesService.find(function(err, items) {
-            res.render('portals_home', {bodies: items, user: req.user });
+            res.renderState('portals_home', {bodies: items, user: req.user });
         });
     else if (req.user.privilege.level == 1) {
         res.redirect('/portals/' + req.user.privilege.body)
@@ -28,7 +28,7 @@ router.get('/:body', authenticate, elevate, function(req, res, next) {
         return next(error);
     }
     bodiesService.find({ code: req.params.body }, function(err, item) {
-        res.render('portal', { user: req.user, portal: item[0].portal });
+        res.renderState('portal', { user: req.user, portal: item[0].portal });
     });
 });
 
