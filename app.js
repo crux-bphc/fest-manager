@@ -8,7 +8,6 @@ var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var strategies = require('./authentication').strategies;
-var cors = require('cors');
 var router = require('express').Router();
 var configureSerializers = require('./authentication').configureSerializers;
 configureSerializers();
@@ -38,7 +37,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('damn ninjas cutting onions'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
 app.use(cookieSession({
     keys: ['qwerty', 'uiop']
 }));
@@ -52,10 +50,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(router);
 
-app.use('/', index);
-app.use('/api', services);
-app.use('/inner', inner);
+let clientCheckpoint = function(req, res, next) {
+    if (req.get('Client') === 'Fest-Manager/dash')
+        return next();
+    else
+        res.redirect('/w' + req.url);
+};
+
+app.use(function(req, res, next) {
+    res.setHeader('Location', req.url);
+    return next();
+});
+
+app.use('/w/', index);
 app.use('/auth', auth);
+app.use('/', clientCheckpoint, inner);
+app.use('/api', clientCheckpoint, services);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -67,7 +77,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
     if (err.type == "GITHUB_RESOLUTION_ERROR") {
-        res.redirect('/inner/login?error=github_email_is_private');
+        res.redirect('/login?error=github_email_is_private');
     }
     // set locals, only providing error in development
     res.locals.message = err.message;

@@ -8,27 +8,33 @@ html
 		//- script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 		script(type="text/javascript" src="/scripts/jquery.min.js")
 body
-	div.window(route= route)
+	div.window.fullsize(route= route)
 		div.topbar
-			span.logo atmos ~
+			span.logo(_route="/") atmos ~
 			div.controls
-				div.button.user
-					div(ticker=12)
-						img(src="https://lorempixel.com/50/50/people")
-				div.button
-					div.icon-shopping_cart
-				div.button(href="/logout")
-					div.icon-power_settings_new
+				if user
+					div.button.user
+						div(ticker=12)
+							img(src="https://lorempixel.com/50/50/people")
+					div.button
+						div.icon-shopping_cart
+					div.button(_route="/logout")
+						div.icon-power_settings_new
+				else
+					div.button(_route="/login")
+						div.icon-account_circle
 				div.button#fullscreen
-					div.icon-call_made
+					div.icon-call_received
 		div.remnant
 			div.sidebar
 				div.section
 					label MAIN
-					li
-						i
-						span Portals
-					li.active
+					if(user)
+						if user.privilege
+							li(_route="/portals")
+								i
+								span Portals
+					li(_route="/events")
 						i
 						span Events
 					li
@@ -62,4 +68,4 @@ body
 						span Dance
 			div.remnant.main
 
-script(type="text/javascript" src="/scripts/index.main.js")
+script(type="text/javascript" src="/scripts/index.js")
