@@ -9,8 +9,8 @@ services.push(require('./teams.model'));
 services.push(require('./accomm.model'));
 services.push(require('./bodies.model'));
 
-services.forEach(function(model) {
-	router.use(model.route, constructor(model.service));
+services.forEach(function (model) {
+  router.use(model.route, constructor(model.service));
 });
 
 module.exports = router;
