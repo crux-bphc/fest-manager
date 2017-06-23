@@ -1,5 +1,23 @@
 module.exports = function () {
 
+	var appendUserState = function (state){
+		var user = {};
+		user.isAuthenticated = req.isAuthenticated();
+		if(user.isAuthenticated) {
+			user.isElevated = req.user.privilege?true:false;
+			user.privilege = req.user.privilege;
+			user.email = req.user.email;
+			if(user.githubID){
+				user.avatar = "https://avatars1.githubusercontent.com/u/" + user.githubID;
+			}
+			if(user.facebookID){
+				user.avatar = "https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large";
+			}
+		}
+		state.user = user;
+		return state;
+	};
+
 	var appendNavbarState = function (state) {
 		var navbar = {};
 		navbar.logout = state.isAuthenticated;
@@ -36,8 +54,8 @@ module.exports = function () {
 
 	var getState = function (req) {
 		var state = {};
-		state.isAuthenticated = req.isAuthenticated();
 		state.location = req.url;
+		state = appendUserState(state);
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
 		// state = appendTestState(state);
