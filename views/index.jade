@@ -16,7 +16,7 @@ body
 				div.icon-menu
 			span.logo(_route="/") atmos ~
 			div.controls
-				div.button.user(_trigger="navbar/avatar=visible")
+				div.button.user(_triggers="navbar/avatar=visible")
 					div
 						if user
 							if user.githubID
@@ -27,54 +27,28 @@ body
 								img(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
 						else
 							img(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
-				div.button(_route="/logout" _trigger="navbar/logout=visible")
+				div.button(_route="/logout" _triggers="navbar/logout=visible")
 					div.icon-power_settings_new
-				div.button(_route="/login" _trigger="navbar/login=visible")
+				div.button(_route="/login" _triggers="navbar/login=visible")
 					div.icon-account_circle
 		div.remnant
 			div.sidebar(tabindex=2)
-				div.section
+				div.section.primary
 					label MAIN
 					ul
-						li#li-dashboard(_route="/dashboard" _trigger="sidebar/dashboard=active isAuthenticated=visible")
-							i
-							span Dashboard
-						li#li-portals(_route="/portals" _trigger="sidebar/portals=active isAuthenticated=visible")
-							i
-							span Portals
-						li(_route="/events" _trigger="sidebar/events=active")
-							i
-							span Events
-						li(_trigger="sidebar/cart=active")
-							i
-							span Cart
-						li(_trigger="sidebar/account=active")
-							i
-							span Account
-						li(_trigger="sidebar/settings=active")
-							i
-							span Settings
-				div.section#secondary(_trigger="sidebar/events=visible")
-					label EVENTS > CATEGORIES
-					ul
-						li
-							i
-							span Programming
-						li
-							i
-							span Robotics
-						li
-							i
-							span Literature
-						li
-							i
-							span Art
-						li
-							i
-							span Music
-						li
-							i
-							span Dance
+						each val, key in navigation
+							li(_route=('/'+key) _triggers=val.triggers class=val.initial)
+								i
+								span= val.label
+				each val in navigation
+					if val.sub 
+						div.section.secondary(_triggers=val.triggers class=val.initial)
+							label= val.label
+							ul
+								each subval in val.sub
+									li
+										i
+										span= subval.label
 			div.remnant.main
 				div.wrapper.face
 				div.wrapper.tray

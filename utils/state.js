@@ -1,6 +1,6 @@
 module.exports = function () {
 
-	var appendUserState = function (state){
+	var appendUserState = function (state, req){
 		var user = {};
 		user.isAuthenticated = req.isAuthenticated();
 		if(user.isAuthenticated) {
@@ -20,9 +20,9 @@ module.exports = function () {
 
 	var appendNavbarState = function (state) {
 		var navbar = {};
-		navbar.logout = state.isAuthenticated;
-		navbar.login = !state.isAuthenticated;
-		navbar.avatar = state.isAuthenticated;
+		navbar.logout = state.user.isAuthenticated;
+		navbar.login = !state.user.isAuthenticated;
+		navbar.avatar = state.user.isAuthenticated;
 		state.navbar = navbar;
 		return state;
 	};
@@ -55,7 +55,7 @@ module.exports = function () {
 	var getState = function (req) {
 		var state = {};
 		state.location = req.url;
-		state = appendUserState(state);
+		state = appendUserState(state, req);
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
 		// state = appendTestState(state);
