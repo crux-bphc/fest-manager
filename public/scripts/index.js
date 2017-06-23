@@ -47,12 +47,19 @@
 		// console.log(diff);
 		this.state = state;
 		diff.forEach(function (change) {
-			$target = $("[_trigger='" + change.path.join('/') + "']");
+			var trigger = change.path.join('/');
+			$target = $("[_trigger*='" + trigger + "']");
 			$target.each(function () {
-				if (change.lhs) {
-					$(this).addClass($(this).attr('_class_on_true'));
-				} else {
-					$(this).removeClass($(this).attr('_class_on_true'));
+				var arr = $(this).attr('_trigger').split(' ');
+				var triggerelem = arr.find(function (elem) {
+					return elem.split('=')[0] == trigger;
+				});
+				if (triggerelem) {
+					if (change.lhs) {
+						$(this).addClass(triggerelem.split('=')[1]);
+					} else {
+						$(this).removeClass(triggerelem.split('=')[1]);
+					}
 				}
 			});
 

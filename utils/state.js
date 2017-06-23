@@ -9,6 +9,13 @@ module.exports = function () {
 		return state;
 	};
 
+	var appendTestState = function (state) {
+		var test = {};
+		test.showportal = state.sidebar.dashboard;
+		state.test = test;
+		return state;
+	};
+
 	var appendSidebarState = function (state) {
 		var items = ['dashboard', 'portals', 'events', 'carts', 'account', 'settings'];
 		var sidebar = {};
@@ -33,6 +40,7 @@ module.exports = function () {
 		state.location = req.url;
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
+		// state = appendTestState(state);
 		return state;
 	};
 	return {
