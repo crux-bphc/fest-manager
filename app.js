@@ -19,7 +19,7 @@ var connection = require('./utils/mongoose');
 connection();
 
 var index = require('./routes/index');
-var inner = require('./routes/inner');
+var components = require('./routes/components');
 var services = require('./routes/services');
 var auth = require('./routes/auth');
 
@@ -71,7 +71,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/auth', auth);
-app.use('/inner', clientCheckpoint, inner);
+app.use('/components', clientCheckpoint, components);
 app.use('/api', clientCheckpoint, services);
 app.use('/', index);
 
