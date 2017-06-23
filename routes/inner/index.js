@@ -8,10 +8,11 @@ var login = require('./login');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     if(req.isAuthenticated())
-    	res.redirect('/dashboard');
+       res.redirect('/dashboard');
     else 
-    	res.redirect('/events');
+       res.redirect('/events');
 });
+
 router.use('/events', events);
 router.use('/dashboard', dashboard);
 router.use('/portals', portals);

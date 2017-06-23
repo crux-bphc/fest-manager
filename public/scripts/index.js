@@ -14,6 +14,7 @@
         }, 1000);
         if (route[0] != '/')
             route = '/' + route;
+        route = '/inner' + route;
         $.ajax({
             type: 'GET',
             url: route,
@@ -25,7 +26,7 @@
         }).done(function(data, textStatus, req) {
             let url = req.getResponseHeader('Location');
             if (status)
-                window.history.pushState(url, "", data.state.location);
+                window.history.pushState(url, "", data.state.location.replace('/inner',''));
             this.activeRoute = route;
             this.main.html(data.html);
             $("[_route='" + this.main.find('.meta').attr("_routed_at") + "']").addClass('active').siblings().removeClass('active');

@@ -54,7 +54,7 @@ let clientCheckpoint = function(req, res, next) {
     if (req.get('Client') === 'Fest-Manager/dash')
         return next();
     else
-        res.redirect('/w' + req.url);
+        res.redirect(req.url);
 };
 
 app.use(function(req, res, next) {
@@ -70,10 +70,10 @@ app.use(function(req, res, next) {
     return next();
 });
 
-app.use('/w', index);
 app.use('/auth', auth);
-app.use('/', clientCheckpoint, inner);
+app.use('/inner', clientCheckpoint, inner);
 app.use('/api', clientCheckpoint, services);
+app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
