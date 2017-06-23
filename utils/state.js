@@ -65,12 +65,7 @@ module.exports = function () {
 	var getState = function (req) {
 		var state = {};
 		state.location = req.url;
-<<<<<<< e900bbd5cf8dffe4c2821fc123bc4f74f467ec74
 		state.isImmersive = state.location == '/components/';
-		// state.isImmersive = state.location.startsWith('/components/dashboard');
-=======
-		state.isImmersive = state.location.startsWith('/home');
->>>>>>> state: Add immersive mode states.
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
