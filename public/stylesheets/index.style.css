@@ -157,6 +157,18 @@ body {
     /*background: #202729;*/
 }
 
+.sidebar #secondary {
+    display: none;
+}
+
+.sidebar #secondary ul {
+    padding-left: 20px;
+}
+
+.sidebar .visible {
+    display: block !important;
+}
+
 .window .sidebar::after {
     height: 2px;
     background-image: linear-gradient(50deg, darkgoldenrod, purple, darkgoldenrod);
@@ -197,7 +209,12 @@ body {
     display: block;
 }
 
-.section > li {
+.section > ul {
+    margin: 0;
+    padding: 0;
+}
+
+.section > ul > li {
     line-height: 2em;
     cursor: pointer;
     display: flex;
@@ -206,24 +223,24 @@ body {
     border-color: #a5a8a9;
 }
 
-.section > li:hover {
+.section > ul > li:hover {
     color: #e5e8e9;
     padding-left: 0.25em;
     border-color: #e5e8e9;
 }
 
-.section > li.active {
+.section > ul > li.active {
     font-weight: 500;
     color: #e5e8e9;
     padding-left: 0.5em;
     border-color: #e5e8e9;
 }
 
-.section > li > span {
+.section > ul > li > span {
     vertical-align: top;
 }
 
-.section > li > i {
+.section > ul > li > i {
     border: 2px solid;
     border-color: inherit;
     border-radius: 50%;
@@ -232,7 +249,7 @@ body {
     margin-right: 0.5em;
 }
 
-.section > li.active > i {
+.section > ul > li.active > i {
     background: #e5e8e9;
 }
 

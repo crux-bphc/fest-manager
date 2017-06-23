@@ -51,10 +51,16 @@
         this.state = state;
         diff.forEach(function(change) {
             $target = $("[_trigger='" + change.path.join('/') + "']");
-            if (change.lhs)
-                $target.addClass($target.attr('_class_on_true'));
-            else
-                $target.removeClass($target.attr('_class_on_true'));
+            $.each($target, function(){
+                console.log($(this))
+                if (change.lhs){
+                    $(this).addClass($(this).attr('_class_on_true'));
+                }
+                else{
+                    $(this).removeClass($(this).attr('_class_on_true'));
+                }    
+            });
+            
         });
     }
 

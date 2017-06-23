@@ -35,44 +35,46 @@ body
 			div.sidebar(tabindex=2)
 				div.section
 					label MAIN
-					li(_route="/dashboard" _trigger="sidebar/dashboard" _class_on_true="active")
-						i
-						span Dashboard
-					li(_route="/portals" _trigger="sidebar/portals" _class_on_true="active")
-						i
-						span Portals
-					li(_route="/events" _trigger="sidebar/events" _class_on_true="active")
-						i
-						span Events
-					li(_trigger="sidebar/cart" _class_on_true="active")
-						i
-						span Cart
-					li(_trigger="sidebar/account" _class_on_true="active")
-						i
-						span Account
-					li(_trigger="sidebar/settings" _class_on_true="active")
-						i
-						span Settings
-				div.section
-					label CATEGORY
-					li
-						i
-						span Programming
-					li
-						i
-						span Robotics
-					li
-						i
-						span Literature
-					li
-						i
-						span Art
-					li
-						i
-						span Music
-					li
-						i
-						span Dance
+					ul
+						li(_route="/dashboard" _trigger="sidebar/dashboard" _class_on_true="active")
+							i
+							span Dashboard
+						li(_route="/portals" _trigger="sidebar/portals" _class_on_true="active")
+							i
+							span Portals
+						li(_route="/events" _trigger="sidebar/events" _class_on_true="active")
+							i
+							span Events
+						li(_trigger="sidebar/cart" _class_on_true="active")
+							i
+							span Cart
+						li(_trigger="sidebar/account" _class_on_true="active")
+							i
+							span Account
+						li(_trigger="sidebar/settings" _class_on_true="active")
+							i
+							span Settings
+				div.section#secondary(_trigger="sidebar/events" _class_on_true="visible")
+					label EVENTS > CATEGORIES
+					ul
+						li
+							i
+							span Programming
+						li
+							i
+							span Robotics
+						li
+							i
+							span Literature
+						li
+							i
+							span Art
+						li
+							i
+							span Music
+						li
+							i
+							span Dance
 			div.remnant.main
 				div.wrapper.face
 				div.wrapper.tray
