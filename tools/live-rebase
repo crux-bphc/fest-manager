@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+set -x
+
+if ! git diff-index --quiet HEAD; then
+    set +x
+    echo "There are uncommitted changes:"
+    git status --short
+    echo "Doing nothing to avoid losing your work."
+    exit 1
+fi
+request_branch="$1"
+remote=${2:-"origin"}
+curr_branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+git branch -f "backup-${curr_branch}"
+git pull "$remote" "$request_branch" --rebase
