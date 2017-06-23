@@ -5,10 +5,10 @@
 		main: $('.window > .remnant > .main'),
 		navigation: $('.window > .remnant > .sidebar'),
 		state: {
-			isAuthenticated: false,
 			location: "/components/dashboard",
 			navbar: {},
-			sidebar: {}
+			sidebar: {},
+			user: {}
 		}
 	});
 	client.route = function (route, status = true) {
@@ -48,9 +48,9 @@
 		this.state = state;
 		diff.forEach(function (change) {
 			var trigger = change.path.join('/');
-			$target = $("[_trigger*='" + trigger + "']");
+			$target = $("[_triggers*='" + trigger + "']");
 			$target.each(function () {
-				var arr = $(this).attr('_trigger').split(' ');
+				var arr = $(this).attr('_triggers').split(' ');
 				var triggerelem = arr.find(function (elem) {
 					return elem.split('=')[0] == trigger;
 				});

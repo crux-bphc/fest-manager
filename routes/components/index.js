@@ -8,9 +8,9 @@ var login = require('./login');
 /* GET users listing. */
 router.get('/', function (req, res, next) {
 	if (req.isAuthenticated())
-		res.redirect('/dashboard');
+		res.redirect('/components/dashboard');
 	else
-		res.redirect('/events');
+		res.redirect('/components/events');
 });
 
 router.use('/events', events);

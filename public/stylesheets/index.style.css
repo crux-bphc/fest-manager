@@ -61,14 +61,6 @@ body {
     padding-right: 0;
 }
 
-#menu {
-    font-size: 1.25em;
-    justify-content: flex-start;
-    width:1.5em;
-    pointer-events: none;
-    opacity: 0;
-    margin-left: -1.5em; 
-}
 
 .topbar .logo {
     font-size: 1.25em;
@@ -96,6 +88,16 @@ body {
 }
 
 .topbar .button.visible {
+    display: flex;
+}
+
+#menu {
+    font-size: 1.25em;
+    justify-content: flex-start;
+    width:1.5em;
+    pointer-events: none;
+    opacity: 0;
+    margin-left: -1.5em; 
     display: flex;
 }
 
@@ -157,34 +159,46 @@ body {
     /*background: #202729;*/
 }
 
-.sidebar ul #li-portals {
+.sidebar > .primary ul .disabled {
     display: none;
 }
 
-.sidebar ul #li-dashboard {
-    display: none;
-}
-
-.sidebar #secondary {
-    display: none;
-}
-
-.sidebar #secondary ul {
-    padding-left: 20px;
-}
-
-.sidebar .visible {
+.sidebar > .primary .visible {
     display: block !important;
 }
 
-.sidebar ul .visible {
+.sidebar > .primary ul .visible {
     display: flex !important;
+}
+
+
+.sidebar > .secondary {
+    display: none;
+}
+
+.sidebar > .secondary.active {
+    display: block;
+}
+
+.sidebar > .secondary.disabled {
+    display: none;
+}
+
+.sidebar > .secondary.visible.active {
+    display: block;
+}
+
+.sidebar > .secondary > label {
+    text-transform: uppercase;
+}
+
+.sidebar > .secondary ul {
+    padding-left: 20px;
 }
 
 .window .sidebar::after {
     height: 2px;
     background-image: linear-gradient(50deg, darkgoldenrod, purple, darkgoldenrod);
-    /*background-image: linear-gradient(50deg, transparent, rgba(255,255,255,0.5), transparent);*/
     width: 100%;
     content: '';
     position: absolute;
