@@ -10,7 +10,7 @@ html
 		script(type="text/javascript" src="/scripts/jquery.min.js")
 		script(type="text/javascript" src="/scripts/deep-diff-0.3.8.min.js")
 body
-	div.window.fullsize.loading(route= route)
+	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
 		div.topbar(_triggers="navbar/collapsed=collapsed")
 			div#menu.button(tabindex=1)
 				div.icon-menu
