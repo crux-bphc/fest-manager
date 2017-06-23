@@ -1,0 +1,35 @@
+.immersive-wrapper { 
+	position:absolute;
+	background-image: url("https://forum.unity3d.com/attachments/screen02-jpg.59406/");
+	background-position: 0% 0%;
+	background-size: 120%;
+	animation: panBack 3s 1 linear;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+@keyframes panBack {
+	to {
+		background-position: 100% 0%;
+	}
+}
+
+div.center {
+	position: relative;
+	color:white;
+	font-size:4em;
+	font-family: 'Montserrat';
+	font-weight: 500;
+	letter-spacing: 1em;
+	transform:scale(0.5);
+	opacity: 0;
+	/*animation:box_in 3s 1 ease-in;*/
+}
+@keyframes box_in {
+	5% {
+		opacity: 1;
+	}
+	100% {
+		transform:scale(1);
+	}
+}
