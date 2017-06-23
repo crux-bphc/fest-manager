@@ -20,7 +20,7 @@ router.get('/', authenticate, elevate, function (req, res, next) {
 			});
 		});
 	else if (req.user.privilege.level == 1) {
-		res.redirect('/portals/' + req.user.privilege.body);
+		res.redirect('/components/portals/' + req.user.privilege.body);
 	}
 });
 
