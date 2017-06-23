@@ -53,7 +53,7 @@ router.get('/?*', function(req, res, next) {
     };
 
     Object.keys(params.navigation).forEach(function(key) {
-        params.navigation[key].triggers = 'sidebar/' + key + '=active ';
+        params.navigation[key].triggers = 'sidebar/menu/' + key + '=active ';
         if(params.navigation[key].require) {
         	params.navigation[key].triggers += params.navigation[key].require.path + "=" + params.navigation[key].require.for;
         }
