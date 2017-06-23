@@ -64,9 +64,10 @@ let clientCheckpoint = function (req, res, next) {
 };
 
 app.use(function(req, res, next) {
+    var state = stateHandler.getState(req);
     res.renderState = function(filename, options) {
         res.render(filename, options, function(err, string) {
-            res.send({html: string, state: stateHandler.getState(req)});
+            res.send({html: string, state: state});
         });
     }
     return next();
