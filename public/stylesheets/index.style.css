@@ -61,6 +61,9 @@ body {
     padding-right: 0;
 }
 
+.topbar.collapsed {
+    margin-top: -4.5vw;
+}
 
 .topbar .logo {
     font-size: 1.25em;
@@ -157,6 +160,9 @@ body {
     color: #a5a8a9;
     transition: margin-left 0.3s ease-out;
     /*background: #202729;*/
+}
+.sidebar.collapsed {
+    margin-left: -20%;
 }
 
 .sidebar > .primary ul .disabled {
