@@ -36,38 +36,45 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('damn ninjas cutting onions'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieSession({
-    keys: ['qwerty', 'uiop']
+  keys: ['qwerty', 'uiop']
 }));
 app.use(session({
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true },
-    secret: 'damn ninjas cutting onions'
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: true
+  },
+  secret: 'damn ninjas cutting onions'
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router);
 
-let clientCheckpoint = function(req, res, next) {
-    if (req.get('Client') === 'Fest-Manager/dash')
-        return next();
-    else
-        res.redirect(req.url);
+let clientCheckpoint = function (req, res, next) {
+  if (req.get('Client') === 'Fest-Manager/dash')
+    return next();
+  else
+    res.redirect(req.url);
 };
 
-app.use(function(req, res, next) {
-    req.appState = {
-        isAuthenticated: req.isAuthenticated(),
-        location: req.url
-    };
-    res.renderState = function(filename, options) {
-        res.render(filename, options, function(err, string) {
-            res.send({html: string, state: req.appState});
-        });
-    }
-    return next();
+app.use(function (req, res, next) {
+  req.appState = {
+    isAuthenticated: req.isAuthenticated(),
+    location: req.url
+  };
+  res.renderState = function (filename, options) {
+    res.render(filename, options, function (err, string) {
+      res.send({
+        html: string,
+        state: req.appState
+      });
+    });
+  };
+  return next();
 });
 
 app.use('/auth', auth);
@@ -76,24 +83,26 @@ app.use('/api', clientCheckpoint, services);
 app.use('/', index);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+app.use(function (req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-    if (err.type == "GITHUB_RESOLUTION_ERROR") {
-        res.redirect('/login?error=github_email_is_private');
-    }
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (err, req, res, next) {
+  if (err.type == "GITHUB_RESOLUTION_ERROR") {
+    res.redirect('/login?error=github_email_is_private');
+  }
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error', { user: req.user });
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error', {
+    user: req.user
+  });
 });
 
 module.exports = app;

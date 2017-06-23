@@ -5,6 +5,10 @@ grunt.loadNpmTasks('grunt-mocha-test');
 grunt.loadNpmTasks('grunt-js-beautify');
 grunt.initConfig({
   jshint: {
+    options: {
+      'node': true,
+      'esversion': 6,
+    },
     all: ['routes/**/*.js',
       'utils/**/*.js',
       'views/**/*.js',
@@ -13,7 +17,7 @@ grunt.initConfig({
       'app.js',
       'config.js',
       'package.json'
-    ]
+    ],
   },
   js_beautify: {
     options: {
@@ -25,7 +29,6 @@ grunt.initConfig({
       "preserve_newlines": true,
       "max_preserve_newlines": 10,
       "jslint_happy": false,
-      "node": true,
     },
     files: ['routes/**/*.js',
       'utils/**/*.js',
