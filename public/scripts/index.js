@@ -8,8 +8,8 @@
 			location: "/components/dashboard",
 			navbar: {},
 			sidebar: {
-				menu: {},
-			},
+                menu:{},
+            },
 			user: {},
 		}
 	});
@@ -53,7 +53,7 @@
 		this.state = state;
 		diff.forEach(function (change) {
 			var trigger = change.path.join('/');
-			// console.log('trigger:', trigger);
+            // console.log('trigger:', trigger);
 			$target = $("[_triggers*='" + trigger + "']");
 			$target.each(function () {
 				var arr = $(this).attr('_triggers').split(' ');

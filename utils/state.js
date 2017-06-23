@@ -21,10 +21,16 @@ module.exports = function () {
 	var appendNavbarState = function (state) {
 		var navbar = {};
 		navbar.collapsed = state.isImmersive;
+<<<<<<< e900bbd5cf8dffe4c2821fc123bc4f74f467ec74
 		navbar.logout = state.user.isAuthenticated && !state.isImmersive;
 		navbar.login = !state.user.isAuthenticated && !state.isImmersive;
 		navbar.avatar = state.user.isAuthenticated && !state.isImmersive;
 		navbar.exit = state.isImmersive;
+=======
+		navbar.logout = state.user.isAuthenticated;
+		navbar.login = !state.user.isAuthenticated;
+		navbar.avatar = state.user.isAuthenticated;
+>>>>>>> state: Add immersive mode states.
 		state.navbar = navbar;
 		return state;
 	};
@@ -40,7 +46,7 @@ module.exports = function () {
 		var items = ['dashboard', 'portals', 'events', 'home', 'contact'];
 		var sidebar = {};
 		sidebar.collapsed = state.isImmersive;
-		sidebar.menu = {};
+		sidebar.menu = {}
 		items.forEach(function (elem) {
 			if (state.location.startsWith('/components/' + elem)) {
 				sidebar.menu[elem] = true;
@@ -59,8 +65,12 @@ module.exports = function () {
 	var getState = function (req) {
 		var state = {};
 		state.location = req.url;
+<<<<<<< e900bbd5cf8dffe4c2821fc123bc4f74f467ec74
 		state.isImmersive = state.location == '/components/';
 		// state.isImmersive = state.location.startsWith('/components/dashboard');
+=======
+		state.isImmersive = state.location.startsWith('/home');
+>>>>>>> state: Add immersive mode states.
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
