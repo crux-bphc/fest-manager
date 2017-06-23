@@ -36,6 +36,9 @@ body {
     background:transparent;
     transition:background 0s 0.6s;
 }
+.window.immersive {
+    background:none;
+}
 
 .window.fullsize {
     height: 100vh;
