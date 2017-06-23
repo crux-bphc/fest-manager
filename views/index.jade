@@ -2,14 +2,17 @@ doctype html
 html
 	head
 		title Dashboard
+		meta(name="viewport" content="width=device-width, initial-scale=1")
 		link(href="/stylesheets/index.style.css" rel="stylesheet")
 		link(href="/fonts/Proxima Nova/font.css" rel="stylesheet")
 		link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet")
 		//- script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 		script(type="text/javascript" src="/scripts/jquery.min.js")
 body
-	div.window.fullsize(route= route)
+	div.window.fullsize.loading(route= route)
 		div.topbar
+			div#menu.button(tabindex=1)
+				div.icon-menu
 			span.logo(_route="/") atmos ~
 			div.controls
 				if user
@@ -28,10 +31,8 @@ body
 				else
 					div.button(_route="/login")
 						div.icon-account_circle
-				div.button#fullscreen
-					div.icon-call_received
 		div.remnant
-			div.sidebar
+			div.sidebar(tabindex=2)
 				div.section
 					label MAIN
 					if(user)

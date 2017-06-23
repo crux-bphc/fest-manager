@@ -11,14 +11,14 @@
         client.addClass('loading');
         window.setTimeout(function() {
             client.removeClass('loading');
-        }, 2000);
+        }, 1000);
         if (route[0] != '/')
             route = '/' + route;
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:3000' + route,
+            url: route,
             dataType: 'json',
-            contentType: 'application/json',
+            contentType: 'text/plain',
             beforeSend: function(request) {
                 request.setRequestHeader("Client", "Fest-Manager/dash");
             }
@@ -44,28 +44,31 @@
         })
     }
 
-    client.main.stageEventHandlers = function() {}
+    client.main.stageEventHandlers = function() {
+        $(".shift_to_expose_menu > .main").on('click', function() {
+            $(".window > .remnant").removeClass("shift_to_expose_menu");
+        })
+    }
     client.navigation.stageEventHandlers = function() {};
     client.header.stageEventHandlers = function() {
-        $('#fullscreen').click(function() {
-            let $icon = $(this).find('[class*="icon-"]');
-            if ($icon.hasClass('icon-call_made')) {
-                $icon.removeClass('icon-call_made').addClass('icon-call_received');
-                $('.window').addClass('fullsize');
-            } else {
-                $icon.removeClass('icon-call_received').addClass('icon-call_made');
-                $('.window').removeClass('fullsize');
+        $('#menu').click(function() {
+            $(".window > .remnant").toggleClass("shift_to_expose_menu");
+            if ($(".window > .remnant").hasClass("shift_to_expose_menu")) {
+                $(".sidebar").focus();
+                client.main.stageEventHandlers();
             }
-        });
+        })
     }
 
     window.addEventListener('popstate', function(e) {
         client.route(e.state, false);
     });
 
-    client.initialize();
-    client.navigation.stageEventHandlers();
-    client.header.stageEventHandlers();
-    client.route($('.window').attr('route'));
-
+    document.body.onload = function() {
+        console.log("Hey");
+        client.initialize();
+        client.navigation.stageEventHandlers();
+        client.header.stageEventHandlers();
+        client.route($('.window').attr('route'));
+    }
 })();
