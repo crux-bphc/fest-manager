@@ -16,7 +16,7 @@ body
 				div.icon-menu
 			span.logo(_route="/") atmos ~
 			div.controls
-				div.button.user(_trigger="navbar/avatar" _class_on_true="visible")
+				div.button.user(_trigger="navbar/avatar=visible")
 					div
 						if user
 							if user.githubID
@@ -27,34 +27,34 @@ body
 								img(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
 						else
 							img(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
-				div.button(_route="/logout" _trigger="navbar/logout" _class_on_true="visible")
+				div.button(_route="/logout" _trigger="navbar/logout=visible")
 					div.icon-power_settings_new
-				div.button(_route="/login" _trigger="navbar/login" _class_on_true="visible")
+				div.button(_route="/login" _trigger="navbar/login=visible")
 					div.icon-account_circle
 		div.remnant
 			div.sidebar(tabindex=2)
 				div.section
 					label MAIN
 					ul
-						li(_route="/dashboard" _trigger="sidebar/dashboard" _class_on_true="active")
+						li#li-dashboard(_route="/dashboard" _trigger="sidebar/dashboard=active isAuthenticated=visible")
 							i
 							span Dashboard
-						li(_route="/portals" _trigger="sidebar/portals" _class_on_true="active")
+						li#li-portals(_route="/portals" _trigger="sidebar/portals=active isAuthenticated=visible")
 							i
 							span Portals
-						li(_route="/events" _trigger="sidebar/events" _class_on_true="active")
+						li(_route="/events" _trigger="sidebar/events=active")
 							i
 							span Events
-						li(_trigger="sidebar/cart" _class_on_true="active")
+						li(_trigger="sidebar/cart=active")
 							i
 							span Cart
-						li(_trigger="sidebar/account" _class_on_true="active")
+						li(_trigger="sidebar/account=active")
 							i
 							span Account
-						li(_trigger="sidebar/settings" _class_on_true="active")
+						li(_trigger="sidebar/settings=active")
 							i
 							span Settings
-				div.section#secondary(_trigger="sidebar/events" _class_on_true="visible")
+				div.section#secondary(_trigger="sidebar/events=visible")
 					label EVENTS > CATEGORIES
 					ul
 						li

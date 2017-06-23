@@ -157,6 +157,14 @@ body {
     /*background: #202729;*/
 }
 
+.sidebar ul #li-portals {
+    display: none;
+}
+
+.sidebar ul #li-dashboard {
+    display: none;
+}
+
 .sidebar #secondary {
     display: none;
 }
@@ -167,6 +175,10 @@ body {
 
 .sidebar .visible {
     display: block !important;
+}
+
+.sidebar ul .visible {
+    display: flex !important;
 }
 
 .window .sidebar::after {
