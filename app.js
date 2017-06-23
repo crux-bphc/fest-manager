@@ -18,6 +18,8 @@ strategies.github();
 var connection = require('./utils/mongoose');
 connection();
 
+var stateHandler = require('./utils/state')
+
 var index = require('./routes/index');
 var components = require('./routes/components');
 var services = require('./routes/services');
@@ -61,20 +63,13 @@ let clientCheckpoint = function (req, res, next) {
     res.redirect(req.url);
 };
 
-app.use(function (req, res, next) {
-  req.appState = {
-    isAuthenticated: req.isAuthenticated(),
-    location: req.url
-  };
-  res.renderState = function (filename, options) {
-    res.render(filename, options, function (err, string) {
-      res.send({
-        html: string,
-        state: req.appState
-      });
-    });
-  };
-  return next();
+app.use(function(req, res, next) {
+    res.renderState = function(filename, options) {
+        res.render(filename, options, function(err, string) {
+            res.send({html: string, state: stateHandler.getState(req)});
+        });
+    }
+    return next();
 });
 
 app.use('/auth', auth);
