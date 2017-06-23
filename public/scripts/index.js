@@ -14,7 +14,7 @@
         }, 1000);
         if (route[0] != '/')
             route = '/' + route;
-        route = '/inner' + route;
+        route = '/components' + route;
         $.ajax({
             type: 'GET',
             url: route,
@@ -26,7 +26,7 @@
         }).done(function(data, textStatus, req) {
             let url = req.getResponseHeader('Location');
             if (status)
-                window.history.pushState(url, "", data.state.location.replace('/inner',''));
+                window.history.pushState(url, "", data.state.location.replace('/components',''));
             this.activeRoute = route;
             this.main.html(data.html);
             $("[_route='" + this.main.find('.meta').attr("_routed_at") + "']").addClass('active').siblings().removeClass('active');
