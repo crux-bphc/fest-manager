@@ -7,8 +7,10 @@
 		state: {
 			location: "/components/dashboard",
 			navbar: {},
-			sidebar: {},
-			user: {}
+			sidebar: {
+                menu:{},
+            },
+			user: {},
 		}
 	});
 	client.route = function (route, status = true) {
@@ -48,6 +50,7 @@
 		this.state = state;
 		diff.forEach(function (change) {
 			var trigger = change.path.join('/');
+            // console.log('trigger:', trigger);
 			$target = $("[_triggers*='" + trigger + "']");
 			$target.each(function () {
 				var arr = $(this).attr('_triggers').split(' ');

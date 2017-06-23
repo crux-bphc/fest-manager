@@ -20,6 +20,7 @@ module.exports = function () {
 
 	var appendNavbarState = function (state) {
 		var navbar = {};
+		navbar.collapsed = state.isImmersive;
 		navbar.logout = state.user.isAuthenticated;
 		navbar.login = !state.user.isAuthenticated;
 		navbar.avatar = state.user.isAuthenticated;
@@ -37,15 +38,17 @@ module.exports = function () {
 	var appendSidebarState = function (state) {
 		var items = ['dashboard', 'portals', 'events', 'carts', 'account', 'settings'];
 		var sidebar = {};
+		sidebar.collapsed = state.isImmersive;
+		sidebar.menu = {}
 		items.forEach(function (elem) {
 			if (state.location.startsWith('/components/' + elem)) {
-				sidebar[elem] = true;
+				sidebar.menu[elem] = true;
 				if (elem == 'events') {
 					// TODO fetch event categories from db to populate
-					// sidebar.events.categories = db.events().fetch(categories).unique()
+					// sidebar.menu.events.categories = db.events().fetch(categories).unique()
 				}
 			} else {
-				sidebar[elem] = false;
+				sidebar.menu[elem] = false;
 			}
 		});
 		state.sidebar = sidebar;
@@ -55,6 +58,8 @@ module.exports = function () {
 	var getState = function (req) {
 		var state = {};
 		state.location = req.url;
+		state.isImmersive = state.location.startsWith('/components/home');
+		state.isImmersive = state.location.startsWith('/components/dashboard');
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
