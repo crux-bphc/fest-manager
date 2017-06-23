@@ -87,12 +87,16 @@ body {
 
 .topbar .button {
     width: 4.5vw;
-    display: flex;
     align-items: center;
     justify-content: space-around;
     cursor: pointer;
     opacity: 0.7;
+    display: none;
     transition: all 0.2s ease-out;
+}
+
+.topbar .button.visible {
+    display: flex;
 }
 
 .topbar .controls > .button {
