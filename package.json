@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "grunt test"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -22,7 +23,7 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "~0.4.5",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-js-beautify": "^0.1.4",
     "grunt-mocha-test": "^0.12.7",

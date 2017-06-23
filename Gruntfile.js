@@ -74,4 +74,5 @@ grunt.registerTask('doc', 'generates static markdown documentation', function ()
 
 //grunt.registerTask('default', ['jshint', 'mochaTest', 'js_beautify:files:all']);
 grunt.registerTask('default', ['jshint', 'js_beautify:files:all']);
-grunt.registerTask('test', ['mochaTest']);
+grunt.registerTask('test', ['jshint','mochaTest']);
+grunt.registerTask('beautify',['js_beautify:files:all']);
