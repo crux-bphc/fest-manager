@@ -43,15 +43,16 @@ body
 							li(_route=val.route _triggers=val.triggers class=val.initial)
 								i
 								span= val.label
-				each val in navigation
-					if val.sub 
-						div.section.secondary(_triggers=val.triggers class=val.initial)
-							label= val.label
-							ul
-								each subval in val.sub
-									li
-										i
-										span= subval.label
+				div.secondary-wrapper
+					each val in navigation
+						if val.sub 
+							div.section.secondary(_triggers=val.triggers class=val.initial)
+								label= val.label
+								ul
+									each subval in val.sub
+										li
+											i
+											span= subval.label
 			div.remnant.main
 				div.wrapper.face
 				div.wrapper.tray
