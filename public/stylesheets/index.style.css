@@ -260,7 +260,7 @@ body {
 
 .section {
     list-style-type: none;
-    padding: 1.25em 0;
+    margin: 1.25em 0;
 }
 
 .section > label {

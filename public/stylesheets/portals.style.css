@@ -1,7 +1,29 @@
+.add_new_item {
+	height: 4em;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	color:#bbb;
+	overflow:hidden;
+	font-size: 2em;
+	transition:height 0.3s ease-out;
+}
+.add_new_item.collapsed {
+	height: 0em;
+	padding:0em;
+}
+
+.icon-add {
+	transition:transform 0.3s cubic-bezier(0,0,0.5,1.5);
+}
+
+.icon-add.active {
+	transform: rotateZ(135deg);
+}
+
 .table {
 	width:100%;
 	display: flex;
-	
 }
 .table .field {
 	display: inline-flex;
@@ -15,4 +37,12 @@
 	display: block;
 	line-height: 2em;
 	border-bottom:1px solid rgba(0,0,0,0.05);
+}
+.underwhelmingMessage {
+	width:100%;
+	text-align:center;
+	color:#bbb;
+	display: block;
+	font-size:1em;
+	margin-top: 2em;
 }
