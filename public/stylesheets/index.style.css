@@ -84,7 +84,6 @@ body {
     margin-top:-4.5vw;
     z-index: +9999;
     box-shadow:none;
-<<<<<<< 5a294599e888af4487dd4c0f50435b94bfa0145e
     transition: margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
 }
 
@@ -93,8 +92,6 @@ body {
     color:white;
     background:none !important;
     opacity: 0.9;
-=======
->>>>>>> views: Add styles for immersive.jade
 }
 
 .topbar .logo {
@@ -192,6 +189,10 @@ body {
     color: #a5a8a9;
     transition: margin-left 0.3s 0.3s ease-out;
     /*background: #202729;*/
+}
+
+.window.immersive .sidebar {
+    transition: margin-left 0.3s 0.3s ease-out;
 }
 
 .sidebar.collapsed {
