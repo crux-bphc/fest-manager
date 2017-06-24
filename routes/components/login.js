@@ -1,6 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
+var getUnfinishedProps = function(user){
+	var props = [];
+	if(!user.name){
+		props.push({name: "name", title:"Your name"});
+	}
+	if(!user.institute){
+		props.push({name: "institute", title:"Your college or institute"});
+	}
+	return props;
+}
+
 /* GET users listing. */
 router.get('/', function (req, res, next) {
 	var params = {
@@ -20,6 +31,18 @@ router.get('/', function (req, res, next) {
 		}
 	}
 	res.renderState('login', params);
+});
+
+router.get('/finish', function(req, res, next) {
+	var params = {
+		title: 'Finish Registration',
+		user: req.user,
+	}
+	if(!user.institute){
+		res.renderState('register', params);	 
+	}
+	// console.log("User:", req.user);
+	res.redirect('/dashboard');
 });
 
 module.exports = router;
