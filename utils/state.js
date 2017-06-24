@@ -21,16 +21,10 @@ module.exports = function () {
 	var appendNavbarState = function (state) {
 		var navbar = {};
 		navbar.collapsed = state.isImmersive;
-<<<<<<< e900bbd5cf8dffe4c2821fc123bc4f74f467ec74
 		navbar.logout = state.user.isAuthenticated && !state.isImmersive;
 		navbar.login = !state.user.isAuthenticated && !state.isImmersive;
 		navbar.avatar = state.user.isAuthenticated && !state.isImmersive;
 		navbar.exit = state.isImmersive;
-=======
-		navbar.logout = state.user.isAuthenticated;
-		navbar.login = !state.user.isAuthenticated;
-		navbar.avatar = state.user.isAuthenticated;
->>>>>>> state: Add immersive mode states.
 		state.navbar = navbar;
 		return state;
 	};
