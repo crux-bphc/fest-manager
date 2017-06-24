@@ -1,0 +1,15 @@
+{
+  "short_name": "ATMOS",
+  "name": "ATMOS - A Neon Dystopia",
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "200x200"
+    }
+  ],
+  "start_url": "/dashboard",
+  "background_color": "#202729",
+  "theme_color": "#393F41",
+  "display": "standalone"
+}
