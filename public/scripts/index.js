@@ -68,61 +68,60 @@
                     }
                 }
             });
+		});
+	}
 
-        });
-    }
+	client.stageEventHandlers = function () {
+		this.initialize();
+		this.main.stageEventHandlers();
+		this.navigation.stageEventHandlers();
+		this.header.stageEventHandlers();
+	}
 
-    client.stageEventHandlers = function() {
-        this.initialize();
-        this.main.stageEventHandlers();
-        this.navigation.stageEventHandlers();
-        this.header.stageEventHandlers();
-    }
+	client.main.stageEventHandlers = function () {
+		$(".shift_to_expose_menu > .main").on('click', function () {
+			$(".window > .remnant").removeClass("shift_to_expose_menu");
+		})
+	}
+	client.navigation.stageEventHandlers = function () {};
+	client.header.stageEventHandlers = function () {
+		$('#menu').click(function () {
+			$(".window > .remnant").toggleClass("shift_to_expose_menu");
+			if ($(".window > .remnant").hasClass("shift_to_expose_menu")) {
+				$(".sidebar").focus();
+				client.main.stageEventHandlers();
+			}
+		})
+	}
 
-    client.main.stageEventHandlers = function() {
-        $(".shift_to_expose_menu > .main").on('click', function() {
-            $(".window > .remnant").removeClass("shift_to_expose_menu");
-        })
-    }
-    client.navigation.stageEventHandlers = function() {};
-    client.header.stageEventHandlers = function() {
-        $('#menu').click(function() {
-            $(".window > .remnant").toggleClass("shift_to_expose_menu");
-            if ($(".window > .remnant").hasClass("shift_to_expose_menu")) {
-                $(".sidebar").focus();
-                client.main.stageEventHandlers();
-            }
-        })
-    }
+	window.addEventListener('popstate', function (e) {
+		client.route(e.state, false);
+	});
 
-    window.addEventListener('popstate', function(e) {
-        client.route(e.state, false);
-    });
+	$.prototype.initialize = function () {
+		$(this).find('[href]').click(function (e) {
+			window.location.assign($(this).attr("href"));
+		});
+		$(this).find('[_route]').click(function (e) {
+			if (!$(this).hasClass('active'))
+				client.route($(this).attr('_route'));
+		})
+	};
 
-    $.prototype.initialize = function() {
-        $(this).find('[href]').click(function(e) {
-            window.location.assign($(this).attr("href"));
-        });
-        $(this).find('[_route]').click(function(e) {
-            if (!$(this).hasClass('active'))
-                client.route($(this).attr('_route'));
-        })
-    };
+	document.body.onload = function () {
+		client.stageEventHandlers();
+		client.route($('.window').attr('route'));
+	};
 
-    document.body.onload = function() {
-        client.stageEventHandlers();
-        client.route($('.window').attr('route'));
-    };
-
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                // Registration was successful
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function(err) {
-                // registration failed :(
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-    }
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', function () {
+			navigator.serviceWorker.register('/sw.js').then(function (registration) {
+				// Registration was successful
+				console.log('ServiceWorker registration successful with scope: ', registration.scope);
+			}, function (err) {
+				// registration failed :(
+				console.log('ServiceWorker registration failed: ', err);
+			});
+		});
+	}
 })();

@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function () {
 
 	var appendUserState = function (state, req) {
 		var user = {};
@@ -18,29 +18,29 @@ module.exports = function() {
 		return state;
 	};
 
-    var appendNavbarState = function(state) {
-        var navbar = {};
-        navbar.collapsed = state.isImmersive;
-        navbar.logout = state.user.isAuthenticated && !state.isImmersive;
-        navbar.login = !state.user.isAuthenticated && !state.isImmersive;
-        navbar.avatar = state.user.isAuthenticated && !state.isImmersive;
-        navbar.exit = state.isImmersive;
-        state.navbar = navbar;
-        return state;
-    };
+	var appendNavbarState = function (state) {
+		var navbar = {};
+		navbar.collapsed = state.isImmersive;
+		navbar.logout = state.user.isAuthenticated && !state.isImmersive;
+		navbar.login = !state.user.isAuthenticated && !state.isImmersive;
+		navbar.avatar = state.user.isAuthenticated && !state.isImmersive;
+		navbar.exit = state.isImmersive;
+		state.navbar = navbar;
+		return state;
+	};
 
-    var appendTestState = function(state) {
-        var test = {};
-        test.showportal = state.sidebar.dashboard;
-        state.test = test;
-        return state;
-    };
+	var appendTestState = function (state) {
+		var test = {};
+		test.showportal = state.sidebar.dashboard;
+		state.test = test;
+		return state;
+	};
 
 	var appendSidebarState = function (state) {
 		var items = ['dashboard', 'portals', 'events', 'home', 'contact'];
 		var sidebar = {};
 		sidebar.collapsed = state.isImmersive;
-		sidebar.menu = {}
+		sidebar.menu = {};
 		items.forEach(function (elem) {
 			if (state.location.startsWith('/components/' + elem)) {
 				sidebar.menu[elem] = true;
