@@ -12,45 +12,18 @@
 	justify-content: space-around;
 	align-items: center;
 }
-@keyframes panBack {
-	from {
-		background-position: 0% 0%;
-	}
-	to {
-		background-position: 100% 0%;
-	}
-}
 
 div.center {
 	position: relative;
 	color:white;
-	font-size:10em;
+	font-size:1.2em;
+	padding: 0em 1em;
+	border:2px solid white;
 	font-family: 'Proxima Nova';
 	font-weight: 900;
-	letter-spacing: 1em;
-	margin-left: 0.25em;
-	line-height: 1.5em;
-	opacity: 0;
+	letter-spacing: 0.05em;
+	line-height: 3em;
 	white-space: nowrap;
 	display: flex;
-	pointer-events: none;
-	flex-direction: column;
 	align-items: center;
-	animation:box_in 10s 1 ease-in;
-}
-@keyframes box_in {
-	0% {
-		transform:scale(0.25);
-		opacity: 0;
-	}
-	5% {
-		opacity: 1;
-	}
-	90% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		transform:scale(1);
-	}
 }

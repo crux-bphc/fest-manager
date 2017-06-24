@@ -8,10 +8,9 @@ var immersive = require('./immersive');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-	if (req.isAuthenticated())
-		res.redirect('/components/dashboard');
-	else
-		res.redirect('/components/events');
+	res.renderState('home.jade',{
+		user: req.user, 
+	});
 });
 
 router.use('/events', events);
