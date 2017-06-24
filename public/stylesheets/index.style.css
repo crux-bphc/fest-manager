@@ -30,9 +30,11 @@ body {
     flex-direction: column;
     background: #202729;
     font-size: 0.9em;
+    transition: background 0.5s;
 }
 .window.immersive {
-    background:none;
+    background:transparent;
+    transition:background 0s 0.6s;
 }
 
 .window.fullsize {
@@ -184,10 +186,6 @@ body {
     color: #a5a8a9;
     transition: margin-left 0.3s 0.3s ease-out;
     /*background: #202729;*/
-}
-
-.window.immersive .sidebar {
-    transition: margin-left 0.3s 0.3s ease-out;
 }
 
 .sidebar.collapsed {
