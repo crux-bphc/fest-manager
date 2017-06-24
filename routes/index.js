@@ -10,18 +10,21 @@ router.get('/?*', function(req, res, next) {
         route: req.url,
         navigation: {
             home: {
-                label: "Home"
+                label: "Home",
+                route: "/",
             },
             events: {
                 label: "Events",
+                route: "/events",
                 sub: {
                     comps: { label: "Competitions" },
                     workshops: { label: "Workshops" },
                     shows: { label: "Proshows" }
-                }
+                },
             },
             dashboard: {
                 label: "Dashboard",
+                route: "/dashboard",
                 initial: "disabled",
                 require: {
                 	path: "user/isAuthenticated",
@@ -34,6 +37,7 @@ router.get('/?*', function(req, res, next) {
                 }
             },
             portals: {
+                route: "/portals",
                 initial: "disabled",
                 require: {
                 	path: "user/isElevated",
@@ -43,6 +47,7 @@ router.get('/?*', function(req, res, next) {
             },
             contact: {
                 label: "Contact",
+                route: "/contact",
                 sub: {
                     about: { label: "About Us" },
                     contact: { label: "Get in touch" },
