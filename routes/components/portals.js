@@ -33,9 +33,11 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 	bodiesService.find({
 		code: req.params.body
 	}, function (err, item) {
+		var schema = require('mongoose').model(item[0].portal.model).schema.obj;
 		res.renderState('portal', {
 			user: req.user,
-			portal: item[0].portal
+			portal: item[0].portal,
+			schema: schema
 		});
 	});
 });

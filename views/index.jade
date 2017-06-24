@@ -4,6 +4,7 @@ html
 		title Dashboard
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 		link(href="/stylesheets/index.style.css" rel="stylesheet")
+		link(href="/scripts/manifest.json" rel="manifest")
 		link(href="/fonts/Proxima Nova/font.css" rel="stylesheet")
 		link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet")
 		//- script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
@@ -43,15 +44,16 @@ body
 							li(_route=val.route _triggers=val.triggers class=val.initial)
 								i
 								span= val.label
-				each val in navigation
-					if val.sub 
-						div.section.secondary(_triggers=val.triggers class=val.initial)
-							label= val.label
-							ul
-								each subval in val.sub
-									li
-										i
-										span= subval.label
+				div.secondary-wrapper
+					each val in navigation
+						if val.sub 
+							div.section.secondary(_triggers=val.triggers class=val.initial)
+								label= val.label
+								ul
+									each subval in val.sub
+										li
+											i
+											span= subval.label
 			div.remnant.main
 				div.wrapper.face
 				div.wrapper.tray

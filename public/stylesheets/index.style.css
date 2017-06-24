@@ -18,6 +18,12 @@ body {
     font-family: 'Proxima Nova', sans-serif;
 }
 
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for topbar and everything inside
+ ***************************************************************************************
+ ***************************************************************************************/
+
 .window {
     height: 90vh;
     width: 80vw;
@@ -50,6 +56,16 @@ body {
 .window .meta {
     display: none;
 }
+
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for topbar and everything inside
+ ***************************************************************************************
+ ***************************************************************************************/
+
+/*
+ * TODO: Refactor .topbar to .navbar
+ */
 
 .topbar {
     height: 4.5vw;
@@ -164,6 +180,12 @@ body {
     border-radius: 50%;
 }
 
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for remnant. Whatever's left after topbar.
+ ***************************************************************************************
+ ***************************************************************************************/
+
 .remnant {
     flex-grow: 1;
 }
@@ -175,6 +197,12 @@ body {
     transition:transform 0.3s ease-out;
 }
 
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for main and everything inside
+ ***************************************************************************************
+ ***************************************************************************************/
+
 .sidebar {
     height: 100%;
     width: 20%;
@@ -182,6 +210,7 @@ body {
     position: relative;
     display: block;
     padding: 2em;
+    font-size: 1.1em;
     box-sizing: border-box;
     color: #a5a8a9;
     transition: margin-left 0.3s 0.3s ease-out;
@@ -193,43 +222,10 @@ body {
     transition: margin-left 0.3s ease-out;
 }
 
-.sidebar > .primary ul .disabled {
-    display: none;
-}
 
-.sidebar > .primary .visible {
-    display: block !important;
-}
-
-.sidebar > .primary ul .visible {
-    display: flex !important;
-}
-
-
-.sidebar > .secondary {
-    display: none;
-}
-
-.sidebar > .secondary.active {
-    display: block;
-}
-
-.sidebar > .secondary.disabled {
-    display: none;
-}
-
-.sidebar > .secondary.visible.active {
-    display: block;
-}
-
-.sidebar > .secondary > label {
-    text-transform: uppercase;
-}
-
-.sidebar > .secondary ul {
-    padding-left: 20px;
-}
-
+/* 
+ * the ::after is the loading animation 
+ */
 .window .sidebar::after {
     height: 2px;
     background-image: linear-gradient(50deg, darkgoldenrod, purple, darkgoldenrod);
@@ -258,9 +254,12 @@ body {
     }
 }
 
+/*
+ * Common declarations for sections in sidebar
+ */
 .section {
     list-style-type: none;
-    padding: 1.25em 0;
+    margin: 1.25em 0;
 }
 
 .section > label {
@@ -279,25 +278,32 @@ body {
     cursor: pointer;
     display: flex;
     align-items: center;
-    transition: all 0.2s;
+    transition: all 0.3s ease-out;
     border-color: #a5a8a9;
 }
 
-.section > ul > li:hover {
+.section > ul > li:hover > i {
     color: #e5e8e9;
-    padding-left: 0.25em;
+    margin-left: 0.25em;
     border-color: #e5e8e9;
 }
 
-.section > ul > li.active {
+.section > ul > li.active > i {
     font-weight: 500;
     color: #e5e8e9;
-    padding-left: 0.5em;
+    margin-left: 0.5em;
     border-color: #e5e8e9;
+    background: #e5e8e9;
+}
+
+.section > ul > li.active > span {
+    font-weight: 500;
+    color: #e5e8e9;
 }
 
 .section > ul > li > span {
     vertical-align: top;
+    transition: font-weight 0.2s;
 }
 
 .section > ul > li > i {
@@ -307,11 +313,109 @@ body {
     height: 6px;
     width: 6px;
     margin-right: 0.5em;
+    transition:margin-left 0.2s, background 0.2s;
 }
 
-.section > ul > li.active > i {
-    background: #e5e8e9;
+
+/*
+ *  Specific declarations for primary section
+ */
+
+.sidebar > .primary ul .disabled {
+    display: none;
 }
+
+.sidebar > .primary .visible {
+    display: block !important;
+}
+
+.sidebar > .primary ul .visible {
+    display: flex !important;
+}
+
+/*
+ *  Specific declarations for secondary section
+ */
+.sidebar .secondary-wrapper {
+    position:relative;
+}
+
+.sidebar .secondary-wrapper > .section.secondary {
+    position:absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.sidebar .secondary-wrapper > .secondary > label {
+    text-transform: uppercase;
+}
+
+.sidebar .secondary-wrapper > .secondary.disabled {
+    display: none;
+}
+
+.sidebar .secondary-wrapper > .secondary.visible {
+    display: block;
+}
+
+.sidebar .secondary-wrapper > .secondary.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.sidebar .secondary-wrapper > .secondary > ul > li {
+    transform: translateX(-1em);
+    opacity: 0;
+}
+
+.sidebar .secondary-wrapper > .secondary.active > ul > li {
+    transform: none;
+    opacity: 1;
+}
+
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(1) {
+    transition-delay: 0.1s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(2) {
+    transition-delay: 0.2s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(3) {
+    transition-delay: 0.3s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(4) {
+    transition-delay: 0.4s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(5) {
+    transition-delay: 0.5s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(6) {
+    transition-delay: 0.6s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(7) {
+    transition-delay: 0.7s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(8) {
+    transition-delay: 0.8s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(9) {
+    transition-delay: 0.9s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(10) {
+    transition-delay: 1s;
+}
+
+.sidebar .secondary-wrapper > .secondary ul li i {
+    height:0px;
+    border-radius:2px;
+    border-width: 1px;
+}
+
+
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for main and everything inside
+ ***************************************************************************************
+ ***************************************************************************************/
+
 
 .main {
     box-sizing: border-box;
