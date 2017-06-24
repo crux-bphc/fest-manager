@@ -8,8 +8,8 @@
 			location: "/components/dashboard",
 			navbar: {},
 			sidebar: {
-                menu:{},
-            },
+				menu: {},
+			},
 			user: {},
 		}
 	});
@@ -27,14 +27,17 @@
 				request.setRequestHeader("Client", "Fest-Manager/dash");
 			}
 		}).done(function (data, textStatus, req) {
-			let url = req.getResponseHeader('Location');
+			var url = data.state.location.replace('/components', '');
 			if (status)
-				window.history.pushState(url, "", data.state.location.replace('/components', ''));
+				window.history.pushState(url, "", url);
 			this.activeRoute = route;
 			var tray = this.main.find('.tray');
 			tray.html(data.html);
 			tray.ready(function () {
 				tray.removeClass('tray').addClass('face').siblings().removeClass('face').addClass('tray');
+				window.setTimeout(function () {
+					$('.main .tray').html('');
+				}, 500);
 				client.removeClass('loading');
 			});
 			this.setState(data.state);
@@ -50,7 +53,7 @@
 		this.state = state;
 		diff.forEach(function (change) {
 			var trigger = change.path.join('/');
-            // console.log('trigger:', trigger);
+			// console.log('trigger:', trigger);
 			$target = $("[_triggers*='" + trigger + "']");
 			$target.each(function () {
 				var arr = $(this).attr('_triggers').split(' ');

@@ -1,16 +1,16 @@
 module.exports = function () {
 
-	var appendUserState = function (state, req){
+	var appendUserState = function (state, req) {
 		var user = {};
 		user.isAuthenticated = req.isAuthenticated();
-		if(user.isAuthenticated) {
-			user.isElevated = req.user.privilege?true:false;
+		if (user.isAuthenticated) {
+			user.isElevated = req.user.privilege ? true : false;
 			user.privilege = req.user.privilege;
 			user.email = req.user.email;
-			if(user.githubID){
+			if (user.githubID) {
 				user.avatar = "https://avatars1.githubusercontent.com/u/" + user.githubID;
 			}
-			if(user.facebookID){
+			if (user.facebookID) {
 				user.avatar = "https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large";
 			}
 		}
@@ -21,9 +21,10 @@ module.exports = function () {
 	var appendNavbarState = function (state) {
 		var navbar = {};
 		navbar.collapsed = state.isImmersive;
-		navbar.logout = state.user.isAuthenticated;
-		navbar.login = !state.user.isAuthenticated;
-		navbar.avatar = state.user.isAuthenticated;
+		navbar.logout = state.user.isAuthenticated && !state.isImmersive;
+		navbar.login = !state.user.isAuthenticated && !state.isImmersive;
+		navbar.avatar = state.user.isAuthenticated && !state.isImmersive;
+		navbar.exit = state.isImmersive;
 		state.navbar = navbar;
 		return state;
 	};
@@ -36,10 +37,10 @@ module.exports = function () {
 	};
 
 	var appendSidebarState = function (state) {
-		var items = ['dashboard', 'portals', 'events', 'carts', 'account', 'settings'];
+		var items = ['dashboard', 'portals', 'events', 'home', 'contact'];
 		var sidebar = {};
 		sidebar.collapsed = state.isImmersive;
-		sidebar.menu = {}
+		sidebar.menu = {};
 		items.forEach(function (elem) {
 			if (state.location.startsWith('/components/' + elem)) {
 				sidebar.menu[elem] = true;
@@ -58,7 +59,7 @@ module.exports = function () {
 	var getState = function (req) {
 		var state = {};
 		state.location = req.url;
-		state.isImmersive = state.location.startsWith('/components/immersive');
+		state.isImmersive = state.location == '/components/';
 		// state.isImmersive = state.location.startsWith('/components/dashboard');
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);

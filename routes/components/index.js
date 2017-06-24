@@ -4,19 +4,17 @@ var events = require('./events');
 var dashboard = require('./dashboard');
 var portals = require('./portals');
 var login = require('./login');
-var immersive = require('./immersive');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-	res.renderState('home.jade',{
-		user: req.user, 
+	res.renderState('home.jade', {
+		user: req.user,
 	});
 });
 
 router.use('/events', events);
 router.use('/dashboard', dashboard);
 router.use('/portals', portals);
-router.use('/immersive', immersive);
 router.use('/login', login);
 router.use('/logout', function (req, res, next) {
 	req.logout();
