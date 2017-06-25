@@ -9,13 +9,22 @@ div.auth-container.parent-center
 	if methods.google
 			div.auth-method.child-center
 				a(href="/auth/google")
-					button.loginBtn.loginBtn--google(type="button") Login with Google
+					button.loginBtn.loginBtn--google(type="button")
+						span
+							i(aria-hidden"true").fa.fa-google
+							| Login with Google
 
 	if methods.facebook
 		div.auth-method.child-center
 			a(href="/auth/facebook")
-					button.loginBtn.loginBtn--facebook(type="button") Login with Facebook
+					button.loginBtn.loginBtn--facebook(type="button")
+						span
+							i(aria-hidden"true").fa.fa-facebook-official
+							| Login with Facebook
 	if methods.github
 		div.auth-method.child-center
 			a(href="/auth/github")
-					button.loginBtn.loginBtn--github(type="button") Login with GitHub
+					button.loginBtn.loginBtn--github(type="button")
+						span
+							i(aria-hidden"true").fa.fa-github
+							| Login with GitHub
