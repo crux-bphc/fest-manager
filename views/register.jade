@@ -1,3 +1,12 @@
 h1= title
+script(src="/scripts/register.js")
 div.container
-	input(type="text" placeholder="Institute/College")
+	p Enter your institute
+	input#institute-search-box(type="text" list="institute-list" placeholder="Institute/College")
+	datalist#institute-list
+		-for (i = 0; i< 10; i++){
+		option(value="")
+		-}
+	button Finish Registration
+	p OR
+	button I am not enrolled in a college
