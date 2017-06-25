@@ -22,7 +22,7 @@ var stateHandler = require('./utils/state');
 
 var index = require('./routes/index');
 var components = require('./routes/components');
-var services = require('./routes/services');
+var api = require('./routes/api');
 var auth = require('./routes/auth');
 
 var app = express();
@@ -78,7 +78,7 @@ app.use(function (req, res, next) {
 
 app.use('/auth', auth);
 app.use('/components', clientCheckpoint, components);
-app.use('/api', clientCheckpoint, services);
+app.use('/api', clientCheckpoint, api);
 app.use('/', index);
 
 // catch 404 and forward to error handler

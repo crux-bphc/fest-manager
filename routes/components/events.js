@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var eventsService = require("../services/events.model").service;
+var eventsService = require("../api/services/events").model;
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {

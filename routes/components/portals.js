@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var authenticate = require('../../utils/authentication').middleware;
-var bodiesService = require('../services/bodies.model').service;
+var bodiesService = require('../api/services/bodies').model;
 
 var elevate = function (req, res, next) {
 	if (req.user.privilege)
