@@ -1,8 +1,7 @@
 var express = require('express');
 
 /* routing CRUD operations for users service */
-function service(model) {
-	var router = express.Router();
+function service(model, router) {
 	router.get('/', function (req, res, next) {
 		model.find(function (err, items) {
 			if (err) {

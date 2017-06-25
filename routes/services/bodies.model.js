@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var express = require('express');
+var router = express.Router();
 
 var bodiesSchema = new Schema({
 	name: {
@@ -22,7 +24,10 @@ var bodiesSchema = new Schema({
 	timestamps: true
 });
 
+var model = mongoose.model('bodiesModel', bodiesSchema);
+
 module.exports = {
 	route: '/bodies',
-	service: mongoose.model('bodiesModel', bodiesSchema)
+	model: model,
+	router: router,
 };
