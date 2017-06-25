@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-var callbackHandler = function(req, res){
+var callbackHandler = function (req, res) {
 	res.redirect('/login/finish');
-}
+};
 
 router.get('/facebook',
 	passport.authenticate('facebook', {
