@@ -13,4 +13,7 @@ services.forEach(function (model) {
 	router.use(model.route, constructor(model.service));
 });
 
+var typeahead = require('./typeahead');
+router.use("/typeahead", typeahead);
+
 module.exports = router;
