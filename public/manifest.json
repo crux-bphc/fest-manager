@@ -8,7 +8,7 @@
       "sizes": "200x200"
     }
   ],
-  "start_url": "/dashboard",
+  "start_url": "/",
   "background_color": "#efeff0",
   "theme_color": "#202729",
   "display": "standalone"
