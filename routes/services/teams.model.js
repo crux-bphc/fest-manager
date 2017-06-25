@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var express = require('express');
+var router = express.Router();
 
 var teamsSchema = new Schema({
 	name: String,
@@ -14,7 +16,10 @@ var teamsSchema = new Schema({
 	timestamps: true
 });
 
+var model = mongoose.model('teamsModel', teamsSchema);
+
 module.exports = {
 	route: '/teams',
-	service: mongoose.model('teamsModel', teamsSchema)
+	model: model,
+	router: router,
 };

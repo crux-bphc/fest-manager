@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var express = require('express');
+var router = express.Router();
 
 var usersSchema = new Schema({
 	name: String,
@@ -22,7 +24,10 @@ var usersSchema = new Schema({
 	timestamps: true
 });
 
+var model = mongoose.model('users', usersSchema);
+
 module.exports = {
 	route: '/users',
-	service: mongoose.model('usersModel', usersSchema)
+	model: model,
+	router: router,
 };

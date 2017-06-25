@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var express = require('express');
+var router = express.Router();
 
 var eventsSchema = new Schema({
 	name: String,
@@ -19,7 +21,10 @@ var eventsSchema = new Schema({
 	timestamps: true
 });
 
+var model = mongoose.model('eventsModel', eventsSchema);
+
 module.exports = {
 	route: '/events',
-	service: mongoose.model('eventsModel', eventsSchema)
+	model: model,
+	router: router,
 };
