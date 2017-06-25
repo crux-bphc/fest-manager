@@ -1,4 +1,4 @@
-(function () {
+var manager = function () {
 	let client;
 	client = Object.assign($('.window'), {
 		header: $('.window > .topbar'),
@@ -124,4 +124,7 @@
 			});
 		});
 	}
-})();
+	return {
+		route: client.route.bind(client),
+	}
+}();

@@ -19,4 +19,41 @@ $(document).ready(function () {
 			}
 		});
 	});
+	$("#submit-button").click(function () {
+		$.ajax({
+			type: "PUT",
+			url: "/api/users/me",
+			headers: {
+				"Client": "Fest-Manager/dash"
+			},
+			data: {
+				institute: $('#institute-search-box').val()
+			},
+			success: function (data, textStatus, req) {
+				console.log(req);
+				if (data == "Success") {
+					manager.route('/dashboard');
+				}
+			}
+		})
+	})
+
+	$("#no-institute-button").click(function () {
+		$.ajax({
+			type: "PUT",
+			url: "/api/users/me",
+			headers: {
+				"Client": "Fest-Manager/dash"
+			},
+			data: {
+				institute: "",
+			},
+			success: function (data, textStatus, req) {
+				console.log(req);
+				if (data == "Success") {
+					manager.route('/dashboard');
+				}
+			}
+		})
+	})
 });

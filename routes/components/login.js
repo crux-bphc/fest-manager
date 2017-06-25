@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var userService = require('../api/services/users').model;
 
 router.get('/', function (req, res, next) {
 	var params = {
@@ -10,6 +11,9 @@ router.get('/', function (req, res, next) {
 			github: true
 		}
 	};
+	if (req.user) {
+		res.redirect("/components/dashboard");
+	}
 	if (req.query.error) {
 		if (req.query.error == "github_email_is_private") {
 			params.error = {
@@ -26,10 +30,15 @@ router.get('/finish', function (req, res, next) {
 		title: 'Finish Registration',
 		user: req.user,
 	};
+	console.log("User:", req.user);
+	console.log("Check:", !req.user);
+	if (!req.user) {
+		res.redirect('/components/login');
+	}
 	if (!req.user.institute) {
 		res.renderState('register', params);
 	}
-	res.redirect('/dashboard');
+	res.redirect('/components/dashboard');
 });
 
 module.exports = router;
