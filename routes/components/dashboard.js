@@ -52,8 +52,8 @@ router.get('/account', authenticate, function (req, res, next) {
 		title: 'My Account',
 		user: req.user,
 	};
+	console.log(req.user);
 	params.fields = getFields(req.user);
-	console.log("Params", params);
 	res.renderState('account', params);
 });
 

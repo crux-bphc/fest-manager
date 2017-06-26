@@ -38,13 +38,12 @@ router.get('/?*', function (req, res, next) {
 				},
 				sub: {
 					account: {
+						route: "/account",
 						label: "Account"
 					},
 					cart: {
+						route: "/cart",
 						label: "Cart"
-					},
-					settings: {
-						label: "Settings"
 					}
 				}
 			},
