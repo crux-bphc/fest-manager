@@ -14,7 +14,7 @@ html
 		script(type="text/javascript" src="/scripts/deep-diff-0.3.8.min.js")
 body
 	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
-		div.topbar(_triggers="navbar/collapsed=collapsed")
+		div.topbar(_triggers="navbar/visible=visible")
 			div.wrapper
 				div#menu.button(tabindex=1)
 					div.icon-menu
@@ -38,24 +38,25 @@ body
 					div.button.close(_route="/dashboard" _triggers="navbar/exit=visible")
 						div.icon-close
 		div.remnant
-			div.sidebar(tabindex="2" _triggers="sidebar/collapsed=collapsed")
-				div.section.primary
-					label MAIN
-					ul
-						each val, key in navigation
-							li(_route=val.route _triggers=val.triggers class=val.initial)
-								i
-								span= val.label
-				div.secondary-wrapper
-					each val in navigation
-						if val.sub 
-							div.section.secondary(_triggers=val.triggers class=val.initial)
-								label= val.label
-								ul
-									each subval in val.sub
-										li(_route="#{val.route}#{subval.route}")
-											i
-											span= subval.label
+			div.sidebar(tabindex="2" _triggers="sidebar/visible=visible")
+				div.wrapper
+					div.section.primary
+						label MAIN
+						ul
+							each val, key in navigation
+								li(_route=val.route _triggers=val.triggers class=val.initial)
+									i
+									span= val.label
+					div.secondary-wrapper
+						each val in navigation
+							if val.sub 
+								div.section.secondary(_triggers=val.triggers class=val.initial)
+									label= val.label
+									ul
+										each subval in val.sub
+											li(_route="#{val.route}#{subval.route}")
+												i
+												span= subval.label
 			div.remnant.main
 				div.wrapper.face
 				div.wrapper.tray

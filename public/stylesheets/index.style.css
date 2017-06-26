@@ -24,7 +24,7 @@ body {
 
 /***************************************************************************************
  ***************************************************************************************
- * Declarations for topbar and everything inside
+ * Declarations for window and everything inside
  ***************************************************************************************
  ***************************************************************************************/
 
@@ -43,7 +43,7 @@ body {
     transition: background 0.5s;
 }
 .window.immersive {
-    background:transparent;
+    /*background:transparent;*/
     transition:background 0s 0.6s;
 }
 
@@ -76,9 +76,10 @@ body {
     min-height: 60px;
     max-height: 80px;
     width: 100%;
+    margin-top:-4.5vw;
     position: relative;
-    box-shadow: 0px 2px 0px 0px #2eb398;
-    transition:margin-top 0.3s ease-out, box-shadow 0.1s 0.3s;
+    box-shadow:none;
+    transition: margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
 }
 
 .topbar > .wrapper {
@@ -97,11 +98,10 @@ body {
     position:fixed;
 }
 
-.topbar.collapsed {
-    margin-top:-4.5vw;
-    z-index: +9999;
-    box-shadow:none;
-    transition: margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
+.topbar.visible {
+    margin-top:0;
+    box-shadow: 0px 2px 0px 0px #2eb398;
+    transition:margin-top 0.3s, box-shadow 0.1s 0.3s;
 }
 
 .topbar .button.close {
@@ -148,6 +148,16 @@ body {
     opacity: 0;
     margin-left: -1.5em; 
     display: flex;
+}
+
+.window.immersive #menu {
+    opacity: 1;
+    margin-left: 0;
+    pointer-events: all;
+}
+
+.window.immersive .topbar {
+    z-index: +9999;
 }
 
 .topbar .controls > .button {
@@ -211,21 +221,41 @@ body {
     height: 100%;
     width: 20%;
     min-width: 200px;
-    position: relative;
+    margin-left: -20%;
     display: block;
     padding: 2em;
+    position:relative;
     font-size: 1.1em;
     box-sizing: border-box;
     color: #a5a8a9;
-    transition: margin-left 0.3s 0.3s ease-out;
+    transition: margin-left 0.3s ease-out, margin-top 0s 0.3s ease-out;
     /*background: #202729;*/
 }
 
-.sidebar.collapsed {
-    margin-left: -20%;
-    transition: margin-left 0.3s ease-out;
+.sidebar > .wrapper {
+    position:fixed;
+    display: block;
+    top:0;
+    padding-top:2em;
+    padding-left: inherit;
+    left: 0;
+    margin-top:4.5vw;
+    margin-left: inherit;
+    transition: inherit;
 }
 
+.sidebar.visible {
+    margin-left: 0%;
+    transition: margin-left 0.3s 0.3s ease-out;
+}
+
+.window.immersive > .remnant.shift_to_expose_menu > .sidebar {
+    margin-left:0;
+    transition: margin-left 0.3s ease-out;
+}
+.window.immersive > .remnant.shift_to_expose_menu > .main {
+    opacity: 0.7;
+}
 
 /* 
  * the ::after is the loading animation 
@@ -325,15 +355,15 @@ body {
  *  Specific declarations for primary section
  */
 
-.sidebar > .primary ul .disabled {
+.sidebar > .wrapper > .primary ul .disabled {
     display: none;
 }
 
-.sidebar > .primary .visible {
+.sidebar > .wrapper > .primary .visible {
     display: block !important;
 }
 
-.sidebar > .primary ul .visible {
+.sidebar > .wrapper > .primary ul .visible {
     display: flex !important;
 }
 
@@ -430,6 +460,8 @@ body {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
     color: #202729;
     position: relative;
+    transition:opacity 0.3s;
+    will-change: height, width;
 }
 
 .main .wrapper {
@@ -450,7 +482,7 @@ body {
 .main .wrapper.tray {
     opacity: 0;
     transition:opacity 0.2s, transform 0.2s;
-    transform:translateY(1em);
+    transform:translateY(-1em);
 }
 
 .main * {
@@ -542,20 +574,20 @@ h5 {
 }
 
 @media only screen and (max-width: 1333px) {
-    .topbar.collapsed {
+    .topbar {
         margin-top:-60px;
     }
 }
 
 @media only screen and (max-width: 800px) {
-    .sidebar, .sidebar.collapsed {
+    .sidebar, .sidebar.visible {
         margin-left: -200px;
         padding:2em 1em;
     }
     .topbar > .wrapper {
         padding:0em 0em 0em 1em;
     }
-    .main .wrapper {
+    .main > .wrapper {
         padding:2em 1em;
     }
     #menu {
@@ -569,16 +601,29 @@ h5 {
     .window > .remnant.shift_to_expose_menu > .main {
         opacity: 0.7;
     }
+    .window.immersive > .remnant.shift_to_expose_menu > .sidebar {
+        margin-left:-200px;
+    }
+    .window.immersive > .remnant.shift_to_expose_menu > .sidebar > .wrapper{
+        margin-top:60px;
+    }
+
+    .sidebar > .wrapper {
+        position:relative;
+        margin-left: 0px;
+        padding:0;
+        margin-top:0px;
+    }
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: width: 1400px) {
     body {
         font-size:1.1vw;
     }
 }
 
 @media only screen and (min-width: 1777px) {
-    .topbar.collapsed {
+    .topbar {
         margin-top:-80px;
     }
 }
