@@ -1,0 +1,7 @@
+mixin datalistMixin(data)
+	datalist(id="list-#{data.name}")
+		if data.none
+			option(value="None")
+		-for (i = 0; i< 10; i++){
+		option(value="")
+		-}

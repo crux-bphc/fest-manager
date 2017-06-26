@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 
 var callbackHandler = function (req, res) {
-	res.redirect('/login/finish');
+	res.redirect('/dashboard/account');
 };
 
 router.get('/facebook',

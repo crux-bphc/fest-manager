@@ -25,20 +25,4 @@ router.get('/', function (req, res, next) {
 	res.renderState('login', params);
 });
 
-router.get('/finish', function (req, res, next) {
-	var params = {
-		title: 'Finish Registration',
-		user: req.user,
-	};
-	console.log("User:", req.user);
-	console.log("Check:", !req.user);
-	if (!req.user) {
-		res.redirect('/components/login');
-	}
-	if (!req.user.institute) {
-		res.renderState('register', params);
-	}
-	res.redirect('/components/dashboard');
-});
-
 module.exports = router;

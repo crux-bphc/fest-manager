@@ -1,0 +1,9 @@
+h1= title
+include mixins/field
+script(src="/scripts/register.js")
+form.container(method="PUT" action="/api/users/me")
+	each field in fields
+		+fieldMixin(field)
+	div.button-row
+		div.button#submit-button Update
+		div.button#cancel-button(_route="/dashboard") Cancel
