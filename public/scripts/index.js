@@ -5,7 +5,7 @@ var manager = function () {
 		main: $('.window > .remnant > .main'),
 		navigation: $('.window > .remnant > .sidebar'),
 		state: {
-			location: "/components/dashboard",
+			location: "",
 			navbar: {},
 			sidebar: {
 				menu: {},
@@ -14,10 +14,12 @@ var manager = function () {
 		}
 	});
 	client.route = function (route, status = true) {
-		client.addClass('loading');
+		$('.window > .remnant').removeClass('shift_to_expose_menu');
 		if (route[0] != '/')
 			route = '/' + route;
 		route = '/components' + route;
+		if (route == this.state.location) return;
+		client.addClass('loading');
 		$.ajax({
 			type: 'GET',
 			url: route,
@@ -81,7 +83,7 @@ var manager = function () {
 	client.main.stageEventHandlers = function () {
 		$(".shift_to_expose_menu > .main").on('click', function () {
 			$(".window > .remnant").removeClass("shift_to_expose_menu");
-		})
+		});
 	}
 	client.navigation.stageEventHandlers = function () {};
 	client.header.stageEventHandlers = function () {
@@ -103,8 +105,7 @@ var manager = function () {
 			window.location.assign($(this).attr("href"));
 		});
 		$(this).find('[_route]').click(function (e) {
-			if (!$(this).hasClass('active'))
-				client.route($(this).attr('_route'));
+			client.route($(this).attr('_route'));
 		})
 	};
 
@@ -123,6 +124,7 @@ var manager = function () {
 	// 		});
 	// 	});
 	// }
+
 	return {
 		route: client.route.bind(client),
 	}
