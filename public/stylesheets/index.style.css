@@ -24,11 +24,7 @@ body {
 
 /***************************************************************************************
  ***************************************************************************************
-<<<<<<< e91860604800f33c875f39fab948ca4808b7acc5
  * Declarations for window and everything inside
-=======
- * Declarations for navbar and everything inside
->>>>>>> HTML,CSS: changed topbar to navbar
  ***************************************************************************************
  ***************************************************************************************/
 
@@ -102,18 +98,11 @@ body {
     position:fixed;
 }
 
-<<<<<<< e91860604800f33c875f39fab948ca4808b7acc5
-.topbar.visible {
+.navbar.visible {
     margin-top:0;
     box-shadow: 0px 2px 0px 0px #2eb398;
     transition:margin-top 0.3s, box-shadow 0.1s 0.3s;
-=======
-.navbar.collapsed {
-    margin-top:-4.5vw;
-    z-index: +9999;
-    box-shadow:none;
-    transition: margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
->>>>>>> HTML,CSS: changed topbar to navbar
+
 }
 
 .navbar .button.close {
@@ -162,21 +151,18 @@ body {
     display: flex;
 }
 
-<<<<<<< e91860604800f33c875f39fab948ca4808b7acc5
 .window.immersive #menu {
     opacity: 1;
     margin-left: 0;
     pointer-events: all;
 }
 
-.window.immersive .topbar {
+.window.immersive .navbar {
     z-index: +9999;
 }
 
-.topbar .controls > .button {
-=======
 .navbar .controls > .button {
->>>>>>> HTML,CSS: changed topbar to navbar
+
     background: #2b3537;
     min-width: 60px;
 }
@@ -590,11 +576,7 @@ h5 {
 }
 
 @media only screen and (max-width: 1333px) {
-<<<<<<< e91860604800f33c875f39fab948ca4808b7acc5
     .navbar {
-=======
-
->>>>>>> HTML,CSS: changed topbar to navbar
         margin-top:-60px;
     }
 }
@@ -643,11 +625,7 @@ h5 {
 }
 
 @media only screen and (min-width: 1777px) {
-<<<<<<< e91860604800f33c875f39fab948ca4808b7acc5
-    .topbar {
-=======
-    .navbar.collapsed {
->>>>>>> HTML,CSS: changed topbar to navbar
+    .navbar {
         margin-top:-80px;
     }
 }
