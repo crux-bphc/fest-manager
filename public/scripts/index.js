@@ -113,16 +113,16 @@ var manager = function () {
 		client.route($('.window').attr('route'));
 	};
 
-	if ('serviceWorker' in navigator) {
-		window.addEventListener('load', function () {
-			navigator.serviceWorker.register('/sw.js').then(function (registration) {
-				console.log('ServiceWorker registration successful with scope: ', registration.scope);
-			}, function (err) {
-				// registration failed :(
-				console.log('ServiceWorker registration failed: ', err);
-			});
-		});
-	}
+	// if ('serviceWorker' in navigator) {
+	// 	window.addEventListener('load', function () {
+	// 		navigator.serviceWorker.register('/sw.js').then(function (registration) {
+	// 			console.log('ServiceWorker registration successful with scope: ', registration.scope);
+	// 		}, function (err) {
+	// 			// registration failed :(
+	// 			console.log('ServiceWorker registration failed: ', err);
+	// 		});
+	// 	});
+	// }
 	return {
 		route: client.route.bind(client),
 	}

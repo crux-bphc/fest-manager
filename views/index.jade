@@ -53,7 +53,7 @@ body
 								label= val.label
 								ul
 									each subval in val.sub
-										li
+										li(_route="#{val.route}#{subval.route}")
 											i
 											span= subval.label
 			div.remnant.main
