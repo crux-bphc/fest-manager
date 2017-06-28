@@ -16,7 +16,8 @@ router.get('/', authenticate, elevate, function (req, res, next) {
 		bodiesService.find(function (err, items) {
 			res.renderState('portals_home', {
 				bodies: items,
-				user: req.user
+				user: req.user,
+				title: 'Portals Home'
 			});
 		});
 	else if (req.user.privilege.level == 1) {
@@ -37,7 +38,8 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 		res.renderState('portal', {
 			user: req.user,
 			portal: item[0].portal,
-			schema: schema
+			schema: schema,
+			title: 'Portal'
 		});
 	});
 });

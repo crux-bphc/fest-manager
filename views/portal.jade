@@ -1,3 +1,4 @@
+title= title
 link(href="/stylesheets/portals.style.css" rel="stylesheet")
 i.meta(_routed_at="/portals")
 div#_portal
@@ -18,7 +19,7 @@ div#_portal
 		each field in portal.fields
 			div.field(id=field.property)
 				span.title= field.label
-				div.list 
-	if !population		 
+				div.list
+	if !population
 		span.underwhelmingMessage Nothing to see here. Add new records.
 script(src="/scripts/portal.js")
