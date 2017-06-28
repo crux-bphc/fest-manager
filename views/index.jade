@@ -1,7 +1,6 @@
 doctype html
 html
 	head
-		title Dashboard
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 		link(href="/stylesheets/index.style.css" rel="stylesheet")
 		link(href="/manifest.json" rel="manifest")
@@ -49,7 +48,7 @@ body
 									span= val.label
 					div.secondary-wrapper
 						each val in navigation
-							if val.sub 
+							if val.sub
 								div.section.secondary(_triggers=val.triggers class=val.initial)
 									label= val.label
 									ul

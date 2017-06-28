@@ -43,7 +43,8 @@ var getFields = function (user) {
 /* GET users listing. */
 router.get('/', authenticate, function (req, res, next) {
 	res.renderState('dashboard', {
-		user: req.user
+		user: req.user,
+		title: 'Dashboard'
 	});
 });
 

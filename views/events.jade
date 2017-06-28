@@ -1,3 +1,4 @@
+title= title
 include mixins/event
 link(href="/stylesheets/events.style.css")
 if error
@@ -10,4 +11,3 @@ h1= title
 div.events-container
 	each event in events
 		+eventMixin(event)
-		

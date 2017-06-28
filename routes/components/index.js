@@ -9,6 +9,7 @@ var login = require('./login');
 router.get('/', function (req, res, next) {
 	res.renderState('home.jade', {
 		user: req.user,
+		title: 'Home'
 	});
 });
 
