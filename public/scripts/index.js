@@ -1,7 +1,7 @@
 var manager = function () {
 	let client;
 	client = Object.assign($('.window'), {
-		header: $('.window > .topbar'),
+		header: $('.window > .navbar'),
 		main: $('.window > .remnant > .main'),
 		navigation: $('.window > .remnant > .sidebar'),
 		state: {
