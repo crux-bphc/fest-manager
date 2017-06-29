@@ -1,3 +1,4 @@
+include mixins/field
 title= title
 div.section.header
 	h1.title Overview
@@ -7,6 +8,5 @@ div.section.header
 				li.icon-add
 				li.icon-view_module
 				li.icon-autorenew
-		div#filter
-			input#_filter(type="text", placeholder="Search")
-			i.icon-search
+		- var search = {icon: 'search', placeholder: 'Search', editable: true};
+		+fieldMixin(search)
