@@ -535,37 +535,66 @@ h5 {
 
 .header .stretch {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom:1em;
 }
 
-#filter {
+.field-container {
     height: 4em;
     display: flex;
+    flex-direction: row;
     align-items: center;
     width: 25%;
     min-width: 200px;
 }
 
-#filter input {
+form > .field-container {
+    margin-top:1em;
+}
+form > .field-container > .remnant > input, form > .field-container > .remnant > span {
+    width: 20em;
+}
+
+.field-container > .remnant > input, .field-container > .remnant > span {
     height: 3em;
+    line-height: 3em;
+    display: block;
     width: 100%;
     border-radius: 20px;
     color: #505057;
-    font-size: 0.9em;
+    font-size: 0.9em;   
     font-family: inherit;
     border: 1px solid rgba(0, 0, 0, 0.05);
     outline: none;
     padding: 0% 7%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+.field-container > .remnant > span {
+    color:#ccc;
 }
 
-#filter input:hover {
+.field-container > label {
+    line-height: 2.5em;
+    font-size: 0.9em;
+    font-weight: 500;
+    min-width: 6em;
+}
+
+.field-container > .remnant > input:hover {
     border-color: rgba(0, 0, 0, 0.075);
 }
 
-#filter input:focus {
+.field-container > .remnant > input:focus {
     border-color: rgba(0, 0, 10, 0.1);
 }
 
-#filter i {
+.field-container > .remnant {
+    display: flex;
+    align-items: center;
+}
+
+.field-container > .remnant > .field-icon {
     height: 2em;
     width: 2em;
     position: absolute;

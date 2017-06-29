@@ -1,9 +1,13 @@
-h1= title
 include mixins/field
-script(src="/scripts/register.js")
+
+div.section.header
+	h1= title
+	div.stretch
+			div.remnant
+				ul.controls
+					li.icon-check#submit-button(tooltip="Save")
+					li.icon-close#cancel-button(_route="/dashboard" tooltip="Cancel")
 form.container(method="PUT" action="/api/users/me")
 	each field in fields
 		+fieldMixin(field)
-	div.button-row
-		div.button#submit-button Update
-		div.button#cancel-button(_route="/dashboard") Cancel
+script(src="/scripts/register.js")
