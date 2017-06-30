@@ -18,7 +18,7 @@ var bodiesSchema = new Schema({
 	},
 	portal: {
 		type: Schema.Types.Mixed,
-		required: true
+		required: false
 	}
 }, {
 	timestamps: true
