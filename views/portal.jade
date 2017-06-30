@@ -3,7 +3,7 @@ link(href="/stylesheets/portals.style.css" rel="stylesheet")
 i.meta(_routed_at="/portals")
 div#_portal
 	div.section.header
-		h1.title Department of Technical Arts
+		h1.title= title
 		div.stretch
 			div.remnant
 				ul.controls
@@ -16,7 +16,7 @@ div#_portal
 	div.section.add_new_item.collapsed Here shall be forged a new record
 
 	div.section.table
-		each field in portal.fields
+		each field in fields
 			div.field(id=field.property)
 				span.title= field.label
 				div.list
