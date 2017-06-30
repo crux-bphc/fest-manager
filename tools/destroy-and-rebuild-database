@@ -1,0 +1,152 @@
+#! /usr/bin/env node
+
+// Script to erase testing database and recreate it with dummy values.
+// Usage: tools/destroy-and-rebuild-database <emails of superusers>
+// Example: tools/destroy-and-rebuild-database aero31aero@gmail.com calvrix@github.com
+
+// Configurable variables here.
+var pathToCollections = '../routes/api/services';
+var listToClean = ['users', 'bodies', 'events', 'teams', 'accomm'];
+
+// Handle arguments here.
+var superusers = process.argv.slice(2);
+
+// Global dependencies
+var mongoose = require('mongoose');
+
+// Dummy data goes in the following functions.
+var getUsers = function(superusers) {
+	// Only make accounts for superusers.
+	var data = [];
+	superusers.forEach(function(elem){
+		data.push({
+			email: elem,
+			privilege: {
+				level: 2,
+			},
+		});
+	});
+	return data;
+}
+
+var getBodies = function(){
+	var data = [];
+	data.push({
+		name: 'Ruthless Romans',
+		admin: 'julius@rome.com',
+		code: 'rome',
+		_id: toId('5956c34c7cf3a802602b7b18'),
+	});
+	data.push({
+		name: 'Mighty Mongols',
+		admin: 'ckhan@mongol.com',
+		code: 'mongol',
+		_id: toId('5956c34c7cf3a802602b7b19'),
+	});
+	data.push({
+		name: 'Just Japanese',
+		admin: 'samuraijack@japan.com',
+		code: 'japan',
+		_id: toId('5956c34c7cf3a802602b7b1a'),
+	});
+	data.push({
+		name: 'Exemplary Egyptians',
+		admin: 'tut@egypt.com',
+		code: 'egypt',
+		_id: toId('5956c34c7cf3a802602b7b1b'),
+	});
+	data.push({
+		name: 'Marvelous Mughals',
+		admin: 'akbar@india.com',
+		code: 'india',
+		_id: toId('5956c34c7cf3a802602b7b1c'),
+	});
+	return data;
+}
+
+var getEvents = function(models){
+	var bodies = models.find(function(elem){
+		return elem.name == 'bodies';
+	});
+	var data = [];
+	getBodies().forEach(function(elem) {
+		var prefixes = ['First', 'Second', 'Third'];
+		prefixes.forEach(function(pre, index){
+			data.push({
+				name: pre + " " + elem.name,
+				tagline: pre + " event by " + elem.name,
+				body: elem._id,
+				category: "Random",
+				route: elem.code + ++index,
+			});
+		})
+	});
+	return data;
+}
+
+// Internal functions here. Do not change unless you know what you're doing.
+
+var toId = function(str){
+	return mongoose.Types.ObjectId(str);
+};
+
+var importModels = function(pathToCollections, listToClean){
+	var models = [];
+	listToClean.forEach(function(elem){
+		models.push({
+			name: elem,
+			model:require(pathToCollections + "/" + elem).model
+		});
+	});
+	return models;
+};
+
+var cleanModels = function(models){
+	var promises = [];
+	models.forEach(function(elem) {
+		promises.push(elem.model.remove({}));
+	})
+	return Promise.all(promises);
+};
+
+var populateModels = function(models){
+	var promises = [];
+	models.forEach(function(elem){
+		if(elem.name == 'users'){
+			return promises.push(elem.model.insertMany(getUsers(superusers)));
+		}
+		if(elem.name == 'bodies'){
+			return promises.push(elem.model.insertMany(getBodies()));
+		}
+		if(elem.name == 'events'){
+			return promises.push(elem.model.insertMany(getEvents(models)));
+		}
+	})
+	return Promise.all(promises);
+};
+
+
+var main = function(){
+	if(process.env.NODE_ENV == 'production'){
+		console.log("Cannot delete database in production. Exiting.")
+		process.exit(2);
+	}
+	var connection = require('../utils/mongoose');
+	connection();
+
+	var models = importModels(pathToCollections, listToClean);
+	cleanModels(models).then(function(){
+		console.log('Cleaned Database.');
+		populateModels(models).then(function(){
+			console.log("Entered Values");
+			process.exit(0);
+		});
+	}).catch(function(err){
+		console.log(err);
+		console.log("Error while execution. Exiting.");
+		process.exit(1);
+	});
+};
+
+// Start execution
+main();
