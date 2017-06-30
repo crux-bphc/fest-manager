@@ -1,3 +1,4 @@
+include mixins/field
 title= title
 link(href="/stylesheets/portals.style.css" rel="stylesheet")
 i.meta(_routed_at="/portals")
@@ -10,9 +11,8 @@ div#_portal
 					li.icon-add
 					li.icon-autorenew
 					li.icon-delete.disabled
-			div#filter
-				input#_filter(type="text", placeholder="Search")
-				i.icon-search
+			- var search = {icon: 'search', placeholder: 'Search', editable: true};
+			+fieldMixin(search)
 	div.section.add_new_item.collapsed Here shall be forged a new record
 
 	div.section.table
