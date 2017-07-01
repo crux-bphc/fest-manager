@@ -65,9 +65,13 @@ var getBodies = function(){
 }
 
 var getEvents = function(models){
-	var bodies = models.find(function(elem){
-		return elem.name == 'bodies';
-	});
+	// var bodies = models.find(function(elem){
+	// 	return elem.name == 'bodies';
+	// });
+	var bodies = {
+			name: "bodies",
+			model:require(pathToCollections + "/bodies").model
+		}
 	var data = [];
 	getBodies().forEach(function(elem) {
 		var prefixes = ['First', 'Second', 'Third'];
