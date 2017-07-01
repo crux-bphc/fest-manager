@@ -1,15 +1,10 @@
 mixin eventMixin(data)
-	div.event-container
-		h3.name= data.name
-		//- div.image
-		//- 	img(src="#{data.img}")
-		//- div.details
-		//- 	div.title-container
-		//- 		a.title(href="#{data.link}")
-		//- 			span= data.title
-		//- 	div.tagline-container
-		//- 		span.tagline= data.tagline
-		//- 	div.timestamp-container
-		//- 		span.timestamp= data.timestamp
-		//- 	div.category-container
-		//- 		span.category= data.category
+	div.event-container(class="#{data.category}")
+		div.face
+			span.tag= data.type
+			h3.name= data.name
+			span.tagline= data.tagline
+		div.image(style="background-image:url('#{data.thumbnail}')")
+		div.details
+			//- div.category-container
+			//- 	span.category= data.category

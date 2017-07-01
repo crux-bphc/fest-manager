@@ -1,13 +1,21 @@
-title= title
 include mixins/event
-link(href="/stylesheets/events.style.css")
-if error
-	div.error
-		span.title= error.title
-		span.message= error.message
-		i.cross(class="material-icons") close
+include mixins/field
+link(rel="stylesheet" href="/stylesheets/events.style.css")
+
 i.meta(_routed_at="/events")
-h1= title
-div.events-container
-	each event in events
-		+eventMixin(event)
+div.section.header
+    h1.title= title
+    div.stretch
+        div.remnant
+            ul.controls
+                li.icon-shopping_cart
+                li.icon-close
+        - var search = {icon: 'search', placeholder: 'Search', editable: true};
+        +fieldMixin(search)
+div.section.events-wrapper
+    each event in events
+        if event.category == "headliner"
+            +eventMixin(event)
+    each event in events
+        if event.category != "headliner"
+            +eventMixin(event)

@@ -147,7 +147,7 @@ body {
     width:1.5em;
     pointer-events: none;
     opacity: 0;
-    margin-left: -1.5em; 
+    margin-left: -1.5em;
     display: flex;
 }
 
@@ -259,8 +259,8 @@ body {
     opacity: 0.7;
 }
 
-/* 
- * the ::after is the loading animation 
+/*
+ * the ::after is the loading animation
  */
 .window .sidebar::after {
     height: 2px;
@@ -464,6 +464,7 @@ body {
     position: relative;
     transition:opacity 0.3s;
     will-change: height, width;
+    overflow-y: scroll;
 }
 
 .main .wrapper {
@@ -561,7 +562,7 @@ form > .field-container > .remnant > input, form > .field-container > .remnant >
     width: 100%;
     border-radius: 20px;
     color: #505057;
-    font-size: 0.9em;   
+    font-size: 0.9em;
     font-family: inherit;
     border: 1px solid rgba(0, 0, 0, 0.05);
     outline: none;
