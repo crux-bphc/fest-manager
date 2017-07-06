@@ -4,18 +4,21 @@ link(rel="stylesheet" href="/stylesheets/events.style.css")
 
 i.meta(_routed_at="/events")
 div.section.header
-    h1.title= title
-    div.stretch
-        div.remnant
-            ul.controls
-                li.icon-shopping_cart
-                li.icon-close
-        - var search = {icon: 'search', placeholder: 'Search', editable: true};
-        +fieldMixin(search)
+	h1.title= title
+	div.stretch
+		div.remnant
+			ul.controls
+				li.icon-shopping_cart
+				li.icon-close
+		- var search = {icon: 'search', placeholder: 'Search', editable: true};
+		+fieldMixin(search)
 div.section.events-wrapper
-    each event in events
-        if event.category == "headliner"
-            +eventMixin(event)
-    each event in events
-        if event.category != "headliner"
-            +eventMixin(event)
+	each event in events
+		if event.category == "headliner"
+			+eventMixin(event)
+	each event in events
+		if event.category != "headliner"
+			+eventMixin(event)
+div.open-event
+	i.icon-close
+script(src="/scripts/events.js" type="text/javascript")

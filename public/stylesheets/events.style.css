@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600');
+
 .events-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -98,6 +99,37 @@
     flex-direction: column;
 }
 
+.open-event {
+    position:fixed;
+    display: block;
+    top:0;
+    right:0;
+    width:50%;
+    height:calc(100% - 4.5vw);
+    margin-top:4.5vw;
+    background:white;
+    border-radius:2px;
+    pointer-events: none;
+    z-index: +100;
+    transform: translateX(100%);
+    transition:transform 0.2s cubic-bezier(0,0,0,.51);
+    will-change:transform;
+    box-shadow: -5px 0px 10px rgba(0,0,0,0.25);
+}
+.open-event .icon-close {
+    width:2em;
+    height:2em;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    line-height: 2em;
+    font-size:2em;
+}
+.open-event.focus {
+    transform: translateX(0);
+    pointer-events: all;
+}
+
 @media only screen and (max-width: 600px) {
     .event-container {
         height: 30vw;
@@ -112,3 +144,4 @@
         font-weight: 300;
     }
 }
+

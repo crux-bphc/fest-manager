@@ -67,6 +67,7 @@ app.use(function (req, res, next) {
 	res.renderState = function (filename, options) {
 		var state = stateHandler.getState(req);
 		res.render(filename, options, function (err, string) {
+			console.log(err, string);
 			res.send({
 				html: string,
 				state: state,
