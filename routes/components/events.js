@@ -19,4 +19,20 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+router.get('/:eventroute', function (req, res, next) {
+	console.log('Route:', req.params.eventroute);
+	eventsService.findOne({
+		route: req.params.eventroute,
+	}, function(err, data){
+		console.log('Error:', err);
+		console.log('Data:', data);
+		if (err) next(err);
+		res.renderState('single-event', {
+			title: data.name,
+			user: req.user,
+			event: data,
+		});
+	});
+});
+
 module.exports = router;

@@ -1,6 +1,7 @@
 mixin eventMixin(data)
 	div.event-container
-		h3.name= data.name
+		div(_route="/events/#{data.route}")
+			h3.name= data.name
 		//- div.image
 		//- 	img(src="#{data.img}")
 		//- div.details
