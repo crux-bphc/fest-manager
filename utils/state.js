@@ -60,9 +60,11 @@ module.exports = function () {
 
 	var getState = function (req) {
 		var state = {};
-		state.location = req.url;
+		state.location = req.originalUrl;
 		state.isImmersive = state.location == '/components/';
-		// state.isImmersive = state.location.startsWith('/components/dashboard');
+		if (req.stateparams && req.stateparams.immersive) {
+			state.isImmersive = true;
+		}
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
