@@ -10,23 +10,20 @@ router.get('/', function (req, res, next) {
 			title: 'Events',
 			user: req.user,
 			events: events
-		}, function (err, string) {
-			res.send({
-				html: string,
-				state: req.appState
-			});
 		});
 	});
 });
 
 router.get('/:eventroute', function (req, res, next) {
-	console.log('Route:', req.params.eventroute);
 	eventsService.findOne({
 		route: req.params.eventroute,
-	}, function(err, data){
-		console.log('Error:', err);
-		console.log('Data:', data);
+	}, function (err, data) {
 		if (err) next(err);
+		if (data.immersive) {
+			req.stateparams = {
+				immersive: true
+			};
+		}
 		res.renderState('single-event', {
 			title: data.name,
 			user: req.user,
