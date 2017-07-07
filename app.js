@@ -64,12 +64,12 @@ let clientCheckpoint = function (req, res, next) {
 };
 
 app.use(function (req, res, next) {
-	var state = stateHandler.getState(req);
 	res.renderState = function (filename, options) {
+		var state = stateHandler.getState(req);
 		res.render(filename, options, function (err, string) {
 			res.send({
 				html: string,
-				state: state
+				state: state,
 			});
 		});
 	};

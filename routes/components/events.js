@@ -10,11 +10,24 @@ router.get('/', function (req, res, next) {
 			title: 'Events',
 			user: req.user,
 			events: events
-		}, function (err, string) {
-			res.send({
-				html: string,
-				state: req.appState
-			});
+		});
+	});
+});
+
+router.get('/:eventroute', function (req, res, next) {
+	eventsService.findOne({
+		route: req.params.eventroute,
+	}, function (err, data) {
+		if (err) next(err);
+		if (data.immersive) {
+			req.stateparams = {
+				immersive: true
+			};
+		}
+		res.renderState('single-event', {
+			title: data.name,
+			user: req.user,
+			event: data,
 		});
 	});
 });
