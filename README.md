@@ -9,6 +9,8 @@ To get the app up and running, do the following:
 2. Change directory and install dependencies with `cd fest-manager; npm install`.
 3. Create the config file (`/config.js`) like following:
 
+**Note**: Developers can skip this step and instead use the `dev-config.js` by default.
+
 ```js
 var config = {
     facebook: {
