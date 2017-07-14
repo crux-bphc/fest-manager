@@ -34,6 +34,7 @@ var manager = function () {
 			if (status)
 				window.history.pushState(url, "", url);
 			this.activeRoute = route;
+			this.setState(data.state);
 			var tray = this.main.find('.tray');
 			tray.html(data.html);
 			tray.ready(function () {
@@ -43,9 +44,9 @@ var manager = function () {
 				}, 500);
 				client.removeClass('loading');
 			});
-			this.setState(data.state);
 			this.main.initialize();
 			this.main.stageEventHandlers();
+			this.main.focus();
 		}.bind(this));
 	};
 

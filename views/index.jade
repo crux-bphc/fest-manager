@@ -11,6 +11,7 @@ html
 		script( src="https://use.fontawesome.com/1523c943cd.js")
 		script(type="text/javascript" src="/scripts/jquery.min.js")
 		script(type="text/javascript" src="/scripts/deep-diff-0.3.8.min.js")
+
 body
 	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
 		div.navbar(_triggers="navbar/visible=visible")
@@ -56,7 +57,7 @@ body
 											li(_route="#{val.route}#{subval.route}")
 												i
 												span= subval.label
-			div.remnant.main
+			div.remnant.main(tabindex="1")
 				div.wrapper.face
 				div.wrapper.tray
 

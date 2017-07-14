@@ -4,7 +4,7 @@ $('document').ready(function() {
         $(this).addClass('active');
         $('.open-event').addClass('focus');
     });
-    $('.open-event > .icon-close').click(function() {
+    $('.open-event .icon-close').click(function() {
         $('.events-wrapper').removeClass('blur');
         $('.event-container.active').removeClass('active');
         $('.open-event').removeClass('focus');
