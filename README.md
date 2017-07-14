@@ -7,7 +7,8 @@ Fest Manager is a Single Page Express Application that can be used to easily dep
 To get the app up and running, do the following:
 1. Clone the repository using `git clone https://github.com/CRUx-BPHC/fest-manager.git`.
 2. Change directory and install dependencies with `cd fest-manager; npm install`.
-3. Create the config file (`/config.js`) like following:
+3. Install MongoDB and setup your data directory accordingly. More information at https://docs.mongodb.com/manual/administration/install-community/
+4. Create the config file (`/config.js`) like following:
 
 **Note**: Developers can skip this step and instead use the `dev-config.js` by default.
 
@@ -35,7 +36,8 @@ var config = {
 module.exports = config;
 ```
 
-4. Run the project with `npm start`. Visit <localhost:3000> to view.
+5. Run MongoDB using `mongod --dbpath <path_to_data_dir>`
+6. Run the project with `npm start`. Visit <localhost:3000> to view.
 
 ## Contributing
 
