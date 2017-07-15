@@ -10,6 +10,10 @@ mixin fieldMixin(data)
 				if data.typeahead
 					input(id="field-#{data.name}" name=data.name type=data.type placeholder=data.placeholder required=data.required list="list-#{data.name}" value=data.value)
 					+datalistMixin(data)
+				else if data.type == "select"
+					select(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value)
+						each option in data.options
+							option(value=option)= option
 				else
 					input(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value)
 			else
