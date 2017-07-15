@@ -11,30 +11,33 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 			return done(err);
 		}
 		if (!user) {
-			qr.toDataURL(profile.emails[0].value, { errorCorrectionLevel: 'H' },  function(err, url){
-			user = new userService({
-				name: profile.displayName,
-				email: profile.emails[0].value,
-				token: accessToken,
-				qrData: url
+			qr.toDataURL(profile.emails[0].value, {
+				errorCorrectionLevel: 'H'
+			}, function (err, url) {
+				user = new userService({
+					name: profile.displayName,
+					email: profile.emails[0].value,
+					token: accessToken,
+					qrData: url
+				});
+				user[provider] = profile.id;
+				user.save(function (err) {
+					if (err) console.log(err);
+					return done(err, user);
+				});
 			});
-			user[provider] = profile.id;
-			user.save(function (err) {
-				if (err) console.log(err);
-				return done(err, user);
-			});
-		});
 
 		} else {
-			if(!user.qrData)
-			{
-				qr.toDataURL(user.email, { errorCorrectionLevel: 'H' },  function(err, url){
-				user.qrData = url;
-				userService.update({
-					_id: user._id
-				}, user, function (err) {});
-			});
-				
+			if (!user.qrData) {
+				qr.toDataURL(user.email, {
+					errorCorrectionLevel: 'H'
+				}, function (err, url) {
+					user.qrData = url;
+					userService.update({
+						_id: user._id
+					}, user, function (err) {});
+				});
+
 			}
 
 			if (!user[provider] || !user.name) { //check if same email has connected with a second provider

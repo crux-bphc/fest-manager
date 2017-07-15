@@ -48,15 +48,17 @@ contribution would involve the following:
 2. Clone it on your local machine.
 3. Add a new remote using `git remote add upstream https://github.com/CRUx-BPHC/fest-manager.git`.
 4. Create a new feature branch with `git checkout -b my-feature`.
-5. Make your changes and commit.
-6. Rebase your commits with `upstream/master`:
+5. Make your changes.
+6. Lint your files and run all tests locally using `grunt` and `grunt test`.
+7. Commit your changes.
+8. Rebase your commits with `upstream/master`:
   - `git checkout master`
   - `git fetch upstream master`
   - `git reset --hard FETCH_HEAD`
   - `git checkout my-feature`
   - `git rebase master`
-7. Resolve any merge conflicts, and then push the branch with `git push origin my-feature`.
-8. Create a Pull Request detailing the changes you made and wait for review/merge.
+9. Resolve any merge conflicts, and then push the branch with `git push origin my-feature`.
+10. Create a Pull Request detailing the changes you made and wait for review/merge.
 
 It might seem a little complicated at a glance, but the fundamental concept is simple: we
 want to ensure that your changes are always made on top of the latest changes to the
@@ -87,7 +89,7 @@ Compare `gather_subscriptions: Fix exception handling bad input.` with:
 
 ## License
 
-This software is released under the MIT License. 
+This software is released under the MIT License.
 
 ```
 Copyright 2017 Crux

@@ -42,12 +42,12 @@ var getFields = function (user) {
 
 /* GET users listing. */
 router.get('/', authenticate, function (req, res, next) {
-		var params = {
-			user: req.user,
-			title: "Dashboard"
-		};
-		res.renderState('dashboard', params);
-	});
+	var params = {
+		user: req.user,
+		title: "Dashboard"
+	};
+	res.renderState('dashboard', params);
+});
 
 router.get('/account', authenticate, function (req, res, next) {
 	var params = {
