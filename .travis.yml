@@ -1,5 +1,8 @@
 language: node_js
+services: mongodb
 node_js:
-  - "0.10"
+  - "6"
+
 before_script:
   - npm install grunt-cli -g
+  - tools/destroy-and-rebuild-database aero31aero@gmail.com

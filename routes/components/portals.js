@@ -25,21 +25,43 @@ router.get('/', authenticate, elevate, function (req, res, next) {
 	}
 });
 
-router.get('/:body', authenticate, elevate, function (req, res, next) {
+router.get('/bodies/:body', authenticate, elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
 		return next(error);
 	}
-	bodiesService.find({
+	bodiesService.findOne({
 		code: req.params.body
 	}, function (err, item) {
-		var schema = require('mongoose').model(item[0].portal.model).schema.obj;
+		if (err || !item) {
+			var error = new Error('Not Found');
+			error.status = 404;
+			return next(error);
+		}
+		console.log("Item:", item);
 		res.renderState('portal', {
 			user: req.user,
-			portal: item[0].portal,
-			schema: schema,
-			title: 'Portal'
+			title: item.name,
+			fields: [{
+					property: "name",
+					label: "Name",
+					type: "String",
+					multiline: false
+				},
+				{
+					property: "description",
+					label: "Description",
+					type: "String",
+					multiline: true
+				},
+				{
+					property: "thumbnail",
+					label: "Icon",
+					type: "String",
+					multiline: false
+				}
+			],
 		});
 	});
 });
