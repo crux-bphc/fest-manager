@@ -1,16 +1,30 @@
-.add_new_item {
-	height: 4em;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+.new_item.edit_item {
+	min-height: 4em;
 	color:#bbb;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 	overflow:hidden;
-	font-size: 2em;
-	transition:height 0.3s ease-out;
+	transition:max-height 0.3s ease-out;
 }
-.add_new_item.collapsed {
-	height: 0em;
+.new_item {
+	max-height: 0em;
+	min-height:0em;
 	padding:0em;
+}
+.new_item .left {
+	width:10em;
+	height:10em;
+	border:1px solid #ccc;
+}
+.new_item .right {
+	height:10em;
+	min-width:20em;
+	display: flex;
+	margin-left: 1em;
+	border:1px solid #ccc;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 .icon-add {

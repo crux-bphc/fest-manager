@@ -97,7 +97,7 @@ var strategies = {
 	}
 };
 
-var authenticate = function (req, res, next) { // custom middleware to check if a user  
+var authenticate = function (req, res, next) { // custom middleware to check if a user
 	if (req.isAuthenticated()) // is authenticated in the current session
 		return next();
 	res.redirect('/components/login');
