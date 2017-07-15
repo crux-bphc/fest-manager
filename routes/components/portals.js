@@ -25,7 +25,7 @@ router.get('/', authenticate, elevate, function (req, res, next) {
 	}
 });
 
-router.get('/bodies/:body', authenticate, elevate, function (req, res, next) {
+router.get('/:body', authenticate, elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
