@@ -1,6 +1,7 @@
 const passport = require('passport');
 const config = require('./config-loader');
 const userService = require('../routes/api/services/users').model;
+const qr = require("qrcode");
 
 var findOrCreate = function (accessToken, profile, provider, done) {
 	userService.findOne({
@@ -10,15 +11,19 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 			return done(err);
 		}
 		if (!user) {
+			qr.toDataURL(profile.emails[0].value, { errorCorrectionLevel: 'H' },  function(err, url){
 			user = new userService({
 				name: profile.displayName,
 				email: profile.emails[0].value,
-				token: accessToken
+				token: accessToken,
+				qrData: url
 			});
 			user[provider] = profile.id;
 			user.save(function (err) {
 				if (err) console.log(err);
 				return done(err, user);
+			});
+
 			});
 		} else {
 			if (!user[provider] || !user.name) { //check if same email has connected with a second provider
