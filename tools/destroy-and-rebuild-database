@@ -76,13 +76,17 @@ var getEvents = function(models){
 	getBodies().forEach(function(elem) {
 		var prefixes = ['First', 'Second', 'Third'];
 		prefixes.forEach(function(pre, index){
-			data.push({
+			var newevent = {
 				name: pre + " " + elem.name,
 				tagline: pre + " event by " + elem.name,
 				body: elem._id,
 				category: "Random",
 				route: elem.code + ++index,
-			});
+			};
+			if(newevent.route.startsWith('rome')) {
+				newevent.immersive = "https://crux-bphc.github.io/pybits-static/"
+			}
+			data.push(newevent);
 		})
 	});
 	return data;

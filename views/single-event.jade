@@ -1,0 +1,12 @@
+title= title
+include mixins/event
+link(href="/stylesheets/events.style.css")
+if error
+	div.error
+		span.title= error.title
+		span.message= error.message
+		i.cross(class="material-icons") close
+i.meta(_routed_at="/events")
+h1= title
+div.events-container
+	+eventMixin(event)

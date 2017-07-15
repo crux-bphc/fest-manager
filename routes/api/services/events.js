@@ -16,7 +16,8 @@ var eventsSchema = new Schema({
 	endTime: Date,
 	teams: [Schema.Types.ObjectId],
 	price: Number,
-	route: String
+	route: String,
+	immersive: String,
 }, {
 	timestamps: true
 });
