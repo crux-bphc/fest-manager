@@ -23,9 +23,20 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				if (err) console.log(err);
 				return done(err, user);
 			});
+		});
 
-			});
 		} else {
+			if(!user.qrData)
+			{
+				qr.toDataURL(user.email, { errorCorrectionLevel: 'H' },  function(err, url){
+				user.qrData = url;
+				userService.update({
+					_id: user._id
+				}, user, function (err) {});
+			});
+				
+			}
+
 			if (!user[provider] || !user.name) { //check if same email has connected with a second provider
 				user[provider] = profile.id;
 				user.name = profile.displayName;
