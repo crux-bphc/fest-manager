@@ -1,13 +1,56 @@
-title= title
 include mixins/event
-link(href="/stylesheets/events.style.css")
-if error
-	div.error
-		span.title= error.title
-		span.message= error.message
-		i.cross(class="material-icons") close
-i.meta(_routed_at="/events")
-h1= title
-div.events-container
+include mixins/field
+link(rel="stylesheet" href="/stylesheets/events.style.css")
+
+div.section.header
+	h1.title= title
+	div.stretch
+		div.remnant
+			ul.controls
+				li.icon-shopping_cart
+				li.icon-close
+		- var search = {icon: 'search', placeholder: 'Search', editable: true};
+		+fieldMixin(search)
+div.section.events-wrapper
 	each event in events
-		+eventMixin(event)
+		if event.category == "headliner"
+			+eventMixin(event)
+	each event in events
+		if event.category != "headliner"
+			+eventMixin(event)
+div.open-event
+	div.container
+		div.cover
+		div.title Algomaniac
+		div.md
+			p.description Do you love following a fixed protocol and rules to problem solving? Maybe you use certain steps to decipher that logic? Algomaniac is just the place for you. The “certain steps”, i.e. algorithms are at the crux of this annual event. But if you have answered the questions asked above in negative, do not worry! The event also aims at testing the logic, common sense and implementation methods of the participants. No previous coding knowledge will be necessary for participating in the event
+			section
+				h3.subtitle General Rules
+				ul
+					li The event is an individual event and consists of two rounds
+					li Time limit is generally from one hour to one and a half hours for each round
+					li Once the event starts, no one else will be allowed to participate.
+					li Participants are expected to bring a pen with them.
+					li Use of any kind of electronic gadgets is not permitted during the event.
+					li The invigilating team has the authority to disqualify any participation in case of violation of the above mentioned rules.
+			section
+				h3.subtitle Round 1
+				ul
+					li In this round, participants will get a set of twenty questions based on three difficulty settings (Easy, Medium and Hard).
+					li Participants are expected to answer them in a few words or lines, depending upon the nature of problem asked.
+					li The answers are to be written in the space provided in the question paper.
+					li On completion, the students shall submit the question papers back to the invigilators.
+					li The marking scheme will be mentioned for each question.
+					li Top 33% of the total participants from Round 1 will qualify for Round 2.
+			section
+				h3.subtitle Round 2
+				ul
+					li Round two will be also be a subjective round.
+					li In this round, students will be given another subjective question paper.
+					li Separate answer sheets will be provided this time around.
+					li The problems will be harder and will focus on general logical situations and puzzles.
+		div.add_to_cart
+			i.icon-add_shopping_cart
+			span Add to cart
+		i.icon-close
+script(src="/scripts/events.js" type="text/javascript")

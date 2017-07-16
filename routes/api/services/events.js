@@ -7,6 +7,7 @@ var eventsSchema = new Schema({
 	name: String,
 	tagline: String,
 	body: Schema.Types.ObjectId,
+	type: String,
 	category: String,
 	thumbnail: String,
 	cover: String,
