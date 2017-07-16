@@ -36,7 +36,7 @@ var config = {
 module.exports = config;
 ```
 
-5. Run MongoDB using `mongod --dbpath <path_to_data_dir>`
+5. Ensure MongoDB is running. Depending on your OS, you might need to run MongoDB using `mongod --dbpath <path_to_data_dir>`.
 6. Run the project with `npm start`. Visit <localhost:3000> to view.
 
 ## Contributing
@@ -62,7 +62,7 @@ contribution would involve the following:
 
 It might seem a little complicated at a glance, but the fundamental concept is simple: we
 want to ensure that your changes are always made on top of the latest changes to the
-project and thus, wecan easily merge your code. If you are facing any troubles, create a
+project and thus, we can easily merge your code. If you are facing any troubles, create a
 PR as you usually would and we would merge it manually. :)
 
 ### Commit Message Guidelines

@@ -94,6 +94,9 @@ var manager = function () {
 				$(".sidebar").focus();
 				client.main.stageEventHandlers();
 			}
+			$(".navbar .icon-close").click(function() {
+				window.history.back();
+			});
 		})
 	}
 
