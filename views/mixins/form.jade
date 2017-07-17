@@ -2,5 +2,28 @@ include field
 
 mixin formMixin(form)
     form.container(method="#{form.method}" action="#{form.action}")
-        each field in form.fields
-            +fieldMixin(field)
+        if form.type == "portal"
+            div.left
+                - hero = form.fields.find(x => x.name == "hero")
+                if hero
+                    div.hero
+                        +fieldMixin(hero)
+                - image = form.fields.find(x => x.type == "image" )
+                - type = form.fields.find(x => x.name == "type" )
+                    div.thumb
+                        +fieldMixin(image)
+                        +fieldMixin(type)
+                    div.remnant.primary
+                        - fields = form.fields.filter(x => x.group == 1)
+                        each field in fields
+                            +fieldMixin(field)
+            div.right
+                - field = form.fields.find(x => x.type == "textarea" )
+                    +fieldMixin(field)
+            div.footer
+                - fields = form.fields.filter(x => x.group == 2)
+                each field in fields
+                    +fieldMixin(field)
+        else
+            each field in form.fields
+                +fieldMixin(field)
