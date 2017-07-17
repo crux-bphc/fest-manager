@@ -42,6 +42,9 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				});
 
 			}
+			if(provider == 'googleID'){
+					user.profileImage = profile._json.image.url;
+				}
 
 			if (!user[provider] || !user.name) { //check if same email has connected with a second provider
 				user[provider] = profile.id;
