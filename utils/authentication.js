@@ -21,7 +21,7 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 					qrData: url
 				});
 				if(provider == 'googleID'){
-					user['profileImage'] = profile._json.image.url;
+					user.profileImage = profile._json.image.url;
 				}
 				user[provider] = profile.id;
 				user.save(function (err) {
