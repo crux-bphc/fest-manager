@@ -1,4 +1,6 @@
 include mixins/field
+include mixins/form
+
 title= title
 link(href="/stylesheets/portals.style.css" rel="stylesheet")
 i.meta(_routed_at="/portals")
@@ -11,11 +13,14 @@ div#_portal
 					li.icon-add
 					li.icon-autorenew
 					li.icon-delete.disabled
+					li.latent.icon-check
+					li.latent.icon-close
 			- var search = {icon: 'search', placeholder: 'Search', editable: true};
 			+fieldMixin(search)
-	div.section.add_new_item.collapsed Here shall be forged a new record
-
 	div.section.table
+		div.edit_item.collapsed
+			- var form  = {method: "POST", action: "/api/events", fields: fields, type: "portal"}
+			+formMixin(form)
 		each field in fields
 			div.field(id=field.property)
 				span.title= field.label

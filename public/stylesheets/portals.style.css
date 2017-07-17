@@ -1,16 +1,71 @@
-.add_new_item {
-	height: 4em;
+.edit_item {
+	position:absolute;
+	top:0;
+	width: 100%;
+	box-shadow:0px 5px 3px -3px rgba(0,0,0,0.2);
+	background:white;
+	align-items: center;
+	justify-content: space-around;
+	overflow:hidden;
+	transition:height 0.3s ease-out;
+}
+.edit_item.collapsed {
+	height: 0em;
+	padding: 0em;
+}
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+	width:100%;
+}
+
+form .left, form .right {
+	width:50%;
+	display: flex;
+	flex-wrap: wrap;
+}
+form .left > * {
+	display: inline-block;
+	vertical-align: top;
+}
+form .left .hero {
+	width:100%;
+}
+form .left .image {
+	width:100%;
+	height:10em;
+	border-radius:20px;
+	border:1px solid rgba(0,0,0,0.05);
+}
+form .field-container {
+	width:100%;
+	display: block;
+	margin:1em 0em;
+}
+form .image label {
+	width:100%;
+	display: block;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	color:#bbb;
-	overflow:hidden;
-	font-size: 2em;
-	transition:height 0.3s ease-out;
+	font-size:3em;
+	color:rgba(0,0,0,0.25);
+	cursor:pointer;
 }
-.add_new_item.collapsed {
-	height: 0em;
-	padding:0em;
+form .right textarea {
+	width:100%;
+}
+form .right > .field-container {
+	padding-right: 0;
+}
+form .footer {
+	display: flex;
+	width:100%;
+}
+form .footer > *:last-child {
+	padding-right: 0;
 }
 
 .icon-add {
@@ -47,12 +102,15 @@
 	margin-top: 2em;
 }
 
+<<<<<<< abcb6136d7a5fb50e35ee656f06353225a8ee86d
 @media only screen and (max-width: 1000px) {
 	footer {
 		overflow-x: scroll;
 	}
 }
 
+=======
+>>>>>>> portals: Add special forms for portals in form.jade
 @media only screen and (max-width: 800px) {
 	form {
 		display: block;
