@@ -22,6 +22,10 @@ body {
     font-family: 'Proxima Nova', sans-serif;
 }
 
+input[type = "file"] {
+    display:none;
+}
+
 /***************************************************************************************
  ***************************************************************************************
  * Declarations for window and everything inside
@@ -514,6 +518,10 @@ h5 {
     list-style-type: none;
 }
 
+.main .section {
+    position:relative;
+}
+
 .main .controls [class*="icon-"] {
     width: 2em;
     height: 2em;
@@ -529,6 +537,18 @@ h5 {
     cursor: pointer;
 }
 
+.main .controls .latent {
+    transform:scale(0);
+    opacity: 0;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.main .controls .latent.active {
+    transform: none;
+    opacity: 1;
+    display: inline-flex;
+}
+
 .main .controls .disabled[class*="icon-"] {
     color: #a5a8a9;
     border-color: #a5a8a9;
@@ -541,7 +561,7 @@ h5 {
 }
 
 .header .field-container > .remnant > input {
-    padding: 0% 7%;
+    padding: 0% 1em;
 }
 
 .field-container {
@@ -572,7 +592,7 @@ form .field-container {
     font-family: inherit;
     border: 1px solid rgba(0, 0, 0, 0.05);
     outline: none;
-    padding: 0% 4%;
+    padding: 0% 1em;
     overflow: hidden;
     white-space: nowrap;
     box-sizing: border-box;
@@ -634,6 +654,9 @@ form .field-container {
     }
     .main > .wrapper {
         padding:2em 1em;
+    }
+    .main .controls .disabled, .main .controls .latent {
+        display: none;
     }
     #menu {
         pointer-events: all;

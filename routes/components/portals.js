@@ -39,29 +39,112 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 			error.status = 404;
 			return next(error);
 		}
-		console.log("Item:", item);
+		fields = [];
+		fields.push({
+			name: "description",
+			placeholder: "Add a description",
+			editable: true,
+			type: "textarea",
+			required: false,
+			value: "",
+			typeahead: false,
+			none: true,
+		});
+		fields.push({
+			name: "hero",
+			editable: true,
+			type: "image",
+			required: false,
+			value: "",
+			typeahead: false,
+			none: true,
+		});
+		fields.push({
+			name: "thumbnail",
+			editable: true,
+			type: "image",
+			required: false,
+			value: "",
+			typeahead: false,
+			none: true,
+		});
+		fields.push({
+			name: "type",
+			placeholder: "Title",
+			editable: true,
+			type: "select",
+			options: ["Competition", "Workshop", "Proshow"],
+			none: true,
+			group: 0,
+		});
+		fields.push({
+			name: "title",
+			placeholder: "Title",
+			editable: true,
+			type: "text",
+			none: true,
+			group: 1,
+		});
+		fields.push({
+			name: "tagline",
+			placeholder: "Tagline",
+			editable: true,
+			type: "text",
+			none: true,
+			group: 1,
+		});
+		fields.push({
+			name: "category",
+			placeholder: "Category",
+			editable: true,
+			type: "text",
+			none: true,
+			group: 1,
+		});
+		fields.push({
+			name: "starttime",
+			placeholder: "Start Time",
+			editable: true,
+			type: "text",
+			none: true,
+			group: 2,
+		});
+		fields.push({
+			name: "endtime",
+			placeholder: "End Time",
+			editable: true,
+			type: "text",
+			none: true,
+			group: 2,
+		});
+		fields.push({
+			name: "venue",
+			placeholder: "Venue",
+			editable: true,
+			type: "text",
+			none: true,
+			group: 2,
+		});
+		fields.push({
+			name: "contact",
+			placeholder: "Contact",
+			editable: true,
+			type: "phone",
+			none: true,
+			group: 2,
+		});
+		fields.push({
+			name: "price",
+			placeholder: "Price",
+			editable: true,
+			type: "number",
+			none: true,
+			group: 2,
+		});
 		res.renderState('portal', {
 			user: req.user,
 			title: item.name,
-			fields: [{
-					property: "name",
-					label: "Name",
-					type: "String",
-					multiline: false
-				},
-				{
-					property: "description",
-					label: "Description",
-					type: "String",
-					multiline: true
-				},
-				{
-					property: "thumbnail",
-					label: "Icon",
-					type: "String",
-					multiline: false
-				}
-			],
+			fields: fields
 		});
 	});
 });

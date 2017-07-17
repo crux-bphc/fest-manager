@@ -1,9 +1,15 @@
 (function () {
 	var portal = $("#_portal");
 
-	portal.form = function () {
-		portal.find(".add_new_item").toggleClass('collapsed');
-		$(this).toggleClass('active');
-	}
-	portal.find('.controls .icon-add').click(portal.form)
+	portal.find('.controls .icon-add').click(function () {
+        portal.find(".edit_item").removeClass('collapsed');
+        $(".latent").addClass("active");
+        $(".icon-add").addClass("disabled");
+    })
+
+    portal.find('.controls .icon-close').click(function() {
+        portal.find(".edit_item").addClass('collapsed');
+        $(".latent").removeClass("active");
+        $(".icon-add").removeClass("disabled");
+    })
 })();
