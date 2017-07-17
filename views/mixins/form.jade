@@ -1,0 +1,6 @@
+include field
+
+mixin formMixin(form)
+    form.container(method="#{form.method}" action="#{form.action}")
+        each field in form.fields
+            +fieldMixin(field)
