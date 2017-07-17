@@ -553,6 +553,8 @@ h5 {
 form .field-container {
     margin:2em 0em;
     width: 50%;
+    box-sizing: border-box;
+    padding-right:2em;
 }
 
 .field-container > .remnant > input,

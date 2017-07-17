@@ -1,5 +1,5 @@
 title= title
-include mixins/field
+include mixins/form
 
 div.section.header
 	h1= title
@@ -8,7 +8,6 @@ div.section.header
 				ul.controls
 					li.icon-check#submit-button(tooltip="Save")
 					li.icon-close#cancel-button(_route="/dashboard" tooltip="Cancel")
-form.container(method="PUT" action="/api/users/me")
-	each field in fields
-		+fieldMixin(field)
+- var form = { fields: fields, method: "PUT", action: "/api/users/me" };
++formMixin(form)
 script(src="/scripts/register.js")
