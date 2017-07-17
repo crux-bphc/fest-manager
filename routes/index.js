@@ -16,17 +16,6 @@ router.get('/?*', function (req, res, next) {
 			events: {
 				label: "Events",
 				route: "/events",
-				sub: {
-					comps: {
-						label: "Competitions"
-					},
-					workshops: {
-						label: "Workshops"
-					},
-					shows: {
-						label: "Proshows"
-					}
-				},
 			},
 			dashboard: {
 				label: "Dashboard",
@@ -36,16 +25,6 @@ router.get('/?*', function (req, res, next) {
 					path: "user/isAuthenticated",
 					for: "visible"
 				},
-				sub: {
-					account: {
-						route: "/account",
-						label: "Account"
-					},
-					cart: {
-						route: "/cart",
-						label: "Cart"
-					}
-				}
 			},
 			portals: {
 				route: "/portals",
