@@ -6,17 +6,17 @@ var eventsService = require("../api/services/events").model;
 router.get('/', function (req, res, next) {
 	eventsService.find(function (err, events) {
 		if (err) next(err);
-		req.stateparams.submenu = {
-			comps: {
+		req.stateparams.submenu = [
+			{
 				label: "Competitions"
 			},
-			workshops: {
+			{
 				label: "Workshops"
 			},
-			shows: {
+			{
 				label: "Proshows"
 			}
-		};
+		];
 		res.renderState('events', {
 			title: 'Events',
 			user: req.user,
