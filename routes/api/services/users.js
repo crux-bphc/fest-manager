@@ -10,6 +10,7 @@ var usersSchema = new Schema({
 		required: true,
 		unique: true
 	},
+	profileImage: String,
 	institute: {
 		type: String
 	},
