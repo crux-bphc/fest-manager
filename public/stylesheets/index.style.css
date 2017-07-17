@@ -539,23 +539,26 @@ h5 {
     margin-bottom:1em;
 }
 
+.header .field-container > .remnant > input {
+    padding: 0% 7%;
+}
+
 .field-container {
-    height: 4em;
     display: flex;
     flex-direction: row;
-    align-items: center;
     width: 25%;
     min-width: 200px;
 }
 
-form > .field-container {
-    margin-top:1em;
-}
-form > .field-container > .remnant > input, form > .field-container > .remnant > span {
-    width: 20em;
+form .field-container {
+    margin:2em 0em;
+    width: 50%;
 }
 
-.field-container > .remnant > input, .field-container > .remnant > span {
+.field-container > .remnant > input,
+.field-container > .remnant > select,
+.field-container > .remnant > textarea,
+.field-container > .remnant > span {
     height: 3em;
     line-height: 3em;
     display: block;
@@ -566,20 +569,27 @@ form > .field-container > .remnant > input, form > .field-container > .remnant >
     font-family: inherit;
     border: 1px solid rgba(0, 0, 0, 0.05);
     outline: none;
-    padding: 0% 7%;
+    padding: 0% 4%;
     overflow: hidden;
     white-space: nowrap;
     box-sizing: border-box;
+    background: transparent;
 }
+
+.field-container > .remnant > textarea {
+    height: 20em;
+}
+
 .field-container > .remnant > span {
     color:#ccc;
 }
 
 .field-container > label {
-    line-height: 2.5em;
+    line-height: 3em;
     font-size: 0.9em;
     font-weight: 500;
     min-width: 6em;
+    display: inline-block;
 }
 
 .field-container > .remnant > input:hover {
