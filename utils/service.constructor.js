@@ -28,12 +28,12 @@ function service(model, router) {
 
 	router.post('/', function (req, res, next) {
 		var item = new model(req.body);
-		item.save(function (err) {
+		item.save(function (err, doc) {
 			if (err) {
 				res.send("Error");
 				return 0;
 			}
-			res.send("Success");
+			res.send(doc._id);
 		});
 	});
 

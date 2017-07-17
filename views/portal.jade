@@ -1,5 +1,7 @@
 include mixins/field
 title= title
+script(src="/scripts/simplemde.min.js" type="text/javascript")
+link(href="/stylesheets/simplemde.min.css" rel="stylesheet")
 link(href="/stylesheets/portals.style.css" rel="stylesheet")
 i.meta(_routed_at="/portals")
 div#_portal
@@ -11,10 +13,25 @@ div#_portal
 					li.icon-add
 					li.icon-autorenew
 					li.icon-delete.disabled
+					li.icon-check.latent
+					li.icon-close.latent
 			- var search = {icon: 'search', placeholder: 'Search', editable: true};
 			+fieldMixin(search)
-	div.section.add_new_item.collapsed Here shall be forged a new record
-
+	div.section.new_item
+		div.left
+			div.thumbnail
+			div.type
+		div.right
+			div.title
+			div.tagline
+			div.category
+		div.footer
+			div.time
+			div.venue
+			div.contact
+		div.problem_statement
+			textarea
+	div.section.all
 	div.section.table
 		each field in fields
 			div.field(id=field.property)

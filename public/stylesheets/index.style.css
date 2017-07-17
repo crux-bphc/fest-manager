@@ -528,6 +528,17 @@ h5 {
     cursor: pointer;
 }
 
+.main .controls .latent[class*="icon-"] {
+    opacity: 0;
+    transform:translateX(-150%);
+    transition:transform 0.3s, opacity 0.2s;
+}
+
+.main .controls .latent.active[class*="icon-"] {
+    opacity:1;
+    transform: none;
+}
+
 .main .controls .disabled[class*="icon-"] {
     color: #a5a8a9;
     border-color: #a5a8a9;

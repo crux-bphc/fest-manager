@@ -1,4 +1,4 @@
-// AJAX call for autocomplete 
+// AJAX call for autocomplete
 $(document).ready(function () {
 	$("#field-institute").keyup(function () {
 		$.ajax({
