@@ -4,11 +4,20 @@ Fest Manager is a Single Page Express Application that can be used to easily dep
 
 ## Installation
 
+This app depends on:
+
+1. MongoDB version 2.6 or higher
+2. NodeJS version 6.10 or higher
+
+Install them in the recommended way for your operating system. If your distribution's package repositories are updated, it should be as trivial as `sudo apt install nodejs mongodb`. A few pointers could be:
+
+- https://nodejs.org/en/download/package-manager/
+- https://docs.mongodb.com/manual/administration/install-community/
+
 To get the app up and running, do the following:
 1. Clone the repository using `git clone https://github.com/CRUx-BPHC/fest-manager.git`.
 2. Change directory and install dependencies with `cd fest-manager; npm install`.
-3. Install MongoDB and setup your data directory accordingly. More information at https://docs.mongodb.com/manual/administration/install-community/
-4. Create the config file (`/config.js`) like following:
+3. Create the config file (`/config.js`) like following:
 
 **Note**: Developers can skip this step and instead use the `dev-config.js` by default.
 
@@ -36,8 +45,8 @@ var config = {
 module.exports = config;
 ```
 
-5. Ensure MongoDB is running. Depending on your OS, you might need to run MongoDB using `mongod --dbpath <path_to_data_dir>`.
-6. Run the project with `npm start`. Visit <localhost:3000> to view.
+4. Ensure MongoDB is running. Depending on your OS, you might need to run MongoDB using `mongod --dbpath <path_to_data_dir>`.
+5. Run the project with `npm start`. Visit <localhost:3000> to view.
 
 ## Contributing
 
