@@ -46,6 +46,16 @@ router.get('/', authenticate, function (req, res, next) {
 		user: req.user,
 		title: "Dashboard"
 	};
+	req.stateparams.submenu = {
+		account: {
+			route: "/account",
+			label: "Account"
+		},
+		cart: {
+			route: "/cart",
+			label: "Cart"
+		}
+	};
 	res.renderState('dashboard', params);
 });
 
@@ -54,7 +64,16 @@ router.get('/account', authenticate, function (req, res, next) {
 		title: 'My Account',
 		user: req.user,
 	};
-	console.log(req.user);
+	req.stateparams.submenu = {
+		account: {
+			route: "/account",
+			label: "Account"
+		},
+		cart: {
+			route: "/cart",
+			label: "Cart"
+		}
+	};
 	params.fields = getFields(req.user);
 	res.renderState('account', params);
 });

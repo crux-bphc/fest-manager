@@ -1,5 +1,11 @@
 module.exports = function () {
 
+	var appendStateFromRequest = function (state, req) {
+		// Append supported variables to state.
+		state.submenu = req.stateparams.submenu;
+		return state;
+	};
+
 	var appendUserState = function (state, req) {
 		var user = {};
 		user.isAuthenticated = req.isAuthenticated();
@@ -65,6 +71,7 @@ module.exports = function () {
 		if (req.stateparams && req.stateparams.immersive) {
 			state.isImmersive = true;
 		}
+		state = appendStateFromRequest(state, req);
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
