@@ -38,7 +38,9 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('damn ninjas cutting onions'));
-app.use(bodyParser.json({limit: "20mb"}));
+app.use(bodyParser.json({
+	limit: "20mb"
+}));
 app.use(bodyParser.urlencoded({
 	limit: "20mb",
 	extended: true,
