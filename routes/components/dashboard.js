@@ -46,7 +46,10 @@ router.get('/', authenticate, function (req, res, next) {
 		user: req.user,
 		title: "Dashboard"
 	};
-	req.stateparams.title = 'Dashboard';
+	req.stateparams.title = req.stateparams.title = {
+		text: 'Dashboard',
+		route: '/dashboard',
+	};
 	req.stateparams.submenu = [{
 			route: "/dashboard/account",
 			label: "Account"
@@ -64,7 +67,10 @@ router.get('/account', authenticate, function (req, res, next) {
 		title: 'My Account',
 		user: req.user,
 	};
-	req.stateparams.title = 'Dashboard';
+	req.stateparams.title = req.stateparams.title = {
+		text: 'Dashboard',
+		route: '/dashboard',
+	};
 	req.stateparams.submenu = [{
 			route: "/dashboard/account",
 			label: "Account"
