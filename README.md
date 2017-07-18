@@ -48,6 +48,8 @@ module.exports = config;
 4. Ensure MongoDB is running. Depending on your OS, you might need to run MongoDB using `mongod --dbpath <path_to_data_dir>`.
 5. Run the project with `npm start`. Visit <localhost:3000> to view.
 
+**Note**: Developers should instead use `npm run dev` to run using [nodemon](https://www.npmjs.com/package/nodemon).
+
 ## Contributing
 
 We love contributions and would be glad to help you make good patches. That out of the way, an average
