@@ -85,15 +85,12 @@ form .footer > *:last-child {
 	margin-top: 2em;
 }
 
-<<<<<<< abcb6136d7a5fb50e35ee656f06353225a8ee86d
 @media only screen and (max-width: 1000px) {
 	footer {
 		overflow-x: scroll;
 	}
 }
 
-=======
->>>>>>> portals: Add special forms for portals in form.jade
 @media only screen and (max-width: 800px) {
 	form {
 		display: block;

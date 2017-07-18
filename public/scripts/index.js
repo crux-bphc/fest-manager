@@ -61,7 +61,7 @@ var manager = function () {
 
 	client.setState = function (state) {
 		const diff = DeepDiff(state, this.state);
-		// console.log(diff);
+		console.log(diff);
 		this.state = state;
 		if(diff.length)
 		diff.forEach(function (change) {
