@@ -9,7 +9,7 @@ div.section.header
 			ul.controls
 				li.icon-shopping_cart
 				li.icon-close
-		- var search = {icon: 'search', placeholder: 'Search', editable: true};
+		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
 div.section.events-wrapper
 	each event in events
