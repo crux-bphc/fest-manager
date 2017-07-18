@@ -2,11 +2,8 @@ var express = require('express');
 var router = express.Router();
 var eventsService = require("../api/services/events").model;
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-	eventsService.find(function (err, events) {
-		if (err) next(err);
-		req.stateparams.title = {
+var applyStateChanges = function (req) {
+	req.stateparams.title = {
 			text: 'Events',
 			route: '/events',
 		};
@@ -20,7 +17,14 @@ router.get('/', function (req, res, next) {
 				label: "Proshows"
 			}
 		];
-		res.renderState('events', {
+	return req;
+};
+
+router.get('/', function (req, res, next) {
+	req = applyStateChanges(req);
+	eventsService.find(function (err, events) {
+		if (err) next(err);
+		res.renderState('events/home', {
 			title: 'Events',
 			user: req.user,
 			events: events
@@ -29,6 +33,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:eventroute', function (req, res, next) {
+	req = applyStateChanges(req);
 	eventsService.findOne({
 		route: req.params.eventroute,
 	}, function (err, data) {
@@ -36,7 +41,7 @@ router.get('/:eventroute', function (req, res, next) {
 		if (data.immersive) {
 			req.stateparams.immersive = false;
 		}
-		res.renderState('events/single-event', {
+		res.renderState('events/event', {
 			title: data.name,
 			user: req.user,
 			event: data,
