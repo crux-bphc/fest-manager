@@ -587,7 +587,7 @@ form .field-container {
     display: block;
     width: 100%;
     border-radius: 20px;
-    color: #505057;
+    color: #000;
     font-size: 0.9em;
     font-family: inherit;
     border: 1px solid rgba(0, 0, 0, 0.05);
