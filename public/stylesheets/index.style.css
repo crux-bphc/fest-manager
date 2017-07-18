@@ -668,6 +668,7 @@ form .image .image-editor .resize {
 .field-container > .remnant > input,
 .field-container > .remnant > select,
 .field-container > .remnant > textarea,
+.field-container > .remnant > .CodeMirror,
 .field-container > .remnant > span {
     height: 3em;
     line-height: 3em;
@@ -686,7 +687,7 @@ form .image .image-editor .resize {
     background: transparent;
 }
 
-.field-container > .remnant > textarea {
+.field-container > .remnant > textarea,.field-container > .remnant > .CodeMirror {
     height: 20em;
 }
 
