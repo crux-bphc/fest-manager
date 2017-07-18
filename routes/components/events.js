@@ -6,8 +6,8 @@ var eventsService = require("../api/services/events").model;
 router.get('/', function (req, res, next) {
 	eventsService.find(function (err, events) {
 		if (err) next(err);
-		req.stateparams.submenu = [
-			{
+		req.stateparams.title = 'Events';
+		req.stateparams.submenu = [{
 				label: "Competitions"
 			},
 			{
