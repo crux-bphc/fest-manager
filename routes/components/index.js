@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var custom = require('./custom');
 var events = require('./events');
 var dashboard = require('./dashboard');
 var portals = require('./portals');
@@ -13,6 +14,7 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+router.use('/', custom);
 router.use('/events', events);
 router.use('/dashboard', dashboard);
 router.use('/portals', portals);
