@@ -1,6 +1,7 @@
 (function () {
 	var portal = $("#_portal");
 
+
 	portal.find('.controls .icon-add').click(function () {
         portal.find(".edit_item").removeClass('collapsed');
         $(".latent").addClass("active");
@@ -12,4 +13,5 @@
         $(".latent").removeClass("active");
         $(".icon-add").removeClass("disabled");
     })
+
 })();
