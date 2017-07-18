@@ -37,7 +37,6 @@ grunt.initConfig({
 			'Gruntfile.js',
 			'app.js',
 			'config.js',
-			'package.json'
 		]
 	},
 	mochaTest: {
