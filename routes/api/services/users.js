@@ -18,7 +18,6 @@ var usersSchema = new Schema({
 	events: [Schema.Types.ObjectId],
 	accommodation: Schema.Types.ObjectId,
 	token: String,
-	qrData: String,
 	facebookID: String,
 	googleID: String,
 	githubID: String,
