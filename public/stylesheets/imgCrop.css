@@ -1,0 +1,31 @@
+.cropit-preview {
+        background-color: #f8f8f8;
+        background-size: cover;
+        border: 5px solid #ccc;
+        border-radius: 3px;
+        margin-top: 7px;
+      }
+
+      .cropit-preview-image-container {
+        cursor: move;
+      }
+
+      .cropit-preview-background {
+        opacity: .2;
+        cursor: auto;
+      }
+
+      .image-size-label {
+        margin-top: 10px;
+      }
+
+      input, .export {
+        /* Use relative position to prevent from being covered by image background */
+        position: relative;
+        z-index: 10;
+        display: block;
+      }
+
+      button {
+        margin-top: 10px;
+      }
