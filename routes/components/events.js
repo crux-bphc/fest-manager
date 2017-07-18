@@ -34,9 +34,9 @@ router.get('/:eventroute', function (req, res, next) {
 	}, function (err, data) {
 		if (err) next(err);
 		if (data.immersive) {
-			req.stateparams.immersive = true;
+			req.stateparams.immersive = false;
 		}
-		res.renderState('single-event', {
+		res.renderState('events/single-event', {
 			title: data.name,
 			user: req.user,
 			event: data,
