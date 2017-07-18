@@ -8,7 +8,7 @@ mixin formMixin(form)
                 if hero
                     div.hero
                         +fieldMixin(hero)
-                - image = form.fields.find(x => x.type == "image" )
+                - image = form.fields.find(x => x.name == "thumbnail" )
                 - type = form.fields.find(x => x.name == "type" )
                     div.thumb
                         +fieldMixin(image)

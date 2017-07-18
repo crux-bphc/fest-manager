@@ -1,4 +1,6 @@
 include datalist
+include img-upload
+
 mixin fieldMixin(data)
 	div.field-container
 		if data.label
@@ -17,10 +19,7 @@ mixin fieldMixin(data)
 				else if data.type == "textarea"
 					textarea(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value rows="4")
 				else if data.type == "image"
-					div.image
-						input(type="file" id="field-#{data.name}" required=data.required value=data.value)
-						label(for="field-#{data.name}")
-							i.icon-add_a_photo
+					+imgUpload({id: data.id, width: data.width, height: data.height, file_name: "testabcd", name: data.name})
 				else
 					input(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value)
 			else
