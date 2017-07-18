@@ -46,3 +46,33 @@
 	font-size:1em;
 	margin-top: 2em;
 }
+
+@media only screen and (max-width: 1000px) {
+	footer {
+		overflow-x: scroll;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	form {
+		display: block;
+	}
+	form .left, form .right {
+		display: flex;
+		width:100%;
+	}
+	form .left .thumb {
+		padding-right: 1em;
+	}
+	form .field-container {
+		padding-right:0;
+		min-width: 50%;
+	}
+	form .left .thumb .image {
+		height:10em;
+		width:10em;
+	}
+	form .footer {
+		flex-wrap: wrap;
+	}
+}
