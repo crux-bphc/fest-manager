@@ -1,6 +1,11 @@
 (function () {
 	var portal = $("#_portal");
 
+    var description = new SimpleMDE({
+        element: $("#field-description")[0],
+        toolbar: false,
+        status: false
+    });
 
 	portal.find('.controls .icon-add').click(function () {
         portal.find(".edit_item").removeClass('collapsed');
