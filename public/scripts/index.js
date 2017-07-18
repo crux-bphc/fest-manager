@@ -84,7 +84,8 @@ var manager = function () {
 		}
 		var holder = $('.section.secondary');
 		holder.addClass('active');
-		holder.find('label').text(state.title);
+		holder.find('label').text(state.title.text);
+		holder.find('label').attr('_route', state.title.route)
 		holder.find('ul').empty();
 		state.submenu.forEach(function (menuitem) {
 			var htmlstring = '<li';
