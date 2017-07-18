@@ -78,11 +78,11 @@ var manager = function () {
 	}
 
 	client.navigation.generateSubMenu = function (state) {
+		var holder = $('.section.secondary');
 		if (!state.submenu.length > 0) {
-			holder.removeClass('avtice');
+			holder.removeClass('active');
 			return;
 		}
-		var holder = $('.section.secondary');
 		holder.addClass('active');
 		holder.find('label').text(state.title.text);
 		holder.find('label').attr('_route', state.title.route)
