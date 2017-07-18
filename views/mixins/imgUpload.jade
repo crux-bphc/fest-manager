@@ -10,11 +10,13 @@ mixin imgUpload(data)
 		button(id="rotate-ccw-#{data.id}") Rotate CCW
 		button(id="rotate-cw-#{data.id}") Rotate CW
 		button(id="export-img-#{data.id}", class="export") Upload
+		div(id="imgCrop-response-#{data.id}")
 
 	script(src="/scripts/imageCropMixin.js")
 	script.
 		imgCropInit({
 		id: #{data.id},
 		width: #{data.width},
-		height: #{data.height}
+		height: #{data.height},
+		file_name: "#{data.file_name}"
 		});

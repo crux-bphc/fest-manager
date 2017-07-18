@@ -18,6 +18,16 @@ function imgCropInit(data)
 
     $('#export-img-' + data.id).click(function() {
       var imageData = $('#image-editor-' + data.id).cropit('export');
-      window.open(imageData);
+      $.ajax({
+        url: "/upload/base64img",
+        method: "POST",
+        data: {
+          file_name: data.file_name,
+          data: imageData
+        },
+        success: function(response){
+          $("#imgCrop-response-" + data.id).html("Upload Status : " + response.status);
+        }
+      });
     });
 }

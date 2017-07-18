@@ -21,6 +21,7 @@ connection();
 var stateHandler = require('./utils/state');
 
 var index = require('./routes/index');
+var upload = require("./routes/upload");
 var components = require('./routes/components');
 var api = require('./routes/api');
 var auth = require('./routes/auth');
@@ -37,9 +38,11 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('damn ninjas cutting onions'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: "20mb"}));
 app.use(bodyParser.urlencoded({
-	extended: false
+	limit: "20mb",
+	extended: true,
+	parameterLimit: 50000
 }));
 app.use(cookieSession({
 	keys: ['qwerty', 'uiop']
@@ -79,6 +82,7 @@ app.use(function (req, res, next) {
 	return next();
 });
 
+app.use('/upload', upload);
 app.use('/auth', auth);
 app.use('/components', clientCheckpoint, components);
 app.use('/api', clientCheckpoint, api);
