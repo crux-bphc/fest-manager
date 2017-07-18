@@ -1,6 +1,25 @@
 var express = require('express');
 var router = express.Router();
 var authenticate = require('../../utils/authentication').middleware;
+const qr = require("qrcode");
+
+var applyStateChanges = function (req) {
+	req.stateparams.title = req.stateparams.title = {
+		text: 'Dashboard',
+		route: '/dashboard',
+	};
+	req.stateparams.submenu = [{
+			route: "/dashboard/account",
+			label: "Account"
+		},
+		{
+			route: "/dashboard/cart",
+			label: "Cart"
+		}
+	];
+	return req;
+};
+
 
 var getFields = function (user) {
 	var fields = [];
@@ -42,24 +61,17 @@ var getFields = function (user) {
 
 /* GET users listing. */
 router.get('/', authenticate, function (req, res, next) {
-	var params = {
-		user: req.user,
-		title: "Dashboard"
-	};
-	req.stateparams.title = req.stateparams.title = {
-		text: 'Dashboard',
-		route: '/dashboard',
-	};
-	req.stateparams.submenu = [{
-			route: "/dashboard/account",
-			label: "Account"
-		},
-		{
-			route: "/dashboard/cart",
-			label: "Cart"
-		}
-	];
-	res.renderState('dashboard', params);
+	req = applyStateChanges(req);
+	qr.toDataURL(req.user.email, {
+		errorCorrectionLevel: 'H'
+	}, function (err, url) {
+		req.user.qrData = url;
+		var params = {
+			user: req.user,
+			title: "Dashboard"
+		};
+		res.renderState('dashboard', params);
+	});
 });
 
 router.get('/account', authenticate, function (req, res, next) {
@@ -67,19 +79,7 @@ router.get('/account', authenticate, function (req, res, next) {
 		title: 'My Account',
 		user: req.user,
 	};
-	req.stateparams.title = req.stateparams.title = {
-		text: 'Dashboard',
-		route: '/dashboard',
-	};
-	req.stateparams.submenu = [{
-			route: "/dashboard/account",
-			label: "Account"
-		},
-		{
-			route: "/dashboard/cart",
-			label: "Cart"
-		}
-	];
+	req = applyStateChanges(req);
 	params.fields = getFields(req.user);
 	res.renderState('account', params);
 });

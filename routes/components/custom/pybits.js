@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
 		text: 'PyBits',
