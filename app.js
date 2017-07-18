@@ -71,7 +71,7 @@ app.use(function (req, res, next) {
 	res.renderState = function (filename, options) {
 		var state = stateHandler.getState(req);
 		res.render(filename, options, function (err, string) {
-			//Uncomment the line below to observe the error in case a jade template breaks.
+			// Uncomment to debug Jade Errors.
 			// console.log(err, string)
 			res.send({
 				html: string,
