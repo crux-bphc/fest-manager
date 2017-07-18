@@ -10,6 +10,29 @@ div.section.header
 				li.icon-autorenew
 		- var search = {icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
-	img(src="#{user.qrData}", width="20%")
 	h2.
 		Your QR Code
+	img(src="#{user.qrData}", width="20%")
+
+	h2 Personal Details
+	br
+	if user.googleID
+		img(src=user.profileImage, width="20%")
+	else if user.facebookID
+		img(src="https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large")
+	else if user.githubID
+		img(src="https://avatars1.githubusercontent.com/u/" + user.githubID)
+	else
+		img(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
+	- if (typeof user.name !== "undefined") {
+	h3.
+		#{user.name}
+	- }
+	- if (typeof user.email !== "undefined") {
+	h3.
+		#{user.email}
+	- }
+	- if (typeof user.institute !== "undefined") {
+	h3.
+		#{user.institute}
+	- }
