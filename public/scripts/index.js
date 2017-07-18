@@ -89,7 +89,7 @@ var manager = function () {
 		state.submenu.forEach(function (menuitem) {
 			var htmlstring = '<li';
 			if (menuitem.route) {
-				htmlstring += ' _route="' + state.location.split('components/')[1] + menuitem.route + '"';
+				htmlstring += ' _route="' + menuitem.route + '"';
 			}
 			htmlstring += '>' + '<i></i>';
 			if (menuitem.label) {

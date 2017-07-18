@@ -48,11 +48,11 @@ router.get('/', authenticate, function (req, res, next) {
 	};
 	req.stateparams.title = 'Dashboard';
 	req.stateparams.submenu = [{
-			route: "/account",
+			route: "/dashboard/account",
 			label: "Account"
 		},
 		{
-			route: "/cart",
+			route: "/dashboard/cart",
 			label: "Cart"
 		}
 	];
@@ -66,11 +66,11 @@ router.get('/account', authenticate, function (req, res, next) {
 	};
 	req.stateparams.title = 'Dashboard';
 	req.stateparams.submenu = [{
-			route: "/account",
+			route: "/dashboard/account",
 			label: "Account"
 		},
 		{
-			route: "/cart",
+			route: "/dashboard/cart",
 			label: "Cart"
 		}
 	];
