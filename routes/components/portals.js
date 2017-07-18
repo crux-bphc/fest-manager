@@ -45,7 +45,7 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 			placeholder: "Add a description",
 			editable: true,
 			type: "textarea",
-			required: false,
+			required: true,
 			value: "",
 			typeahead: false,
 			none: true,
@@ -54,19 +54,25 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 			name: "hero",
 			editable: true,
 			type: "image",
-			required: false,
+			required: true,
 			value: "",
 			typeahead: false,
 			none: true,
+			width:800,
+			height:400,
+			id:1
 		});
 		fields.push({
 			name: "thumbnail",
 			editable: true,
 			type: "image",
-			required: false,
+			id:2,
+			required: true,
 			value: "",
 			typeahead: false,
 			none: true,
+			width: 500,
+			height:500
 		});
 		fields.push({
 			name: "type",
