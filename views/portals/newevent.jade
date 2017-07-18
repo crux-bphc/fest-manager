@@ -1,0 +1,14 @@
+title= title
+include ../mixins/field
+
+div.section.header
+	h1= title
+	div.stretch
+			div.remnant
+				ul.controls
+					li.icon-check#submit-button(tooltip="Save")
+					li.icon-close#cancel-button(_route="/dashboard" tooltip="Cancel")
+form.container(method="PUT" action="/api/users/me")
+	each field in fields
+		+fieldMixin(field)
+script(src="/scripts/newevent.js")
