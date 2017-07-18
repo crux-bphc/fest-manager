@@ -788,3 +788,10 @@ form .image .image-editor .resize {
         margin-top:-80px;
     }
 }
+
+
+/*General purpose classes*/
+
+.hidden {
+    display: none !important;
+}
