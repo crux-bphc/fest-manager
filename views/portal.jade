@@ -26,10 +26,16 @@ div#_portal
 		div.edit_item.collapsed
 			- var form  = {method: "POST", action: "/api/events", fields: fields, type: "portal"}
 			+formMixin(form)
-		each field in fields
-			div.field(id=field.property)
-				span.title= field.label
-				div.list
-	if !population
+		div.item.head
+			div.title Name
+			div.teams Teams
+			div Edit
+		each item in items
+			div.item
+				div.title= item.name
+				div.teams= item.teams.length
+				div.button
+					i.icon-mode_edit
+	if !items
 		span.underwhelmingMessage Nothing to see here. Add new records.
 script(src="/scripts/portal.js")
