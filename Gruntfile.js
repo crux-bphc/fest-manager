@@ -33,7 +33,7 @@ grunt.initConfig({
 		files: ['routes/**/*.js',
 			'utils/**/*.js',
 			'views/**/*.js',
-			'public/**/*.js',
+			// 'public/**/*.js',
 			'Gruntfile.js',
 			'app.js',
 			'config.js',

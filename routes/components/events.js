@@ -4,19 +4,19 @@ var eventsService = require("../api/services/events").model;
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
-			text: 'Events',
-			route: '/events',
-		};
-		req.stateparams.submenu = [{
-				label: "Competitions"
-			},
-			{
-				label: "Workshops"
-			},
-			{
-				label: "Proshows"
-			}
-		];
+		text: 'Events',
+		route: '/events',
+	};
+	req.stateparams.submenu = [{
+			label: "Competitions"
+		},
+		{
+			label: "Workshops"
+		},
+		{
+			label: "Proshows"
+		}
+	];
 	return req;
 };
 
