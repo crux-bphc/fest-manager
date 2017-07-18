@@ -6,6 +6,20 @@ var eventsService = require("../api/services/events").model;
 router.get('/', function (req, res, next) {
 	eventsService.find(function (err, events) {
 		if (err) next(err);
+		req.stateparams.title = {
+			text: 'Events',
+			route: '/events',
+		};
+		req.stateparams.submenu = [{
+				label: "Competitions"
+			},
+			{
+				label: "Workshops"
+			},
+			{
+				label: "Proshows"
+			}
+		];
 		res.renderState('events', {
 			title: 'Events',
 			user: req.user,
@@ -20,9 +34,7 @@ router.get('/:eventroute', function (req, res, next) {
 	}, function (err, data) {
 		if (err) next(err);
 		if (data.immersive) {
-			req.stateparams = {
-				immersive: true
-			};
+			req.stateparams.immersive = true;
 		}
 		res.renderState('single-event', {
 			title: data.name,

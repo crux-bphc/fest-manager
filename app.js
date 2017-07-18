@@ -64,11 +64,12 @@ let clientCheckpoint = function (req, res, next) {
 };
 
 app.use(function (req, res, next) {
+	req.stateparams = {};
 	res.renderState = function (filename, options) {
 		var state = stateHandler.getState(req);
 		res.render(filename, options, function (err, string) {
 			//Uncomment the line below to observe the error in case a jade template breaks.
-			//console.log(err, string)
+			// console.log(err, string)
 			res.send({
 				html: string,
 				state: state,

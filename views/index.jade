@@ -50,15 +50,13 @@ body
 									i
 									span= val.label
 					div.secondary-wrapper
-						each val in navigation
-							if val.sub
-								div.section.secondary(_triggers=val.triggers class=val.initial)
-									label= val.label
-									ul
-										each subval in val.sub
-											li(_route="#{val.route}#{subval.route}")
-												i
-												span= subval.label
+						div.section.secondary()
+							label
+							ul
+								//- each subval in val.sub
+								//- 	li(_route="#{val.route}#{subval.route}")
+								//- 		i
+								//- 		span= subval.label
 			div.remnant.main(tabindex="1")
 				div.wrapper.face
 				div.wrapper.tray

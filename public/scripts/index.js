@@ -11,6 +11,8 @@ var manager = function () {
 				menu: {},
 			},
 			user: {},
+			submenu: {},
+			title: "",
 		}
 	});
 	client.route = function (route, status = true) {
@@ -44,6 +46,7 @@ var manager = function () {
 				}, 500);
 				client.removeClass('loading');
 			});
+			this.navigation.generateSubMenu(data.state);
 			this.main.initialize();
 			this.main.stageEventHandlers();
 			this.main.focus();
@@ -74,6 +77,31 @@ var manager = function () {
 		});
 	}
 
+	client.navigation.generateSubMenu = function (state) {
+		if (!state.submenu.length > 0) {
+			holder.removeClass('avtice');
+			return;
+		}
+		var holder = $('.section.secondary');
+		holder.addClass('active');
+		holder.find('label').text(state.title.text);
+		holder.find('label').attr('_route', state.title.route)
+		holder.find('ul').empty();
+		state.submenu.forEach(function (menuitem) {
+			var htmlstring = '<li';
+			if (menuitem.route) {
+				htmlstring += ' _route="' + menuitem.route + '"';
+			}
+			htmlstring += '>' + '<i></i>';
+			if (menuitem.label) {
+				htmlstring += '<span>' + menuitem.label + '</span>';
+			}
+			htmlstring += "</li>";
+			holder.find('ul').append(htmlstring);
+		});
+		client.navigation.stageEventHandlers();
+	}
+
 	client.stageEventHandlers = function () {
 		this.initialize();
 		this.main.stageEventHandlers();
@@ -86,7 +114,14 @@ var manager = function () {
 			$(".window > .remnant").removeClass("shift_to_expose_menu");
 		});
 	}
-	client.navigation.stageEventHandlers = function () {};
+	client.navigation.stageEventHandlers = function () {
+		$(this).find('[href]').click(function (e) {
+			window.location.assign($(this).attr("href"));
+		});
+		$(this).find('[_route]').click(function (e) {
+			client.route($(this).attr('_route'));
+		})
+	};
 	client.header.stageEventHandlers = function () {
 		$('#menu').click(function () {
 			$(".window > .remnant").toggleClass("shift_to_expose_menu");
@@ -94,7 +129,7 @@ var manager = function () {
 				$(".sidebar").focus();
 				client.main.stageEventHandlers();
 			}
-			$(".navbar .icon-close").click(function() {
+			$(".navbar .icon-close").click(function () {
 				window.history.back();
 			});
 		})

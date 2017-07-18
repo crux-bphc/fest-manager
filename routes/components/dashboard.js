@@ -46,6 +46,19 @@ router.get('/', authenticate, function (req, res, next) {
 		user: req.user,
 		title: "Dashboard"
 	};
+	req.stateparams.title = req.stateparams.title = {
+		text: 'Dashboard',
+		route: '/dashboard',
+	};
+	req.stateparams.submenu = [{
+			route: "/dashboard/account",
+			label: "Account"
+		},
+		{
+			route: "/dashboard/cart",
+			label: "Cart"
+		}
+	];
 	res.renderState('dashboard', params);
 });
 
@@ -54,7 +67,19 @@ router.get('/account', authenticate, function (req, res, next) {
 		title: 'My Account',
 		user: req.user,
 	};
-	console.log(req.user);
+	req.stateparams.title = req.stateparams.title = {
+		text: 'Dashboard',
+		route: '/dashboard',
+	};
+	req.stateparams.submenu = [{
+			route: "/dashboard/account",
+			label: "Account"
+		},
+		{
+			route: "/dashboard/cart",
+			label: "Cart"
+		}
+	];
 	params.fields = getFields(req.user);
 	res.renderState('account', params);
 });
