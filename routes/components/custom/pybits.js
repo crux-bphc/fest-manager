@@ -4,7 +4,7 @@ var router = express.Router();
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
-		text: 'PyBits',
+		text: 'PyBITS',
 		route: 'pybits',
 	};
 	req.stateparams.submenu = [{
@@ -18,6 +18,10 @@ var applyStateChanges = function (req) {
 		{
 			label: "Workshops",
 			route: "/pybits/workshops",
+		},
+		{
+			label: "PyBITS 2016",
+			route: "/pybits/2016",
 		}
 	];
 	return req;
@@ -26,7 +30,7 @@ var applyStateChanges = function (req) {
 router.get('/', function (req, res, next) {
 	req = applyStateChanges(req);
 	res.renderState('custom/pybits/home', {
-		title: 'PyBits',
+		title: 'PyBITS',
 		user: req.user,
 	});
 });
@@ -34,7 +38,7 @@ router.get('/', function (req, res, next) {
 router.get('/talks', function (req, res, next) {
 	req = applyStateChanges(req);
 	res.renderState('custom/pybits/talks', {
-		title: 'PyBits Talks',
+		title: 'PyBITS Talks',
 		user: req.user,
 	});
 });
@@ -42,7 +46,7 @@ router.get('/talks', function (req, res, next) {
 router.get('/sprints', function (req, res, next) {
 	req = applyStateChanges(req);
 	res.renderState('custom/pybits/sprints', {
-		title: 'PyBits Sprints',
+		title: 'PyBITS Sprints',
 		user: req.user,
 	});
 });
@@ -50,7 +54,15 @@ router.get('/sprints', function (req, res, next) {
 router.get('/workshops', function (req, res, next) {
 	req = applyStateChanges(req);
 	res.renderState('custom/pybits/workshops', {
-		title: 'PyBits Workshops',
+		title: 'PyBITS Workshops',
+		user: req.user,
+	});
+});
+
+router.get('/2016', function (req, res, next) {
+	req = applyStateChanges(req);
+	res.renderState('custom/pybits/2016', {
+		title: 'PyBITS 2016',
 		user: req.user,
 	});
 });
