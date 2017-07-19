@@ -3,6 +3,7 @@ var grunt = require('grunt');
 grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-mocha-test');
 grunt.loadNpmTasks('grunt-js-beautify');
+grunt.loadNpmTasks('grunt-coveralls');
 grunt.initConfig({
 	jshint: {
 		options: {
@@ -50,7 +51,18 @@ grunt.initConfig({
 			},
 			src: ['tests/**/*.js']
 		}
-	}
+	},
+	coveralls: {
+    options: {
+      force: false
+    },
+    
+    run_test: {
+      src: 'coverage/lcov.info',
+      options: {
+      }
+    },
+  }
 });
 
 //grunt.registerTask('world', 'world task description', function() {

@@ -10,3 +10,5 @@ cache:
 before_script:
   - npm install grunt-cli -g
   - tools/destroy-and-rebuild-database aero31aero@gmail.com
+  
+script: "npm run-script ci"

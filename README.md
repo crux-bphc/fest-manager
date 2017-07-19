@@ -1,5 +1,6 @@
 # Fest Manager
-
+[![Build Status](https://travis-ci.org/CRUx-BPHC/fest-manager.svg?branch=master)](https://travis-ci.org/CRUx-BPHC/fest-manager)
+[![Coverage Status](https://coveralls.io/repos/github/CRUx-BPHC/fest-manager/badge.svg?branch=master)](https://coveralls.io/github/CRUx-BPHC/fest-manager?branch=master)
 Fest Manager is a Single Page Express Application that can be used to easily deploy websites for college fests.
 
 ## Installation
