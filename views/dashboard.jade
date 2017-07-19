@@ -1,5 +1,6 @@
 include mixins/field
 title= title
+link(href="/stylesheets/dashboard.style.css" rel="stylesheet")
 div.section.header
 	h1.title Overview
 	div.stretch
@@ -10,20 +11,20 @@ div.section.header
 				li.icon-autorenew
 		- var search = {icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
-	h2.
+	h2.qrHead.
 		Your QR Code
-	img(src="#{user.qrData}", width="20%")
+	img.imgQr(src="#{user.qrData}", width="20%")
 
-	h2 Personal Details
+	h2.PDhead Personal Details
 	br
 	if user.googleID
-		img(src=user.profileImage, width="20%")
+		img.imgUser(src=user.profileImage, width="20%")
 	else if user.facebookID
-		img(src="https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large")
+		img.imgUser(src="https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large")
 	else if user.githubID
-		img(src="https://avatars1.githubusercontent.com/u/" + user.githubID)
+		img.imgUser(src="https://avatars1.githubusercontent.com/u/" + user.githubID)
 	else
-		img(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
+		img.imgUser(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
 	- if (typeof user.name !== "undefined") {
 	h3.
 		#{user.name}
