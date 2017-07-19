@@ -1,0 +1,17 @@
+h2 {
+    padding: 10px 0;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: #202729;
+}
+
+.event-container {
+    margin-bottom: 10px;
+}
