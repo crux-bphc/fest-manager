@@ -1,6 +1,6 @@
 mixin imgUpload(data)
-	link(rel='stylesheet', href='/stylesheets/imgCrop.css')
-	script(src="/scripts/imageCrop.js")
+	link(rel='stylesheet', href='/static/stylesheets/imgCrop.css')
+	script(src="/static/scripts/imageCrop.js")
 
 	div(id="image-editor-#{data.id}" class="image-editor")
 		input(type="file", class="cropit-image-input")
@@ -12,7 +12,7 @@ mixin imgUpload(data)
 		button(id="export-img-#{data.id}", class="export") Upload
 		div(id="imgCrop-response-#{data.id}")
 
-	script(src="/scripts/imageCropMixin.js")
+	script(src="/static/scripts/imageCropMixin.js")
 	script.
 		imgCropInit({
 		id: #{data.id},
