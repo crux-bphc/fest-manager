@@ -46,9 +46,10 @@ form .right > .field-container {
 form .footer {
 	display: flex;
 	width:100%;
+	flex-wrap: wrap;
 }
-form .footer > *:last-child {
-	padding-right: 0;
+form .footer > .field-container {
+	width:200px;
 }
 
 .icon-add {

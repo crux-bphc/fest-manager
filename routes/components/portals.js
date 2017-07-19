@@ -144,6 +144,15 @@ var getFields = function(event) {
         none: true,
         group: 2,
     });
+    fields.push({
+        name: "teamSize",
+        placeholder: "Team Size",
+        editable: true,
+        value: event ? event.teamSize : "",
+        type: "number",
+        none: true,
+        group: 2,
+    });
     return fields;
 };
 
