@@ -36,8 +36,8 @@ router.get('/?*', function (req, res, next) {
 				label: "Portals"
 			},
 			contact: {
-				label: "Contact",
-				route: "/contact",
+				label: "About",
+				route: "/about",
 				sub: {
 					about: {
 						label: "About Us"
@@ -45,8 +45,8 @@ router.get('/?*', function (req, res, next) {
 					contact: {
 						label: "Get in touch"
 					},
-					reach: {
-						label: "Getting here"
+					ATMOS2016: {
+						label: "ATMOS 2016"
 					}
 				}
 			}
