@@ -11,7 +11,7 @@ function imgCropInit(data) {
                 url: "/upload/base64img",
                 method: "POST",
                 data: {
-                    file_name: "hero-9163131232",
+                    file_name: (data.id ? "hero-" : "thumb-") + globalEventID,
                     data: result
                 },
                 success: function(response) {

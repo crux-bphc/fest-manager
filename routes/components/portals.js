@@ -54,7 +54,7 @@ var getFields = function(event) {
         name: "thumbnail",
         editable: true,
         type: "image",
-        id: 2,
+        id: 0,
         required: true,
         value: event ? event.thumbnail : "",
         typeahead: false,
@@ -171,7 +171,7 @@ router.get('/:body', authenticate, elevate, function(req, res, next) {
                 title: body.name,
                 items: items,
                 fields: getFields()
-            })
+            });
         });
     });
 
@@ -183,14 +183,15 @@ router.post('/:body/add', authenticate, elevate, function(req, res, next) {
         error.status = 403;
         return next(error);
     }
-    req.body.body = req.user.privilege.body;
-    eventsService.save(req.body, function(err) {
+    var event = new eventsService(req.body);
+    event.body = req.user.privilege.body;
+    event.save(function(err) {
         if (err) res.send("Error");
         res.send("Success");
     });
 });
 
-router.post('/:body/:event/edit', authenticate, elevate, function(req, res, next) {
+router.post('/:body/edit', authenticate, elevate, function(req, res, next) {
     if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
         var error = new Error('Access Denied');
         error.status = 403;

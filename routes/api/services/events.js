@@ -11,7 +11,7 @@ var eventsSchema = new Schema({
 	category: String,
 	thumbnail: String,
 	hero: String,
-	about: Schema.Types.Mixed,
+	about: String,
 	contact: String,
 	startTime: Date,
 	endTime: Date,
