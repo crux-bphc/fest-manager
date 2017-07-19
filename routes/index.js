@@ -38,17 +38,6 @@ router.get('/?*', function (req, res, next) {
 			contact: {
 				label: "About",
 				route: "/about",
-				sub: {
-					about: {
-						label: "About Us"
-					},
-					contact: {
-						label: "Get in touch"
-					},
-					ATMOS2016: {
-						label: "ATMOS 2016"
-					}
-				}
 			}
 		}
 	};
