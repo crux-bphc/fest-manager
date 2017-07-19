@@ -14,11 +14,11 @@ div#_portal
 		div.stretch
 			div.remnant
 				ul.controls
-					li.icon-add
-					li.icon-autorenew
+					li.icon-add(onclick="formEditor()")
+					li.icon-autorenew(onclick="manager.refresh()")
 					li.icon-delete.disabled
 					li.latent.icon-check
-					li.latent.icon-close
+					li.latent.icon-close(onclick="closeEditor()")
 			- var search = {icon: 'search', placeholder: 'Search', editable: true};
 			+fieldMixin(search)
 	div.section.table

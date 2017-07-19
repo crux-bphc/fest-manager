@@ -9,19 +9,10 @@ var description;
         toolbar: false,
         status: false
     });
-    portal.find('.controls .icon-add').click(function() {
-        formEditor();
-    });
     portal.find('.controls .icon-check').click(function() {
         submit_item();
         closeEditor();
     });
-    portal.find('.controls .icon-autorenew').click(function() {
-        manager.refresh();
-    })
-    portal.find('.controls .icon-close').click(function() {
-        closeEditor();
-    })
 })();
 
 function closeEditor() {
@@ -31,47 +22,82 @@ function closeEditor() {
 }
 
 function formEditor(data) {
-    console.log(data);
     if (data) {
         if (data[0].about)
             description.value(data[0].about);
+        else
+            description.value("");
         if (data[0].name)
-            $('.edit_item #field-title').val(data[0].name);
+            $('#field-title').val(data[0].name);
+        else
+            $('#field-title').val("");
         if (data[0].tagline)
-            $('.edit_item #field-tagline').val(data[0].tagline);
+            $('#field-tagline').val(data[0].tagline);
+        else
+            $('#field-tagline').val("");
         if (data[0].category)
-            $('.edit_item #field-category').val(data[0].category);
+            $('#field-category').val(data[0].category);
+        else
+            $('#field-category').val("");
         if (data[0].type)
-            $('.edit_item #field-type').val(data[0].type);
+            $('#field-type').val(data[0].type);
+        else
+            $('#field-type').val("");
         if (data[0].venue)
-            $('.edit_item #field-venue').val(data[0].venue);
+            $('#field-venue').val(data[0].venue);
+        else
+            $('#field-venue').val("");
         if (data[0].startTime)
-            $('.edit_item #field-starttime').val(data[0].startTime);
+            $('#field-starttime').val(data[0].startTime);
+        else
+            $('#field-starttime').val("");
         if (data[0].endTime)
-            $('.edit_item #field-endtime').val(data[0].endTime);
+            $('#field-endtime').val(data[0].endTime);
+        else
+            $('#field-endtime').val("");
         if (data[0].price)
-            $('.edit_item #field-price').val(data[0].price);
+            $('#field-price').val(data[0].price);
+        else
+            $('#field-price').val("");
         if (data[0].contact)
-            $('.edit_item #field-contact').val(data[0].contact);
+            $('#field-contact').val(data[0].contact);
+        else
+            $('#field-contact').val("");
+        if (data[0].teamSize != null)
+            $('#field-teamSize').val(data[0].teamSize);
+        else
+            $('#field-teamSize').val("");
         if (data[0].thumbnail) {
             globalEventID = data[0].thumbnail.split('-')[1];
-            console.log('/data/images/' + data[0].thumbnail + '.jpg');
-            $('#cropit-preview-0').css({'background-image':'/data/images/' + data[0].thumbnail + '.jpg'});
+            $('#image-editor-0').parent().addClass('filled');
+            $('#cropit-preview-0').css({'background-image':'url("/data/images/' + data[0].thumbnail + '.jpg")'});
         }
-        if (data[0].hero)
-            $('#cropit-preview-1').css({'background-image': '/data/images/' + data[0].cover + '.jpg'});
-        currentEditable = data[0]._id;
+        else {
+            $('#cropit-preview-0').css({'background-image':'none'});
+            $('#image-editor-0').parent().removeClass('filled');
+        }
+        if (data[0].hero){
+            $('#image-editor-1').parent().addClass('filled');
+            $('#cropit-preview-1').css({'background-image': 'url("/data/images/' + data[0].hero + '.jpg")'});
+        }
+        else {
+            $('#image-editor-1').parent().removeClass('filled');
+            $('#cropit-preview-1').css({'background-image':'none'});
+        }
     } else {
-        $('.edit_item #field-description').val("");
-        $('.edit_item #field-title').val("");
-        $('.edit_item #field-tagline').val("");
-        $('.edit_item #field-category').val("");
-        $('.edit_item #field-type').val("");
-        $('.edit_item #field-venue').val("");
-        $('.edit_item #field-starttime').val("");
-        $('.edit_item #field-endtime').val("");
-        $('.edit_item #field-price').val("");
-        $('.edit_item #field-contact').val("");
+        $('#field-description').val("");
+        $('#field-title').val("");
+        $('#field-tagline').val("");
+        $('#field-category').val("");
+        $('#field-type').val("");
+        $('#field-venue').val("");
+        $('#field-starttime').val("");
+        $('#field-endtime').val("");
+        $('#field-price').val("");
+        $('#field-contact').val("");
+        $('#field-teamSize').val("");
+        $('#image-editor-1').parent().css("background-image","none");
+        $('#image-editor-1').parent().css("background-image","none");
         globalEventID = Date.now();
         currentEditable = null;
     }
@@ -90,13 +116,14 @@ function edit_item(id) {
     }).done(function(data) {
         formEditor(data);
     });
+    currentEditable = id;
 }
 
 function submit_item() {
     var url, method, body = {};
     if(currentEditable) {
         url = manager.getLocation() + "/edit"
-        body.id = currentEditable;
+        body._id = currentEditable;
     }
     else {
         url = manager.getLocation() + "/add"
@@ -112,7 +139,7 @@ function submit_item() {
     body.type = $('#field-type').val();
     body.venue = $('#field-venue').val();
     body.contact = $('#field-contact').val();
-    console.log(body);
+    body.teamSize = Number.parseInt($('#field-teamSize').val());
     $.ajax({
         method: "POST",
         url: url,
@@ -121,6 +148,6 @@ function submit_item() {
             request.setRequestHeader("Client", "Fest-Manager/dash");
         }
     }).done(function(data, textStatus, request) {
-        manager.refresh();
+        // manager.refresh();
     })
 }
