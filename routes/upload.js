@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.post('/base64img', function(req, res, next){
+router.post('/base64img', function (req, res, next) {
 
 	var base64Img = require('base64-img');
 	var file_name = req.body.file_name;
@@ -9,18 +9,15 @@ router.post('/base64img', function(req, res, next){
 
 	console.log("Post params " + file_name);
 
-	base64Img.img(data, './public/data/images', file_name, function(err, file_path){
+	base64Img.img(data, './public/data/images', file_name, function (err, file_path) {
 		console.log("Uploading...");
-		if(err)
-		{
+		if (err) {
 			console.log("ERROR: " + err);
 			res.json({
 				status: "Failed"
 			});
 			res.end();
-		}
-		else
-		{
+		} else {
 			res.json({
 				status: "Success",
 				path: file_path

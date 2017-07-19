@@ -38,7 +38,9 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('damn ninjas cutting onions'));
-app.use(bodyParser.json({limit: "20mb"}));
+app.use(bodyParser.json({
+	limit: "20mb"
+}));
 app.use(bodyParser.urlencoded({
 	limit: "20mb",
 	extended: true,
@@ -71,7 +73,7 @@ app.use(function (req, res, next) {
 	res.renderState = function (filename, options) {
 		var state = stateHandler.getState(req);
 		res.render(filename, options, function (err, string) {
-			//Uncomment the line below to observe the error in case a jade template breaks.
+			// Uncomment to debug Jade Errors.
 			// console.log(err, string)
 			res.send({
 				html: string,

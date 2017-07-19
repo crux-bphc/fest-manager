@@ -1,7 +1,6 @@
 const passport = require('passport');
 const config = require('./config-loader');
 const userService = require('../routes/api/services/users').model;
-const qr = require("qrcode");
 
 var findOrCreate = function (accessToken, profile, provider, done) {
 	userService.findOne({
@@ -11,41 +10,26 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 			return done(err);
 		}
 		if (!user) {
-			qr.toDataURL(profile.emails[0].value, {
-				errorCorrectionLevel: 'H'
-			}, function (err, url) {
-				user = new userService({
-					name: profile.displayName,
-					email: profile.emails[0].value,
-					token: accessToken,
-					qrData: url
-				});
-				if (provider == 'googleID') {
-					user.profileImage = profile._json.image.url;
-				}
-				user[provider] = profile.id;
-				user.save(function (err) {
-					if (err) console.log(err);
-					return done(err, user);
-				});
+			user = new userService({
+				name: profile.displayName,
+				email: profile.emails[0].value,
+				token: accessToken,
 			});
-
-		} else {
-			if (!user.qrData) {
-				qr.toDataURL(user.email, {
-					errorCorrectionLevel: 'H'
-				}, function (err, url) {
-					user.qrData = url;
-					userService.update({
-						_id: user._id
-					}, user, function (err) {});
-				});
-
-			}
 			if (provider == 'googleID') {
 				user.profileImage = profile._json.image.url;
 			}
-
+			user[provider] = profile.id;
+			user.save(function (err) {
+				if (err) console.log(err);
+				passport.serializeUser(function (user, done) {
+					done(null, user);
+				});
+				return done(err, user);
+			});
+		} else {
+			if (provider == 'googleID') {
+				user.profileImage = profile._json.image.url;
+			}
 			if (!user[provider] || !user.name) { //check if same email has connected with a second provider
 				user[provider] = profile.id;
 				user.name = profile.displayName;

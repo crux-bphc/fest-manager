@@ -1,5 +1,5 @@
 mixin eventMixin(data)
-	div.event-container(class="#{data.category}")
+	div.event-container(class="#{data.category}" _route="/events/#{data.route}")
 		div.face
 			span.tag= data.type
 			h3.name= data.name

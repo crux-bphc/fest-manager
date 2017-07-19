@@ -316,6 +316,7 @@ body {
     align-items: center;
     transition: all 0.3s ease-out;
     border-color: #a5a8a9;
+    white-space: nowrap;
 }
 
 .section > ul > li:hover > i {

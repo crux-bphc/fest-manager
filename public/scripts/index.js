@@ -15,6 +15,12 @@ var manager = function () {
 			title: "",
 		}
 	});
+	let anchor = function(e) {
+		client.route($(this).attr("_route"));
+	};
+	let outerAnchor = function (e) {
+		window.location.assign($(this).attr("href"));
+	};
 	client.route = function (route, status = true) {
 		$('.window > .remnant').removeClass('shift_to_expose_menu');
 		if (route[0] != '/')
@@ -57,6 +63,7 @@ var manager = function () {
 		const diff = DeepDiff(state, this.state);
 		// console.log(diff);
 		this.state = state;
+		if(diff.length)
 		diff.forEach(function (change) {
 			var trigger = change.path.join('/');
 			// console.log('trigger:', trigger);
@@ -99,13 +106,12 @@ var manager = function () {
 			htmlstring += "</li>";
 			holder.find('ul').append(htmlstring);
 		});
-		client.navigation.stageEventHandlers();
+		client.navigation.find(".secondary").initialize();
 	}
 
 	client.stageEventHandlers = function () {
 		this.initialize();
 		this.main.stageEventHandlers();
-		this.navigation.stageEventHandlers();
 		this.header.stageEventHandlers();
 	}
 
@@ -115,12 +121,8 @@ var manager = function () {
 		});
 	}
 	client.navigation.stageEventHandlers = function () {
-		$(this).find('[href]').click(function (e) {
-			window.location.assign($(this).attr("href"));
-		});
-		$(this).find('[_route]').click(function (e) {
-			client.route($(this).attr('_route'));
-		})
+		$(this).find('[href]').click(outerAnchor);
+		$(this).find('[_route]').click(anchor);
 	};
 	client.header.stageEventHandlers = function () {
 		$('#menu').click(function () {
@@ -140,12 +142,8 @@ var manager = function () {
 	});
 
 	$.prototype.initialize = function () {
-		$(this).find('[href]').click(function (e) {
-			window.location.assign($(this).attr("href"));
-		});
-		$(this).find('[_route]').click(function (e) {
-			client.route($(this).attr('_route'));
-		})
+		$(this).find('[href]').click(outerAnchor);
+		$(this).find('[_route]').click(anchor);
 	};
 
 	document.body.onload = function () {

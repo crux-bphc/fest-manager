@@ -1,0 +1,21 @@
+include ../mixins/event
+include ../mixins/field
+link(rel="stylesheet" href="/stylesheets/events.style.css")
+
+div.section.header
+	h1.title= title
+	div.stretch
+		div.remnant
+			ul.controls
+				li.icon-shopping_cart
+				li.icon-close
+		- var search = {icon: 'search', placeholder: 'Search', editable: true};
+		+fieldMixin(search)
+div.section.events-wrapper
+	each event in events
+		if event.category == "headliner"
+			+eventMixin(event)
+	each event in events
+		if event.category != "headliner"
+			+eventMixin(event)
+script(src="/scripts/events.js" type="text/javascript")
