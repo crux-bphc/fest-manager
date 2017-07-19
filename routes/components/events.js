@@ -23,7 +23,7 @@ var applyStateChanges = function (req) {
 router.get('/', function (req, res, next) {
 	req = applyStateChanges(req);
 	eventsService.find(function (err, events) {
-		if (err) next(err);
+		if (err) return next(err);
 		res.renderState('events/home', {
 			title: 'Events',
 			user: req.user,
@@ -37,7 +37,7 @@ router.get('/:eventroute', function (req, res, next) {
 	eventsService.findOne({
 		route: req.params.eventroute,
 	}, function (err, data) {
-		if (err) next(err);
+		if (err) return next(err);
 		if (data.immersive) {
 			req.stateparams.immersive = false;
 		}
