@@ -19,7 +19,7 @@ var eventsSchema = new Schema({
 	price: Number,
 	route: String,
 	immersive: String,
-	teamSize: Number
+	teamSize: Number,
 }, {
 	timestamps: true
 });
