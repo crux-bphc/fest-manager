@@ -1,0 +1,16 @@
+.qrHead{
+	float: right;
+	width: 150px;
+}
+.imgQr{
+	margin-top: 30px;
+	float: right;
+	position: relative;
+	left: 160px;
+}
+.imgUser{
+	margin-left: 10px;
+}
+h3{
+	margin: 10px;
+}
