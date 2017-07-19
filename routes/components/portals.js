@@ -9,12 +9,15 @@ var elevate = function(req, res, next) {
         return next();
     let error = new Error('Access denied');
     error.status = 404;
-    next(error);
+    return next(error);
 };
 
 router.get('/', authenticate, elevate, function(req, res, next) {
     if (req.user.privilege.level == 2)
         bodiesService.find(function(err, items) {
+            if(err) {
+                return next(err);
+            }
             res.renderState('portals_home', {
                 bodies: items,
                 user: req.user,
@@ -201,7 +204,7 @@ router.post('/:body/add', authenticate, elevate, function(req, res, next) {
             if (err) return res.send("Error");
             res.send("Success");
         });
-    })
+    });
 });
 
 router.post('/:body/edit', authenticate, elevate, function(req, res, next) {
@@ -213,7 +216,7 @@ router.post('/:body/edit', authenticate, elevate, function(req, res, next) {
     eventsService.update({
         _id: req.body._id || req.body.id
     },req.body, function(err) {
-        if (err) res.send("Error");
+        if (err) return res.send("Error");
         res.send("Success");
     });
 });
