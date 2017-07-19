@@ -6,19 +6,20 @@ var router = express.Router();
 var eventsSchema = new Schema({
 	name: String,
 	tagline: String,
-	body: Schema.Types.ObjectId,
+	body: String,
 	type: String,
 	category: String,
 	thumbnail: String,
-	cover: String,
-	about: Schema.Types.Mixed,
-	contact: [Schema.Types.Mixed],
+	hero: String,
+	about: String,
+	contact: String,
 	startTime: Date,
 	endTime: Date,
 	teams: [Schema.Types.ObjectId],
 	price: Number,
 	route: String,
 	immersive: String,
+	teamSize: Number,
 }, {
 	timestamps: true
 });

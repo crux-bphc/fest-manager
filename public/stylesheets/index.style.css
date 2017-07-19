@@ -22,6 +22,10 @@ body {
     font-family: 'Proxima Nova', sans-serif;
 }
 
+input[type = "file"] {
+    display:none;
+}
+
 /***************************************************************************************
  ***************************************************************************************
  * Declarations for window and everything inside
@@ -512,6 +516,11 @@ h5 {
     font-size: 1em;
     padding: 0px;
     list-style-type: none;
+    flex-direction: row;
+}
+
+.main .section {
+    position:relative;
 }
 
 .main .controls [class*="icon-"] {
@@ -529,6 +538,18 @@ h5 {
     cursor: pointer;
 }
 
+.main .controls .latent {
+    transform:scale(0);
+    opacity: 0;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.main .controls .latent.active {
+    transform: none;
+    opacity: 1;
+    display: inline-flex;
+}
+
 .main .controls .disabled[class*="icon-"] {
     color: #a5a8a9;
     border-color: #a5a8a9;
@@ -541,7 +562,7 @@ h5 {
 }
 
 .header .field-container > .remnant > input {
-    padding: 0% 7%;
+    padding: 0% 1em;
 }
 
 .field-container {
@@ -558,28 +579,120 @@ form .field-container {
     padding-right:2em;
 }
 
+form .image {
+    width:100%;
+    height:10em;
+    position:relative;
+    border-radius:20px;
+    z-index: +199;
+    border:1px solid rgba(0,0,0,0.05);
+    overflow:hidden;
+}
+
+form .image .cropit-preview {
+    background-size: cover;
+    background-position: center center;
+}
+
+form .image label {
+    width:100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size:3em;
+    color:rgba(0,0,0,0.25);
+    cursor:pointer;
+    position:absolute;
+}
+
+form .image.filled label {
+    pointer-events: none;
+    width:2em;
+    height:2em;
+    font-size:2em;
+    top:0;
+}
+form .image.filled label i {
+    pointer-events: all;
+    color:rgba(255,255,255,0.2);
+}
+
+form .image .image-editor, form .image .cropit-preview {
+    width: 100% !important;
+    height: 100% !important;
+    margin:0;
+    background-color: transparent;
+    top: 0;
+    border:none;
+    border-radius:inherit;
+    left: 0;
+    position: absolute !important;
+}
+form .image .image-editor .status.success {
+    opacity:1;
+    transform:none;
+}
+form .image .image-editor .status {
+    height:2em;
+    width:2em;
+    display: flex;
+    font-size:2em;
+    align-items: center;
+    justify-content: space-around;
+    position:absolute;
+    right:0;
+    opacity: 0;
+    bottom:0;
+    transform:scale(0);
+    z-index: +1000;
+    transition:all 0.2s;
+    color:rgba(255,255,255,0.5);
+}
+form .image .image-editor .status i {
+    display: block;
+    font-size:0.8em;
+}
+form .image .image-editor .resize {
+    position:absolute;
+    z-index: +1000;
+    width:100%;
+    height:2px;
+    top:50%;
+    padding:0px 10px;
+    box-sizing: border-box;
+    display: none;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    left:0;
+    margin-top: -1px;
+    background:linear-gradient(transparent, rgba(0,0,0,0.1));
+}
+
 .field-container > .remnant > input,
 .field-container > .remnant > select,
 .field-container > .remnant > textarea,
+.field-container > .remnant > .CodeMirror,
 .field-container > .remnant > span {
     height: 3em;
     line-height: 3em;
     display: block;
     width: 100%;
     border-radius: 20px;
-    color: #505057;
+    color: #000;
     font-size: 0.9em;
     font-family: inherit;
     border: 1px solid rgba(0, 0, 0, 0.05);
     outline: none;
-    padding: 0% 4%;
+    padding: 0% 1em;
     overflow: hidden;
     white-space: nowrap;
     box-sizing: border-box;
     background: transparent;
 }
 
-.field-container > .remnant > textarea {
+.field-container > .remnant > textarea,.field-container > .remnant > .CodeMirror {
     height: 20em;
 }
 
@@ -634,6 +747,9 @@ form .field-container {
     }
     .main > .wrapper {
         padding:2em 1em;
+    }
+    .main .controls .disabled, .main .controls .latent {
+        display: none;
     }
     #menu {
         pointer-events: all;
