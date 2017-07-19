@@ -9,6 +9,8 @@ cache:
 
 before_script:
   - npm install grunt-cli -g
+  - npm install istanbul -g
+  - npm install istanbul -g
   - tools/destroy-and-rebuild-database aero31aero@gmail.com
   
 script: "npm run-script ci"
