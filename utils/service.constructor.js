@@ -60,7 +60,7 @@ function service(model, router) {
 			}
 			if(typeof event[0] !== 'undefined')
 			{
-				var eventTeams = event[0]["teams"];
+				var eventTeams = event[0].teams;
 				var team = new teamModel({
 					name: req.user.name,
 					members: [req.user._id],
@@ -78,8 +78,8 @@ function service(model, router) {
 
 						userModel.find({_id: req.user._id}, function(err, userDB){
 
-							var userEvents = userDB[0]["events"];
-							var userTeams = userDB[0]["teams"];
+							var userEvents = userDB[0].events;
+							var userTeams = userDB[0].teams;
 
 							userEvents.push(event_id);
 							userTeams.push(team_id);
@@ -104,7 +104,7 @@ function service(model, router) {
 											res.json({status: 200, msg: "Successful"});
 
 										}
-									})
+									});
 								}
 
 							});
