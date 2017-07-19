@@ -36,19 +36,8 @@ router.get('/?*', function (req, res, next) {
 				label: "Portals"
 			},
 			contact: {
-				label: "Contact",
-				route: "/contact",
-				sub: {
-					about: {
-						label: "About Us"
-					},
-					contact: {
-						label: "Get in touch"
-					},
-					reach: {
-						label: "Getting here"
-					}
-				}
+				label: "About",
+				route: "/about",
 			}
 		}
 	};
