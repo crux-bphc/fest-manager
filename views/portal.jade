@@ -4,7 +4,6 @@ include mixins/form
 title= title
 link(href="/stylesheets/portals.style.css" rel="stylesheet")
 script(src="/scripts/image-upload-mixin.js")
-link(rel='stylesheet' href='/stylesheets/croppie.css')
 script(type="text/javascript" src="/scripts/jquery.uploadPreview.min.js")
 link(rel="stylesheet" href="/stylesheets/simplemde.min.css")
 script(src="/scripts/simplemde.min.js")
@@ -29,12 +28,12 @@ div#_portal
 		div.item.head
 			div.title Name
 			div.teams Teams
-			div Edit
+			div.edit Edit
 		each item in items
 			div.item
 				div.title= item.name
 				div.teams= item.teams.length
-				div.button
+				div.edit.button(onclick="edit_item('#{item._id}')")
 					i.icon-mode_edit
 	if !items
 		span.underwhelmingMessage Nothing to see here. Add new records.
