@@ -14,7 +14,6 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				name: profile.displayName,
 				email: profile.emails[0].value,
 				token: accessToken,
-				qrData: url
 			});
 			if (provider == 'googleID') {
 				user.profileImage = profile._json.image.url;
