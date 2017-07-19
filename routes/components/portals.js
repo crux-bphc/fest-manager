@@ -168,7 +168,7 @@ router.get('/:body', authenticate, elevate, function(req, res, next) {
     }, function(err, body) {
         if (err) return res.send("Error");
         eventsService.find({
-            body: req.params.body
+            body: body._id
         }, function(err, items) {
             if (err || !items) {
                 var error = new Error('Not Found');
@@ -193,11 +193,15 @@ router.post('/:body/add', authenticate, elevate, function(req, res, next) {
         return next(error);
     }
     var event = new eventsService(req.body);
-    event.body = req.user.privilege.body;
-    event.save(function(err) {
-        if (err) res.send("Error");
-        res.send("Success");
-    });
+    bodiesService.findOne({
+        code:req.params.body
+    }, function(err, body) {
+        event.body = body._id;
+        event.save(function(err) {
+            if (err) return res.send("Error");
+            res.send("Success");
+        });
+    })
 });
 
 router.post('/:body/edit', authenticate, elevate, function(req, res, next) {
@@ -206,7 +210,9 @@ router.post('/:body/edit', authenticate, elevate, function(req, res, next) {
         error.status = 403;
         return next(error);
     }
-    eventsService.update(req.body, function(err) {
+    eventsService.update({
+        _id: req.body._id || req.body.id
+    },req.body, function(err) {
         if (err) res.send("Error");
         res.send("Success");
     });
