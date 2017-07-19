@@ -2,15 +2,15 @@ doctype html
 html
 	head
 		meta(name="viewport" content="width=device-width, initial-scale=1")
-		link(href="/stylesheets/index.style.css" rel="stylesheet")
-		link(href="/manifest.json" rel="manifest")
-		link(href="/fonts/Proxima Nova/font.css" rel="stylesheet")
-		link(href="/images/logo.png" rel="icon")
+		link(href="/static/stylesheets/index.style.css" rel="stylesheet")
+		link(href="/static/manifest.json" rel="manifest")
+		link(href="/static/fonts/Proxima Nova/font.css" rel="stylesheet")
+		link(href="/static/images/logo.png" rel="icon")
 		link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet")
 		//- script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 		script( src="https://use.fontawesome.com/1523c943cd.js")
-		script(type="text/javascript" src="/scripts/jquery.min.js")
-		script(type="text/javascript" src="/scripts/deep-diff-0.3.8.min.js")
+		script(type="text/javascript" src="/static/scripts/jquery.min.js")
+		script(type="text/javascript" src="/static/scripts/deep-diff-0.3.8.min.js")
 
 body
 	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
@@ -57,4 +57,4 @@ body
 				div.wrapper.face
 				div.wrapper.tray
 
-script(type="text/javascript" src="/scripts/index.js")
+script(type="text/javascript" src="/static/scripts/index.js")

@@ -5,13 +5,13 @@ var urlsToCache = [
 	'/events',
 	'/portals',
 	'/scripts/jquery.min.js',
-	'/scripts/deep-diff-0.3.8.min.js',
-	'/stylesheets/index.style.css',
-	'/scripts/index.js',
-	'/fonts/icomoon/font.css',
-	'/fonts/icomoon/fonts/icomoon.woff',
-	'/fonts/Proxima Nova/font.css',
-	'/fonts/Proxima Nova/ProximaNova-Bold.woff'
+	'/static/scripts/deep-diff-0.3.8.min.js',
+	'/static/stylesheets/index.style.css',
+	'/static/scripts/index.js',
+	'/static/fonts/icomoon/font.css',
+	'/static/fonts/icomoon/fonts/icomoon.woff',
+	'/static/fonts/Proxima Nova/font.css',
+	'/static/fonts/Proxima Nova/ProximaNova-Bold.woff'
 ];
 var restrictedRoutesToNotCache = [
 	'/components/login',
