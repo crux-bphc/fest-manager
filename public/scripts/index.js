@@ -21,12 +21,19 @@ var manager = function () {
 	let outerAnchor = function (e) {
 		window.location.assign($(this).attr("href"));
 	};
-	client.route = function (route, status = true) {
+	client.getLocation = function() {
+		return client.state.location;
+	}
+	client.refresh = function() {
+		client.route(client.state.location, true, true);
+	}
+	client.route = function (route, status = true, reload = false) {
 		$('.window > .remnant').removeClass('shift_to_expose_menu');
 		if (route[0] != '/')
 			route = '/' + route;
-		route = '/components' + route;
-		if (route == this.state.location) return;
+		if (route.indexOf('/components') == -1)
+			route = '/components' + route;
+		if (route == this.state.location && !reload) return;
 		client.addClass('loading');
 		$.ajax({
 			type: 'GET',
@@ -63,7 +70,7 @@ var manager = function () {
 		const diff = DeepDiff(state, this.state);
 		// console.log(diff);
 		this.state = state;
-		if(diff.length)
+		if(diff)
 		diff.forEach(function (change) {
 			var trigger = change.path.join('/');
 			// console.log('trigger:', trigger);
@@ -164,5 +171,7 @@ var manager = function () {
 
 	return {
 		route: client.route.bind(client),
+		refresh: client.refresh.bind(client),
+		getLocation: client.getLocation.bind(client)
 	}
 }();

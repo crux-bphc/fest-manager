@@ -81,6 +81,12 @@ form .footer > *:last-child {
 	display: block;
 	width: 30%;
 }
+.table .item div.edit {
+	text-align: center;
+}
+.table .item div.button {
+	cursor: pointer;
+}
 .underwhelmingMessage {
 	width:100%;
 	text-align:center;

@@ -39,7 +39,7 @@ function service(model, router) {
 
 	router.put('/', function (req, res, next) {
 		model.update({
-			_id: req.body._id
+			_id: req.body._id || req.body.id
 		}, req.body, function (err) {
 			if (err) {
 				err.status = 500;
