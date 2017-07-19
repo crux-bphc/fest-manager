@@ -47,4 +47,4 @@ jspm_packages
 package-lock.json
 
 #upload directory
-public/data/*
+public/static/data/*

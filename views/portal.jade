@@ -2,11 +2,11 @@ include mixins/field
 include mixins/form
 
 title= title
-link(href="/stylesheets/portals.style.css" rel="stylesheet")
-script(src="/scripts/image-upload-mixin.js")
-script(type="text/javascript" src="/scripts/jquery.uploadPreview.min.js")
-link(rel="stylesheet" href="/stylesheets/simplemde.min.css")
-script(src="/scripts/simplemde.min.js")
+link(href="/static/stylesheets/portals.style.css" rel="stylesheet")
+script(src="/static/scripts/image-upload-mixin.js")
+script(type="text/javascript" src="/static/scripts/jquery.uploadPreview.min.js")
+link(rel="stylesheet" href="/static/stylesheets/simplemde.min.css")
+script(src="/static/scripts/simplemde.min.js")
 i.meta(_routed_at="/portals")
 div#_portal
 	div.section.header
@@ -37,4 +37,4 @@ div#_portal
 					i.icon-mode_edit
 	if !items
 		span.underwhelmingMessage Nothing to see here. Add new records.
-script(src="/scripts/portal.js")
+script(src="/static/scripts/portal.js")
