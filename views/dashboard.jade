@@ -1,40 +1,35 @@
 include mixins/field
 title= title
-link(href="/stylesheets/dashboard.style.css" rel="stylesheet")
+link(href="/static/stylesheets/dashboard.style.css" rel="stylesheet")
 div.section.header
 	h1.title Overview
 	div.stretch
-		div.remnant
-			ul.controls
-				li.icon-add
-				li.icon-view_module
-				li.icon-autorenew
-		- var search = {icon: 'search', placeholder: 'Search', editable: true};
-		+fieldMixin(search)
-	
-	
 
-	br
-	if user.googleID
-		img.imgUser(src=user.profileImage, width="20%")
-	else if user.facebookID
-		img.imgUser(src="https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large")
-	else if user.githubID
-		img.imgUser(src="https://avatars1.githubusercontent.com/u/" + user.githubID)
-	else
-		img.imgUser(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
-
-	img.imgQR(src="#{user.qrData}")
-
-	- if (typeof user.name !== "undefined") {
-	h3.name.
-		#{user.name}
-	- }
-	- if (typeof user.email !== "undefined") {
-	h3.email.
-		#{user.email}
-	- }
-	- if (typeof user.institute !== "undefined") {
-	h3.institute.
-		#{user.institute}
-	- }
+div.section.body
+	div.left
+		if user.facebookID
+			img.imgUser(src="https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large")
+		else if user.googleID
+			img.imgUser(src=user.profileImage)
+		else if user.githubID
+			img.imgUser(src="https://avatars1.githubusercontent.com/u/" + user.githubID)
+		else
+			img.imgUser(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
+		div.details
+			- if (typeof user.name !== "undefined") {
+			span.user.name.
+				#{user.name}
+			- }
+			- if (typeof user.email !== "undefined") {
+			i.icon-email
+			span.user.email.
+				#{user.email}
+			- }
+			- if (typeof user.institute !== "undefined") {
+			i.icon-account_balance
+			span.user.institute.
+				#{user.institute}
+			- }
+	div.separate
+	div.right
+		img.imgQR(src="#{user.qrData}")
