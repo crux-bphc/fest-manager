@@ -239,7 +239,7 @@
     margin-top:5px;
     display: inline-block;
     position:relative;
-    cursor:pointer;
+    /*cursor:pointer;*/
     background:#f0f0f0;
     border-radius:4px;
     color:#202729;
@@ -263,6 +263,7 @@
     transition: all 0.2s;
     cursor:pointer;
     color:#444;
+    display: none;
 }
 
 .open-event .foot .download:hover {

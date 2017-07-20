@@ -21,9 +21,19 @@ var applyStateChanges = function (req) {
 };
 
 router.get('/', function (req, res, next) {
-	req = applyStateChanges(req);
+	// req = applyStateChanges(req);
+
 	eventsService.find(function (err, events) {
 		if (err) return next(err);
+
+		var compare = function(a, b) {
+			if(a.name > b.name)
+				return true;
+			return false;
+		};
+
+		events.sort(compare);
+
 		res.renderState('events/home', {
 			title: 'Events',
 			user: req.user,
@@ -33,7 +43,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:eventroute', function (req, res, next) {
-	req = applyStateChanges(req);
+	// req = applyStateChanges(req);
 	eventsService.findOne({
 		route: req.params.eventroute,
 	}, function (err, data) {
