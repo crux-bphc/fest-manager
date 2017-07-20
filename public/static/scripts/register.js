@@ -1,4 +1,4 @@
-// AJAX call for autocomplete 
+// AJAX call for autocomplete
 $(document).ready(function () {
 	$("#field-institute").keyup(function () {
 		$.ajax({
@@ -6,9 +6,6 @@ $(document).ready(function () {
 			url: "/api/typeahead/institutes/" + $(this).val(),
 			headers: {
 				"Client": "Fest-Manager/dash"
-			},
-			beforeSend: function () {
-				$("#field-institute").css("background", "#cff");
 			},
 			success: function (data) {
 				$("#field-institute").css("background", "#fff");
@@ -28,13 +25,19 @@ $(document).ready(function () {
 			data: {
 				institute: $('#field-institute').val(),
 				name: $('#field-name').val(),
-			},
-			success: function (data, textStatus, req) {
-				console.log(req);
-				if (data == "Success") {
-					manager.route('/dashboard');
-				}
+				phone: $('#field-phone').val() || "",
+				address: $('#field-address').val() || "",
+				pincode: $('#field-pincode').val() || "",
+				year: $('#field-year').val() || "",
+				why: $('#field-why').val() || "",
 			}
-		})
+		}).done(function (data, textStatus, req) {
+			console.log(req);
+			if (data == "Success") {
+				manager.route('/dashboard');
+			}
+		}).fail(function(err) {
+			console.log("Failed to do so");
+		});
 	})
 });
