@@ -55,19 +55,19 @@
     display: none;
 }
 
-.event-container.headliner {
+.event-container.Headliner {
     min-width: 100%;
 }
 
-.event-container.headliner > .face {
+.event-container.Headliner > .face {
     font-size: 1.5em;
 }
 
-.event-container.headliner > .face > .name {
+.event-container.Headliner > .face > .name {
     font-weight: 600;
 }
 
-.event-container.headliner > .image {
+.event-container.Headliner > .image {
     background-position: center center;
 }
 

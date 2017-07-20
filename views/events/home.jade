@@ -24,9 +24,9 @@ div.section.tags
 	a(href="#Random") Random
 div.section.events-wrapper
 	each event in events
-		if event.category == "headliner"
+		- if(event.category.toLowerCase() == "headliner")
 			+eventMixin(event)
 	each event in events
-		if event.category != "headliner"
+		- if(event.category.toLowerCase() != "headliner")
 			+eventMixin(event)
 script(src="/static/scripts/events.js" type="text/javascript")
