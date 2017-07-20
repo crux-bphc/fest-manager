@@ -1,0 +1,6 @@
+@font-face {
+    font-family: "FoughtKnight";
+    src: local('FoughtKnight'), url('foughtknight.woff');
+    font-weight: 100;
+    font-style: normal;
+}

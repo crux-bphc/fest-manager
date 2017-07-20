@@ -1,0 +1,10 @@
+title= title
+
+div.section.header
+	h1= title
+	div.stretch
+			div.remnant
+		-if(events.length > 0) {
+			for event in events
+				h3 #{event.name}								
+		- }

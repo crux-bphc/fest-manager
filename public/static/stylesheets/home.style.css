@@ -1,10 +1,10 @@
-.immersive-wrapper { 
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One');
+
+.immersive-wrapper {
 	position:absolute;
 	background-color: black; /*immersive mode starts with this color*/
-	background-image: url("https://forum.unity3d.com/attachments/screen02-jpg.59406/");
-	background-position: 100% 0%;
-	background-size: 120%;
-	animation: panBack 10s 1 ease-out;
+	background-image: url("/static/images/back.jpg");
+	background-size:cover;
 	display: flex;
 	width:100%;
 	height: 100%;
@@ -13,45 +13,49 @@
 	justify-content: space-around;
 	align-items: center;
 }
-@keyframes panBack {
-	from {
-		background-position: 0% 0%;
-	}
-	to {
-		background-position: 100% 0%;
-	}
+div.underlay {
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left: 0;
+	background-color:rgba(0,0,0,0.5);
+	background-position: center center;
+	background-size: cover;
+}
+div.logo {
+	position:relative;
+}
+div.logo img {
+	width:30em;
+}
+.countdown {
+	position:relative;
+	display: flex;
+	margin-top:0.5em;
+	justify-content: center;
+}
+#count {
+	font-family: "Black Ops One";
+	font-size: 10em;
+	font-weight: 800;
+	color:white;
+	padding-right:;
+	line-height: 0.55;
+}
+.countdown > span {
+	color:#555;
+	font-weight:900;
+	font-size:1.5em;
+	color:white;
+	width:5em;
+	left:100%;
+	display: inline;
+	white-space: pre-wrap;
 }
 
-div.center {
-	position: relative;
-	color:white;
-	font-size:10em;
-	font-family: 'Proxima Nova';
-	font-weight: 900;
-	letter-spacing: 1em;
-	margin-left: 0.25em;
-	line-height: 1.5em;
-	opacity: 0;
-	white-space: nowrap;
-	display: flex;
-	pointer-events: none;
-	flex-direction: column;
-	align-items: center;
-	animation:box_in 10s 1 ease-in;
-}
-@keyframes box_in {
-	0% {
-		transform:scale(0.25);
-		opacity: 0;
-	}
-	5% {
-		opacity: 1;
-	}
-	90% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		transform:scale(1);
+@media only screen and (max-width: 800px) {
+	.immersive-wrapper {
+		font-size:0.8em;
 	}
 }

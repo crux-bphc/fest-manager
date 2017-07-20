@@ -84,4 +84,24 @@ router.get('/account', authenticate, function (req, res, next) {
 	res.renderState('account', params);
 });
 
+router.get('/cart', authenticate, function (req, res, next) {
+
+	var eventModel = require("../api/services/events").model;
+
+	req = applyStateChanges(req);
+	eventModel.find({_id: {$in: req.user.events}}, function(err, result){
+		if(err){
+			console.log("ERROR: " + err);
+			params.error = "Error finding events";
+			return;
+		}
+		var params = {
+			title: 'Cart',
+			user: req.user,
+			events: result
+ 		};
+		res.renderState('cart', params);
+	});
+});
+
 module.exports = router;
