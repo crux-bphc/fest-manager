@@ -1,16 +1,18 @@
 include ../mixins/event
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 link(rel="stylesheet" href="/static/stylesheets/marked.css")
-div.section.event-wrapper
+div.section.open-event
     div.header
         div.hero(style="background-image:url('#{event.hero}')")
-        div.cart
-            i.icon-add_shopping_cart
-            span Add to cart
     div.body
-        div.title= event.name
+        div.top
+            div.title= event.name
+            div.remnant
+            div.add_to_cart
+                i.icon-add_shopping_cart
+                span Add to cart
         div.category= event.category
-        div.stretch
+        div.details
             if(event.startTime)
                 div.time
                     span Time
@@ -19,12 +21,20 @@ div.section.event-wrapper
                 div.venue
                     span Venue
                     span #{event.venue}
-            - if(event.teamSize > 1)
-                div.team Teams of #{event.teamSize}
-            if(event.price)
-                div.price
-                    i.icon-dollars
+            if(event.teamSize)
+                div.team
+                    span Teams of
+                    span #{event.teamSize}
+            - if(event.price)
+                div.price.remnant
+                    i &#x20b9;
                     span #{event.price}
-        div.description !{marked(event.about)}
+            - else
+                div.price.remnant
+                    span FREE
+        if(event.about)
+            div.description !{marked(event.about)}
+        div.foot
+            div.download(title="Download as PDF") Download
 
 script(src="/static/scripts/events.js" type="text/javascript")

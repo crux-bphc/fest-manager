@@ -9,8 +9,19 @@ div.section.header
 			ul.controls
 				li.icon-shopping_cart
 				li.icon-close
-		- var search = {icon: 'search', placeholder: 'Search', editable: true};
+		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
+div.section.tags
+	a.active(href="#") All
+	a(href="#Programming") Programming
+	a(href="#FandM") Finance and Management
+	a(href="#Quiz") Quizzing
+	a(href="#MiniGP") MiniGP
+	a(href="#Programming") Programming
+	a(href="#FandM") Finance and Management
+	a(href="#Quiz") Quizzing
+	a(href="#MiniGP") MiniGP
+	a(href="#Random") Random
 div.section.events-wrapper
 	each event in events
 		if event.category == "headliner"
