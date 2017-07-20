@@ -9,6 +9,7 @@ var login = require('./login');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+	req.stateparams.pagetitle = 'Atmos';
 	res.renderState('home.jade', {
 		user: req.user,
 		title: 'Home'

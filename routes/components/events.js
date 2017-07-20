@@ -11,8 +11,8 @@ var applyStateChanges = function (req) {
 };
 
 router.get('/', function (req, res, next) {
+	req.stateparams.pagetitle = 'Events';
 	req = applyStateChanges(req);
-
 	eventsService.find(function (err, events) {
 		if (err) return next(err);
 
@@ -41,6 +41,7 @@ router.get('/:eventroute', function (req, res, next) {
 		if (data.immersive) {
 			req.stateparams.immersive = false;
 		}
+		req.stateparams.pagetitle = data.name;
 		res.renderState('events/event', {
 			title: data.name,
 			user: req.user,

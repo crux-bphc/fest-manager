@@ -2,6 +2,7 @@ module.exports = function () {
 
 	var appendStateFromRequest = function (state, req) {
 		// Append supported variables to state.
+		state.pagetitle = req.stateparams.pagetitle || null;
 		state.title = req.stateparams.title || {};
 		state.submenu = req.stateparams.submenu || {};
 		return state;
