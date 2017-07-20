@@ -12,6 +12,7 @@ var eventsSchema = new Schema({
 	thumbnail: String,
 	hero: String,
 	about: String,
+	venue: String,
 	contact: String,
 	startTime: Date,
 	endTime: Date,
