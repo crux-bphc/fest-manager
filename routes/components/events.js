@@ -45,6 +45,7 @@ router.get('/:eventroute', function (req, res, next) {
 			title: data.name,
 			user: req.user,
 			event: data,
+			marked: require('marked')
 		});
 	});
 });
