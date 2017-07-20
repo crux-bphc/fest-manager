@@ -21,6 +21,11 @@ var usersSchema = new Schema({
 	facebookID: String,
 	googleID: String,
 	githubID: String,
+	phone: String,
+	address: String,
+	pincode: String,
+	year: String,
+	why: String,
 	privilege: Schema.Types.Mixed
 }, {
 	timestamps: true
@@ -31,9 +36,7 @@ var model = mongoose.model('usersModels', usersSchema);
 router.put('/me/', function (req, res, next) {
 	var body = req.body;
 	var changeddata = {};
-	if (body.name) changeddata.name = body.name;
-	if (body.institute) changeddata.institute = body.institute;
-	changeddata = Object.assign(req.user, changeddata);
+	changeddata = Object.assign(req.user, req.body);
 	if (req.user._id) {
 		model.update({
 			email: req.user.email
@@ -43,7 +46,7 @@ router.put('/me/', function (req, res, next) {
 				next(err);
 				return 0;
 			}
-			req.login(changeddata, function (err) {
+			req.login(user, function (err) {
 				if (err) {
 					err.status = 500;
 					next(err);

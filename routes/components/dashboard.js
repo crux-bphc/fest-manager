@@ -21,7 +21,7 @@ var applyStateChanges = function (req) {
 };
 
 
-var getFields = function (user) {
+var getFields = function (user, isAmbassador = false) {
 	var fields = [];
 	fields.push({
 		icon: "name",
@@ -56,6 +56,64 @@ var getFields = function (user) {
 		typeahead: true,
 		none: true,
 	});
+	if(isAmbassador) {
+		fields.push({
+			name: "phone",
+			label: "Phone",
+			placeholder: "Phone",
+			editable: true,
+			type: "text",
+			required: true,
+			value: user.phone,
+			typeahead: false,
+			none: true,
+		});
+		fields.push({
+			name: "address",
+			label: "Address",
+			editable: true,
+			type: "text",
+			required: true,
+			placeholder: "Full address",
+			value: user.address,
+			typeahead: false,
+			none: true,
+		});
+		fields.push({
+			name: "pincode",
+			label: "Pincode",
+			placeholder: "Pincode",
+			editable: true,
+			type: "text",
+			required: true,
+			value: user.pincode,
+			typeahead: false,
+			none: true,
+		});
+		fields.push({
+			name: "year",
+			label: "Year",
+			placeholder: "Which year are you in?",
+			editable: true,
+			type: "select",
+			required: true,
+			options: ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'],
+			value: user.year,
+			typeahead: false,
+			none: true,
+		});
+		fields.push({
+			name: "why",
+			label: "Why you",
+			placeholder: "Tell us why you should be Campus Ambassador",
+			editable: true,
+			type: "textarea",
+			required: true,
+			value: user.why,
+			typeahead: false,
+			none: true,
+		});
+	}
 	return fields;
 };
 
@@ -81,6 +139,17 @@ router.get('/account', authenticate, function (req, res, next) {
 	};
 	req = applyStateChanges(req);
 	params.fields = getFields(req.user);
+	res.renderState('dashboard/account', params);
+});
+
+router.get('/CampusAmbassador', authenticate, function (req, res, next) {
+	req.stateparams.pagetitle = "Atmos - Campus Ambassador"
+	var params = {
+		title: 'Register for Campus Ambassador',
+		user: req.user,
+	};
+	req = applyStateChanges(req);
+	params.fields = getFields(req.user, true);
 	res.renderState('dashboard/account', params);
 });
 
