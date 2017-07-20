@@ -68,19 +68,22 @@ function formEditor(data) {
         else
             $('#field-teamSize').val("");
         if (data[0].thumbnail) {
-            globalEventID = data[0].thumbnail.split('-')[1];
             $('#image-editor-0').parent().addClass('filled');
-            $('#cropit-preview-0').css({'background-image':'url("/static/data/images/' + data[0].thumbnail + '.jpg")'});
+            $('#image-editor-0').attr('value',data[0].thumbnail);
+            $('#cropit-preview-0').css({'background-image':'url("'+data[0].thumbnail+'")'});
         }
         else {
+            $('#image-editor-0').attr('value',"");
             $('#cropit-preview-0').css({'background-image':'none'});
             $('#image-editor-0').parent().removeClass('filled');
         }
         if (data[0].hero){
+            $('#image-editor-1').attr('value',data[0].hero);
             $('#image-editor-1').parent().addClass('filled');
-            $('#cropit-preview-1').css({'background-image': 'url("/static/data/images/' + data[0].hero + '.jpg")'});
+            $('#cropit-preview-1').css({'background-image': 'url("' + data[0].hero + '")'});
         }
         else {
+            $('#image-editor-1').attr('value',"");
             $('#image-editor-1').parent().removeClass('filled');
             $('#cropit-preview-1').css({'background-image':'none'});
         }
@@ -96,9 +99,12 @@ function formEditor(data) {
         $('#field-price').val("");
         $('#field-contact').val("");
         $('#field-teamSize').val("");
+        $('#image-editor-0').parent().removeClass("filled");
+        $('#image-editor-0').attr('value',"");
         $('#cropit-preview-0').css("background-image","none");
+        $('#image-editor-1').parent().removeClass("filled");
+        $('#image-editor-1').attr('value',"");
         $('#cropit-preview-1').css("background-image","none");
-        globalEventID = Date.now();
         currentEditable = null;
     }
     $('.edit_item').removeClass('collapsed');
@@ -128,8 +134,10 @@ function submit_item() {
     else {
         url = manager.getLocation() + "/add"
     }
-    body.thumbnail = "thumb-" + globalEventID;
-    body.hero = "hero-" + globalEventID;
+    if($('#image-editor-0').attr("value") != "")
+        body.thumbnail = $('#image-editor-0').attr("value");
+    if($('#image-editor-1').attr("value") != "")
+        body.hero = $('#image-editor-1').attr("value");
     body.about = description.value();
     body.name = $('#field-title').val();
     body.tagline = $('#field-tagline').val();
