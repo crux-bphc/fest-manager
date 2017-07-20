@@ -70,7 +70,7 @@ router.get('/', authenticate, function (req, res, next) {
 			user: req.user,
 			title: "Dashboard"
 		};
-		res.renderState('dashboard', params);
+		res.renderState('dashboard/dashboard', params);
 	});
 });
 
@@ -81,7 +81,7 @@ router.get('/account', authenticate, function (req, res, next) {
 	};
 	req = applyStateChanges(req);
 	params.fields = getFields(req.user);
-	res.renderState('account', params);
+	res.renderState('dashboard/account', params);
 });
 
 router.get('/cart', authenticate, function (req, res, next) {
@@ -100,7 +100,7 @@ router.get('/cart', authenticate, function (req, res, next) {
 			user: req.user,
 			events: result
  		};
-		res.renderState('cart', params);
+		res.renderState('dashboard/cart', params);
 	});
 });
 

@@ -18,7 +18,7 @@ router.get('/', authenticate, elevate, function (req, res, next) {
 			if (err) {
 				return next(err);
 			}
-			res.renderState('portals_home', {
+			res.renderState('portals/home', {
 				bodies: items,
 				user: req.user,
 				title: 'Portals Home'
@@ -187,7 +187,7 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 				error.status = 404;
 				return next(error);
 			}
-			return res.renderState('portal', {
+			return res.renderState('portals/portal', {
 				user: req.user,
 				title: body.name,
 				items: items,
