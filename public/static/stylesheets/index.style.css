@@ -119,7 +119,12 @@ input[type = "file"] {
 .navbar .logo {
     font-size: 1.25em;
     font-weight: 600;
+    display: inline-flex;
+    align-items: center;
     font-family: 'Montserrat', sans-serif;
+}
+.navbar .logo img {
+    height:1.25em;
 }
 
 .navbar .controls {
