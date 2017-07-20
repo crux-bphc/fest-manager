@@ -60,6 +60,7 @@ var manager = function () {
 				}, 500);
 				client.removeClass('loading');
 			});
+			this.navigation.setTitle(data.state);
 			this.navigation.generateSubMenu(data.state);
 			this.main.initialize();
 			this.main.stageEventHandlers();
@@ -90,6 +91,15 @@ var manager = function () {
 				}
 			});
 		});
+	}
+
+	client.navigation.setTitle = function (state) {
+		var title = "Atmos"; // TODO remove the hardcoded fest name.
+		if (state.pagetitle) {
+			// title = state.pagetitle + " - " + title;
+			title = state.pagetitle;
+		}
+		document.title = title;
 	}
 
 	client.navigation.generateSubMenu = function (state) {

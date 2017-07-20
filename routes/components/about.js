@@ -31,6 +31,7 @@ var applyStateChanges = function (req) {
 };
 
 router.get('/', function (req, res, next) {
+	req.stateparams.pagetitle = 'About';
 	req = applyStateChanges(req);
 	res.renderState('about/home', {
 		title: 'About Atmos',
@@ -39,6 +40,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/contact', function (req, res, next) {
+	req.stateparams.pagetitle = 'Contact';
 	req = applyStateChanges(req);
 	res.renderState('about/contact', {
 		title: 'Get in Touch',
@@ -47,6 +49,7 @@ router.get('/contact', function (req, res, next) {
 });
 
 router.get('/map', function (req, res, next) {
+	req.stateparams.pagetitle = 'Reach';
 	req = applyStateChanges(req);
 	res.renderState('about/map', {
 		title: 'How to Reach',
@@ -55,6 +58,7 @@ router.get('/map', function (req, res, next) {
 });
 
 router.get('/history', function (req, res, next) {
+	req.stateparams.pagetitle = 'History';
 	req = applyStateChanges(req);
 	res.renderState('about/history', {
 		title: 'History of Atmos',

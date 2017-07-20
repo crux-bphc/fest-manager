@@ -27,41 +27,46 @@ var applyStateChanges = function (req) {
 };
 
 router.get('/', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBits';
 	req = applyStateChanges(req);
 	res.renderState('custom/pybits/home', {
-		title: 'PyBITS',
+		title: 'PyBits',
 		user: req.user,
 	});
 });
 
 router.get('/talks', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBits Talks';
 	req = applyStateChanges(req);
 	res.renderState('custom/pybits/talks', {
-		title: 'PyBITS Talks',
+		title: 'PyBits Talks',
 		user: req.user,
 	});
 });
 
 router.get('/sprints', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBits Sprints';
 	req = applyStateChanges(req);
 	res.renderState('custom/pybits/sprints', {
-		title: 'PyBITS Sprints',
+		title: 'PyBits Sprints',
 		user: req.user,
 	});
 });
 
 router.get('/workshops', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBits Workshops';
 	req = applyStateChanges(req);
 	res.renderState('custom/pybits/workshops', {
-		title: 'PyBITS Workshops',
+		title: 'PyBits Workshops',
 		user: req.user,
 	});
 });
 
 router.get('/2016', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBits 2016';
 	req = applyStateChanges(req);
 	res.renderState('custom/pybits/2016', {
-		title: 'PyBITS 2016',
+		title: 'PyBits 2016',
 		user: req.user,
 	});
 });
