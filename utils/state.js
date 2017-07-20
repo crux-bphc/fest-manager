@@ -44,7 +44,7 @@ module.exports = function () {
 	};
 
 	var appendSidebarState = function (state) {
-		var items = ['dashboard', 'portals', 'events', 'home', 'contact'];
+		var items = ['dashboard', 'portals', 'events', 'home', 'about'];
 		var sidebar = {};
 		sidebar.visible = !state.isImmersive;
 		sidebar.menu = {};
