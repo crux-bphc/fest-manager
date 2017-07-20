@@ -34,6 +34,7 @@ var manager = function () {
 		if (route.indexOf('/components') == -1)
 			route = '/components' + route;
 		if (route == this.state.location && !reload) return;
+		client.oldroute = this.state.location;
 		client.addClass('loading');
 		$.ajax({
 			type: 'GET',
@@ -138,10 +139,11 @@ var manager = function () {
 				$(".sidebar").focus();
 				client.main.stageEventHandlers();
 			}
-			$(".navbar .icon-close").click(function () {
-				window.history.back();
-			});
-		})
+		});
+		$(".navbar .icon-close").click(function () {
+			var routeto = client.oldroute || '/about';
+			client.route(routeto);
+		});
 	}
 
 	window.addEventListener('popstate', function (e) {

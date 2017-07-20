@@ -1,5 +1,6 @@
 .immersive-wrapper { 
 	position:absolute;
+	background-color: black; /*immersive mode starts with this color*/
 	background-image: url("https://forum.unity3d.com/attachments/screen02-jpg.59406/");
 	background-position: 100% 0%;
 	background-size: 120%;
