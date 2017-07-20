@@ -103,24 +103,6 @@ var getFields = function (event) {
 		group: 1,
 	});
 	fields.push({
-		name: "starttime",
-		placeholder: "Start Time",
-		editable: true,
-		value: event ? event.startTime : "",
-		type: "text",
-		none: true,
-		group: 2,
-	});
-	fields.push({
-		name: "endtime",
-		placeholder: "End Time",
-		editable: true,
-		type: "text",
-		none: true,
-		value: event ? event.endTime : "",
-		group: 2,
-	});
-	fields.push({
 		name: "venue",
 		placeholder: "Venue",
 		editable: true,
@@ -148,12 +130,39 @@ var getFields = function (event) {
 		group: 2,
 	});
 	fields.push({
+		name: "route",
+		placeholder: "Route",
+		editable: true,
+		value: event ? event.route : "",
+		type: "text",
+		none: true,
+		group: 2,
+	});
+	fields.push({
 		name: "teamSize",
 		placeholder: "Team Size",
 		editable: true,
 		value: event ? event.teamSize : "",
 		type: "number",
 		none: true,
+		group: 2,
+	});
+	fields.push({
+		name: "starttime",
+		placeholder: "Start Time",
+		editable: true,
+		value: event ? event.startTime : "",
+		type: "text",
+		none: true,
+		group: 2,
+	});
+	fields.push({
+		name: "endtime",
+		placeholder: "End Time",
+		editable: true,
+		type: "text",
+		none: true,
+		value: event ? event.endTime : "",
 		group: 2,
 	});
 	return fields;
