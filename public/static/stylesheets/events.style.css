@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600');
 
+.section.tags {
+    line-height: 3em;
+}
+.section.tags a {
+    padding: 0em 1em;
+    color:#444;
+    margin: 2px 2px;
+    font-weight: 600;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    border-radius:4px;
+    background:#f0f0f0;
+}
+.section.tags a:hover {
+    background:#e0e0e0;
+}
+.section.tags a.active {
+    background:#c0cacf;
+}
+
 .events-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -18,7 +39,7 @@
     border-radius: 1px;
     height: 25vw;
     min-width: 20vw;
-    flex-grow: 1;
+    width: 33%;
     display: flex;
     position: relative;
     flex-direction: row;
@@ -28,6 +49,10 @@
     max-width: 100%;
     overflow: hidden;
     cursor: pointer;
+}
+
+.event-container.disabled {
+    display: none;
 }
 
 .event-container.headliner {
@@ -43,7 +68,7 @@
 }
 
 .event-container.headliner > .image {
-    background-position: 0% 25%;
+    background-position: center center;
 }
 
 .event-container > .face {
@@ -83,7 +108,7 @@
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: 100% 50%;
+    background-position: center;
     position: absolute;
     z-index: 0;
 }
@@ -201,8 +226,13 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .section.tags {
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
     .event-container {
         height: 30vw;
+        width:100%;
     }
     .event-container.headliner {
         min-width: unset;
