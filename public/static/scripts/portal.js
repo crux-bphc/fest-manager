@@ -85,7 +85,7 @@ function formEditor(data) {
             $('#cropit-preview-1').css({'background-image':'none'});
         }
     } else {
-        $('#field-description').val("");
+        description.value("");
         $('#field-title').val("");
         $('#field-tagline').val("");
         $('#field-category').val("");
@@ -96,8 +96,8 @@ function formEditor(data) {
         $('#field-price').val("");
         $('#field-contact').val("");
         $('#field-teamSize').val("");
-        $('#image-editor-1').parent().css("background-image","none");
-        $('#image-editor-1').parent().css("background-image","none");
+        $('#cropit-preview-0').css("background-image","none");
+        $('#cropit-preview-1').css("background-image","none");
         globalEventID = Date.now();
         currentEditable = null;
     }
@@ -139,7 +139,8 @@ function submit_item() {
     body.type = $('#field-type').val();
     body.venue = $('#field-venue').val();
     body.contact = $('#field-contact').val();
-    body.teamSize = Number.parseInt($('#field-teamSize').val());
+    body.price = $("#field-price").val() == "" ? 0 : Number.parseInt($('#field-price').val());
+    body.teamSize = $("#field-teamSize").val() == "" ? 1 : Number.parseInt($('#field-teamSize').val());
     $.ajax({
         method: "POST",
         url: url,
