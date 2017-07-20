@@ -74,7 +74,7 @@ app.use(function (req, res, next) {
 		var state = stateHandler.getState(req);
 		res.render(filename, options, function (err, string) {
 			// Uncomment to debug Jade Errors.
-			// console.log(err, string)
+			// console.log(err, string);
 			res.send({
 				html: string,
 				state: state,
