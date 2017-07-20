@@ -70,7 +70,7 @@ function formEditor(data) {
         if (data[0].thumbnail) {
             globalEventID = data[0].thumbnail.split('-')[1];
             $('#image-editor-0').parent().addClass('filled');
-            $('#cropit-preview-0').css({'background-image':'url("/data/images/' + data[0].thumbnail + '.jpg")'});
+            $('#cropit-preview-0').css({'background-image':'url("/static/data/images/' + data[0].thumbnail + '.jpg")'});
         }
         else {
             $('#cropit-preview-0').css({'background-image':'none'});
@@ -78,7 +78,7 @@ function formEditor(data) {
         }
         if (data[0].hero){
             $('#image-editor-1').parent().addClass('filled');
-            $('#cropit-preview-1').css({'background-image': 'url("/data/images/' + data[0].hero + '.jpg")'});
+            $('#cropit-preview-1').css({'background-image': 'url("/static/data/images/' + data[0].hero + '.jpg")'});
         }
         else {
             $('#image-editor-1').parent().removeClass('filled');
