@@ -26,12 +26,11 @@ var eventsSchema = new Schema({
 });
 
 var model = mongoose.model('eventsModel', eventsSchema);
+var eventModel = model;
+var userModel = require("./users").model;
+var teamModel = require("./teams").model;
 
 router.post('/addtocart', function (req, res, next) {
-
-	var eventModel = model;
-	var userModel = require("./users").model;
-	var teamModel = require("./teams").model;
 
 	var event_id = mongoose.Types.ObjectId(req.body.id);
 
@@ -46,6 +45,7 @@ router.post('/addtocart', function (req, res, next) {
 		}
 		if (typeof event[0] !== 'undefined') {
 			var eventTeams = event[0].teams;
+			var eventTeamSize = event[0].teamSize;
 			var team = new teamModel({
 				name: req.user.name,
 				members: [req.user._id],
@@ -97,10 +97,22 @@ router.post('/addtocart', function (req, res, next) {
 									msg: "Unable to update event model"
 								});
 							}
-							res.json({
-								status: 200,
-								msg: "Successful"
-							});
+							if(eventTeamSize > 1)
+							{
+								res.json({
+									status: 200,
+									msg: "Successful",
+									teamID: team_id,
+									maxTeamSize: eventTeamSize
+								});
+							}
+							else {
+								res.json({
+									status: 200,
+									msg: "Successful",
+									maxTeamSize: 1
+								});
+							}
 						});
 					});
 				});
@@ -110,6 +122,67 @@ router.post('/addtocart', function (req, res, next) {
 				status: 500,
 				msg: "Event Not Found"
 			});
+		}
+	});
+});
+
+router.post("/jointeam", function(req, res, next){
+
+	var team_id = mongoose.Types.ObjectId(req.body.id);
+	var user_id = req.user._id;
+
+	teamModel.find({_id: team_id}, function(err, team){
+
+		if(err)	{
+			console.log("ERROR: " + err);
+			return res.json({status: 500, msg: "Error finding team"});
+		}
+
+		if(typeof team[0] !== 'undefined') {
+			var teamMembers = team[0].members;
+			var event_id = team[0].event;
+
+			eventModel.find({_id: event_id}, function(err, event){
+				if(err) {
+					return res.json({status: 500, msg: "Error finding event"});
+				}
+
+				if(typeof event[0] !== 'undefined'){
+					var team_size = event[0].teamSize;
+					if((typeof team_size !== 'undefined') && (teamMembers.length < team_size) && (teamMembers.indexOf(user_id) == -1)){
+						
+						teamMembers.push(user_id);
+						teamModel.update({_id: team_id}, {members: teamMembers}, function(err, num){
+							if(err){
+								return res.json({status: 500, msg: "Error updating team"});
+							}
+							userModel.find({_id: user_id}, function(err, user){
+								if(err){
+									return res.json({status: 500, msg: "Error finding team"});
+								}
+								var userTeams = user[0].teams;
+								var userEvents = user[0].events;
+								userTeams.push(team_id);
+								userEvents.push(event_id);
+
+								userModel.update({_id: user_id}, {teams: userTeams, events: userEvents}, function(err, num){
+									if(err){
+										return res.json({status: 500, msg: "Error updating user model"});							
+									}
+									return res.json({status: 200, msg: "Added to team !"});
+								});
+							});
+						});
+					
+					} else {
+						return res.json({status: 400, msg: "Team full or user already in team"});
+					}
+				} else {
+					return res.json({status: 400, msg: "Event not found !"});
+				}
+			});
+		} else {
+			return res.json({status: 400, msg: "Team not found !"});
 		}
 	});
 });
