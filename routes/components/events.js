@@ -7,21 +7,11 @@ var applyStateChanges = function (req) {
 		text: 'Events',
 		route: '/events',
 	};
-	req.stateparams.submenu = [{
-			label: "Competitions"
-		},
-		{
-			label: "Workshops"
-		},
-		{
-			label: "Proshows"
-		}
-	];
 	return req;
 };
 
 router.get('/', function (req, res, next) {
-	// req = applyStateChanges(req);
+	req = applyStateChanges(req);
 
 	eventsService.find(function (err, events) {
 		if (err) return next(err);
@@ -43,7 +33,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:eventroute', function (req, res, next) {
-	// req = applyStateChanges(req);
+	req = applyStateChanges(req);
 	eventsService.findOne({
 		route: req.params.eventroute,
 	}, function (err, data) {
