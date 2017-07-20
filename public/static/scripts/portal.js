@@ -63,6 +63,10 @@ function formEditor(data) {
             $('#field-contact').val(data[0].contact);
         else
             $('#field-contact').val("");
+        if (data[0].route)
+            $('#field-route').val(data[0].route);
+        else
+            $('#field-route').val("");
         if (data[0].teamSize != null)
             $('#field-teamSize').val(data[0].teamSize);
         else
@@ -98,6 +102,7 @@ function formEditor(data) {
         $('#field-endtime').val("");
         $('#field-price').val("");
         $('#field-contact').val("");
+        $('#field-route').val("");
         $('#field-teamSize').val("");
         $('#image-editor-0').parent().removeClass("filled");
         $('#image-editor-0').attr('value',"");
@@ -147,6 +152,7 @@ function submit_item() {
     body.type = $('#field-type').val();
     body.venue = $('#field-venue').val();
     body.contact = $('#field-contact').val();
+    body.route = $('#field-route').val();
     body.price = $("#field-price").val() == "" ? 0 : Number.parseInt($('#field-price').val());
     body.teamSize = $("#field-teamSize").val() == "" ? 1 : Number.parseInt($('#field-teamSize').val());
     $.ajax({
