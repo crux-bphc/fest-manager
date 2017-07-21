@@ -71,13 +71,31 @@ let clientCheckpoint = function (req, res, next) {
 app.use(function (req, res, next) {
 	req.stateparams = {};
 	res.renderState = function (filename, options) {
-		var state = stateHandler.getState(req);
-		res.render(filename, options, function (err, string) {
-			// Uncomment to debug Jade Errors.
-			// console.log(err, string);
-			res.send({
-				html: string,
-				state: state,
+		var userModel = require('./routes/api/services/users').model;
+		userModel.findOne({
+			_id: req.user._id
+		}, function(err, user) {
+			if(err) {
+				console.log("Failed at relogin");
+				res.json({status: 500, msg: "Internal server error"});
+			}
+			req.login(user, function(err) {
+				if(err) {
+					console.log("Failed at relogin");
+					res.json({status: 500, msg: "Internal server error"});
+				}
+				if(options.user) options.user = Object.assign(options.user, user);
+				console.log(user);
+				var state = stateHandler.getState(req);
+
+				res.render(filename, options, function (err, string) {
+					// Uncomment to debug Jade Errors.
+					// console.log(err, string);
+					res.send({
+						html: string,
+						state: state,
+					});
+				});
 			});
 		});
 	};
