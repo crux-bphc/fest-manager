@@ -149,44 +149,52 @@ router.post("/jointeam", function(req, res, next){
 			var teamMembers = team[0].members;
 			var event_id = team[0].event;
 
-			eventModel.find({_id: event_id}, function(err, event){
-				if(err) {
-					return res.json({status: 500, msg: "Error finding event"});
+			userModel.find({_id: user_id, events: {$all: [event_id]}}, function(err, userForEvents){
+				if(err){
+					return res.json({status: 500, msg: "Error acccessing user models"});
 				}
+				if(typeof userForEvents[0] !== "undefined"){
+					return res.json({status: 500, msg: "You are already enroled in this event"});
+				}
+				eventModel.find({_id: event_id}, function(err, event){
+					if(err) {
+						return res.json({status: 500, msg: "Error finding event"});
+					}
 
-				if(typeof event[0] !== 'undefined'){
-					var team_size = event[0].teamSize;
-					if((typeof team_size !== 'undefined') && (teamMembers.length < team_size) && (teamMembers.indexOf(user_id) == -1)){
-						
-						teamMembers.push(user_id);
-						teamModel.update({_id: team_id}, {members: teamMembers}, function(err, num){
-							if(err){
-								return res.json({status: 500, msg: "Error updating team"});
-							}
-							userModel.find({_id: user_id}, function(err, user){
+					if(typeof event[0] !== 'undefined'){
+						var team_size = event[0].teamSize;
+						if((typeof team_size !== 'undefined') && (teamMembers.length < team_size) && (teamMembers.indexOf(user_id) == -1)){
+							
+							teamMembers.push(user_id);
+							teamModel.update({_id: team_id}, {members: teamMembers}, function(err, num){
 								if(err){
-									return res.json({status: 500, msg: "Error finding team"});
+									return res.json({status: 500, msg: "Error updating team"});
 								}
-								var userTeams = user[0].teams;
-								var userEvents = user[0].events;
-								userTeams.push(team_id);
-								userEvents.push(event_id);
-
-								userModel.update({_id: user_id}, {teams: userTeams, events: userEvents}, function(err, num){
+								userModel.find({_id: user_id}, function(err, user){
 									if(err){
-										return res.json({status: 500, msg: "Error updating user model"});							
+										return res.json({status: 500, msg: "Error finding team"});
 									}
-									return res.json({status: 200, msg: "Added to team !"});
+									var userTeams = user[0].teams;
+									var userEvents = user[0].events;
+									userTeams.push(team_id);
+									userEvents.push(event_id);
+
+									userModel.update({_id: user_id}, {teams: userTeams, events: userEvents}, function(err, num){
+										if(err){
+											return res.json({status: 500, msg: "Error updating user model"});							
+										}
+										return res.json({status: 200, msg: "Added to team !"});
+									});
 								});
 							});
-						});
-					
+						
+						} else {
+							return res.json({status: 400, msg: "Team full or user already in team"});
+						}
 					} else {
-						return res.json({status: 400, msg: "Team full or user already in team"});
+						return res.json({status: 400, msg: "Event not found !"});
 					}
-				} else {
-					return res.json({status: 400, msg: "Event not found !"});
-				}
+				});
 			});
 		} else {
 			return res.json({status: 400, msg: "Team not found !"});
