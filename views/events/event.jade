@@ -8,9 +8,13 @@ div.section.open-event
         div.top
             div.title= event.name
             div.remnant
-            div.add_to_cart
+            div(class="add_to_cart" id="#{event._id}")
                 i.icon-add_shopping_cart
                 span Add to cart
+            if(event.teamSize > 1)
+                div(class="join_team")
+                    i.icon-add_shopping_cart
+                    span Join Team
         div.category= event.category
         div.details
             if(event.startTime)
