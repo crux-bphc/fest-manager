@@ -15,7 +15,22 @@ $(document).ready(function () {
 			}
 		});
 	});
+	$('#about-close-button').click(function() {
+        $(".latent").toggleClass('active');
+        $("#about-open-button").show();
+        $("form").removeClass('inactive');
+        $("div.content").removeClass('active');
+    });
+    $('#about-open-button').click(function() {
+        $(".latent").toggleClass('active');
+        $("form").addClass('inactive');
+        $("#about-open-button").hide();
+        $("div.content").addClass('active');
+    });
 	$("#submit-button").click(function () {
+        var isAmbassador = false;
+        if($('#field-why').val() != "" && $('#field-why').val()) isAmbassador = true;
+        console.log(isAmbassador);
 		$.ajax({
 			type: "PUT",
 			url: "/api/users/me",
@@ -30,6 +45,7 @@ $(document).ready(function () {
 				pincode: $('#field-pincode').val() || "",
 				year: $('#field-year').val() || "",
 				why: $('#field-why').val() || "",
+                isAmbassador: isAmbassador
 			}
 		}).done(function (data, textStatus, req) {
 			console.log(req);
@@ -37,7 +53,7 @@ $(document).ready(function () {
 				manager.route('/dashboard');
 			}
 		}).fail(function(err) {
-			console.log("Failed to do so");
+			alert("Failed to submit form");
 		});
 	})
 });

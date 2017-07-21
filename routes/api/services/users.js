@@ -21,6 +21,7 @@ var usersSchema = new Schema({
 	facebookID: String,
 	googleID: String,
 	githubID: String,
+	isAmbassador: {type: Boolean, default: false},
 	phone: String,
 	address: String,
 	pincode: String,
@@ -43,19 +44,14 @@ router.put('/me/', function (req, res, next) {
 		}, changeddata, function (err, user) {
 			if (err) {
 				err.status = 500;
+				console.log("Failed at update");
 				next(err);
 				return 0;
 			}
-			req.login(user, function (err) {
-				if (err) {
-					err.status = 500;
-					next(err);
-					return 0;
-				}
-				res.send("Success");
-			});
+			res.send("Success");
 		});
 	} else {
+		console.log("Forbidden");
 		var err = new Error("Forbidden");
 		err.status = 403;
 		return next(err);

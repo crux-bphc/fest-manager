@@ -1,7 +1,6 @@
 link(href="/static/stylesheets/dashboard.style.css" rel="stylesheet")
 div.section.header
 	h1.title Overview
-	div.stretch
 
 div.section.body
 	div.left
@@ -31,3 +30,10 @@ div.section.body
 	div.separate
 	div.right
 		img.imgQR(src="#{user.qrData}")
+		div.ca
+			if user.isAmbassador
+				div.ambassador
+					i.icon-verified_user
+					span Campus Ambassador
+			else
+				div.button(_route="/dashboard/CampusAmbassador") Become a Campus Ambassador
