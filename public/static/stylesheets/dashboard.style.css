@@ -9,6 +9,7 @@
 .section.body > div {
 	display: inline-block;
 	vertical-align: top;
+	position: relative;
 	margin:1em;
 	width:15em;
 }
@@ -39,10 +40,45 @@
 	border-radius: 5px;
 	border:5px solid #f0f0f0;
 }
+div.ambassador {
+	color:#50EEAA;
+	line-height: 3em;
+	padding:0em 1em;
+	margin-top:1em;
+	position:absolute;
+	top:100%;
+	box-sizing: border-box;
+	background:#f0f0f0;
+	width: 100%;
+	text-align: center;
+}
+div.ambassador > span {
+	font-weight: 600;
+	margin-left: 5px;
+}
 div.details {
 	padding-top:1em;
 	position:absolute;
 	top: 100%;
+}
+div.ca .button {
+	position:absolute;
+	top:100%;
+	margin-top:1em;
+	line-height: 3em;
+	padding:0 1em;
+	border-radius:4px;
+	color:#444;
+	white-space: nowrap;
+	display: inline-block;
+	font-weight: 600;
+	background:#f0f0f0;
+}
+div.ca .button:hover {
+	background:#e0e0e0;
+}
+div.ca .content .button {
+	position: relative;
 }
 
 .user {
@@ -60,7 +96,7 @@ div.details {
 	display: block;
 	font-size: 1em;
 	width:100%;
-	white-space: pre-wrap;
+	white-space: nowrap;
 }
 .user.email {
 	font-weight:600;
@@ -74,8 +110,8 @@ div.details {
 	.section.body div.separate {
 		display: none;
 	}
-	.section.body div.left {
-		display: flex;
+	.section.body div.right {
+		margin-left: 0em;
 	}
 	.section.body > div {
 		width:95%;
@@ -84,8 +120,19 @@ div.details {
 	.section.body .imgQR {
 		width:80%;
 	}
+	.section.body div.ca,
+	.section.body div.ca .button,
+	.section.body div.ca .content {
+		position:relative;
+	}
+
 	.section.body > div.left {
+		display: flex;
 		flex-direction: row;
+		margin-right: 0;
+	    border-top: 1px solid rgba(0,0,0,0.1);
+	    padding-top: 1em;
+	    margin-top: 0.5em;
 	}
 	.section.body .imgUser {
 		width:6em;
@@ -99,5 +146,13 @@ div.details {
 		padding-left: 1em;
 		text-align: left;
 		width: 15em;
+	}
+	.section.body .details .user.institute {
+		white-space: pre-wrap;
+	}
+	div.ambassador {
+		position:relative;
+		width:70%;
+		margin-left:15%;
 	}
 }

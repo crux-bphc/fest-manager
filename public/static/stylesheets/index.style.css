@@ -780,6 +780,9 @@ form .image .image-editor .resize {
         padding:0;
         margin-top:0px;
     }
+    form .field-container {
+        width:100%;
+    }
 }
 
 @media only screen and (min-width: width: 1400px) {

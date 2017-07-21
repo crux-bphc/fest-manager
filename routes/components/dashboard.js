@@ -15,6 +15,10 @@ var applyStateChanges = function (req) {
 		{
 			route: "/dashboard/cart",
 			label: "Cart"
+		},
+		{
+			route: "/dashboard/CampusAmbassador",
+			label: "Campus Ambassador"
 		}
 	];
 	return req;
@@ -143,14 +147,14 @@ router.get('/account', authenticate, function (req, res, next) {
 });
 
 router.get('/CampusAmbassador', authenticate, function (req, res, next) {
-	req.stateparams.pagetitle = "Atmos - Campus Ambassador"
+	req.stateparams.pagetitle = "Atmos - Campus Ambassador";
 	var params = {
 		title: 'Register for Campus Ambassador',
 		user: req.user,
 	};
 	req = applyStateChanges(req);
 	params.fields = getFields(req.user, true);
-	res.renderState('dashboard/account', params);
+	res.renderState('dashboard/ambassador', params);
 });
 
 router.get('/cart', authenticate, function (req, res, next) {
