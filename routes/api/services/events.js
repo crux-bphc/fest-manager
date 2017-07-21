@@ -34,7 +34,11 @@ router.post('/addtocart', function (req, res, next) {
 
 	var event_id = mongoose.Types.ObjectId(req.body.id);
 
-	eventModel.find({
+	userModel.find({_id: req.user._id, events: {$all: [event_id]}}, function(err, result){
+			if(typeof result[0] !== "undefined") {
+				return res.json({status: 500, msg: "Event already in cart"});
+			}
+		eventModel.find({
 		_id: event_id
 	}, function (err, event) {
 		if (err) {
@@ -124,6 +128,9 @@ router.post('/addtocart', function (req, res, next) {
 			});
 		}
 	});
+	});
+
+	
 });
 
 router.post("/jointeam", function(req, res, next){
