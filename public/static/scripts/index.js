@@ -29,6 +29,10 @@ var manager = function () {
 	}
 	client.route = function (route, status = true, reload = false) {
 		$('.window > .remnant').removeClass('shift_to_expose_menu');
+		if(route.startsWith("http")) {
+			window.open(route, '_blank');
+			return;
+		}
 		if (route[0] != '/')
 			route = '/' + route;
 		if (route.indexOf('/components') == -1)
