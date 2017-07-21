@@ -17,7 +17,7 @@ mixin fieldMixin(data)
 						each option in data.options
 							option(value=option)= option
 				else if data.type == "textarea"
-					textarea(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value rows="4")
+					textarea(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value rows=data.rows)
 				else if data.type == "image"
 					+imgUpload({id: data.id, width: data.width, height: data.height, file_name: "testabcd", name: data.name})
 				else

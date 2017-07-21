@@ -53,7 +53,13 @@ $(document).ready(function () {
 				manager.route('/dashboard');
 			}
 		}).fail(function(err) {
-			alert("Failed to submit form");
+			swal({
+                title: "Registration Failed",
+                text: "Something went wrong. Please try again.",
+                type: "error",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#202729"
+            });
 		});
 	})
 });

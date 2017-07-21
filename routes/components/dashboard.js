@@ -76,7 +76,8 @@ var getFields = function (user, isAmbassador = false) {
 			name: "address",
 			label: "Address",
 			editable: true,
-			type: "text",
+			type: "textarea",
+			rows: "2",
 			required: true,
 			placeholder: "Full address",
 			value: user.address,
@@ -109,9 +110,10 @@ var getFields = function (user, isAmbassador = false) {
 		fields.push({
 			name: "why",
 			label: "Why you",
-			placeholder: "Tell us why you should be Campus Ambassador",
+			placeholder: "Why should you be Campus Ambassador",
 			editable: true,
 			type: "textarea",
+			rows: 3,
 			required: true,
 			value: user.why,
 			typeahead: false,
@@ -147,7 +149,7 @@ router.get('/account', authenticate, function (req, res, next) {
 });
 
 router.get('/CampusAmbassador', authenticate, function (req, res, next) {
-	req.stateparams.pagetitle = "Atmos - Campus Ambassador";
+	req.stateparams.pagetitle = "Campus Ambassador";
 	var params = {
 		title: 'Register for Campus Ambassador',
 		user: req.user,

@@ -696,6 +696,16 @@ form .image .image-editor .resize {
     box-sizing: border-box;
     background: transparent;
 }
+.field-container > .remnant > textarea,
+.field-container > .remnant > .CodeMirror {
+    line-height: 1.5em;
+}
+form .field-container > .remnant > textarea {
+    max-height: 10em;
+    resize:none;
+    box-sizing: border-box;
+    padding:1em 1em;
+}
 
 .field-container > .remnant > textarea,.field-container > .remnant > .CodeMirror {
     height: 20em;
