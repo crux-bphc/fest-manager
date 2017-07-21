@@ -38,6 +38,7 @@ var getFields = function (event) {
 		editable: true,
 		type: "textarea",
 		required: true,
+		rows: 8,
 		value: event ? event.description : "",
 		typeahead: false,
 		none: true,
