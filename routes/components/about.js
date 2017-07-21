@@ -23,8 +23,8 @@ var applyStateChanges = function (req) {
 		// 	route: "/about/credits",
 		// },
 		{
-			label: "History of Atmos",
-			route: "/about/history",
+			label: "ATMOS 2016",
+			route: "https://bits-atmos.org/2016",
 		},
 	];
 	return req;
