@@ -2,15 +2,23 @@ doctype html
 html
 	head
 		meta(name="viewport" content="width=device-width, initial-scale=1")
-		link(href="/stylesheets/index.style.css" rel="stylesheet")
-		link(href="/manifest.json" rel="manifest")
-		link(href="/fonts/Proxima Nova/font.css" rel="stylesheet")
-		link(href="/images/logo.png" rel="icon")
+		meta(name='Title', content='ATMOS, Technical Fest of Bits Pilani Hyderabad Campus')
+		meta(name='Keywords', content='Atmos, bphc, bits, technical')
+		meta(name='Description', content='ATMOS is the annual techno-management fest of Birla Institute of Technology and Science, Pilani – Hyderabad Campus. Right from its inception in 2012, it ...')
+		meta(name='Language', content='English')
+		meta(name='Robots', content='INDEX,FOLLOW')
+		link(href="/static/stylesheets/index.style.css" rel="stylesheet")
+		link(href="/static/manifest.json" rel="manifest")
+		link(href="/static/fonts/Proxima Nova/font.css" rel="stylesheet")
+		link(href="/static/images/favicon.png" rel="icon")
 		link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet")
 		//- script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 		script( src="https://use.fontawesome.com/1523c943cd.js")
-		script(type="text/javascript" src="/scripts/jquery.min.js")
-		script(type="text/javascript" src="/scripts/deep-diff-0.3.8.min.js")
+		script(type="text/javascript" src="/static/scripts/jquery.min.js")
+		script(type="text/javascript" src="/static/scripts/deep-diff-0.3.8.min.js")
+		script(src="/static/scripts/sweetalert.min.js" type="text/javascript")
+		link(href="/static/stylesheets/sweetalert.css" rel="stylesheet")
+		title Atmos
 
 body
 	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
@@ -18,7 +26,8 @@ body
 			div.wrapper
 				div#menu.button(tabindex=1)
 					div.icon-menu
-				span.logo(_route="/") atmos ~
+				span.logo(_route="/")
+					img(src="/static/images/logo.png")
 				div.controls
 					div.button.user(_triggers="navbar/avatar=visible" _route="/dashboard")
 						div
@@ -30,9 +39,9 @@ body
 								else if user.githubID
 									img(src="https://avatars1.githubusercontent.com/u/" + user.githubID)
 								else
-									img(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
+									img(src="https://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
 							else
-								img(src="http://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
+								img(src="https://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
 					div.button(_route="/logout" _triggers="navbar/logout=visible")
 						div.icon-power_settings_new
 					div.button(_route="/login" _triggers="navbar/login=visible")
@@ -57,4 +66,4 @@ body
 				div.wrapper.face
 				div.wrapper.tray
 
-script(type="text/javascript" src="/scripts/index.js")
+script(type="text/javascript" src="/static/scripts/index.js")

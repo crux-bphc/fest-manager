@@ -1,0 +1,158 @@
+.section.header .stretch {
+	height: 2em;
+}
+.section.body {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.section.body > div {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	margin:1em;
+	width:15em;
+}
+.section.body > div.left {
+	margin-left: 0em;
+}
+.section.body > div.right {
+	margin-right: 0em;
+}
+
+.imgQR{
+	position:relative;
+	width: 15em;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border:1px solid #f0f0f0;
+}
+.section.body div.separate {
+	width: 1px;
+	display: inline-block;
+	height: 10em;
+	background: #f0f0f0;
+}
+.imgUser{
+	width: 15em;
+	display: block;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border:5px solid #f0f0f0;
+}
+div.ambassador {
+	color:#50EEAA;
+	line-height: 3em;
+	padding:0em 1em;
+	margin-top:1em;
+	position:absolute;
+	top:100%;
+	box-sizing: border-box;
+	background:#f0f0f0;
+	width: 100%;
+	text-align: center;
+}
+div.ambassador > span {
+	font-weight: 600;
+	margin-left: 5px;
+}
+div.details {
+	padding-top:1em;
+	position:absolute;
+	top: 100%;
+}
+div.ca .button {
+	position:absolute;
+	top:100%;
+	margin-top:1em;
+	line-height: 3em;
+	padding:0 1em;
+	border-radius:4px;
+	color:#444;
+	white-space: nowrap;
+	display: inline-block;
+	font-weight: 600;
+	background:#f0f0f0;
+}
+div.ca .button:hover {
+	background:#e0e0e0;
+}
+div.ca .content .button {
+	position: relative;
+}
+
+.user {
+	line-height: 1.5;
+}
+
+.user.name{
+	color: black;
+	display: block;
+	font-size: 1.5em;
+	font-weight:500;
+}
+.user.email,.user.institute{
+	color: #777;
+	display: block;
+	font-size: 1em;
+	width:100%;
+	white-space: nowrap;
+}
+.user.email {
+	font-weight:600;
+	color: #777;
+}
+
+@media only screen and (max-width: 600px) {
+	.section.body {
+		flex-direction: column-reverse;
+	}
+	.section.body div.separate {
+		display: none;
+	}
+	.section.body div.right {
+		margin-left: 0em;
+	}
+	.section.body > div {
+		width:95%;
+		text-align: center;
+	}
+	.section.body .imgQR {
+		width:80%;
+	}
+	.section.body div.ca,
+	.section.body div.ca .button,
+	.section.body div.ca .content {
+		position:relative;
+	}
+
+	.section.body > div.left {
+		display: flex;
+		flex-direction: row;
+		margin-right: 0;
+	    border-top: 1px solid rgba(0,0,0,0.1);
+	    padding-top: 1em;
+	    margin-top: 0.5em;
+	}
+	.section.body .imgUser {
+		width:6em;
+		height:6em;
+		display: inline-block;
+	}
+	.section.body .details {
+		display: inline-block;
+		position:relative;
+		padding-top:0;
+		padding-left: 1em;
+		text-align: left;
+		width: 15em;
+	}
+	.section.body .details .user.institute {
+		white-space: pre-wrap;
+	}
+	div.ambassador {
+		position:relative;
+		width:70%;
+		margin-left:15%;
+	}
+}

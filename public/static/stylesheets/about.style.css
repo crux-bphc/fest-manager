@@ -1,0 +1,20 @@
+div.section.body p {
+    border-left:2px solid #ccc;
+    padding: 1em;
+    line-height: 1.2;
+    font-weight: 400;
+    font-size: 1.2em;
+    color:#666;
+    max-width: 60%;
+}
+@media only screen and (max-width: 600px) {
+    div.section.body p {
+        padding: 0em;
+        padding-top: 1.5em;
+        border-top:2px solid #ccc;
+        max-width: 100%;
+        text-align: justify;
+        border-left: 0em;
+    }
+
+}

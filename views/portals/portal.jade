@@ -1,0 +1,39 @@
+include ../mixins/field
+include ../mixins/form
+
+link(href="/static/stylesheets/portals.style.css" rel="stylesheet")
+script(src="/static/scripts/image-upload-mixin.js")
+script(type="text/javascript" src="/static/scripts/jquery.uploadPreview.min.js")
+link(rel="stylesheet" href="/static/stylesheets/simplemde.min.css")
+script(src="/static/scripts/simplemde.min.js")
+i.meta(_routed_at="/portals")
+div#_portal
+	div.section.header
+		h1.title= title
+		div.stretch
+			div.remnant
+				ul.controls
+					li.icon-add(onclick="formEditor()")
+					li.icon-autorenew(onclick="manager.refresh()")
+					li.icon-delete.disabled
+					li.latent.icon-check
+					li.latent.icon-close(onclick="closeEditor()")
+			- var search = {icon: 'search', placeholder: 'Search', editable: true};
+			+fieldMixin(search)
+	div.section.table
+		div.edit_item.collapsed
+			- var form  = {method: "POST", action: "/api/events", fields: fields, type: "portal"}
+			+formMixin(form)
+		div.item.head
+			div.title Name
+			div.teams Teams
+			div.edit Edit
+		each item in items
+			div.item
+				div.title= item.name
+				div.teams= item.teams.length
+				div.edit.button(onclick="edit_item('#{item._id}')")
+					i.icon-mode_edit
+	if !items
+		span.underwhelmingMessage Nothing to see here. Add new records.
+script(src="/static/scripts/portal.js")

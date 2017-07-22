@@ -1,0 +1,12 @@
+include ../mixins/form
+
+div.section.header
+	h1= title
+	div.stretch
+			div.remnant
+				ul.controls
+					li.icon-check#submit-button(tooltip="Save")
+					li.icon-close#cancel-button(_route="/dashboard" tooltip="Cancel")
+- var form = { fields: fields, method: "PUT", action: "/api/users/me" };
++formMixin(form)
+script(src="/static/scripts/register.js")

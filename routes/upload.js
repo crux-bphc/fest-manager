@@ -9,7 +9,7 @@ router.post('/base64img', function (req, res, next) {
 
 	console.log("Post params " + file_name);
 
-	base64Img.img(data, './public/data/images', file_name, function (err, file_path) {
+	base64Img.img(data, './public/static/data/images', file_name, function (err, file_path) {
 		console.log("Uploading...");
 		if (err) {
 			console.log("ERROR: " + err);
@@ -20,7 +20,7 @@ router.post('/base64img', function (req, res, next) {
 		} else {
 			res.json({
 				status: "Success",
-				path: file_path
+				path: file_path.replace('public',"")
 			});
 		}
 	});

@@ -3,6 +3,7 @@ var router = express.Router();
 var userService = require('../api/services/users').model;
 
 router.get('/', function (req, res, next) {
+	req.stateparams.pagetitle = 'Login';
 	var params = {
 		title: 'Login to Atmos 2017',
 		methods: {

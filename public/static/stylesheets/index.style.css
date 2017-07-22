@@ -1,0 +1,815 @@
+@import url('/static/fonts/icomoon/font.css');
+
+/* entypo */
+
+[class*="icon-"]:before {
+    font-family: 'icomoon', sans-serif;
+}
+[tabindex] {
+    outline:none;
+}
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Proxima Nova', sans-serif;
+}
+
+input[type = "file"] {
+    display:none;
+}
+
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for window and everything inside
+ ***************************************************************************************
+ ***************************************************************************************/
+
+.window {
+    height: 90vh;
+    width: 80vw;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    /*transition: all 0.5s cubic-bezier(0.5, 0.1, 0, 1);*/
+    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    background: #202729;
+    font-size: 0.9em;
+    transition: background 0.5s;
+}
+.window.immersive {
+    /*background:transparent;*/
+    transition:background 0s 0.6s;
+}
+
+.window.fullsize {
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0px;
+}
+
+.window [_route] {
+    cursor: pointer;
+}
+
+.window .meta {
+    display: none;
+}
+
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for navbar and everything inside
+ ***************************************************************************************
+ ***************************************************************************************/
+
+/*
+ * TODO: Refactor .navbar to .navbar
+ */
+
+.navbar {
+    height: 4.5vw;
+    min-height: 60px;
+    max-height: 80px;
+    width: 100%;
+    margin-top:-4.5vw;
+    position: relative;
+    box-shadow:none;
+    transition: margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
+}
+
+.navbar > .wrapper {
+    padding: 0px 2em;
+    display: flex;
+    height: 4.5vw;
+    top:0;
+    left: 0;
+    box-sizing: border-box;
+    min-height: 60px;
+    max-height: 80px;
+    width: 100%;
+    align-items: center;
+    color: white;
+    padding-right: 0;
+    position:fixed;
+}
+
+.navbar.visible {
+    margin-top:0;
+    box-shadow: 0px 2px 0px 0px #2eb398;
+    transition:margin-top 0.3s, box-shadow 0.1s 0.3s;
+
+}
+
+.navbar .button.close {
+    font-size: 2em;
+    color:white;
+    background:none !important;
+    opacity: 0.9;
+}
+
+.navbar .logo {
+    font-size: 1.25em;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.navbar .logo img {
+    height:1.25em;
+}
+
+.navbar .controls {
+    font-size: 1em;
+    display: flex;
+    flex-grow: 1;
+    color: #a5a8a9;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.navbar .button {
+    width: 4.5vw;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    opacity: 0.7;
+    display: none;
+    transition: all 0.2s ease-out;
+}
+
+.navbar .button.visible {
+    display: flex;
+}
+
+#menu {
+    font-size: 1.25em;
+    justify-content: flex-start;
+    width:1.5em;
+    pointer-events: none;
+    opacity: 0;
+    margin-left: -1.5em;
+    display: flex;
+}
+
+.window.immersive #menu {
+    opacity: 1;
+    margin-left: 0;
+    pointer-events: all;
+}
+
+.window.immersive .navbar {
+    z-index: +9999;
+}
+
+.navbar .controls > .button {
+
+    background: #2b3537;
+    min-width: 60px;
+}
+
+.navbar .controls > .button > div {
+    transition: transform 0.2s ease-out;
+}
+
+.navbar .controls > .button:active > div {
+    transform: scale(0.9);
+}
+
+.navbar .controls > .button.user {
+    background: transparent !important;
+    opacity: 1;
+}
+
+.navbar .controls > .button:hover {
+    opacity: 1;
+}
+
+.navbar .controls > .button.user > div {
+    height: 2.2em;
+    width: 2.2em;
+    position: relative;
+}
+
+.navbar .controls > .button.user > div > img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for remnant. Whatever's left after navbar.
+ ***************************************************************************************
+ ***************************************************************************************/
+
+.remnant {
+    flex-grow: 1;
+}
+
+.window > .remnant {
+    display: flex;
+    flex-direction: row;
+    z-index: +10;
+    transition:transform 0.3s ease-out;
+}
+
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for main and everything inside
+ ***************************************************************************************
+ ***************************************************************************************/
+
+.sidebar {
+    height: 100%;
+    width: 20%;
+    min-width: 200px;
+    margin-left: -20%;
+    display: block;
+    padding: 2em;
+    position:relative;
+    font-size: 1.1em;
+    box-sizing: border-box;
+    color: #a5a8a9;
+    transition: margin-left 0.3s ease-out, margin-top 0s 0.3s ease-out;
+    /*background: #202729;*/
+}
+
+.sidebar > .wrapper {
+    position:fixed;
+    display: block;
+    top:0;
+    padding-top:2em;
+    padding-left: inherit;
+    left: 0;
+    margin-top:4.5vw;
+    margin-left: inherit;
+    transition: inherit;
+}
+
+.sidebar.visible {
+    margin-left: 0%;
+    transition: margin-left 0.3s 0.3s ease-out;
+}
+
+.window.immersive > .remnant.shift_to_expose_menu > .sidebar {
+    margin-left:0;
+    transition: margin-left 0.3s ease-out;
+}
+.window.immersive > .remnant.shift_to_expose_menu > .main {
+    opacity: 0.7;
+}
+
+/*
+ * the ::after is the loading animation
+ */
+.window .sidebar::after {
+    height: 2px;
+    background-image: linear-gradient(50deg, darkgoldenrod, purple, darkgoldenrod);
+    width: 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition:opacity 1s;
+    z-index: +19;
+    background-size: 100px 100%;
+    background-position: 0% 100%;
+    animation: shine 1s infinite linear;
+}
+.window.loading .sidebar::after {
+    opacity: 1;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 200px 100%;
+    }
+}
+
+/*
+ * Common declarations for sections in sidebar
+ */
+.section {
+    list-style-type: none;
+    margin: 1.25em 0;
+}
+
+.section > label {
+    color: #445256;
+    padding-bottom: 1em;
+    display: block;
+}
+
+.section > ul {
+    margin: 0;
+    padding: 0;
+}
+
+.section > ul > li {
+    line-height: 2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-out;
+    border-color: #a5a8a9;
+    white-space: nowrap;
+}
+
+.section > ul > li:hover > i {
+    color: #e5e8e9;
+    margin-left: 0.25em;
+    border-color: #e5e8e9;
+}
+
+.section > ul > li.active > i {
+    font-weight: 500;
+    color: #e5e8e9;
+    margin-left: 0.5em;
+    border-color: #e5e8e9;
+    background: #e5e8e9;
+}
+
+.section > ul > li.active > span {
+    font-weight: 500;
+    color: #e5e8e9;
+}
+
+.section > ul > li > span {
+    vertical-align: top;
+    transition: font-weight 0.2s;
+}
+
+.section > ul > li > i {
+    border: 2px solid;
+    border-color: inherit;
+    border-radius: 50%;
+    height: 6px;
+    width: 6px;
+    margin-right: 0.5em;
+    transition:margin-left 0.2s, background 0.2s;
+}
+
+
+/*
+ *  Specific declarations for primary section
+ */
+
+.sidebar > .wrapper > .primary ul .disabled {
+    display: none;
+}
+
+.sidebar > .wrapper > .primary .visible {
+    display: block !important;
+}
+
+.sidebar > .wrapper > .primary ul .visible {
+    display: flex !important;
+}
+
+/*
+ *  Specific declarations for secondary section
+ */
+.sidebar .secondary-wrapper {
+    position:relative;
+}
+
+.sidebar .secondary-wrapper > .section.secondary {
+    position:absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.sidebar .secondary-wrapper > .secondary > label {
+    text-transform: uppercase;
+}
+
+.sidebar .secondary-wrapper > .secondary.disabled {
+    display: none;
+}
+
+.sidebar .secondary-wrapper > .secondary.visible {
+    display: block;
+}
+
+.sidebar .secondary-wrapper > .secondary.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.sidebar .secondary-wrapper > .secondary > ul > li {
+    transform: translateX(-1em);
+    opacity: 0;
+}
+
+.sidebar .secondary-wrapper > .secondary.active > ul > li {
+    transform: none;
+    opacity: 1;
+}
+
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(1) {
+    transition-delay: 0.1s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(2) {
+    transition-delay: 0.2s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(3) {
+    transition-delay: 0.3s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(4) {
+    transition-delay: 0.4s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(5) {
+    transition-delay: 0.5s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(6) {
+    transition-delay: 0.6s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(7) {
+    transition-delay: 0.7s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(8) {
+    transition-delay: 0.8s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(9) {
+    transition-delay: 0.9s;
+}
+.sidebar .secondary-wrapper > .secondary ul li:nth-child(10) {
+    transition-delay: 1s;
+}
+
+.sidebar .secondary-wrapper > .secondary ul li i {
+    height:0px;
+    border-radius:2px;
+    border-width: 1px;
+}
+
+
+/***************************************************************************************
+ ***************************************************************************************
+ * Declarations for main and everything inside
+ ***************************************************************************************
+ ***************************************************************************************/
+
+
+.main {
+    box-sizing: border-box;
+    font-weight: 300;
+    background: white;
+    z-index: +10;
+    border-radius: 2px 0px 0px 0px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    color: #202729;
+    position: relative;
+    transition:opacity 0.3s;
+    will-change: height, width;
+    overflow-y: scroll;
+}
+
+.main .wrapper {
+    position:absolute;
+    padding: 2em;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    pointer-events: none;
+}
+
+.main .wrapper.face {
+    opacity: 1;
+    pointer-events: all;
+    transition:opacity 0.2s 0.2s, transform 0.2s 0.2s;
+}
+.main .wrapper.tray {
+    opacity: 0;
+    transition:opacity 0.2s, transform 0.2s;
+    transform:translateY(-1em);
+}
+
+.main * {
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+}
+
+.stretch {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.main .controls {
+    font-size: 1em;
+    padding: 0px;
+    list-style-type: none;
+    flex-direction: row;
+}
+
+.main .section {
+    position:relative;
+}
+
+.main .controls [class*="icon-"] {
+    width: 2em;
+    height: 2em;
+    color: #2eb398;
+    box-sizing: border-box;
+    border: 2px solid #2eb398;
+    display: inline-flex;
+    vertical-align: top;
+    margin-right: 0.5em;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.main .controls .latent {
+    transform:scale(0);
+    opacity: 0;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.main .controls .latent.active {
+    transform: none;
+    opacity: 1;
+    display: inline-flex;
+}
+
+.main .controls .disabled[class*="icon-"] {
+    color: #a5a8a9;
+    border-color: #a5a8a9;
+    cursor: default;
+}
+
+.header .stretch {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom:1em;
+}
+
+.header .field-container > .remnant > input {
+    padding: 0% 1em;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    min-width: 200px;
+}
+
+form .field-container {
+    margin:2em 0em;
+    width: 50%;
+    box-sizing: border-box;
+    padding-right:2em;
+}
+
+form .image {
+    width:100%;
+    height:10em;
+    position:relative;
+    border-radius:20px;
+    z-index: +199;
+    border:1px solid rgba(0,0,0,0.05);
+    overflow:hidden;
+}
+
+form .image .cropit-preview {
+    background-size: cover;
+    background-position: center center;
+}
+
+form .image label {
+    width:100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size:3em;
+    color:rgba(0,0,0,0.25);
+    cursor:pointer;
+    position:absolute;
+}
+
+form .image.filled label {
+    pointer-events: none;
+    width:2em;
+    height:2em;
+    font-size:2em;
+    top:0;
+}
+form .image.filled label i {
+    pointer-events: all;
+    color:rgba(255,255,255,0.2);
+}
+
+form .image .image-editor, form .image .cropit-preview {
+    width: 100% !important;
+    height: 100% !important;
+    margin:0;
+    background-color: transparent;
+    top: 0;
+    border:none;
+    border-radius:inherit;
+    left: 0;
+    position: absolute !important;
+}
+form .image .image-editor .status.success {
+    opacity:1;
+    transform:none;
+}
+form .image .image-editor .status {
+    height:2em;
+    width:2em;
+    display: flex;
+    font-size:2em;
+    align-items: center;
+    justify-content: space-around;
+    position:absolute;
+    right:0;
+    opacity: 0;
+    bottom:0;
+    transform:scale(0);
+    z-index: +1000;
+    transition:all 0.2s;
+    color:rgba(255,255,255,0.5);
+}
+form .image .image-editor .status i {
+    display: block;
+    font-size:0.8em;
+}
+form .image .image-editor .resize {
+    position:absolute;
+    z-index: +1000;
+    width:100%;
+    height:2px;
+    top:50%;
+    padding:0px 10px;
+    box-sizing: border-box;
+    display: none;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    left:0;
+    margin-top: -1px;
+    background:linear-gradient(transparent, rgba(0,0,0,0.1));
+}
+
+.field-container > .remnant > input,
+.field-container > .remnant > select,
+.field-container > .remnant > textarea,
+.field-container > .remnant > .CodeMirror,
+.field-container > .remnant > span {
+    height: 3em;
+    line-height: 3em;
+    display: block;
+    width: 100%;
+    border-radius: 20px;
+    color: #000;
+    font-size: 0.9em;
+    font-family: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    outline: none;
+    padding: 0% 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    background: transparent;
+}
+.field-container > .remnant > textarea,
+.field-container > .remnant > .CodeMirror {
+    line-height: 1.5em;
+}
+form .field-container > .remnant > textarea {
+    max-height: 10em;
+    resize:none;
+    box-sizing: border-box;
+    padding:1em 1em;
+}
+
+.field-container > .remnant > textarea,.field-container > .remnant > .CodeMirror {
+    height: 20em;
+}
+
+.field-container > .remnant > span {
+    color:#ccc;
+}
+
+.field-container > label {
+    line-height: 3em;
+    font-size: 0.9em;
+    font-weight: 500;
+    min-width: 6em;
+    display: inline-block;
+}
+
+.field-container > .remnant > input:hover {
+    border-color: rgba(0, 0, 0, 0.075);
+}
+
+.field-container > .remnant > input:focus {
+    border-color: rgba(0, 0, 10, 0.1);
+}
+
+.field-container > .remnant {
+    display: flex;
+    align-items: center;
+}
+
+.field-container > .remnant > .field-icon {
+    height: 2em;
+    width: 2em;
+    position: absolute;
+    right: 0.5em;
+    line-height: 2em;
+    text-align: center;
+    color: #505057;
+}
+
+@media only screen and (max-width: 1333px) {
+    .navbar {
+        margin-top:-60px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .sidebar, .sidebar.visible {
+        margin-left: -200px;
+        padding:2em 1em;
+    }
+    .navbar > .wrapper {
+        padding:0em 0em 0em 1em;
+    }
+    .main > .wrapper {
+        padding:2em 1em;
+    }
+    .main .controls .disabled, .main .controls .latent {
+        display: none;
+    }
+    #menu {
+        pointer-events: all;
+        margin-left: 0px;
+        opacity: unset;
+    }
+    .window > .remnant.shift_to_expose_menu {
+        transform: translateX(200px);
+    }
+    .window > .remnant.shift_to_expose_menu > .main {
+        opacity: 0.7;
+    }
+    .window.immersive > .remnant.shift_to_expose_menu > .sidebar {
+        margin-left:-200px;
+    }
+    .window.immersive > .remnant.shift_to_expose_menu > .sidebar > .wrapper{
+        margin-top:60px;
+    }
+
+    .sidebar > .wrapper {
+        position:relative;
+        margin-left: 0px;
+        padding:0;
+        margin-top:0px;
+    }
+    form .field-container {
+        width:100%;
+    }
+}
+
+@media only screen and (min-width: width: 1400px) {
+    body {
+        font-size:1.1vw;
+    }
+}
+
+@media only screen and (min-width: 1777px) {
+    .navbar {
+        margin-top:-80px;
+    }
+}
+
+
+/*General purpose classes*/
+
+.hidden {
+    display: none !important;
+}

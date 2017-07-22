@@ -1,8 +1,57 @@
 include ../mixins/event
-link(rel="stylesheet" href="/stylesheets/events.style.css")
+link(rel="stylesheet" href="/static/stylesheets/events.style.css")
+link(rel="stylesheet" href="/static/stylesheets/marked.css")
+div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false"))
+    div.header
+        div.hero(style="background-image:url('#{event.hero}')")
+    div.body
+        div.top
+            div.title= event.name
+            div.remnant
+            div#cartActions
+                - if(user.events.indexOf(event._id) != -1)
+                    div.subscribed.cartButton(onclick="delete_from_cart('#{event._id}')")
+                        i.icon-check
+                        span Added
+                - else if(event.teamSize > 1)
+                    div.latent(tabindex="1")
+                        div.add_to_cart.cartButton
+                            i.icon-add_shopping_cart
+                            span Add to cart
+                        div.new_team.cartButton(onclick="add_to_cart('#{event._id}')")
+                            i.icon-add_box
+                            span New Team
+                        div.join_team.cartButton(onclick="join_team('#{event._id}')")
+                            i.icon-group_add
+                            span Join Team
+                - else
+                    div.add_to_cart.cartButton(onclick="add_to_cart('#{event._id}')")
+                        i.icon-add_shopping_cart
+                        span Add to cart
+        div.category= event.category
+        div.details
+            if(event.startTime)
+                div.time
+                    span Time
+                    span #{event.startTime} - #{event.endTime}
+            if(event.venue)
+                div.venue
+                    span Venue
+                    span #{event.venue}
+            if(event.teamSize)
+                div.team
+                    span Teams of
+                    span #{event.teamSize}
+            - if(event.price)
+                div.price.remnant
+                    i &#x20b9;
+                    span #{event.price}
+            - else
+                div.price.remnant
+                    span FREE
+        if(event.about)
+            div.description !{marked(event.about)}
+        div.foot
+            div.download(title="Download as PDF") Download
 
-div.section.header
-	h1.title= title
-div.section.events-wrapper
-	+eventMixin(event)
-script(src="/scripts/events.js" type="text/javascript")
+script(src="/static/scripts/events.js" type="text/javascript")

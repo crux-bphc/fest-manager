@@ -1,0 +1,128 @@
+.edit_item {
+	position:absolute;
+	top:0;
+	width: 100%;
+	box-shadow:0px 5px 3px -3px rgba(0,0,0,0.2);
+	background:white;
+	align-items: center;
+	justify-content: space-around;
+	overflow:hidden;
+	transition:height 0.3s ease-out;
+}
+.edit_item.collapsed {
+	height: 0em;
+	padding: 0em;
+}
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+	width:100%;
+}
+
+form .left, form .right {
+	width:50%;
+	display: flex;
+	flex-wrap: wrap;
+}
+form .left > * {
+	display: inline-block;
+	vertical-align: top;
+}
+form .left .hero {
+	width:100%;
+}
+form .field-container {
+	width:100%;
+	display: block;
+	margin:1em 0em;
+}
+form .right textarea {
+	width:100%;
+}
+form .right > .field-container {
+	padding-right: 0;
+}
+form .footer {
+	display: flex;
+	width:100%;
+	flex-wrap: wrap;
+}
+form .footer > .field-container {
+	width:200px;
+}
+
+.icon-add {
+	transition:transform 0.3s cubic-bezier(0,0,0.5,1.5);
+}
+
+.icon-add.active {
+	transform: rotateZ(135deg);
+}
+
+.table {
+	width:100%;
+	display: block;
+
+}
+.table .item {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	line-height: 3em;
+	border-bottom:1px solid rgba(0,0,0,0.05);
+}
+.table .item.head > *{
+	font-weight: 600;
+}
+.table .item > * {
+	flex-grow: 1;
+}
+.table .item .title {
+	display: block;
+	width: 30%;
+}
+.table .item div.edit {
+	text-align: center;
+}
+.table .item div.button {
+	cursor: pointer;
+}
+.underwhelmingMessage {
+	width:100%;
+	text-align:center;
+	color:#bbb;
+	display: block;
+	font-size:1em;
+	margin-top: 2em;
+}
+
+@media only screen and (max-width: 1000px) {
+	footer {
+		overflow-x: scroll;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	form {
+		display: block;
+	}
+	form .left, form .right {
+		display: flex;
+		width:100%;
+	}
+	form .left .thumb {
+		padding-right: 1em;
+	}
+	form .field-container {
+		padding-right:0;
+		min-width: 50%;
+	}
+	form .left .thumb .image {
+		height:10em;
+		width:10em;
+	}
+	form .footer {
+		flex-wrap: wrap;
+	}
+}

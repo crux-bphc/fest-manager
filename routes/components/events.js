@@ -7,23 +7,23 @@ var applyStateChanges = function (req) {
 		text: 'Events',
 		route: '/events',
 	};
-	req.stateparams.submenu = [{
-			label: "Competitions"
-		},
-		{
-			label: "Workshops"
-		},
-		{
-			label: "Proshows"
-		}
-	];
 	return req;
 };
 
 router.get('/', function (req, res, next) {
+	req.stateparams.pagetitle = 'Events';
 	req = applyStateChanges(req);
 	eventsService.find(function (err, events) {
-		if (err) next(err);
+		if (err) return next(err);
+
+		var compare = function(a, b) {
+			if(a.name > b.name)
+				return true;
+			return false;
+		};
+
+		events.sort(compare);
+
 		res.renderState('events/home', {
 			title: 'Events',
 			user: req.user,
@@ -37,14 +37,16 @@ router.get('/:eventroute', function (req, res, next) {
 	eventsService.findOne({
 		route: req.params.eventroute,
 	}, function (err, data) {
-		if (err) next(err);
+		if (err) return next(err);
 		if (data.immersive) {
 			req.stateparams.immersive = false;
 		}
+		req.stateparams.pagetitle = data.name;
 		res.renderState('events/event', {
 			title: data.name,
 			user: req.user,
 			event: data,
+			marked: require('marked')
 		});
 	});
 });

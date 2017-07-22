@@ -14,7 +14,6 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				name: profile.displayName,
 				email: profile.emails[0].value,
 				token: accessToken,
-				qrData: url
 			});
 			if (provider == 'googleID') {
 				user.profileImage = profile._json.image.url;
@@ -23,7 +22,7 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 			user.save(function (err) {
 				if (err) console.log(err);
 				passport.serializeUser(function (user, done) {
-					done(null, user);
+					return done(null, user._id);
 				});
 				return done(err, user);
 			});
@@ -45,11 +44,14 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 
 var configureSerializers = function () { // internal passport configuration to store users in session
 	passport.serializeUser(function (user, done) {
-		done(null, user);
+		done(null, user._id);
 	});
 
 	passport.deserializeUser(function (obj, done) {
-		done(null, obj);
+		userService.findOne({_id: obj}, function(err, user) {
+			if(err) console.log("Failed to deserialize");
+			done(null, user);
+		});
 	});
 };
 
@@ -88,7 +90,7 @@ var strategies = {
 	}
 };
 
-var authenticate = function (req, res, next) { // custom middleware to check if a user  
+var authenticate = function (req, res, next) { // custom middleware to check if a user
 	if (req.isAuthenticated()) // is authenticated in the current session
 		return next();
 	res.redirect('/components/login');

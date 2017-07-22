@@ -1,6 +1,40 @@
-title= title
-link(href="/stylesheets/home.style.css" rel="stylesheet")
+link(href="/static/stylesheets/home.style.css" rel="stylesheet")
+div#fb-root
+    script.
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=458450951218928";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+script.
+    window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+    t._e.push(f);
+    };
+
+    return t;
+    }(document, "script", "twitter-wjs"));
 div.immersive-wrapper
-	div.center
-		span DARK
-		span ATMOS
+    div.underlay
+    div.container
+        div.logo
+            img(src="/static/images/logo.png")
+        div.countdown
+            div#count
+            span DAYS TO GO
+    div.footer
+        div.fb-like(data-href="https://bits-atmos.org" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="true")
+        div.tweet
+            a.twitter-share-button(href="https://twitter.com/intent/tweet?url=https://bits-atmos.org&text=Hey, check out the official site of ATMOS, BITS Hyderabad's annual Techno-Management fest") Tweet
+script(src="/static/scripts/home.js")

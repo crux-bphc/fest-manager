@@ -1,0 +1,79 @@
+.main .stretch {
+    display: block;
+    border:none !important;
+}
+
+.event-wrapper {
+    display: inline-block;
+    overflow:hidden;
+    vertical-align: top;
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 1em 1em;
+    padding-bottom: 3em;
+    padding-right: 2em;
+    width: 15em;
+    margin-bottom: 1em;
+    border-radius:4px;
+    margin-right:1em;
+    position: relative;
+}
+.event-wrapper .image {
+    display: none;
+}
+.event-wrapper .tagline {
+    white-space: nowrap;
+    max-width:100%;
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+.event-wrapper .tag {
+    text-transform: uppercase;
+    line-height: 1em;
+}
+.event-wrapper h3 {
+    color:#444;
+    line-height: 1.2;
+    margin:0.5em 0em;
+    font-weight: 600;
+    height: 2.4em;
+    overflow:hidden;
+}
+.event-wrapper .icon-close {
+    position:absolute;
+    top:0px;
+    padding: 0.5em 0.5em;
+    right: 0;
+    font-size: 1.2em;
+}
+.event-wrapper .price {
+    color:#202729;
+}
+.event-wrapper .foot {
+    width:100%;
+    bottom:0;
+    left: 0;
+    white-space: nowrap;
+    position:absolute;
+    height: 2em;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding:0em 1em;
+}
+.event-wrapper .foot > div {
+    font-weight: 600;
+    font-size:0.9em;
+}
+.event-wrapper .foot > .team > span:first-child {
+    color:#666;
+}
+
+@media only screen and (max-width:500px) {
+    .event-wrapper {
+        width:100%;
+        box-sizing: border-box;
+        margin:1em 0;
+    }
+}

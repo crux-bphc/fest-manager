@@ -1,0 +1,17 @@
+include ../mixins/event
+link(href="/static/stylesheets/cart.style.css" rel="stylesheet")
+div.section.header
+	h1= title
+	div.stretch
+	-if(events.length > 0) {
+		for event in events
+			div.event-wrapper
+				+eventMixin(event)
+				i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
+				div.foot
+					div.price= (event.price ? event.price : "FREE")
+					div.team
+						span Team ID:
+						span= (user.teams.filter(team => event.teams.indexOf(team) != -1))
+	- }
+script(src="/static/scripts/cart.js")

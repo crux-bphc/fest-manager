@@ -13,6 +13,10 @@ router.get('/?*', function (req, res, next) {
 				label: "Home",
 				route: "/",
 			},
+			about: {
+				label: "About",
+				route: "/about",
+			},
 			events: {
 				label: "Events",
 				route: "/events",
@@ -34,21 +38,6 @@ router.get('/?*', function (req, res, next) {
 					for: "visible"
 				},
 				label: "Portals"
-			},
-			contact: {
-				label: "Contact",
-				route: "/contact",
-				sub: {
-					about: {
-						label: "About Us"
-					},
-					contact: {
-						label: "Get in touch"
-					},
-					reach: {
-						label: "Getting here"
-					}
-				}
 			}
 		}
 	};

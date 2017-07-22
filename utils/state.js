@@ -2,6 +2,7 @@ module.exports = function () {
 
 	var appendStateFromRequest = function (state, req) {
 		// Append supported variables to state.
+		state.pagetitle = req.stateparams.pagetitle || null;
 		state.title = req.stateparams.title || {};
 		state.submenu = req.stateparams.submenu || {};
 		return state;
@@ -44,7 +45,7 @@ module.exports = function () {
 	};
 
 	var appendSidebarState = function (state) {
-		var items = ['dashboard', 'portals', 'events', 'home', 'contact'];
+		var items = ['dashboard', 'portals', 'events', 'home', 'about'];
 		var sidebar = {};
 		sidebar.visible = !state.isImmersive;
 		sidebar.menu = {};

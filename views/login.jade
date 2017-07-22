@@ -1,11 +1,14 @@
-title= title
 if error
-	div.error
-		span.title= error.title
-		span.message= error.message
-		i.cross(class="material-icons") close
+	script.
+		swal({
+			title: "#{error.title}",
+			text: "#{error.message}",
+			type: "error",
+			confirmButtonText: "OK",
+			confirmButtonColor: "#202729"
+		});
 h1= title
-link(href="/stylesheets/login.style.css" rel="stylesheet")
+link(href="/static/stylesheets/login.style.css" rel="stylesheet")
 div.auth-container.parent-center
 	if methods.google
 			div.auth-method.child-center
