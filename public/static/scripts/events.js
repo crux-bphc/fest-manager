@@ -40,7 +40,7 @@ $('document').ready(function () {
 	implementSearch();
 })
 
-$(".add_to_cart").click(function(){
+function add_to_cart(id) {
 
 	$.ajax({
 		method: "POST",
@@ -49,7 +49,7 @@ $(".add_to_cart").click(function(){
 			xhr.setRequestHeader("Client", "Fest-Manager/dash");
 		},
 		data: {
-			id: this.id
+			id: id
 		},
 		success: function(res){
 			if(res.status == 200)
@@ -86,9 +86,9 @@ $(".add_to_cart").click(function(){
 			}
 		}
 	});
-});
+};
 
-$(".join_team").click(function(){
+function join_team(id){
 
 	swal({
 	  title: "Join Team",
@@ -104,7 +104,7 @@ $(".join_team").click(function(){
 	},
 	function(inputValue){
 	  if (inputValue === false) return false;
-	  
+
 	  if (inputValue === "") {
 	    swal.showInputError("You need to write something!");
 	    return false
@@ -114,7 +114,7 @@ $(".join_team").click(function(){
 	    swal.showInputError("Enter a valid 24 character team ID");
 	    return false
 	  }
-	  
+
 	  $.ajax({
 		method: "POST",
 		url: "/api/events/jointeam",
@@ -148,4 +148,4 @@ $(".join_team").click(function(){
 		}
 	});
 });
-});
+};
