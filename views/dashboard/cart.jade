@@ -5,6 +5,6 @@ div.section.header
 		-if(events.length > 0) {
 			for event in events
 				h3 #{event.name}
-					a(href="#", id="#{event._id}" class="delete_from_cart") Remove
+					i.icon-close(id="#{event._id}" class="delete_from_cart") Remove
 		- }
 script(src="/static/scripts/cart.js")

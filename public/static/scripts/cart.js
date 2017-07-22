@@ -18,7 +18,7 @@ $(".delete_from_cart").click(function(){
 					type: "success",
 					confirmButtonText: "OK",
 					confirmButtonColor: "#202729"
-				});				
+				});
 			}
 			else
 			{
