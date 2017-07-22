@@ -6,14 +6,15 @@ var applyStateChanges = function (req) {
 		text: 'About',
 		route: '/about',
 	};
-	req.stateparams.submenu = [{
-			label: "Get in Touch",
-			route: "/about/contact",
-		},
-		{
-			label: "How to Reach",
-			route: "/about/map",
-		},
+	req.stateparams.submenu = [
+		// {
+		// 	label: "Get in Touch",
+		// 	route: "/about/contact",
+		// },
+		// {
+		// 	label: "How to Reach",
+		// 	route: "/about/map",
+		// },
 		// {
 		// 	label: "Sponsors",
 		// 	route: "/about/sponsors",
