@@ -75,7 +75,7 @@ app.use(function (req, res, next) {
 
 		res.render(filename, options, function (err, string) {
 			// Uncomment to debug Jade Errors.
-			// console.log(err, string);
+			console.log(err);
 			res.send({
 				html: string,
 				state: state,

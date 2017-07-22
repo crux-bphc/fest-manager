@@ -39,7 +39,12 @@ $('document').ready(function () {
 
 	implementSearch();
 })
-
+var templates = {
+	teamed: '<div class="latent" tabindex="1"><div class="cartButton add_to_cart"><i class="icon-add_shopping_cart"></i><span>Add to cart</span></div><div class="cartButton join_team" onclick="join_team($id)"><i class="icon-group_add"></i><span>Join Team</span></div><div class="cartButton new_team" onclick="add_to_cart($id)"><i class="icon-add_box"></i><span>New Team</span></div></div>',
+	single: '<div class="cartButton add_to_cart" onclick="add_to_cart($id)"><i class="icon-add_shopping_cart"></i><span>Add to cart</span></div>',
+	subscribed: '<div class="cartButton subscribed" onclick="delete_from_cart($id)"><i class="icon-check"></i><span>Added</span></div>'
+}
+var eventID = "'" + $('.open-event').attr('id') + "'";
 function add_to_cart(id) {
 
 	$.ajax({
@@ -58,11 +63,12 @@ function add_to_cart(id) {
 				{
 					swal({
 						title: "Successful",
-						text: "Event added to cart ! Your team ID is " + res.teamID,
+						text: "Event added to cart! Your team ID is " + res.teamID,
 						type: "success",
 						confirmButtonText: "OK",
 						confirmButtonColor: "#202729"
 					});
+					$('#cartActions').html(templates.subscribed.replace('$id', eventID));
 				}
 				else
 				{
@@ -73,6 +79,7 @@ function add_to_cart(id) {
 						confirmButtonText: "OK",
 						confirmButtonColor: "#202729"
 					});}
+				$('#cartActions').html(templates.subscribed.replace('$id', eventID));
 			}
 			else
 			{
@@ -87,7 +94,6 @@ function add_to_cart(id) {
 		}
 	});
 };
-
 function join_team(id){
 
 	swal({
@@ -134,6 +140,7 @@ function join_team(id){
 					confirmButtonText: "OK",
 					confirmButtonColor: "#202729"
 				});
+				$('#cartActions').html(templates.subscribed.replace('$id', eventID));
 			}
 			else
 			{
@@ -148,4 +155,42 @@ function join_team(id){
 		}
 	});
 });
+};
+
+function delete_from_cart(id){
+
+	$.ajax({
+		method: "POST",
+		url: "/api/events/deletefromcart",
+		beforeSend: function(xhr){
+			xhr.setRequestHeader("Client", "Fest-Manager/dash");
+		},
+		data: {
+			id: id
+		},
+		success: function(res){
+			if(res.status == 200)
+			{
+				swal({
+					title: "Successful",
+					text: "Event removed from cart !",
+					type: "success",
+					confirmButtonText: "OK",
+					confirmButtonColor: "#202729"
+				});
+				var teamed = $('.open-event').attr('team') == "true";
+				$('#cartActions').html(templates[(teamed ? "teamed" : "single")].replace('$id', eventID));
+			}
+			else
+			{
+				swal({
+					title: "Failed !",
+					text: res.msg,
+					type: "error",
+					confirmButtonText: "OK",
+					confirmButtonColor: "#202729"
+				});
+			}
+		}
+	});
 };
