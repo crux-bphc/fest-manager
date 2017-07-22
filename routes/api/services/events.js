@@ -38,14 +38,9 @@ router.post('/addtocart', function (req, res, next) {
 			if(typeof result[0] !== "undefined") {
 				return res.json({status: 500, msg: "Event already in cart"});
 			}
-		eventModel.find({
-		_id: event_id
-	}, function (err, event) {
+		eventModel.find({_id: event_id}, function (err, event) {
 		if (err) {
-			return res.json({
-				status: 500,
-				msg: "Error"
-			});
+			return res.json({status: 500, msg: "Error"});
 		}
 		if (typeof event[0] !== 'undefined') {
 			var eventTeams = event[0].teams;
@@ -59,76 +54,43 @@ router.post('/addtocart', function (req, res, next) {
 			team.save(function (err) {
 				var team_id = team._id;
 				if (err) {
-					return res.json({
-						status: 500,
-						msg: "Unable to save team in DB"
-					});
+					return res.json({status: 500, msg: "Unable to save team in DB"});
 				}
 
-				userModel.find({
-					_id: req.user._id
-				}, function (err, userDB) {
+				userModel.find({_id: req.user._id}, function (err, userDB) {
 					var userEvents = userDB[0].events;
 					var userTeams = userDB[0].teams;
 
 					userEvents.push(event_id);
 					userTeams.push(team_id);
-
-					userModel.update({
-						_id: req.user._id
-					}, {
-						events: userEvents,
-						teams: userTeams
-					}, function (err, num) {
-
+					
+					userModel.update({_id: req.user._id}, {events: userEvents,	teams: userTeams}, function (err, num) {
 						if (err) {
-							return res.json({
-								status: 500,
-								msg: "Unable to update user model"
-							});
+							return res.json({status: 500, msg: "Unable to update user model"});
 						}
 
 						eventTeams.push(team_id);
 
-						eventModel.update({
-							_id: event_id
-						}, {
-							teams: eventTeams
-						}, function (err, num) {
+						eventModel.update({_id: event_id}, {teams: eventTeams}, function (err, num) {
 							if (err) {
-								return res.json({
-									status: 500,
-									msg: "Unable to update event model"
-								});
+								return res.json({status: 500, msg: "Unable to update event model"});
 							}
 							if(eventTeamSize > 1)
 							{
-								res.json({
-									status: 200,
-									msg: "Successful",
-									teamID: team_id,
-									maxTeamSize: eventTeamSize
-								});
+								res.json({status: 200, msg: "Successful", teamID: team_id, maxTeamSize: eventTeamSize});
 							}
 							else {
-								res.json({
-									status: 200,
-									msg: "Successful",
-									maxTeamSize: 1
-								});
+								res.json({status: 200, msg: "Successful", maxTeamSize: 1});
 							}
 						});
 					});
 				});
 			});
 		} else {
-			res.json({
-				status: 500,
-				msg: "Event Not Found"
-			});
+			res.json({status: 500, msg: "Event Not Found"});
 		}
 	});
-	});
+});
 
 	
 });
