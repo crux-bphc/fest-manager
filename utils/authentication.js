@@ -21,10 +21,10 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 			user[provider] = profile.id;
 			user.save(function (err) {
 				if (err) console.log(err);
-				req.login(user, function() {
-					if(err) console.log("Login failed");
-					return done(err, user);
+				passport.serializeUser(function (user, done) {
+					return done(null, user._id);
 				});
+				return done(err, user);
 			});
 		} else {
 			if (provider == 'googleID') {
