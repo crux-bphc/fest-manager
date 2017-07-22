@@ -149,12 +149,12 @@ router.post("/jointeam", function(req, res, next){
 			var teamMembers = team[0].members;
 			var event_id = team[0].event;
 
-			userModel.find({_id: user_id, events: {$all: [event_id]}}, function(err, userForEvents){
+			teamModel.find({event: event_id, members: {$all: [user_id]}}, function(err, userForEvents){
 				if(err){
-					return res.json({status: 500, msg: "Error acccessing user models"});
+					return res.json({status: 500, msg: "Error acccessing teams model"});
 				}
 				if(typeof userForEvents[0] !== "undefined"){
-					return res.json({status: 500, msg: "You are already enroled in this event"});
+					return res.json({status: 500, msg: "You are already enroled in a team for this event"});
 				}
 				eventModel.find({_id: event_id}, function(err, event){
 					if(err) {
