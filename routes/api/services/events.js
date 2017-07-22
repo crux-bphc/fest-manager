@@ -202,6 +202,98 @@ router.post("/jointeam", function(req, res, next){
 	});
 });
 
+router.post("/deletefromcart", function(req, res, next){
+
+	var user_id = req.user._id;
+	var event_id = mongoose.Types.ObjectId(req.body.id);
+
+	eventModel.find({_id: event_id}, function(err, events){
+		if(err){
+			return res.json({status: 500, msg: "Error Querying Event Model"});
+		}
+		if(typeof events[0] === 'undefined'){
+			return res.json({status: 500, msg: "Event not found !"});
+		}
+		var team_size = events[0].teamSize;
+		if((typeof team_size !== 'undefined') && team_size > 1){
+			userModel.update({_id: user_id}, {$pullAll: {events: [event_id]}}, function(err, num){
+				if(err){
+					return res.json({status: 500, msg: "Error Updating User Model (Event)"});
+				}
+				teamModel.find({event: event_id, members: {$all: [user_id]}}, function(err, teams){
+					if(err){
+						return res.json({status: 500, msg: "Error Querying Teams Model"});
+					}
+					if(typeof teams[0] === 'undefined'){
+						return res.json({status: 500, msg: "Team not found"});
+					}
+					var team_id = teams[0]._id;
+					userModel.update({_id: user_id}, {$pullAll: {teams: [team_id]}}, function(err, num){
+						if(err){
+							return res.json({status: 500, msg: "Error Updating User Model (Team)"});
+						}
+						if(teams[0].members.length == 1)
+						{
+							eventModel.update({_id: event_id}, {$pullAll: {teams: [team_id]}}, function(err, num){
+								if(err){
+									return res.json({status: 500, msg: "Error Updating Event Model"});
+								}
+								teamModel.findByIdAndRemove(team_id, function(err, team){
+									if(err){
+										return res.json({status: 500, msg: "Error Updating Teams Model"});
+									}
+									return res.json({status: 200, msg: "Successful"});
+								});
+							});
+						} else {
+							teamModel.update({_id: team_id}, {$pullAll: {members: [user_id]}}, function(err, num){
+								if(err){
+									return res.json({status: 500, msg: "Error Removing User From Team (Team)"});
+								}
+								return res.json({status: 200, msg: "Successful"});
+							});
+						}
+					});
+				});
+			});
+		} else {
+			//Team size is 1
+			userModel.update({_id: user_id}, {$pullAll: {events: [event_id]}}, function(err, num){
+				if(err){
+					return res.json({status: 500, msg: "Error Updating User Model (Event)"});
+				}
+				teamModel.find({event: event_id, members: {$all: [user_id]}}, function(err, teams){
+					if(err){
+						return res.json({status: 500, msg: "Error Querying Teams Model"});
+					}
+					if(typeof teams[0] === 'undefined'){
+						return res.json({status: 500, msg: "Team not found"});
+					}
+					var team_id = teams[0]._id;
+					userModel.update({_id: user_id}, {$pullAll: {teams: [team_id]}}, function(err, num){
+						if(err){
+							return res.json({status: 500, msg: "Error Updating User Model (Team)"});
+						}
+						eventModel.update({_id: event_id}, {$pullAll: {teams: [team_id]}}, function(err, num){
+							if(err){
+								return res.json({status: 500, msg: "Error Updating Event Model"});
+							}
+							teamModel.findByIdAndRemove(team_id, function(err, team){
+								if(err){
+									return res.json({status: 500, msg: "Error Updating Teams Model"});
+								}
+								return res.json({status: 200, msg: "Successful"});
+							});
+						});
+					});
+				});
+			});
+		}
+	});
+
+
+});
+
 module.exports = {
 	route: '/events',
 	model: model,
