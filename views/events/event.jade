@@ -8,13 +8,25 @@ div.section.open-event
         div.top
             div.title= event.name
             div.remnant
-            div(class="add_to_cart" id="#{event._id}")
-                i.icon-add_shopping_cart
-                span Add to cart
-            if(event.teamSize > 1)
-                div(class="join_team")
+            - if(user.events.indexOf(event._id) != -1)
+                div.subscribed.cartButton
+                    i.icon-check
+                    span Added
+            - else if(event.teamSize > 1)
+                div.latent(tabindex="1")
+                    div.add_to_cart.cartButton
+                        i.icon-add_shopping_cart
+                        span Add to cart
+                    div.new_team.cartButton(onclick="add_to_cart('#{event._id}')")
+                        i.icon-add_box
+                        span New Team
+                    div.join_team.cartButton(onclick="join_team('#{event._id}')")
+                        i.icon-group_add
+                        span Join Team
+            - else
+                div.add_to_cart.cartButton(onclick="add_to_cart('#{event._id}')")
                     i.icon-add_shopping_cart
-                    span Join Team
+                    span Add to cart
         div.category= event.category
         div.details
             if(event.startTime)

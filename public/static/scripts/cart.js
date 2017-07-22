@@ -1,4 +1,4 @@
-$(".delete_from_cart").click(function(){
+function delete_from_cart(id){
 
 	$.ajax({
 		method: "POST",
@@ -7,7 +7,7 @@ $(".delete_from_cart").click(function(){
 			xhr.setRequestHeader("Client", "Fest-Manager/dash");
 		},
 		data: {
-			id: this.id
+			id: id
 		},
 		success: function(res){
 			if(res.status == 200)
@@ -32,4 +32,4 @@ $(".delete_from_cart").click(function(){
 			}
 		}
 	});
-});
+};
