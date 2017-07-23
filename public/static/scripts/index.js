@@ -28,7 +28,9 @@ var manager = function () {
 		client.route(client.state.location, true, true);
 	}
 	client.route = function (route, status = true, reload = false) {
-		$('.window > .remnant').removeClass('shift_to_expose_menu');
+		if(window.innerWidth < 800)
+			$('.window > .remnant').removeClass('shift_to_expose_menu');
+		if (!route) return;
 		if(route.startsWith("http")) {
 			window.open(route, '_blank');
 			return;
@@ -55,10 +57,12 @@ var manager = function () {
 				window.history.pushState(url, "", url);
 			this.activeRoute = route;
 			this.setState(data.state);
+			if($('.window').hasClass('immersive')) $('.window > .remnant').removeClass("shift_to_expose_menu");
 			var tray = this.main.find('.tray');
 			tray.html(data.html);
 			tray.ready(function () {
 				tray.removeClass('tray').addClass('face').siblings().removeClass('face').addClass('tray');
+				$('.main .face').scrollTop(0);
 				window.setTimeout(function () {
 					$('.main .tray').html('');
 				}, 500);
