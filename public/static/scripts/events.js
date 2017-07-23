@@ -116,11 +116,6 @@ function join_team(id){
 	    return false
 	  }
 
-	  if(inputValue.length != 24) {
-	    swal.showInputError("Enter a valid 24 character team ID");
-	    return false
-	  }
-
 	  $.ajax({
 		method: "POST",
 		url: "/api/events/jointeam",

@@ -16,7 +16,7 @@ var eventsSchema = new Schema({
 	contact: String,
 	startTime: Date,
 	endTime: Date,
-	teams: [Schema.Types.ObjectId],
+	teams: [String],
 	price: Number,
 	route: String,
 	immersive: String,
@@ -97,7 +97,7 @@ router.post('/addtocart', function (req, res, next) {
 
 router.post("/jointeam", function(req, res, next){
 
-	var team_id = mongoose.Types.ObjectId(req.body.id);
+	var team_id = req.body.id;
 	var user_id = req.user._id;
 
 	teamModel.find({_id: team_id}, function(err, team){

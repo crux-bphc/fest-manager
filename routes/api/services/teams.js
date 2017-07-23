@@ -2,8 +2,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var express = require('express');
 var router = express.Router();
+var shortid = require('shortid');
+shortid.characters("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ#@");
 
 var teamsSchema = new Schema({
+	_id: {
+	    type: String,
+	    'default': shortid.generate
+	},
 	name: String,
 	members: [Schema.Types.ObjectId],
 	event: Schema.Types.ObjectId,
