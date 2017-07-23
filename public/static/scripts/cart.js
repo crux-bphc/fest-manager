@@ -1,5 +1,5 @@
 function delete_from_cart(id, event){
-	$(event).parent().animate({opacity: 0}, 1000).remove();
+	$(event).parent().parent().animate({opacity: 0}, 1000).remove();
 	$.ajax({
 		method: "POST",
 		url: "/api/events/deletefromcart",

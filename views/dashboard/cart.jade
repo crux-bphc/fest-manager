@@ -7,7 +7,8 @@ div.section.header
 		for event in events
 			div.event-wrapper
 				+eventMixin(event)
-				i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
+				a(href="#", class="delete-icon")
+					i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
 				div.foot
 					div.price= (event.price ? event.price : "FREE")
 					div.team

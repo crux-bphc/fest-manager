@@ -70,6 +70,10 @@
     color:#666;
 }
 
+.delete-icon {
+    color: #202729;
+}
+
 @media only screen and (max-width:500px) {
     .event-wrapper {
         width:100%;
