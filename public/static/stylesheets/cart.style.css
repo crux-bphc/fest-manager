@@ -44,6 +44,7 @@
     padding: 0.5em 0.5em;
     right: 0;
     font-size: 1.2em;
+    cursor:pointer;
 }
 .event-wrapper .price {
     color:#202729;
@@ -68,10 +69,6 @@
 }
 .event-wrapper .foot > .team > span:first-child {
     color:#666;
-}
-
-.delete-icon {
-    color: #202729;
 }
 
 @media only screen and (max-width:500px) {
