@@ -26,6 +26,7 @@
 	box-sizing: border-box;
 	border-radius: 5px;
 	border:1px solid #f0f0f0;
+	height:15em;
 }
 .section.body div.separate {
 	width: 1px;
@@ -35,6 +36,7 @@
 }
 .imgUser{
 	width: 15em;
+	height:15em;
 	display: block;
 	box-sizing: border-box;
 	border-radius: 5px;

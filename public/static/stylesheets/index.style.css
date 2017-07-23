@@ -224,7 +224,7 @@ input[type = "file"] {
 
 /***************************************************************************************
  ***************************************************************************************
- * Declarations for main and everything inside
+ * Declarations for sidebar and everything inside
  ***************************************************************************************
  ***************************************************************************************/
 
@@ -417,6 +417,9 @@ input[type = "file"] {
     transform: none;
     opacity: 1;
 }
+.sidebar .secondary-wrapper > .secondary > ul > li:hover > i {
+    margin-left: 0em;
+}
 
 .sidebar .secondary-wrapper > .secondary ul li:nth-child(1) {
     transition-delay: 0.1s;
@@ -474,7 +477,6 @@ input[type = "file"] {
     position: relative;
     transition:opacity 0.3s;
     will-change: height, width;
-    overflow-y: scroll;
 }
 
 .main .wrapper {
@@ -485,6 +487,7 @@ input[type = "file"] {
     right:0;
     bottom:0;
     pointer-events: none;
+    overflow-y: auto;
 }
 
 .main .wrapper.face {
@@ -515,6 +518,9 @@ h5 {
     position: relative;
     display: flex;
     align-items: center;
+}
+.main .section.header > .stretch {
+    height: 4em;
 }
 
 .main .controls {

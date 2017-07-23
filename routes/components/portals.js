@@ -73,7 +73,7 @@ var getFields = function (event) {
 		editable: true,
 		value: event ? event.type : "",
 		type: "select",
-		options: ["Competition", "Workshop", "Proshow"],
+		options: ["Headliner","Competition", "Workshop", "Proshow"],
 		none: true,
 		group: 0,
 	});
