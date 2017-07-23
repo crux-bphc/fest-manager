@@ -22,9 +22,9 @@ div.section.tags
 	a(href="#TechExpo") Tech Expo
 div.section.events-wrapper
 	each event in events
-		- if(event.type == "headliner")
+		- if(event.type.toLowerCase() == "headliner")
 			+eventMixin(event)
 	each event in events
-		- if(event.type != "headliner")
+		- if(event.type.toLowerCase() != "headliner")
 			+eventMixin(event)
 script(src="/static/scripts/events.js" type="text/javascript")
