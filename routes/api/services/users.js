@@ -14,7 +14,7 @@ var usersSchema = new Schema({
 	institute: {
 		type: String
 	},
-	teams: [Schema.Types.ObjectId],
+	teams: [String],
 	events: [Schema.Types.ObjectId],
 	accommodation: Schema.Types.ObjectId,
 	token: String,
