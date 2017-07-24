@@ -7,11 +7,49 @@ ul {
     list-style: none;
 }
 
-a:link, a:visited {
-    text-decoration: none;
-    color: #202729;
-}
-
 .event-container {
     margin-bottom: 10px;
+    width: 100% !important;
+}
+
+#links {
+    display: none;
+}
+
+#about {
+    border-left: 2px solid #ccc;
+    padding-left: 1em;
+    line-height: 1.2;
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #666;
+    max-width: 80%;
+}
+
+@media only screen and (max-width: 800px) {
+    #links {
+        display: block;
+    }
+    #links li {
+        padding-bottom: 0.2em;
+        font-size: 1.2em;
+        transition: 0.5s ease;
+        color: #666;
+    }
+
+    #links li:hover {
+        margin-left: 0.4em;
+    }
+
+    .tile {
+        max-width: 80%;
+        background-color: #ddd;
+        text-align: center;
+        padding: 5px;
+        transition: 0.25s ease;
+        margin-bottom: 2.5px;
+    }
+    .tile:hover {
+        border-left: 3px solid #666;
+    }
 }
