@@ -62,6 +62,25 @@ div.logo img {
 	display: inline;
 	white-space: pre-wrap;
 }
+div.endorse {
+	position:relative;
+	color:white;
+	width: 80%;
+	font-weight: 600;
+	margin-top: 1em;
+	text-align: right;
+}
+div.endorse > span {
+	color:#f0f0f0;
+	display: block;
+	vertical-align: top;
+	font-weight: 600;
+	font-size:1.2em;
+}
+div.endorse > img {
+	width:8em;
+	-webkit-filter:drop-shadow(0px 0px 1px #fff);
+}
 div.footer {
 	bottom:0;
 	left:0;
