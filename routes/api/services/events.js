@@ -63,7 +63,7 @@ router.post('/addtocart', function (req, res, next) {
 
 					userEvents.push(event_id);
 					userTeams.push(team_id);
-					
+
 					userModel.update({_id: req.user._id}, {events: userEvents,	teams: userTeams}, function (err, num) {
 						if (err) {
 							return res.json({status: 500, msg: "Unable to update user model"});
@@ -92,7 +92,7 @@ router.post('/addtocart', function (req, res, next) {
 	});
 });
 
-	
+
 });
 
 router.post("/jointeam", function(req, res, next){
@@ -126,7 +126,7 @@ router.post("/jointeam", function(req, res, next){
 					if(typeof event[0] !== 'undefined'){
 						var team_size = event[0].teamSize;
 						if((typeof team_size !== 'undefined') && (teamMembers.length < team_size) && (teamMembers.indexOf(user_id) == -1)){
-							
+
 							teamMembers.push(user_id);
 							teamModel.update({_id: team_id}, {members: teamMembers}, function(err, num){
 								if(err){
@@ -143,13 +143,13 @@ router.post("/jointeam", function(req, res, next){
 
 									userModel.update({_id: user_id}, {teams: userTeams, events: userEvents}, function(err, num){
 										if(err){
-											return res.json({status: 500, msg: "Error updating user model"});							
+											return res.json({status: 500, msg: "Error updating user model"});
 										}
 										return res.json({status: 200, msg: "Added to team !"});
 									});
 								});
 							});
-						
+
 						} else {
 							return res.json({status: 400, msg: "Team full or user already in team"});
 						}
