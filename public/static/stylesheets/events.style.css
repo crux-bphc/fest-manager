@@ -55,19 +55,19 @@
     display: none;
 }
 
-.event-container.Proshow {
+.event-container.Proshow, .event-container.TechExpo {
     min-width: 100%;
 }
 
-.event-container.Proshow > .face {
+.event-container.Proshow > .face, .event-container.TechExpo > .face {
     font-size: 1.5em;
 }
 
-.event-container.Proshow > .face > .name {
+.event-container.Proshow > .face > .name, .event-container.TechExpo > .face > .name {
     font-weight: 600;
 }
 
-.event-container.Proshow > .image {
+.event-container.Proshow > .image, .event-container.TechExpo > .image {
     background-position: center center;
 }
 
@@ -327,13 +327,13 @@
         width:100%;
         height: 80vw;
     }
-    .event-container.Proshow {
+    .event-container.Proshow, .event-container.TechExpo {
         min-width: unset;
     }
-    .event-container.Proshow > .face {
+    .event-container.Proshow > .face, .event-container.TechExpo > .face {
         font-size: 1em;
     }
-    .event-container.Proshow > .face > .name {
+    .event-container.Proshow > .face > .name, .event-container.TechExpo > .face > .name {
         font-weight: 300;
     }
     .open-event .hero {

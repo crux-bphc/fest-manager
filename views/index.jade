@@ -14,7 +14,17 @@ html
 		link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet")
 		link(href="/static/stylesheets/sweetalert.css" rel="stylesheet")
 		title Atmos
-
+		meta(name="robots" content="index, follow")
+		meta(name="apple-mobile-web-app-capable" content="yes")
+		meta(property="og:type" content="website")
+		meta(property="og:site_name" content="ATMOS, Bits Pilani Hyderabad Campus")
+		meta(property="og:title" content="ATMOS, BITS Pilani Hyderabad Campus")
+		meta(property="og:url" content="https://www.bits-atmos.org/")
+		meta(property="og:image" content="https://bits-atmos.org/static/images/meta.jpg")
+		meta(name="twitter:title" content="ATMOS, Bits Pilani Hyderabad Campus")
+		meta(name="twitter:image" content="https://bits-atmos.org/img/meta.jpg")
+		meta(name="twitter:card" content="ATMOS, Bits Pilani Hyderabad Campus")
+		meta(name="twitter:site" content="@BITSAtmos")
 body
 	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
 		div.navbar(_triggers="navbar/visible=visible")
