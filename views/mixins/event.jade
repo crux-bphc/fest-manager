@@ -1,7 +1,7 @@
 mixin eventMixin(data)
-	div.event-container(class="#{data.category}" _route="/events/#{data.route}")
+	div.event-container(class="#{data.category} #{data.type}" _route="/events/#{data.route}")
 		div.face
-			span.tag= data.type
+			span.tag= (data.type.toLowerCase() == "headliner" ? "Competition" : data.type)
 			h3.name= data.name
 			span.tagline= data.tagline
 		div.image(style="background-image:url('#{data.thumbnail}')")
