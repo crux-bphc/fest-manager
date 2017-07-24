@@ -30,6 +30,25 @@ var eventModel = model;
 var userModel = require("./users").model;
 var teamModel = require("./teams").model;
 
+
+router.post('/pdf', function(req, res, next) {
+	console.log("PDF Generation");
+	res.set('Content-Type', 'application/pdf');
+	var pdf = require('html-pdf');
+	var fs = require('fs');
+	var path = require('path');
+	var marked = require('marked');
+
+	var template = fs.readFileSync(path.join(__dirname,'../../../utils/letterhead.html')).toString();
+	eventModel.findOne({_id: req.body.id}, function(err, event) {
+		if(err || !event) {
+			return res.json({status: 500, msg: "Nope. Not happening"});
+		}
+		template = template.replace('$$--title--$$',event.name).replace('$$--content--$$',marked(event.about));
+		pdf.create(template).toStream(function(err, stream){stream.pipe(res);});
+	});
+});
+
 router.post('/addtocart', function (req, res, next) {
 
 	var event_id = mongoose.Types.ObjectId(req.body.id);

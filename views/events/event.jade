@@ -53,6 +53,6 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
         if(event.about)
             div.description !{marked(event.about)}
         div.foot
-            div.download(title="Download as PDF") Download
+            div.download(title="Download as PDF" onclick="generate_pdf('#{event._id}')") Download
 
 script(src="/static/scripts/events.js" type="text/javascript")
