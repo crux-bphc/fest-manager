@@ -1,0 +1,47 @@
+<html>
+    <style>
+        body {
+            margin:0;
+            font-size:0.8em;
+            font-family:'Gill Sans','Helvetica', 'ubuntu', sans-serif;
+        }
+        body > div {
+            width:100%;
+            position:relative;
+        }
+        .content {
+            box-sizing: border-box;
+            padding:5em 7%;
+            padding-top: 1em;
+            margin-bottom:100px;
+        }
+        .title {
+            margin-bottom:0;
+            box-sizing: border-box;
+            padding: 0em 7%;
+        }
+        .header > img, .footer > img {
+            width:100%;
+        }
+        .footer {
+            position:fixed;
+            bottom:0;
+            left: 0;
+        }
+    </style>
+    <body>
+        <div class="header">
+            <img src="http://localhost:3000/static/images/header.jpg">
+        </div>
+        <div class="title">
+            <h2>$$--title--$$</h2>
+        </div>
+        <div class="content">$$--content--$$</div>
+        <div class="footer">
+            <img src="http://localhost:3000/static/images/footer.jpg"/>
+        </div>
+    </body>
+    <script>
+        document.body.style.height = (Math.ceil(document.body.clientHeight/842)+1)*842;
+    </script>
+</html>
