@@ -39,10 +39,14 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
                 div.venue
                     span Venue
                     span #{event.venue}
-            if(event.teamSize)
+            - if(event.teamSize && event.teamSize != 1000)
                 div.team
                     span Teams of
                     span #{event.teamSize}
+            - else if (event.teamSize == 1000)
+                div.team
+                    span Team Size
+                    span Unrestricted
             - if(event.price)
                 div.price.remnant
                     i &#x20b9;
@@ -53,6 +57,6 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
         if(event.about)
             div.description !{marked(event.about)}
         div.foot
-            div.download(title="Download as PDF" onclick="generate_pdf('#{event._id}')") Download
+            a.download(title="Download as PDF" target="_blank" href="/static/data/docs/#{event.name}.pdf") Download
 
 script(src="/static/scripts/events.js" type="text/javascript")

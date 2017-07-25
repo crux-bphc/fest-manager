@@ -2,7 +2,8 @@
     <style>
         body {
             margin:0;
-            font-size:0.8em;
+            font-size:0.7em;
+            width: 595px;
             font-family:'Gill Sans','Helvetica', 'ubuntu', sans-serif;
         }
         body > div {
@@ -11,9 +12,7 @@
         }
         .content {
             box-sizing: border-box;
-            padding:5em 7%;
-            padding-top: 1em;
-            margin-bottom:100px;
+            padding:0em 7%;
         }
         .title {
             margin-bottom:0;
@@ -42,6 +41,8 @@
         </div>
     </body>
     <script>
-        document.body.style.height = (Math.ceil(document.body.clientHeight/842)+1)*842;
+        var footer = document.getElementsByClassName('footer')[0].clientHeight;
+        var pages = ((document.body.scrollHeight+(250))/842);
+        document.body.style.height = Math.ceil(pages)*842;
     </script>
 </html>
