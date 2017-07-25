@@ -293,6 +293,7 @@
     transition: all 0.2s;
     cursor:pointer;
     color:#444;
+    text-decoration: none;
 }
 
 .open-event .foot .download:hover {

@@ -79,7 +79,7 @@ div.endorse > span {
 }
 div.endorse > img {
 	width:8em;
-	-webkit-filter:drop-shadow(0px 0px 1px #fff);
+	-webkit-filter:drop-shadow(0px 0px 2px #fff);
 }
 div.footer {
 	bottom:0;

@@ -19,7 +19,7 @@ var manager = function () {
 		client.route($(this).attr("_route"));
 	};
 	let outerAnchor = function (e) {
-		window.location.assign($(this).attr("href"));
+		return true;
 	};
 	client.getLocation = function() {
 		return client.state.location;
