@@ -211,7 +211,7 @@ function generate_pdf(event) {
 	var filename = path.join(__dirname, '../../public/static/data/docs/'+event.name+'.pdf');
 
 	template = template.replace('$$--title--$$',event.name).replace('$$--content--$$',marked(event.about));
-	pdf.create(template).toStream(function(err, stream){stream.pipe(fs.createWriteStream(filename))});
+	pdf.create(template).toStream(function(err, stream){stream.pipe(fs.createWriteStream(filename));});
 }
 
 router.post('/:body/add', authenticate, elevate, function (req, res, next) {

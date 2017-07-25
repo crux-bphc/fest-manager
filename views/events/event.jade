@@ -53,7 +53,7 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
                     span #{event.price}
             - else
                 div.price.remnant
-                    span FREE
+                    span
         if(event.about)
             div.description !{marked(event.about)}
         div.foot
