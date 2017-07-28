@@ -16,7 +16,7 @@ ul {
     display: none;
 }
 
-#about {
+p {
     border-left: 2px solid #ccc;
     padding-left: 1em;
     line-height: 1.2;
