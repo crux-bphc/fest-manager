@@ -15,17 +15,15 @@ $(document).ready(function () {
 			}
 		});
 	});
-	$('#about-close-button').click(function() {
+	$('#cancel-button').click(function() {
         $(".latent").toggleClass('active');
-        $("#about-open-button").show();
-        $("form").removeClass('inactive');
-        $("div.content").removeClass('active');
+        $("form").removeClass('active');
+        $("div.content").removeClass('inactive');
     });
-    $('#about-open-button').click(function() {
+    $('#open-form-button').click(function() {
         $(".latent").toggleClass('active');
-        $("form").addClass('inactive');
-        $("#about-open-button").hide();
-        $("div.content").addClass('active');
+        $("form").addClass('active');
+        $(".content").addClass('inactive');
     });
 	$("#submit-button").click(function () {
         var isAmbassador = false;

@@ -1,44 +1,153 @@
+@import url("/static/fonts/icomoon-ca/font.css");
 div.body {
     display: flex;
     width: 100%;
+    position:relative;
 }
 form {
-    width:50%;
+    width:100%;
+    top:0;
+    left: 0;
+    display: none;
+    background:white;
+    position:absolute;
+}
+form.active {
+    display: block;
 }
 form .field-container {
-    width:100%;
-}
-.about.button {
-    display: none;
+    width:50%;
 }
 div.section.body div.content {
     display: block;
     line-height: 1.5em;
     border-radius: 4px;
-    padding: 0em 1em;
-    width: 45%;
-    margin-left: 2.5%;
+    width: 100%;
     box-sizing: border-box;
     margin-top: 0;
     text-align: justify;
     font-size: 1em;
     font-weight: 400;
     color:#666667;
-}
-div.section.body div.content h3 {
-    font-weight: 600;
     text-align: center;
 }
+div.section.body div.content.inactive {
+    display: none;
+}
+div.section.body div.content > div {
+    margin-bottom: 4em;
+}
+div.section.body div.content h2 {
+    text-align: center;
+    font-weight: 400;
+}
+div.section.body div.responsibilities ul {
+    width:80%;
+    list-style-type:none;
+    margin-left: 10%;
+    padding: 0;
+}
+div.section.body div.responsibilities ul > li {
+    display: block;
+    height:10em;
+}
+div.section.body div.responsibilities ul > li > i {
+    height:8em;
+    width:8em;
+    line-height: 10em;
+    text-align: center;
+    color:#ccc;
+    clear:both;
+    display: block;
+}
+div.section.body div.responsibilities ul > li > i::before {
+    font-size:6em;
+}
+div.section.body div.responsibilities ul > li:nth-child(2n+1) > i {
+    float:left;
+}
+div.section.body div.responsibilities ul > li:nth-child(2n) > i {
+    float:right;
+}
+div.section.body div.responsibilities ul > li > div {
+    display: flex;
+    height: 10em;
+    box-sizing: border-box;
+    padding:0em 1em;
+    justify-content: center;
+    flex-direction: column;
+}
+div.section.body div.responsibilities ul > li:nth-child(2n+1) > div {
+    text-align:left;
+}
+div.section.body div.responsibilities ul > li:nth-child(2n) > div {
+    text-align:right;
+}
+div.section.body div.responsibilities ul > li > div > .title {
+    font-weight: 600;
+    font-size: 1.2em;
+}
+div.section.body div.incentives > div {
+    display: block;
+    width:80%;
+    margin-left: 10%;
+}
+div.section.body div.incentives > div > span {
+    width:99%;
+    margin-left: 0.5%;
+    background:#e0e0e0;
+    color:#444;
+    line-height:4em;
+    text-align: center;
+    margin-top: 2em;
+    font-weight: 600;
+    font-size:0.9em;
+    display: block;
+}
+div.section.body div.incentives > div > ul {
+    width:100%;
+    margin:0;
+    display: flex;
+    padding:0em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+div.section.body div.incentives > div > ul > li > i {
+    line-height: 1.2em;
+    font-size: 5em;
+}
+div.section.body div.incentives > div > ul > li > span {
+    font-size: 0.9em;
+}
+div.section.body div.incentives > div > ul > li {
+    min-width: 200px;
+    width:33%;
+    height:auto !important;
+    box-sizing: border-box;
+    padding:2em 1em;
+    display: table-cell;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+div.content div.button {
+    margin-top:1em;
+    line-height: 3em;
+    padding:0 2em;
+    border-radius:4px;
+    color:#444;
+    white-space: nowrap;
+    display: inline-block;
+    font-weight: 600;
+    background:#f0f0f0;
+    cursor:pointer;
+}
+div.content div.button:hover {
+    background:#e0e0e0;
+}
 @media only screen and (max-width: 800px) {
-    .about.button {
-        display: inline-block;
-        line-height: 3em;
-        color:#444;
-        background:#f0f0f0;
-        padding:0 1em;
-        border-radius:4px;
-        font-weight: 600;
-    }
     form {
         width:100%;
     }
@@ -46,22 +155,44 @@ div.section.body div.content h3 {
         display: none;
     }
     div.section.body div.content {
-        position:absolute;
-        left:0;
-        top:0;
         margin-left: 0;
         background:white;
         z-index: +100;
         position: absolute;
         width:100%;
-        display: none;
-        padding:2em 2em;
+        padding:2em 0em;
+    }
+    div.section.body div.about {
+        text-align: justify;
+    }
+    div.section.body div.responsibilities ul {
+        width:100%;
+        margin-left: 0;
+        margin-top:2em;
+    }
+    div.section.body div.responsibilities ul > li, div.section.body div.responsibilities ul > li > div {
+        height: auto;
+    }
+    div.section.body div.responsibilities ul > li > i{
+        font-size:0.5em;
+    }
+    div.section.body div.responsibilities ul > li:nth-child(2n) > i {
+        float: left;
+    }
+    div.section.body div.responsibilities ul > li:nth-child(2n) > div {
+        text-align: left;
+    }
+    div.section.body div.incentives {
+        width:100%;
+    }
+    div.section.body div.incentives > div {
+        width: 100%;
+        margin-left: 0%;
     }
     div.section.body div.content.active {
         display: block;
     }
-
-    form.inactive {
-        display: none;
+    form .field-container {
+        width:100%;
     }
 }
