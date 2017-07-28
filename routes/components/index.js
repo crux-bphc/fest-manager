@@ -4,6 +4,7 @@ var custom = require('./custom');
 var events = require('./events');
 var dashboard = require('./dashboard');
 var portals = require('./portals');
+var ca = require('./ca');
 var about = require('./about');
 var login = require('./login');
 
@@ -21,6 +22,7 @@ router.use('/events', events);
 router.use('/dashboard', dashboard);
 router.use('/portals', portals);
 router.use('/about', about);
+router.use('/ca', ca);
 router.use('/login', login);
 router.use('/logout', function (req, res, next) {
 	req.logout();

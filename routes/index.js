@@ -30,6 +30,10 @@ router.get('/?*', function (req, res, next) {
 					for: "visible"
 				},
 			},
+			ca: {
+				label: "Campus Ambassador",
+				route: "/ca",
+			},
 			portals: {
 				route: "/portals",
 				initial: "disabled",
