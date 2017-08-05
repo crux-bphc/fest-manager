@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var express = require('express');
 var router = express.Router();
+var shortID = require('mongoose-shortid-nodeps');
 
 var eventsSchema = new Schema({
 	name: String,
@@ -16,7 +17,7 @@ var eventsSchema = new Schema({
 	contact: String,
 	startTime: Date,
 	endTime: Date,
-	teams: [String],
+	teams: [shortID],
 	price: Number,
 	route: String,
 	immersive: String,

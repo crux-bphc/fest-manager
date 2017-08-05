@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var express = require('express');
 var router = express.Router();
+var shortID = require('mongoose-shortid-nodeps');
 
 var usersSchema = new Schema({
 	name: String,
@@ -14,7 +15,7 @@ var usersSchema = new Schema({
 	institute: {
 		type: String
 	},
-	teams: [String],
+	teams: [shortID],
 	events: [Schema.Types.ObjectId],
 	accommodation: Schema.Types.ObjectId,
 	token: String,
