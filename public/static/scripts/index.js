@@ -108,6 +108,11 @@ var manager = function () {
 			title = state.pagetitle;
 		}
 		document.title = title;
+		$('.subtitle').addClass('hidden');
+		if(state.subtitle){
+			$('.subtitle').removeClass('hidden');
+			$('.subtitle .text').text(state.subtitle);
+		}
 	}
 
 	client.navigation.generateSubMenu = function (state) {
