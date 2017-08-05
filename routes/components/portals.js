@@ -73,7 +73,7 @@ var getFields = function (event) {
 		editable: true,
 		value: event ? event.type : "",
 		type: "select",
-		options: ["Headliner","Competition", "Workshop", "Proshow"],
+		options: ["Headliner", "Competition", "Workshop", "Proshow"],
 		none: true,
 		group: 0,
 	});
@@ -207,11 +207,13 @@ function generate_pdf(event) {
 	var path = require('path');
 	var marked = require('marked');
 
-	var template = fs.readFileSync(path.join(__dirname,'../../utils/letterhead.html')).toString();
-	var filename = path.join(__dirname, '../../public/static/data/docs/'+event.name+'.pdf');
+	var template = fs.readFileSync(path.join(__dirname, '../../utils/letterhead.html')).toString();
+	var filename = path.join(__dirname, '../../public/static/data/docs/' + event.name + '.pdf');
 
-	template = template.replace('$$--title--$$',event.name).replace('$$--content--$$',marked(event.about));
-	pdf.create(template).toStream(function(err, stream){stream.pipe(fs.createWriteStream(filename));});
+	template = template.replace('$$--title--$$', event.name).replace('$$--content--$$', marked(event.about));
+	pdf.create(template).toStream(function (err, stream) {
+		stream.pipe(fs.createWriteStream(filename));
+	});
 }
 
 router.post('/:body/add', authenticate, elevate, function (req, res, next) {

@@ -13,8 +13,8 @@ var options = {
 
 var teamsSchema = new Schema({
 	_id: {
-	    type: String,
-	    'default': randomString.generate(options)
+		type: String,
+		'default': randomString.generate(options)
 	},
 	name: String,
 	members: [Schema.Types.ObjectId],

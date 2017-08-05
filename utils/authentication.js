@@ -48,8 +48,10 @@ var configureSerializers = function () { // internal passport configuration to s
 	});
 
 	passport.deserializeUser(function (obj, done) {
-		userService.findOne({_id: obj}, function(err, user) {
-			if(err) console.log("Failed to deserialize");
+		userService.findOne({
+			_id: obj
+		}, function (err, user) {
+			if (err) console.log("Failed to deserialize");
 			done(null, user);
 		});
 	});
