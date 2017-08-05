@@ -6,10 +6,10 @@ var shortID = require('mongoose-shortid-nodeps');
 
 var teamsSchema = new Schema({
 	_id: {
-	    type: shortID,
-	    len: 7,
-	    alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
-	    retries: 500
+		type: shortID,
+		len: 7,
+		alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+		retries: 500
 	},
 	name: String,
 	members: [Schema.Types.ObjectId],

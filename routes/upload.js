@@ -20,7 +20,7 @@ router.post('/base64img', function (req, res, next) {
 		} else {
 			res.json({
 				status: "Success",
-				path: file_path.replace('public',"")
+				path: file_path.replace('public', "")
 			});
 		}
 	});

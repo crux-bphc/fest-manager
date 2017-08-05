@@ -22,7 +22,10 @@ var usersSchema = new Schema({
 	facebookID: String,
 	googleID: String,
 	githubID: String,
-	isAmbassador: {type: Boolean, default: false},
+	isAmbassador: {
+		type: Boolean,
+		default: false
+	},
 	phone: String,
 	address: String,
 	pincode: String,
