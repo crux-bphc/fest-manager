@@ -2,19 +2,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var express = require('express');
 var router = express.Router();
-var randomString = require('randomstring');
-
-var options = {
-	length: 7,
-	charset: 'alphanumeric',
-	readable: true,
-	capitalization: 'uppercase'
-};
+var shortID = require('mongoose-shortid-nodeps');
 
 var teamsSchema = new Schema({
 	_id: {
-	    type: String,
-	    'default': randomString.generate(options)
+	    type: shortID,
+	    len: 7,
+	    alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+	    retries: 500
 	},
 	name: String,
 	members: [Schema.Types.ObjectId],
