@@ -16,6 +16,10 @@ var config = {
 		clientSecret: '91bd7c4d0705dc917f41483350f2cbf04cbc3714',
 		callbackURL: "http://localhost:3000/auth/github/callback",
 		profileFields: ['emails']
-	}
+	},
+	database: {
+		name: "fest-manager",
+		url: "mongodb://127.0.0.1/",
+	},
 };
 module.exports = config;

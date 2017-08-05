@@ -121,7 +121,6 @@ input[type = "file"] {
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
 }
 .navbar .logo img {
     height:1.25em;
@@ -130,10 +129,10 @@ input[type = "file"] {
 .navbar .subtitle {
     font-size: 1.5em;
     font-weight: 600;
-    padding-left: 10px;
+    padding-left: 5px;
     display: inline-flex;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Proxima Nova', sans-serif;
 }
 
 .navbar .controls {

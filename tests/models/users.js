@@ -31,7 +31,7 @@ describe('User', function () {
         if (err) return done(err);
         assert.equal(data.email, userobject.email);
         done();
-      })
+      });
     });
 
     it('should not save a user without email', function (done) {
