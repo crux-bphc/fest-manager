@@ -2,6 +2,9 @@ module.exports = function () {
 
 	var appendStateFromRequest = function (state, req) {
 		// Append supported variables to state.
+		state.location = req.originalUrl;
+		state.subtitle = req.stateparams.subtitle || false;
+		state.isImmersive = req.stateparams.immersive || false;
 		state.pagetitle = req.stateparams.pagetitle || null;
 		state.title = req.stateparams.title || {};
 		state.submenu = req.stateparams.submenu || {};
@@ -37,13 +40,6 @@ module.exports = function () {
 		return state;
 	};
 
-	var appendTestState = function (state) {
-		var test = {};
-		test.showportal = state.sidebar.dashboard;
-		state.test = test;
-		return state;
-	};
-
 	var appendSidebarState = function (state) {
 		var items = ['dashboard', 'portals', 'events', 'home', 'about', 'ca'];
 		var sidebar = {};
@@ -66,13 +62,15 @@ module.exports = function () {
 		return state;
 	};
 
+	var appendTestState = function (state) {
+		var test = {};
+		test.showportal = state.sidebar.dashboard;
+		state.test = test;
+		return state;
+	};
+
 	var getState = function (req) {
 		var state = {};
-		state.location = req.originalUrl;
-		state.isImmersive = state.location == '/components/';
-		if (req.stateparams && req.stateparams.immersive) {
-			state.isImmersive = true;
-		}
 		state = appendStateFromRequest(state, req);
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);
