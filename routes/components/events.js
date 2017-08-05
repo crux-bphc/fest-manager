@@ -16,8 +16,8 @@ router.get('/', function (req, res, next) {
 	eventsService.find(function (err, events) {
 		if (err) return next(err);
 
-		var compare = function(a, b) {
-			if(a.name > b.name)
+		var compare = function (a, b) {
+			if (a.name > b.name)
 				return true;
 			return false;
 		};

@@ -89,8 +89,12 @@ router.get('/cart', authenticate, function (req, res, next) {
 	var eventModel = require("../api/services/events").model;
 
 	req = applyStateChanges(req);
-	eventModel.find({_id: {$in: req.user.events}}, function(err, result){
-		if(err){
+	eventModel.find({
+		_id: {
+			$in: req.user.events
+		}
+	}, function (err, result) {
+		if (err) {
 			console.log("ERROR: " + err);
 			params.error = "Error finding events";
 			return;
@@ -99,7 +103,7 @@ router.get('/cart', authenticate, function (req, res, next) {
 			title: 'Cart',
 			user: req.user,
 			events: result
- 		};
+		};
 		res.renderState('dashboard/cart', params);
 	});
 });
