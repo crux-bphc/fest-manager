@@ -1,25 +1,59 @@
-link(rel="stylesheet" href="/static/stylesheets/events.style.css")
-link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
+link(rel='stylesheet', href='/static/stylesheets/events.style.css')
+link(rel='stylesheet', href='/static/stylesheets/pybits.style.css')
+link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css')
+#home
+	#branding
+		img(src='/static/images/pybits-branding.png')
+	.about
+		p
+			| PyBITS is a Python conference inspired by PyCon India, organized as a part of ATMOS, the annual national techno-management fest of BITS Pilani Hyderabad Campus. It is aimed at promoting the usage of Python among the attendees, and at introducing them to new ideas as to the applicability of Python in various programming domains
+		#coc(_route='/pybits/coc') PyBITS Code of Conduct
 
-div.section.header
-	h1.title= title
+.thing
+	h1 Talks
+	.con
+		.event-container(_route='/pybits/talks/talk1')
+			.face
+				h3.name Talk1
+				span.tagline Info
+		.event-container(_route='/pybits/talks/talk2')
+			.face
+				h3.name Talk2
+				span.tagline Info
+		.event-container(_route='/pybits/talks/talk3')
+			.face
+				h3.name Talk3
+				span.tagline Info
 
-h2 About PyBITS
 
-#about
-	p PyBITS is a Python conference inspired by PyCon India, organized as a part of ATMOS, the annual national techno-management fest of BITS Pilani Hyderabad Campus. It is aimed at promoting the usage of Python among the attendees, and at introducing them to new ideas as to the applicability of Python in various programming domains
+.thing
+	h1 Workshops
+	.con
+		.event-container(_route='/pybits/workshops/workshop1')
+			.face
+				h3.name Workshop1
+				span.tagline Info
+		.event-container(_route='/pybits/workshops/workshop2')
+			.face
+				h3.name Workshop2
+				span.tagline Info
+		.event-container(_route='/pybits/workshops/workshop3')
+			.face
+				h3.name Workshop3
+				span.tagline Info
 
-#links
-	h2 PyBITS Events
-
-	ul
-		li.tile
-			span(_route="/pybits/coc") PyBITS Code of Conduct
-		li.tile
-			span(_route="/pybits/2016") PyBITS 2016
-		li.tile
-			span(_route="/pybits/talks") PyBITS Talks
-		li.tile
-			span(_route="/pybits/workshops") PyBITS Workshops
-		li.tile
-			span(_route="/pybits/sprints") PyBITS Sprints
+.thing
+	h1 Sprints
+	.con
+		.event-container(_route='/pybits/sprints/sprint1')
+			.face
+				h3.name Sprint1
+				span.tagline Info
+		.event-container(_route='/pybits/sprints/sprint2')
+			.face
+				h3.name Sprint2
+				span.tagline Info
+		.event-container(_route='/pybits/sprints/sprint3')
+			.face
+				h3.name Sprint3
+				span.tagline Info
