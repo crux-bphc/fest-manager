@@ -29,6 +29,10 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
                         div.add_to_cart.cartButton(onclick="add_to_cart('#{event._id}')")
                             i.icon-add_shopping_cart
                             span Add to cart
+                - else
+                    div.add_to_cart.cartButton(_route="/login?callback=/events/#{event.route}")
+                        i.icon-add_shopping_cart
+                        span Add to cart
         div.category= event.category
         div.details
             if(event.startTime)
