@@ -1,0 +1,89 @@
+* {
+    background-color: #202729;
+    overflow-x: hidden;
+}
+
+.title {
+    color: white;
+}
+
+#home {
+    height: 100vh;
+    margin-top: 4.5vw;
+}
+
+#branding {
+    width: 100%;
+    margin: auto;
+    display: table;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#branding img {
+    height: 35vw;
+    float: left;
+    margin: auto;
+}
+
+.bar {
+    width: 2px;
+    background-color: grey;
+    height: 35vw;
+    margin-top: 1vw;
+}
+
+.about {
+    display: table-cell;
+    vertical-align: middle;
+    max-width: 40%;
+    height: 35vw;
+    font-size: calc(0.75em + 1vmin);
+    line-height: 1.2em;
+    padding-left: 1.5em;
+    position: relative;
+    min-height: 1px;
+}
+
+#coc {
+    color: white;
+    margin: auto;
+    border: 1px white solid;
+    border-radius: 2.5px;
+    display: inline-block;
+    padding: 5px;
+}
+#coc:hover {
+    background-color: white;
+    color: #202729;
+    transition: 0.5s;
+}
+
+.thing {
+    margin-top: 4.5vw;
+    height: calc(100vh - 4.5vw);
+    width: calc(100vw - 4em);
+    background-color: #202729;
+}
+
+.thing h1 {
+    margin-bottom: 50px;
+    color: white;
+    text-align: center;
+    width: 100vw;
+}
+
+.con {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+@media (min-width: 992px) {
+    #branding {
+        float: left;
+        width: 50%;
+    }
+}
