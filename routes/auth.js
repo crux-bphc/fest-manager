@@ -3,9 +3,14 @@ var router = express.Router();
 var passport = require('passport');
 
 var callbackHandler = function (req, res) {
-	if (req.user.institute && req.user.name)
+	if (req.session.callback) {
+		var url = req.session.callback;
+		delete req.session.callback;
+		res.redirect(url);
+	} else
+	if (req.user.institute && req.user.name) {
 		res.redirect('/dashboard');
-	else
+	} else
 		res.redirect('/dashboard/account');
 };
 

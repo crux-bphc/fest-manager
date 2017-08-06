@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
 			github: true
 		}
 	};
+	req.session.callback = req.query.callback;
 	if (req.user) {
 		res.redirect("/components/dashboard");
 	}
