@@ -1,0 +1,32 @@
+mixin groundShaders(id)
+    script(type="x/vertex-shader" id="#{id}-vertex").
+        varying vec3 pos;
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            pos = vec3(modelViewMatrix * vec4(position, 1.0));
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    script(type="x/fragment-shader" id="#{id}-frag").
+        varying vec2 vUv;
+        varying vec3 pos;
+        uniform vec3 camera;
+        uniform vec2 streaks[5];
+        uniform vec3 shade;
+        uniform float size;
+        uniform float intensity;
+        void main() {
+            float dist = distance(camera, pos);
+            float dProd = log(1. + 100000. / pow(dist,2.));
+            float edgeFactor = 1./700.;
+            float streakFactor = 0.;
+            for(int i = 0; i < 5; i++) {
+                streakFactor += pow(1./abs(vUv.x - streaks[i].x), intensity);
+                streakFactor += pow(1./abs(vUv.y - streaks[i].y), intensity);
+                streakFactor += pow(1./abs(vUv.x - (1. - streaks[i].x)), intensity);
+                streakFactor += pow(1./abs(vUv.y - (1. - streaks[i].y)), intensity);
+            }
+            edgeFactor *= streakFactor;
+            gl_FragColor = dProd * edgeFactor * vec4(shade, 1.);
+            return;
+        }
