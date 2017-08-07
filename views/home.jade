@@ -1,46 +1,138 @@
+include buildings/central-shaders
+include buildings/logo-shaders
+include buildings/buildings-shaders
+include buildings/ground-shaders
+include buildings/screen-shaders
+include buildings/star-shaders
+
 link(href="/static/stylesheets/home.style.css" rel="stylesheet")
-div#fb-root
-    script.
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=458450951218928";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-script.
-    window.twttr = (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-    if (d.getElementById(id)) return t;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://platform.twitter.com/widgets.js";
-    fjs.parentNode.insertBefore(js, fjs);
-
-    t._e = [];
-    t.ready = function(f) {
-    t._e.push(f);
-    };
-
-    return t;
-    }(document, "script", "twitter-wjs"));
 div.immersive-wrapper
-    div.underlay
-    a.button(href="https://bits-atmos.org/static/data/docs/brochure.pdf") Sponsorship Brochure
-    div.container
-        div.logo
-            img(src="/static/images/logo.png")
-        div.countdown
-            div#count
-            span DAYS TO GO
-        div.endorse
-            span Under the patronage of
-            img.digit(src="/static/images/digital-india-logo.png")
-            img.make(src="/static/images/make.png")
-    a.button(href="/login") Registrations Open
+    div.container#fallback
+        div.underlay
+        div.subject
+            img(onload="Constructor()" src="/static/images/logo.png")
+            .message You are seeing this because this page is not supported on your device.
+            .links
+                .title Quick Links
+                .list
+                    a(href="/about") About
+                    a(href="/events#Competition") Competitions
+                    a(href="/events#Workshop") Workshops
+                    a(href="/about/contact") Contact the team
+                    a(href="https://bits-atmos.org/2016") ATMOS 2016
+                    a(href="/about/map") Getting here
+    div.slider
+        div.slide#slide1
+            div.message
+                span.big Welcome to our desolate world
+                span.small The lack of humanity will surely please you
+            div.button(onclick="Buildings.next();Buildings.toggle();")
+                span ENTER EXPERIENCE
+            div.calling
+                .line
+                span
+                    span Navigate using
+                    i.icon-navigate_next.up
+                    span Up &amp;
+                    i.icon-navigate_next.down
+                    span Down
+        div.slide.left#slide2
+            div.content
+                h2 You have landed
+        div.slide.right#slide3
+            div.content
+                h2 Meet our Sponsors
+        div.slide.right#slide4
+            div.content
+                h2 Proshows
+                div
+                    li Coming Soon
+        div.slide.right#slide5
+            div.content
+                h2 Competitions
+                div.flashlist
+                    li.active TechExpo
+                    li Robowars
+                    li MiniGP
+                    li Bombsquad
+                    li Enigma
+                    li Paper Presentation
+                a.button(href="/events#Competition") SEE ALL COMPETITIONS
+        div.slide.left#slide5
+            div.content
+                h2 Workshops
+                div.flashlist
+                    li.active Fast Track Automation
+                    li Ethical Hacking
+                    li PCB Design
+                    li Internet of Things
+                a.button(href="/events#Workshop") SEE ALL WORKSHOPS
+        div.slide.right#slide6
+            div.content
+                h2 Contact Us
+                div.list
+                    li
+                        .name Sharath Golluri
+                        .phone 9133234270
+                a.button(href="/about/contact") MEET THE TEAM
+    div.controller
+        div.up(onclick="Buildings.prev()")
+            i.icon-navigate_next
+        div.down(onclick="Buildings.next()")
+            i.icon-navigate_next
     div.footer
-        div.fb-like(data-href="https://bits-atmos.org" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="true")
-        div.tweet
-            a.twitter-share-button(href="https://twitter.com/intent/tweet?url=https://bits-atmos.org&text=Hey, check out the official site of ATMOS, BITS Hyderabad's annual Techno-Management fest") Tweet
-script(src="/static/scripts/home.js")
+        div.sharables
+            a.icon-facebook(href="https://facebook.com/bits-atmos")
+            a.icon-twitter(href="https://twitter.com/BITSAtmos")
+            a.icon-google(href="https://plus.google.com/103653254627475556103")
+        div.patronage
+            img(src="/static/images/make.png")
+            img(src="/static/images/digital-india-logo.png")
+    #cursor
+div.hidden
+    video#video-stream(loop muted src="/static/buildings/input/2main.mp4")
+    audio#audio-stream(autoplay src="/static/buildings/input/01.mp3")
++centralShaders("central")
++logoShaders("logo")
++buildingShaders("buildings")
++groundShaders("ground")
++screenShaders("screen")
++starShaders("stars")
+script.
+    var ANIMATING = false;
+    var onMousewheel = function(e) {
+        if(ANIMATING) return false;
+        ANIMATING = true;
+        var delta = e.wheelDelta || e.delta;
+        if(delta < 0) {
+            Buildings.next();
+        }
+        else if(delta > 0) {
+            Buildings.prev();
+        }
+    };
+    document.body.onmousewheel = onMousewheel;
+    document.body.ondommousescroll = onMousewheel;
+    window.addEventListener('DOMMouseScroll', onMousewheel, true);
+    $.fn.nextOrFirst = function(selector){
+        var next = this.next(selector);
+        return (next.length) ? next : this.prevAll(selector).last();
+    }
+    $('.flashlist').each(function(index, item){
+        setInterval(function() {
+            var current = $(item).find('.active');
+            current.removeClass('active').addClass('leaving').nextOrFirst().addClass('active');
+            setTimeout(function() {
+                current.removeClass('leaving');
+            },1000);
+        }, 3000);
+    });
+    window.addEventListener('mousemove', function(e) {
+        $('#cursor').css({left: e.pageX, top: e.pageY});
+    }, true);
+    window.addEventListener('mousedown', function(e) {
+        $('#cursor').addClass('down');
+    }, true);
+    window.addEventListener('mouseup', function(e) {
+        $('#cursor').removeClass('down');
+    }, true);
