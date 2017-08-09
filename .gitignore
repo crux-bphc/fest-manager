@@ -48,3 +48,6 @@ package-lock.json
 
 #upload directory
 public/static/data/*
+
+#export directory
+public/static/exports/*
