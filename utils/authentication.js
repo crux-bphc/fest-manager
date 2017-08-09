@@ -24,6 +24,31 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				passport.serializeUser(function (user, done) {
 					return done(null, user._id);
 				});
+				var nodemailer = require('nodemailer');
+				var transporter = nodemailer.createTransport({
+					service: 'Gmail',
+					auth: {
+						user: 'atmos@hyderabad.bits-pilani.ac.in', // Your email id
+						pass: 'bits@123' // Your password
+					}
+				});
+				var mailOptions = {
+					from: 'atmos@hyderabad.bits-pilani.ac.in>', // sender address
+					to: 'vermaabhilash70@gmail.com', // list of receivers
+					subject: 'Test Email from Production', // Subject line
+					text: "This email was auto-generated from https://bits-atmos.org. It means someone has recently registered." //, // plaintext body
+					// html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+				};
+				transporter.sendMail(mailOptions, function (error, info) {
+					if (error) {
+						console.log(error);
+						return done(error, user);
+						// res.json({ yo: 'error' });
+					} else {
+						console.log('Message sent: ' + info.response);
+						return done(err, user);
+					}
+				});
 				return done(err, user);
 			});
 		} else {
