@@ -18,14 +18,16 @@ div.section.body
 				#{user.name}
 			- }
 			- if (typeof user.email !== "undefined") {
-			i.icon-email
-			span.user.email.
-				#{user.email}
+			span.user.email
+				i.icon-mail_outline
+				span.
+					#{user.email}
 			- }
 			- if (typeof user.institute !== "undefined") {
-			i.icon-account_balance
-			span.user.institute.
-				#{user.institute}
+			span.user.institute
+				i.icon-account_balance
+				span.
+					#{user.institute}
 			- }
 	div.separate
 	div.right

@@ -86,6 +86,15 @@ div.ca .content .button {
 .user {
 	line-height: 1.5;
 }
+.user > i {
+	display: inline-block;
+}
+.user > span {
+	margin-left: 0.5em;
+	font: inherit;
+	display: inline-block;
+	vertical-align: top;
+}
 
 .user.name{
 	color: black;
@@ -95,7 +104,8 @@ div.ca .content .button {
 }
 .user.email,.user.institute{
 	color: #777;
-	display: block;
+	display: flex;
+	align-items: center;
 	font-size: 1em;
 	width:100%;
 	white-space: nowrap;
