@@ -7,10 +7,10 @@ var applyStateChanges = function (req) {
 		route: '/about',
 	};
 	req.stateparams.submenu = [
-		// {
-		// 	label: "Get in Touch",
-		// 	route: "/about/contact",
-		// },
+		{
+			label: "Get in Touch",
+			route: "/about/contact",
+		},
 		// {
 		// 	label: "How to Reach",
 		// 	route: "/about/map",

@@ -1,3 +1,6 @@
+div.section.body {
+    padding-top: 1em;
+}
 div.section.body p {
     border-left:2px solid #ccc;
     padding: 1em;
@@ -6,6 +9,35 @@ div.section.body p {
     font-size: 1.2em;
     color:#666;
     max-width: 60%;
+}
+.section .contacts
+{
+    list-style-type: none;
+    padding-left: 0em;
+}
+.section .contacts > li {
+    display: block;
+    font-size: 1em;
+    margin:0.75em 0;
+    color:#666;
+}
+.section .contacts > li > i {
+    display: inline-block;
+    font-size: 2em;
+    line-height: 1.2em;
+    float: left;
+    margin-right: 0.25em;
+}
+.section .contacts > li > span {
+    display: block;
+    line-height: 1.2em;
+}
+.section .contacts > li > span.name {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+.section .contacts > li > span.contact {
+    color:#222;
 }
 @media only screen and (max-width: 600px) {
     div.section.body p {
@@ -16,5 +48,7 @@ div.section.body p {
         text-align: justify;
         border-left: 0em;
     }
-
+    .section .contacts > li {
+        font-size: 1.2em;
+    }
 }

@@ -314,23 +314,23 @@ input[type = "file"] {
 /*
  * Common declarations for sections in sidebar
  */
-.section {
+.sidebar .section {
     list-style-type: none;
     margin: 1.25em 0;
 }
 
-.section > label {
+.sidebar .section > label {
     color: #445256;
     padding-bottom: 1em;
     display: block;
 }
 
-.section > ul {
+.sidebar .section > ul {
     margin: 0;
     padding: 0;
 }
 
-.section > ul > li {
+.sidebar .section > ul > li {
     line-height: 2em;
     cursor: pointer;
     display: flex;
@@ -340,13 +340,13 @@ input[type = "file"] {
     white-space: nowrap;
 }
 
-.section > ul > li:hover > i {
+.sidebar .section > ul > li:hover > i {
     color: #e5e8e9;
     margin-left: 0.25em;
     border-color: #e5e8e9;
 }
 
-.section > ul > li.active > i {
+.sidebar .section > ul > li.active > i {
     font-weight: 500;
     color: #e5e8e9;
     margin-left: 0.5em;
@@ -354,17 +354,17 @@ input[type = "file"] {
     background: #e5e8e9;
 }
 
-.section > ul > li.active > span {
+.sidebar .section > ul > li.active > span {
     font-weight: 500;
     color: #e5e8e9;
 }
 
-.section > ul > li > span {
+.sidebar .section > ul > li > span {
     vertical-align: top;
     transition: font-weight 0.2s;
 }
 
-.section > ul > li > i {
+.sidebar .section > ul > li > i {
     border: 2px solid;
     border-color: inherit;
     border-radius: 50%;
