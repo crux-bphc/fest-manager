@@ -161,6 +161,10 @@ input[type = "file"] {
     display: flex;
 }
 
+.window.immersive .navbar .controls > .button {
+    background:none;
+}
+
 #menu {
     font-size: 1.25em;
     justify-content: flex-start;
@@ -183,7 +187,6 @@ input[type = "file"] {
 }
 
 .navbar .controls > .button {
-
     background: #2b3537;
     min-width: 60px;
 }
