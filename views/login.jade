@@ -7,28 +7,19 @@ if error
 			confirmButtonText: "OK",
 			confirmButtonColor: "#202729"
 		});
-h1= title
 link(href="/static/stylesheets/login.style.css" rel="stylesheet")
-div.auth-container.parent-center
-	if methods.google
-			div.auth-method.child-center
-				a(href="/auth/google")
-					button.loginBtn.loginBtn--google(type="button")
-						span
-							i(aria-hidden"true").fa.fa-google
-							| Login with Google
-
-	if methods.facebook
-		div.auth-method.child-center
-			a(href="/auth/facebook")
-					button.loginBtn.loginBtn--facebook(type="button")
-						span
-							i(aria-hidden"true").fa.fa-facebook-official
-							| Login with Facebook
-	if methods.github
-		div.auth-method.child-center
-			a(href="/auth/github")
-					button.loginBtn.loginBtn--github(type="button")
-						span
-							i(aria-hidden"true").fa.fa-github
-							| Login with GitHub
+div.parent-center
+	div.auth-container
+		div.title LOGIN
+		if methods.google
+			a.child-center.google(href="/auth/google")
+				i.icon-google
+				span Continue with Google
+		if methods.facebook
+			a.child-center.facebook(href="/auth/facebook")
+				i.icon-facebook
+				span Continue with Facebook
+		if methods.github
+			a.child-center.github(href="/auth/github")
+				i.icon-github
+				span Continue with GitHub
