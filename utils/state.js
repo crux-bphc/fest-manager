@@ -32,10 +32,10 @@ module.exports = function () {
 	var appendNavbarState = function (state) {
 		var navbar = {};
 		navbar.visible = !state.isImmersive;
-		navbar.logout = state.user.isAuthenticated && !state.isImmersive;
-		navbar.login = !state.user.isAuthenticated && !state.isImmersive;
-		navbar.avatar = state.user.isAuthenticated && !state.isImmersive;
-		navbar.exit = state.isImmersive;
+		navbar.logout = state.user.isAuthenticated;
+		navbar.login = !state.user.isAuthenticated;
+		navbar.avatar = state.user.isAuthenticated;
+		navbar.exit = false;
 		state.navbar = navbar;
 		return state;
 	};
