@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+mongo fest-manager $DIR/../utils/export.js > $DIR/../public/static/data/ca-data.csv
+
