@@ -159,7 +159,11 @@ div.section.body div.contact > div > ul > li > i {
     line-height: 1.2em;
     font-size: 3em;
 }
-div.section.body div.contact > div > ul > li > span {
+div.section.body div.contact > div > ul > li > span.name {
+    font-size: 1.2em;
+    font-weight: 680;
+}
+div.section.body div.contact > div > ul > li > span.email{
     font-size: 0.9em;
 }
 div.section.body div.contact > div > ul > li {

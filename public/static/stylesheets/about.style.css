@@ -7,14 +7,6 @@ div.section.body p {
     color:#666;
     max-width: 60%;
 }
-h1.contact{
-    margin-top: 3em;
-}
-div.section.body p.contactp{
-    line-height: 2;
-    padding: 0;
-    padding-left: 1em;
-}
 @media only screen and (max-width: 600px) {
     div.section.body p {
         padding: 0em;
@@ -23,9 +15,6 @@ div.section.body p.contactp{
         max-width: 100%;
         text-align: justify;
         border-left: 0em;
-    }
-    div.section.body p.contactp{
-        padding-top: 1.2em;
     }
 
 }
