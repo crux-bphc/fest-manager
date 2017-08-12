@@ -6,8 +6,7 @@ var applyStateChanges = function (req) {
 		text: 'About',
 		route: '/about',
 	};
-	req.stateparams.submenu = [
-		{
+	req.stateparams.submenu = [{
 			label: "Get in Touch",
 			route: "/about/contact",
 		},
