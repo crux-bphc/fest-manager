@@ -147,6 +147,38 @@ div.content div.button {
 div.content div.button:hover {
     background:#e0e0e0;
 }
+div.section.body div.contact > div > ul {
+    width:100%;
+    margin:0;
+    display: flex;
+    padding:0em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+div.section.body div.contact > div > ul > li > i {
+    line-height: 1.2em;
+    font-size: 3em;
+}
+div.section.body div.contact > div > ul > li > span.name {
+    font-size: 1.2em;
+    font-weight: 680;
+}
+div.section.body div.contact > div > ul > li > span.email{
+    font-size: 0.9em;
+}
+div.section.body div.contact > div > ul > li {
+    min-width: 200px;
+    width:33%;
+    height:auto !important;
+    box-sizing: border-box;
+    padding:2em 1em;
+    display: table-cell;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
 @media only screen and (max-width: 800px) {
     form {
         width:100%;
@@ -186,6 +218,13 @@ div.content div.button:hover {
         width:100%;
     }
     div.section.body div.incentives > div {
+        width: 100%;
+        margin-left: 0%;
+    }
+    div.section.body div.contact {
+        width:100%;
+    }
+    div.section.body div.contact > div {
         width: 100%;
         margin-left: 0%;
     }
