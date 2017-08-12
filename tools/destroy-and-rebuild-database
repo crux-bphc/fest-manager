@@ -81,6 +81,7 @@ var getEvents = function(models){
 				tagline: pre + " event by " + elem.name,
 				body: elem._id,
 				category: "Random",
+				type: "Competition",
 				route: elem.code + ++index,
 			};
 			if(newevent.route.startsWith('rome')) {
