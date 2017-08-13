@@ -9,7 +9,7 @@ script(src="/static/scripts/simplemde.min.js")
 i.meta(_routed_at="/portals")
 div#_portal
 	div.section.header
-		h1.title= title
+		h1.title= body.name
 		div.stretch
 			div.remnant
 				ul.controls
@@ -31,7 +31,7 @@ div#_portal
 		each item in items
 			div.item
 				div.title= item.name
-				div.teams= item.teams.length
+				div.teams(_route="/portals/#{body.code}/#{item.route}")= item.teams.length
 				div.edit.button(onclick="edit_item('#{item._id}')")
 					i.icon-mode_edit
 	if !items

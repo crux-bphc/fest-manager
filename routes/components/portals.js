@@ -192,7 +192,7 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 			req.stateparams.pagetitle = body.name;
 			return res.renderState('portals/portal', {
 				user: req.user,
-				title: body.name,
+				body: body,
 				items: items,
 				fields: getFields()
 			});
