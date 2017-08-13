@@ -7,8 +7,7 @@ var applyStateChanges = function (req) {
 		route: 'pybits',
 	};
 	req.stateparams.subtitle = "PyBITS 2017";
-	req.stateparams.submenu = [
-		{
+	req.stateparams.submenu = [{
 			label: "Talks",
 			route: "/pybits/talks",
 		},

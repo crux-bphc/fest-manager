@@ -88,6 +88,53 @@ form .footer > .field-container {
 .table .item div.button {
 	cursor: pointer;
 }
+
+h3.title {
+	margin-bottom: 2em;
+}
+
+#_event .team {
+	display: block;
+	padding:0.5em 1em;
+	overflow-x:auto;
+	white-space: nowrap;
+}
+#_event .team:nth-child(2n) {
+	background: #efefef;
+}
+#_event .team:nth-child(2n + 1) > .user {
+	background: #efefef;
+	border-color: #efefef;
+}
+
+#_event .team .user {
+	width: 19%;
+	color:#666;
+	overflow: hidden;
+	display: inline-block;
+	font-size:1em;
+	min-width: 15em;
+	background:#fefefe;
+	height: 100%;
+	border-width: 0.5em 1em;
+	border-style: solid;
+	border-color:white;
+	border-radius: 4px;
+}
+#_event .team .user > div {
+	text-overflow: ellipsis;
+	width: 100%;
+	overflow: hidden;
+}
+#_event .team .user > div > i {
+	margin-right: 0.5em;
+}
+#_event .team .user .name > span {
+	font-weight: 600;
+	font-size: 1.05em;
+	color: #444;
+}
+
 .underwhelmingMessage {
 	width:100%;
 	text-align:center;

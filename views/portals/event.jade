@@ -1,0 +1,31 @@
+include ../mixins/field
+
+link(href="/static/stylesheets/portals.style.css" rel="stylesheet")
+i.meta(_routed_at="/portals")
+div#_event
+    div.section.header
+        h1.title= title
+        div.stretch
+            div.remnant
+                ul.controls
+                    li.icon-autorenew(onclick="manager.refresh()")
+                    li.icon-delete.disabled
+            - var search = {icon: 'search', placeholder: 'Search', editable: true};
+            +fieldMixin(search)
+    div.section.body
+        h3.title Registered Teams
+        for team in teams
+            div.team
+                for user in team
+                    div.user
+                        div.name(title=user.name)
+                            i.icon-account_circle
+                            span= user.name
+                        div.email(title=user.email)
+                            i.icon-mail_outline
+                            span= user.email
+                        div.institute(title=user.institute)
+                            i.icon-account_balance
+                            span= user.institute
+    if !teams
+        span.underwhelmingMessage Nothing to see here. Add new records.
