@@ -46,9 +46,10 @@ var getFields = function (user, isAmbassador = false) {
 		none: true,
 	});
 	fields.push({
-		icon: "building",
+		// icon: "building",
 		name: "institute",
 		label: "Institute",
+		placeholder: "Type to Search",
 		editable: true,
 		type: "text",
 		required: true,
