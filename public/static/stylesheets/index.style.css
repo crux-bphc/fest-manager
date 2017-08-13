@@ -185,6 +185,9 @@ input[type = "file"] {
 .window.immersive .navbar {
     z-index: +9999;
 }
+.window.immersive .navbar > .wrapper {
+    background-image: linear-gradient(rgba(0,0,0,0.6),transparent);
+}
 
 .navbar .controls > .button {
     background: #2b3537;
