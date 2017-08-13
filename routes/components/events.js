@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var eventsService = require("../api/services/events").model;
 
-var applyStateChanges = function (req) {
+var applyStateChanges = function(req) {
 	req.stateparams.title = {
 		text: 'Events',
 		route: '/events',
@@ -10,13 +10,13 @@ var applyStateChanges = function (req) {
 	return req;
 };
 
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
 	req.stateparams.pagetitle = 'Events';
 	req = applyStateChanges(req);
-	eventsService.find(function (err, events) {
+	eventsService.find(function(err, events) {
 		if (err) return next(err);
 
-		var compare = function (a, b) {
+		var compare = function(a, b) {
 			if (a.name > b.name)
 				return true;
 			return false;
@@ -32,12 +32,18 @@ router.get('/', function (req, res, next) {
 	});
 });
 
-router.get('/:eventroute', function (req, res, next) {
+router.get('/:eventroute', function(req, res, next) {
 	req = applyStateChanges(req);
 	eventsService.findOne({
-		route: req.params.eventroute,
-	}, function (err, data) {
+		route: req.params.eventroute
+		,
+	}, function(err, data) {
 		if (err) return next(err);
+		if (!data) {
+			var err1 = new Error('Not Found');
+			err1.status = 404;
+			return next(err1);
+		}
 		if (data.route.startsWith('@')) {
 			var myurl = '/components/' + data.route.split('@')[1];
 			return res.redirect(myurl);
