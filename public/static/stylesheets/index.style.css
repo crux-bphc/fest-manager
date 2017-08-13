@@ -780,6 +780,7 @@ form .field-container > .remnant > textarea {
     .sidebar, .sidebar.visible {
         margin-left: -200px;
         padding:2em 1em;
+        overflow-y: auto;
     }
     .navbar > .wrapper {
         padding:0em 0em 0em 1em;
