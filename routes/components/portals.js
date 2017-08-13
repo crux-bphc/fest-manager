@@ -3,7 +3,7 @@ var router = express.Router();
 var authenticate = require('../../utils/authentication').middleware;
 var bodiesService = require('../api/services/bodies').model;
 var eventsService = require('../api/services/events').model;
-
+var userService = require('../api/services/users').model;
 var elevate = function (req, res, next) {
 	if (req.user.privilege)
 		return next();
@@ -180,7 +180,7 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 	bodiesService.findOne({
 		code: req.params.body
 	}, function (err, body) {
-		if (err) return res.send("Error");
+		if (err || !body) return res.send("Error");
 		eventsService.find({
 			body: body._id
 		}, function (err, items) {
@@ -198,7 +198,60 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 			});
 		});
 	});
+});
 
+router.get('/:body/:eventroute', authenticate, elevate, function (req, res, next) {
+	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
+		var error = new Error('Access Denied');
+		error.status = 403;
+		return next(error);
+	}
+	var name;
+	bodiesService.findOne({
+		code: req.params.body
+	}, function (err, body) {
+		if (err || !body) return res.send("Error");
+		eventsService.findOne({
+			body: body._id,
+			route: req.params.eventroute
+		}, function (err, event) {
+			if (err || !event) {
+				var error = new Error('Not Found');
+				error.status = 404;
+				return next(error);
+			}
+
+			// Block iterates over teams in event and extracts users grouped by their team.
+			var teams = [];
+			var userProjection = '_id teams name email institute';
+			var _query = function (team) {
+				return userService.find({
+					teams: team
+				}, userProjection);
+			};
+
+			// Returns an array of promises to pass to Promise.all to resolve when all are done.
+			var promises = event.teams.map(function (team) {
+				return _query(team);
+			});
+
+			Promise.all(promises)
+				.then(function (values) {
+					teams = values;
+					req.stateparams.pagetitle = event.name;
+
+					return res.renderState('portals/event', {
+						user: req.user,
+						title: event.name,
+						teams: teams,
+					});
+				})
+				.catch(function (err) {
+					console.log(err);
+					return res.send("Some error occurred.");
+				});
+		});
+	});
 });
 
 function generate_pdf(event) {
