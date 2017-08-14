@@ -170,12 +170,41 @@ var getFields = function (event) {
 	return fields;
 };
 
-router.get('/:body', authenticate, elevate, function (req, res, next) {
+router.get('/ca/view', authenticate, elevate, function (req, res, next) {
+
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
 		return next(error);
 	}
+
+	userService.find({
+			isAmbassador: true
+		}, '_id name email institute phone address pincode why')
+		.then(function (users) {
+			req.stateparams.title = "Campus Ambassador";
+			console.log('users.length:', users.length);
+			return res.renderState('portals/ca', {
+				user: req.user,
+				items: users,
+			});
+		})
+		.catch(function (err) {
+			console.log(err);
+			return next(err);
+		});
+});
+
+
+router.get('/:body', authenticate, elevate, function (req, res, next) {
+
+
+	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
+		var error = new Error('Access Denied');
+		error.status = 403;
+		return next(error);
+	}
+
 	var name;
 	bodiesService.findOne({
 		code: req.params.body
@@ -194,7 +223,7 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 				user: req.user,
 				body: body,
 				items: items,
-				fields: getFields()
+				fields: getFields(),
 			});
 		});
 	});
