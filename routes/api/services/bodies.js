@@ -16,6 +16,7 @@ var bodiesSchema = new Schema({
 		type: String,
 		required: true
 	},
+	route: String,
 	portal: {
 		type: Schema.Types.Mixed,
 		required: false
