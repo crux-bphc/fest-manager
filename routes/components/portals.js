@@ -26,8 +26,33 @@ router.get('/', authenticate, elevate, function (req, res, next) {
 			});
 		});
 	else if (req.user.privilege.level == 1) {
-		res.redirect('/components/portals/' + req.user.privilege.body);
+		res.redirect('/components/portals/' + (req.user.privilege.body == "ca" ? 'ca/view' : req.user.privilege.body));
 	}
+});
+
+router.get('/ca/view', authenticate, elevate, function (req, res, next) {
+
+	if (req.user.privilege.body != "ca" && req.user.privilege.level != 2) {
+		var error = new Error('Access Denied');
+		error.status = 403;
+		return next(error);
+	}
+
+	userService.find({
+			isAmbassador: true
+		}, '_id name email institute phone address pincode why')
+		.then(function (users) {
+			req.stateparams.title = "Campus Ambassador";
+			console.log('users.length:', users.length);
+			return res.renderState('portals/ca', {
+				user: req.user,
+				items: users,
+			});
+		})
+		.catch(function (err) {
+			console.log(err);
+			return next(err);
+		});
 });
 
 var getFields = function (event) {
@@ -169,32 +194,6 @@ var getFields = function (event) {
 	});
 	return fields;
 };
-
-router.get('/ca/view', authenticate, elevate, function (req, res, next) {
-
-	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
-		var error = new Error('Access Denied');
-		error.status = 403;
-		return next(error);
-	}
-
-	userService.find({
-			isAmbassador: true
-		}, '_id name email institute phone address pincode why')
-		.then(function (users) {
-			req.stateparams.title = "Campus Ambassador";
-			console.log('users.length:', users.length);
-			return res.renderState('portals/ca', {
-				user: req.user,
-				items: users,
-			});
-		})
-		.catch(function (err) {
-			console.log(err);
-			return next(err);
-		});
-});
-
 
 router.get('/:body', authenticate, elevate, function (req, res, next) {
 
