@@ -68,19 +68,75 @@ form .footer > .field-container {
 .table .item {
 	display: flex;
 	width: 100%;
+	flex-wrap: wrap;
+	pointer-events: none;
+	position: relative;
 	flex-direction: row;
 	line-height: 3em;
 	border-bottom:1px solid rgba(0,0,0,0.05);
 }
-.table .item.head > *{
+.table .item.head > *,
+.table .item .expandable label {
 	font-weight: 600;
 }
-.table .item > * {
-	flex-grow: 1;
+.table .item .expandable label {
+	color: #666;
+	width:5em;
+	display: inline-block;
 }
+
+
+.table .item div.expandable {
+	width:100%;
+	display: none;
+	position:relative;
+}
+
+.table .item div.expandable.active {
+	display: block;
+}
+.table .item .expandable > div {
+	display: block;
+	line-height: 1.5em;
+	padding: 0.5em 0;
+}
+.table .item .expandable > div > span
+{
+	width: 50%;
+	display: inline-block;
+	white-space: pre-line;
+	vertical-align: top;
+}
+.table .item > i {
+	position:absolute;
+	width:3em;
+	right:0;
+	top:0;
+	display: block;
+	line-height: 3em;
+}
+.table .item > i::before {
+	font-size: 1.5em;
+}
+
+.table .item:not(.head):hover > div:not(.expandable) {
+	background:rgba(0,0,0,0.01);
+}
+
+.table .item .name,
 .table .item .title {
 	display: block;
-	width: 30%;
+	width: 33%;
+}
+.table .item .teams,
+.table .item .email {
+	display: block;
+	width: 33%;
+}
+.table .item .institute,
+.table .item .edit {
+	width: 33%;
+	display: block;
 }
 .table .item div.edit {
 	text-align: center;
@@ -146,7 +202,7 @@ h3.title {
 
 @media only screen and (max-width: 1000px) {
 	footer {
-		overflow-x: scroll;
+		overflow-x: auto;
 	}
 }
 
@@ -171,5 +227,9 @@ h3.title {
 	}
 	form .footer {
 		flex-wrap: wrap;
+	}
+	.section.table {
+		width: 150%;
+		overflow-x: auto;
 	}
 }

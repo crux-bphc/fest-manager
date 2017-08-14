@@ -1,0 +1,57 @@
+include ../mixins/field
+
+link(href="/static/stylesheets/portals.style.css" rel="stylesheet")
+i.meta(_routed_at="/portals")
+div#_portal
+    div.section.header
+        h1.title Campus Ambassador
+        div.stretch
+            div.remnant
+                ul.controls
+                    li.icon-add(onclick="formEditor()")
+                    li.icon-autorenew(onclick="manager.refresh()")
+                    li.icon-delete.disabled
+                    li.latent.icon-check
+                    li.latent.icon-close(onclick="closeEditor()")
+            - var search = {icon: 'search', name: 'search', placeholder: 'Search', editable: true};
+            +fieldMixin(search)
+    div.section.table
+        div.item.head
+            div.name Name
+            div.email Email
+            div.institute Institute
+        each item in items
+            div.item(onclick="expand(this)")
+                div.name= item.name
+                div.email= item.email
+                div.institute= item.institute
+                i.icon-arrow_drop_down.button
+                div.expandable
+                    div.phone
+                        label Phone
+                        span= item.phone
+                    div.address
+                        label Address
+                        span= item.address
+                    div.pincode
+                        label Pincode
+                        span= item.pincode
+                    div.why
+                        label Why
+                        span= item.why
+    if !items
+        span.underWhelmingMessage Nothing to see here. Add new records.
+script.
+    function expand(x) {
+        $(x).find('.expandable').toggleClass('active');
+    }
+    $('document').ready(function(){
+        $('#field-search').bind('keyup change', function(){
+            $('.section.table .item:not(.head)')
+            .addClass('hidden')
+            .each(function(i, item) {
+                if($(item).text().toLowerCase().indexOf($(this).val().toLowerCase()) != -1)
+                    $(item).removeClass('hidden');
+            }.bind(this));
+        })
+    })
