@@ -63,6 +63,15 @@ var manager = function () {
 			tray.ready(function () {
 				tray.removeClass('tray').addClass('face').siblings().removeClass('face').addClass('tray');
 				$('.main .face').scrollTop(0);
+				$('.scrollable').enscroll({
+					showOnHover: true,
+    				verticalTrackClass: 'enscroll-track',
+    				verticalHandleClass: 'enscroll-handle'
+				});
+				$('.enscroll-track').parent().each(function(i, item) {
+					$(item).css('height',$(item).prev('.scrollable').height());
+				});
+
 				window.setTimeout(function () {
 					$('.main .tray').html('');
 				}, 500);
