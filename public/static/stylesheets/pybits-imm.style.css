@@ -76,24 +76,8 @@
     transition: 0.5s;
 }
 
-.thing {
-    margin-top: 4.5vw;
-    height: calc(100vh - 4.5vw);
-    width: calc(100vw - 4em);
-    background-color: #202729;
-}
-
-.thing h1 {
-    margin-bottom: 50px;
-    color: white;
-    text-align: center;
-    width: 100vw;
-}
-
-.con {
-    display: flex;
-    align-items: center;
-    vertical-align: middle;
+.scrollable {
+    height: 80vh;
 }
 
 @media (max-width: 800px) {
