@@ -5,22 +5,24 @@ link(rel='stylesheet', href='/static/stylesheets/pybits.style.css')
 link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css')
 div.immersive-wrapper#home
 	div.logo
-		h3.title
+		div.title
 			span Py
 			span BITS
 			span &nbsp;2017
-		h3.subtitle
-			span
+		div.subtitle
+			div
 				i.icon-schedule
-				span
+				div
 					span 27
 					sup th
 					span &nbsp;- 29
 					sup th
 					span &nbsp;October
-			span
+			div
 				i.icon-location_city
-				span(title="Click to navigate") BITS Hyderabad
+				div(title="Click to navigate") BITS Hyderabad
+		div.button.disabled TICKETS COMING SOON
 	+navigationMixin(true)
 	div.about.hidden
 		p PyBITS is a Python conference inspired by PyCon India, organized as a part of ATMOS, the annual national techno-management fest of BITS Pilani Hyderabad Campus. It is aimed at promoting the usage of Python among the attendees, and at introducing them to new ideas as to the applicability of Python in various programming domains
+script(src="/static/scripts/events.js" type="text/javascript")

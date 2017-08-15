@@ -1,7 +1,7 @@
 mixin navigationMixin(isHome)
     div.inner-navigation
-        div.left
-            img(src="/static/pybits/psf-logo.png")
+        div.left(class=(isHome?"white":"black"))
+            img(src=(isHome?"/static/pybits/psf-logo.png":"/static/pybits/psf-logo-black.png"))
         div.right
             if !isHome
                 li(_route="/pybits") Home
