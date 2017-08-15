@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:200');
 
-.main .face {
-    background-color: #202729;
+.main .wrapper.face {
     overflow: hidden;
-    padding:0;
 }
 
 #home {
@@ -19,7 +17,7 @@
 }
 
 #home .logo {
-    position: fixed;
+    position: absolute;
     width: 50%;
     height: 5em;
     margin: -2.5em -25vw;
@@ -50,50 +48,6 @@
 #home .logo > .subtitle > span > i {
     margin-right: 0.5em;
     display: inline-block;
-}
-
-
-#home .navigation {
-    height: 4em;
-    line-height: 4em;
-    position:absolute;
-    bottom:0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0em 2em;
-    display: flex;
-    flex-direction: row;
-}
-
-#home .navigation img {
-    height: 3em;
-}
-
-#home .navigation .right {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#home .navigation .right > li {
-    display: inline-block;
-    list-style-type: none;
-    padding:0 1em;
-    transition: all 0.3s;
-    cursor: pointer;
-    font-size: 1.1em;
-    opacity: .6;
-    position: relative;
-}
-#home .navigation .right > li:last-child {
-    padding-right: 0em;
-}
-#home .navigation .right > li:last-child::after {
-    display: none;
-}
-#home .navigation .right > li:hover {
-    opacity: 1;
 }
 
 .about {
@@ -142,9 +96,18 @@
     vertical-align: middle;
 }
 
-@media (min-width: 992px) {
-    #branding {
-        float: left;
-        width: 50%;
+@media (max-width: 800px) {
+    #home .logo > .title {
+        font-size: 4em;
+    }
+    #home .logo > .subtitle {
+        flex-direction: column;
+        margin-top: 2em;
+    }
+    #home .logo > .subtitle > span {
+        line-height: 1.5em;
+        display: block;
+        white-space: nowrap;
+        width: 100%;
     }
 }

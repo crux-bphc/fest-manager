@@ -1,20 +1,26 @@
+include navigation
+
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
+link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
 
-div.section.header
-	h1.title= title
+div.immersive-wrapper
+	div.section.header
+		h1.title= title
 
-div.event-container(_route="/pybits/sprints/sprint1")
-	div.face
-		h3.name Sprint1
-		span.tagline Info
+	div.section.body
+		div.event-container(_route="/pybits/sprints/sprint1")
+			div.face
+				h3.name Sprint1
+				span.tagline Info
 
-div.event-container(_route="/pybits/sprints/sprint2")
-	div.face
-		h3.name Sprint2
-		span.tagline Info
+		div.event-container(_route="/pybits/sprints/sprint2")
+			div.face
+				h3.name Sprint2
+				span.tagline Info
 
-div.event-container(_route="/pybits/sprints/sprint3")
-	div.face
-		h3.name Sprint3
-		span.tagline Info
+		div.event-container(_route="/pybits/sprints/sprint3")
+			div.face
+				h3.name Sprint3
+				span.tagline Info
+	+navigationMixin()

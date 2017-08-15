@@ -1,0 +1,12 @@
+mixin navigationMixin(isHome)
+    div.inner-navigation
+        div.left
+            img(src="/static/pybits/psf-logo.png")
+        div.right
+            if !isHome
+                li(_route="/pybits") Home
+            li(_route="/pybits/talks") Talks
+            li(_route="/pybits/workshops") Workshops
+            li(_route="/pybits/sprints") Sprints
+            li(_route="/pybits/coc") Code of Conduct
+            li(_route="/pybits/2016") About

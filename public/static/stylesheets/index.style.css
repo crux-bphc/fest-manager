@@ -26,6 +26,39 @@ input[type = "file"] {
     display:none;
 }
 
+.enscroll-track {
+    width: 10px;
+    height:100%;
+    background: rgba(0, 0, 0, 0);
+    margin-right: 2px;
+    border-radius: 10px;
+    -webkit-transition: background 250ms linear;
+    transition: background 250ms linear;
+}
+
+.enscroll-track:hover,
+.enscroll-track.dragging {
+    background: #d9d9d9; /* Browsers without rgba support */
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.enscroll-handle {
+    width: 7px;
+    min-height: 20%;
+    right: 0;
+    background: #999;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+    -webkit-transition: width 250ms;
+    transition: width 250ms;
+}
+
+.enscroll-track:hover .enscroll-handle,
+.enscroll-track.dragging .enscroll-handle {
+    width: 10px;
+}
+
+
 /***************************************************************************************
  ***************************************************************************************
  * Declarations for window and everything inside
@@ -252,7 +285,6 @@ input[type = "file"] {
  ***************************************************************************************/
 
 .sidebar {
-    height: 100%;
     width: 20%;
     min-width: 200px;
     margin-left: -20%;
@@ -779,6 +811,58 @@ form .field-container > .remnant > textarea {
     color: #505057;
 }
 
+.immersive .main .immersive-wrapper {
+    padding:2em;
+    padding-top: 4.5vw;
+    box-sizing: border-box;
+}
+
+.main .inner-navigation {
+    height: 4em;
+    line-height: 4em;
+    position:absolute;
+    bottom:0;
+    left: 0;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 0em 2em;
+    display: flex;
+    flex-direction: row;
+}
+
+.main .inner-navigation img {
+    height: 3em;
+}
+
+.main .inner-navigation .right {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main .inner-navigation .right > li {
+    display: inline-block;
+    list-style-type: none;
+    padding:0 1em;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-size: 1.2em;
+    opacity: .6;
+    position: relative;
+    font-weight: 400;
+}
+.main .inner-navigation .right > li:last-child {
+    padding-right: 0em;
+}
+.main .inner-navigation .right > li:last-child::after {
+    display: none;
+}
+.main .inner-navigation .right > li:hover {
+    opacity: 1;
+}
+
+
+
 @media only screen and (max-width: 1333px) {
     .navbar {
         margin-top:-60px;
@@ -790,6 +874,9 @@ form .field-container > .remnant > textarea {
         margin-left: -200px;
         padding:2em 1em;
         overflow-y: auto;
+    }
+    .navbar .subtitle {
+        display: none;
     }
     .navbar > .wrapper {
         padding:0em 0em 0em 1em;
