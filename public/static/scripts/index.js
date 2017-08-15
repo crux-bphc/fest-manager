@@ -121,10 +121,10 @@ var manager = function() {
             title = state.pagetitle;
         }
         document.title = title;
-        $('.subtitle').addClass('hidden');
+        $('.navbar .subtitle').addClass('hidden');
         if (state.subtitle) {
-            $('.subtitle').removeClass('hidden');
-            $('.subtitle .text').text(state.subtitle);
+            $('.navbar .subtitle').removeClass('hidden');
+            $('.navbar .subtitle .text').text(state.subtitle);
         }
     }
 

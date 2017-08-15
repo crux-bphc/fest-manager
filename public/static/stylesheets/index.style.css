@@ -22,6 +22,11 @@ body {
     font-family: 'Proxima Nova', sans-serif;
 }
 
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 input[type = "file"] {
     display:none;
 }
@@ -914,6 +919,11 @@ form .field-container > .remnant > textarea {
     form .field-container {
         width:100%;
     }
+
+    .main .inner-navigation {
+        display: none;
+    }
+
 }
 
 @media only screen and (min-width: width: 1400px) {

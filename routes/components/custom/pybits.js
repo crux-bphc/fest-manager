@@ -34,8 +34,8 @@ var applyStateChanges = function (req) {
 
 router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS';
-	req.stateparams.immersive = true;
 	req = applyStateChanges(req);
+	req.stateparams.subtitle = false;
 	res.renderState('custom/pybits/home', {
 		title: 'PyBITS',
 		user: req.user,
