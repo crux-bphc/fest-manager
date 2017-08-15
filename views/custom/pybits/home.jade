@@ -1,13 +1,36 @@
 link(rel='stylesheet', href='/static/stylesheets/events.style.css')
 link(rel='stylesheet', href='/static/stylesheets/pybits.style.css')
 link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css')
-#home
-	#branding
-		img(src='/static/images/pybits-branding.png')
-	.about
-		p
-			| PyBITS is a Python conference inspired by PyCon India, organized as a part of ATMOS, the annual national techno-management fest of BITS Pilani Hyderabad Campus. It is aimed at promoting the usage of Python among the attendees, and at introducing them to new ideas as to the applicability of Python in various programming domains
-		#coc(_route='/pybits/coc') PyBITS Code of Conduct
+div#home
+	div.logo
+		h3.title
+			span Py
+			span BITS
+			span &nbsp;2017
+		h3.subtitle
+			span
+				i.icon-schedule
+				span
+					span 27
+					sup th
+					span - 29
+					sup th
+					span October
+			span
+				i.icon-location_city
+				span(title="Click to navigate") BITS Hyderabad
+	div.navigation
+		div.left
+			img(src="/static/pybits/psf-logo.png")
+		div.right
+			li(_route="/pybits/talks") Speakers
+			li(_route="/pybits/workshops") Workshops
+			li(_route="/pybits/sprints") Sprints
+			li(_route="/pybits/coc") Code of Conduct
+			li(_route="/pybits/2016") History
+	div.about.hidden
+		p PyBITS is a Python conference inspired by PyCon India, organized as a part of ATMOS, the annual national techno-management fest of BITS Pilani Hyderabad Campus. It is aimed at promoting the usage of Python among the attendees, and at introducing them to new ideas as to the applicability of Python in various programming domains
+		#coc.button.hidden(_route='/pybits/coc') PyBITS Code of Conduct
 
 .thing
 	h1 Talks

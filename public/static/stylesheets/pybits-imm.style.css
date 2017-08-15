@@ -1,38 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:200');
+
 .main .face {
     background-color: #202729;
-    overflow-x: hidden;
-}
-
-.title {
-    color: white;
+    overflow: hidden;
+    padding:0;
 }
 
 #home {
+    color:white;
+    background-image:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), linear-gradient(rgba(255,234,50,0.5), rgba(51,100,157,0.9) 70%), url("/static/pybits/back.jpg");
     height: 100vh;
-    margin-top: 4.5vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100vw;
+    box-sizing: border-box;
+    padding-top: 4.5vw;
 }
 
-#branding {
+#home .logo {
+    position: fixed;
+    width: 50%;
+    height: 5em;
+    margin: -2.5em -25vw;
+    top:50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:rgba(255,255,255,0.7);
+}
+#home .logo > .title {
+    font-family: "Work Sans", sans-serif;
+    font-size: 7vw;
+    color:rgba(255,255,255,0.9);
+}
+#home .logo > .subtitle {
     width: 100%;
-    margin: auto;
-    display: table;
+    display: flex;
+    margin-top: 1em;
+    justify-content: center;
+}
+#home .logo > .subtitle > span {
+    margin: 0em 1em;
+    display: flex;
+    align-items: center;
+}
+#home .logo > .subtitle > span > i {
+    margin-right: 0.5em;
+    display: inline-block;
+}
+
+
+#home .navigation {
+    height: 4em;
+    line-height: 4em;
+    position:absolute;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0em 2em;
+    display: flex;
+    flex-direction: row;
+}
+
+#home .navigation img {
+    height: 3em;
+}
+
+#home .navigation .right {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#home .navigation .right > li {
+    display: inline-block;
+    list-style-type: none;
+    padding:0 1em;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-size: 1.1em;
+    opacity: .6;
     position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
 }
-
-#branding img {
-    height: 35vw;
-    float: left;
-    margin: auto;
+#home .navigation .right > li:last-child {
+    padding-right: 0em;
 }
-
-.bar {
-    width: 2px;
-    background-color: grey;
-    height: 35vw;
-    margin-top: 1vw;
+#home .navigation .right > li:last-child::after {
+    display: none;
+}
+#home .navigation .right > li:hover {
+    opacity: 1;
 }
 
 .about {
