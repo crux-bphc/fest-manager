@@ -6,6 +6,7 @@ var applyStateChanges = function (req) {
 		text: 'PyBITS',
 		route: 'pybits',
 	};
+	req.stateparams.immersive = true;
 	req.stateparams.subtitle = "PyBITS 2017";
 	req.stateparams.submenu = [{
 			label: "Talks",

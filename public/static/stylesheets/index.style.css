@@ -161,8 +161,13 @@ input[type = "file"] {
     display: flex;
 }
 
-.window.immersive .navbar .controls > .button {
+.immersive .navbar > .wrapper {
+    padding-right: 2em;
+}
+
+.immersive .navbar .controls > .button {
     background:none;
+    padding-right: 0em;
 }
 
 #menu {
@@ -517,6 +522,10 @@ input[type = "file"] {
     opacity: 0;
     transition:opacity 0.2s, transform 0.2s;
     transform:translateY(-1em);
+}
+
+.immersive .main .wrapper {
+    padding: 0;
 }
 
 .main * {
