@@ -7,6 +7,15 @@ var applyStateChanges = function (req) {
 		text: 'Events',
 		route: '/events',
 	};
+	req.stateparams.submenu = [{
+		label: "Tech Expo",
+		route: "/events/techexpo"
+	},
+	{
+		label: "PyBITS",
+		route: "/pybits"
+	}
+	]
 	return req;
 };
 
