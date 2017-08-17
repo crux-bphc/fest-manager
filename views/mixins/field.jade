@@ -9,9 +9,11 @@ mixin fieldMixin(data)
 			div.field-icon
 				span(class="icon-#{data.icon}")
 			if data.editable
-				if data.typeahead
-					input(id="field-#{data.name}" name=data.name type=data.type placeholder=data.placeholder required=data.required list="list-#{data.name}" value=data.value)
-					+datalistMixin(data)
+				if data.qrcode
+					script(src="/static/scripts/scan.js" type="text/javascript")
+					span(id="field-#{data.name}" onclick="Scanner.launch()")= data.value
+				else if data.typeahead
+					input(id="field-#{data.name}" name=data.name type=data.type placeholder=data.placeholder required=data.required value=data.value)
 				else if data.type == "select"
 					select(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value)
 						each option in data.options
