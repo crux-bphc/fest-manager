@@ -66,14 +66,17 @@ input[type = "file"] {
 ._overlay {
     position: fixed;
     z-index: +100;
-    top:50%;
-    left: 50%;
-    margin:-200px;
-    display: block;
-    height:400px;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background:rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+._overlay > video {
     width: 400px;
-    background: white;
-    box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
 }
 
 /***************************************************************************************
