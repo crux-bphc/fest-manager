@@ -69,4 +69,41 @@ router.get('/:eventroute', function (req, res, next) {
 	});
 });
 
+router.get('/pdf/:event', function (req, res, next) {
+	req = applyStateChanges(req);
+	eventsService.findOne({
+		route: req.params.event.split('.')[0]
+	}, function (err, data) {
+		if (err) return next(err);
+		if (!data) {
+			var err1 = new Error('Not Found');
+			err1.status = 404;
+			return next(err1);
+		}
+		console.log("*******.Event found.*******");
+
+		const PDFDocument = require('pdfkit');
+		const base64 = require('base64-stream');
+		const doc = new PDFDocument({autoFirstPage: false});
+		var final = 'data:application/pdf;base64,';
+
+		//PDF CONTENTS
+		doc.addPage({
+			margin: 25
+		});
+
+		var stream = doc.pipe(base64.encode());
+		doc.end();
+
+		stream.on('data', function(chunk) {
+    		final += chunk;
+		});
+
+		stream.on('end', function() {
+    		console.log(final);
+    		res.renderState("events/pdf", {data: final});
+		});
+	});
+});
+
 module.exports = router;
