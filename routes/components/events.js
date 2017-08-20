@@ -15,7 +15,7 @@ var applyStateChanges = function (req) {
 		label: "PyBITS",
 		route: "/pybits"
 	}
-	]
+	];
 	return req;
 };
 
