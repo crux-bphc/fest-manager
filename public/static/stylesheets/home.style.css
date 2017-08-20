@@ -83,7 +83,16 @@ div.endorse > span {
 	font-weight: 600;
 	font-size:1.2em;
 }
-div.endorse > img {
+div.endorse > img.digit {
+	margin: 0.8em;
+	width:9em;
+	-webkit-filter:drop-shadow(0.8px 0.8px 0.5px #fff);
+	-moz-filter:drop-shadow(0.8px 0.8px 0.5px #fff);
+	-o-filter:drop-shadow(0.8px 0.8px 0.5px #fff);
+	filter:drop-shadow(0.8px 0.8px 0.5px #fff);
+}
+div.endorse > img.make {
+	margin: 0.8em;
 	width:8em;
 	-webkit-filter:drop-shadow(0px 0px 2px #fff);
 	-moz-filter:drop-shadow(0px 0px 2px #fff);
