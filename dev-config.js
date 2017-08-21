@@ -18,7 +18,7 @@ var config = {
 		profileFields: ['emails']
 	},
 	database: {
-		name: "fest-manager",
+		name: "fest-manager-dev",
 		url: "mongodb://127.0.0.1/",
 	},
 };
