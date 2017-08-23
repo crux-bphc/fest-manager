@@ -12,7 +12,21 @@ var elevate = function (req, res, next) {
 	return next(error);
 };
 
+var applyStateChanges = function (req) {
+	req.stateparams.title = req.stateparams.title = {
+		text: 'Portals',
+		route: '/portals',
+	};
+	req.stateparams.submenu = [{
+			route: "/portals/dosh",
+			label: "Dosh Portal"
+		}
+	];
+	return req;
+};
+
 router.get('/', authenticate, elevate, function (req, res, next) {
+	req = applyStateChanges(req);
 	if (req.user.privilege.level == 2)
 		bodiesService.find(function (err, items) {
 			if (err) {
@@ -29,6 +43,12 @@ router.get('/', authenticate, elevate, function (req, res, next) {
 		res.redirect('/components/portals/' + (req.user.privilege.body == "ca" ? 'ca/view' : req.user.privilege.body));
 	}
 });
+
+
+router.get('/dosh', authenticate, elevate, function (req, res, next) {
+	
+});
+
 
 router.get('/ca/view', authenticate, elevate, function (req, res, next) {
 
