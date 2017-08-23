@@ -8,7 +8,7 @@ var callbackHandler = function (req, res) {
 		delete req.session.callback;
 		res.redirect(url);
 	} else
-	if (req.user.institute && req.user.name) {
+	if (req.user.institute && req.user.name && req.user.phone) {
 		res.redirect('/dashboard');
 	} else
 		res.redirect('/dashboard/account');
