@@ -126,6 +126,7 @@ function edit_item(id) {
         }
     }).done(function(data) {
         formEditor(data);
+        $('.main .face').scrollTop(0);
     });
     currentEditable = id;
 }
