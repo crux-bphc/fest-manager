@@ -39,7 +39,7 @@ var getFields = function (user, isAmbassador = false) {
 		name: "email",
 		label: "Email",
 		editable: false,
-		type: "text",
+		type: "email",
 		required: true,
 		value: user.email,
 		typeahead: false,
@@ -55,6 +55,16 @@ var getFields = function (user, isAmbassador = false) {
 		required: true,
 		value: user.institute,
 		typeahead: true,
+		none: true,
+	});
+	fields.push({
+		// icon: "building",
+		name: "phone",
+		label: "Phone",
+		editable: true,
+		type: "tel",
+		required: true,
+		value: user.phone,
 		none: true,
 	});
 	return fields;
