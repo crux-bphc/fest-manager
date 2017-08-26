@@ -46,7 +46,14 @@ router.get('/', authenticate, elevate, function (req, res, next) {
 
 
 router.get('/dosh', authenticate, elevate, function (req, res, next) {
-	
+	var params = {
+		title: 'Register Newcomer',
+		user: req.user,
+	};
+
+	req = applyStateChanges(req);
+	params.fields = getFields(req.user);
+	res.renderState('portals/doshPortal', params);
 });
 
 
