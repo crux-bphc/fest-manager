@@ -70,7 +70,7 @@ router.get('/dosh', authenticate, elevate, function (req, res, next) {
 		type: "text",
 		required: true,
 		value: "",
-		typeahead: false,
+		typeahead: "email",
 	}];
 	res.renderState('portals/doshPortal', params);
 });

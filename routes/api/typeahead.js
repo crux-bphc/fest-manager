@@ -51,4 +51,30 @@ router.get('/institutes/:query', function (req, res, next) {
 		}));
 });
 
+const userService = require(projectroot + '/routes/api/services/users').model;
+var allUserEmails = [];
+userService.find({},{email: true},function(err, data){
+	console.log("Users:",data);
+	data.forEach(function(elem){
+		allUserEmails.push(elem);
+	});
+})
+
+router.get('/email', function (req, res, next) {
+	res.json([]);
+});
+
+router.get('/email/:query', function (req, res, next) {
+	var query = req.params.query + "";
+	var matching = fuzzItUp(allUserEmails, query);
+	console.log("Found:", matching)
+	var reex = /\{(.*?)\}/gi;
+	res.json(matching
+		.slice(0, 10)
+		.sort()
+		.map(function (elem) {
+			return elem.replace(reex, '');
+		}));
+});
+
 module.exports = router;

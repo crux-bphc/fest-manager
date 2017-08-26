@@ -807,9 +807,9 @@ form .field-container > .remnant > textarea {
     height: 20em;
 }
 
-/*.field-container > .remnant > span {
-    color:#ccc;
-}*/
+.field-container > .remnant > span {
+    color:#666;
+}
 
 .field-container > label {
     line-height: 3em;

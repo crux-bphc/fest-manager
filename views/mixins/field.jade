@@ -14,7 +14,8 @@ mixin fieldMixin(data)
 					span(id="field-#{data.name}")= data.value
 					button(type="button" onclick="Scanner.launch($('#field-#{data.name}').get(0))") Open Scanner
 				else if data.typeahead
-					input(id="field-#{data.name}" name=data.name type=data.type placeholder=data.placeholder required=data.required value=data.value)
+					script(src="/static/scripts/typeahead.js" type="text/javascript")
+					input(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value onkeyup="Typeahead.search(this, '#{data.typeahead}');")
 				else if data.type == "select"
 					select(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value)
 						each option in data.options
