@@ -18,10 +18,9 @@ var applyStateChanges = function (req) {
 		route: '/portals',
 	};
 	req.stateparams.submenu = [{
-			route: "/portals/dosh",
-			label: "Dosh Portal"
-		}
-	];
+		route: "/portals/dosh",
+		label: "Dosh Portal"
+	}];
 	return req;
 };
 
@@ -53,25 +52,26 @@ router.get('/dosh', authenticate, elevate, function (req, res, next) {
 
 	req = applyStateChanges(req);
 	params.fields = [{
-		name: "qr-email",
-		placeholder: "Scan User Email",
-		editable: true,
-		type: "text",
-		required: true,
-		value: "",
-		qrcode: true,
-		icon: "qrcode",
-		typeahead: false,
-	},
-	{
-		name: "email",
-		placeholder: "Enter User Email",
-		editable: true,
-		type: "text",
-		required: true,
-		value: "",
-		typeahead: false,
-	}];
+			name: "qr-email",
+			placeholder: "Scan User Email",
+			editable: true,
+			type: "text",
+			required: true,
+			value: "",
+			qrcode: true,
+			icon: "qrcode",
+			typeahead: false,
+		},
+		{
+			name: "email",
+			placeholder: "Enter User Email",
+			editable: true,
+			type: "text",
+			required: true,
+			value: "",
+			typeahead: false,
+		}
+	];
 	res.renderState('portals/doshPortal', params);
 });
 
