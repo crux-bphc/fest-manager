@@ -782,7 +782,7 @@ form .field-container > .remnant > textarea {
 }
 
 .field-container > .remnant > span {
-    color:#ccc;
+    color:#666;
 }
 
 .field-container > label {
@@ -865,8 +865,6 @@ form .field-container > .remnant > textarea {
 .main .inner-navigation .right > li:hover {
     opacity: 1;
 }
-
-
 
 @media only screen and (max-width: 1333px) {
     .navbar {

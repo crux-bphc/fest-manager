@@ -54,7 +54,7 @@ var getFields = function (user, isAmbassador = false) {
 		type: "text",
 		required: true,
 		value: user.institute,
-		typeahead: true,
+		typeahead: "institutes",
 		none: true,
 	});
 	fields.push({
