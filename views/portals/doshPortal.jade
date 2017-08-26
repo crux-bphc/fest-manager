@@ -9,6 +9,5 @@ div.section.header
 					li.icon-close#cancel-button(_route="/portals" tooltip="Cancel")
 - var form = { fields: fields, method: "PUT", action: "/api/users/me" };
 +formMixin(form)
-button(onclick="$('#field-qr-email').click()") Scan Email
 script(src="/static/lib/jquery-ui-custom/jquery-ui.min.js")
 script(src="/static/scripts/register.js")
