@@ -52,7 +52,16 @@ router.get('/dosh', authenticate, elevate, function (req, res, next) {
 	};
 
 	req = applyStateChanges(req);
-	params.fields = getFields(req.user);
+	params.fields = [{
+		name: "qr-email",
+		placeholder: "Scan User Email",
+		editable: true,
+		type: "text",
+		required: true,
+		value: "",
+		qrcode: true,
+		typeahead: false,
+	}];
 	res.renderState('portals/doshPortal', params);
 });
 
