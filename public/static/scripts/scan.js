@@ -38,11 +38,14 @@ var Scanner = function() {
                     globals.stream = stream;
                     var overlay = document.createElement('div');
                     overlay.classList.add("_overlay");
-                    overlay.onclick = stopScanner;
                     globals.playback = document.createElement('video');
                     globals.playback.setAttribute("autoplay", true);
                     globals.playback.srcObject = stream;
                     overlay.appendChild(globals.playback);
+                    var closelistener = document.createElement('div');
+                    closelistener.classList.add("close");
+                    overlay.appendChild(closelistener);
+                    closelistener.onclick = stopScanner;
                     document.body.appendChild(overlay);
                     globals.active = true;
                     setTimeout(newDecoderFrame, 0);
@@ -118,6 +121,7 @@ var Scanner = function() {
     })
     return {
         launch: launchScanner,
-        globals: globals
+        globals: globals,
+        stop: stopScanner,
     }
 }();

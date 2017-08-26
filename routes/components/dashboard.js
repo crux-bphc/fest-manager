@@ -35,11 +35,9 @@ var getFields = function (user, isAmbassador = false) {
 		none: true,
 	});
 	fields.push({
-		icon: "mail_outline",
 		name: "email",
-		qrcode: true,
 		label: "Email",
-		editable: true,
+		editable: false,
 		type: "text",
 		required: true,
 		value: user.email,
