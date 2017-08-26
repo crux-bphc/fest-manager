@@ -60,6 +60,16 @@ router.get('/dosh', authenticate, elevate, function (req, res, next) {
 		required: true,
 		value: "",
 		qrcode: true,
+		icon: "qrcode",
+		typeahead: false,
+	},
+	{
+		name: "email",
+		placeholder: "Enter User Email",
+		editable: true,
+		type: "text",
+		required: true,
+		value: "",
 		typeahead: false,
 	}];
 	res.renderState('portals/doshPortal', params);
