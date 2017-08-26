@@ -796,9 +796,9 @@ form .field-container > .remnant > textarea {
     height: 20em;
 }
 
-.field-container > .remnant > span {
+/*.field-container > .remnant > span {
     color:#ccc;
-}
+}*/
 
 .field-container > label {
     line-height: 3em;

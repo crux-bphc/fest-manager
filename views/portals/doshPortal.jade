@@ -6,9 +6,9 @@ div.section.header
 			div.remnant
 				ul.controls
 					li.icon-check#submit-button(tooltip="Save")
-					li.icon-close#cancel-button(_route="/dashboard" tooltip="Cancel")
+					li.icon-close#cancel-button(_route="/portals" tooltip="Cancel")
 - var form = { fields: fields, method: "PUT", action: "/api/users/me" };
 +formMixin(form)
+button(onclick="$('#field-qr-email').click()") Scan Email
 script(src="/static/lib/jquery-ui-custom/jquery-ui.min.js")
 script(src="/static/scripts/register.js")
-	
