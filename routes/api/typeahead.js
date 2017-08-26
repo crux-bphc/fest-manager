@@ -7,8 +7,6 @@ var Fuse = require('fuse.js');
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 
-var institutes = {};
-
 var fuzzItUp = function (data, input) {
 	var options = {
 		// shouldSort: true, // This causes less weighted results to come on top.
@@ -30,25 +28,39 @@ var fuzzItUp = function (data, input) {
 	return rval;
 };
 
+var registerTypeahead = function (name, data, empty) {
+	empty = empty ? empty : [];
+	router.get("/" + name, function (req, res, next) {
+		res.json(empty);
+	});
+	router.get('/' + name + '/:query', function (req, res, next) {
+		var query = req.params.query + "";
+		var matching = fuzzItUp(data, query);
+		var regex = /\{(.*?)\}/gi;
+		res.json(matching
+			.slice(0, 10)
+			.sort()
+			.map(function (elem) {
+				return elem.replace(regex, '');
+			}));
+	});
+};
+
 fs.readFile(path.join(projectroot, 'utils', 'institutes.json'), (err, data) => {
 	if (err) throw err;
-	institutes = JSON.parse(data).array;
+	var institutes = JSON.parse(data).array;
+	registerTypeahead('institutes', institutes, ["None", "Birla Institute of Technology & Science - Hyderabad"]);
 });
 
-router.get('/institutes', function (req, res, next) {
-	res.json(["None", "Birla Institute of Technology & Science - Hyderabad"]);
-});
-
-router.get('/institutes/:query', function (req, res, next) {
-	var query = req.params.query + "";
-	var matching = fuzzItUp(institutes, query);
-	var reex = /\{(.*?)\}/gi;
-	res.json(matching
-		.slice(0, 10)
-		.sort()
-		.map(function (elem) {
-			return elem.replace(reex, '');
-		}));
+const userService = require(projectroot + '/routes/api/services/users').model;
+userService.find({}, {
+	email: true
+}, function (err, data) {
+	var allUserEmails = [];
+	data.forEach(function (elem) {
+		allUserEmails.push(elem.email);
+	});
+	registerTypeahead('email', allUserEmails);
 });
 
 module.exports = router;
