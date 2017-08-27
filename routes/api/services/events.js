@@ -33,111 +33,92 @@ var teamModel = require("./teams").model;
 
 
 router.post('/addtocart', function (req, res, next) {
-
+	var propagateError = function (err) {
+		throw err;
+	};
 	var event_id = mongoose.Types.ObjectId(req.body.id);
-
+	var eventTeams, eventTeamSize, userEvents, userTeams, teamId;
 	userModel.find({
-		_id: req.user._id,
-		events: {
-			$all: [event_id]
-		}
-	}, function (err, result) {
-		if (typeof result[0] !== "undefined") {
-			return res.json({
-				status: 500,
-				msg: "Event already in cart"
-			});
-		}
-		eventModel.find({
-			_id: event_id
-		}, function (err, event) {
-			if (err) {
-				return res.json({
-					status: 500,
-					msg: "Error"
-				});
+			_id: req.user._id,
+			events: {
+				$all: [event_id]
 			}
+		})
+		.then(function (result) {
+			console.log("result: ", result);
+			if (typeof result[0] !== "undefined")
+				throw 'Event already in cart';
+		}).catch(propagateError)
+		.then(function () {
+			return eventModel.find({
+				_id: event_id
+			});
+		}).catch(propagateError)
+		.then(function (event) {
+			console.log("event: ", event);
 			if (typeof event[0] !== 'undefined') {
-				var eventTeams = event[0].teams;
-				var eventTeamSize = event[0].teamSize;
+				eventTeams = event[0].teams;
+				eventTeamSize = event[0].teamSize;
 				var team = new teamModel({
 					name: req.user.name,
 					members: [req.user._id],
 					event: event_id
 				});
+				return team.save();
+			} else throw 'Event Not Found';
+		}).catch(propagateError)
+		.then(function (team) {
+			console.log("team: ", team);
+			teamId = team._id;
+			user = req.user;
+			console.log("user: ", user);
+			var userEvents = user.events;
+			var userTeams = user.teams;
 
-				team.save(function (err) {
-					var team_id = team._id;
-					if (err) {
-						return res.json({
-							status: 500,
-							msg: "Unable to save team in DB"
-						});
-					}
+			userEvents.push(event_id);
+			userTeams.push(teamId);
 
-					userModel.find({
-						_id: req.user._id
-					}, function (err, userDB) {
-						var userEvents = userDB[0].events;
-						var userTeams = userDB[0].teams;
+			return userModel.update({
+				_id: req.user._id
+			}, {
+				events: userEvents,
+				teams: userTeams
+			});
+		}).catch(propagateError)
+		.then(function (num) {
+			console.log("user update status: ", num);
+			eventTeams.push(teamId);
 
-						userEvents.push(event_id);
-						userTeams.push(team_id);
-
-						userModel.update({
-							_id: req.user._id
-						}, {
-							events: userEvents,
-							teams: userTeams
-						}, function (err, num) {
-							if (err) {
-								return res.json({
-									status: 500,
-									msg: "Unable to update user model"
-								});
-							}
-
-							eventTeams.push(team_id);
-
-							eventModel.update({
-								_id: event_id
-							}, {
-								teams: eventTeams
-							}, function (err, num) {
-								if (err) {
-									return res.json({
-										status: 500,
-										msg: "Unable to update event model"
-									});
-								}
-								if (eventTeamSize > 1) {
-									res.json({
-										status: 200,
-										msg: "Successful",
-										teamID: team_id,
-										maxTeamSize: eventTeamSize
-									});
-								} else {
-									res.json({
-										status: 200,
-										msg: "Successful",
-										maxTeamSize: 1
-									});
-								}
-							});
-						});
-					});
+			return eventModel.update({
+				_id: event_id
+			}, {
+				teams: eventTeams
+			});
+		}).catch(propagateError)
+		.then(function (num) {
+			console.log("Event update status: ", num);
+			if (eventTeamSize > 1) {
+				res.json({
+					status: 200,
+					msg: "Successful",
+					teamID: teamId,
+					maxTeamSize: eventTeamSize,
 				});
 			} else {
 				res.json({
-					status: 500,
-					msg: "Event Not Found"
+					status: 200,
+					msg: "Successful",
+					maxTeamSize: 1,
 				});
 			}
+		})
+		.catch(function (err) {
+			console.log(err);
+			res.json({
+				status: 500,
+				msg: err,
+			});
 		});
-	});
-
-
 });
 
 router.post("/jointeam", function (req, res, next) {
