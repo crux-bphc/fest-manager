@@ -35,11 +35,11 @@ var getFields = function (user, isAmbassador = false) {
 		none: true,
 	});
 	fields.push({
-		icon: "email",
+		icon: "mail_outline",
 		name: "email",
 		label: "Email",
 		editable: false,
-		type: "email",
+		type: "text",
 		required: true,
 		value: user.email,
 		typeahead: false,
