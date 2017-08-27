@@ -9,6 +9,8 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var strategies = require('./utils/authentication').strategies;
 var router = require('express').Router();
+var redis = require("redis");
+var redisStore = require('connect-redis')(session);
 var configureSerializers = require('./utils/authentication').configureSerializers;
 configureSerializers();
 strategies.facebook();
@@ -49,9 +51,16 @@ app.use(bodyParser.urlencoded({
 app.use(cookieSession({
 	keys: ['qwerty', 'uiop']
 }));
+
 app.use(session({
 	resave: false,
 	saveUninitialized: true,
+	store: new redisStore({
+		host: 'localhost',
+		port: 6379,
+		client: redis.createClient(),
+		ttl: 260
+	}),
 	cookie: {
 		secure: true
 	},
