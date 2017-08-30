@@ -279,3 +279,18 @@ var manager = function () {
 		getLocation: client.getLocation.bind(client)
 	};
 }();
+
+function button(){
+    document.getElementById("navDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('#navButton')) {
+
+    var myDropdown = document.getElementById("navDropdown");
+    if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+  }
+}
