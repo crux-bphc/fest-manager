@@ -24,6 +24,9 @@ module.exports = function () {
 			if (user.facebookID) {
 				user.avatar = "https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large";
 			}
+			if (req.user.institute && req.user.phone) {
+				user.profile = true; 	//True if profile is complete
+			}
 		}
 		state.user = user;
 		return state;

@@ -210,6 +210,7 @@ var manager = function() {
     return {
         route: client.route.bind(client),
         refresh: client.refresh.bind(client),
+        getState: function() { return client.state; },
         getLocation: client.getLocation.bind(client)
     }
 }();
