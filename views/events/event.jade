@@ -13,12 +13,12 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
                     - if(user.events.indexOf(event._id) != -1)
                         div.subscribed.cartButton(onclick="delete_from_cart('#{event._id}')")
                             i.icon-check
-                            span Added
+                            span Registered
                     - else if(event.teamSize > 1)
                         div.latent(tabindex="1")
                             div.add_to_cart.cartButton
                                 i.icon-add_shopping_cart
-                                span Add to cart
+                                span Register
                             div.new_team.cartButton(onclick="add_to_cart('#{event._id}')")
                                 i.icon-add_box
                                 span New Team
@@ -28,11 +28,11 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
                     - else
                         div.add_to_cart.cartButton(onclick="add_to_cart('#{event._id}')")
                             i.icon-add_shopping_cart
-                            span Add to cart
+                            span Register
                 - else
                     div.add_to_cart.cartButton(_route="/login?callback=/events/#{event.route}")
                         i.icon-add_shopping_cart
-                        span Add to cart
+                        span Register
         div.category= event.category
         div.details
             if(event.startTime)

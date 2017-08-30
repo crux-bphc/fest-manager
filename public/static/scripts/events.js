@@ -39,9 +39,9 @@ $('document').ready(function() {
     implementSearch();
 })
 var templates = {
-    teamed: '<div class="latent" tabindex="1"><div class="cartButton add_to_cart"><i class="icon-add_shopping_cart"></i><span>Add to cart</span></div><div class="cartButton join_team" onclick="join_team($id)"><i class="icon-group_add"></i><span>Join Team</span></div><div class="cartButton new_team" onclick="add_to_cart($id)"><i class="icon-add_box"></i><span>New Team</span></div></div>',
-    single: '<div class="cartButton add_to_cart" onclick="add_to_cart($id)"><i class="icon-add_shopping_cart"></i><span>Add to cart</span></div>',
-    subscribed: '<div class="cartButton subscribed" onclick="delete_from_cart($id)"><i class="icon-check"></i><span>Added</span></div>'
+    teamed: '<div class="latent" tabindex="1"><div class="cartButton add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register</span></div><div class="cartButton join_team" onclick="join_team($id)"><i class="icon-group_add"></i><span>Join Team</span></div><div class="cartButton new_team" onclick="add_to_cart($id)"><i class="icon-add_box"></i><span>New Team</span></div></div>',
+    single: '<div class="cartButton add_to_cart" onclick="add_to_cart($id)"><i class="icon-add_shopping_cart"></i><span>Register</span></div>',
+    subscribed: '<div class="cartButton subscribed" onclick="delete_from_cart($id)"><i class="icon-check"></i><span>Registered</span></div>'
 }
 var eventID = "'" + $('.open-event').attr('id') + "'";
 
