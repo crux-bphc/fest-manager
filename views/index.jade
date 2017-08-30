@@ -36,6 +36,7 @@ body
 					i.icon-navigate_next
 					span.text
 				div.controls
+<<<<<<< 88f58034e6da2c534a4e70e083ab4a648ec815bf
 					div.button.user(_triggers="navbar/avatar=visible" _route="/dashboard")
 						if user
 							div
@@ -43,6 +44,52 @@ body
 					div.button(_route="/logout" _triggers="navbar/logout=visible")
 						i.icon-power_settings_new
 						div Logout
+					div.dropdown(_triggers="navbar/avatar=visible")
+						div.button.user(_triggers="navbar/logout=visible")
+							if user
+								div
+									if user.googleID
+										img#navButton(onclick="button()")(src=user.profileImage)
+									else if user.facebookID
+										img#navButton(onclick="button()")(src="https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large")
+									else if user.githubID
+										img#navButton(onclick="button()")(src="https://avatars1.githubusercontent.com/u/" + user.githubID)
+									else
+										img#navButton(onclick="button()")(src="https://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
+						div.notifContent#navDropdown
+							div.user(_triggers="navbar/avatar=visible" _route="/dashboard")
+								if user
+									div
+										if user.googleID
+											img(src=user.profileImage)
+										else if user.facebookID
+											img(src="https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large")
+										else if user.githubID
+											img(src="https://avatars1.githubusercontent.com/u/" + user.githubID)
+										else
+											img(src="https://www.miastograf.pl/bundles/miastografmain/images/avatar.png")
+									div.navdetails
+										- if (typeof user.name !== "undefined") {
+										span.username.
+											#{user.name}
+										- }
+										- if (typeof user.email !== "undefined") {
+										span.useremail
+											span.
+												#{user.email}
+										- }
+										
+							div.button.accountbtn(_route="/dashboard" _triggers="navbar/logout=visible")
+								div My Account
+							div.seperate
+							div.button.logout(_route="/logout" _triggers="navbar/logout=visible")
+								i.icon-power_settings_new
+								div Logout
+
+
+
+
+>>>>>>> skeleton for notif area
 					div.button(_route="/login" _triggers="navbar/login=visible")
 						i.icon-account_circle
 						div Login

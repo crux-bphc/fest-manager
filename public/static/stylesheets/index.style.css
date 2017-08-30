@@ -152,6 +152,7 @@ input[type = "file"] {
     position: relative;
     box-shadow:none;
     transition: margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
+    z-index: +1000;
 }
 
 .navbar > .wrapper {
@@ -275,7 +276,7 @@ input[type = "file"] {
     transform: scale(0.9);
 }
 
-.navbar .controls > .button.user {
+.navbar .controls .dropdown > .button.user {
     background: transparent !important;
     opacity: 1;
 }
@@ -284,16 +285,90 @@ input[type = "file"] {
     opacity: 1;
 }
 
-.navbar .controls > .button.user > div {
-    height: 2.2em;
-    width: 2.2em;
+.navbar .controls .dropdown > .button.user {
+    height: 3em;
+    width: 3em;
     position: relative;
+    top: 0.8em;
 }
 
-.navbar .controls > .button.user > div > img {
+.navbar .controls .dropdown > .button.user > div > img {
     height: 100%;
     width: 100%;
     border-radius: 50%;
+}
+
+/*.navbar .controls .dropdown {
+    position: relative;
+    display: inline-block;
+}
+*/
+.notifContent{
+    display: none;
+    position: absolute;
+    right: -1.5em;
+    top: 4em;
+    background-color: #f9f9f9;
+    min-width: 15em;
+    height: 20em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.navbar .controls .dropdown > .notifContent > .logout {
+    position: absolute;
+    bottom: 0;
+    height: 3em;
+    width: 4em;
+    left: 50%;
+    margin-left: -2em;
+    clear: both;
+}
+
+.navbar .controls .dropdown > .notifContent > .accountbtn {
+    
+    margin: 0 auto;
+    height: 3em;
+    width: 7em;
+    font-weight: 600;
+    background:#f0f0f0;
+    border-radius:4px;
+    clear: both;
+}
+
+.navbar .controls .dropdown > .notifContent > .user  {
+   
+}
+
+.navbar .controls .dropdown > .notifContent > .user > div > img {
+    width: 6em;
+    height: 6em;
+    float: left;
+    border-radius: 5px;
+}
+
+.navbar .controls .dropdown > .notifContent > .user > .navdetails {
+    width: 80%;
+    height: 6em;
+}
+
+.navbar .controls .dropdown > .notifContent > .user > .navdetails > .username {
+    float: left;
+    color: gray;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.navbar .controls .dropdown > .notifContent > .user > .navdetails > .useremail {
+    float: left;
+}
+
+.navbar .controls .dropdown > .notifContent > .seperate {
+    width: 1px;
+    margin: 0 auto;
+    width: 8em;
+    background: #f0f0f0;
 }
 
 /***************************************************************************************
@@ -971,4 +1046,8 @@ form .field-container > .remnant > textarea {
 
 .hidden {
     display: none !important;
+}
+
+.show {
+    display: block;
 }
