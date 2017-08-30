@@ -21,6 +21,7 @@ var connection = require('./utils/mongoose');
 connection();
 
 var stateHandler = require('./utils/state');
+var optionsHandler = require('./utils/options');
 
 var index = require('./routes/index');
 var upload = require("./routes/upload");
@@ -81,7 +82,7 @@ app.use(function (req, res, next) {
 	req.stateparams = {};
 	res.renderState = function (filename, options) {
 		var state = stateHandler.getState(req);
-
+		options = optionsHandler.updateOptions(options);
 		res.render(filename, options, function (err, string) {
 			// Uncomment to debug Jade Errors.
 			// console.log(err, string);

@@ -8,7 +8,6 @@ var ca = require('./ca');
 var about = require('./about');
 var login = require('./login');
 
-/* GET users listing. */
 router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Atmos';
 	req.stateparams.immersive = true;
