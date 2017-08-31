@@ -61,6 +61,7 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
         if(event.about)
             div.description !{marked(event.about)}
         div.foot
-            a.download(href="/events/pdf/#{event.route}") Download
+            a.download(href="#" onclick="downloadPDF('#{event.route}')") Download
 
+script(src="/static/scripts/download.js" type="text/javascript")
 script(src="/static/scripts/events.js" type="text/javascript")

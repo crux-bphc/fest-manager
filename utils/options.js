@@ -15,7 +15,7 @@ module.exports = function() {
             }
         }
         return options;
-    }
+    };
 
     var updateOptions = function(options) {
         return options;
