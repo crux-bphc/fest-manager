@@ -442,6 +442,58 @@ router.post("/deletefromcart", function (req, res, next) {
 
 });
 
+router.get('/pdf/:event', function (req, res, next) {
+	eventModel.findOne({
+		route: req.params.event
+	}, function (err, data) {
+		if (err) return next(err);
+		if (!data) {
+			return res.json({"status": 300, msg: "Event not found"});
+		}
+
+		const PDFDocument = require('pdfkit');
+		const base64 = require('base64-stream');
+		const doc = new PDFDocument({
+			autoFirstPage: false,
+			info: {
+				Title: data.name,
+				Author: "ATMOS 2017"
+			}
+		});
+		var final = 'data:application/pdf;base64,';
+
+		//PDF CONTENTS
+		doc.addPage({
+			margin: 40
+		});
+
+		doc.fontSize(32);
+		doc.text(data.name, {align: 'center'});
+		doc.moveDown();
+
+		doc.fontSize(16);
+		doc.text(data.tagline, {align: 'center'});
+		doc.moveDown();
+
+		doc.fontSize(12);
+		doc.text(data.about, {align: 'left'});
+		doc.moveDown();
+
+
+		var stream = doc.pipe(base64.encode());
+		doc.end();
+
+		stream.on('data', function(chunk) {
+    		final += chunk;
+		});
+
+		stream.on('end', function() {
+    		return res.json({"data": final, "status": 200, "file_name": data.name + ".pdf"});
+		});
+	});
+});
+
+
 module.exports = {
 	route: '/events',
 	model: model,

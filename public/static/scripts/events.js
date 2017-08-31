@@ -179,3 +179,28 @@ function delete_from_cart(id) {
         }
     });
 };
+
+function downloadPDF(route) {
+
+    $.ajax({
+        method: "GET",
+        url: "/api/events/pdf/" + route,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Client", "Fest-Manager/dash");
+        },
+        success: function(res) {
+            if (res.status == 200) {
+                console.log(res);
+                download(res.data, res.file_name, "application/pdf",);              
+            } else {
+                swal({
+                    title: "Failed !",
+                    text: res.msg,
+                    type: "error",
+                    confirmButtonText: "OK",
+                    confirmButtonColor: "#202729"
+                });
+            }
+        }
+    });
+};
