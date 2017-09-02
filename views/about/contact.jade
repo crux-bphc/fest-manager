@@ -1,26 +1,32 @@
-link(rel="stylesheet" href="/static/stylesheets/about.style.css")
-
 mixin contact(name, post, phone)
-	li
-		i.icon-phone
-		span.name= post
-		span.post= name
-		span.contact.post +91 - #{phone}
+	li(onmouseover="show(this)" onmouseout="release(this)" data-filename=name)
+		span.post= post
+		span.name= name
+		span.phone= phone
+	img.photo(id="thumb-" + name.replace(" ","") src="/static/images/team/#{name}.jpg")
+link(rel="stylesheet" href="/static/stylesheets/contact.style.css")
 
-div.section.header
-	h1.title= title
 div.section.body
-	p Have any queries? Have a compliment or suggestion? We would love to hear from you.
 	ul.contacts
-		+contact("Sharath Golluri", "Technical Secretary", "9100879085")
-		+contact("Nitish Amireddy", "Sponsorship & Marketing", "7893007437")
-		+contact("Sugam Gandhi", "Publicity & Public Relations", "9133234318")
-		+contact("Venkata Subbaiah", "Logistics", "9676401052")
-		+contact("Rishabh Agrawal", "Security & Hospitality", "9133234434")
-		+contact("Ishaan Dewangan", "Photography", "9010716338")
-		+contact("Sarthak Jain", "Lights & Sounds", "9133312961")
-		+contact("Vishwaa Narayan", "Professional Events", "9704531332")
-		+contact("Sahil Sangwan", "Talks & Guest Lectures", "9177067275")
-		+contact("Thrinadh Kumpatla", "Visual Effects", "9100589626")
-		+contact("Abhinav Eittireddy", "President", "9542929354")
-		+contact("Aditya Iyer", "General Secretary", "9705932532")
+		img.photo.default(src="/static/images/team/clouds.png")
+		+contact("Abhinav Eittireddy", "President", "9133234837")
+		+contact("Sharath Golluri", "Technical Secretary", "9133234837")
+		+contact("Aditya Iyer", "General Secretary", "9133234837")
+		+contact("Nitish Amireddy", "Sponsorship & Marketing", "9133234837")
+		+contact("Sugam Gandhi", "Publicity & Public Relations", "9133234837")
+		+contact("Venkata Subbaiah", "Logistics", "9133234837")
+		+contact("Rishabh Agrawal", "Security & Hospitality", "9133234837")
+		+contact("Ishaan Dewangan", "Photography", "9133234837")
+		+contact("Sarthak Jain", "Lights & Sounds", "9133234837")
+		+contact("Vishwaa Narayan", "Professional Events", "9133234837")
+		+contact("Sahil Sangwan", "Talks & Guest Lectures", "9133234837")
+		+contact("Thrinadh Kumpatla", "Visual Effects", "9133234837")
+script.
+	function show(contact) {
+		$(contact).removeClass('fade').addClass('active').siblings("li").addClass('fade');
+		$("#thumb-" + $(contact).data('filename').replace(" ", "")).addClass('active').siblings("img").removeClass("active");
+	}
+	function release(contact) {
+		$(contact).removeClass('active').siblings().removeClass('fade');
+		$('.section.body .contacts img').removeClass('active');
+	}

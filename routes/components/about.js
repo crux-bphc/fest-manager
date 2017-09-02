@@ -6,6 +6,7 @@ var applyStateChanges = function (req) {
 		text: 'About',
 		route: '/about',
 	};
+	req.stateparams.immersive = true;
 	req.stateparams.submenu = [{
 			label: "Get in Touch",
 			route: "/about/contact",

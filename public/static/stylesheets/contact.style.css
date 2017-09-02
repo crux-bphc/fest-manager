@@ -1,0 +1,90 @@
+.section.body, .section.body .contacts, .section.body .underlay {
+    width:100%;
+    height: 100%;
+    position:absolute;
+    top:0;
+    left: 0;
+    margin:0;
+    padding:0;
+}
+.section.body .underlay {
+    background-size: contain;
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: overlay;
+    transition:background-image 1s;
+    background-position: center center;
+}
+.section.body {
+    background:#1e1e1e;
+}
+.section.body .contacts {
+    display: flex;
+    box-sizing: border-box;
+    padding-top: 40px;
+    cursor:default;
+    flex-wrap: wrap;
+    color:#f0f0f0;
+    font-size: 1.1em;
+    line-height: 1.25;
+    align-items: center;
+    justify-content: space-around;
+}
+.section.body .contacts > li {
+    display: flex;
+    position: relative;
+    z-index: +10;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:25%;
+    color:#b0b0b0;
+    height: 30%;
+    -webkit-user-select:none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+    transition:color 1s cubic-bezier(0,0,0,1), opacity 0.5s;
+}
+.section.body .contacts > img {
+    height: 80%;
+    position:absolute;
+    z-index: 1;
+    opacity: 0;
+    will-change: opacity;
+    transition: opacity 0.5s cubic-bezier(0,0,0,1);
+    transition-delay: 0.1s;
+}
+.section.body .contacts > img.default {
+    height:50%;
+    opacity: 0.1;
+    z-index: 0;
+}
+.section.body .contacts > img.active {
+    opacity:0.7;
+    transition-delay: 0s;
+}
+.section.body .contacts > li > span {
+    pointer-events: all;
+    font-weight: 400;
+    text-align: center;
+}
+.section.body .contacts > li:hover {
+    color: #f7f7f7;
+}
+.section.body .contacts > li.fade {
+    opacity: 0.1;
+}
+.section.body .contacts > li > .post {
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+.section.body .contacts > li > .phone {
+    font-size: 0.8em;
+    -webkit-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+}
