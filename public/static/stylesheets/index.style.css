@@ -267,107 +267,139 @@ input[type = "file"] {
     min-width: 60px;
 }
 
-.navbar .controls > .button > div {
+.navbar .controls > .button > img {
     transition: transform 0.2s ease-out;
 }
 
-.navbar .controls > .button:active > div {
+.navbar .controls > .button:active > img {
     transform: scale(0.9);
-}
-
-.navbar .controls .dropdown > .button.user {
-    background: transparent !important;
-    opacity: 1;
 }
 
 .navbar .controls > .button:hover {
     opacity: 1;
 }
 
-.navbar .controls .dropdown > .button.user {
-    height: 3em;
-    width: 3em;
-    position: relative;
-    top: 0.8em;
+/*
+    Declarations for the notification drawer
+*/
+
+.navbar .controls > .button.user {
+    background: transparent !important;
+    opacity: 1;
+    display: inline-flex;
 }
 
-.navbar .controls .dropdown > .button.user > div > img {
-    height: 100%;
-    width: 100%;
+.navbar .controls > .button.user > img {
+    height: 2.5em;
+    width: 2.5em;
     border-radius: 50%;
 }
 
-/*.navbar .controls .dropdown {
-    position: relative;
-    display: inline-block;
-}
-*/
-.notifContent{
+.navbar .controls .button.user > .dropdown {
     display: none;
     position: absolute;
-    right: -1.5em;
-    top: 4em;
-    background-color: #f9f9f9;
-    min-width: 15em;
-    height: 20em;
+    right: 0.3em;
+    top:100%;
+    background-color: #fff;
+    width: 25em;
+    min-height: 19em;
+    max-height: 80%;
+    box-sizing: border-box;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border-radius: 4px;
 }
 
-.navbar .controls .dropdown > .notifContent > .logout {
-    position: absolute;
-    bottom: 0;
+.navbar .controls .button.user:focus > .dropdown {
+    display: block;
+}
+
+.navbar .controls .button.user .dropdown .logout {
     height: 3em;
     width: 4em;
-    left: 50%;
-    margin-left: -2em;
-    clear: both;
-}
-
-.navbar .controls .dropdown > .notifContent > .accountbtn {
-    
-    margin: 0 auto;
-    height: 3em;
-    width: 7em;
-    font-weight: 600;
-    background:#f0f0f0;
     border-radius:4px;
-    clear: both;
 }
 
-.navbar .controls .dropdown > .notifContent > .user  {
-   
+.navbar .controls .button.user .dropdown .logout:hover {
+    background:rgba(0,0,0,0.05);
 }
 
-.navbar .controls .dropdown > .notifContent > .user > div > img {
-    width: 6em;
-    height: 6em;
-    float: left;
-    border-radius: 5px;
+.navbar .controls .button.user .dropdown .details {
+    flex-grow: 1;
 }
 
-.navbar .controls .dropdown > .notifContent > .user > .navdetails {
-    width: 80%;
-    height: 6em;
-}
-
-.navbar .controls .dropdown > .notifContent > .user > .navdetails > .username {
+.navbar .controls .button.user .dropdown .details .username {
     float: left;
     color: gray;
-    font-size: 30px;
+    font-size: 1.2em;
     font-weight: 400;
     margin: 0;
 }
 
-.navbar .controls .dropdown > .notifContent > .user > .navdetails > .useremail {
-    float: left;
+.navbar .controls .button.user .dropdown .header {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 2em 2em;
+    padding-bottom: 1em;
 }
 
-.navbar .controls .dropdown > .notifContent > .seperate {
-    width: 1px;
-    margin: 0 auto;
-    width: 8em;
-    background: #f0f0f0;
+.navbar .controls .button.user .dropdown .drawer {
+    width:100% !important;
+}
+
+.navbar .controls .button.user .dropdown .drawer > h2 {
+    font-weight: 400;
+    font-size: 1.2em;
+    color: gray;
+    display: block;
+    box-sizing: border-box;
+    padding: 0em 2em;
+    padding-top: 1em;
+}
+
+.navbar .controls .button.user .dropdown .drawer > div {
+    box-sizing: border-box;
+    padding: 0.5em 0;
+    width:100% !important;
+}
+
+.navbar .controls .button.user .dropdown .drawer > div > li {
+    display: flex;
+    line-height: 1.5em;
+    padding: 0.5em 2em;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+.navbar .controls .button.user .dropdown .drawer > div > li:hover {
+    background:rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+.navbar .controls .button.user .dropdown .drawer > div > li > i {
+    width:2em;
+    height: 2em;
+    display: block;
+    line-height:2em;
+    text-align: center;
+    border:1px solid;
+    border-radius: 50%;
+    margin-top: 0.2em;
+}
+
+.navbar .controls .button.user .dropdown .drawer > div > li > .details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1em;
+}
+
+.navbar .controls .button.user .dropdown .drawer > div > li .title {
+    color: gray;
+}
+
+.navbar .controls .button.user .dropdown .drawer > div > li .date {
+    font-size: 0.8em;
 }
 
 /***************************************************************************************
@@ -1019,6 +1051,9 @@ table tbody tr:nth-child(2n-1) {
         margin-left: 0px;
         opacity: unset;
     }
+    .navbar .controls .button.user > .dropdown {
+        width: 23em;
+    }
     .window > .remnant.shift_to_expose_menu {
         transform: translateX(200px);
     }
@@ -1065,8 +1100,4 @@ table tbody tr:nth-child(2n-1) {
 
 .hidden {
     display: none !important;
-}
-
-.show {
-    display: block;
 }

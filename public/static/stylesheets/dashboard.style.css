@@ -67,7 +67,7 @@ div.ambassador > span {
 	font-weight: 600;
 	margin-left: 5px;
 }
-div.details {
+div.left > div.details {
 	padding-top:1em;
 	position:absolute;
 	top: 100%;
