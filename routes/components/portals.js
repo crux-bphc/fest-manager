@@ -280,51 +280,48 @@ router.get('/:body/:eventroute', authenticate, elevate, function (req, res, next
 		error.status = 403;
 		return next(error);
 	}
-	var name;
+	var eventName;
 	bodiesService.findOne({
 		code: req.params.body
-	}, function (err, body) {
-		if (err || !body) return res.send("Error");
-		eventsService.findOne({
+	})
+	.then(function (body) {
+		if (!body) throw new Error("No body found.");
+		return eventsService.findOne({
 			body: body._id,
 			route: req.params.eventroute
-		}, function (err, event) {
-			if (err || !event) {
-				var error = new Error('Not Found');
-				error.status = 404;
-				return next(error);
-			}
-
-			// Block iterates over teams in event and extracts users grouped by their team.
-			var teams = [];
-			var userProjection = '_id teams name email institute';
-			var _query = function (team) {
-				return userService.find({
-					teams: team
-				}, userProjection);
-			};
-
-			// Returns an array of promises to pass to Promise.all to resolve when all are done.
-			var promises = event.teams.map(function (team) {
-				return _query(team);
-			});
-
-			Promise.all(promises)
-				.then(function (values) {
-					teams = values;
-					req.stateparams.pagetitle = event.name;
-
-					return res.renderState('portals/event', {
-						user: req.user,
-						title: event.name,
-						teams: teams,
-					});
-				})
-				.catch(function (err) {
-					console.log(err);
-					return res.send("Some error occurred.");
-				});
 		});
+	})
+	.then(function (event) {
+		// Block iterates over teams in event and extracts users grouped by their team.
+		if (!event) throw new Error("No event found.");
+		eventName = event.name;
+		var teams = [];
+		var userProjection = '_id teams name email institute';
+		var _query = function (team) {
+			return userService.find({
+				teams: team
+			}, userProjection);
+		};
+
+		// Returns an array of promises to pass to Promise.all to resolve when all are done.
+		var promises = event.teams.map(function (team) {
+			return _query(team);
+		});
+
+		return Promise.all(promises);
+	})
+	.then(function (teams) {
+		if (!teams) throw new Error("No teams found.");
+		req.stateparams.pagetitle = eventName;
+		return res.renderState('portals/event', {
+			user: req.user,
+			title: eventName,
+			teams: teams,
+		});
+	})
+	.catch(function (err) {
+		console.log(err);
+		return res.send("Some error occurred.");
 	});
 });
 
