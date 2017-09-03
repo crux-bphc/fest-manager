@@ -209,21 +209,16 @@ var manager = function() {
     function validateForm(){
         var formValid = true;
         $('form').each(function(index){
-            $(this).find("[required = 'required']").each(function(index){
+            $(this).find("[required]").each(function(index){
                 if($.trim($(this).val()) == ''){
-                    formValid = false;              
+                    formValid = false;
+                    $(this).addClass('invalid');
+                    $(this).focus(function(){
+                        $(this).removeClass('invalid');
+                    });              
                 }
             });
         });
-        if(!formValid){
-            swal({
-                    title: "Failed !",
-                    text: "Please fill the required details",
-                    type: "error",
-                    confirmButtonText: "OK",
-                    confirmButtonColor: "#202729"
-                });
-        }
         return formValid;
     }
 
