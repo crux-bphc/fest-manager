@@ -11,6 +11,9 @@ $(document).ready(function() {
         $(".content").addClass('inactive');
     });
     $("#submit-button").click(function() {
+        if(!manager.validateForm()){            
+            return;
+        }
         var isAmbassador = false;
         if ($('#field-why').val() != "" && $('#field-why').val()) isAmbassador = true;
         console.log(isAmbassador);
