@@ -1,5 +1,5 @@
 include navigation
-
+include ../../mixins/register-button
 link(rel='stylesheet', href='/static/stylesheets/events.style.css')
 link(rel='stylesheet', href='/static/stylesheets/pybits.style.css')
 link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css')
@@ -22,6 +22,7 @@ div.immersive-wrapper#home
 				i.icon-location_city
 				div(title="Click to navigate") BITS Hyderabad
 		div.button.disabled TICKETS COMING SOON
+		+cartActionsMixin(event, user)
 	+navigationMixin(true)
 	div.about.hidden
 		p PyBITS is a Python conference inspired by PyCon India, organized as a part of ATMOS, the annual national techno-management fest of BITS Pilani Hyderabad Campus. It is aimed at promoting the usage of Python among the attendees, and at introducing them to new ideas as to the applicability of Python in various programming domains
