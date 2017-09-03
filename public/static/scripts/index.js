@@ -206,8 +206,29 @@ var manager = function() {
     // 		});
     // 	});
     // }
+    function validateForm(){
+        var formValid = true;
+        $('form').each(function(index){
+            $(this).find("[required = 'required']").each(function(index){
+                if($.trim($(this).val()) == ''){
+                    formValid = false;              
+                }
+            });
+        });
+        if(!formValid){
+            swal({
+                    title: "Failed !",
+                    text: "Please fill the required details",
+                    type: "error",
+                    confirmButtonText: "OK",
+                    confirmButtonColor: "#202729"
+                });
+        }
+        return formValid;
+    }
 
     return {
+        validateForm: validateForm,
         route: client.route.bind(client),
         refresh: client.refresh.bind(client),
         getState: function() { return client.state; },
