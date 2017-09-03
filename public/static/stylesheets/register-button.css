@@ -1,0 +1,55 @@
+.cart-actions .cartButton {
+    height:2.5em;
+    display: inline-flex;
+    align-items: center;
+    position:relative;
+    font-size:1em;
+    padding:0em 1em;
+    margin-left:10px;
+    border-radius:20px;
+    color:rgba(0,0,0,0.7);
+    cursor:pointer;
+    box-sizing: border-box;
+    border:2px solid rgba(0,0,0,0.5);
+    transition:all 0.2s;
+    animation: pop 0.2s 0s 1;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    -moz-user-select:none;
+    user-select:none;
+}
+@keyframes pop {
+    from {
+        transform: scale(0.5);
+    }
+}
+.cart-actions .latent {
+    display: flex;
+    position:relative;
+}
+.cart-actions .latent:focus > .join_team,
+.cart-actions .latent:focus > .new_team {
+    display: inline-flex;
+}
+.cart-actions .latent > .join_team,
+.cart-actions .latent > .new_team,
+.cart-actions .latent:focus > .add_to_cart {
+    display: none;
+}
+.cart-actions .cartButton:hover {
+    color:#444;
+    border-color:#444;
+}
+.cart-actions .cartButton > * {
+    line-height: inherit;
+    display: inline-block;
+    vertical-align: top;
+}
+.cart-actions .cartButton > i {
+    margin-right: 0.5em;
+}
+.cart-actions .cartButton.subscribed {
+    background:#2db55d;
+    color:#fff;
+    border-color:transparent;
+}
