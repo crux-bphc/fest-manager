@@ -137,61 +137,6 @@
     display: flex;
     align-items: center;
 }
-.open-event .cartButton {
-    height:2.5em;
-    display: inline-flex;
-    align-items: center;
-    position:relative;
-    font-size:1em;
-    padding:0em 1em;
-    margin-left:10px;
-    border-radius:20px;
-    color:rgba(0,0,0,0.7);
-    cursor:pointer;
-    box-sizing: border-box;
-    border:2px solid rgba(0,0,0,0.5);
-    transition:all 0.2s;
-    animation: pop 0.2s 0s 1;
-    -webkit-user-select:none;
-    -ms-user-select:none;
-    -moz-user-select:none;
-    user-select:none;
-}
-@keyframes pop {
-    from {
-        transform: scale(0.5);
-    }
-}
-.open-event .latent {
-    display: flex;
-    position:relative;
-}
-.open-event .latent:focus > .join_team,
-.open-event .latent:focus > .new_team {
-    display: inline-flex;
-}
-.open-event .latent > .join_team,
-.open-event .latent > .new_team,
-.open-event .latent:focus > .add_to_cart {
-    display: none;
-}
-.open-event .cartButton:hover {
-    color:#444;
-    border-color:#444;
-}
-.open-event .cartButton > * {
-    line-height: inherit;
-    display: inline-block;
-    vertical-align: top;
-}
-.open-event .cartButton > i {
-    margin-right: 0.5em;
-}
-.open-event .cartButton.subscribed {
-    background:#2db55d;
-    color:#fff;
-    border-color:transparent;
-}
 .open-event .hero {
     display: block;
     width:100%;

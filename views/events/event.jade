@@ -1,4 +1,5 @@
 include ../mixins/event
+include ../mixins/register-button
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 link(rel="stylesheet" href="/static/stylesheets/marked.css")
 div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false"))
@@ -8,31 +9,7 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
         div.top
             div.title= event.name
             div.remnant
-            div#cartActions
-                - if(typeof user !== 'undefined')
-                    - if(user.events.indexOf(event._id) != -1)
-                        div.subscribed.cartButton(onclick="delete_from_cart('#{event._id}')")
-                            i.icon-check
-                            span Registered
-                    - else if(event.teamSize > 1)
-                        div.latent(tabindex="1")
-                            div.add_to_cart.cartButton
-                                i.icon-add_shopping_cart
-                                span Register
-                            div.new_team.cartButton(onclick="add_to_cart('#{event._id}')")
-                                i.icon-add_box
-                                span New Team
-                            div.join_team.cartButton(onclick="join_team('#{event._id}')")
-                                i.icon-group_add
-                                span Join Team
-                    - else
-                        div.add_to_cart.cartButton(onclick="add_to_cart('#{event._id}')")
-                            i.icon-add_shopping_cart
-                            span Register
-                - else
-                    div.add_to_cart.cartButton(_route="/login?callback=/events/#{event.route}")
-                        i.icon-add_shopping_cart
-                        span Register
+            +cartActionsMixin(event, user)
         div.category= event.category
         div.details
             if(event.startTime)
