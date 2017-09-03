@@ -53,13 +53,17 @@
     display: inline-block;
 }
 
-#home .logo > .button {
+#home .logo .button {
     display: block;
     box-sizing: border-box;
     line-height: 3em;
     padding:0em 2em;
     margin-top:1.5em;
     border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 0;
+    height: unset;
+    background: unset;
+    color: rgba(255,255,255,0.7);
 }
 
 .about {

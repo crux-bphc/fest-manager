@@ -1,4 +1,4 @@
-.cart-actions .cartButton {
+.cart-actions .button {
     height:2.5em;
     display: inline-flex;
     align-items: center;
@@ -36,19 +36,19 @@
 .cart-actions .latent:focus > .add_to_cart {
     display: none;
 }
-.cart-actions .cartButton:hover {
+.cart-actions .button:hover {
     color:#444;
     border-color:#444;
 }
-.cart-actions .cartButton > * {
+.cart-actions .button > * {
     line-height: inherit;
     display: inline-block;
     vertical-align: top;
 }
-.cart-actions .cartButton > i {
+.cart-actions .button > i {
     margin-right: 0.5em;
 }
-.cart-actions .cartButton.subscribed {
+.cart-actions .button.subscribed {
     background:#2db55d;
     color:#fff;
     border-color:transparent;
