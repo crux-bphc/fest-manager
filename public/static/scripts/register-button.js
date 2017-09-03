@@ -1,8 +1,8 @@
 var RegisterButton = function() {
     var templates = {
-        teamed: '<div class="latent" tabindex="1"><div class="cartButton add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register</span></div><div class="cartButton join_team" onclick="RegisterButton.join(this, \'$id\')"><i class="icon-group_add"></i><span>Join Team</span></div><div class="cartButton new_team" onclick="RegisterButton.add(this, \'$id\')"><i class="icon-add_box"></i><span>New Team</span></div></div>',
-        single: '<div class="cartButton add_to_cart" onclick="RegisterButton.add(this, \'$id\')"><i class="icon-add_shopping_cart"></i><span>Register</span></div>',
-        subscribed: '<div class="cartButton subscribed" onclick="RegisterButton.remove(this, \'$id\')"><i class="icon-check"></i><span>Registered</span></div>'
+        teamed: '<div class="latent" tabindex="1"><div class="button add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register</span></div><div class="button join_team" onclick="RegisterButton.join(this, \'$id\')"><i class="icon-group_add"></i><span>Join Team</span></div><div class="button new_team" onclick="RegisterButton.add(this, \'$id\')"><i class="icon-add_box"></i><span>New Team</span></div></div>',
+        single: '<div class="button add_to_cart" onclick="RegisterButton.add(this, \'$id\')"><i class="icon-add_shopping_cart"></i><span>Register</span></div>',
+        subscribed: '<div class="button subscribed" onclick="RegisterButton.remove(this, \'$id\')"><i class="icon-check"></i><span>Registered</span></div>'
     }
 
     var addToCart = function(button, id) {
