@@ -18,6 +18,7 @@ module.exports = function () {
 	};
 
 	var updateOptions = function (options) {
+		options = appendUserProfilePic(options);
 		return options;
 	};
 	return {
