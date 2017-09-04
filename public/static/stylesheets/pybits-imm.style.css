@@ -112,6 +112,15 @@
     height: 80vh;
 }
 
+#warning span {
+    font-size: 1.2em;
+    color:rgba(255,255,255,0.7);
+    text-align: center;
+    padding-top: 1.5em;
+    display: block;
+    line-height: 1.5em;
+}
+
 @media (max-width: 800px) {
     #home .logo > .title {
         font-size: 4em;
@@ -121,6 +130,11 @@
         margin-top: 2em;
         width:100vw;
     }
+
+    #warning span {
+        width: 80vw;
+    }
+
     #home .logo > .subtitle > span {
         line-height: 1.5em;
         display: block;
