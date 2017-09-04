@@ -286,6 +286,10 @@ input[type = "file"] {
 .navbar .controls > .button.user {
     background: transparent !important;
     opacity: 1;
+    display: none;
+}
+
+.navbar .controls > .button.user.visible {
     display: inline-flex;
 }
 
@@ -349,6 +353,7 @@ input[type = "file"] {
     width:100% !important;
     max-height: 15em;
     overflow: hidden;
+    box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.1) inset;
 }
 
 .navbar .controls .button.user .dropdown .drawer > div li.notification {
@@ -384,10 +389,15 @@ input[type = "file"] {
 
 .navbar .controls .button.user .dropdown .drawer > div li.notification .title {
     color: gray;
+    font-size: 1.1em;
 }
 
 .navbar .controls .button.user .dropdown .drawer > div li.notification .date {
     font-size: 0.8em;
+}
+.navbar .controls .button.user .dropdown .drawer > div li.notification .message {
+    font-size: 0.9em;
+    color: #4499DD;
 }
 
 /***************************************************************************************

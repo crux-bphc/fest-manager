@@ -37,7 +37,7 @@ body
 					i.icon-navigate_next
 					span.text
 				div.controls
-					div.button.user(_triggers="navbar/logout=visible" tabindex=0)
+					div.button.user(_triggers="navbar/avatar=visible" tabindex=0)
 						if user
 							img(src=user.profileImage)
 							div.dropdown
@@ -58,23 +58,32 @@ body
 										li.notification
 											i.icon-check
 											div.details
-												span.title Your invitation is accepted
-												span.date 12/12/12 22:22
+												span.title Your invitation was accepted
+												span.message Send more invitations
+												span.date 12/10/17 22:22
+										li.notification
+											i.icon-mail_outline
+											div.details
+												span.title Algomaniac has new updates
+												span.message You have registered for Algomaniac
+												span.date 01/10/17 02:00
+										li.notification
+											i.icon-mail_outline
+											div.details
+												span.title Codejam results are out
+												span.message You have qualified for the next round
+												span.date 10/10/17 04:50
 										li.notification
 											i.icon-mail_outline
 											div.details
 												span.title New message
 												span.date 12/12/12 22:22
 										li.notification
-											i.icon-mail_outline
+											i.icon-brightness_low
 											div.details
-												span.title New message
-												span.date 12/12/12 22:22
-										li.notification
-											i.icon-mail_outline
-											div.details
-												span.title New message
-												span.date 12/12/12 22:22
+												span.title Slumber Party is about to start
+												span.message Watch Hugo in F102
+												span.date 02/10/12 09:20
 					a.button(href="/logout" _triggers="navbar/logout=visible")
 						i.icon-power_settings_new
 						div Logout
