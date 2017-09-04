@@ -12,6 +12,7 @@ html
 		link(href="/static/fonts/Proxima Nova/font.css" rel="stylesheet")
 		link(href="/static/images/favicon.png" rel="icon")
 		link(href="/static/stylesheets/sweetalert.css" rel="stylesheet")
+		link(href="/static/stylesheets/simplebar.css" rel="stylesheet")
 		title Atmos
 		meta(name="robots" content="index, follow")
 		meta(name="apple-mobile-web-app-capable" content="yes")
@@ -54,14 +55,23 @@ body
 											i.icon-power_settings_new
 											div Logout
 								div.drawer
-									h2 Notifications
-									div
-										li
+									div.scrollable
+										li.notification
 											i.icon-check
 											div.details
 												span.title Your invitation is accepted
 												span.date 12/12/12 22:22
-										li
+										li.notification
+											i.icon-mail_outline
+											div.details
+												span.title New message
+												span.date 12/12/12 22:22
+										li.notification
+											i.icon-mail_outline
+											div.details
+												span.title New message
+												span.date 12/12/12 22:22
+										li.notification
 											i.icon-mail_outline
 											div.details
 												span.title New message
@@ -92,7 +102,7 @@ body
 		script(type="application/ld+json" src="/static/scripts/schema.json")
 		script(type="text/javascript" src="/static/scripts/jquery.min.js")
 		//- script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		script(type="text/javascript" src="/static/scripts/deep-diff-0.3.8.min.js")
+		script(src="/static/scripts/deep-diff-0.3.8.min.js" type="text/javascript")
 		script(src="/static/scripts/sweetalert.min.js" type="text/javascript")
-		script(src="/static/lib/enscroll.js" type="text/javascript")
-		script(type="text/javascript" src="/static/scripts/index.js")
+		script(src="/static/lib/simplebar.js" type="text/javascript")
+		script(src="/static/scripts/index.js" type="text/javascript")
