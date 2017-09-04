@@ -212,6 +212,7 @@ var manager = function () {
 		var route = $('.window').attr('route');
 		if (window.location.hash) route += (window.location.hash);
 		client.route(route);
+        new SimpleBar($('.navbar .dropdown .drawer > div')[0]);
 	};
 
 	// Audio analyser resources
