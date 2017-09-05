@@ -14,8 +14,22 @@
 	height: 100%;
 	top:0;
 	left: 0;
+	box-sizing: border-box;
+	padding: 0% 5% !important;
 	justify-content: space-around;
 	align-items: center;
+}
+.immersive-wrapper > div.button {
+	line-height: 3em;
+	position:relative;
+	z-index: +100;
+	font-weight: 500;
+	background-color: rgba(0,0,0,0.5);
+	border:2px solid #f0f0f0;
+	color:#f0f0f0;
+	padding: 0em 2em;
+	font-size: 1.1em;
+	cursor:pointer;
 }
 .immersive-wrapper * {
 	user-drag:none;
@@ -116,6 +130,8 @@ div.footer > div {
 @media only screen and (max-width: 800px) {
 	.immersive-wrapper {
 		font-size:0.8em;
+		padding: 15% 0% !important;
+		flex-direction: column;
 	}
 	div.footer {
 		position:fixed;
