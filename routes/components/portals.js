@@ -5,7 +5,7 @@ var authenticate = require('../../utils/authentication').middleware;
 var bodiesService = require('../api/services/bodies').model;
 var eventsService = require('../api/services/events').model;
 var userService = require('../api/services/users').model;
-var elevate = function(req, res, next) {
+var elevate = function (req, res, next) {
 	if (req.user.privilege)
 		return next();
 	let error = new Error('Access denied');
@@ -13,7 +13,7 @@ var elevate = function(req, res, next) {
 	return next(error);
 };
 
-var applyStateChanges = function(req) {
+var applyStateChanges = function (req) {
 	req.stateparams.title = req.stateparams.title = {
 		text: 'Portals',
 		route: '/portals',
@@ -25,10 +25,10 @@ var applyStateChanges = function(req) {
 	return req;
 };
 
-router.get('/', authenticate, elevate, function(req, res, next) {
+router.get('/', authenticate, elevate, function (req, res, next) {
 	req = applyStateChanges(req);
 	if (req.user.privilege.level == 2)
-		bodiesService.find(function(err, items) {
+		bodiesService.find(function (err, items) {
 			if (err) {
 				return next(err);
 			}
@@ -45,7 +45,7 @@ router.get('/', authenticate, elevate, function(req, res, next) {
 });
 
 
-router.get('/dosh', authenticate, elevate, function(req, res, next) {
+router.get('/dosh', authenticate, elevate, function (req, res, next) {
 	var params = {
 		title: 'Register Newcomer',
 		user: req.user,
@@ -77,7 +77,7 @@ router.get('/dosh', authenticate, elevate, function(req, res, next) {
 });
 
 
-router.get('/ca/view', authenticate, elevate, function(req, res, next) {
+router.get('/ca/view', authenticate, elevate, function (req, res, next) {
 
 	if (req.user.privilege.body != "ca" && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
@@ -88,7 +88,7 @@ router.get('/ca/view', authenticate, elevate, function(req, res, next) {
 	userService.find({
 			isAmbassador: true
 		}, '_id name email institute phone address pincode why')
-		.then(function(users) {
+		.then(function (users) {
 			req.stateparams.title = "Campus Ambassador";
 			console.log('users.length:', users.length);
 			return res.renderState('portals/ca', {
@@ -96,13 +96,13 @@ router.get('/ca/view', authenticate, elevate, function(req, res, next) {
 				items: users,
 			});
 		})
-		.catch(function(err) {
+		.catch(function (err) {
 			console.log(err);
 			return next(err);
 		});
 });
 
-router.get('/:body', authenticate, elevate, function(req, res, next) {
+router.get('/:body', authenticate, elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
@@ -112,11 +112,11 @@ router.get('/:body', authenticate, elevate, function(req, res, next) {
 	var name;
 	bodiesService.findOne({
 		code: req.params.body
-	}, function(err, body) {
+	}, function (err, body) {
 		if (err || !body) return res.send("Error");
 		eventsService.find({
 			body: body._id
-		}, function(err, items) {
+		}, function (err, items) {
 			if (err || !items) {
 				var error = new Error('Not Found');
 				error.status = 404;
@@ -133,7 +133,7 @@ router.get('/:body', authenticate, elevate, function(req, res, next) {
 	});
 });
 
-router.get('/:body/:eventroute', authenticate, elevate, function(req, res, next) {
+router.get('/:body/:eventroute', authenticate, elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
@@ -143,33 +143,33 @@ router.get('/:body/:eventroute', authenticate, elevate, function(req, res, next)
 	bodiesService.findOne({
 			code: req.params.body
 		})
-		.then(function(body) {
+		.then(function (body) {
 			if (!body) throw new Error("No body found.");
 			return eventsService.findOne({
 				body: body._id,
 				route: req.params.eventroute
 			});
 		})
-		.then(function(event) {
+		.then(function (event) {
 			// Block iterates over teams in event and extracts users grouped by their team.
 			if (!event) throw new Error("No event found.");
 			eventName = event.name;
 			var teams = [];
 			var userProjection = '_id teams name email institute';
-			var _query = function(team) {
+			var _query = function (team) {
 				return userService.find({
 					teams: team
 				}, userProjection);
 			};
 
 			// Returns an array of promises to pass to Promise.all to resolve when all are done.
-			var promises = event.teams.map(function(team) {
+			var promises = event.teams.map(function (team) {
 				return _query(team);
 			});
 
 			return Promise.all(promises);
 		})
-		.then(function(teams) {
+		.then(function (teams) {
 			if (!teams) throw new Error("No teams found.");
 			req.stateparams.pagetitle = eventName;
 			return res.renderState('portals/event', {
@@ -178,7 +178,7 @@ router.get('/:body/:eventroute', authenticate, elevate, function(req, res, next)
 				teams: teams,
 			});
 		})
-		.catch(function(err) {
+		.catch(function (err) {
 			console.log(err);
 			return res.send("Some error occurred.");
 		});
@@ -194,12 +194,12 @@ function generate_pdf(event) {
 	var filename = path.join(__dirname, '../../public/static/data/docs/' + event.name + '.pdf');
 
 	template = template.replace('$$--title--$$', event.name).replace('$$--content--$$', marked(event.about));
-	pdf.create(template).toStream(function(err, stream) {
+	pdf.create(template).toStream(function (err, stream) {
 		stream.pipe(fs.createWriteStream(filename));
 	});
 }
 
-router.post('/:body/add', authenticate, elevate, function(req, res, next) {
+router.post('/:body/add', authenticate, elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
@@ -208,9 +208,9 @@ router.post('/:body/add', authenticate, elevate, function(req, res, next) {
 	var event = new eventsService(req.body);
 	bodiesService.findOne({
 		code: req.params.body
-	}, function(err, body) {
+	}, function (err, body) {
 		event.body = body._id;
-		event.save(function(err) {
+		event.save(function (err) {
 			if (err) return res.send("Error");
 			generate_pdf(event);
 			res.send("Success");
@@ -218,7 +218,7 @@ router.post('/:body/add', authenticate, elevate, function(req, res, next) {
 	});
 });
 
-router.post('/:body/edit', authenticate, elevate, function(req, res, next) {
+router.post('/:body/edit', authenticate, elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
@@ -226,7 +226,7 @@ router.post('/:body/edit', authenticate, elevate, function(req, res, next) {
 	}
 	eventsService.update({
 		_id: req.body._id || req.body.id
-	}, req.body, function(err) {
+	}, req.body, function (err) {
 		if (err) return res.send("Error");
 		generate_pdf(req.body);
 		res.send("Success");
