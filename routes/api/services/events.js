@@ -14,13 +14,12 @@ var eventsSchema = new Schema({
 	hero: String,
 	about: String,
 	venue: String,
-	contact: String,
 	startTime: Date,
 	endTime: Date,
 	teams: [shortID],
 	price: Number,
 	route: String,
-	immersive: String,
+	prize: Number,
 	teamSize: Number,
 }, {
 	timestamps: true
