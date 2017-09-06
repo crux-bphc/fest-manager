@@ -28,6 +28,7 @@ var components = require('./routes/components');
 var api = require('./routes/api');
 var auth = require('./routes/auth');
 var data = require('./routes/export');
+var transaction = require('./routes/transaction');
 
 var app = express();
 
@@ -118,6 +119,7 @@ app.use(function (req, res, next) {
 app.use('/export', data);
 app.use('/upload', upload);
 app.use('/auth', auth);
+app.use('/transaction', transaction);
 app.use('/components', clientCheckpoint, components);
 app.use('/api', clientCheckpoint, api);
 app.use('/', index);

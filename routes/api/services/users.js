@@ -17,7 +17,7 @@ var usersSchema = new Schema({
 	},
 	teams: [shortID],
 	events: [Schema.Types.ObjectId],
-	accommodation: Schema.Types.ObjectId,
+	accommodation: Number,
 	token: String,
 	facebookID: String,
 	googleID: String,
@@ -26,7 +26,7 @@ var usersSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
-	checkedout: [Schema.Types.Mixed],
+	pending: [Schema.Types.ObjectId],
 	phone: String,
 	address: String,
 	pincode: String,

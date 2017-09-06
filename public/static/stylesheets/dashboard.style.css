@@ -5,6 +5,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+	margin-bottom: 8em;
 }
 .section.body > div {
 	display: inline-block;
@@ -27,6 +28,7 @@
 	border-radius: 5px;
 	border:1px solid #f0f0f0;
 	height:15em;
+	flex-shrink: 0;
 }
 .section.body div.separate {
 	width: 1px;
@@ -114,10 +116,19 @@ div.ca .content .button {
 	font-weight:600;
 	color: #777;
 }
+.section.checkedout {
+	margin-top: 1.5em;
+}
+.section.checkedout > .title {
+	font-weight: 500;
+	padding-top: 2em;
+	margin-bottom: 1em;
+}
 
 @media only screen and (max-width: 600px) {
 	.section.body {
 		flex-direction: column-reverse;
+		margin-bottom: 1em;
 	}
 	.section.body div.separate {
 		display: none;
@@ -130,7 +141,8 @@ div.ca .content .button {
 		text-align: center;
 	}
 	.section.body .imgQR {
-		width:80%;
+		width:70vw;
+		height: 70vw;
 	}
 	.section.body div.ca,
 	.section.body div.ca .button,

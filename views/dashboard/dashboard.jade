@@ -1,3 +1,6 @@
+include ../mixins/eventList
+
+link(href="/static/stylesheets/cart.style.css" rel="stylesheet")
 link(href="/static/stylesheets/dashboard.style.css" rel="stylesheet")
 div.section.header
 	h1.title Overview
@@ -31,3 +34,6 @@ div.section.body
 					span Campus Ambassador
 			else
 				div.button(_route="/ca") Become a Campus Ambassador
+div.section.checkedout
+	h3.title Events
+	+eventList(events, user)
