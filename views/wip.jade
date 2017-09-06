@@ -1,0 +1,23 @@
+include custom/pybits/navigation
+link(rel='stylesheet', href='/static/stylesheets/pybits.style.css')
+link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css')
+link(rel='stylesheet', href='/static/stylesheets/wip.css')
+.wip-holder
+  .machine-wrap
+    .machine
+      .machine-roof
+        .machine-silencer
+          .machine-smoke
+      .machine-main
+        .machine-body
+        .machine-back
+        .machine-front
+    .road
+      .mud-wrap.clearfix
+        .mud
+        .mud
+        .mud
+        .mud
+div#home
+  - if(pybits)
+    +navigationMixin(true)
