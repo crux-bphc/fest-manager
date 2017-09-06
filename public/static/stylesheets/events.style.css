@@ -24,6 +24,7 @@
 .events-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .events-wrapper > div:empty {
@@ -49,25 +50,26 @@
     max-width: 100%;
     overflow: hidden;
     cursor: pointer;
+    flex-grow: 1;
 }
 
 .event-container.disabled {
     display: none;
 }
 
-.event-container.Proshow, .event-container.TechExpo {
-    min-width: 100%;
+.event-container.Proshow, .event-container.TechExpo, .event-container.PyBITS {
+    min-width: 49%;
 }
 
-.event-container.Proshow > .face, .event-container.TechExpo > .face {
+.event-container.Proshow > .face, .event-container.TechExpo > .face, .event-container.PyBITS > .face {
     font-size: 1.5em;
 }
 
-.event-container.Proshow > .face > .name, .event-container.TechExpo > .face > .name {
+.event-container.Proshow > .face > .name, .event-container.TechExpo > .face > .name, .event-container.PyBITS > .face > .name {
     font-weight: 600;
 }
 
-.event-container.Proshow > .image, .event-container.TechExpo > .image {
+.event-container.Proshow > .image, .event-container.TechExpo > .image, .event-container.PyBITS > .image {
     background-position: center center;
 }
 
