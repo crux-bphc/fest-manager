@@ -1,17 +1,40 @@
 include ../mixins/event
+include ../mixins/field
+
 link(href="/static/stylesheets/cart.style.css" rel="stylesheet")
 div.section.header
 	h1= title
 	div.stretch
-	-if(events.length > 0) {
-		for event in events
-			div.event-wrapper
-				+eventMixin(event)
-				i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
-				div.foot
-					div.price
-					div.team
-						span Team ID:
-						span= (user.teams.filter(team => event.teams.indexOf(team) != -1))
-	- }
+div.section.body
+	div.pending
+		-if(events.length > 0) {
+			for event in events
+				div.event-wrapper
+					+eventMixin(event)
+					i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
+					div.foot
+						div.price= (event.price ? event.price : "FREE")
+						if(event.teamSize > 1)
+							div.team
+								span Team ID:
+								span= (user.teams.filter(team => event.teams.indexOf(team) != -1))
+		- }
+		-var subtotal = 0;
+		-events.forEach(function(event){
+		- subtotal += event.price;
+		-});
+		-var AccommChoice = {type: "select", name: "type", editable: true, options: ["Common Room / \u20b9100", "Hotel / \u20b9400"]};
+	div.payment
+		div.price.subtotal
+			i &#x20b9;
+			span.amount= subtotal
+		div.additional
+			input(type="checkbox" id="availAccomm" name="availAccomm")
+			label(for="availAccomm") Add accommodation
+			+fieldMixin(AccommChoice)
+		div.remnant
+			div.price.total
+				i &#x20b9;
+				span.amount= subtotal
+			div.button(_route="https://secure.paytm.com/payment/") PAY NOW
 script(src="/static/scripts/cart.js")

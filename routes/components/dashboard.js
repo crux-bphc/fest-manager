@@ -110,7 +110,7 @@ router.get('/cart', authenticate, function (req, res, next) {
 			return;
 		}
 		var params = {
-			title: 'Cart',
+			title: 'Check Out',
 			user: req.user,
 			events: result
 		};
