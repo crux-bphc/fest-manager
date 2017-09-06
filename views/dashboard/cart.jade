@@ -7,28 +7,19 @@ div.section.header
 	div.stretch
 div.section.body
 	div.pending
-		+eventList(events, user)
-		-var subtotal = 0;
-		-events.forEach(function(event){
-		- subtotal += event.price;
-		-});
-		-var AccommChoice = {type: "select", name: "type", editable: true, options: ["Common Room / \u20b9100", "Hotel / \u20b9400"]};
+		+eventList(events, user, true)
+		-var AccommChoice = {type: "select", name: "choice", editable: true, options: ["Common Room / \u20b9100", "Hotel / \u20b9400"]};
 	div.payment
 		div.price.subtotal
 			i &#x20b9;
-			span.amount= subtotal
-		div.additional
+			span.amount#cart-subtotal 0
+		div.additional#cart-additional
 			input(type="checkbox" id="availAccomm" name="availAccomm")
 			label(for="availAccomm") Add accommodation
 			+fieldMixin(AccommChoice)
 		div.remnant
 			div.price.total
 				i &#x20b9;
-				span.amount#checkoutTotal= subtotal
+				span.amount#cart-total 0
 			div.button PAY NOW
 script(src="/static/scripts/cart.js")
-div#sandbox
-	script.
-		cart.setSubtotal("#{subtotal}");
-		cart.disableExposure();
-		$('#sandbox').html("");

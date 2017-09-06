@@ -34,45 +34,40 @@ function delete_from_cart(id, event){
 	});
 };
 var cart = function() {
-	state = {
-		subtotal: 0,
-		additional: 0,
-		body: {},
-		events: [],
-		exposed: true,
-		total: 0
-	}
-	var disableExposure = function() {
-		state.exposed = false;
-	}
-	var setSubtotal = function(amount) {
-		if(state.exposed)
-			state.subtotal = parseInt(amount);
-		else
-			console.log("This was an invalid attempt to access the state.");
+
+	var state = {
+		total: 0,
 	}
 
-	//Additional Behaviour
+	var onchange = function() {
+		console.log("Fetching updated cart");
+		$.ajax({
+			method: 'POST',
+			url: '/api/users/cart',
+			async: true,
+			data: {
+				accomm: $('#availAccomm').is(':checked'),
+				amount: $('#availAccomm').is(':checked') ? $('#field-choice').val().split('\u20b9')[1] : 0,
+			},
+			headers: {
+                "Client": "Fest-Manager/dash"
+            },
+            dataType: 'json',
+		}).done(function (data) {
+			$('#cart-subtotal').html(data.subtotal);
+			if(data.additional) {
+				$('#cart-additional').show();
+			}
+			else {
+				$('#cart-additional').hide();
+			}
+			$('#cart-total').html(data.total);
+		});
+	};
 
-	$('#availAccomm').on('change', function() {
-		if($(this).is(':checked')) {
-			state.additional = parseInt($('#field-type').val().split('\u20b9')[1]);
-			state.total = state.subtotal + state.additional;
-		}
-		else {
-			state.additional = 0;
-			state.total = state.subtotal;
-		}
-		$('#checkoutTotal').html(state.total);
-	});
-	$('.payment select').on('change', function(){
-		if($('#availAccomm').is(':checked')) {
-			state.additional = parseInt($(this).val().split('\u20b9')[1]);
-			state.total = state.subtotal + state.additional;
-		}
-		else state.total = state.subtotal;
-		$('#checkoutTotal').html(state.total);
-	});
+	onchange();
+
+	$('input, select').change(onchange);
 
 	// Submit Button Dummmy
 	$('.payment .button').click(function() {
@@ -81,16 +76,13 @@ var cart = function() {
 			url: '/transaction',	// Fix gateway address here.
 			dataType: 'json',
 			contentType: 'json',
-			data: state.body,
+			data: state,
+			headers: {
+				Client: 'Fest-Manager/dash',
+			},
 			async: true,
-		}).done(function(response){
+		}).done(function(response) {
 			manager.route('/dashboard');
 		});
 	});
-
-	// Export functions to self-destructing script
-	return {
-		setSubtotal: setSubtotal,
-		disableExposure: disableExposure
-	}
 }();
