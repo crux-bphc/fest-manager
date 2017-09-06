@@ -8,7 +8,7 @@ based auto-completion for text fields, which looks like this in the default them
 ## How to implement
 
 This doc assumes that you know how to use the provided form mix-in to create forms.
-Read about the form mix-in [here](form-mixin) - TODO: Write form mix-in doc.
+Read about the form mix-in [here](form).
 
 In your route, when you are rendering a field, pass `typeahead: <name>` parameter
 to your field of choice. For example:

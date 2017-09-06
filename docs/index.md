@@ -5,3 +5,4 @@ Our documentation is very incomplete and we could use quite a bit of help in thi
 1. **[Nginx Configuration](nginx)** -  Setting up the nginx server to act as reverse proxy for our node server.
 2. **[Typeahead Guide](typeahead)** - A feature guide on using the typeahead/autocomplete feature for custom fields.
 3. **[Form Guide](form)** - A guide and list of the currently supported features for forms and fields.
+4. **[Directory Structure](structure)** - Basic walkthrough of the directory structure of the project.
