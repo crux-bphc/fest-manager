@@ -59,10 +59,10 @@ function formEditor(data) {
             $('#field-price').val(data[0].price);
         else
             $('#field-price').val("");
-        if (data[0].contact)
-            $('#field-contact').val(data[0].contact);
+        if (data[0].prize)
+            $('#field-prize').val(data[0].prize);
         else
-            $('#field-contact').val("");
+            $('#field-prize').val("");
         if (data[0].route)
             $('#field-route').val(data[0].route);
         else
@@ -101,7 +101,7 @@ function formEditor(data) {
         $('#field-starttime').val("");
         $('#field-endtime').val("");
         $('#field-price').val("");
-        $('#field-contact').val("");
+        $('#field-prize').val("");
         $('#field-route').val("");
         $('#field-teamSize').val("");
         $('#image-editor-0').parent().removeClass("filled");
@@ -152,8 +152,8 @@ function submit_item() {
     body.endTime = $('#field-endtime').val();
     body.type = $('#field-type').val();
     body.venue = $('#field-venue').val();
-    body.contact = $('#field-contact').val();
     body.route = $('#field-route').val();
+    body.prize = $('#field-prize').val();
     body.price = $("#field-price").val() == "" ? 0 : Number.parseInt($('#field-price').val());
     body.teamSize = $("#field-teamSize").val() == "" ? 1 : Number.parseInt($('#field-teamSize').val());
     $.ajax({

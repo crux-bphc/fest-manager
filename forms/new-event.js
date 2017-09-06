@@ -82,17 +82,17 @@ module.exports = function(event) {
         group: 2,
     });
     fields.push({
-        name: "contact",
-        placeholder: "Contact",
+        name: "prize",
+        placeholder: "Prize Money",
         editable: true,
-        type: "phone",
-        value: event ? event.contact : "",
+        type: "number",
+        value: event ? event.prize : "",
         none: true,
         group: 2,
     });
     fields.push({
         name: "price",
-        placeholder: "Price",
+        placeholder: "Entry Fee",
         editable: true,
         value: event ? event.price : "",
         type: "number",

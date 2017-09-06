@@ -26,6 +26,7 @@ var usersSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
+	checkedout: [Schema.Types.Mixed],
 	phone: String,
 	address: String,
 	pincode: String,
