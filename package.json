@@ -7,6 +7,10 @@
     "test": "tools/destroy-and-rebuild-database; grunt test",
     "dev": "./node_modules/nodemon/bin/nodemon.js ./bin/www"
   },
+  "nodemonConfig": {
+    "ignore": ["tests/*", "docs/*", "public/*", "views/*"],
+    "delay": "1000"
+  },
   "dependencies": {
     "base64-img": "^1.0.3",
     "body-parser": "~1.17.1",
