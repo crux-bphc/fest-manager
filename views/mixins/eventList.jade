@@ -1,13 +1,16 @@
 include ./event
 
-mixin eventList(events, user)
+mixin eventList(events, user, isDeletable)
     -if(events.length > 0) {
         for event in events
             div.event-wrapper
                 +eventMixin(event)
-                i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
+                if isDeletable
+                    i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
                 div.foot
-                    div.price= (event.price ? event.price : "FREE")
+                    div.price
+                        span &#x20b9;
+                        span= (event.price ? event.price : "FREE")
                     if(event.teamSize > 1)
                         div.team
                             span Team ID:

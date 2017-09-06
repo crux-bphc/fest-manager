@@ -111,16 +111,14 @@ router.get('/cart', authenticate, function (req, res, next) {
 			$in: req.user.pending
 		}
 	}, function (err, result) {
-		if (err) {
-			console.log("ERROR: " + err);
-			params.error = "Error finding events";
-			return;
-		}
 		var params = {
 			title: 'Check Out',
 			user: req.user,
 			events: result
 		};
+		if (err || !result.length) {
+			params.error = "Error finding events";
+		}
 		res.renderState('dashboard/cart', params);
 	});
 });

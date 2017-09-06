@@ -5,6 +5,16 @@ var RegisterButton = function() {
         subscribed: '<div class="button subscribed" onclick="RegisterButton.remove(this, \'$id\')"><i class="icon-check"></i><span>Registered</span></div>'
     }
 
+    var failAlert = function(res) {
+        swal({
+            title: "Failed !",
+            text: res.msg,
+            type: "error",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#202729"
+        });
+    }
+
     var addToCart = function(button, id) {
 
         $.ajax({
@@ -16,7 +26,7 @@ var RegisterButton = function() {
             data: {
                 id: id
             },
-            success: function(res) {
+        }).done(function(res) {
                 if (res.status == 200) {
                     if (typeof res.teamID !== 'undefined') {
                         swal({
@@ -38,16 +48,9 @@ var RegisterButton = function() {
                     }
                     $('.cart-actions').html(templates.subscribed.replace('$id', id));
                 } else {
-                    swal({
-                        title: "Failed !",
-                        text: res.msg,
-                        type: "error",
-                        confirmButtonText: "OK",
-                        confirmButtonColor: "#202729"
-                    });
+                    failAlert(res);
                 }
-            }
-        });
+            }).fail(failAlert);
     };
 
     var joinTeam = function(button, id) {
@@ -81,7 +84,7 @@ var RegisterButton = function() {
                     data: {
                         id: inputValue
                     },
-                    success: function(res) {
+                }).done(function(res) {
                         if (res.status == 200) {
                             swal({
                                 title: "Successful",
@@ -92,16 +95,9 @@ var RegisterButton = function() {
                             });
                             $('.cart-actions').html(templates.subscribed.replace('$id', id));
                         } else {
-                            swal({
-                                title: "Failed !",
-                                text: res.msg,
-                                type: "error",
-                                confirmButtonText: "OK",
-                                confirmButtonColor: "#202729"
-                            });
+                            failAlert(res);
                         }
-                    }
-                });
+                    }).fail(failAlert);
             });
     };
 
@@ -116,7 +112,7 @@ var RegisterButton = function() {
             data: {
                 id: id
             },
-            success: function(res) {
+        }).done(function(res) {
                 if (res.status == 200) {
                     swal({
                         title: "Successful",
@@ -128,16 +124,9 @@ var RegisterButton = function() {
                     var teamed = $('.open-event').attr('team') == "true";
                     $('.cart-actions').html(templates[(teamed ? "teamed" : "single")].replace('$id', id));
                 } else {
-                    swal({
-                        title: "Failed !",
-                        text: res.msg,
-                        type: "error",
-                        confirmButtonText: "OK",
-                        confirmButtonColor: "#202729"
-                    });
+                    failAlert(res);
                 }
-            }
-        });
+            }).fail(failAlert);
     };
     return {
         add: addToCart,
