@@ -215,7 +215,7 @@ var manager = function() {
                     $(this).addClass('invalid');
                     $(this).focus(function(){
                         $(this).removeClass('invalid');
-                    });              
+                    });
                 }
             });
         });

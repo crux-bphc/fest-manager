@@ -29,12 +29,15 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
                     span Team Size
                     span Unrestricted
             - if(event.price)
-                div.price.remnant
+                div.money.price
+                    span Entry Fee
                     i &#x20b9;
                     span #{event.price}
-            - else
-                div.price.remnant
-                    span
+            - if(event.prize)
+                div.money.prize.remnant
+                    span Prize
+                    i &#x20b9;
+                    span #{event.prize}
         if(event.about)
             div.description !{marked(event.about)}
         div.foot

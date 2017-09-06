@@ -181,18 +181,20 @@
     display: inline-block;
     color:black;
 }
-.open-event .details > .price {
+.open-event .details > .prize {
     display: flex;
     border:none;
     align-items: flex-start;
     justify-content: flex-end;
 }
-.open-event .details > .price > * {
-    display: inline-block;
+.open-event .details > .money > span:last-child {
     font-weight: 600;
+}
+.open-event .details > .money > * {
+    display: inline-block;
     color:#444;
 }
-.open-event .details > .price > i {
+.open-event .details > .money > i {
     font-style: normal;
     line-height:3em;
     color:#777;
