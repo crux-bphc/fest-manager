@@ -121,6 +121,31 @@
     line-height: 1.5em;
 }
 
+.typed-cursor {
+    opacity: 1;
+    font-weight: 100;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    -ms-animation: blink 0.7s infinite;
+    -o-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2em;
+}
+
+@keyframes blink {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 @media (max-width: 800px) {
     #home .logo > .title {
         font-size: 4em;
@@ -135,7 +160,7 @@
         width: 80vw;
     }
 
-    #home .logo > .subtitle > span {
+    #home .logo > .subtitle:not(#typedelement) > span {
         line-height: 1.5em;
         display: block;
         white-space: nowrap;
