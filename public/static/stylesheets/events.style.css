@@ -198,9 +198,9 @@
 }
 .open-event .details > .money > i {
     font-style: normal;
-    line-height:default;
-    color:#777;
+    color:#444;
     display: inline-block;
+    padding-right: 0.2em;
     vertical-align: top;
     font-size: 0.8em;
 }
