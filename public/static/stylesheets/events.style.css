@@ -198,7 +198,7 @@
 }
 .open-event .details > .money > i {
     font-style: normal;
-    line-height:3em;
+    line-height:default;
     color:#777;
     display: inline-block;
     vertical-align: top;
