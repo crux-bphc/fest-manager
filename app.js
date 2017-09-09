@@ -28,6 +28,7 @@ var upload = require("./routes/upload");
 var components = require('./routes/components');
 var api = require('./routes/api');
 var auth = require('./routes/auth');
+var data = require('./routes/export');
 
 var app = express();
 
@@ -95,6 +96,7 @@ app.use(function (req, res, next) {
 	return next();
 });
 
+app.use('/export', data);
 app.use('/upload', upload);
 app.use('/auth', auth);
 app.use('/components', clientCheckpoint, components);
