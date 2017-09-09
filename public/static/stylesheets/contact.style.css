@@ -46,7 +46,17 @@
     pointer-events: none;
     transition:color 1s cubic-bezier(0,0,0,1), opacity 0.5s;
 }
-.section.body .contacts > img {
+.section.body .contacts > div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.section.body .contacts > div > img {
     height: 80%;
     position:absolute;
     z-index: 1;
@@ -55,12 +65,12 @@
     transition: opacity 0.5s cubic-bezier(0,0,0,1);
     transition-delay: 0.1s;
 }
-.section.body .contacts > img.default {
+.section.body .contacts > div > img.default {
     height:50%;
     opacity: 0.1;
     z-index: 0;
 }
-.section.body .contacts > img.active {
+.section.body .contacts > div > img.active {
     opacity:0.7;
     transition-delay: 0s;
 }
@@ -87,4 +97,39 @@
     -moz-user-select: initial;
     -ms-user-select: initial;
     user-select: initial;
+}
+@media only screen and (max-width: 600px) {
+    .section.body, .section.body .contacts {
+        background:#1e1e1e;
+        height: unset;
+        width: 100vw;
+    }
+    .section.body .contacts > div {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        overflow: hidden;
+        background:inherit;
+    }
+    .section.body .contacts > div::after {
+        background: linear-gradient(transparent, #1e1e1e);
+    }
+    .section.body .contacts > div > img {
+        position: relative;
+        opacity: 1;
+        height: 80vh;
+    }
+    .section.body .contacts > li {
+        height: 100vw;
+        margin-top: -100vw;
+        width: 100vw;
+        font-size: 1.2em;
+        padding-bottom: 2em;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
