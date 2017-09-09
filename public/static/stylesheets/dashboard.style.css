@@ -58,7 +58,7 @@ div.ambassador > span {
 	font-weight: 600;
 	margin-left: 5px;
 }
-div.details {
+div.left > div.details {
 	padding-top:1em;
 	position:absolute;
 	top: 100%;
@@ -119,7 +119,7 @@ div.ca .content .button {
 	.section.body {
 		flex-direction: column-reverse;
 	}
-	.section.body div.separate {
+	.section.body > div.separate {
 		display: none;
 	}
 	.section.body div.right {

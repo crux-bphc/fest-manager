@@ -12,6 +12,7 @@ html
 		link(href="/static/fonts/Proxima Nova/font.css" rel="stylesheet")
 		link(href="/static/images/favicon.png" rel="icon")
 		link(href="/static/stylesheets/sweetalert.css" rel="stylesheet")
+		link(href="/static/stylesheets/simplebar.css" rel="stylesheet")
 		title Atmos
 		meta(name="robots" content="index, follow")
 		meta(name="apple-mobile-web-app-capable" content="yes")
@@ -36,13 +37,49 @@ body
 					i.icon-navigate_next
 					span.text
 				div.controls
-					div.button.user(_triggers="navbar/avatar=visible" _route="/dashboard")
+					div.button.user(_triggers="navbar/avatar=visible" tabindex=0)
 						if user
-							div
-								img(src=user.profileImage)
-					div.button(_route="/logout" _triggers="navbar/logout=visible")
-						i.icon-power_settings_new
-						div Logout
+							img(src=user.profileImage)
+							div.dropdown
+								div.header
+									div.details(_route="/dashboard")
+										- if (typeof user.name !== "undefined") {
+										span.username.
+											#{user.name}
+										- }
+										- if (typeof user.email !== "undefined") {
+										span.useremail.
+											#{user.email}
+										- }
+									div.button.logout(_route="/logout" _triggers="navbar/logout=visible")
+											i.icon-power_settings_new
+											div Logout
+								div.drawer
+									div.scrollable
+										li.notification
+											i.icon-check
+											div.details
+												span.title Your invitation was accepted
+												span.message Send more invitations
+												span.date 12/10/17 22:22
+										li.notification
+											i.icon-mail_outline
+											div.details
+												span.title Algomaniac has new updates
+												span.message You have registered for Algomaniac
+												span.date 01/10/17 02:00
+										li.notification
+											i.icon-mail_outline
+											div.details
+												span.title Codejam results are out
+												span.message You have qualified for the next round
+												span.date 10/10/17 04:50
+										li.notification
+											i.icon-mail_outline
+											div.details
+												span.title Slumber Party is about to start
+												span.message Watch Hugo in F102
+												span.date 02/10/12 09:20
 					div.button(_route="/login" _triggers="navbar/login=visible")
 						i.icon-account_circle
 						div Login
@@ -67,8 +104,9 @@ body
 				div.wrapper.tray
 
 		script(type="application/ld+json" src="/static/scripts/schema.json")
-		script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		script(type="text/javascript" src="/static/scripts/deep-diff-0.3.8.min.js")
+		script(type="text/javascript" src="/static/scripts/jquery.min.js")
+		//- script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		script(src="/static/scripts/deep-diff-0.3.8.min.js" type="text/javascript")
 		script(src="/static/scripts/sweetalert.min.js" type="text/javascript")
-		script(src="/static/lib/enscroll.js" type="text/javascript")
-		script(type="text/javascript" src="/static/scripts/index.js")
+		script(src="/static/lib/simplebar.js" type="text/javascript")
+		script(src="/static/scripts/index.js" type="text/javascript")

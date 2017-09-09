@@ -63,21 +63,11 @@ var manager = function() {
             tray.ready(function() {
                 tray.removeClass('tray').addClass('face').siblings().removeClass('face').addClass('tray');
                 $('.main .face').scrollTop(0);
-                $('.scrollable').enscroll({
-                    showOnHover: true,
-                    verticalTrackClass: 'enscroll-track',
-                    verticalHandleClass: 'enscroll-handle'
-                },function(data){
-                	console.log("Me called!",data);
-                });
-
+                $('.main .scrollable').each(function(index, item) {
+                    new SimpleBar(item);
+                })
                 window.setTimeout(function() {
                     $('.main .tray').html('');
-                    $('.enscroll-track').each(function(i, item) {
-                        $(item).parent().css('height', $(item).parent().prev('.scrollable').height());
-                        console.log("Item:", $(item).parent().prev('.scrollable'));
-                        console.log("Height:", $(item).parent().prev('.scrollable').height());
-                    });
                 }, 500);
                 client.removeClass('loading');
             });
@@ -194,6 +184,7 @@ var manager = function() {
     document.body.onload = function() {
         client.stageEventHandlers();
         client.route($('.window').attr('route'));
+        new SimpleBar($('.navbar .dropdown .drawer > div')[0]);
     };
 
     // if ('serviceWorker' in navigator) {
