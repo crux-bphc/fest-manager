@@ -9,7 +9,7 @@ var elevate = function (req, res, next) {
 	if (req.user.privilege)
 		return next();
 	let error = new Error('Access denied');
-	error.status = 404;
+	error.status = 401;
 	return next(error);
 };
 
