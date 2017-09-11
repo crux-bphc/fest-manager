@@ -25,86 +25,8 @@ html
 		meta(name="twitter:card" content="ATMOS, Bits Pilani Hyderabad Campus")
 		meta(name="twitter:site" content="@BITSAtmos")
 body
-	#loading-animation-container
-		//- CREDITS: Loading Circle Animation from https://codepen.io/luka-butina/pen/ZbeQzd
-		#loading-content
-		style(type='text/css').
-			#loading-animation-container {
-			position: fixed;
-			width: 100%;
-			height: 100%;
-			left: 0;
-			top: 0;
-			background: #000;
-			z-index: +9998;
-			transition: left 0.5s;
-			}
-			#loading-content {
-			display: block;
-			position: relative;
-			left: 50%;
-			top: 50%;
-			width: 150px;
-			height: 150px;
-			margin: -75px 0 0 -75px;
-			border: 3px solid transparent;
-			border-top-color: #fff;
-			border-bottom-color: #fff;
-			border-radius: 50%;
-			animation: loader 2s linear infinite;
-			}
-			#loading-content:after {
-			content: "";
-			position: absolute;
-			left: 15px;
-			right: 15px;
-
-			top: 15px;
-			bottom: 15px;
-			border: 3px solid transparent;
-			border-top-color: #fff;
-			border-bottom-color: #fff;
-			border-radius: 50%;
-			animation: loader 1.5s linear infinite;
-			}
-			#loading-content:before {
-			content: "";
-			position: absolute;
-			left: 5px;
-			right: 5px;
-			top: 5px;
-			bottom: 5px;
-			border: 3px solid transparent;
-			border-top-color: #fff;
-			border-bottom-color: #fff;
-			border-radius: 50%;
-			animation: loader 3s linear infinite;
-			}
-			@-webkit-keyframes loader {
-			0% {
-			transform: rotate(0deg);
-			}
-			100% {
-			transform: rotate(360deg);
-			}
-			}
-			@keyframes loader {
-			0% {
-			transform: rotate(0deg);
-			}
-			100% {
-			transform: rotate(360deg);
-			}
-			}
-			#loading-animation-container.out {
-				left: -100%;
-			}
-		script(type='text/javascript').
-			var hideOverlay = function(){
-			overlay = document.getElementById("loading-animation-container");
-			overlay.classList.add("out");
-			}
-
+	include mixins/loading
+	+loadingAnimation()
 	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
 		div.navbar(_triggers="navbar/visible=visible")
 			div.wrapper
