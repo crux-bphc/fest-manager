@@ -1,16 +1,26 @@
 link(rel="stylesheet" href="/static/stylesheets/about.style.css")
 
+mixin contact(name, post, phone)
+	li
+		i.icon-phone
+		span.name= post
+		span.post= name
+		span.contact.post +91 - #{phone}
+
 div.section.header
 	h1.title= title
 div.section.body
 	p Have any queries? Have a compliment or suggestion? We would love to hear from you.
 	ul.contacts
-		li
-			i.icon-phone
-			span.name Sharath Golluri
-			span.contact 9133234270
-		li
-			i.icon-phone
-			span.name Sugam Gandhi
-			span.contact 9133234318
-
+		+contact("Sharath Golluri", "Technical Secretary", "9100879085")
+		+contact("Nitish Amireddy", "Sponsorship & Marketing", "7893007437")
+		+contact("Sugam Gandhi", "Publicity & Public Relations", "9133234318")
+		+contact("Venkata Subbaiah", "Logistics", "9676401052")
+		+contact("Rishabh Agrawal", "Security & Hospitality", "9133234434")
+		+contact("Ishaan Dewangan", "Photography", "9010716338")
+		+contact("Sarthak Jain", "Lights & Sounds", "9133312961")
+		+contact("Vishwaa Narayan", "Professional Events", "9704531332")
+		+contact("Sahil Sangwan", "Talks & Guest Lectures", "9177067275")
+		+contact("Thrinadh Kumpatla", "Visual Effects", "9100589626")
+		+contact("Abhinav Eittireddy", "President", "9542929354")
+		+contact("Aditya Iyer", "General Secretary", "9705932532")
