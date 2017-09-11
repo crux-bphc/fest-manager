@@ -37,6 +37,7 @@ body
 			top: 0;
 			background: #000;
 			z-index: +9998;
+			transition: left 0.5s;
 			}
 			#loading-content {
 			display: block;
@@ -95,26 +96,13 @@ body
 			transform: rotate(360deg);
 			}
 			}
-			.animate-out {
-			animation-name: fadeFromTop;
-			animation-duration: 400ms;
-			animation-timing-function: ease-in;
-			animation-fill-mode: forwards;
-			}
-			@keyframes fadeFromTop  {
-			0%{
-			opacity:1;
-			transform: translateX(0px);
-			}
-			100%{
-			opacity: 1;
-			transform: translateX(-100%);
-			}
+			#loading-animation-container.out {
+				left: -100%;
 			}
 		script(type='text/javascript').
 			var hideOverlay = function(){
 			overlay = document.getElementById("loading-animation-container");
-			overlay.classList.add("animate-out");
+			overlay.classList.add("out");
 			}
 
 	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
