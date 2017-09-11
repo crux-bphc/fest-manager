@@ -14,16 +14,19 @@ div.section.body p {
 {
     list-style-type: none;
     padding-left: 0em;
+    display: flex;
+    flex-wrap: wrap;
 }
 .section .contacts > li {
     display: block;
+    width: 50%;
     font-size: 1em;
     margin:0.75em 0;
     color:#666;
 }
 .section .contacts > li > i {
     display: inline-block;
-    font-size: 2em;
+    font-size: 3em;
     line-height: 1.2em;
     float: left;
     margin-right: 0.25em;
@@ -36,9 +39,7 @@ div.section.body p {
     font-size: 1.2em;
     font-weight: 400;
 }
-.section .contacts > li > span.contact {
-    color:#222;
-}
+
 @media only screen and (max-width: 600px) {
     div.section.body p {
         padding: 0em;
@@ -49,6 +50,6 @@ div.section.body p {
         border-left: 0em;
     }
     .section .contacts > li {
-        font-size: 1.2em;
+        width: 100%;
     }
 }
