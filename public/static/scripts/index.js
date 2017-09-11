@@ -80,6 +80,7 @@ var manager = function() {
                     });
                 }, 500);
                 client.removeClass('loading');
+                hideOverlay();
             });
             this.navigation.setTitle(data.state);
             this.navigation.generateSubMenu(data.state);
