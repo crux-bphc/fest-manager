@@ -29,6 +29,7 @@ var usersSchema = new Schema({
 		default: false
 	},
 	pending: [Schema.Types.ObjectId],
+	notifications: [Schema.Types.Object],
 	phone: String,
 	address: String,
 	pincode: String,
