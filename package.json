@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "tools/destroy-and-rebuild-database; grunt test",
+    "test": "export FM_DATABASE=\"fest-manager-testing\"; tools/destroy-and-rebuild-database; grunt test",
     "dev": "./node_modules/nodemon/bin/nodemon.js ./bin/www"
   },
   "nodemonConfig": {
