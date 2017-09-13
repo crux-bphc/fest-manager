@@ -10,10 +10,10 @@ var applyStateChanges = function (req) {
 			label: "Get in Touch",
 			route: "/about/contact",
 		},
-		// {
-		// 	label: "How to Reach",
-		// 	route: "/about/map",
-		// },
+		{
+			label: "How to Reach",
+			route: "/about/map",
+		},
 		// {
 		// 	label: "Sponsors",
 		// 	route: "/about/sponsors",
