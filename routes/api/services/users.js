@@ -49,14 +49,13 @@ router.put('/me/', function (req, res, next) {
 		}, changeddata, function (err, user) {
 			if (err) {
 				err.status = 500;
-				console.log("Failed at update");
+				console.log("User Update Error:", err);
 				next(err);
 				return 0;
 			}
 			res.send("Success");
 		});
 	} else {
-		console.log("Forbidden");
 		var err = new Error("Forbidden");
 		err.status = 403;
 		return next(err);

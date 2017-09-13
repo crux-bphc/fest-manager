@@ -90,14 +90,12 @@ router.get('/ca/view', authenticate, elevate, function (req, res, next) {
 		}, '_id name email institute phone address pincode why')
 		.then(function (users) {
 			req.stateparams.title = "Campus Ambassador";
-			console.log('users.length:', users.length);
 			return res.renderState('portals/ca', {
 				user: req.user,
 				items: users,
 			});
 		})
 		.catch(function (err) {
-			console.log(err);
 			return next(err);
 		});
 });
@@ -179,7 +177,6 @@ router.get('/:body/:eventroute', authenticate, elevate, function (req, res, next
 			});
 		})
 		.catch(function (err) {
-			console.log(err);
 			return res.send("Some error occurred.");
 		});
 });

@@ -7,12 +7,9 @@ router.post('/base64img', function (req, res, next) {
 	var file_name = req.body.file_name;
 	var data = req.body.data;
 
-	console.log("Post params " + file_name);
-
 	base64Img.img(data, './public/static/data/images', file_name, function (err, file_path) {
-		console.log("Uploading...");
 		if (err) {
-			console.log("ERROR: " + err);
+			console.log("Image Upload Error: " + err);
 			res.json({
 				status: "Failed"
 			});
