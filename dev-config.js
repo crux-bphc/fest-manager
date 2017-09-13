@@ -1,11 +1,11 @@
 var config = {
 	passports: {
-		facebook: {
-			clientID: '1963512117202201',
-			clientSecret: 'a241d0e2064df597bdb6c8a8fc481f98',
-			callbackURL: "http://localhost:3000/auth/facebook/callback",
-			profileFields: ['emails', 'displayName']
-		},
+		// facebook: {
+		// 	clientID: '1963512117202201',
+		// 	clientSecret: 'a241d0e2064df597bdb6c8a8fc481f98',
+		// 	callbackURL: "http://localhost:3000/auth/facebook/callback",
+		// 	profileFields: ['emails', 'displayName']
+		// },
 		google: {
 			clientID: '566366256828-ius4a49h14bnl77f8v7esr0g85e8isf8.apps.googleusercontent.com',
 			clientSecret: 'oQZZbTwcXvebPYUA5zBdbiB8',
