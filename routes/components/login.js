@@ -1,16 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var userService = require('../api/services/users').model;
+var projectroot = require('project-root-path');
+const config = require(projectroot + '/utils/config-loader');
+const userService = require(projectroot + '/routes/api/services/users').model;
 
 router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Login';
 	var params = {
 		title: 'Login to Atmos 2017',
-		methods: {
-			google: true,
-			facebook: true,
-			github: true
-		}
+		methods: config.passports,
 	};
 	req.session.callback = req.query.callback;
 	if (req.user) {

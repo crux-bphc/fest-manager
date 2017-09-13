@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
+var projectroot = require('project-root-path');
+const config = require(projectroot + '/utils/config-loader');
+
 var callbackHandler = function (req, res) {
 	if (req.session.callback) {
 		var url = req.session.callback;
@@ -13,41 +16,46 @@ var callbackHandler = function (req, res) {
 	} else
 		res.redirect('/dashboard/account');
 };
+if (config.passports.facebook) {
+	router.get('/facebook',
+		passport.authenticate('facebook', {
+				scope: ['public_profile', 'email']
+			},
+			function (req, res) {}
+		));
 
-router.get('/facebook',
-	passport.authenticate('facebook', {
-			scope: ['public_profile', 'email']
-		},
-		function (req, res) {}
-	));
+	router.get('/facebook/callback',
+		passport.authenticate('facebook', {
+			failureRedirect: '/login'
+		}), callbackHandler);
+}
 
-router.get('/facebook/callback',
-	passport.authenticate('facebook', {
-		failureRedirect: '/login'
-	}), callbackHandler);
+if (config.passports.google) {
+	router.get('/google',
+		passport.authenticate('google', {
+				scope: ['https://www.googleapis.com/auth/plus.login', 'profile', 'email']
+			},
+			function (req, res) {}
+		));
 
-router.get('/google',
-	passport.authenticate('google', {
-			scope: ['https://www.googleapis.com/auth/plus.login', 'profile', 'email']
-		},
-		function (req, res) {}
-	));
+	router.get('/google/callback',
+		passport.authenticate('google', {
+			failureRedirect: '/login'
+		}), callbackHandler);
+}
 
-router.get('/google/callback',
-	passport.authenticate('google', {
-		failureRedirect: '/login'
-	}), callbackHandler);
+if (config.passports.github) {
+	router.get('/github',
+		passport.authenticate('github', {
+				scope: ['user:email']
+			},
+			function (req, res) {}
+		));
 
-router.get('/github',
-	passport.authenticate('github', {
-			scope: ['user:email']
-		},
-		function (req, res) {}
-	));
-
-router.get('/github/callback',
-	passport.authenticate('github', {
-		failureRedirect: '/login'
-	}), callbackHandler);
+	router.get('/github/callback',
+		passport.authenticate('github', {
+			failureRedirect: '/login'
+		}), callbackHandler);
+}
 
 module.exports = router;
