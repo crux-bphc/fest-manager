@@ -95,7 +95,6 @@ var getFields = function (user) {
 };
 
 router.get('/', function (req, res, next) {
-	console.log('Got here');
 	req.stateparams.pagetitle = "Campus Ambassador";
 	var params = {
 		title: 'Register for Campus Ambassador',

@@ -16,7 +16,6 @@ $(document).ready(function() {
         }
         var isAmbassador = false;
         if ($('#field-why').val() != "" && $('#field-why').val()) isAmbassador = true;
-        console.log(isAmbassador);
         $.ajax({
             type: "PUT",
             url: "/api/users/me",
@@ -34,7 +33,6 @@ $(document).ready(function() {
                 isAmbassador: isAmbassador
             }
         }).done(function(data, textStatus, req) {
-            console.log(req);
             if (data == "Success") {
                 manager.route('/dashboard');
             }

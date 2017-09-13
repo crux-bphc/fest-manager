@@ -44,7 +44,6 @@ router.post('/addtocart', function (req, res, next) {
 			}
 		})
 		.then(function (result) {
-			console.log("result: ", result);
 			if (typeof result[0] !== "undefined")
 				throw 'Event already in cart';
 		}).catch(propagateError)
@@ -54,7 +53,6 @@ router.post('/addtocart', function (req, res, next) {
 			});
 		}).catch(propagateError)
 		.then(function (event) {
-			console.log("event: ", event);
 			if (typeof event[0] !== 'undefined') {
 				eventTeams = event[0].teams;
 				eventTeamSize = event[0].teamSize;
@@ -67,10 +65,8 @@ router.post('/addtocart', function (req, res, next) {
 			} else throw 'Event Not Found';
 		}).catch(propagateError)
 		.then(function (team) {
-			console.log("team: ", team);
 			teamId = team._id;
 			user = req.user;
-			console.log("user: ", user);
 			var userEvents = user.events;
 			var userTeams = user.teams;
 
@@ -85,7 +81,6 @@ router.post('/addtocart', function (req, res, next) {
 			});
 		}).catch(propagateError)
 		.then(function (num) {
-			console.log("user update status: ", num);
 			eventTeams.push(teamId);
 
 			return eventModel.update({
@@ -95,7 +90,6 @@ router.post('/addtocart', function (req, res, next) {
 			});
 		}).catch(propagateError)
 		.then(function (num) {
-			console.log("Event update status: ", num);
 			if (eventTeamSize > 1) {
 				res.json({
 					status: 200,
@@ -112,7 +106,7 @@ router.post('/addtocart', function (req, res, next) {
 			}
 		})
 		.catch(function (err) {
-			console.log(err);
+			console.log("Add Event to Cart Error:", err);
 			res.json({
 				status: 500,
 				msg: err,
@@ -130,7 +124,7 @@ router.post("/jointeam", function (req, res, next) {
 	}, function (err, team) {
 
 		if (err) {
-			console.log("ERROR: " + err);
+			console.log("Event Join Team Error: " + err);
 			return res.json({
 				status: 500,
 				msg: "Error finding team"

@@ -2,7 +2,7 @@ var express = require('express');
 var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
@@ -39,8 +39,28 @@ app.set('view engine', 'jade');
 // chain all middleware
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Set up logger
+morgan.token('user', function (req, res) {
+	if (req.user) {
+		return req.user.email;
+	}
+	return "Anonymous";
+});
+morgan.token('date', function () {
+	return new Date().toLocaleString("en-US", {
+		year: 'numeric',
+		month: 'short',
+		day: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit',
+		second: '2-digit',
+		timeZone: "Asia/Kolkata",
+	});
+});
+app.use(morgan('(:date IST) :user \t :method :url :status :response-time ms - :res[content-length]'));
+
 app.use(cookieParser('damn ninjas cutting onions'));
 app.use(bodyParser.json({
 	limit: "20mb"

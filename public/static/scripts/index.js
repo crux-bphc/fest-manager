@@ -91,12 +91,10 @@ var manager = function() {
 
     client.setState = function(state) {
         const diff = DeepDiff(state, this.state);
-        // console.log(diff);
         this.state = state;
         if (diff)
             diff.forEach(function(change) {
                 var trigger = change.path.join('/');
-                // console.log('trigger:', trigger);
                 $target = $("[_triggers*='" + trigger + "']");
                 $target.each(function() {
                     var arr = $(this).attr('_triggers').split(' ');
