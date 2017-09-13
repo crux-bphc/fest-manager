@@ -1,6 +1,7 @@
 const passport = require('passport');
-const config = require('./config-loader');
-const userService = require('../routes/api/services/users').model;
+var projectroot = require('project-root-path');
+const config = require(projectroot + '/utils/config-loader');
+const userService = require(projectroot + '/routes/api/services/users').model;
 
 var findOrCreate = function (accessToken, profile, provider, done) {
 	userService.findOne({
@@ -82,40 +83,48 @@ var configureSerializers = function () { // internal passport configuration to s
 	});
 };
 
-var strategies = {
-	facebook: function () {
-		var FacebookStrategy = require('passport-facebook').Strategy;
+var strategies = function () {
+	var strategies = {};
+	if (config.passports.facebook) {
+		strategies.facebook = function () {
+			var FacebookStrategy = require('passport-facebook').Strategy;
 
-		passport.use(new FacebookStrategy(config.facebook,
-			function (accessToken, refreshToken, profile, done) {
-				findOrCreate(accessToken, profile, 'facebookID', done);
-			}
-		));
-	},
-	google: function () {
-		var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
-		passport.use(new GoogleStrategy(config.google,
-			function (accessToken, refreshToken, profile, done) {
-				findOrCreate(accessToken, profile, 'googleID', done);
-			}
-		));
-	},
-	github: function () {
-		var GithubStrategy = require('passport-github').Strategy;
-
-		passport.use(new GithubStrategy(config.github,
-			function (accessToken, refreshToken, profile, done) {
-				if (!profile.emails) {
-					let err = new Error("Your email address is hidden. Go to your account settings to make it public or login using some other provider.");
-					err.type = 'GITHUB_RESOLUTION_ERROR';
-					return done(err);
+			passport.use(new FacebookStrategy(config.passports.facebook,
+				function (accessToken, refreshToken, profile, done) {
+					findOrCreate(accessToken, profile, 'facebookID', done);
 				}
-				findOrCreate(accessToken, profile, 'githubID', done);
-			}
-		));
+			));
+		};
 	}
-};
+	if (config.passports.google) {
+		strategies.google = function () {
+			var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+			passport.use(new GoogleStrategy(config.passports.google,
+				function (accessToken, refreshToken, profile, done) {
+					findOrCreate(accessToken, profile, 'googleID', done);
+				}
+			));
+		};
+	}
+	if (config.passports.github) {
+		strategies.github = function () {
+			var GithubStrategy = require('passport-github').Strategy;
+
+			passport.use(new GithubStrategy(config.passports.github,
+				function (accessToken, refreshToken, profile, done) {
+					if (!profile.emails) {
+						let err = new Error("Your email address is hidden. Go to your account settings to make it public or login using some other provider.");
+						err.type = 'GITHUB_RESOLUTION_ERROR';
+						return done(err);
+					}
+					findOrCreate(accessToken, profile, 'githubID', done);
+				}
+			));
+		};
+	}
+	return strategies;
+}();
 
 var authenticate = function (req, res, next) { // custom middleware to check if a user
 	if (req.isAuthenticated()) // is authenticated in the current session
