@@ -13,9 +13,8 @@ var redis = require("redis");
 var redisStore = require('connect-redis')(session);
 var configureSerializers = require('./utils/authentication').configureSerializers;
 configureSerializers();
-strategies.facebook();
-strategies.google();
-strategies.github();
+// Loop over activated authentication strategies
+Object.keys(strategies).forEach(strategy => strategies[strategy]());
 
 var connection = require('./utils/mongoose');
 connection();
