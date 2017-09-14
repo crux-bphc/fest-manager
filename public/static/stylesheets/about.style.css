@@ -109,6 +109,11 @@
         transform: rotateZ(90deg) translateX(50%);
     }
 }
+#map{
+    width: 100%;
+    height: 600px;
+    background-color: grey;
+}
 
 @media only screen and (max-width: 600px) {
     .section.body .about {
