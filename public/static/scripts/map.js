@@ -3,7 +3,7 @@ function initialize() {
   var bphcloc = {lat: 17.5418622, lng: 78.5747197 }; 
   map = new google.maps.Map(document.getElementById('map'), {
     center: bphcloc,
-    zoom: 7
+    zoom: 17
   });
   var bitsmarker = new google.maps.Marker({
   	position: bphcloc,
