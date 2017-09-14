@@ -1,0 +1,61 @@
+.face{
+	padding: 0 !important;
+	height: 100%;
+}
+#overlay{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.5);
+	overflow-y: hidden;
+    pointer-events: none;
+}
+.map-button {
+    margin:1em;
+    line-height: 3em;
+    padding:0 2em;
+    border-radius:4px;
+    color:#444;
+    white-space: nowrap;
+    display: inline-block;
+    font-weight: 600;
+    background:#fafafa;
+    cursor:pointer;
+}
+.map-button:hover {
+    background:#eaeaea;
+}
+.container{
+
+	text-align: center;
+	margin-top: 3%;
+	position: absolute;
+	width: 100%;
+    pointer-events: auto;
+}
+
+.busTimings{
+	/*visibility: hidden;*/
+	display: none;
+	color: #fff;
+	background: rgba(0,0,0,0.7);
+	width: 90%;
+	margin: auto;
+	padding: 3%;
+	border-radius: 10px;
+	position: relative;
+}
+.icon-close{
+	position: absolute;
+	top: 1vh;
+	right: 1vh;
+	font-size: 2em;
+}
+.icon-close:hover{
+	cursor: pointer;
+}
+h1.timingsHeading{
+	clear: right;
+}
