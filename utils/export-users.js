@@ -5,5 +5,5 @@ db.usersmodels.find({}, {
 	"phone": true,
 	"institute": true
 }).forEach(function (user) {
-	print(user.name + "|" + user.institute + "|" + user.email + "|" + user.phone);
+	print(user.name + "|" + user.institute.replace(/,/g, " ") + "|" + user.email + "|" + user.phone);
 });
