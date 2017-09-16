@@ -74,14 +74,14 @@ var getEvents = function(models){
 		}
 	var data = [];
 	getBodies().forEach(function(elem) {
-		var prefixes = ['First', 'Second', 'Third'];
+		var prefixes = ['workshops', 'conferences', 'talks','competitions'];
 		prefixes.forEach(function(pre, index){
 			var newevent = {
 				name: pre + " " + elem.name,
 				tagline: pre + " event by " + elem.name,
 				body: elem._id,
 				category: "Random",
-				type: "Competition",
+				type: "Workshops",
 				route: elem.code + ++index,
 			};
 			if(newevent.route.startsWith('rome')) {
