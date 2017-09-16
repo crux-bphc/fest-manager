@@ -24,19 +24,17 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				passport.serializeUser(function (user, done) {
 					return done(null, user._id);
 				});
-				var userData = {
+				var userData = [{
 					email: user.email,
 					params: {
 						title: "Sample Email",
 					},
-				};
+				}];
 				var mailOptions = {
 					subject: 'Atmos Registration Successful', // Subject line
 					template: 'email-templates/test',
 				};
-				console.info("Debug: About to send mail");
-				require('./mailer.js')(userData, mailOptions, false)
-					.then(res => console.log(res))
+				require('./mailer.js')(userData, mailOptions)
 					.catch(err => console.log(err))
 					.then(function () {
 						done(err, user);
