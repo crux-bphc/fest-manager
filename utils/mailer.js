@@ -22,6 +22,13 @@ if (isEnabled) {
 	});
 }
 
+var printMail = function (mailOptions) {
+	if (!isProduction) console.log("Email: Dev environment. Not sending actual email.");
+	console.log("--- EMAIL DATA BEGIN ---");
+	console.log(mailOptions);
+	console.log("--- EMAIL DATA END ---");
+};
+
 var send = function (mailOptions) {
 	return new Promise(function (resolve, reject) {
 		if (isEnabled) {
@@ -34,6 +41,9 @@ var send = function (mailOptions) {
 			jade.renderFile(mailOptions.template, mailOptions.params, function (err, html) {
 				if (err) reject(err);
 				mailOptions.html = html;
+				if (!mailOptions.silent) {
+					printMail(mailOptions);
+				}
 				if (isProduction) {
 					transporter.sendMail(mailOptions, function (error, info) {
 						if (error) {
@@ -47,11 +57,6 @@ var send = function (mailOptions) {
 						}
 					});
 				} else {
-					if (!mailOptions.silent) {
-						console.log("--- EMAIL DATA BEGIN ---");
-						console.log(mailOptions);
-						console.log("--- EMAIL DATA END ---");
-					}
 					resolve({
 						req: mailOptions,
 					});
@@ -70,7 +75,7 @@ var sendToMany = function (userData, mailOptions, silent = false) {
 	mailOptions.silent = silent;
 	var promises = [];
 	userData.forEach(user => {
-		var options = mailOptions;
+		var options = Object.assign({}, mailOptions);
 		options.to = user.email;
 		options.params = user.params;
 		promises.push(send(options));
