@@ -8,12 +8,20 @@ var applyStateChanges = function (req) {
 		route: '/events',
 	};
 	req.stateparams.submenu = [{
-			label: "Tech Expo",
-			route: "/events/techexpo"
+			label: "Competitions",
+			route: "/events#Competitions"
 		},
 		{
-			label: "PyBITS",
-			route: "/pybits"
+			label: "Workshops",
+			route: "/events#Workshops"
+		},
+		{
+			label: "Talks",
+			route: "/events#Talks"
+		},
+		{
+			label: "Conferences",
+			route: "/events#Conferences"
 		}
 	];
 	return req;

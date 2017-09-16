@@ -26,7 +26,7 @@ $('document').ready(function() {
         $(this).addClass("active").siblings().removeClass("active");
     });
 
-    document.body.onhashchange = function() {
+    window.onhashchange = function () {
         if (window.location.hash.length > 1) {
             var selector = 'div.event-container.' + window.location.hash.substring(1);
             $('div.event-container').addClass("disabled");

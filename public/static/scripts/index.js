@@ -4,6 +4,7 @@ var manager = function() {
         header: $('.window > .navbar'),
         main: $('.window > .remnant > .main'),
         navigation: $('.window > .remnant > .sidebar'),
+        hash: "",
         state: {
             location: "",
             navbar: {},
@@ -28,6 +29,8 @@ var manager = function() {
         client.route(client.state.location, true, true);
     }
     client.route = function(route, status = true, reload = false) {
+        if (route == this.state.location + client.hash && !reload) return;
+        // If not the same route, apply following logic
         if (window.innerWidth < 800)
             $('.window > .remnant').removeClass('shift_to_expose_menu');
         if (!route) return;
@@ -35,11 +38,20 @@ var manager = function() {
             window.open(route, '_blank');
             return;
         }
+        if (route.indexOf('#') != -1) {
+            client.hash = route.split('#')[1];
+            if(route.split('#')[0] == this.state.location) {
+                window.location.hash = '#' + client.hash;
+                return;
+            }
+        }
+        else {
+            client.hash = "";
+        }
         if (route[0] != '/')
             route = '/' + route;
         if (route.indexOf('/components') == -1)
             route = '/components' + route;
-        if (route == this.state.location && !reload) return;
         client.oldroute = this.state.location;
         client.addClass('loading');
         $.ajax({
@@ -52,7 +64,7 @@ var manager = function() {
                 request.setRequestHeader("Client", "Fest-Manager/dash");
             }
         }).done(function(data, textStatus, req) {
-            var url = data.state.location.replace('/components', '');
+            var url = data.state.location.replace('/components', '') + (client.hash ? '#' + client.hash : "");
             if (status)
                 window.history.pushState(url, "", url);
             this.activeRoute = route;
@@ -61,6 +73,11 @@ var manager = function() {
             var tray = this.main.find('.tray');
             tray.html(data.html);
             tray.ready(function() {
+                if(client.hash) {
+                    window.location.hash = '#' + client.hash;
+                    window.history.replaceState(url, "", url);
+                }
+                window.onhashchange();
                 tray.removeClass('tray').addClass('face').siblings().removeClass('face').addClass('tray');
                 $('.main .face').scrollTop(0);
                 $('.scrollable').enscroll({
@@ -180,6 +197,8 @@ var manager = function() {
         });
     }
 
+    window.onhashchange = function () {};
+
     window.addEventListener('popstate', function(e) {
         client.route(e.state, false);
     });
@@ -191,7 +210,9 @@ var manager = function() {
 
     document.body.onload = function() {
         client.stageEventHandlers();
-        client.route($('.window').attr('route'));
+        var route = $('.window').attr('route');
+        if (window.location.hash) route += (window.location.hash);
+        client.route(route);
     };
 
     // if ('serviceWorker' in navigator) {
