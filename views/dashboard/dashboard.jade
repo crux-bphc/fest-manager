@@ -5,7 +5,7 @@ link(href="/static/stylesheets/dashboard.style.css" rel="stylesheet")
 div.section.header
 	h1.title Overview
 div.section.body
-	div.left
+	div
 		img.imgUser(src=user.profileImage)
 		div.details
 			- if (typeof user.name !== "undefined") {
@@ -24,8 +24,8 @@ div.section.body
 				span.
 					#{user.institute}
 			- }
-	div.separate
-	div.right
+	div.separator
+	div
 		img.imgQR(src="#{user.qrData}")
 		div.ca
 			if user.isAmbassador
@@ -34,7 +34,8 @@ div.section.body
 					span Campus Ambassador
 			else
 				div.button(_route="/ca") Become a Campus Ambassador
-div.section.checkedout
-	h3.title Events
-	+eventList(events, user, false)
+	div.events
+		h3.title Your Events
+		div.event-list
+			+eventList(events, user, false)
 script(src="/static/scripts/cart.js" type="text/javascript")

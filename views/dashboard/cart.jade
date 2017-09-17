@@ -6,14 +6,14 @@ div.section.header
 	h1= title
 	div.stretch
 div.section.body
-	div.pending
+	div.pending.event-list
 		+eventList(events, user, true)
 		-var AccommChoice = {type: "select", name: "choice", editable: true, options: ["Common Room / \u20b9100", "Hotel / \u20b9400"]};
 	div.payment
 		div.price.subtotal
 			i &#x20b9;
 			span.amount#cart-subtotal 0
-		div.additional#cart-additional
+		div.additional#cart-additional.disabled
 			input(type="checkbox" id="availAccomm" name="availAccomm")
 			label(for="availAccomm") Add accommodation
 			+fieldMixin(AccommChoice)
@@ -21,5 +21,5 @@ div.section.body
 			div.price.total
 				i &#x20b9;
 				span.amount#cart-total 0
-			div.button PAY NOW
+			div.button.disabled PAYMENT NOT AVAILABLE
 script(src="/static/scripts/cart.js")

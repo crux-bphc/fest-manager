@@ -64,7 +64,6 @@ router.put('/me/', function (req, res, next) {
 });
 
 router.post('/cart/', function(req, res, next) {
-	console.log("Fetching cart");
 	eventsModel.find({
 		_id: { $in: req.user.pending }
 	})
@@ -80,7 +79,6 @@ router.post('/cart/', function(req, res, next) {
 		res.json(response);
 	})
 	.catch(function (err) {
-		console.log(err);
 		res.status(500).send(err);
 	});
 });

@@ -1,8 +1,9 @@
 var RegisterButton = function() {
     var templates = {
-        teamed: '<div class="latent" tabindex="1"><div class="button add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register</span></div><div class="button join_team" onclick="RegisterButton.join(this, \'$id\')"><i class="icon-group_add"></i><span>Join Team</span></div><div class="button new_team" onclick="RegisterButton.add(this, \'$id\')"><i class="icon-add_box"></i><span>New Team</span></div></div>',
-        single: '<div class="button add_to_cart" onclick="RegisterButton.add(this, \'$id\')"><i class="icon-add_shopping_cart"></i><span>Register</span></div>',
-        subscribed: '<div class="button subscribed" onclick="RegisterButton.remove(this, \'$id\')"><i class="icon-check"></i><span>Registered</span></div>'
+        teamed: '<div class="latent" tabindex="1"><div class="button add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register</span></div><div class="button join_team" onclick="RegisterButton.join(this, \'$id\', isFree)"><i class="icon-group_add"></i><span>Join Team</span></div><div class="button new_team" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_box"></i><span>New Team</span></div></div>',
+        single: '<div class="button add_to_cart" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_shopping_cart"></i><span>Register</span></div>',
+        subscribed: '<div class="button subscribed"><i class="icon-check"></i><span>Registered</span></div>',
+        pending: '<div class="button pending"><i class="icon-close" onclick="RegisterButton.remove(this, \'$id\', $isFree)"></i><span _route=\'/dashboard/cart\'>Payment Pending</span></div>',
     }
 
     var failAlert = function(res) {
@@ -15,7 +16,7 @@ var RegisterButton = function() {
         });
     }
 
-    var addToCart = function(button, id) {
+    var addToCart = function(button, id, isFree) {
 
         $.ajax({
             method: "POST",
@@ -46,14 +47,14 @@ var RegisterButton = function() {
                             confirmButtonColor: "#202729"
                         });
                     }
-                    $('.cart-actions').html(templates.subscribed.replace('$id', id));
+                    $('.cart-actions').html(templates[isFree ? "subscribed" : "pending"].replace('$id', id).replace('$isFree',isFree));
                 } else {
                     failAlert(res);
                 }
             }).fail(failAlert);
     };
 
-    var joinTeam = function(button, id) {
+    var joinTeam = function(button, id, isFree) {
 
         swal({
                 title: "Join Team",
@@ -93,7 +94,7 @@ var RegisterButton = function() {
                                 confirmButtonText: "OK",
                                 confirmButtonColor: "#202729"
                             });
-                            $('.cart-actions').html(templates.subscribed.replace('$id', id));
+                            $('.cart-actions').html(templates[isFree ? "subscribed" : "pending"].replace('$id', id).replace('$isFree',isFree));
                         } else {
                             failAlert(res);
                         }
@@ -101,7 +102,7 @@ var RegisterButton = function() {
             });
     };
 
-    var deleteFromCart = function(button, id) {
+    var deleteFromCart = function(button, id, isFree) {
 
         $.ajax({
             method: "POST",
@@ -122,7 +123,7 @@ var RegisterButton = function() {
                         confirmButtonColor: "#202729"
                     });
                     var teamed = $('.open-event').attr('team') == "true";
-                    $('.cart-actions').html(templates[(teamed ? "teamed" : "single")].replace('$id', id));
+                    $('.cart-actions').html(templates[(teamed ? "teamed" : "single")].replace('$id', id).replace('$isFree',isFree));
                 } else {
                     failAlert(res);
                 }

@@ -1,25 +1,30 @@
+
 mixin cartActionsMixin(event, user, text)
     script(src="/static/scripts/register-button.js")
     link(href="/static/stylesheets/register-button.css" rel="stylesheet")
     div.cart-actions
         - if(typeof user !== 'undefined')
-            - if(user.events.indexOf(event._id) != -1 || user.pending.indexOf(event._id) != -1)
-                div.subscribed.button(onclick="RegisterButton.remove(this, '#{event._id}')")
+            - if(user.events.indexOf(event._id) != -1)
+                div.subscribed.button
                     i.icon-check
                     span Registered
+            - else if(user.pending.indexOf(event._id) != -1)
+                div.pending.button
+                    i.icon-close(onclick="RegisterButton.remove(this, '#{event._id}'), #{event.price ? false : true}")
+                    span(title="Go to cart" _route="/dashboard/cart") Payment Pending
             - else if(event.teamSize > 1)
                 div.latent(tabindex="1")
                     div.add_to_cart.button
                         i.icon-add_shopping_cart
                         span Register
-                    div.new_team.button(onclick="RegisterButton.add(this, '#{event._id}')")
+                    div.new_team.button(onclick="RegisterButton.add(this, '#{event._id}'), #{event.price ? false : true}")
                         i.icon-add_box
                         span New Team
-                    div.join_team.button(onclick="RegisterButton.join(this, '#{event._id}')")
+                    div.join_team.button(onclick="RegisterButton.join(this, '#{event._id}', #{event.price ? false : true})")
                         i.icon-group_add
                         span Join Team
             - else
-                div.add_to_cart.button(onclick="RegisterButton.add(this, '#{event._id}')")
+                div.add_to_cart.button(onclick="RegisterButton.add(this, '#{event._id}', #{event.price ? false : true})")
                     i.icon-add_shopping_cart
                     span Register
         - else

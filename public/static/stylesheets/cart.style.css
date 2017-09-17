@@ -23,6 +23,13 @@
 #cart-additional {
     display: none;
 }
+#cart-additional.disabled::after {
+    content: "Availing accommodation will be possible soon";
+    line-height: 1.2em;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
 
 #availAccomm {
     display: none;
@@ -119,7 +126,7 @@
     flex-grow: 1;
 }
 
-.event-wrapper {
+.event-list .event-wrapper {
     display: inline-block;
     overflow:hidden;
     vertical-align: top;
@@ -133,20 +140,20 @@
     margin-right:1em;
     position: relative;
 }
-.event-wrapper .image {
+.event-list .event-wrapper .image {
     display: none;
 }
-.event-wrapper .tagline {
+.event-list .event-wrapper .tagline {
     white-space: nowrap;
     max-width:100%;
     text-overflow: ellipsis;
     overflow:hidden;
 }
-.event-wrapper .tag {
+.event-list .event-wrapper .tag {
     text-transform: uppercase;
     line-height: 1em;
 }
-.event-wrapper h3 {
+.event-list .event-wrapper h3 {
     color:#444;
     line-height: 1.2;
     margin:0.5em 0em;
@@ -154,7 +161,7 @@
     height: 2.4em;
     overflow:hidden;
 }
-.event-wrapper .icon-close {
+.event-list .event-wrapper .icon-close {
     position:absolute;
     top:0px;
     padding: 0.5em 0.5em;
@@ -162,10 +169,10 @@
     font-size: 1.2em;
     cursor:pointer;
 }
-.event-wrapper .price {
+.event-list .event-wrapper .price {
     color:#202729;
 }
-.event-wrapper .foot {
+.event-list .event-wrapper .foot {
     width:100%;
     bottom:0;
     left: 0;
@@ -179,14 +186,14 @@
     box-sizing: border-box;
     padding:0em 1em;
 }
-.event-wrapper .foot > div {
+.event-list .event-wrapper .foot > div {
     font-weight: 600;
     font-size:0.9em;
 }
-.event-wrapper .foot > .team > span:first-child {
+.event-list .event-wrapper .foot > .team > span:first-child {
     color:#666;
 }
-.event-wrapper .foot > .team > span:last-child {
+.event-list .event-wrapper .foot > .team > span:last-child {
     text-transform: uppercase;
 }
 

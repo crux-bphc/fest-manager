@@ -40,7 +40,6 @@ var cart = function() {
 	}
 
 	var onchange = function() {
-		console.log("Fetching updated cart");
 		$.ajax({
 			method: 'POST',
 			url: '/api/users/cart',
@@ -56,10 +55,10 @@ var cart = function() {
 		}).done(function (data) {
 			$('#cart-subtotal').html(data.subtotal);
 			if(data.additional) {
-				$('#cart-additional').show();
+				$('#cart-additional').css('display', 'block');
 			}
 			else {
-				$('#cart-additional').hide();
+				$('#cart-additional').css('display', 'none');
 			}
 			$('#cart-total').html(data.total);
 		});
