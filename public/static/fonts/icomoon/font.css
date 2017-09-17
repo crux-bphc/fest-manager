@@ -1,10 +1,6 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?o1gfv5');
-  src:  url('fonts/icomoon.eot?o1gfv5#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?o1gfv5') format('truetype'),
-    url('fonts/icomoon.woff?o1gfv5') format('woff'),
-    url('fonts/icomoon.svg?o1gfv5#icomoon') format('svg');
+  src:  url('fonts/icomoon.woff?627ynx') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,14 +20,170 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-error:before {
+  content: "\e000";
+}
+.icon-error_outline:before {
+  content: "\e001";
+}
+.icon-equalizer:before {
+  content: "\e01d";
+}
+.icon-phone:before {
+  content: "\e0cd";
+}
+.icon-mail_outline:before {
+  content: "\e0e1";
+}
+.icon-add:before {
+  content: "\e145";
+}
+.icon-add_box:before {
+  content: "\e146";
+}
+.icon-brightness_low:before {
+  content: "\e1ad";
+}
+.icon-attach_file:before {
+  content: "\e226";
+}
+.icon-mode_edit:before {
+  content: "\e254";
+}
+.icon-drag_handle:before {
+  content: "\e25d";
+}
+.icon-adjust:before {
+  content: "\e39e";
+}
+.icon-brightness_3:before {
+  content: "\e3a8";
+}
+.icon-crop_original:before {
+  content: "\e3c4";
+}
+.icon-dehaze:before {
+  content: "\e3c7";
+}
+.icon-navigate_next:before {
+  content: "\e409";
+}
+.icon-add_a_photo:before {
+  content: "\e439";
+}
+.icon-directions_bus:before {
+  content: "\e530";
+}
+.icon-directions_car:before {
+  content: "\e531";
+}
+.icon-map:before {
+  content: "\e55b";
+}
+.icon-add_location:before {
+  content: "\e567";
+}
+.icon-apps:before {
+  content: "\e5c3";
+}
+.icon-arrow_back:before {
+  content: "\e5c4";
+}
+.icon-arrow_drop_down:before {
+  content: "\e5c5";
+}
+.icon-check:before {
+  content: "\e5ca";
+}
+.icon-close:before {
+  content: "\e5cd";
+}
+.icon-menu:before {
+  content: "\e5d2";
+}
+.icon-arrow_downward:before {
+  content: "\e5db";
+}
+.icon-domain:before {
+  content: "\e7ee";
+}
+.icon-group_add:before {
+  content: "\e7f0";
+}
+.icon-location_city:before {
+  content: "\e7f1";
+}
+.icon-notifications:before {
+  content: "\e7f4";
+}
+.icon-person_add:before {
+  content: "\e7fe";
+}
+.icon-account_balance:before {
+  content: "\e84f";
+}
+.icon-account_circle:before {
+  content: "\e853";
+}
+.icon-add_shopping_cart:before {
+  content: "\e854";
+}
+.icon-autorenew:before {
+  content: "\e863";
+}
+.icon-bug_report:before {
+  content: "\e868";
+}
+.icon-cached:before {
+  content: "\e86a";
+}
+.icon-dashboard:before {
+  content: "\e871";
+}
+.icon-delete:before {
+  content: "\e872";
+}
+.icon-description:before {
+  content: "\e873";
+}
+.icon-payment:before {
+  content: "\e8a1";
+}
+.icon-power_settings_new:before {
+  content: "\e8ac";
+}
+.icon-schedule:before {
+  content: "\e8b5";
+}
+.icon-search:before {
+  content: "\e8b6";
+}
+.icon-shopping_cart:before {
+  content: "\e8cc";
+}
+.icon-supervisor_account:before {
+  content: "\e8d3";
+}
+.icon-verified_user:before {
+  content: "\e8e8";
+}
+.icon-user-tie:before {
+  content: "\e900";
+}
 .icon-t-shirt:before {
   content: "\e901";
 }
 .icon-trophy:before {
   content: "\e902";
 }
-.icon-user-tie:before {
-  content: "\e900";
+.icon-fingerprint:before {
+  content: "\e90d";
+}
+.icon-all_inclusive:before {
+  content: "\eb3d";
+}
+.icon-business_center:before {
+  content: "\eb3f";
 }
 .icon-qrcode:before {
   content: "\f029";
@@ -39,16 +191,10 @@
 .icon-edit:before {
   content: "\f044";
 }
-.icon-pencil-square-o:before {
-  content: "\f044";
-}
 .icon-twitter:before {
   content: "\f099";
 }
 .icon-facebook:before {
-  content: "\f09a";
-}
-.icon-facebook-f:before {
   content: "\f09a";
 }
 .icon-github:before {
@@ -60,9 +206,6 @@
 .icon-group:before {
   content: "\f0c0";
 }
-.icon-users:before {
-  content: "\f0c0";
-}
 .icon-ticket:before {
   content: "\f145";
 }
@@ -72,16 +215,7 @@
 .icon-bank:before {
   content: "\f19c";
 }
-.icon-institution:before {
-  content: "\f19c";
-}
-.icon-university:before {
-  content: "\f19c";
-}
 .icon-graduation-cap:before {
-  content: "\f19d";
-}
-.icon-mortar-board:before {
   content: "\f19d";
 }
 .icon-google:before {
@@ -105,162 +239,15 @@
 .icon-drivers-license:before {
   content: "\f2c2";
 }
-.icon-id-card:before {
-  content: "\f2c2";
+.icon-facebook-square:before {
+  content: "\f082";
 }
-.icon-schedule:before {
-  content: "\e8b5";
+.icon-linkedin-square:before {
+  content: "\f08c";
 }
-.icon-account_balance:before {
-  content: "\e84f";
+.icon-envelope:before {
+  content: "\f0e0";
 }
-.icon-account_circle:before {
-  content: "\e853";
-}
-.icon-add:before {
-  content: "\e145";
-}
-.icon-add_a_photo:before {
-  content: "\e439";
-}
-.icon-add_box:before {
-  content: "\e146";
-}
-.icon-add_location:before {
-  content: "\e567";
-}
-.icon-add_shopping_cart:before {
-  content: "\e854";
-}
-.icon-adjust:before {
-  content: "\e39e";
-}
-.icon-all_inclusive:before {
-  content: "\eb3d";
-}
-.icon-apps:before {
-  content: "\e5c3";
-}
-.icon-arrow_back:before {
-  content: "\e5c4";
-}
-.icon-arrow_downward:before {
-  content: "\e5db";
-}
-.icon-arrow_drop_down:before {
-  content: "\e5c5";
-}
-.icon-attach_file:before {
-  content: "\e226";
-}
-.icon-autorenew:before {
-  content: "\e863";
-}
-.icon-brightness_3:before {
-  content: "\e3a8";
-}
-.icon-brightness_low:before {
-  content: "\e1ad";
-}
-.icon-bug_report:before {
-  content: "\e868";
-}
-.icon-domain:before {
-  content: "\e7ee";
-}
-.icon-business_center:before {
-  content: "\eb3f";
-}
-.icon-cached:before {
-  content: "\e86a";
-}
-.icon-phone:before {
-  content: "\e0cd";
-}
-.icon-check:before {
-  content: "\e5ca";
-}
-.icon-navigate_next:before {
-  content: "\e409";
-}
-.icon-close:before {
-  content: "\e5cd";
-}
-.icon-mode_edit:before {
-  content: "\e254";
-}
-.icon-payment:before {
-  content: "\e8a1";
-}
-.icon-crop_original:before {
-  content: "\e3c4";
-}
-.icon-dashboard:before {
-  content: "\e871";
-}
-.icon-dehaze:before {
-  content: "\e3c7";
-}
-.icon-delete:before {
-  content: "\e872";
-}
-.icon-description:before {
-  content: "\e873";
-}
-.icon-directions_bus:before {
-  content: "\e530";
-}
-.icon-directions_car:before {
-  content: "\e531";
-}
-.icon-drag_handle:before {
-  content: "\e25d";
-}
-.icon-equalizer:before {
-  content: "\e01d";
-}
-.icon-error:before {
-  content: "\e000";
-}
-.icon-error_outline:before {
-  content: "\e001";
-}
-.icon-fingerprint:before {
-  content: "\e90d";
-}
-.icon-group_add:before {
-  content: "\e7f0";
-}
-.icon-shopping_cart:before {
-  content: "\e8cc";
-}
-.icon-location_city:before {
-  content: "\e7f1";
-}
-.icon-mail_outline:before {
-  content: "\e0e1";
-}
-.icon-map:before {
-  content: "\e55b";
-}
-.icon-menu:before {
-  content: "\e5d2";
-}
-.icon-notifications:before {
-  content: "\e7f4";
-}
-.icon-person_add:before {
-  content: "\e7fe";
-}
-.icon-power_settings_new:before {
-  content: "\e8ac";
-}
-.icon-search:before {
-  content: "\e8b6";
-}
-.icon-supervisor_account:before {
-  content: "\e8d3";
-}
-.icon-verified_user:before {
-  content: "\e8e8";
+.icon-shield:before {
+  content: "\f132";
 }
