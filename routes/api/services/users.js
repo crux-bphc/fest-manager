@@ -63,46 +63,48 @@ router.put('/me/', function (req, res, next) {
 	}
 });
 
-router.post('/cart/', function(req, res, next) {
+router.post('/cart/', function (req, res, next) {
 	eventsModel.find({
-		_id: { $in: req.user.pending }
-	})
-	.then(function (events) {
-		response = {};
-		response.subtotal = 0;
-		events.forEach(function (event) {
-			response.subtotal += event.price;
+			_id: {
+				$in: req.user.pending
+			}
+		})
+		.then(function (events) {
+			response = {};
+			response.subtotal = 0;
+			events.forEach(function (event) {
+				response.subtotal += event.price;
+			});
+			response.total = response.subtotal + parseInt(req.body.amount) || 0;
+			response.additional = true;
+			if (req.user.accomm) response.additional = false;
+			res.json(response);
+		})
+		.catch(function (err) {
+			res.status(500).send(err);
 		});
-		response.total = response.subtotal + parseInt(req.body.amount) || 0;
-		response.additional = true;
-		if(req.user.accomm) response.additional = false;
-		res.json(response);
-	})
-	.catch(function (err) {
-		res.status(500).send(err);
-	});
 });
 
-router.post('/checkout/', function(req, res, next) {
+router.post('/checkout/', function (req, res, next) {
 	console.log('Checking out');
 	user = new model(req.user);
-	if(req.body.accommodation)
+	if (req.body.accommodation)
 		user.accommodation = req.body.accommodation;
 	user.events = user.events.concat(user.pending);
 	user.pending = [];
 	console.log(user);
 	user.save()
-	.then(function (user) {
-		console.log(user);
-		res.status(200).json({
-			ok: true,
-			user: user
+		.then(function (user) {
+			console.log(user);
+			res.status(200).json({
+				ok: true,
+				user: user
+			});
+		})
+		.catch(function (err) {
+			console.log("Error at checkout: ", err);
+			res.status(500).send(err);
 		});
-	})
-	.catch(function (err) {
-		console.log("Error at checkout: ", err);
-		res.status(500).send(err);
-	});
 });
 module.exports = {
 	route: '/users',

@@ -1,43 +1,41 @@
-function delete_from_cart(id, event){
-	$.ajax({
-		method: "POST",
-		url: "/api/events/deletefromcart",
-		beforeSend: function(xhr){
-			xhr.setRequestHeader("Client", "Fest-Manager/dash");
-		},
-		data: {
-			id: id
-		},
-		success: function(res){
-			if(res.status == 200)
-			{
-				swal({
-					title: "Successful",
-					text: "Event removed from cart !",
-					type: "success",
-					confirmButtonText: "OK",
-					confirmButtonColor: "#202729"
-				});
-				manager.refresh();
-			}
-			else
-			{
-				swal({
-					title: "Failed !",
-					text: res.msg,
-					type: "error",
-					confirmButtonText: "OK",
-					confirmButtonColor: "#202729"
-				});
-			}
-		}
-	});
-};
-var cart = function() {
+var Cart = function() {
 
 	var state = {
 		total: 0,
 	}
+
+	const remove = function (id, event) {
+		$.ajax({
+			method: "POST",
+			url: "/api/events/deletefromcart",
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader("Client", "Fest-Manager/dash");
+			},
+			data: {
+				id: id
+			},
+			success: function(res) {
+				if (res.status == 200) {
+					swal({
+						title: "Successful",
+						text: "Event removed from cart !",
+						type: "success",
+						confirmButtonText: "OK",
+						confirmButtonColor: "#202729"
+					});
+					manager.refresh();
+				} else {
+					swal({
+						title: "Failed !",
+						text: res.msg,
+						type: "error",
+						confirmButtonText: "OK",
+						confirmButtonColor: "#202729"
+					});
+				}
+			}
+		});
+	};
 
 	var onchange = function() {
 		$.ajax({
@@ -49,30 +47,27 @@ var cart = function() {
 				amount: $('#availAccomm').is(':checked') ? $('#field-choice').val().split('\u20b9')[1] : 0,
 			},
 			headers: {
-                "Client": "Fest-Manager/dash"
-            },
-            dataType: 'json',
-		}).done(function (data) {
+				"Client": "Fest-Manager/dash"
+			},
+			dataType: 'json',
+		}).done(function(data) {
 			$('#cart-subtotal').html(data.subtotal);
-			if(data.additional) {
+			if (data.additional) {
 				$('#cart-additional').css('display', 'block');
-			}
-			else {
+			} else {
 				$('#cart-additional').css('display', 'none');
 			}
 			$('#cart-total').html(data.total);
 		});
 	};
 
-	onchange();
+	$('.cart > input, .cart > select').change(onchange);
 
-	$('input, select').change(onchange);
-
-	// Submit Button Dummmy
+	// Dummmy Submit Button
 	$('.payment .button').click(function() {
 		$.ajax({
 			type: 'POST',
-			url: '/transaction',	// Fix gateway address here.
+			url: '/transaction', // Fix gateway address here.
 			dataType: 'json',
 			contentType: 'json',
 			data: state,
@@ -84,4 +79,14 @@ var cart = function() {
 			manager.route('/dashboard');
 		});
 	});
+
+	const init = function(){
+		onchange();
+		console.log("Fired Onchange On Load.");
+	}
+
+	return {
+		init: init,
+		remove: remove,
+	}
 }();

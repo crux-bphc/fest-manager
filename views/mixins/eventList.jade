@@ -1,16 +1,17 @@
 include ./event
 
 mixin eventList(events, user, isPending)
-    if(events.length > 0)
-        for event in events
-            div(class="wrapper #{isPending ? 'pending' : 'subscribed'}")
-                +eventMixin(event, false)
-                if isPending
-                    i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
-                div.foot
-                    div.price
-                        span !{event.price ? '&#x20b9;' + event.price : "FREE"}
-                    if(event.teamSize > 1)
-                        div.team
-                            span Team ID:
-                            span= (user.teams.filter(team => event.teams.indexOf(team) != -1))
+    div.flex-wrapper
+        if(events.length > 0)
+            for event in events
+                div(class="wrapper #{isPending ? 'pending' : 'subscribed'}")
+                    +eventMixin(event, false)
+                    if isPending
+                        i.icon-close(onclick="Cart.remove('#{event._id}', this)")
+                    div.foot
+                        div.price
+                            span !{event.price ? '&#x20b9;' + event.price : "FREE"}
+                        if(event.teamSize > 1)
+                            div.team
+                                span Team ID:
+                                span= (user.teams.filter(team => event.teams.indexOf(team) != -1))

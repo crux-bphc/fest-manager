@@ -158,6 +158,13 @@
     height: 2.4em;
     overflow:hidden;
 }
+
+.event-list .flex-wrapper {
+    display: flex;
+    margin-right: -1em;
+    flex-wrap: wrap;
+}
+
 .event-list .wrapper .icon-close {
     position:absolute;
     top:0px;
