@@ -34,7 +34,7 @@ router.post('/addtocart', function (req, res, next) {
 	var event_id = mongoose.Types.ObjectId(req.body.id);
 	var eventTeams, eventTeamSize, eventPrice, userEvents, userTeams, teamId;
 	console.log("Got to add to cart");
-	if(req.user.pending.indexOf(req.body.id) != -1 || req.user.events.indexOf(req.body.id) != -1)
+	if (req.user.pending.indexOf(req.body.id) != -1 || req.user.events.indexOf(req.body.id) != -1)
 		return res.status(403).send("Event is already in cart");
 	eventModel.findOne({
 			_id: event_id
@@ -240,8 +240,8 @@ router.post("/deletefromcart", function (req, res, next) {
 	var teamModel = require("./teams").model;
 	var user_id = req.user._id;
 	var event_id = mongoose.Types.ObjectId(req.body.id);
-	if(req.user.pending.indexOf(req.body.id) == -1) {
-		if(req.user.events.indexOf(req.body.id) == -1)
+	if (req.user.pending.indexOf(req.body.id) == -1) {
+		if (req.user.events.indexOf(req.body.id) == -1)
 			return res.json({
 				status: 404,
 				msg: "Event is not in cart"

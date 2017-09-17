@@ -76,16 +76,20 @@ div.ca .button {
 	position:absolute;
 	top:100%;
 	margin-top:1em;
+}
+
+.main div.button {
 	line-height: 3em;
 	padding:0 1em;
 	border-radius:4px;
 	color:#444;
 	white-space: nowrap;
-	display: inline-block;
 	font-weight: 600;
 	background:#f0f0f0;
+	display: inline-block;
 }
-div.ca .button:hover {
+
+.main div.button:hover {
 	background:#e0e0e0;
 }
 div.ca .content .button {
@@ -130,7 +134,7 @@ div.ca .content .button {
 .section.body .events {
 	flex-grow: 1;
 	display: flex;
-	flex-direction: column-reverse;
+	flex-direction: column;
 	align-items: flex-start;
 	width: unset;
 	margin-left: 0em;
@@ -142,11 +146,12 @@ div.ca .content .button {
 }
 .section.body .event-list {
 	margin:0;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
 	margin-top: 3em;
 	position:relative;
 	justify-content: flex-start;
+	display: flex;
 }
 .section.body .event-list::after {
 	content: attr(title);
@@ -156,6 +161,9 @@ div.ca .content .button {
 	color:#999;
 	left: 0;
 	font-weight: 500;
+}
+.event-list.pending div.button {
+    align-self: flex-end;
 }
 .section.body .events:empty::after {
 	content: "You have not registered for anything. Go to the event sections to register.";

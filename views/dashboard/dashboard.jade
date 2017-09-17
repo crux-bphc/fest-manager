@@ -37,6 +37,7 @@ div.section.body
 	div.events
 		div.event-list(title="Registered")
 			+eventList(subscribed, user, false)
-		div.event-list(title="In cart")
+		div.event-list.pending(title="In cart")
 			+eventList(pending, user, true)
+			div.button(_route="/dashboard/cart") Proceed To Cart
 script(src="/static/scripts/cart.js" type="text/javascript")
