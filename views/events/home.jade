@@ -24,11 +24,11 @@ div.section.header
 div.section.events-wrapper
 	each event in events
 		- if(event.route.toLowerCase() == "techexpo" || event.route.toLowerCase() == "@pybits")
-			+eventMixin(event)
+			+eventMixin(event, true)
 	each event in events
 		- if(event.category.toLowerCase() != "techexpo" && event.route.toLowerCase() != "@pybits" && event.type.toLowerCase() == "headliner")
-			+eventMixin(event)
+			+eventMixin(event, true)
 	each event in events
 		- if(event.category.toLowerCase() != "techexpo" && event.route.toLowerCase() != "@pybits" && event.type.toLowerCase() != "headliner")
-			+eventMixin(event)
+			+eventMixin(event, true)
 script(src="/static/scripts/events.js" type="text/javascript")

@@ -4,7 +4,7 @@ mixin eventList(events, user, isDeletable)
     -if(events.length > 0) {
         for event in events
             div.event-wrapper
-                +eventMixin(event)
+                +eventMixin(event, false)
                 if isDeletable
                     i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
                 div.foot

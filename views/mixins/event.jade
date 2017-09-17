@@ -1,8 +1,9 @@
-mixin eventMixin(data)
-	div.event-container(class="#{data.category} #{data.type}" _route="/events/#{data.route}")
+mixin eventMixin(event, showImage)
+	div.event-container(class="#{event.category} #{event.type}" _route="/events/#{event.route}")
 		div.face
-			span.tag= (data.type.toLowerCase() == "headliner" ? "Competition" : data.type)
-			h3.name= data.name
-			span.tagline= data.tagline
-		div.image(style="background-image:url('#{data.thumbnail}')")
+			span.tag= (event.type.toLowerCase() == "headliner" ? "Competition" : event.type)
+			h3.name= event.name
+			span.tagline= event.tagline
+		if showImage
+			div.image(style="background-image:url('#{event.thumbnail}')")
 		div.details
