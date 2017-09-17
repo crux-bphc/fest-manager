@@ -1,18 +1,16 @@
 include ./event
 
-mixin eventList(events, user, isDeletable)
-    -if(events.length > 0) {
+mixin eventList(events, user, isPending)
+    if(events.length > 0)
         for event in events
-            div.event-wrapper
+            div(class="wrapper #{isPending ? 'pending' : 'subscribed'}")
                 +eventMixin(event, false)
-                if isDeletable
+                if isPending
                     i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
                 div.foot
                     div.price
-                        span &#x20b9;
-                        span= (event.price ? event.price : "FREE")
+                        span !{event.price ? '&#x20b9;' + event.price : "FREE"}
                     if(event.teamSize > 1)
                         div.team
                             span Team ID:
                             span= (user.teams.filter(team => event.teams.indexOf(team) != -1))
-    - }

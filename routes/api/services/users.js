@@ -71,7 +71,7 @@ router.post('/cart/', function(req, res, next) {
 		response = {};
 		response.subtotal = 0;
 		events.forEach(function (event) {
-			response.subtotal += event.price
+			response.subtotal += event.price;
 		});
 		response.total = response.subtotal + parseInt(req.body.amount) || 0;
 		response.additional = true;
@@ -103,7 +103,7 @@ router.post('/checkout/', function(req, res, next) {
 		console.log("Error at checkout: ", err);
 		res.status(500).send(err);
 	});
-})
+});
 module.exports = {
 	route: '/users',
 	model: model,

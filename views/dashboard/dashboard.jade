@@ -35,7 +35,8 @@ div.section.body
 			else
 				div.button(_route="/ca") Become a Campus Ambassador
 	div.events
-		h3.title Your Events
-		div.event-list
-			+eventList(events, user, false)
+		div.event-list(title="Registered")
+			+eventList(subscribed, user, false)
+		div.event-list(title="In cart")
+			+eventList(pending, user, true)
 script(src="/static/scripts/cart.js" type="text/javascript")
