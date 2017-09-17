@@ -53,3 +53,57 @@
     color:#fff;
     border-color:transparent;
 }
+.cart-actions .button.pending {
+    background:orange;
+    color:#fff;
+    cursor: default;
+    border-color:transparent;
+}
+.cart-actions .button.pending > .icon-close {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 2.5em;
+    width: 2.5em;
+    border-radius: 2.5em;
+    text-align: center;
+    margin-left: -1.1em;
+    background: rgba(0,0,0,0.1);
+}
+
+@media only screen and (max-width: 600px) {
+    .cart-actions .button {
+        width:3em;
+        min-width: 3em;
+        height:3em;
+        line-height: 3em;
+        justify-content: center;
+        padding:0;
+        border-color:#fff;
+        color:#000;
+        background:#fff;
+        box-shadow:0px 1px 2px rgba(0,0,0,0.2);
+        /*margin-bottom:10px;*/
+        border-width:2px;
+        border-radius:50%;
+    }
+    .cart-actions .latent {
+        flex-direction: column;
+        position:absolute;
+        right:0;
+        top:0;
+        margin-right:1.5em;
+    }
+    .cart-actions .button > i {
+        margin: 0 !important;
+        position:absolute !important;
+        line-height: 3em !important;
+        width: 3em !important;
+        background: none !important;
+    }
+    .cart-actions .button > i::before {
+        font-size: 1.5em;
+    }
+    .cart-actions .button > span {
+        display: none;
+    }
+}
