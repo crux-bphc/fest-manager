@@ -9,19 +9,19 @@ var applyStateChanges = function (req) {
 	};
 	req.stateparams.submenu = [{
 			label: "Competitions",
-			route: "/events#Competitions"
+			route: "/events#Competition"
 		},
 		{
 			label: "Workshops",
-			route: "/events#Workshops"
+			route: "/events#Workshop"
 		},
 		{
 			label: "Talks",
-			route: "/events#Talks"
+			route: "/events#Talk"
 		},
 		{
 			label: "Conferences",
-			route: "/events#Conferences"
+			route: "/events#Conference"
 		}
 	];
 	return req;

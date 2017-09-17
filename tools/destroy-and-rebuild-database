@@ -76,7 +76,7 @@ var getEvents = function(models) {
 
     var lastbody;
     getBodies().forEach(function(elem) {
-        var prefixes = ['Workshops', 'Conferences', 'Talks', 'Competitions'];
+        var prefixes = ['Workshop', 'Conference', 'Talk', 'Competition'];
         prefixes.forEach(function(pre, index) {
             lastbody = elem._id;
             var newevent = {
@@ -98,8 +98,8 @@ var getEvents = function(models) {
         name: "PyBits",
         tagline: "Remove this before final release",
         body: lastbody,
-        category: "Conferences",
-        type: "Conferences",
+        category: "Conference",
+        type: "Conference",
         route: "@pybits",
     });
 
