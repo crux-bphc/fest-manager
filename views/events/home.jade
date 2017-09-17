@@ -10,17 +10,17 @@ div.section.header
 				li.icon-shopping_cart(_route="/dashboard/cart")
 		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
-div.section.tags
-	a.active(href="#") All
-	a(href="#TechExpo") Tech Expo
-	a(href="#Programming") Programming
-	a(href="#MeanMachines") Mean Machines
-	a(href="#FandM") Finance and Management
-	a(href="#Quiz") Quizzing
-	a(href="#Robotics") Robotics
-	a(href="#DeepSciences") Deep Sciences
-	a(href="#DoItNow") Do it now
-	a(href="#PaperPresentation") Paper Presentation
+//- div.section.tags
+//- 	a.active(href="#") All
+//- 	a(href="#TechExpo") Tech Expo
+//- 	a(href="#Programming") Programming
+//- 	a(href="#MeanMachines") Mean Machines
+//- 	a(href="#FandM") Finance and Management
+//- 	a(href="#Quiz") Quizzing
+//- 	a(href="#Robotics") Robotics
+//- 	a(href="#DeepSciences") Deep Sciences
+//- 	a(href="#DoItNow") Do it now
+//- 	a(href="#PaperPresentation") Paper Presentation
 div.section.events-wrapper
 	each event in events
 		- if(event.route.toLowerCase() == "techexpo" || event.route.toLowerCase() == "@pybits")

@@ -24,6 +24,7 @@
 .events-wrapper {
     display: flex;
     flex-wrap: wrap;
+    position:relative;
     justify-content: space-between;
 }
 
@@ -33,6 +34,16 @@
     border: none;
     margin-left: 5px;
     margin-right: 5px;
+}
+.events-wrapper::before {
+    position:absolute;
+    content: "Nothing to see here yet. Coming soon.";
+    padding: 2em 0em;
+    color:#777;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
 }
 
 .event-container {
