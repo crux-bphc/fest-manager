@@ -5,6 +5,7 @@
 	display: flex;
 	justify-content: flex-start;
 	margin-bottom: 8em;
+	flex-wrap: wrap;
 }
 .section.body > div {
 	display: inline-block;
@@ -127,17 +128,36 @@ div.ca .content .button {
 	color: #777;
 }
 .section.body .events {
-	margin-left: 1.5em;
 	flex-grow: 1;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	flex-direction: column-reverse;
+	align-items: flex-start;
+	width: unset;
+	margin-left: 0em;
+	margin-top: 10em;
 }
 .section.body .events > .title {
 	font-weight: 500;
 	margin-bottom: 1em;
 }
-.section.body .event-list:empty::after {
+.section.body .event-list {
+	margin:0;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-top: 3em;
+	position:relative;
+	justify-content: flex-start;
+}
+.section.body .event-list::after {
+	content: attr(title);
+	position: absolute;
+	bottom: 100%;
+	line-height: 3em;
+	color:#999;
+	left: 0;
+	font-weight: 500;
+}
+.section.body .events:empty::after {
 	content: "You have not registered for anything. Go to the event sections to register.";
 	color: #999;
 	font-weight: 400;

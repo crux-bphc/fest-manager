@@ -73,11 +73,8 @@ var getFields = function (user, isAmbassador = false) {
 /* GET users listing. */
 router.get('/', authenticate, function (req, res, next) {
 	req = applyStateChanges(req);
-	eventModel.find({
-			_id: {
-				$in: req.user.events
-			}
-		})
+	var subscribed, pending;
+	Promise.all([eventModel.find({_id: {$in: req.user.pending}}).then(events=>{pending=events;}), eventModel.find({_id: {$in: req.user.events}}).then(events=>{subscribed=events;})])
 		.then(function (events) {
 			qr.toDataURL(req.user.email, {
 				errorCorrectionLevel: 'H'
@@ -85,7 +82,8 @@ router.get('/', authenticate, function (req, res, next) {
 				req.user.qrData = url;
 				var params = {
 					user: req.user,
-					events: events,
+					subscribed: subscribed,
+					pending: pending,
 					title: "Dashboard"
 				};
 				res.renderState('dashboard/dashboard', params);
