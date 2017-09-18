@@ -60,7 +60,7 @@ morgan.token('date', function () {
 		timeZone: "Asia/Kolkata",
 	});
 });
-app.use(morgan('(:date IST) :user \t :method :url :status :response-time ms - :res[content-length]'));
+app.use(morgan('express: (:date IST) :user \t :method :url :status :response-time ms - :res[content-length]'));
 
 app.use(cookieParser('damn ninjas cutting onions'));
 app.use(bodyParser.json({

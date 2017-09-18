@@ -7,10 +7,13 @@ var connection = function (callback) {
 	var mongoDB = config.database.url + databasename;
 	mongoose.connect(mongoDB);
 	var db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+	db.on('error', function (error) {
+		console.error.bind(console, 'mongoose: MongoDB connection error:');
+		if (callback) callback(error);
+	});
 	db.on('connected', function () {
-		console.log("Connected to", databasename);
-		if (callback) callback(null);
+		console.log("mongoose: Connected to", databasename);
+		if (callback) callback(null, databasename);
 	});
 };
 module.exports = connection;
