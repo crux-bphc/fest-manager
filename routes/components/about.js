@@ -49,7 +49,7 @@ router.get('/contact', function (req, res, next) {
 });
 
 router.get('/map', function (req, res, next) {
-	req.stateparams.pagetitle = 'Reach';
+	req.stateparams.pagetitle = 'Reach Us';
 	req = applyStateChanges(req);
 	res.renderState('about/map', {
 		title: 'How to Reach',

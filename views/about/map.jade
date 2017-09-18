@@ -1,11 +1,15 @@
 link(rel="stylesheet" href="/static/stylesheets/about.style.css")
+link(rel="stylesheet" href="/static/stylesheets/map.style.css")
 
 
-div.section.header
-	h1.title= title
-div.section.body(onload="initialize()")
-	div#map
-div.button Open in Maps
+
+div#map.section.body(onload="initialize()")
+
+div#overlay
+	div.buttonsContainer
+		a(href="https://www.google.co.in/maps/place/BITS+Pilani/@17.5435125,78.5722199,17z/data=!4m5!3m4!1s0x3bcb835ea819f7f7:0xf65eaaa5a110605f!8m2!3d17.5449703!4d78.5716459?hl=en" target="_blank")
+			div.button Open in Maps
+		div.button Bus Timings
 
 script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvi07_F1aDElByzfsGB3AIgwiiH6OscTw&callback=initialize")
 script(src="/static/scripts/map.js")
