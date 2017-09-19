@@ -5,12 +5,11 @@ function initialize() {
     center: bphcloc,
     zoom: 17
   });
-  // var bitsmarker = new google.maps.Marker({
-  // 	position: bphcloc,
-  // 	map: map,
-  // 	title: 'BITS Hyderabad',
-  // 	label: 'B'
-  // })
+  var bitsmarker = new google.maps.Marker({
+  	position: bphcloc,
+  	map: map,
+  	title: 'BITS Hyderabad'
+  })
 }
 
 function getBusTimings(){

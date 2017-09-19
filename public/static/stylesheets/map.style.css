@@ -10,6 +10,7 @@
 	width: 100%;
 	background: rgba(0,0,0,0.5);
 	overflow-y: hidden;
+    pointer-events: none;
 }
 .map-button {
     margin:1em;
@@ -32,6 +33,7 @@
 	margin-top: 3%;
 	position: absolute;
 	width: 100%;
+    pointer-events: auto;
 }
 
 .busTimings{
