@@ -6,10 +6,21 @@ link(rel="stylesheet" href="/static/stylesheets/map.style.css")
 div#map.section.body(onload="initialize()")
 
 div#overlay
-	div.buttonsContainer
-		a(href="https://www.google.co.in/maps/place/BITS+Pilani/@17.5435125,78.5722199,17z/data=!4m5!3m4!1s0x3bcb835ea819f7f7:0xf65eaaa5a110605f!8m2!3d17.5449703!4d78.5716459?hl=en" target="_blank")
-			div.button Open in Maps
-		div.button Bus Timings
+	div.container
+		div#busTimings.busTimings
+			div#iconClose
+				i.icon-close
+			h1.timingsHeading TSRTC BUS TIMINGS
+			h2 From Secunderabad Railway Station (Gurudwara Point) to BITS Main gate:
+			p 07:50, 07:50, 07:50, 07:50, 07:50, 07:50, 07:50, 07:50, 07:50
+			h2 From BITS Main Gate to Secunderabad Railway Station :
+			p 07:50, 07:50, 07:50, 07:50, 07:50, 07:50, 07:50, 07:50, 07:50
+			p City buses having numbers 211S, 211S, 211S, 211S, 211S, 211S, 211S, 211S, 211S which ply from Secunderabad Railway Station to various destinations to the Campus side. Further, there are many APSRTC buses from Secunderabad, Jubilee bus stand to Karim Nagar, Siddhipet, Ramagundam, Gajwel, Cheriyal etc. People can board any of these buses, get down either at Thumkunta or Dongala Mysamma junction which is 1KM away and take an auto to the campus.
+
+		div.buttonsContainer
+			a(href="https://www.google.co.in/maps/place/BITS+Pilani/@17.5435125,78.5722199,17z/data=!4m5!3m4!1s0x3bcb835ea819f7f7:0xf65eaaa5a110605f!8m2!3d17.5449703!4d78.5716459?hl=en" target="_blank")
+				div.map-button Open in Maps
+			div.map-button(onclick = "getBusTimings()") Bus Timings
 
 script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvi07_F1aDElByzfsGB3AIgwiiH6OscTw&callback=initialize")
 script(src="/static/scripts/map.js")

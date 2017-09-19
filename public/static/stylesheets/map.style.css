@@ -5,11 +5,13 @@
 #overlay{
 	position: absolute;
 	top: 0;
+	right: 0;
 	height: 100%;
 	width: 100%;
-	background: rgba(0,0,0,0.6);
+	background: rgba(0,0,0,0.5);
+	overflow-y: hidden;
 }
-.button {
+.map-button {
     margin:1em;
     line-height: 3em;
     padding:0 2em;
@@ -21,10 +23,37 @@
     background:#fafafa;
     cursor:pointer;
 }
-.button:hover {
+.map-button:hover {
     background:#eaeaea;
 }
-.buttonsContainer{
+.container{
+
 	text-align: center;
-	margin-top: 40vh;
+	margin-top: 3%;
+	position: absolute;
+	width: 100%;
+}
+
+.busTimings{
+	/*visibility: hidden;*/
+	display: none;
+	color: #fff;
+	background: rgba(0,0,0,0.7);
+	width: 90%;
+	margin: auto;
+	padding: 3%;
+	border-radius: 10px;
+	position: relative;
+}
+.icon-close{
+	position: absolute;
+	top: 1vh;
+	right: 1vh;
+	font-size: 2em;
+}
+.icon-close:hover{
+	cursor: pointer;
+}
+h1.timingsHeading{
+	clear: right;
 }

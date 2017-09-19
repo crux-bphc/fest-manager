@@ -11,5 +11,13 @@ function initialize() {
   // 	title: 'BITS Hyderabad',
   // 	label: 'B'
   // })
-
 }
+
+function getBusTimings(){
+  $("#busTimings").css({"display":"block"});
+}
+
+$("#iconClose").click(function(){
+  console.log("hello");
+  $("#busTimings").css({"display":"none"});
+});
