@@ -37,9 +37,12 @@ body
 					i.icon-navigate_next
 					span.text
 				div.controls
-					div.button.user(_triggers="navbar/avatar=visible" tabindex=0)
+					input.hidden(type="checkbox" id="dropdown")
+					div.button.user(_triggers="navbar/avatar=visible")
 						if user
-							img(src=user.profileImage)
+							label(for="dropdown")
+								span.ticker
+								img(src=user.profileImage)
 							div.dropdown
 								div.header
 									div.details(_route="/dashboard")
@@ -51,15 +54,23 @@ body
 										span.useremail.
 											#{user.email}
 										- }
-									div.button.logout(_route="/dashboard/account")
-											i.edit_mode
+										- else if (typeof user.phone !== "undefined") {
+										span.useremail.
+											#{user.phone}
+										- }
+									a.button.cart(href="/dashboard/cart" style="display:none;")
+										i.icon-shopping_cart
+									a.button.account(href="/dashboard/account" style="display:inline-block;")
+										i.icon-mode_edit
+								div.subheader
+									span Notifications
 								div.drawer
 									div.scrollable
 										li.notification
 											i.icon-check
 											div.details
 												span.title Your invitation was accepted
-												span.message Send more invitations
+												span.message Send more invitations to some of your fellow motherfuckers
 												span.date 12/10/17 22:22
 										li.notification
 											i.icon-mail_outline

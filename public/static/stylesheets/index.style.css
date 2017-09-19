@@ -38,38 +38,6 @@ input[type = "file"] {
     box-shadow: 0 0 3px #CC0000;
 }
 
-.enscroll-track {
-    width: 10px;
-    height:100%;
-    background: rgba(0, 0, 0, 0);
-    margin-right: 2px;
-    border-radius: 10px;
-    -webkit-transition: background 250ms linear;
-    transition: background 250ms linear;
-}
-
-.enscroll-track:hover,
-.enscroll-track.dragging {
-    background: #d9d9d9; /* Browsers without rgba support */
-    background: rgba(0, 0, 0, 0.15);
-}
-
-.enscroll-handle {
-    width: 7px;
-    min-height: 20%;
-    right: 0;
-    background: #999;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 7px;
-    -webkit-transition: width 250ms;
-    transition: width 250ms;
-}
-
-.enscroll-track:hover .enscroll-handle,
-.enscroll-track.dragging .enscroll-handle {
-    width: 10px;
-}
-
 ._overlay {
     position: fixed;
     z-index: +100;
@@ -286,6 +254,7 @@ input[type = "file"] {
 .navbar .controls > .button.user {
     background: transparent !important;
     opacity: 1;
+    cursor:default;
     display: none;
 }
 
@@ -293,7 +262,30 @@ input[type = "file"] {
     display: inline-flex;
 }
 
-.navbar .controls > .button.user > img {
+.navbar .controls > .button.user > label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.navbar .controls > .button.user > label > .ticker {
+    background:#49D;
+    border-radius: 50%;
+    color:white;
+    font-weight: 600;
+    font-size: 0.7em;
+    position:absolute;
+    width:2em;
+    line-height: 2em;
+    text-align: center;
+    right:-0.5em;
+    bottom:-0.5em;
+}
+.navbar .controls > .button.user > label > .ticker:empty {
+    display: none;
+}
+
+.navbar .controls > .button.user > label > img {
     height: 2.5em;
     width: 2.5em;
     border-radius: 50%;
@@ -302,16 +294,19 @@ input[type = "file"] {
 .navbar .controls .button.user > .dropdown {
     display: none;
     position: absolute;
-    right: 0em;
+    right: 4em;
     top:100%;
     overflow:hidden;
     background-color: #fff;
     width: 25em;
+    cursor: default;
     box-sizing: border-box;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: solid rgba(68, 153, 221, 0.2);
+    border-width: 0px 0px 5px;
+    box-shadow: 0px 5px 16px 0px rgba(0,0,0,0.1);
 }
 
-.navbar .controls .button.user:focus > .dropdown {
+#dropdown:checked + .button.user .dropdown {
     display: block;
 }
 
@@ -324,6 +319,8 @@ input[type = "file"] {
 
 .navbar .controls .button.user .dropdown .details {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar .controls .button.user .dropdown .details .username {
@@ -332,20 +329,40 @@ input[type = "file"] {
     font-size: 1.2em;
     font-weight: 400;
     margin: 0;
+    display: block;
 }
 
 .navbar .controls .button.user .dropdown .header {
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    padding: 2em 2em;
-    padding-bottom: 1em;
+    padding: 1em 1em;
+}
+.navbar .controls .button.user .dropdown .header > .button {
+    font-size: 1.2em;
+    padding: 0em 1em;
+}
+.navbar .controls .button.user .dropdown .header > .account {
+    padding-right: 0em;
+}
+.navbar .controls .button.user .dropdown .subheader {
+    padding: 0em 1em;
+    line-height: 2em;
+    font-weight: 600;
+    background: rgba(0,0,0,0.05);
 }
 
 .navbar .controls .button.user .dropdown .drawer {
     width:100% !important;
     overflow:hidden;
+}
+.navbar .controls .button.user .dropdown .drawer .empty {
+    width:100%;
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    padding: 1em;
 }
 
 .navbar .controls .button.user .dropdown .drawer > div {
@@ -353,20 +370,19 @@ input[type = "file"] {
     width:100% !important;
     max-height: 15em;
     overflow: hidden;
-    box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.1) inset;
 }
 
 .navbar .controls .button.user .dropdown .drawer > div li.notification {
     display: flex;
-    line-height: 1.5em;
-    padding: 0.5em 2em;
+    line-height: 1.2em;
+    padding: 0.5em 1em;
     box-sizing: border-box;
     list-style-type: none;
     position:relative;
 }
 
 .navbar .controls .button.user .dropdown .drawer > div li.notification:hover {
-    background:rgba(0,0,0,0.05);
+    background:#fafafa;
 }
 
 .navbar .controls .button.user .dropdown .drawer > div li.notification > i {
@@ -378,6 +394,7 @@ input[type = "file"] {
     border:1px solid;
     border-radius: 50%;
     margin-top: 0.2em;
+    flex-shrink: 0;
 }
 
 .navbar .controls .button.user .dropdown .drawer > div li.notification > .details {
@@ -389,15 +406,18 @@ input[type = "file"] {
 
 .navbar .controls .button.user .dropdown .drawer > div li.notification .title {
     color: gray;
-    font-size: 1.1em;
+    padding: 0.15em 0em;
+    font-size: 1em;
 }
 
 .navbar .controls .button.user .dropdown .drawer > div li.notification .date {
     font-size: 0.8em;
+    padding: 0.15em 0em;
 }
 .navbar .controls .button.user .dropdown .drawer > div li.notification .message {
     font-size: 0.9em;
     color: #4499DD;
+    padding: 0.1em 0em;
 }
 
 /***************************************************************************************
@@ -1038,6 +1058,12 @@ table tbody tr:nth-child(2n-1) {
     .navbar > .wrapper {
         padding:0em 0em 0em 1em;
     }
+    .navbar .controls .button.user > .dropdown {
+        max-width:100vw;
+        width:100vw;
+        height: calc(100vh - 60px);
+        right: 0em;
+    }
     .main > .wrapper {
         padding:2em 1em;
     }
@@ -1048,9 +1074,6 @@ table tbody tr:nth-child(2n-1) {
         pointer-events: all;
         margin-left: 0px;
         opacity: unset;
-    }
-    .navbar .controls .button.user > .dropdown {
-        width: 23em;
     }
     .window > .remnant.shift_to_expose_menu {
         transform: translateX(200px);
@@ -1079,9 +1102,11 @@ table tbody tr:nth-child(2n-1) {
         display: none;
     }
 
+
+
 }
 
-@media only screen and (min-width: width: 1400px) {
+@media only screen and (min-width: 1400px) {
     body {
         font-size:1.1vw;
     }

@@ -14,11 +14,14 @@
 	margin:1em;
 	width:15em;
 }
+.section.body > div.qr {
+	height: 15em;
+}
 .section.body > div:first-child {
 	margin-left: 0em;
 }
 
-.imgQR{
+.section.body .imgQR{
 	position:relative;
 	width: 15em;
 	box-sizing: border-box;
@@ -43,7 +46,7 @@
 	height: 10em;
 }
 
-.imgUser{
+.section.body .imgUser {
 	width: 15em;
 	height:15em;
 	display: block;
@@ -51,7 +54,7 @@
 	border-radius: 5px;
 	border:5px solid #f0f0f0;
 }
-div.ambassador {
+.section.body div.ambassador {
 	color:#50EEAA;
 	line-height: 3em;
 	padding:0em 1em;
@@ -63,16 +66,16 @@ div.ambassador {
 	width: 100%;
 	text-align: center;
 }
-div.ambassador > span {
+.section.body div.ambassador > span {
 	font-weight: 600;
 	margin-left: 5px;
 }
-div.left > div.details {
+.section.body div.left > div.details {
 	padding-top:1em;
 	position:absolute;
 	top: 100%;
 }
-div.ca .button {
+.section.body div.ca .button {
 	position:absolute;
 	top:100%;
 	margin-top:1em;
@@ -92,19 +95,19 @@ div.ca .button {
 .main .button:hover {
 	background:#e0e0e0;
 }
-div.ca .content .button {
+.section.body div.ca .content .button {
 	position: relative;
 }
 
-.user {
+.section.body .user {
 	line-height: 1.2;
 	margin-top:0.5em;
 }
-.user > i {
+.section.body .user > i {
 	vertical-align: top;
 	display: inline-block;
 }
-.user > span {
+.section.body .user > span {
 	margin-left: 0.5em;
 	font: inherit;
 	display: inline-block;
@@ -113,13 +116,14 @@ div.ca .content .button {
 	white-space: pre-wrap;
 }
 
-.user.name{
+.section.body .user.name{
 	color: black;
 	display: block;
 	font-size: 1.5em;
 	font-weight:500;
 }
-.user.email,.user.institute{
+.section.body .user.email,
+.section.body .user.institute{
 	color: #777;
 	display: flex;
 	align-items: center;
@@ -127,7 +131,7 @@ div.ca .content .button {
 	width:100%;
 	white-space: nowrap;
 }
-.user.email {
+.section.body .user.email {
 	font-weight:600;
 	color: #777;
 }
@@ -138,7 +142,6 @@ div.ca .content .button {
 	align-items: flex-start;
 	width: 100%;
 	margin-left: 0em;
-	margin-top: 10em;
 }
 .section.body .events > .title {
 	font-weight: 500;

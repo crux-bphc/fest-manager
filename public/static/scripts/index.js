@@ -4,6 +4,9 @@ var manager = function () {
 		header: $('.window > .navbar'),
 		main: $('.window > .remnant > .main'),
 		navigation: $('.window > .remnant > .sidebar'),
+		notifications: {
+			list: [],
+		},
 		hash: "",
 		state: {
 			location: "",
@@ -106,6 +109,8 @@ var manager = function () {
 	client.setState = function (state) {
 		const diff = DeepDiff(state, this.state);
 		this.state = state;
+		this.notifications.list = state.user.notifications || [];
+		this.notifications.push();
 		if (diff)
 			diff.forEach(function (change) {
 				var trigger = change.path.join('/');
@@ -213,6 +218,52 @@ var manager = function () {
 		if (window.location.hash) route += (window.location.hash);
 		client.route(route);
         new SimpleBar($('.navbar .dropdown .drawer > div')[0]);
+	};
+
+	// Fetch Notifications
+	client.notifications.get = function () {
+		$.ajax({
+			type: 'GET',
+			url: '/api/users/notifications',
+			headers: {
+				"Client": "Fest-Manager/dash",
+			},
+		}).done(function(user){
+			client.notifications.list = user.notifications;
+			pushNotifications();
+		});
+	};
+	// Mark as read
+	client.notifications.done = function() {
+		$.ajax({
+			type: 'POST',
+			url: '/api/users/notifications',
+			headers: {
+				"Client": "Fest-Manager/dash",
+			},
+		}).done(function () {
+			$(this).find(".ticker").html("");
+			$('.navbar .button.user label')[0].removeEventListener('click', client.notifications.done, false);
+		});
+	}
+	// Push Notifications
+	client.notifications.push = function () {
+		if(!client.notifications.list.length) {
+			$('.dropdown .drawer .simplebar-content').html("<span class='empty'>All caught up!</span>")
+			return;
+		}
+		var length = client.notifications.list.filter(function(item){return !item.read}).length;
+		$('.navbar .button.user .ticker').html(length ? length : "");
+		var template = "<li class='notification'><i class='$icon'></i><div class='details'><span class='title'>$title</span>$message<span class='date'>$date</span></div></li>";
+		html = "";
+		client.notifications.list.forEach(function(item){
+			html += template.replace('$icon', item.icon)
+							.replace('$title', item.title)
+							.replace('$message', (item.message ? "<span class='message'>" + item.message + "</span>" : ''))
+							.replace('$date', item.date);
+		});
+		$('.dropdown .drawer .simplebar-content').html(html);
+		$('.navbar .button.user label')[0].addEventListener('click', client.notifications.done, false);
 	};
 
 	// Audio analyser resources

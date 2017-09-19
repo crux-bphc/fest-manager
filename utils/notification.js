@@ -1,4 +1,5 @@
-const userService = require('../routes/api/services/users').model;
+const projectRoot = require('project-root-path');
+const userService = require(projectRoot + '/routes/api/services/users').model;
 
 /**
 Usage Details :
@@ -13,18 +14,18 @@ notification.createNotification(req.user._id, {
 	icon: "Random.ico",
 	image: "Path-to-image",
 	time: "Some Timestamp",
-	read: true //or fale
+	read: true or false
 
 });
 
 **/
 
-function createNotification(id, notification){
+function pushToMany(id, notification){
 	userService.update({_id: id},{$push: {notifications: notification}} ,function(){
 		console.log("Notification Added");
 	});
 }
 
 module.exports = {
-	createNotification: createNotification
-}; 
+	push: pushToMany
+};
