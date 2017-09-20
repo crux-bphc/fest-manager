@@ -896,6 +896,22 @@ form .field-container > .remnant > textarea {
     opacity: 1;
 }
 
+/*Styles for GFM borders*/
+table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    padding: 0;
+}
+table tr th, table tr td {
+    border: 1px solid #CCC;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tbody tr:nth-child(2n-1) {
+        background-color: #F8F8F8;
+}
+
 @media only screen and (max-width: 1333px) {
     .navbar {
         margin-top:-60px;
