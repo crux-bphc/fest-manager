@@ -1,8 +1,8 @@
 var chai = require('chai');
 var expect = chai.expect;
 var assert = chai.assert;
-var projectroot = require('project-root-path');
-var mailer = require(projectroot + "/utils/mailer");
+var fq = require('fuzzquire');
+var mailer = fq("mailer");
 
 describe('Mailer', function() {
     it('should render single email correctly.', function() {

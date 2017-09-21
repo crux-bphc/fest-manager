@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
-var authenticate = require('../utils/authentication').middleware;
-var projectroot = require('project-root-path');
+var fq = require('fuzzquire');
+var middleware = fq('authentication').middleware;
 
 var exec = function (script, filename) {
 	var exec = require('child_process').exec;
@@ -21,7 +21,7 @@ var elevate = function (req, res, next) {
 	return next(error);
 };
 
-router.get('/users', authenticate, elevate, exec('/tools/export-user-data', 'users'));
-router.get('/ca', authenticate, elevate, exec('/tools/export-ca-data', 'campus-ambassadors'));
+router.get('/users', middleware.authenticate, middleware.elevate, exec('/tools/export-user-data', 'users'));
+router.get('/ca', middleware.authenticate, middleware.elevate, exec('/tools/export-ca-data', 'campus-ambassadors'));
 
 module.exports = router;

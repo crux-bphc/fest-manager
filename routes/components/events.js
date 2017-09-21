@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var eventsService = require("../api/services/events").model;
+var fq = require('fuzzquire');
+var eventsService = fq("services/events").model;
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
@@ -70,14 +71,14 @@ router.get('/:eventroute', function (req, res, next) {
 		req.stateparams.pagetitle = data.name;
 		var marked = require('marked');
 		marked.setOptions({
-		  renderer: new marked.Renderer(),
-		  gfm: true,
-		  tables: true,
-		  breaks: false,
-		  pedantic: false,
-		  sanitize: false,
-		  smartLists: true,
-		  smartypants: false
+			renderer: new marked.Renderer(),
+			gfm: true,
+			tables: true,
+			breaks: false,
+			pedantic: false,
+			sanitize: false,
+			smartLists: true,
+			smartypants: false
 		});
 		res.renderState('events/event', {
 			title: data.name,

@@ -1,6 +1,7 @@
 const passport = require('passport');
-const config = require('./config-loader');
-const userService = require('../routes/api/services/users').model;
+const fq = require('fuzzquire');
+const config = fq('config-loader');
+const userService = fq('services/users').model;
 
 var findOrCreate = function (accessToken, profile, provider, done) {
 	userService.findOne({
@@ -34,7 +35,7 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 					subject: 'Atmos Registration Successful', // Subject line
 					template: 'email-templates/test',
 				};
-				require('./mailer.js')(userData, mailOptions)
+				fq('mailer')(userData, mailOptions)
 					.catch(err => console.log(err))
 					.then(function () {
 						done(err, user);
@@ -120,8 +121,19 @@ var authenticate = function (req, res, next) { // custom middleware to check if 
 	res.redirect('/components/login');
 };
 
+var elevate = function (req, res, next) {
+	if (req.user.privilege)
+		return next();
+	let error = new Error('Access denied');
+	error.status = 401;
+	return next(error);
+};
+
 module.exports = {
 	configureSerializers: configureSerializers,
 	strategies: strategies,
-	middleware: authenticate
+	middleware: {
+		authenticate: authenticate,
+		elevate: elevate,
+	},
 };

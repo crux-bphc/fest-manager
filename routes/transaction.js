@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var authenticate = require('../utils/authentication').middleware;
+var fq = require('fuzzquire');
+var authenticate = fq('authentication').middleware.authenticate;
 var http = require('http');
 
 router.post('/', authenticate, function (req, res, next) {

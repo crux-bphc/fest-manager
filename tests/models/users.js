@@ -1,9 +1,9 @@
 var chai = require('chai');
 var expect = chai.expect;
 var assert = chai.assert;
-var projectroot = require('project-root-path')
+var fq = require('fuzzquire');
 
-var connection = require(projectroot + '/utils/mongoose');
+var connection = fq('mongoose');
 var User;
 
 before(function(done) {
@@ -13,7 +13,7 @@ before(function(done) {
 describe('User Model', function() {
 
     beforeEach(function(done) {
-        User = require(projectroot + '/routes/api/services/users');
+        User = fq('services/users');
         done();
     })
 

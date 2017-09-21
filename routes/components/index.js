@@ -29,12 +29,14 @@ router.use('/logout', function (req, res, next) {
 	res.redirect('/components/login');
 });
 
-router.get('/not-found',function (req, res, next) {
-    res.renderState('not-found', {user: req.user});
+router.get('/not-found', function (req, res, next) {
+	res.renderState('not-found', {
+		user: req.user
+	});
 });
 
 router.use(function (req, res, next) {
-    res.redirect('/components/not-found');
+	res.redirect('/components/not-found');
 });
 
 module.exports = router;

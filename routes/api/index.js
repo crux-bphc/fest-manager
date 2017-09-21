@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var constructor = require('../../utils/service.constructor');
+var fq = require('fuzzquire');
+var constructor = fq('service.constructor');
 var services = [];
 
 services.push(require('./services/users'));

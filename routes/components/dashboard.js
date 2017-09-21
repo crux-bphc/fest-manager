@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var authenticate = require('../../utils/authentication').middleware;
-var eventModel = require("../api/services/events").model;
+var fq = require('fuzzquire');
+var authenticate = fq('authentication').middleware.authenticate;
+var eventModel = fq("services/events").model;
 const qr = require("qrcode");
 
 var applyStateChanges = function (req) {

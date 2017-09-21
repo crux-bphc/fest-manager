@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var projectroot = require('project-root-path');
+var fq = require('fuzzquire');
 var path = require('path');
 var fs = require('fs');
 var Fuse = require('fuse.js');
@@ -52,7 +53,7 @@ fs.readFile(path.join(projectroot, 'utils', 'institutes.json'), (err, data) => {
 	registerTypeahead('institutes', institutes, ["None", "Birla Institute of Technology & Science - Hyderabad"]);
 });
 
-const userService = require(projectroot + '/routes/api/services/users').model;
+const userService = fq('services/users').model;
 userService.find({}, {
 	email: true
 }, function (err, data) {
