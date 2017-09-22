@@ -28,6 +28,19 @@ var config = {
 		clientSecret: "qktNgemJfKIKp-NVEkG03C0F",
 		refreshToken: "1/UoSgLDZVOgXJ-QUp9nh-c2cP7ljIihGZ7_ytbyYxDpQ",
 		user: "vermaabhilash70@gmail.com",
-	}
+	},
+	payment: {
+		credentials: {
+			id: 'RLABTF23274153190333',
+			key: 'gv_cECHQtZUj5PmU',
+		},
+		defaults: {
+			INDUSTRY_TYPE_ID: 'Retail',
+		  	CHANNEL_ID: 'WEB',
+		  	MID: 'RLABTF23274153190333',
+		  	WEBSITE: 'WEB_STAGING',
+		  	CALLBACK_URL: 'http://localhost:3000/api/users/checkout/callback',
+		},
+	},
 };
 module.exports = config;

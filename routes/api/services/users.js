@@ -1,3 +1,4 @@
+var fq = require('fuzzquire');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var express = require('express');
@@ -19,7 +20,6 @@ var usersSchema = new Schema({
 	teams: [shortID],
 	referred_by: String,
 	events: [Schema.Types.ObjectId],
-	accommodation: Number,
 	token: String,
 	facebookID: String,
 	googleID: String,
@@ -29,6 +29,7 @@ var usersSchema = new Schema({
 		default: false
 	},
 	pending: [Schema.Types.ObjectId],
+	additionals: [Schema.Types.Mixed],
 	phone: String,
 	address: String,
 	pincode: String,
@@ -40,6 +41,38 @@ var usersSchema = new Schema({
 });
 
 var model = mongoose.model('usersModels', usersSchema);
+
+var getCart = function (user) {
+	return eventsModel.find({
+			_id: {
+				$in: user.pending
+			}
+		})
+		.then(function (events) {
+			cart = {};
+			cart.user = user;
+			cart.order = [];
+			cart.subtotal = 0;
+			events.forEach(function (event) {
+				cart.order.push({
+					id: event._id,
+					label: event.name,
+					price: event.price,
+				});
+				cart.subtotal += event.price;
+			});
+			cart.total = cart.subtotal;
+			if (user.additionals)
+				user.additionals.forEach(function (addition) {
+					if (addition.pending)
+						cart.order.push({
+							label: addition.label,
+							price: addition.price,
+						});
+				});
+			return cart;
+		});
+};
 
 router.put('/me/', function (req, res, next) {
 	var body = req.body;
@@ -65,50 +98,54 @@ router.put('/me/', function (req, res, next) {
 });
 
 router.post('/cart/', function (req, res, next) {
-	eventsModel.find({
-			_id: {
-				$in: req.user.pending
+	return new Promise(function (resolve, reject) {
+			resolve();
+		})
+		.then(function () {
+			if (req.body.additionals && !req.body.init) {
+				return model.update({
+					_id: req.user._id,
+				}, {
+					additionals: req.body.additionals
+				});
 			}
 		})
-		.then(function (events) {
-			response = {};
-			response.subtotal = 0;
-			events.forEach(function (event) {
-				response.subtotal += event.price;
-			});
-			response.total = response.subtotal + parseInt(req.body.amount) || 0;
-			response.additional = true;
-			if (req.user.accomm) response.additional = false;
+		.then(function () {
+			return getCart(req.user);
+		})
+		.then(function (response) {
 			res.json(response);
 		})
-		.catch(function (err) {
-			res.status(500).send(err);
+		.catch(function (error) {
+			res.status(500).send(error);
 		});
 });
 
-router.post('/checkout/', function (req, res, next) {
-	console.log('Checking out');
-	user = new model(req.user);
-	if (req.body.accommodation)
-		user.accommodation = req.body.accommodation;
-	user.events = user.events.concat(user.pending);
-	user.pending = [];
-	console.log(user);
-	user.save()
-		.then(function (user) {
-			console.log(user);
-			res.status(200).json({
-				ok: true,
-				user: user
-			});
-		})
-		.catch(function (err) {
-			console.log("Error at checkout: ", err);
-			res.status(500).send(err);
-		});
+router.post('/checkout/callback', function (req, res, next) {
+	console.log('Checked out');
+	res.json(req.body);
+	// user = new model(req.user);
+	// if (req.body.accommodation)
+	// 	user.accommodation = req.body.accommodation;
+	// user.events = user.events.concat(user.pending);
+	// user.pending = [];
+	// console.log(user);
+	// user.save()
+	// 	.then(function (user) {
+	// 		console.log(user);
+	// 		res.status(200).json({
+	// 			ok: true,
+	// 			user: user
+	// 		});
+	// 	})
+	// 	.catch(function (err) {
+	// 		console.log("Error at checkout: ", err);
+	// 		res.status(500).send(err);
+	// 	});
 });
 module.exports = {
 	route: '/users',
 	model: model,
 	router: router,
+	getCart: getCart,
 };

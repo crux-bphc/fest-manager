@@ -1,6 +1,8 @@
-var Cart = function () {
+var Cart = function() {
 	var state = {
 		total: 0,
+		subtotal: 0,
+		additionals: [],
 	};
 
 	const remove = function (id, event) {
@@ -36,53 +38,48 @@ var Cart = function () {
 		});
 	};
 
-	var onchange = function () {
+	const onchange = function(init = false) {
 		$.ajax({
 			method: 'POST',
 			url: '/api/users/cart',
 			async: true,
 			data: {
-				accomm: $('#availAccomm').is(':checked'),
-				amount: $('#availAccomm').is(':checked') ? $('#field-choice').val().split('\u20b9')[1] : 0,
+				init: init,
+				additionals: state.additionals,
 			},
 			headers: {
 				"Client": "Fest-Manager/dash"
 			},
 			dataType: 'json',
-		}).done(function (data) {
-			$('#cart-subtotal').html(data.subtotal);
-			if (data.additional) {
-				$('#cart-additional').css('display', 'block');
+		}).done(function(response) {
+			state.total = response.total;
+			state.subtotal = response.subtotal;
+
+			$('#cart [name="subtotal"]').html(response.subtotal);
+			if (response.user.additionals) {
+				response.user.additionals.forEach(function(addition) {
+					if(addition.pending)
+						$('#cart .additional[name="' + addition.label + '"]').css('display', 'block');
+					else
+						$('#cart .additional[name="' + addition.label + '"]').css('display', 'none');
+				});
 			} else {
-				$('#cart-additional').css('display', 'none');
+				$('#cart .additional').css('display', 'block');
 			}
-			$('#cart-total').html(data.total);
+			$('#cart [name="total"]').html(response.total);
 		});
 	};
 
 	$('.cart > input, .cart > select').change(onchange);
 
 	// Dummmy Submit Button
-	$('.payment .button').click(function () {
-		$.ajax({
-			type: 'POST',
-			url: '/transaction', // Fix gateway address here.
-			dataType: 'json',
-			contentType: 'json',
-			data: state,
-			headers: {
-				Client: 'Fest-Manager/dash',
-			},
-			async: true,
-		}).done(function (response) {
-			manager.route('/dashboard');
-		});
+	$('.payment .button').click(function() {
+		manager.route('dashboard/checkout');
 	});
 
-	const init = function () {
-		onchange();
-		console.log("Fired Onchange On Load.");
-	};
+	const init = function(){
+		onchange(true);
+	}
 
 	return {
 		init: init,

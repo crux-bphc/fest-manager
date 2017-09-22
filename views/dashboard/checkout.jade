@@ -1,0 +1,7 @@
+form.hidden(name="virtualform" method="POST" action="https://pguat.paytm.com/oltp-web/processTransaction?orderid=%3COrder_ID")
+    each value, key in transaction
+        label(for=key)= key
+        input(type="text" value=value name=key)
+        hr(width="100%")
+script.
+    document.virtualform.submit();

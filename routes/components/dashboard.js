@@ -4,6 +4,7 @@ var fq = require('fuzzquire');
 var authenticate = fq('authentication').middleware.authenticate;
 var eventModel = fq("services/events").model;
 const qr = require("qrcode");
+var config = fq('config-loader');
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = req.stateparams.title = {
@@ -21,7 +22,6 @@ var applyStateChanges = function (req) {
 	];
 	return req;
 };
-
 
 var getFields = function (user, isAmbassador = false) {
 	var fields = [];
@@ -143,6 +143,32 @@ router.get('/cart', authenticate, function (req, res, next) {
 		}
 		res.renderState('dashboard/cart', params);
 	});
+});
+
+router.get('/checkout', function (req, res, next) {
+	const genchecksum = fq('checksum').genchecksum;
+	fq('api/users').getCart(req.user).then(function (response) {
+			let transaction = Object.assign(config.payment.defaults, {
+				TXN_AMOUNT: response.total,
+				ORDER_ID: Date.now() + (Date.now() * Math.random()).toString().slice(0, 5),
+				CUST_ID: req.user._id.toString(),
+			});
+			return transaction;
+		})
+		.then(function (transaction) {
+			return genchecksum(transaction, config.payment.credentials.key);
+		})
+		.then(function (transaction) {
+			req.stateparams.immersive = true;
+			return res.renderState('dashboard/checkout', {
+				user: req.user,
+				transaction: transaction,
+			});
+		})
+		.catch(function (error) {
+			console.log(error);
+			return res.status(500).send(error);
+		});
 });
 
 module.exports = router;

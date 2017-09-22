@@ -117,9 +117,17 @@
     background:#f0f0f0;
     font-weight: 600;
     color:#666;
+    cursor: pointer;
     line-height: 3em;
     border-radius: 4px;
     text-align: center;
+    transition: box-shadow 0.2s;
+}
+.body > .payment .button:hover {
+    box-shadow: 0px 5px 15px -5px rgba(0,0,0,0.2);
+}
+.body > .payment .button:active {
+    box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.1);
 }
 
 .body > .pending {

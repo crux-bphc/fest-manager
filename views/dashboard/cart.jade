@@ -9,19 +9,19 @@ div.section.body
 	div.pending.event-list
 		+eventList(events, user, true)
 		-var AccommChoice = {type: "select", name: "choice", editable: true, options: ["Common Room / \u20b9100", "Hotel / \u20b9400"]};
-	div.payment
+	div.payment#cart
 		div.price.subtotal
 			i &#x20b9;
-			span.amount#cart-subtotal 0
-		div.additional#cart-additional.disabled
+			span.amount(name="subtotal") 0
+		div.additional(name="Accommodation")
 			input(type="checkbox" id="availAccomm" name="availAccomm")
 			label(for="availAccomm") Add accommodation
 			+fieldMixin(AccommChoice)
 		div.remnant
 			div.price.total
 				i &#x20b9;
-				span.amount#cart-total 0
-			div.button.disabled PAYMENT NOT AVAILABLE
+				span.amount(name="total") 0
+			div.button PAY NOW
 script(src="/static/scripts/cart.js")
 script.
 	Cart.init()

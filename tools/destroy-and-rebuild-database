@@ -85,6 +85,7 @@ var getEvents = function(models) {
                 body: elem._id,
                 category: "Random",
                 type: pre,
+                price: 200 * index,
                 route: elem.code + ++index,
             };
             if (newevent.route.startsWith('rome')) {
@@ -101,6 +102,7 @@ var getEvents = function(models) {
         category: "Conference",
         type: "Conference",
         route: "@pybits",
+        price: 200,
     });
 
     return data;
