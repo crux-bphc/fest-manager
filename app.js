@@ -131,7 +131,8 @@ app.use(function (err, req, res, next) {
 		res.redirect('/login?error=github_email_is_private');
 	}
 	console.log("express: Error caught.");
-	res.redirect('/components/not-found');
+	console.log(err.stack);
+	// res.redirect('/components/not-found');
 	// set locals, only providing error in development
 	res.locals.message = err.message;
 	res.locals.error = req.app.get('env') === 'development' ? err : {};
