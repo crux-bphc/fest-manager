@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var fq = require('fuzzquire');
 var middleware = fq('authentication').middleware;
+var projectroot = require('project-root-path');
 
 var exec = function (script, filename) {
 	var exec = require('child_process').exec;

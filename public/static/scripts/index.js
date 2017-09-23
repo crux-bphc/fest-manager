@@ -21,7 +21,8 @@ var manager = function () {
 			e.ctrlKey ||
 			e.shiftKey ||
 			e.metaKey ||
-			(e.button && e.button == 1)
+			(e.button && e.button == 1) ||
+			$(this).attr('absolute')
 		) return;
 		e.preventDefault();
 		client.route($(this).attr("href"));
@@ -151,7 +152,7 @@ var manager = function () {
 
 	client.navigation.generateSubMenu = function (state) {
 		var holder = $('.section.secondary');
-		if (state.submenu.length <= 0) {
+		if (!state.submenu.length > 0) {
 			holder.removeClass('active');
 			return;
 		}

@@ -12,14 +12,14 @@ div.parent-center
 	div.auth-container
 		div.title LOGIN
 		if methods.google
-			a.child-center.google(href="/auth/google")
+			a.child-center.google(href="/auth/google" absolute)
 				i.icon-google
 				span Continue with Google
 		if methods.facebook
-			a.child-center.facebook(href="/auth/facebook")
+			a.child-center.facebook(href="/auth/facebook" absolute)
 				i.icon-facebook
 				span Continue with Facebook
 		if methods.github
-			a.child-center.github(href="/auth/github")
+			a.child-center.github(href="/auth/github" absolute)
 				i.icon-github
 				span Continue with GitHub
