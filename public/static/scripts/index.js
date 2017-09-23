@@ -103,7 +103,10 @@ var manager = function() {
             this.main.initialize();
             this.main.stageEventHandlers();
             this.main.focus();
-        }.bind(this));
+        }.bind(this))
+        .fail(function(error) {
+            manager.route('/404', false);
+        });
     };
 
     client.setState = function(state) {
