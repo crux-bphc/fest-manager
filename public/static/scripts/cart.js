@@ -1,20 +1,19 @@
-var Cart = function() {
-
+var Cart = function () {
 	var state = {
 		total: 0,
-	}
+	};
 
 	const remove = function (id, event) {
 		$.ajax({
 			method: "POST",
 			url: "/api/events/deletefromcart",
-			beforeSend: function(xhr) {
+			beforeSend: function (xhr) {
 				xhr.setRequestHeader("Client", "Fest-Manager/dash");
 			},
 			data: {
 				id: id
 			},
-			success: function(res) {
+			success: function (res) {
 				if (res.status == 200) {
 					swal({
 						title: "Successful",
@@ -37,7 +36,7 @@ var Cart = function() {
 		});
 	};
 
-	var onchange = function() {
+	var onchange = function () {
 		$.ajax({
 			method: 'POST',
 			url: '/api/users/cart',
@@ -50,7 +49,7 @@ var Cart = function() {
 				"Client": "Fest-Manager/dash"
 			},
 			dataType: 'json',
-		}).done(function(data) {
+		}).done(function (data) {
 			$('#cart-subtotal').html(data.subtotal);
 			if (data.additional) {
 				$('#cart-additional').css('display', 'block');
@@ -64,7 +63,7 @@ var Cart = function() {
 	$('.cart > input, .cart > select').change(onchange);
 
 	// Dummmy Submit Button
-	$('.payment .button').click(function() {
+	$('.payment .button').click(function () {
 		$.ajax({
 			type: 'POST',
 			url: '/transaction', // Fix gateway address here.
@@ -75,18 +74,18 @@ var Cart = function() {
 				Client: 'Fest-Manager/dash',
 			},
 			async: true,
-		}).done(function(response) {
+		}).done(function (response) {
 			manager.route('/dashboard');
 		});
 	});
 
-	const init = function(){
+	const init = function () {
 		onchange();
 		console.log("Fired Onchange On Load.");
-	}
+	};
 
 	return {
 		init: init,
 		remove: remove,
-	}
+	};
 }();
