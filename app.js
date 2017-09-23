@@ -7,27 +7,29 @@ var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var strategies = require('./utils/authentication').strategies;
+var fq = require('fuzzquire');
+var strategies = fq('authentication').strategies;
 var router = require('express').Router();
 var redis = require("redis");
 var redisStore = require('connect-redis')(session);
-var configureSerializers = require('./utils/authentication').configureSerializers;
+var configureSerializers = fq('authentication').configureSerializers;
 configureSerializers();
 // Loop over activated authentication strategies
 Object.keys(strategies).forEach(strategy => strategies[strategy]());
 
-var connection = require('./utils/mongoose');
+var connection = fq('mongoose');
 connection();
 
-var stateHandler = require('./utils/state');
-var optionsHandler = require('./utils/options');
+var stateHandler = fq('state');
+var optionsHandler = fq('options');
 
-var index = require('./routes/index');
-var upload = require("./routes/upload");
-var components = require('./routes/components');
-var api = require('./routes/api');
-var auth = require('./routes/auth');
-var data = require('./routes/export');
+var index = fq('routes');
+var upload = fq("routes/upload");
+var components = fq('routes/components');
+var api = fq('routes/api');
+var auth = fq('routes/auth');
+var data = fq('routes/export');
+var transaction = fq('routes/transaction');
 
 var app = express();
 
@@ -118,6 +120,7 @@ app.use(function (req, res, next) {
 app.use('/export', data);
 app.use('/upload', upload);
 app.use('/auth', auth);
+app.use('/transaction', transaction);
 app.use('/components', clientCheckpoint, components);
 app.use('/api', clientCheckpoint, api);
 app.use('/', index);

@@ -28,5 +28,11 @@ router.use('/logout', function (req, res, next) {
 	req.logout();
 	res.redirect('/components/login');
 });
+router.use('/404', function (req, res, next) {
+	req.stateparams.immersive = true;
+	res.renderState('errors/404', {
+		user: req.user
+	});
+});
 
 module.exports = router;

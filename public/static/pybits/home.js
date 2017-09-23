@@ -10,4 +10,4 @@ $('document').ready(function() {
         loop: true,
     }
     var typed = new Typed('#typedholder', options);
-})
+});

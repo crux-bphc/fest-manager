@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var projectroot = require('project-root-path');
-var eventsService = require(projectroot + "/routes/api/services/events").model;
+var fq = require('fuzzquire');
+var eventsService = fq("services/events").model;
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {

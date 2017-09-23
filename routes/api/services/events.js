@@ -26,36 +26,25 @@ var eventsSchema = new Schema({
 });
 
 var model = mongoose.model('eventsModel', eventsSchema);
-var eventModel = model;
-var userModel = require("./users").model;
-var teamModel = require("./teams").model;
-
 
 router.post('/addtocart', function (req, res, next) {
-	var propagateError = function (err) {
-		throw err;
-	};
+	var eventModel = model;
+	var userModel = require("./users").model;
+	var teamModel = require("./teams").model;
 	var event_id = mongoose.Types.ObjectId(req.body.id);
-	var eventTeams, eventTeamSize, userEvents, userTeams, teamId;
-	userModel.find({
-			_id: req.user._id,
-			events: {
-				$all: [event_id]
-			}
+	var eventTeams, eventTeamSize, eventPrice, userEvents, userTeams, teamId;
+	console.log("Got to add to cart");
+	if (req.user.pending.indexOf(req.body.id) != -1 || req.user.events.indexOf(req.body.id) != -1)
+		return res.status(403).send("Event is already in cart");
+	eventModel.findOne({
+			_id: event_id
 		})
-		.then(function (result) {
-			if (typeof result[0] !== "undefined")
-				throw 'Event already in cart';
-		}).catch(propagateError)
-		.then(function () {
-			return eventModel.find({
-				_id: event_id
-			});
-		}).catch(propagateError)
 		.then(function (event) {
-			if (typeof event[0] !== 'undefined') {
-				eventTeams = event[0].teams;
-				eventTeamSize = event[0].teamSize;
+			console.log("Found Event", event);
+			if (typeof event !== 'undefined') {
+				eventTeams = event.teams;
+				eventPrice = event.price;
+				eventTeamSize = event.teamSize;
 				var team = new teamModel({
 					name: req.user.name,
 					members: [req.user._id],
@@ -63,23 +52,30 @@ router.post('/addtocart', function (req, res, next) {
 				});
 				return team.save();
 			} else throw 'Event Not Found';
-		}).catch(propagateError)
+		})
 		.then(function (team) {
+			console.log("Made team", team);
 			teamId = team._id;
 			user = req.user;
 			var userEvents = user.events;
 			var userTeams = user.teams;
-
-			userEvents.push(event_id);
+			var userPending = user.pending || [];
 			userTeams.push(teamId);
-
+			var update = {
+				teams: userTeams
+			};
+			if (!eventPrice) {
+				userEvents.push(event_id);
+				update.events = userEvents;
+			} else {
+				userPending.push(event_id);
+				update.pending = userPending;
+			}
+			console.log(userModel);
 			return userModel.update({
 				_id: req.user._id
-			}, {
-				events: userEvents,
-				teams: userTeams
-			});
-		}).catch(propagateError)
+			}, update);
+		})
 		.then(function (num) {
 			eventTeams.push(teamId);
 
@@ -88,7 +84,7 @@ router.post('/addtocart', function (req, res, next) {
 			}, {
 				teams: eventTeams
 			});
-		}).catch(propagateError)
+		})
 		.then(function (num) {
 			if (eventTeamSize > 1) {
 				res.json({
@@ -115,7 +111,9 @@ router.post('/addtocart', function (req, res, next) {
 });
 
 router.post("/jointeam", function (req, res, next) {
-
+	var eventModel = model;
+	var userModel = require("./users").model;
+	var teamModel = require("./teams").model;
 	var team_id = req.body.id;
 	var user_id = req.user._id;
 
@@ -237,10 +235,24 @@ router.post("/jointeam", function (req, res, next) {
 });
 
 router.post("/deletefromcart", function (req, res, next) {
-
+	var eventModel = model;
+	var userModel = require("./users").model;
+	var teamModel = require("./teams").model;
 	var user_id = req.user._id;
 	var event_id = mongoose.Types.ObjectId(req.body.id);
-
+	if (req.user.pending.indexOf(req.body.id) == -1) {
+		if (req.user.events.indexOf(req.body.id) == -1)
+			return res.json({
+				status: 404,
+				msg: "Event is not in cart"
+			});
+		else {
+			return res.json({
+				status: 403,
+				msg: "Can not unsubscribe now."
+			});
+		}
+	}
 	eventModel.find({
 		_id: event_id
 	}, function (err, events) {
@@ -262,7 +274,7 @@ router.post("/deletefromcart", function (req, res, next) {
 				_id: user_id
 			}, {
 				$pullAll: {
-					events: [event_id]
+					pending: [event_id]
 				}
 			}, function (err, num) {
 				if (err) {
@@ -359,7 +371,7 @@ router.post("/deletefromcart", function (req, res, next) {
 				_id: user_id
 			}, {
 				$pullAll: {
-					events: [event_id]
+					pending: [event_id]
 				}
 			}, function (err, num) {
 				if (err) {

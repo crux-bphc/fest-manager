@@ -3,9 +3,9 @@ include ../mixins/form
 
 link(href="/static/stylesheets/portals.style.css" rel="stylesheet")
 script(src="/static/scripts/image-upload-mixin.js")
-script(type="text/javascript" src="/static/scripts/jquery.uploadPreview.min.js")
+script(type="text/javascript" src="/static/lib/jquery.uploadPreview.min.js")
 link(rel="stylesheet" href="/static/stylesheets/simplemde.min.css")
-script(src="/static/scripts/simplemde.min.js")
+script(src="/static/lib/simplemde.min.js")
 i.meta(_routed_at="/portals")
 div#_portal
 	div.section.header
@@ -15,7 +15,7 @@ div#_portal
 				ul.controls
 					li.icon-add(onclick="formEditor()")
 					li.icon-autorenew(onclick="manager.refresh()")
-					li.icon-arrow_downward(_route="https://bits-atmos.org/export/users")
+					a.icon-arrow_downward(href="https://bits-atmos.org/export/users")
 					li.icon-delete.disabled
 					li.latent.icon-check
 					li.latent.icon-close(onclick="closeEditor()")
@@ -32,7 +32,7 @@ div#_portal
 		each item in items
 			div.item
 				div.title= item.name
-				div.teams(_route="/portals/#{body.code}/#{item.route}")= item.teams.length
+				a.teams(href="/portals/#{body.code}/#{item.route}")= item.teams.length
 				div.edit.button(onclick="edit_item('#{item._id}')")
 					i.icon-mode_edit
 	if !items

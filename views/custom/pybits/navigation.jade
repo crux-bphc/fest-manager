@@ -4,9 +4,15 @@ mixin navigationMixin(isHome)
             img(src=(isHome?"/static/pybits/psf-logo.png":"/static/pybits/psf-logo-black.png"))
         div.right
             if !isHome
-                li(_route="/pybits") Home
-            li(_route="/pybits/talks") Talks
-            li(_route="/pybits/workshops") Workshops
-            li(_route="/pybits/sprints") Sprints
-            li(_route="/pybits/coc") Code of Conduct
-            li(_route="/pybits/2016") About
+                li
+                    a(href="/pybits") Home
+            li
+                a(href="/pybits/talks") Talks
+            li
+                a(href="/pybits/workshops") Workshops
+            li
+                a(href="/pybits/sprints") Sprints
+            li
+                a(href="/pybits/coc") Code of Conduct
+            li
+                a(href="/pybits/2016") About

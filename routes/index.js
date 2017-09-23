@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var authenticate = require('../utils/authentication').middleware;
+var fq = require('fuzzquire');
+var authenticate = fq('authentication').middleware.authenticate;
 /* GET home page. */
 router.get('/?*', function (req, res, next) {
 	var params = {

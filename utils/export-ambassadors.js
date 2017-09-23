@@ -10,5 +10,11 @@ db.usersmodels.find({
 	"phone": true,
 	"institute": true
 }).forEach(function (user) {
-	print(user.name + "|" + user.institute.replace(/,/g, " ") + "|" + user.email + "|" + user.address.replace(/[\n\r]+/g, "").replace(/ +/g, " ").replace(/,/g, " ") + "|" + user.phone + "|" + user.pincode + "|" + user.why.replace(/[\n\r]+/g, "").replace(/ +/g, " ").replace(/,/g, " "));
+	if (user.institute)
+		user.institute = user.institute.replace(/,/g, " ");
+	if (user.address)
+		user.address = user.address.replace(/[\n\r]+/g, "").replace(/ +/g, " ").replace(/,/g, " ");
+	if (user.why)
+		user.why = user.why.replace(/[\n\r]+/g, "").replace(/ +/g, " ").replace(/,/g, " ");
+	print(user.name + "|" + user.institute + "|" + user.email + "|" + user.address + "|" + user.phone + "|" + user.pincode + "|" + user.why);
 });

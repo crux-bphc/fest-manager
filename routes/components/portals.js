@@ -1,17 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var projectroot = require('project-root-path');
-var authenticate = require('../../utils/authentication').middleware;
-var bodiesService = require('../api/services/bodies').model;
-var eventsService = require('../api/services/events').model;
-var userService = require('../api/services/users').model;
-var elevate = function (req, res, next) {
-	if (req.user.privilege)
-		return next();
-	let error = new Error('Access denied');
-	error.status = 401;
-	return next(error);
-};
+var fq = require('fuzzquire');
+var middleware = fq('authentication').middleware;
+var bodiesService = fq('services/bodies').model;
+var eventsService = fq('services/events').model;
+var userService = fq('services/users').model;
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = req.stateparams.title = {
@@ -25,7 +18,7 @@ var applyStateChanges = function (req) {
 	return req;
 };
 
-router.get('/', authenticate, elevate, function (req, res, next) {
+router.get('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	req = applyStateChanges(req);
 	if (req.user.privilege.level == 2)
 		bodiesService.find(function (err, items) {
@@ -45,7 +38,7 @@ router.get('/', authenticate, elevate, function (req, res, next) {
 });
 
 
-router.get('/dosh', authenticate, elevate, function (req, res, next) {
+router.get('/dosh', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	var params = {
 		title: 'Register Newcomer',
 		user: req.user,
@@ -77,7 +70,7 @@ router.get('/dosh', authenticate, elevate, function (req, res, next) {
 });
 
 
-router.get('/ca/view', authenticate, elevate, function (req, res, next) {
+router.get('/ca/view', middleware.authenticate, middleware.elevate, function (req, res, next) {
 
 	if (req.user.privilege.body != "ca" && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
@@ -100,7 +93,7 @@ router.get('/ca/view', authenticate, elevate, function (req, res, next) {
 		});
 });
 
-router.get('/:body', authenticate, elevate, function (req, res, next) {
+router.get('/:body', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
@@ -125,13 +118,13 @@ router.get('/:body', authenticate, elevate, function (req, res, next) {
 				user: req.user,
 				body: body,
 				items: items,
-				fields: require(projectroot + "/forms/new-event")(),
+				fields: fq("new-event")(),
 			});
 		});
 	});
 });
 
-router.get('/:body/:eventroute', authenticate, elevate, function (req, res, next) {
+router.get('/:body/:eventroute', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
@@ -196,7 +189,7 @@ function generate_pdf(event) {
 	});
 }
 
-router.post('/:body/add', authenticate, elevate, function (req, res, next) {
+router.post('/:body/add', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;
@@ -215,7 +208,7 @@ router.post('/:body/add', authenticate, elevate, function (req, res, next) {
 	});
 });
 
-router.post('/:body/edit', authenticate, elevate, function (req, res, next) {
+router.post('/:body/edit', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
 		error.status = 403;

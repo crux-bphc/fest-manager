@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-var projectroot = require('project-root-path');
-const config = require(projectroot + '/utils/config-loader');
+var fq = require('fuzzquire');
+const config = fq('config-loader');
 
 var callbackHandler = function (req, res) {
 	if (req.session.callback) {

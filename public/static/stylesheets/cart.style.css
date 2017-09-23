@@ -3,7 +3,130 @@
     border:none !important;
 }
 
-.event-wrapper {
+.section.body {
+    width: 100%;
+    position:relative;
+    display: flex;
+}
+
+.body > .payment {
+    padding: 2em;
+    width: 15em;
+    height: 25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+#cart-additional {
+    display: none;
+}
+#cart-additional.disabled::after {
+    content: "Availing accommodation will be possible soon";
+    line-height: 1.2em;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+#availAccomm {
+    display: none;
+}
+
+#availAccomm + label {
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+#availAccomm + label::before {
+    display: inline-block;
+    margin-right: 0.5em;
+    width:20px;
+    border-radius:5px;
+    height:20px;
+    vertical-align: top;
+    /*box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.5) inset;*/
+    box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.5) inset, 0px 0px 0px 15px #fff inset, 0px 0px 0px 15px rgba(0,0,0,0.5) inset;
+    content: "";
+    transition: all 0.2s;
+}
+#availAccomm:checked + label::before {
+    transform: rotateZ(90deg);
+    box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.5) inset, 0px 0px 0px 4px #fff inset, 0px 0px 0px 15px rgba(0,0,0,0.5) inset;
+}
+.body > .payment .additional .field-container {
+    height: 0em;
+    overflow: hidden;
+    transition: height 0.2s;
+}
+#availAccomm:checked ~ .field-container {
+    height: 3em;
+}
+.body > .payment .price {
+    text-align: right;
+    width: 100%;
+    margin-bottom: 2em;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.body > .payment .price i {
+    font-style: normal;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 1.5em;
+}
+.body > .payment .price span {
+    font-weight: 600;
+    font-size: 1.5em;
+    text-align: right;
+    line-height: 1.5em;
+}
+.body > .payment .price::before {
+    color: #ccc;
+    font-weight: 400;
+    display: block;
+    text-align: right;
+    font-size: initial;
+}
+.body > .payment .subtotal {
+    font-size: 1em;
+}
+.body > .payment .total {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+.body > .payment .subtotal::before {
+    content: "Subtotal";
+}
+.body > .payment .total::before {
+    content: "Total";
+}
+.body > .payment .remnant {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+.body > .payment .button {
+    display: block;
+    width:100%;
+    background:#f0f0f0;
+    font-weight: 600;
+    color:#666;
+    line-height: 3em;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.body > .pending {
+    flex-grow: 1;
+}
+
+.event-list .wrapper {
     display: inline-block;
     overflow:hidden;
     vertical-align: top;
@@ -17,20 +140,17 @@
     margin-right:1em;
     position: relative;
 }
-.event-wrapper .image {
-    display: none;
-}
-.event-wrapper .tagline {
+.event-list .event-container .tagline {
     white-space: nowrap;
     max-width:100%;
     text-overflow: ellipsis;
     overflow:hidden;
 }
-.event-wrapper .tag {
+.event-list .event-container .tag {
     text-transform: uppercase;
     line-height: 1em;
 }
-.event-wrapper h3 {
+.event-list .event-container h3 {
     color:#444;
     line-height: 1.2;
     margin:0.5em 0em;
@@ -38,7 +158,14 @@
     height: 2.4em;
     overflow:hidden;
 }
-.event-wrapper .icon-close {
+
+.event-list .flex-wrapper {
+    display: flex;
+    margin-right: -1em;
+    flex-wrap: wrap;
+}
+
+.event-list .wrapper .icon-close {
     position:absolute;
     top:0px;
     padding: 0.5em 0.5em;
@@ -46,10 +173,16 @@
     font-size: 1.2em;
     cursor:pointer;
 }
-.event-wrapper .price {
+.event-list .wrapper .price {
     color:#202729;
 }
-.event-wrapper .foot {
+.event-list .wrapper.subscribed {
+    box-shadow: -4px 0px 0px 0px #2db55d;
+}
+.event-list .wrapper.pending {
+    box-shadow: -4px 0px 0px 0px orange;
+}
+.event-list .wrapper .foot {
     width:100%;
     bottom:0;
     left: 0;
@@ -63,19 +196,33 @@
     box-sizing: border-box;
     padding:0em 1em;
 }
-.event-wrapper .foot > div {
+.event-list .wrapper.subscribed .foot {
+    background: hsla(141, 61%, 95%, 1);
+}
+.event-list .wrapper.pending .foot {
+    background: hsla(39, 100%, 95%, 1);
+}
+.event-list .wrapper .foot > div {
     font-weight: 600;
     font-size:0.9em;
 }
-.event-wrapper .foot > .team > span:first-child {
+.event-list .wrapper .foot > .team > span:first-child {
     color:#666;
 }
-.event-wrapper .foot > .team > span:last-child {
+.event-list .wrapper .foot > .team > span:last-child {
     text-transform: uppercase;
 }
 
 @media only screen and (max-width:500px) {
-    .event-wrapper {
+    .section.body {
+        flex-direction: column;
+    }
+    .body > .payment {
+        width: 100%;
+        box-sizing: border-box;
+        height: 25em;
+    }
+    .event-container {
         width:100%;
         box-sizing: border-box;
         margin:1em 0;

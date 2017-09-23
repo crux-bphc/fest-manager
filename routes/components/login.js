@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var projectroot = require('project-root-path');
-const config = require(projectroot + '/utils/config-loader');
-const userService = require(projectroot + '/routes/api/services/users').model;
+var fq = require('fuzzquire');
+const config = fq('config-loader');
+const userService = fq('services/users').model;
 
 router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Login';

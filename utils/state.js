@@ -18,12 +18,6 @@ module.exports = function () {
 			user.isElevated = req.user.privilege ? true : false;
 			user.privilege = req.user.privilege;
 			user.email = req.user.email;
-			if (user.githubID) {
-				user.avatar = "https://avatars1.githubusercontent.com/u/" + user.githubID;
-			}
-			if (user.facebookID) {
-				user.avatar = "https://graph.facebook.com/v2.9/" + user.facebookID + "/picture?type=large";
-			}
 			if (req.user.institute && req.user.phone) {
 				user.profile = true; //True if profile is complete
 			}
@@ -65,20 +59,12 @@ module.exports = function () {
 		return state;
 	};
 
-	var appendTestState = function (state) {
-		var test = {};
-		test.showportal = state.sidebar.dashboard;
-		state.test = test;
-		return state;
-	};
-
 	var getState = function (req) {
 		var state = {};
 		state = appendStateFromRequest(state, req);
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
-		// state = appendTestState(state);
 		return state;
 	};
 	return {

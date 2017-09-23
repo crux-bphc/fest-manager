@@ -1,17 +1,27 @@
-include ../mixins/event
+include ../mixins/eventList
+include ../mixins/field
+
 link(href="/static/stylesheets/cart.style.css" rel="stylesheet")
 div.section.header
 	h1= title
 	div.stretch
-	-if(events.length > 0) {
-		for event in events
-			div.event-wrapper
-				+eventMixin(event)
-				i.icon-close(onclick="delete_from_cart('#{event._id}', this)")
-				div.foot
-					div.price
-					div.team
-						span Team ID:
-						span= (user.teams.filter(team => event.teams.indexOf(team) != -1))
-	- }
+div.section.body
+	div.pending.event-list
+		+eventList(events, user, true)
+		-var AccommChoice = {type: "select", name: "choice", editable: true, options: ["Common Room / \u20b9100", "Hotel / \u20b9400"]};
+	div.payment
+		div.price.subtotal
+			i &#x20b9;
+			span.amount#cart-subtotal 0
+		div.additional#cart-additional.disabled
+			input(type="checkbox" id="availAccomm" name="availAccomm")
+			label(for="availAccomm") Add accommodation
+			+fieldMixin(AccommChoice)
+		div.remnant
+			div.price.total
+				i &#x20b9;
+				span.amount#cart-total 0
+			div.button.disabled PAYMENT NOT AVAILABLE
 script(src="/static/scripts/cart.js")
+script.
+	Cart.init()

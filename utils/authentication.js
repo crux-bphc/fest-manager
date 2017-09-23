@@ -1,7 +1,7 @@
 const passport = require('passport');
-var projectroot = require('project-root-path');
-const config = require(projectroot + '/utils/config-loader');
-const userService = require(projectroot + '/routes/api/services/users').model;
+const fq = require('fuzzquire');
+const config = fq('config-loader');
+const userService = fq('services/users').model;
 
 var findOrCreate = function (accessToken, profile, provider, done) {
 	userService.findOne({
@@ -25,32 +25,22 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				passport.serializeUser(function (user, done) {
 					return done(null, user._id);
 				});
-				var nodemailer = require('nodemailer');
-				var transporter = nodemailer.createTransport({
-					service: 'Gmail',
-					auth: {
-						user: 'atmos@hyderabad.bits-pilani.ac.in', // Your email id
-						pass: 'bits@123' // Your password
-					}
-				});
+				var userData = [{
+					email: user.email,
+					params: {
+						title: "Sample Email",
+					},
+				}];
 				var mailOptions = {
-					from: 'atmos@hyderabad.bits-pilani.ac.in>', // sender address
-					to: 'vermaabhilash70@gmail.com', // list of receivers
-					subject: 'Test Email from Production', // Subject line
-					text: "This email was auto-generated from https://bits-atmos.org. It means someone has recently registered." //, // plaintext body
-					// html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+					subject: 'Atmos Registration Successful', // Subject line
+					template: 'email-templates/test',
 				};
-				transporter.sendMail(mailOptions, function (error, info) {
-					if (error) {
-						console.log(error);
-						return done(error, user);
-						// res.json({ yo: 'error' });
-					} else {
-						console.log('Message sent: ' + info.response);
-						return done(err, user);
-					}
-				});
-				return done(err, user);
+				fq('utils/mailer')(userData, mailOptions)
+					.catch(err => console.log(err))
+					.then(function (data) {
+						console.log('data');
+						done(err, user);
+					});
 			});
 		} else {
 			if (provider == 'googleID') {
@@ -132,8 +122,19 @@ var authenticate = function (req, res, next) { // custom middleware to check if 
 	res.redirect('/components/login');
 };
 
+var elevate = function (req, res, next) {
+	if (req.user.privilege)
+		return next();
+	let error = new Error('Access denied');
+	error.status = 401;
+	return next(error);
+};
+
 module.exports = {
 	configureSerializers: configureSerializers,
 	strategies: strategies,
-	middleware: authenticate
+	middleware: {
+		authenticate: authenticate,
+		elevate: elevate,
+	},
 };

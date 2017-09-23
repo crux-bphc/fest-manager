@@ -41,7 +41,7 @@ module.exports = function(event) {
         editable: true,
         value: event ? event.type : "",
         type: "select",
-        options: ["Headliner", "Competition", "Workshop", "Proshow"],
+        options: ["Headliner", "Competition", "Workshop", "Talk", "Conference", "Proshow"],
         none: true,
         group: 0,
     });

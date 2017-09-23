@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var authenticate = require('../../utils/authentication').middleware;
+var fq = require('fuzzquire');
+var authenticate = fq('authentication').middleware.authenticate;
+var eventModel = fq("services/events").model;
 const qr = require("qrcode");
 
 var applyStateChanges = function (req) {
@@ -72,16 +74,34 @@ var getFields = function (user, isAmbassador = false) {
 /* GET users listing. */
 router.get('/', authenticate, function (req, res, next) {
 	req = applyStateChanges(req);
-	qr.toDataURL(req.user.email, {
-		errorCorrectionLevel: 'H'
-	}, function (err, url) {
-		req.user.qrData = url;
-		var params = {
-			user: req.user,
-			title: "Dashboard"
-		};
-		res.renderState('dashboard/dashboard', params);
-	});
+	var subscribed, pending;
+	Promise.all([eventModel.find({
+			_id: {
+				$in: req.user.pending
+			}
+		}).then(events => {
+			pending = events;
+		}), eventModel.find({
+			_id: {
+				$in: req.user.events
+			}
+		}).then(events => {
+			subscribed = events;
+		})])
+		.then(function (events) {
+			qr.toDataURL(req.user.email, {
+				errorCorrectionLevel: 'H'
+			}, function (err, url) {
+				req.user.qrData = url;
+				var params = {
+					user: req.user,
+					subscribed: subscribed,
+					pending: pending,
+					title: "Dashboard"
+				};
+				res.renderState('dashboard/dashboard', params);
+			});
+		});
 });
 
 router.get('/account', authenticate, function (req, res, next) {
@@ -96,24 +116,20 @@ router.get('/account', authenticate, function (req, res, next) {
 
 router.get('/cart', authenticate, function (req, res, next) {
 
-	var eventModel = require("../api/services/events").model;
-
 	req = applyStateChanges(req);
 	eventModel.find({
 		_id: {
-			$in: req.user.events
+			$in: req.user.pending
 		}
 	}, function (err, result) {
-		if (err) {
-			console.log("ERROR: " + err);
-			params.error = "Error finding events";
-			return;
-		}
 		var params = {
-			title: 'Cart',
+			title: 'Check Out',
 			user: req.user,
 			events: result
 		};
+		if (err || !result.length) {
+			params.error = "Error finding events";
+		}
 		res.renderState('dashboard/cart', params);
 	});
 });

@@ -7,28 +7,28 @@ div.section.header
 	div.stretch
 		div.remnant
 			ul.controls
-				li.icon-shopping_cart(_route="/dashboard/cart")
+				a.icon-shopping_cart(href="/dashboard/cart")
 		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
-div.section.tags
-	a.active(href="#") All
-	a(href="#TechExpo") Tech Expo
-	a(href="#Programming") Programming
-	a(href="#MeanMachines") Mean Machines
-	a(href="#FandM") Finance and Management
-	a(href="#Quiz") Quizzing
-	a(href="#Robotics") Robotics
-	a(href="#DeepSciences") Deep Sciences
-	a(href="#DoItNow") Do it now
-	a(href="#PaperPresentation") Paper Presentation
+//- div.section.tags
+//- 	a.active(href="#") All
+//- 	a(href="#TechExpo") Tech Expo
+//- 	a(href="#Programming") Programming
+//- 	a(href="#MeanMachines") Mean Machines
+//- 	a(href="#FandM") Finance and Management
+//- 	a(href="#Quiz") Quizzing
+//- 	a(href="#Robotics") Robotics
+//- 	a(href="#DeepSciences") Deep Sciences
+//- 	a(href="#DoItNow") Do it now
+//- 	a(href="#PaperPresentation") Paper Presentation
 div.section.events-wrapper
 	each event in events
 		- if(event.route.toLowerCase() == "techexpo" || event.route.toLowerCase() == "@pybits")
-			+eventMixin(event)
+			+eventMixin(event, true)
 	each event in events
 		- if(event.category.toLowerCase() != "techexpo" && event.route.toLowerCase() != "@pybits" && event.type.toLowerCase() == "headliner")
-			+eventMixin(event)
+			+eventMixin(event, true)
 	each event in events
 		- if(event.category.toLowerCase() != "techexpo" && event.route.toLowerCase() != "@pybits" && event.type.toLowerCase() != "headliner")
-			+eventMixin(event)
+			+eventMixin(event, true)
 script(src="/static/scripts/events.js" type="text/javascript")
