@@ -28,15 +28,11 @@ router.use('/logout', function (req, res, next) {
 	req.logout();
 	res.redirect('/components/login');
 });
-
-router.get('/not-found', function (req, res, next) {
-	res.renderState('not-found', {
-		user: req.user
-	});
-});
-
-router.use(function (req, res, next) {
-	res.redirect('/components/not-found');
-});
+router.use('/404', function(req, res, next) {
+    req.stateparams.immersive = true;
+    res.renderState('errors/404', {
+        user: req.user
+    });
+})
 
 module.exports = router;
