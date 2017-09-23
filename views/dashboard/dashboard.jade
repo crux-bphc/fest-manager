@@ -33,7 +33,7 @@ div.section.body
 					i.icon-verified_user
 					span Campus Ambassador
 			else
-				div.button(_route="/ca") Become a Campus Ambassador
+				a.button(href="/ca") Become a Campus Ambassador
 	div.events
 		if (subscribed.length || pending.length)
 			if subscribed.length
@@ -42,7 +42,7 @@ div.section.body
 			if pending.length
 				div.event-list.pending(data-title="In cart")
 					+eventList(pending, user, true)
-					div.button(_route="/dashboard/cart") Proceed To Cart
+					a.button(href="/dashboard/cart") Proceed To Cart
 		else
 			div.event-list(data-title="Registered Events")
 				span(style="margin-left: 1em;") You have not registered for anything. Go to the events section to register.

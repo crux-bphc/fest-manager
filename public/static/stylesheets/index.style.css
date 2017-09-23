@@ -11,6 +11,8 @@
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: unset;
 }
 
 body {
@@ -123,10 +125,6 @@ input[type = "file"] {
     height: 100vh;
     width: 100vw;
     border-radius: 0px;
-}
-
-.window [_route] {
-    cursor: pointer;
 }
 
 .window .meta {
@@ -397,7 +395,7 @@ input[type = "file"] {
     margin: 1.25em 0;
 }
 
-.sidebar .section > label {
+.sidebar .section > .label {
     color: #445256;
     padding-bottom: 1em;
     display: block;
@@ -408,7 +406,7 @@ input[type = "file"] {
     padding: 0;
 }
 
-.sidebar .section > ul > li {
+.sidebar .section > ul > a {
     line-height: 2em;
     cursor: pointer;
     display: flex;
@@ -418,13 +416,13 @@ input[type = "file"] {
     white-space: nowrap;
 }
 
-.sidebar .section > ul > li:hover > i {
+.sidebar .section > ul > a:hover > i {
     color: #e5e8e9;
     margin-left: 0.25em;
     border-color: #e5e8e9;
 }
 
-.sidebar .section > ul > li.active > i {
+.sidebar .section > ul > a.active > i {
     font-weight: 500;
     color: #e5e8e9;
     margin-left: 0.5em;
@@ -432,17 +430,17 @@ input[type = "file"] {
     background: #e5e8e9;
 }
 
-.sidebar .section > ul > li.active > span {
+.sidebar .section > ul > a.active > span {
     font-weight: 500;
     color: #e5e8e9;
 }
 
-.sidebar .section > ul > li > span {
+.sidebar .section > ul > a > span {
     vertical-align: top;
     transition: font-weight 0.2s;
 }
 
-.sidebar .section > ul > li > i {
+.sidebar .section > ul > a > i {
     border: 2px solid;
     border-color: inherit;
     border-radius: 50%;
@@ -498,51 +496,51 @@ input[type = "file"] {
     pointer-events: all;
 }
 
-.sidebar .secondary-wrapper > .secondary > ul > li {
+.sidebar .secondary-wrapper > .secondary > ul > a {
     transform: translateX(-1em);
     opacity: 0;
 }
 
-.sidebar .secondary-wrapper > .secondary.active > ul > li {
+.sidebar .secondary-wrapper > .secondary.active > ul > a {
     transform: none;
     opacity: 1;
 }
-.sidebar .secondary-wrapper > .secondary > ul > li:hover > i {
+.sidebar .secondary-wrapper > .secondary > ul > a:hover > i {
     margin-left: 0em;
 }
 
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(1) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(1) {
     transition-delay: 0.1s;
 }
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(2) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(2) {
     transition-delay: 0.2s;
 }
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(3) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(3) {
     transition-delay: 0.3s;
 }
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(4) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(4) {
     transition-delay: 0.4s;
 }
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(5) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(5) {
     transition-delay: 0.5s;
 }
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(6) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(6) {
     transition-delay: 0.6s;
 }
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(7) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(7) {
     transition-delay: 0.7s;
 }
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(8) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(8) {
     transition-delay: 0.8s;
 }
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(9) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(9) {
     transition-delay: 0.9s;
 }
-.sidebar .secondary-wrapper > .secondary ul li:nth-child(10) {
+.sidebar .secondary-wrapper > .secondary ul a:nth-child(10) {
     transition-delay: 1s;
 }
 
-.sidebar .secondary-wrapper > .secondary ul li i {
+.sidebar .secondary-wrapper > .secondary ul a i {
     height:0px;
     border-radius:2px;
     border-width: 1px;

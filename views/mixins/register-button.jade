@@ -11,7 +11,8 @@ mixin cartActionsMixin(event, user, text)
             - else if(user.pending.indexOf(event._id) != -1)
                 div.pending.button
                     i.icon-close(onclick="RegisterButton.remove(this, '#{event._id}'), #{event.price ? false : true}")
-                    span(title="Go to cart" _route="/dashboard/cart") Payment Pending
+                    a(title="Go to cart" href="/dashboard/cart")
+                        span Payment Pending
             - else if(event.teamSize > 1)
                 div.latent(tabindex="1")
                     div.add_to_cart.button
@@ -28,6 +29,6 @@ mixin cartActionsMixin(event, user, text)
                     i.icon-add_shopping_cart
                     span Register
         - else
-            div.add_to_cart.button(_route="/login?callback=/events/#{event.route}")
+            a.add_to_cart.button(href="/login?callback=/events/#{event.route}")
                 i.icon-add_shopping_cart
                 span Register

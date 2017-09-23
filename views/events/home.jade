@@ -7,7 +7,7 @@ div.section.header
 	div.stretch
 		div.remnant
 			ul.controls
-				li.icon-shopping_cart(_route="/dashboard/cart")
+				a.icon-shopping_cart(href="/dashboard/cart")
 		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
 //- div.section.tags
