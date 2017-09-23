@@ -17,6 +17,7 @@ var usersSchema = new Schema({
 		type: String
 	},
 	teams: [shortID],
+	referred_by: String,
 	events: [Schema.Types.ObjectId],
 	accommodation: Number,
 	token: String,

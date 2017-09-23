@@ -55,13 +55,22 @@ fs.readFile(path.join(projectroot, 'utils', 'institutes.json'), (err, data) => {
 
 const userService = fq('services/users').model;
 userService.find({}, {
-	email: true
+	email: true,
+	name: true,
+	isAmbassador: true
 }, function (err, data) {
-	var allUserEmails = [];
+	var allUserEmails = [], ambassadors = [];
 	data.forEach(function (elem) {
 		allUserEmails.push(elem.email);
 	});
+	data.forEach(function (elem) {
+		if(elem.isAmbassador)
+		{
+			ambassadors.push(elem.name + ", "+ elem.email);
+		}
+	});
 	registerTypeahead('email', allUserEmails);
+	registerTypeahead('ambassador', ambassadors);
 });
 
 module.exports = router;
