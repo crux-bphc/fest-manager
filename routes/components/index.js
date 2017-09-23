@@ -33,6 +33,6 @@ router.use('/404', function(req, res, next) {
     res.renderState('errors/404', {
         user: req.user
     });
-})
+});
 
 module.exports = router;
