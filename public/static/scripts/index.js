@@ -34,6 +34,10 @@ var manager = function () {
 	};
 	client.route = function (route, status = true, reload = false) {
 		if (!route) return;
+		if (route.startsWith("http")) {
+			window.open(route, '_blank');
+			return;
+		}
 		if (route[0] != '/')
 			route = '/' + route;
 		if (route.indexOf('/components') == -1)
@@ -43,10 +47,7 @@ var manager = function () {
 		if (window.innerWidth < 800)
 			$('.window > .remnant').removeClass('shift_to_expose_menu');
 		if (!route) return;
-		if (route.startsWith("http")) {
-			window.open(route, '_blank');
-			return;
-		}
+
 		if (route.indexOf('#') != -1) {
 			client.hash = route.split('#')[1];
 			if (route.split('#')[0] == this.state.location) {

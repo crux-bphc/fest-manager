@@ -37,7 +37,8 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				};
 				fq('utils/mailer')(userData, mailOptions)
 					.catch(err => console.log(err))
-					.then(function () {
+					.then(function (data) {
+						console.log('data');
 						done(err, user);
 					});
 			});
