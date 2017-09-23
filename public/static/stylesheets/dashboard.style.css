@@ -78,7 +78,7 @@ div.ca .button {
 	margin-top:1em;
 }
 
-.main div.button {
+.main .button {
 	line-height: 3em;
 	padding:0 1em;
 	border-radius:4px;
@@ -89,7 +89,7 @@ div.ca .button {
 	display: inline-block;
 }
 
-.main div.button:hover {
+.main .button:hover {
 	background:#e0e0e0;
 }
 div.ca .content .button {
@@ -163,7 +163,7 @@ div.ca .content .button {
 	left: 0;
 	font-weight: 500;
 }
-.event-list.pending div.button {
+.event-list.pending .button {
     align-self: flex-end;
 }
 

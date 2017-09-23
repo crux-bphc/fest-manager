@@ -17,10 +17,14 @@ var manager = function() {
         }
     });
     let anchor = function(e) {
-        client.route($(this).attr("_route"));
-    };
-    let outerAnchor = function(e) {
-        return true;
+        if (
+            e.ctrlKey ||
+            e.shiftKey ||
+            e.metaKey ||
+            (e.button && e.button == 1)
+        ) return;
+        e.preventDefault();
+        client.route($(this).attr("href"));
     };
     client.getLocation = function() {
         return client.state.location;
@@ -29,6 +33,7 @@ var manager = function() {
         client.route(client.state.location, true, true);
     }
     client.route = function(route, status = true, reload = false) {
+        if (!route) return;
         if (route[0] != '/')
             route = '/' + route;
         if (route.indexOf('/components') == -1)
@@ -44,69 +49,66 @@ var manager = function() {
         }
         if (route.indexOf('#') != -1) {
             client.hash = route.split('#')[1];
-            if(route.split('#')[0] == this.state.location) {
+            if (route.split('#')[0] == this.state.location) {
                 window.location.hash = '#' + client.hash;
                 return;
             }
-        }
-        else {
+        } else {
             client.hash = "";
         }
         client.oldroute = this.state.location;
         client.addClass('loading');
         $.ajax({
-            type: 'GET',
-            url: route,
-            dataType: 'json',
-            async: true,
-            contentType: 'text/plain',
-            beforeSend: function(request) {
-                request.setRequestHeader("Client", "Fest-Manager/dash");
-            }
-        }).done(function(data, textStatus, req) {
-            var url = data.state.location.replace('/components', '') + (client.hash ? '#' + client.hash : "");
-            if (status)
-                window.history.pushState(url, "", url);
-            this.activeRoute = route;
-            this.setState(data.state);
-            if ($('.window').hasClass('immersive')) $('.window > .remnant').removeClass("shift_to_expose_menu");
-            var tray = this.main.find('.tray');
-            tray.html(data.html);
-            tray.ready(function() {
-                if(client.hash) {
-                    window.location.hash = '#' + client.hash;
-                    window.history.replaceState(url, "", url);
+                type: 'GET',
+                url: route,
+                dataType: 'json',
+                async: true,
+                contentType: 'text/plain',
+                beforeSend: function(request) {
+                    request.setRequestHeader("Client", "Fest-Manager/dash");
                 }
-                window.onhashchange();
-                tray.removeClass('tray').addClass('face').siblings().removeClass('face').addClass('tray');
-                $('.main .face').scrollTop(0);
-                $('.scrollable').enscroll({
-                    showOnHover: true,
-                    verticalTrackClass: 'enscroll-track',
-                    verticalHandleClass: 'enscroll-handle'
-                },function(data){
-                	console.log("Me called!",data);
-                });
+            }).done(function(data, textStatus, req) {
+                var url = data.state.location.replace('/components', '') + (client.hash ? '#' + client.hash : "");
+                if (status)
+                    window.history.pushState(url, "", url);
+                this.activeRoute = route;
+                this.setState(data.state);
+                if ($('.window').hasClass('immersive')) $('.window > .remnant').removeClass("shift_to_expose_menu");
+                var tray = this.main.find('.tray');
+                tray.html(data.html);
+                tray.ready(function() {
+                    if (client.hash) {
+                        window.location.hash = '#' + client.hash;
+                        window.history.replaceState(url, "", url);
+                    }
+                    window.onhashchange();
+                    tray.removeClass('tray').addClass('face').siblings().removeClass('face').addClass('tray');
+                    $('.main .face').scrollTop(0);
+                    $('.scrollable').enscroll({
+                        showOnHover: true,
+                        verticalTrackClass: 'enscroll-track',
+                        verticalHandleClass: 'enscroll-handle'
+                    }, function(data) {});
 
-                window.setTimeout(function() {
-                    $('.main .tray').html('');
-                    $('.enscroll-track').each(function(i, item) {
-                        $(item).parent().css('height', $(item).parent().prev('.scrollable').height());
-                        console.log("Item:", $(item).parent().prev('.scrollable'));
-                        console.log("Height:", $(item).parent().prev('.scrollable').height());
-                    });
-                }, 500);
-                client.removeClass('loading');
+                    window.setTimeout(function() {
+                        $('.main .tray').html('');
+                        $('.enscroll-track').each(function(i, item) {
+                            $(item).parent().css('height', $(item).parent().prev('.scrollable').height());
+                            console.log("Item:", $(item).parent().prev('.scrollable'));
+                            console.log("Height:", $(item).parent().prev('.scrollable').height());
+                        });
+                    }, 500);
+                    client.removeClass('loading');
+                });
+                this.navigation.setTitle(data.state);
+                this.navigation.generateSubMenu(data.state);
+                this.main.initialize();
+                this.main.stageEventHandlers();
+                this.main.focus();
+            }.bind(this))
+            .fail(function(error) {
+                manager.route('/404', false);
             });
-            this.navigation.setTitle(data.state);
-            this.navigation.generateSubMenu(data.state);
-            this.main.initialize();
-            this.main.stageEventHandlers();
-            this.main.focus();
-        }.bind(this))
-        .fail(function(error) {
-            manager.route('/404', false);
-        });
     };
 
     client.setState = function(state) {
@@ -153,19 +155,19 @@ var manager = function() {
             return;
         }
         holder.addClass('active');
-        holder.find('label').text(state.title.text);
-        holder.find('label').attr('_route', state.title.route)
+        holder.find('.label').text(state.title.text);
+        holder.find('.label').attr('href', state.title.route)
         holder.find('ul').empty();
         state.submenu.forEach(function(menuitem) {
-            var htmlstring = '<li';
+            var htmlstring = '<a';
             if (menuitem.route) {
-                htmlstring += ' _route="' + menuitem.route + '"';
+                htmlstring += ' href="' + menuitem.route + '"';
             }
             htmlstring += '>' + '<i></i>';
             if (menuitem.label) {
                 htmlstring += '<span>' + menuitem.label + '</span>';
             }
-            htmlstring += "</li>";
+            htmlstring += "</a>";
             holder.find('ul').append(htmlstring);
         });
         client.navigation.find(".secondary").initialize();
@@ -183,8 +185,7 @@ var manager = function() {
         });
     }
     client.navigation.stageEventHandlers = function() {
-        $(this).find('[href]').click(outerAnchor);
-        $(this).find('[_route]').click(anchor);
+        $(this).find('a').click(anchor);
     };
     client.header.stageEventHandlers = function() {
         $('#menu').click(function() {
@@ -200,15 +201,18 @@ var manager = function() {
         });
     }
 
-    window.onhashchange = function () {};
+    window.onhashchange = function(event) {};
 
-    window.addEventListener('popstate', function(e) {
-        client.route(e.state, false);
+    window.addEventListener('popstate', function(event) {
+        if (event.state === null) {
+            event.preventDefault();
+            return false;
+        }
+        client.route(event.state, false);
     });
 
     $.prototype.initialize = function() {
-        $(this).find('[href]').click(outerAnchor);
-        $(this).find('[_route]').click(anchor);
+        $(this).find('[href]').click(anchor);
     };
 
     document.body.onload = function() {
@@ -219,23 +223,23 @@ var manager = function() {
     };
 
     // if ('serviceWorker' in navigator) {
-    // 	window.addEventListener('load', function () {
-    // 		navigator.serviceWorker.register('/sw.js').then(function (registration) {
-    // 			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    // 		}, function (err) {
-    // 			// registration failed :(
-    // 			console.log('ServiceWorker registration failed: ', err);
-    // 		});
-    // 	});
+    //  window.addEventListener('load', function () {
+    //      navigator.serviceWorker.register('/sw.js').then(function (registration) {
+    //          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    //      }, function (err) {
+    //          // registration failed :(
+    //          console.log('ServiceWorker registration failed: ', err);
+    //      });
+    //  });
     // }
-    function validateForm(){
+    function validateForm() {
         var formValid = true;
-        $('form').each(function(index){
-            $(this).find("[required]").each(function(index){
-                if($.trim($(this).val()) == ''){
+        $('form').each(function(index) {
+            $(this).find("[required]").each(function(index) {
+                if ($.trim($(this).val()) == '') {
                     formValid = false;
                     $(this).addClass('invalid');
-                    $(this).focus(function(){
+                    $(this).focus(function() {
                         $(this).removeClass('invalid');
                     });
                 }

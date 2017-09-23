@@ -27,12 +27,14 @@ $('document').ready(function() {
     });
 
     window.onhashchange = function () {
+        console.log("HashChangd");
         if (window.location.hash.length > 1) {
-            var selector = 'div.event-container.' + window.location.hash.substring(1);
-            $('div.event-container').addClass("disabled");
+            var selector = '.event-container.' + window.location.hash.substring(1);
+            $('.event-container').addClass("disabled");
             $(selector).removeClass('disabled');
+            console.log("Hash:", window.location.hash);
         } else {
-            $('div.event-container').removeClass("disabled");
+            $('.event-container').removeClass("disabled");
         }
     }
 
