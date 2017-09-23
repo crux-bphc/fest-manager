@@ -35,7 +35,7 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 					subject: 'Atmos Registration Successful', // Subject line
 					template: 'email-templates/test',
 				};
-				fq('mailer')(userData, mailOptions)
+				fq('utils/mailer')(userData, mailOptions)
 					.catch(err => console.log(err))
 					.then(function () {
 						done(err, user);

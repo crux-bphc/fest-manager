@@ -2,7 +2,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var assert = chai.assert;
 var fq = require('fuzzquire');
-var mailer = fq("mailer");
+var mailer = fq("utils/mailer");
 
 describe('Mailer', function() {
     it('should render single email correctly.', function() {
