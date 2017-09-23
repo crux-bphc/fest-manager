@@ -25,6 +25,8 @@ html
 		meta(name="twitter:card" content="ATMOS, Bits Pilani Hyderabad Campus")
 		meta(name="twitter:site" content="@BITSAtmos")
 body
+	include mixins/loading
+	+loadingAnimation()
 	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
 		div.navbar(_triggers="navbar/visible=visible")
 			div.wrapper

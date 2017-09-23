@@ -95,6 +95,7 @@ var manager = function() {
                         console.log("Item:", $(item).parent().prev('.scrollable'));
                         console.log("Height:", $(item).parent().prev('.scrollable').height());
                     });
+                    hideOverlay();
                 }, 500);
                 client.removeClass('loading');
             });
