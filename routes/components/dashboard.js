@@ -68,6 +68,17 @@ var getFields = function (user, isAmbassador = false) {
 		value: user.phone,
 		none: true,
 	});
+	fields.push({
+		// icon: "building",
+		name: "referred_by",
+		label: "Referred by",
+		editable: true,
+		type: "text",
+		required: false,
+		value: user.referred_by,
+		typeahead: "ambassador",
+		none: true,
+	});
 	return fields;
 };
 
