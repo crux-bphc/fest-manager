@@ -174,9 +174,12 @@ router.get('/checkout', function (req, res, next) {
 			return genchecksum(transaction, config.payment.credentials.key);
 		})
 		.then(function (transaction) {
+			req.session.CHECKSUMHASH = transaction.CHECKSUMHASH;
+			req.session.ORDER_ID = transaction.ORDER_ID;
 			req.stateparams.immersive = true;
 			return res.renderState('dashboard/checkout', {
 				user: req.user,
+				config: config.payment,
 				transaction: transaction,
 			});
 		})

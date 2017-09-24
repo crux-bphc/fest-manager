@@ -1,4 +1,4 @@
-form.hidden(name="virtualform" method="POST" action="https://pguat.paytm.com/oltp-web/processTransaction?orderid=%3COrder_ID")
+form.hidden(name="virtualform" method="POST" action="#{config.url}/processTransaction")
     each value, key in transaction
         label(for=key)= key
         input(type="text" value=value name=key)

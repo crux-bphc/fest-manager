@@ -94,10 +94,10 @@ app.use(passport.session());
 app.use(router);
 
 let clientCheckpoint = function (req, res, next) {
-	if (req.get('Client') === 'Fest-Manager/dash')
+	// if (req.get('Client') === 'Fest-Manager/dash')
 		return next();
-	else
-		res.redirect(req.url);
+	// else
+	// 	res.redirect(req.url);
 };
 
 app.use(function (req, res, next) {

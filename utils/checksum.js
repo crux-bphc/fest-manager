@@ -32,7 +32,7 @@ function paramsToString(params, mandatoryflag) {
 }
 
 
-function genchecksum(params, key, cb) {
+function genchecksum(params, key) {
 	return new Promise(function (resolve, reject) {
 		var data = paramsToString(params);
 		crypt.gen_salt(4, function (err, salt) {

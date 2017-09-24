@@ -31,6 +31,7 @@ var config = {
 	},
 	payment: {
 		isEnabled: true,
+		url: 'https://pguat.paytm.com/oltp-web',
 		credentials: {
 			id: 'RLABTF23274153190333',
 			key: 'gv_cECHQtZUj5PmU',

@@ -144,25 +144,33 @@ router.post('/cart/', function (req, res, next) {
 });
 
 router.post('/checkout/callback', function (req, res, next) {
-	res.json(req.body);
-	// user = new model(req.user);
-	// if (req.body.accommodation)
-	// 	user.accommodation = req.body.accommodation;
-	// user.events = user.events.concat(user.pending);
-	// user.pending = [];
-	// console.log(user);
-	// user.save()
-	// 	.then(function (user) {
-	// 		console.log(user);
-	// 		res.status(200).json({
-	// 			ok: true,
-	// 			user: user
-	// 		});
-	// 	})
-	// 	.catch(function (err) {
-	// 		console.log("Error at checkout: ", err);
-	// 		res.status(500).send(err);
-	// 	});
+	new Promise(function(resolve, reject) {
+		if(fq('checksum').verifychecksum(req.body, fq('config-loader').payment.credentials.key)) {
+			resolve();
+		}
+		else {
+			reject();
+		}
+	}).then(function() {
+		user = new model(req.user);
+		if (req.body.accommodation)
+			user.accommodation = req.body.accommodation;
+		user.events = user.events.concat(user.pending);
+		user.pending = [];
+		user.additionals.forEach(function(addition) {
+			if(addition.pending) addition.pending = false;
+		})
+		console.log(user);
+		return user.save()
+	})
+	.then(function (user) {
+		console.log(user);
+		res.redirect(200, '/dashboard');
+	})
+	.catch(function (err) {
+		console.log("Error at checkout: ", err);
+		res.redirect(500, '/dashboard/cart');
+	});
 });
 module.exports = {
 	route: '/users',

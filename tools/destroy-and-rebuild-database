@@ -85,7 +85,7 @@ var getEvents = function(models) {
                 body: elem._id,
                 category: "Random",
                 type: pre,
-                price: 200 * index,
+                price: 20 * index,
                 route: elem.code + ++index,
             };
             if (newevent.route.startsWith('rome')) {
