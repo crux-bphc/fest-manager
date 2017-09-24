@@ -22,6 +22,10 @@ router.get('/?*', function (req, res, next) {
 				label: "Events",
 				route: "/events",
 			},
+			workshops: {
+				label: "Workshops",
+				route: "/events#Workshop",
+			},
 			dashboard: {
 				label: "Dashboard",
 				route: "/dashboard",

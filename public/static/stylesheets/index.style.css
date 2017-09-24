@@ -540,7 +540,7 @@ input[type = "file"] {
     transition-delay: 1s;
 }
 
-.sidebar .secondary-wrapper > .secondary ul a i {
+.sidebar .secondary-wrapper > .secondary ul a i, body > div > div.remnant > div.sidebar.visible > div > div.section.primary > ul > a.indent > i {
     height:0px;
     border-radius:2px;
     border-width: 1px;
@@ -908,6 +908,10 @@ table tr th, table tr td {
 }
 table tbody tr:nth-child(2n-1) {
         background-color: #F8F8F8;
+}
+
+.indent {
+    padding-left: 2em;
 }
 
 @media only screen and (max-width: 1333px) {

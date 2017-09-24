@@ -28,12 +28,7 @@ div.section.body
 	div
 		img.imgQR(src="#{user.qrData}")
 		div.ca
-			if user.isAmbassador
-				div.ambassador
-					i.icon-verified_user
-					span Campus Ambassador
-			else
-				a.button(href="/ca") Become a Campus Ambassador
+			a.button(href="/events") Register in Events and Workshops
 	div.events
 		if (subscribed.length || pending.length)
 			if subscribed.length
