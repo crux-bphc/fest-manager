@@ -128,26 +128,41 @@ router.get('/account', authenticate, function (req, res, next) {
 router.get('/cart', authenticate, function (req, res, next) {
 
 	req = applyStateChanges(req);
+	// req.user.additionals = [{
+	// 	label: "Accommodation",
+	// 	details: {
+	// 		days: [27, 28, 29],
+	// 		type: 2,
+	// 	},
+	// 	price: 300,
+	// 	pending: true,
+	// }];
+	var params = {
+		title: 'Check Out',
+		user: req.user,
+	};
 	eventModel.find({
-		_id: {
-			$in: req.user.pending
-		}
-	}, function (err, result) {
-		var params = {
-			title: 'Check Out',
-			user: req.user,
-			events: result
-		};
-		if (err || !result.length) {
-			params.error = "Error finding events";
-		}
-		res.renderState('dashboard/cart', params);
-	});
+			_id: {
+				$in: req.user.pending
+			}
+		})
+		.then(function (result) {
+			params.events = result;
+			if (!result.length) {
+				throw new Error("Nothing in cart");
+			}
+		})
+		.catch(function (error) {
+			params.error = error;
+		})
+		.then(function () {
+			res.renderState('dashboard/cart', params);
+		});
 });
 
 router.get('/checkout', function (req, res, next) {
 	const genchecksum = fq('checksum').genchecksum;
-	fq('api/users').getCart(req.user).then(function (response) {
+	fq('api/users').getCart(req.user._id).then(function (response) {
 			let transaction = Object.assign(config.payment.defaults, {
 				TXN_AMOUNT: response.total,
 				ORDER_ID: Date.now() + (Date.now() * Math.random()).toString().slice(0, 5),

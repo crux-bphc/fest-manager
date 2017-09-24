@@ -1,15 +1,88 @@
 .main .stretch {
     display: block;
-    border:none !important;
+    border: none !important;
 }
 
 .section.body {
     width: 100%;
-    position:relative;
+    position: relative;
     display: flex;
 }
 
-.body > .payment {
+.body .initial {
+    display: flex;
+    flex-direction: column;
+}
+
+.body .initial .additionals {
+    margin-right: 1em;
+    margin-bottom: 1em;
+    display: inline-block;
+    position: relative;
+    margin-left: 4px;
+    width: 32em;
+}
+
+.body .initial .additionals .card {
+    border-radius: 4px;
+    box-shadow: -4px 0px 0px 0px orange;
+    display: none;
+    border: 1px solid rgba(0,0,0,0.05);
+    animation: pop 0.1s 1;
+}
+
+.body .initial .additionals input:checked~.card {
+    display: flex;
+}
+
+.body .initial .additionals input:checked+label.add {
+    display: none;
+}
+
+.body .initial .additionals .add {
+    font-size: 1.2em;
+    height: 4em;
+    display: inline-flex;
+    justify-content: center;
+    padding: 0em 2em;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+    color: #707070;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    animation: pop 0.1s 1;
+}
+
+.body .initial .additionals .add > i {
+    line-height: 2em;
+    width: 2em;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #707070;
+}
+
+.body .initial .additionals .add:hover {
+    background: rgba(200, 200, 200, 0.05);
+}
+
+.body .initial .additionals .add::after {
+    position: relative;
+    margin-left: 1em;
+    line-height: 2em;
+    text-align: center;
+    font-size: initial;
+    content: attr(data-label);
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0);
+    }
+}
+
+.body>.payment {
     padding: 2em;
     width: 15em;
     height: 25em;
@@ -17,154 +90,159 @@
     flex-direction: column;
     align-items: center;
     border-radius: 4px;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-#cart-additional {
-    display: none;
-}
-#cart-additional.disabled::after {
-    content: "Availing accommodation will be possible soon";
-    line-height: 1.2em;
-    text-align: center;
+.body>.payment .additionals {
     width: 100%;
-    display: block;
 }
 
-#availAccomm {
-    display: none;
+.body>.payment .additionals:empty::after {
+    content: "Nothing extra";
+    color: #ccc;
+    font-weight: 400;
 }
 
-#availAccomm + label {
-    font-size: 1.1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1em;
-}
-
-#availAccomm + label::before {
-    display: inline-block;
-    margin-right: 0.5em;
-    width:20px;
-    border-radius:5px;
-    height:20px;
-    vertical-align: top;
-    /*box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.5) inset;*/
-    box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.5) inset, 0px 0px 0px 15px #fff inset, 0px 0px 0px 15px rgba(0,0,0,0.5) inset;
-    content: "";
-    transition: all 0.2s;
-}
-#availAccomm:checked + label::before {
-    transform: rotateZ(90deg);
-    box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.5) inset, 0px 0px 0px 4px #fff inset, 0px 0px 0px 15px rgba(0,0,0,0.5) inset;
-}
-.body > .payment .additional .field-container {
-    height: 0em;
-    overflow: hidden;
-    transition: height 0.2s;
-}
-#availAccomm:checked ~ .field-container {
-    height: 3em;
-}
-.body > .payment .price {
+.body>.payment .price {
     text-align: right;
     width: 100%;
     margin-bottom: 2em;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-.body > .payment .price i {
+
+.body>.payment .price.additional {
+    font-size: initial;
+    border-bottom: none;
+    display: block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.body>.payment .price.additional i {
+    vertical-align: middle;
+}
+
+.body>.payment .price.additional i::before {
+    display: inline-block;
+    content: "+";
+    margin-right: 0.25em;
+    font-weight: 600;
+}
+
+.body>.payment .price i {
     font-style: normal;
     display: inline-block;
     vertical-align: top;
     line-height: 1.5em;
 }
-.body > .payment .price span {
+
+.body>.payment .price span {
     font-weight: 600;
     font-size: 1.5em;
     text-align: right;
     line-height: 1.5em;
 }
-.body > .payment .price::before {
+
+.body>.payment .price.additional span {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.body>.payment .price::before {
     color: #ccc;
     font-weight: 400;
     display: block;
     text-align: right;
     font-size: initial;
+    content: attr(data-label);
 }
-.body > .payment .subtotal {
+
+.body>.payment .price.additional::before {
+    margin-right: 1em;
+    text-align: left;
+    font-weight: 300;
+    display: inline-flex;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.body>.payment .subtotal {
     font-size: 1em;
 }
-.body > .payment .total {
+
+.body>.payment .total {
     font-size: 1.5em;
     margin-bottom: 1em;
 }
-.body > .payment .subtotal::before {
-    content: "Subtotal";
-}
-.body > .payment .total::before {
-    content: "Total";
-}
-.body > .payment .remnant {
+
+.body>.payment .remnant {
     display: flex;
     width: 100%;
     justify-content: flex-end;
     flex-direction: column;
 }
-.body > .payment .button {
+
+.body>.payment .button {
     display: block;
-    width:100%;
-    background:#f0f0f0;
+    width: 100%;
+    background: #f0f0f0;
     font-weight: 600;
-    color:#666;
+    color: #666;
     cursor: pointer;
     line-height: 3em;
     border-radius: 4px;
     text-align: center;
     transition: box-shadow 0.2s;
 }
-.body > .payment .button:hover {
-    box-shadow: 0px 5px 15px -5px rgba(0,0,0,0.2);
-}
-.body > .payment .button:active {
-    box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.1);
+
+.body>.payment .button:hover {
+    box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.2);
 }
 
-.body > .pending {
+.body>.payment .button:active {
+    box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.1);
+}
+
+.body>.pending {
     flex-grow: 1;
 }
 
 .event-list .wrapper {
     display: inline-block;
-    overflow:hidden;
+    overflow: hidden;
     vertical-align: top;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     padding: 1em 1em;
     padding-bottom: 3em;
     padding-right: 2em;
     width: 15em;
     margin-bottom: 1em;
-    border-radius:4px;
-    margin-right:1em;
+    border-radius: 4px;
+    margin-right: 1em;
     position: relative;
+    margin-left: 4px;
 }
+
 .event-list .event-container .tagline {
     white-space: nowrap;
-    max-width:100%;
+    max-width: 100%;
     text-overflow: ellipsis;
-    overflow:hidden;
+    overflow: hidden;
 }
+
 .event-list .event-container .tag {
     text-transform: uppercase;
     line-height: 1em;
 }
+
 .event-list .event-container h3 {
-    color:#444;
+    color: #444;
     line-height: 1.2;
-    margin:0.5em 0em;
+    margin: 0.5em 0em;
     font-weight: 600;
     height: 2.4em;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .event-list .flex-wrapper {
@@ -174,65 +252,336 @@
 }
 
 .event-list .wrapper .icon-close {
-    position:absolute;
-    top:0px;
+    position: absolute;
+    top: 0px;
     padding: 0.5em 0.5em;
     right: 0;
     font-size: 1.2em;
-    cursor:pointer;
+    cursor: pointer;
 }
+
 .event-list .wrapper .price {
-    color:#202729;
+    color: #202729;
 }
+
 .event-list .wrapper.subscribed {
     box-shadow: -4px 0px 0px 0px #2db55d;
 }
+
 .event-list .wrapper.pending {
     box-shadow: -4px 0px 0px 0px orange;
 }
+
 .event-list .wrapper .foot {
-    width:100%;
-    bottom:0;
+    width: 100%;
+    bottom: 0;
     left: 0;
     white-space: nowrap;
-    position:absolute;
+    position: absolute;
     height: 2em;
     background: #f9f9f9;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    padding:0em 1em;
+    padding: 0em 1em;
 }
+
 .event-list .wrapper.subscribed .foot {
     background: hsla(141, 61%, 95%, 1);
 }
+
 .event-list .wrapper.pending .foot {
     background: hsla(39, 100%, 95%, 1);
 }
-.event-list .wrapper .foot > div {
+
+.event-list .wrapper .foot>div {
     font-weight: 600;
-    font-size:0.9em;
+    font-size: 0.9em;
 }
-.event-list .wrapper .foot > .team > span:first-child {
-    color:#666;
+
+.event-list .wrapper .foot>.team>span:first-child {
+    color: #666;
 }
-.event-list .wrapper .foot > .team > span:last-child {
+
+.event-list .wrapper .foot>.team>span:last-child {
     text-transform: uppercase;
 }
 
-@media only screen and (max-width:500px) {
+.card,
+.accommodation {
+    height: 100%;
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.card {
+    height: 10em;
+    flex-direction: column;
+}
+
+.card .header {
+    padding: 1em 0em 0em 1em;
+    box-sizing: border-box;
+    width: 100%;
+    line-height: 1.2em;
+}
+
+.accommodation>.days {
+    margin: 0em 1em;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.accommodation>.days>span {
+    color: #666;
+    display: block;
+}
+
+.accommodation .selector {
+    display: flex;
+    margin-top: 1em;
+    flex-direction: row;
+    align-items: center;
+}
+
+.accommodation .selector>label {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: #ccc;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    color: #ccc;
+    margin: 1em 3em;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+}
+
+.accommodation .selector>label:hover,
+.accommodation .selector>input:checked+label {
+    background: #2eb398;
+    color: #202729;
+    z-index: +10;
+}
+
+.accommodation .selector>label::before,
+.accommodation .selector>label::after {
+    height: 2px;
+    content: "";
+    width: 6em;
+    pointer-events: none;
+    background: #ccc;
+    position: absolute;
+    margin-top: -1px;
+    top: 50%;
+    transition: background 0.2s;
+}
+
+.accommodation .selector>label::before {
+    left: 100%;
+}
+
+.accommodation .selector>label::after {
+    right: 100%;
+}
+
+.accommodation .selector>label:hover~input:checked+label,
+.accommodation .selector>input:checked~input:checked+label {
+    z-index: +10;
+}
+
+.accommodation .selector>label:hover~input:checked+label::after,
+.accommodation .selector>input:checked~input:checked+label::after {
+    background: #2eb398;
+}
+
+.accommodation .selector>label>span {
+    position: relative;
+    font-size: 0.8em;
+    margin-top: 2em;
+}
+
+.accommodation .selector>label:first-of-type {
+    margin-left: 0px;
+}
+
+.accommodation .selector>label:last-of-type {
+    margin-right: 0px;
+}
+
+.accommodation .selector>label:first-of-type::after,
+.accommodation .selector>label:last-of-type::before {
+    display: none;
+}
+
+.accommodation .type {
+    display: inline-flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.accommodation .type label {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 600;
+    color: #666;
+    box-sizing: border-box;
+    padding: 0em 1em;
+    padding-right: 2em;
+    transition: background 0.2s, color 0.2s;
+}
+
+.accommodation .type label:hover {
+    background: rgba(0, 0, 0, 0.01);
+}
+
+.accommodation .type label::before {
+    content: "\e39e";
+    font-family: "icomoon";
+    color: #888;
+    font-size: 1.2em;
+    margin-right: 1em;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.accommodation .type input:checked+label::before {
+    content: "\e5ca";
+    color: #2eb398;
+}
+
+.accommodation .type input:checked+label {
+    color: #121212;
+}
+
+.additionals .icon-close {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    font-size: 1.2em;
+    padding: 0.5em;
+}
+
+@media only screen and (max-width: 800px) {
+    .body>.payment {
+        padding: 1em;
+        width: 100%;
+    }
+    .event-list .flex-wrapper {
+        margin-right: 0em;
+    }
+    .event-list .wrapper {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 0 1em 0;
+    }
+    .body .initial {
+        margin-bottom: 1em;
+    }
+    .body .initial .additionals>div {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
     .section.body {
         flex-direction: column;
     }
-    .body > .payment {
+    .body>.payment .subtotal {
+        padding: 0.5em 0em;
+    }
+    .body>.payment {
         width: 100%;
         box-sizing: border-box;
         height: 25em;
     }
-    .event-container {
-        width:100%;
+    .event-list {
+        width: 100%;
+    }
+    .event-list .wrapper {
+        height: 4em;
+        background: hsla(39, 100%, 95%, 1);
+    }
+    .event-list .wrapper.subscribed {
+        background: hsla(141, 61%, 95%, 1);
+    }
+    .event-list .wrapper .tag,
+    .event-list .wrapper .tagline {
+        display: none;
+    }
+    .event-list .wrapper .name {
+        font-weight: 400;
+        line-height: initial;
+        height: initial;
+        margin: 0em;
+        text-align: left;
+        overflow: visible;
+        font-size: initial;
+    }
+    .event-list .wrapper .foot {
+        background: none !important;
+    }
+    .event-list .wrapper .icon-close {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 0;
+        width: 3em;
+        padding: 0px;
+    }
+    .body.section .initial {
+        flex-direction: column-reverse;
+    }
+    .body.section .initial .additionals {
+        width: 100%;
+        margin: 0em;
+    }
+    .body.section .initial .additionals .add {
+        width: 100%;
         box-sizing: border-box;
-        margin:1em 0;
+        height: 4em;
+        font-size: initial;
+        justify-content: center;
+        flex-direction: row;
+    }
+    .body.section .initial .additionals .add::after {
+        font-size: initial;
+        width: auto;
+        margin-left: 1em;
+    }
+    .card {
+        width: 100%;
+        height: 16em;
+    }
+    .accommodation {
+        width: 100%;
+        flex-direction: column;
+    }
+    .accommodation>.days {
+        flex-grow: 1;
+    }
+    .accommodation .selector label:hover {
+        background: #ccc;
+        color: #ccc;
+    }
+    .accommodation .type {
+        height: 6em;
+    }
+    .additionals .icon-close {
+        padding: 1em;
     }
 }

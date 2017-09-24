@@ -30,6 +30,7 @@ var config = {
 		user: "vermaabhilash70@gmail.com",
 	},
 	payment: {
+		isEnabled: true,
 		credentials: {
 			id: 'RLABTF23274153190333',
 			key: 'gv_cECHQtZUj5PmU',

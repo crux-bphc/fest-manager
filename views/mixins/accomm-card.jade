@@ -1,0 +1,26 @@
+mixin accommCardMixin(isPending, accommodation)
+    div.card
+        div.header
+            span ACCOMODATION
+        div.accommodation(class=(isPending ? "pending" : "subscribed"))
+            div.days
+                span How many days will you stay with us?
+                div.selector
+                    input.hidden#accomm_on_27(type="checkbox" checked=!(accommodation && accommodation.details.days.indexOf('27') == -1))
+                    label(for="accomm_on_27")
+                        span 27
+                            sup th
+                    input.hidden#accomm_on_28(type="checkbox" checked=!(accommodation && accommodation.details.days.indexOf('28') == -1))
+                    label(for="accomm_on_28")
+                        span 28
+                            sup th
+                    input.hidden#accomm_on_29(type="checkbox" checked=!(accommodation && accommodation.details.days.indexOf('29') == -1))
+                    label(for="accomm_on_29")
+                        span 29
+                            sup th
+            div.type
+                input.hidden#accomm_in_common(name="accommtype" type="radio" value="1" checked=((accommodation && accommodation.details.type == 1) || !accommodation))
+                label(for="accomm_in_common") Common Room
+                input.hidden#accomm_in_resort(name="accommtype" type="radio" value="2" checked=(accommodation && accommodation.details.type == 2))
+                label(for="accomm_in_resort") Resort
+        label.icon-close(for="enableAccomm")

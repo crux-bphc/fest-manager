@@ -399,6 +399,7 @@ input[type = "file"] {
     color: #445256;
     padding-bottom: 1em;
     display: block;
+    text-transform: uppercase;
 }
 
 .sidebar .section > ul {

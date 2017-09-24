@@ -1,22 +1,33 @@
 include ../mixins/eventList
-include ../mixins/field
+include ../mixins/accomm-card
 
 link(href="/static/stylesheets/cart.style.css" rel="stylesheet")
 div.section.header
 	h1= title
 	div.stretch
 div.section.body
-	div.pending.event-list
-		+eventList(events, user, true)
-		-var AccommChoice = {type: "select", name: "choice", editable: true, options: ["Common Room / \u20b9100", "Hotel / \u20b9400"]};
+	div.initial
+		div.additionals
+			if !user.additionals || (user.additionals && user.additionals.length == 0) || user.additionals[0].pending
+				input.hidden(type="checkbox" id="enableAccomm" checked=(user.additionals && user.additionals[0] && user.additionals[0].pending))
+				label.add(data-label="Add Accommodation" for="enableAccomm")
+					i.icon-add
+				if(user.additionals && user.additionals[0])
+					+accommCardMixin(true, user.additionals[0])
+				else
+					+accommCardMixin(true)
+		div.pending.event-list
+			+eventList(events, user, true)
 	div.payment#cart
-		div.price.subtotal
+		div.price.subtotal(data-label="Subtotal")
 			i &#x20b9;
 			span.amount(name="subtotal") 0
-		div.additional(name="Accommodation")
-			input(type="checkbox" id="availAccomm" name="availAccomm")
-			label(for="availAccomm") Add accommodation
-			+fieldMixin(AccommChoice)
+		div.additionals
+			if user.additionals
+				for addition in user.additionals
+					div.price.additional(data-label=addition.label)
+						i &#x20b9;
+						span.amount(name="accomm")= addition.price
 		div.remnant
 			div.price.total
 				i &#x20b9;

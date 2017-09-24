@@ -42,37 +42,7 @@ var usersSchema = new Schema({
 
 var model = mongoose.model('usersModels', usersSchema);
 
-var getCart = function (user) {
-	return eventsModel.find({
-			_id: {
-				$in: user.pending
-			}
-		})
-		.then(function (events) {
-			cart = {};
-			cart.user = user;
-			cart.order = [];
-			cart.subtotal = 0;
-			events.forEach(function (event) {
-				cart.order.push({
-					id: event._id,
-					label: event.name,
-					price: event.price,
-				});
-				cart.subtotal += event.price;
-			});
-			cart.total = cart.subtotal;
-			if (user.additionals)
-				user.additionals.forEach(function (addition) {
-					if (addition.pending)
-						cart.order.push({
-							label: addition.label,
-							price: addition.price,
-						});
-				});
-			return cart;
-		});
-};
+
 
 router.put('/me/', function (req, res, next) {
 	var body = req.body;
@@ -97,32 +67,83 @@ router.put('/me/', function (req, res, next) {
 	}
 });
 
+var getCart = function (id) {
+	var cart = {};
+	var user;
+	return model.findOne({
+			_id: id
+		})
+		.then(function (result) {
+			user = result;
+			return eventsModel.find({
+				_id: {
+					$in: user.pending
+				}
+			});
+		})
+		.then(function (events) {
+			cart.user = user;
+			cart.order = [];
+			cart.subtotal = 0;
+			events.forEach(function (event) {
+				cart.order.push({
+					id: event._id,
+					label: event.name,
+					price: event.price,
+				});
+				cart.subtotal += event.price;
+			});
+			cart.total = cart.subtotal;
+			if (user.additionals)
+				user.additionals.forEach(function (addition) {
+					if (addition.pending) {
+						cart.order.push({
+							label: addition.label,
+							price: addition.price,
+						});
+						cart.total += addition.price;
+					}
+				});
+			return cart;
+		});
+};
+
 router.post('/cart/', function (req, res, next) {
+	var accommprice = [
+		[250, 400, 500],
+		[500, 800, 1000],
+	];
 	return new Promise(function (resolve, reject) {
 			resolve();
 		})
 		.then(function () {
-			if (req.body.additionals && !req.body.init) {
+			if (req.body.init == 'false') {
+				let additionals;
+				if (req.body.additionals) {
+					additionals = req.body.additionals.slice(0);
+					let accomm = additionals[0].details;
+					additionals[0].price = accommprice[accomm.type - 1][(accomm.days.length - 1)];
+				} else additionals = null;
 				return model.update({
 					_id: req.user._id,
 				}, {
-					additionals: req.body.additionals
+					additionals: additionals
 				});
 			}
 		})
-		.then(function () {
-			return getCart(req.user);
+		.then(function (response) {
+			return getCart(req.user._id);
 		})
 		.then(function (response) {
 			res.json(response);
 		})
 		.catch(function (error) {
+			console.log(error);
 			res.status(500).send(error);
 		});
 });
 
 router.post('/checkout/callback', function (req, res, next) {
-	console.log('Checked out');
 	res.json(req.body);
 	// user = new model(req.user);
 	// if (req.body.accommodation)
