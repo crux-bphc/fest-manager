@@ -12,6 +12,7 @@
 .body .initial {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .body .initial .additionals {

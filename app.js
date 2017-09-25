@@ -95,7 +95,7 @@ app.use(router);
 
 let clientCheckpoint = function (req, res, next) {
 	// if (req.get('Client') === 'Fest-Manager/dash')
-		return next();
+	return next();
 	// else
 	// 	res.redirect(req.url);
 };

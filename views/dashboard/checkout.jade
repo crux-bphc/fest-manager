@@ -1,4 +1,4 @@
-form.hidden(name="virtualform" method="POST" action="#{config.url}/processTransaction")
+form.hidden(name="virtualform" method="POST" action="#{config.url}/oltp-web/processTransaction")
     each value, key in transaction
         label(for=key)= key
         input(type="text" value=value name=key)

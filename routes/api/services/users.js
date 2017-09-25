@@ -5,6 +5,9 @@ var express = require('express');
 var router = express.Router();
 var shortID = require('mongoose-shortid-nodeps');
 var eventsModel = require('./events.js').model;
+var config = fq('config-loader');
+var request = require('request-promise-native');
+var checksumWorker = fq('checksum');
 
 var usersSchema = new Schema({
 	name: String,
@@ -144,33 +147,47 @@ router.post('/cart/', function (req, res, next) {
 });
 
 router.post('/checkout/callback', function (req, res, next) {
-	new Promise(function(resolve, reject) {
-		if(fq('checksum').verifychecksum(req.body, fq('config-loader').payment.credentials.key)) {
-			resolve();
-		}
-		else {
-			reject();
-		}
-	}).then(function() {
-		user = new model(req.user);
-		if (req.body.accommodation)
-			user.accommodation = req.body.accommodation;
-		user.events = user.events.concat(user.pending);
-		user.pending = [];
-		user.additionals.forEach(function(addition) {
-			if(addition.pending) addition.pending = false;
+	new Promise(function (resolve, reject) {
+			if (checksumWorker.verifychecksum(req.body, config.payment.credentials.key)) {
+				resolve();
+			} else {
+				reject();
+			}
+		}).then(function () {
+			var JsonData = {
+				MID: req.body.MID,
+				ORDERID: req.body.ORDERID,
+			};
+			return checksumWorker.genchecksum(JsonData, config.payment.credentials.key);
 		})
-		console.log(user);
-		return user.save()
-	})
-	.then(function (user) {
-		console.log(user);
-		res.redirect(200, '/dashboard');
-	})
-	.catch(function (err) {
-		console.log("Error at checkout: ", err);
-		res.redirect(500, '/dashboard/cart');
-	});
+		.then(function (JsonData) {
+			JsonData = encodeURIComponent(JSON.stringify(JsonData));
+			let requestURL = config.payment.url + '/oltp/HANDLER_INTERNAL/getTxnStatus?JsonData=' + JsonData;
+			return request(requestURL);
+		})
+		.then(function (result) {
+			let response = JSON.parse(result);
+			if (response.STATUS != "TXN_SUCCESS") throw "Payment Failed.";
+			else {
+				user = new model(req.user);
+				if (req.body.accommodation)
+					user.accommodation = req.body.accommodation;
+				user.events = user.events.concat(user.pending);
+				user.pending = [];
+				user.additionals.forEach(function (addition) {
+					if (addition.pending) addition.pending = false;
+				});
+				return user.save();
+			}
+		})
+		.then(function (user) {
+			console.log(user);
+			res.redirect('/dashboard');
+		})
+		.catch(function (err) {
+			console.log("Error at checkout: ", err);
+			res.redirect('/dashboard/cart');
+		});
 });
 module.exports = {
 	route: '/users',

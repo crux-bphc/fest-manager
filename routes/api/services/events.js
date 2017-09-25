@@ -33,14 +33,12 @@ router.post('/addtocart', function (req, res, next) {
 	var teamModel = require("./teams").model;
 	var event_id = mongoose.Types.ObjectId(req.body.id);
 	var eventTeams, eventTeamSize, eventPrice, userEvents, userTeams, teamId;
-	console.log("Got to add to cart");
 	if (req.user.pending.indexOf(req.body.id) != -1 || req.user.events.indexOf(req.body.id) != -1)
 		return res.status(403).send("Event is already in cart");
 	eventModel.findOne({
 			_id: event_id
 		})
 		.then(function (event) {
-			console.log("Found Event", event);
 			if (typeof event !== 'undefined') {
 				eventTeams = event.teams;
 				eventPrice = event.price;
@@ -54,7 +52,6 @@ router.post('/addtocart', function (req, res, next) {
 			} else throw 'Event Not Found';
 		})
 		.then(function (team) {
-			console.log("Made team", team);
 			teamId = team._id;
 			user = req.user;
 			var userEvents = user.events;
@@ -71,7 +68,6 @@ router.post('/addtocart', function (req, res, next) {
 				userPending.push(event_id);
 				update.pending = userPending;
 			}
-			console.log(userModel);
 			return userModel.update({
 				_id: req.user._id
 			}, update);

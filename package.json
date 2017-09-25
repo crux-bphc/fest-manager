@@ -34,6 +34,7 @@
     "qrcode": "^0.8.2",
     "randomstring": "^1.1.5",
     "redis": "^2.8.0",
+    "request-promise-native": "^1.0.5",
     "serve-favicon": "~2.4.2",
     "shortid": "^2.2.8"
   },

@@ -175,6 +175,7 @@ router.get('/checkout', function (req, res, next) {
 		})
 		.then(function (transaction) {
 			req.session.CHECKSUMHASH = transaction.CHECKSUMHASH;
+			req.session.CHECKSUMHASH = transaction.CHECKSUMHASH;
 			req.session.ORDER_ID = transaction.ORDER_ID;
 			req.stateparams.immersive = true;
 			return res.renderState('dashboard/checkout', {
