@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-mongo fest-manager $DIR/../utils/export-ambassadors.js
+DB=$(echo "var fq=require('fuzzquire'); var config = fq('config-loader'); console.log(config.database.name);" | node | tail -n1)
+mongo $DB $DIR/../utils/export-ambassadors.js
 
