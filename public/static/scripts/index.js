@@ -7,6 +7,7 @@ var manager = function () {
 		hash: "",
 		state: {
 			location: "",
+			message: null,
 			navbar: {},
 			sidebar: {
 				menu: {},
@@ -27,6 +28,7 @@ var manager = function () {
 		e.preventDefault();
 		client.route($(this).attr("href"));
 	};
+
 	client.getLocation = function () {
 		return client.state.location;
 	};
@@ -104,6 +106,7 @@ var manager = function () {
 				});
 				this.navigation.setTitle(data.state);
 				this.navigation.generateSubMenu(data.state);
+				this.main.showMessage(data.state);
 				this.main.initialize();
 				this.main.stageEventHandlers();
 				this.main.focus();
@@ -173,6 +176,16 @@ var manager = function () {
 			holder.find('ul').append(htmlstring);
 		});
 		client.navigation.find(".secondary").initialize();
+	};
+
+	client.main.showMessage = function (state) {
+		if (!state.message || !state.message.content) {
+			return;
+		}
+		var outerHTML = "<div class=\"$type\">$content</div>";
+		var message = state.message;
+		message.type = message.type ? message.type : "info";
+		$('body > .message').html(outerHTML.replace('$type', message.type).replace('$content', message.content));
 	};
 
 	client.stageEventHandlers = function () {

@@ -181,12 +181,12 @@ router.post('/checkout/callback', function (req, res, next) {
 			}
 		})
 		.then(function (user) {
-			console.log(user);
-			res.redirect('/dashboard');
+			console.log("Payment successful");
+			res.redirect('/dashboard?payment=successful');
 		})
 		.catch(function (err) {
 			console.log("Error at checkout: ", err);
-			res.redirect('/dashboard/cart');
+			res.redirect('/dashboard/cart?payment=unsuccessful');
 		});
 });
 module.exports = {

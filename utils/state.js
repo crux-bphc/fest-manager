@@ -2,6 +2,7 @@ module.exports = function () {
 
 	var appendStateFromRequest = function (state, req) {
 		// Append supported variables to state.
+		state.message = req.stateparams.message || null;
 		state.location = req.originalUrl;
 		state.subtitle = req.stateparams.subtitle || false;
 		state.isImmersive = req.stateparams.immersive || false;

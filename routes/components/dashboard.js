@@ -85,6 +85,11 @@ var getFields = function (user, isAmbassador = false) {
 /* GET users listing. */
 router.get('/', authenticate, function (req, res, next) {
 	req = applyStateChanges(req);
+	if (req.query.payment && req.query.payment == "successful")
+		req.stateparams.message = {
+			type: "success",
+			content: "Payment successful",
+		};
 	var subscribed, pending;
 	Promise.all([eventModel.find({
 			_id: {
@@ -128,15 +133,11 @@ router.get('/account', authenticate, function (req, res, next) {
 router.get('/cart', authenticate, function (req, res, next) {
 
 	req = applyStateChanges(req);
-	// req.user.additionals = [{
-	// 	label: "Accommodation",
-	// 	details: {
-	// 		days: [27, 28, 29],
-	// 		type: 2,
-	// 	},
-	// 	price: 300,
-	// 	pending: true,
-	// }];
+	if (req.query.payment && req.query.payment == "unsuccessful")
+		req.stateparams.message = {
+			type: "error",
+			content: "Payment failed. Try again.",
+		};
 	var params = {
 		title: 'Check Out',
 		user: req.user,
