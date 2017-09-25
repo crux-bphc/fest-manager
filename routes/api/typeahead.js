@@ -66,7 +66,7 @@ userService.find({}, {
 	data.forEach(function (elem) {
 		if(elem.isAmbassador)
 		{
-			ambassadors.push(elem.name + ", "+ elem.email);
+			ambassadors.push('{'+elem.name + "}"+ elem.email);
 		}
 	});
 	registerTypeahead('email', allUserEmails);
