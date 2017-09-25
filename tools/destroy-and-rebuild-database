@@ -6,7 +6,7 @@
 
 // Configurable variables here.
 var pathToCollections = '../routes/api/services';
-var listToClean = ['users', 'bodies', 'events', 'teams', 'accomm'];
+var listToClean = ['users', 'bodies', 'events', 'teams', 'transactions'];
 
 // Handle arguments here.
 var superusers = process.argv.slice(2);

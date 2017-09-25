@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 var shortID = require('mongoose-shortid-nodeps');
 var eventsModel = require('./events.js').model;
+var transactionsModel = fq('api/transactions').model;
 var config = fq('config-loader');
 var request = require('request-promise-native');
 var checksumWorker = fq('checksum');
@@ -167,7 +168,13 @@ router.post('/checkout/callback', function (req, res, next) {
 		})
 		.then(function (result) {
 			let response = JSON.parse(result);
-			if (response.STATUS != "TXN_SUCCESS") throw "Payment Failed.";
+			var record = new transactionsModel();
+			record.transaction = response;
+			record.user = req.user._id;
+			return record.save();
+		})
+		.then(function(record) {
+			if (record.transaction.STATUS != "TXN_SUCCESS") throw "Payment Failed.";
 			else {
 				user = new model(req.user);
 				if (req.body.accommodation)

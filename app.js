@@ -29,7 +29,6 @@ var components = fq('routes/components');
 var api = fq('routes/api');
 var auth = fq('routes/auth');
 var data = fq('routes/export');
-var transaction = fq('routes/transaction');
 
 var app = express();
 
@@ -120,7 +119,6 @@ app.use(function (req, res, next) {
 app.use('/export', data);
 app.use('/upload', upload);
 app.use('/auth', auth);
-app.use('/transaction', transaction);
 app.use('/components', clientCheckpoint, components);
 app.use('/api', clientCheckpoint, api);
 app.use('/', index);
