@@ -58,7 +58,7 @@ router.get('/?*', function (req, res, next) {
 		}
 	});
 
-	res.render('index', params);
+	res.render('index', fq('options').updateOptions(params));
 });
 
 
