@@ -59,14 +59,14 @@ userService.find({}, {
 	name: true,
 	isAmbassador: true
 }, function (err, data) {
-	var allUserEmails = [], ambassadors = [];
+	var allUserEmails = [];
+	var ambassadors = [];
 	data.forEach(function (elem) {
 		allUserEmails.push(elem.email);
 	});
 	data.forEach(function (elem) {
-		if(elem.isAmbassador)
-		{
-			ambassadors.push('{'+elem.name + "}"+ elem.email);
+		if (elem.isAmbassador) {
+			ambassadors.push('{' + elem.name + "}" + elem.email);
 		}
 	});
 	registerTypeahead('email', allUserEmails);

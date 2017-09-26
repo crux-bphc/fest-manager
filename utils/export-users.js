@@ -4,7 +4,7 @@ db.usersmodels.find({}, {
 	"email": true,
 	"phone": true,
 	"institute": true,
-    "referred_by": true,
+	"referred_by": true,
 }).forEach(function (user) {
 	if (user.institute)
 		user.institute = user.institute.replace(/,/g, " ");
