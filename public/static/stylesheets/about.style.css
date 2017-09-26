@@ -53,3 +53,10 @@ div.section.body p {
         width: 100%;
     }
 }
+
+#map{
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    padding: 0;
+}

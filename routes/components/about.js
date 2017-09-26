@@ -10,10 +10,10 @@ var applyStateChanges = function (req) {
 			label: "Get in Touch",
 			route: "/about/contact",
 		},
-		// {
-		// 	label: "How to Reach",
-		// 	route: "/about/map",
-		// },
+		{
+			label: "How to Reach",
+			route: "/about/map",
+		},
 		// {
 		// 	label: "Sponsors",
 		// 	route: "/about/sponsors",
@@ -49,7 +49,7 @@ router.get('/contact', function (req, res, next) {
 });
 
 router.get('/map', function (req, res, next) {
-	req.stateparams.pagetitle = 'Reach';
+	req.stateparams.pagetitle = 'Reach Us';
 	req = applyStateChanges(req);
 	res.renderState('about/map', {
 		title: 'How to Reach',
