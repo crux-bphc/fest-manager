@@ -6,6 +6,7 @@
     left: 0;
     margin:0;
     padding:0;
+    overflow: hidden;
 }
 .section.body::after {
     position:absolute;
@@ -16,7 +17,6 @@
     bottom: 0;
     z-index: +1000;
     pointer-events: none;
-    background-image: linear-gradient(purple, yellow);
     opacity: 0.5;
     mix-blend-mode: overlay;
 }
@@ -128,6 +128,7 @@
         background:#1e1e1e;
         height: unset;
         width: 100vw;
+        overflow:visible;
     }
     .section.body .contacts > div {
         width: 100vw;
@@ -156,5 +157,8 @@
         box-sizing: border-box;
         display: flex;
         justify-content: flex-end;
+    }
+    .section.body .contacts > li.fade {
+        opacity: 1;
     }
 }
