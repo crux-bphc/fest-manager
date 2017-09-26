@@ -1,0 +1,39 @@
+mixin loadingMixin()
+    style.
+        .main .cover {
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: +1000;
+            background: white;
+            color: #666;
+        }
+        @keyframes flip {
+            0% {
+                transform: rotateX(90deg);
+            }
+            100% {
+                transform: rotateX(450deg);
+            }
+        }
+        h2.loading {
+            perspective: 1000px;
+            display: inline-block;
+        }
+        h2.loading > span {
+            animation: flip 3s infinite cubic-bezier(0,0,0,1);
+            font-weight: 600;
+            transform-origin: 50% 50% -0.5em;
+            letter-spacing: 1em;
+            display: inline-block;
+        }
+    -var atmos = ['L','O','A','D','I','N','G'];
+    div.cover
+        h2.loading
+            each letter, index in atmos
+                span(style="animation-delay: -#{0.3 * (atmos.length - index)}s")= letter
