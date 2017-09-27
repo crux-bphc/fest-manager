@@ -22,7 +22,7 @@
 }
 .section.body .underlay {
     background-size: contain;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,1);
     background-blend-mode: overlay;
     transition:background-image 1s;
     background-position: center center;
@@ -74,6 +74,7 @@
     position:absolute;
     z-index: 1;
     opacity: 0;
+    top: 10%;
     will-change: opacity;
     transition: opacity 0.5s cubic-bezier(0,0,0,1);
     transition-delay: 0.1s;
@@ -82,6 +83,7 @@
     height:50%;
     opacity: 0.1;
     z-index: 0;
+    top:25%;
 }
 .section.body .contacts > div > img.active {
     opacity:0.7;
@@ -96,7 +98,7 @@
     color: #f7f7f7;
 }
 .section.body .contacts > li.fade {
-    opacity: 0.1;
+    opacity: 0.05;
 }
 .section.body .contacts > li > .post {
     font-weight: 800;
@@ -147,6 +149,7 @@
         position: relative;
         opacity: 1;
         height: 80vh;
+        top: unset;
     }
     .section.body .contacts > li {
         height: 100vw;
