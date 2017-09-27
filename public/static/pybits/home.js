@@ -10,4 +10,7 @@ $('document').ready(function() {
         loop: true,
     }
     var typed = new Typed('#typedholder', options);
+    window.addEventListener('add-cart', function(event){
+        console.log("Fired:", event);
+    });
 });

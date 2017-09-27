@@ -8,7 +8,7 @@ var RegisterButton = function () {
 
 	var failAlert = function (res) {
 		swal({
-			title: "Failed !",
+			title: "Failed!",
 			text: res.msg,
 			type: "error",
 			confirmButtonText: "OK",
@@ -48,6 +48,10 @@ var RegisterButton = function () {
 					});
 				}
 				$('.cart-actions').html(templates[isFree ? "subscribed" : "pending"].replace('$id', id).replace('$isFree', isFree));
+				var event = new CustomEvent('add-cart', {
+					id: id,
+				});
+				window.dispatchEvent(event);
 			} else {
 				failAlert(res);
 			}
