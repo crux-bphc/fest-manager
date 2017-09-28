@@ -113,6 +113,11 @@ router.get('/:body', middleware.authenticate, middleware.elevate, function (req,
 				error.status = 404;
 				return next(error);
 			}
+			items.sort(function (a, b) {
+				if (a.name > b.name) return 1;
+				if (a.name < b.name) return -1;
+				return 0;
+			});
 			req.stateparams.pagetitle = body.name;
 			return res.renderState('portals/portal', {
 				user: req.user,
