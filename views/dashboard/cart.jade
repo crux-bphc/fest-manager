@@ -32,7 +32,10 @@ div.section.body
 			div.price.total
 				i &#x20b9;
 				span.amount(name="total") 0
-			div.button PAY NOW
+			if payment
+				div.button PAY NOW
+			else
+				div.button.disabled PAYMENT NOT AVAILABLE
 script(src="/static/scripts/cart.js")
 script.
 	Cart.init()

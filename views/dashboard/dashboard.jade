@@ -37,7 +37,10 @@ div.section.body
 			if pending.length
 				div.event-list.pending(data-title="In cart")
 					+eventList(pending, user, true)
-					a.button(href="/dashboard/cart") Proceed To Cart
+					if(payment)
+						a.button(href="/dashboard/cart") Proceed To Cart
+					else
+						a.button.disabled Payment Not Available
 		else
 			div.event-list(data-title="Registered Events")
 				span(style="margin-left: 1em;") You have not registered for anything. Go to the events section to register.

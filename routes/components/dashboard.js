@@ -6,6 +6,8 @@ var eventModel = fq("services/events").model;
 const qr = require("qrcode");
 var config = fq('config-loader');
 
+var paymentStatus = config.payment && config.payment.isEnabled;
+
 var applyStateChanges = function (req) {
 	req.stateparams.title = req.stateparams.title = {
 		text: 'Dashboard',
@@ -124,6 +126,7 @@ router.get('/account', authenticate, function (req, res, next) {
 	var params = {
 		title: 'My Account',
 		user: req.user,
+		payment: paymentStatus,
 	};
 	req = applyStateChanges(req);
 	params.fields = getFields(req.user);
@@ -141,6 +144,7 @@ router.get('/cart', authenticate, function (req, res, next) {
 	var params = {
 		title: 'Check Out',
 		user: req.user,
+		payment: paymentStatus,
 	};
 	eventModel.find({
 			_id: {
@@ -163,6 +167,9 @@ router.get('/cart', authenticate, function (req, res, next) {
 
 router.get('/checkout', function (req, res, next) {
 	const genchecksum = fq('checksum').genchecksum;
+	if(!paymentStatus){
+		res.status(404).send();
+	}
 	fq('api/users').getCart(req.user._id).then(function (response) {
 			let transaction = Object.assign(config.payment.defaults, {
 				TXN_AMOUNT: response.total,
