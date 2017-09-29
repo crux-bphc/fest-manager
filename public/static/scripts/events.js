@@ -5,7 +5,7 @@ $('document').ready(function () {
 		$('input#field-search').bind('keyup change', function (e) {
 			val = $('input#field-search').val().toLowerCase();
 			var matched = 0;
-			$('div.event-container').each(function (index) {
+			$('.event-container').each(function (index) {
 				var elem = this;
 				$(elem).addClass('hidden');
 				var fields = [];
