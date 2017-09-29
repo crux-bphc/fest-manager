@@ -1,0 +1,9 @@
+{
+    "ignore": [
+        "tests/**/*",
+        "docs/**/*",
+        "public/**/*",
+        "views/**/*"
+    ],
+    "delay": "1000"
+}

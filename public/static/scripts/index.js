@@ -152,7 +152,7 @@ var manager = function () {
 
 	client.navigation.generateSubMenu = function (state) {
 		var holder = $('.section.secondary');
-		if (!state.submenu.length > 0) {
+		if (!state.submenu.length > 0) { // jshint ignore:line
 			holder.removeClass('active');
 			return;
 		}
