@@ -316,17 +316,29 @@
     border-radius: 4px;
     overflow: hidden;
 }
-
 .card {
     height: 10em;
     flex-direction: column;
 }
-
+.card.subscribed {
+    height:auto;
+    position:absolute;
+    padding: 1em;
+    border: 1px solid rgba(0,0,0,0.05);
+}
 .card .header {
     padding: 1em 0em 0em 1em;
     box-sizing: border-box;
     width: 100%;
     line-height: 1.2em;
+}
+.card.subscribed .header {
+    display: none;
+}
+.card.subscribed .accommodation {
+    flex-direction: column-reverse;
+    position: relative;
+    overflow: visible;
 }
 
 .accommodation>.days {
@@ -341,12 +353,19 @@
     color: #666;
     display: block;
 }
+.card.subscribed .accommodation>.days>span {
+    display: none;
+}
 
 .accommodation .selector {
     display: flex;
     margin-top: 1em;
     flex-direction: row;
     align-items: center;
+}
+.card.subscribed .accommodation .selector {
+    margin-top: 0em;
+    pointer-events: none;
 }
 
 .accommodation .selector>label {
@@ -434,12 +453,18 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    font-weight: 600;
     color: #666;
     box-sizing: border-box;
     padding: 0em 1em;
     padding-right: 2em;
     transition: background 0.2s, color 0.2s;
+}
+.accommodation .type label > span {
+    font-weight: 600;
+    display: inline-block;
+}
+.card.subscribed .accommodation .type label {
+    display: none;
 }
 
 .accommodation .type label:hover {
@@ -460,9 +485,20 @@
     content: "\e5ca";
     color: #2eb398;
 }
+.card.subscribed .accommodation .type input:checked+label::before {
+    margin-right: 0em;
+    content: "Registered for";
+    font-weight: 400;
+    font-family: inherit;
+    font-size: inherit;
+    color: #666;
+}
 
-.accommodation .type input:checked+label {
+.card .accommodation .type input:checked+label {
     color: #121212;
+    justify-content: center;
+    padding-right: 1em;
+    display: flex !important;
 }
 
 .additionals .icon-close {
@@ -473,6 +509,9 @@
     right: 0;
     font-size: 1.2em;
     padding: 0.5em;
+}
+.card.subscribed .icon-close {
+    display: none;
 }
 
 @media only screen and (max-width: 800px) {
@@ -568,12 +607,20 @@
         width: 100%;
         height: 16em;
     }
+    .card.subscribed {
+        position: relative;
+        background: hsla(141, 61%, 95%, 1);
+        width: 100%;
+        box-sizing: border-box;
+    }
     .accommodation {
         width: 100%;
         flex-direction: column;
     }
     .accommodation>.days {
         flex-grow: 1;
+        margin-right: 0em;
+        margin-left: 0em;
     }
     .accommodation .selector label:hover {
         background: #ccc;
@@ -581,6 +628,9 @@
     }
     .accommodation .type {
         height: 6em;
+    }
+    .card.subscribed .accommodation .type {
+        height: 1.5em;
     }
     .additionals .icon-close {
         padding: 1em;

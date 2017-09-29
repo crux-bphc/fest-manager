@@ -183,11 +183,12 @@ div.ca .content .button {
 		flex-direction: column;
 		margin-bottom: 1em;
 	}
-	.section.body div.separator {
+	.section.body > div.separator {
 		display: none;
 	}
-	.section.body div:not(.separator) {
-		margin-left: 0em;
+	.section.body > div:not(.separator) {
+		margin-left: 0.5em;
+		margin-right: 0.5em;
 	}
 	.section.body > div {
 		width:95%;

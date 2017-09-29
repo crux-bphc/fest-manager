@@ -1,4 +1,5 @@
 include ../mixins/eventList
+include ../mixins/accomm-card
 
 link(href="/static/stylesheets/cart.style.css" rel="stylesheet")
 link(href="/static/stylesheets/dashboard.style.css" rel="stylesheet")
@@ -27,8 +28,8 @@ div.section.body
 	div.separator
 	div
 		img.imgQR(src="#{user.qrData}")
-		div.ca
-			a.button(href="/events") Register in Events and Workshops
+		if(user.additionals && user.additionals[0])
+			+accommCardMixin(false, user.additionals[0])
 	div.events
 		if (subscribed.length || pending.length)
 			if subscribed.length

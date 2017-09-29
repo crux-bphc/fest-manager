@@ -1,8 +1,8 @@
 mixin accommCardMixin(isPending, accommodation)
-    div.card
+    div.card(class=(isPending ? "pending" : "subscribed"))
         div.header
             span ACCOMODATION
-        div.accommodation(class=(isPending ? "pending" : "subscribed"))
+        div.accommodation
             div.days
                 span How many days will you stay with us?
                 div.selector
@@ -20,7 +20,9 @@ mixin accommCardMixin(isPending, accommodation)
                             sup th
             div.type
                 input.hidden#accomm_in_common(name="accommtype" type="radio" value="1" checked=((accommodation && accommodation.details.type == 1) || !accommodation))
-                label(for="accomm_in_common") Common Room
+                label(for="accomm_in_common")
+                    span &nbsp;Common Room
                 input.hidden#accomm_in_resort(name="accommtype" type="radio" value="2" checked=(accommodation && accommodation.details.type == 2))
-                label(for="accomm_in_resort") Resort
+                label(for="accomm_in_resort")
+                    span &nbsp;Resort
         label.icon-close(for="enableAccomm")
