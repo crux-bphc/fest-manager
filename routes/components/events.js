@@ -34,13 +34,11 @@ router.get('/', function (req, res, next) {
 	eventsService.find(function (err, events) {
 		if (err) return next(err);
 
-		var compare = function (a, b) {
-			if (a.name > b.name)
-				return true;
-			return false;
-		};
-
-		events.sort(compare);
+		events.sort(function (a, b) {
+				if (a.name > b.name) return 1;
+				if (a.name < b.name) return -1;
+				return 0;
+			});
 
 		res.renderState('events/home', {
 			title: 'Events',
