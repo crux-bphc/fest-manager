@@ -24,8 +24,21 @@ div.immersive-wrapper#home
 			div
 				i.icon-location_city
 				div BITS Hyderabad
-		+cartActionsMixin(event, user)
-		div#warning
+	div.registration(tabindex="1")
+		div.left
+		div.center
+			div.button-wrapper
+				span
+					span Conference + Workshops
+					span.price #{event.price}
+				+cartActionsMixin(event, user)
+			div.button-wrapper
+				span
+					span Only Conference
+					span.price #{event.price}
+				+cartActionsMixin(event, user)
+		div.right
+		div.footer
 			span Note: We'll open the payment gateway soon.
 	+navigationMixin(true)
 	div.about.hidden

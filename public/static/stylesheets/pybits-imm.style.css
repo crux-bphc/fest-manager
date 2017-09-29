@@ -6,23 +6,26 @@
 
 #home {
     color:white;
-    background-image:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), linear-gradient(rgba(255,234,50,0.9), rgba(51,100,157,0.9) 70%), url("/static/pybits/back.jpg");
+    background-image:radial-gradient(at center, rgba(0,0,0,0), rgba(0,0,0,1)), linear-gradient(rgba(255,234,50,0.9), rgba(51,100,157,0.9) 70%), url("/static/pybits/back.jpg");
+    /*background-image: radial-gradient(at center, transparent, rgba(0,0,0,0.5)), linear-gradient(45deg, #191919, #1e1e1e);*/
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     width: 100vw;
     box-sizing: border-box;
+    padding: 0em;
     padding-top: 4.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #home .logo {
-    position: absolute;
-    width: 50%;
-    height: 5em;
-    margin: -2.5em -25vw;
-    top:50%;
-    left: 50%;
+    position: relative;
+    width: 100%;
+    margin-top: -2.5em;
+    margin-bottom: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,17 +56,110 @@
     display: inline-block;
 }
 
-#home .logo .button {
-    display: block;
+.registration {
+    display: flex;
+    width: 100%;
+    height: 12em;
+    padding-bottom: 3em;
+    position: relative;
+    background: rgba(0,0,0,0.25);
+}
+.registration > .left,
+.registration > .right {
+    flex: 1;
+    height: 100%;
+}
+.registration > .center {
+    height: 100%;
+    width: 60%;
+    position: relative;
+    display: flex;
+}
+
+#home .registration .center .button-wrapper {
+    flex: 1;
+    transition: box-shadow 0.2s;
+    display: flex;
+    margin: 0 -6%;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 5em;
+    padding-right: 5em;
+    background: linear-gradient(145deg, #e0e0e0, #fff);
+    clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+    -webkit-clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+    -moz-clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+    -ms-clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+    -o-clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+}
+#home .registration .center .button-wrapper > * {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#home .registration .center .button-wrapper > .cart-actions {
+    flex: 1;
+}
+#home .registration .center .button-wrapper > span {
+    font-weight: 400;
+    color: #666;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    flex: 1;
+    display: flex;
+}
+#home .registration .center .button-wrapper > span > span:first-child{
+    flex-grow: 1;
+    text-align: center;
+}
+#home .registration .center .button-wrapper > span > span:nth-child(2) {
+    font-size: 0.8em;
+    margin-left: 1.5em;
+}
+#home .registration .center .button-wrapper > span > .price::before {
+    content: "\20b9";
+}
+
+#home .registration .center .button-wrapper .button {
     box-sizing: border-box;
     line-height: 3em;
-    padding:0em 2em;
-    margin-top:1.5em;
-    border: 2px solid rgba(255,255,255,0.7);
+    font-weight: 600;
+    margin: 0;
+    border: none;
     border-radius: 0;
     height: unset;
+    font-size: 1.2em;
     background: unset;
-    color: rgba(255,255,255,0.7);
+    text-align: center;
+    color: rgba(0,0,0,0.7);
+}
+#home .registration .center .button-wrapper .button span {
+    font-weight: 600;
+}
+#home .registration .center .button-wrapper .button i {
+    display: none;
+}
+#home .registration .center .button-wrapper:hover {
+    box-shadow: 0px 0px 20px -5px rgba(0,0,0,1);
+}
+#home .registration .center .button-wrapper .button.pending {
+    padding-left: 0em;
+    padding-right: 5em;
+}
+#home .registration .center .button-wrapper:last-child .button.pending {
+    padding-left: 0em;
+    padding-right: 2.5em;
+}
+#home .registration .center .button-wrapper .button.pending > i {
+    height: 3em;
+    border-radius: 0px;
+    /*width: 3em;*/
+    margin-left: 0em;
+    line-height: 3em;
+    background: none;
+    display: inline-block;
 }
 
 .about {
@@ -111,14 +207,20 @@
 .scrollable {
     height: 80vh;
 }
-
-#warning span {
-    font-size: 1.2em;
+.registration .footer {
+    position:absolute;
+    bottom:0;
+    width: 100%;
+    height: 3em;
+    background: rgba(0,0,0,0.25);
+}
+.registration .footer span {
+    font-size: 1em;
     color:rgba(255,255,255,0.7);
     text-align: center;
-    padding-top: 1.5em;
+    width: 100%;
     display: block;
-    line-height: 1.5em;
+    line-height: 3em;
 }
 
 .typed-cursor {
@@ -156,17 +258,39 @@
         width:100vw;
     }
 
-    #warning span {
-        width: 80vw;
-    }
-
     #home .logo > .subtitle:not(#typedelement) > span {
         line-height: 1.5em;
         display: block;
         white-space: nowrap;
         width: 100%;
     }
-    #home .logo > .button {
-        white-space: nowrap;
+    .registration .center {
+        width: 100%;
+        flex-direction: column;
+    }
+    #home .registration .center .button-wrapper {
+        clip-path: none;
+        flex-direction: row;
+        padding: 0em 2.5em;
+    }
+    #home .registration .center .button-wrapper .cart-actions {
+        justify-content: flex-end;
+        flex: 0;
+        margin-left: 2em;
+    }
+    #home .registration .center .button {
+        box-shadow:none;
+    }
+    #home .registration .center .button > span {
+        display: block !important;
+    }
+    #home .registration .center .button > i {
+        right: 0;
+    }
+    #home .registration .center .button-wrapper > span > span {
+        flex-grow: 1;
+    }
+    #home .registration .center .button-wrapper > span > .price {
+        text-align: center;
     }
 }
