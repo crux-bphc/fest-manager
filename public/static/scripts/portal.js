@@ -15,6 +15,26 @@ var description;
 	});
 })();
 
+var implementSearch = function () {
+	$('input#field-search').bind('keyup change', function (e) {
+		val = $('input#field-search').val().toLowerCase();
+		var matched = 0;
+		$('.item').not('.head').each(function (index) {
+			var elem = this;
+			$(elem).addClass('hidden');
+			var fields = [];
+			fields.push($(elem).find('.title').text().toLowerCase());
+			fields.forEach(function (field, index) {
+				if (field.indexOf(val) != -1) {
+					$(elem).removeClass('hidden');
+					matched += 1;
+				}
+			});
+		});
+	});
+};
+implementSearch();
+
 function closeEditor() {
 	portal.find(".edit_item").addClass('collapsed');
 	$(".latent").removeClass("active");
