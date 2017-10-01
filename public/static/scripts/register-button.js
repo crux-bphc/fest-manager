@@ -37,7 +37,7 @@ var RegisterButton = function () {
 						confirmButtonText: "OK",
 						confirmButtonColor: "#202729"
 					});
-					$('.cart-actions').html(templates.subscribed.replace('$id', id));
+					$('#' + id).html(templates.subscribed.replace('$id', id));
 				} else {
 					swal({
 						title: "Successful",
@@ -47,11 +47,10 @@ var RegisterButton = function () {
 						confirmButtonColor: "#202729"
 					});
 				}
-				$('.cart-actions').html(templates[isFree ? "subscribed" : "pending"].replace('$id', id).replace('$isFree', isFree));
-				var event = new CustomEvent('add-cart', {
-					id: id,
-				});
-				window.dispatchEvent(event);
+				$('#' + id).html(templates[isFree ? "subscribed" : "pending"].replace('$id', id).replace('$isFree', isFree));
+				window.dispatchEvent(new CustomEvent('fm-add-cart', {
+					detail: id,
+				}));
 			} else {
 				failAlert(res);
 			}
@@ -98,7 +97,10 @@ var RegisterButton = function () {
 							confirmButtonText: "OK",
 							confirmButtonColor: "#202729"
 						});
-						$('.cart-actions').html(templates[isFree ? "subscribed" : "pending"].replace('$id', id).replace('$isFree', isFree));
+						$('#' + id).html(templates[isFree ? "subscribed" : "pending"].replace('$id', id).replace('$isFree', isFree));
+						window.dispatchEvent(new CustomEvent('fm-join-team', {
+							id: id,
+						}));
 					} else {
 						failAlert(res);
 					}
@@ -127,7 +129,10 @@ var RegisterButton = function () {
 					confirmButtonColor: "#202729"
 				});
 				var teamed = $('.open-event').attr('team') == "true";
-				$('.cart-actions').html(templates[(teamed ? "teamed" : "single")].replace('$id', id).replace('$isFree', isFree));
+				$('#' + id).html(templates[(teamed ? "teamed" : "single")].replace('$id', id).replace('$isFree', isFree));
+				window.dispatchEvent(new CustomEvent('fm-remove-cart', {
+					id: id,
+				}));
 			} else {
 				failAlert(res);
 			}

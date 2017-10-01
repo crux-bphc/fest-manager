@@ -2,7 +2,7 @@
 mixin cartActionsMixin(event, user, text)
     script(src="/static/scripts/register-button.js")
     link(href="/static/stylesheets/register-button.css" rel="stylesheet")
-    div.cart-actions
+    div.cart-actions(id=event._id)
         - if(typeof user !== 'undefined')
             - if(user.events.indexOf(event._id) != -1)
                 div.subscribed.button

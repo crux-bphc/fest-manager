@@ -10,7 +10,13 @@ $('document').ready(function() {
         loop: true,
     }
     var typed = new Typed('#typedholder', options);
-    window.addEventListener('add-cart', function(event){
-        console.log("Fired:", event);
+
+    // Allow selecting only one of the event combos at a time.
+    window.addEventListener('fm-add-cart', function(event){
+        $('.button-wrapper').addClass('hidden');
+        $('#' + event.detail).closest('.button-wrapper').removeClass('hidden');
+    });
+    window.addEventListener('fm-remove-cart', function(event){
+        $('.button-wrapper').removeClass('hidden');
     });
 });

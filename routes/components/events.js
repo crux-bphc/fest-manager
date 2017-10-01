@@ -34,11 +34,13 @@ router.get('/', function (req, res, next) {
 	eventsService.find(function (err, events) {
 		if (err) return next(err);
 
+		events = events.filter(e => !e.route.endsWith('!'));
+
 		events.sort(function (a, b) {
-				if (a.name > b.name) return 1;
-				if (a.name < b.name) return -1;
-				return 0;
-			});
+			if (a.name > b.name) return 1;
+			if (a.name < b.name) return -1;
+			return 0;
+		});
 
 		res.renderState('events/home', {
 			title: 'Events',
@@ -59,6 +61,7 @@ router.get('/:eventroute', function (req, res, next) {
 			err1.status = 404;
 			return next(err1);
 		}
+		data.route = data.route.replace('!', '');
 		if (data.route.startsWith('@')) {
 			var myurl = '/components/' + data.route.split('@')[1];
 			return res.redirect(myurl);

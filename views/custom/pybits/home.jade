@@ -30,16 +30,14 @@ div.immersive-wrapper#home
 			div.button-wrapper
 				span
 					span Conference + Workshops
-					span.price #{event.price}
-				+cartActionsMixin(event, user)
+					span.price #{events[0].price}
+				+cartActionsMixin(events[0], user)
 			div.button-wrapper
 				span
 					span Only Conference
-					span.price #{event.price}
-				+cartActionsMixin(event, user)
+					span.price #{events[1].price}
+				+cartActionsMixin(events[1], user)
 		div.right
-		div.footer
-			span Note: We'll open the payment gateway soon.
 	+navigationMixin(true)
 	div.about.hidden
 		p PyBITS is a Python conference inspired by PyCon India, organized as a part of ATMOS, the annual national techno-management fest of BITS Pilani Hyderabad Campus. It is aimed at promoting the usage of Python among the attendees, and at introducing them to new ideas as to the applicability of Python in various programming domains

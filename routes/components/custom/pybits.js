@@ -38,14 +38,14 @@ router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS';
 	req = applyStateChanges(req);
 	req.stateparams.subtitle = false;
-	eventsService.findOne({
-			route: "@pybits"
+	eventsService.find({
+			route: "@pybits!"
 		})
-		.then(function (event) {
+		.then(function (mockevents) {
 			res.renderState('custom/pybits/home', {
 				title: 'PyBITS',
 				user: req.user,
-				event: event,
+				events: mockevents,
 			});
 		})
 		.catch(next);
