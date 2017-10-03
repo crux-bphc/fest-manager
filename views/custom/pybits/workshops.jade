@@ -3,23 +3,13 @@ link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
 
-div.immersive-wrapper
-	div.section.header
-		h1.title= title
-
-	div.section.body
-		a.event-container(href="/pybits/workshops/workshop1")
-			div.face
-				h3.name Workshop1
-				span.tagline Info
-
-		a.event-container(href="/pybits/workshops/workshop2")
-			div.face
-				h3.name Workshop2
-				span.tagline Info
-
-		a.event-container(href="/pybits/workshops/workshop3")
-			div.face
-				h3.name Workshop3
-				span.tagline Info
+#w-wrapper
+	#workshop1
+		h1.w-head Workshop 1
+		p.w-desc
+			| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	#workshop2
+		h1.w-head Workshop 2
+		p.w-desc
+			| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	+navigationMixin()

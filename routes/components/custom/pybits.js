@@ -55,8 +55,8 @@ router.get('/talks', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS Talks';
 	req = applyStateChanges(req);
 	// res.renderState('custom/pybits/talks', {
-	req.stateparams.subtitle = "Page Under Construction";
-	res.renderState('wip', {
+	req.stateparams.subtitle = "PyBITS Talks";
+	res.renderState('custom/pybits/talks', {
 		title: 'PyBITS Talks',
 		user: req.user,
 		pybits: true,
@@ -79,8 +79,8 @@ router.get('/workshops', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS Workshops';
 	req = applyStateChanges(req);
 	// res.renderState('custom/pybits/workshops', {
-	req.stateparams.subtitle = "Page Under Construction";
-	res.renderState('wip', {
+	req.stateparams.subtitle = "PyBITS Workshops";
+	res.renderState('custom/pybits/workshops', {
 		title: 'PyBITS Workshops',
 		user: req.user,
 		pybits: true,
