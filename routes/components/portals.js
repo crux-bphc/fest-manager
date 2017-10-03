@@ -172,6 +172,7 @@ router.get('/:body/:eventroute', middleware.authenticate, middleware.elevate, fu
 				user: req.user,
 				title: eventName,
 				teams: teams,
+				phone: req.user.phone || "NA"
 			});
 		})
 		.catch(function (err) {
