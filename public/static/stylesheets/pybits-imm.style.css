@@ -3,7 +3,11 @@
 .main .wrapper.face {
     overflow: hidden;
 }
-
+@media only screen and (max-width: 768px) {
+    .main .wrapper.face {
+        overflow: auto;
+    }
+}
 #home {
     color:white;
     background-image:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), linear-gradient(rgba(255,234,50,0.9), rgba(51,100,157,0.9) 70%), url("/static/pybits/back.jpg");

@@ -4,23 +4,47 @@ link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
 
-div.immersive-wrapper
-	div.section.header
-		h1.title= title
-
-	div.section.body
-		a.event-container(href="/pybits/talks/talk1")
-			div.face
-				h3.name Speaker1
-				span.tagline Info
-
-		a.event-container(href="/pybits/talks/talk2")
-			div.face
-				h3.name Speaker2
-				span.tagline Info
-
-		a.event-container(href="/pybits/talks/talk3")
-			div.face
-				h3.name Speaker3
-				span.tagline Info
+#t-wrapper
+	.row
+		.s-con
+			figure.speaker
+				img(src='http://via.placeholder.com/440x440')
+				figcaption
+					i.ion-android-open
+				a(href='#')
+			p.sname
+				| :Speaker Name
+		.s-con
+			figure.speaker
+				img(src='http://via.placeholder.com/440x440')
+				figcaption
+					i.ion-android-open
+				a(href='#')
+			p.sname
+				| :Speaker Name
+	.row
+		.s-con
+			figure.speaker
+				img(src='http://via.placeholder.com/440x440')
+				figcaption
+					i.ion-android-open
+				a(href='#')
+			p.sname
+				| :Speaker Name
+		.s-con
+			figure.speaker
+				img(src='http://via.placeholder.com/440x440')
+				figcaption
+					i.ion-android-open
+				a(href='#')
+			p.sname
+				| :Speaker Name
+		.s-con
+			figure.speaker
+				img(src='http://via.placeholder.com/440x440')
+				figcaption
+					i.ion-android-open
+				a(href='#')
+			p.sname
+				| :Speaker Name
 	+navigationMixin()
