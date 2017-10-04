@@ -88,7 +88,6 @@ div.immersive-wrapper
         div.patronage
             img(src="/static/images/make.png")
             img(src="/static/images/digital-india-logo.png")
-    #cursor
 div.hidden
     video#video-stream(loop muted src="/static/buildings/input/main.mp4")
     audio#audio-stream(src="/static/buildings/input/main.mp3")
@@ -138,12 +137,3 @@ script.
             },1000);
         }, 3000);
     });
-    window.addEventListener('mousemove', function(e) {
-        $('#cursor').css({left: e.pageX, top: e.pageY});
-    }, true);
-    window.addEventListener('mousedown', function(e) {
-        $('#cursor').addClass('down');
-    }, true);
-    window.addEventListener('mouseup', function(e) {
-        $('#cursor').removeClass('down');
-    }, true);
