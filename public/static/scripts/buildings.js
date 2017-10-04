@@ -59,33 +59,8 @@ var Constructor = function () {
 	// Input streams
 	var inputs = {};
 	inputs.video = $('#video-stream')[0];
-	inputs.audio = $('#audio-stream')[0];
 
-	// Audio analyser resources
-	var audio = {};
-	audio.domElement = inputs.audio;
-	audiocontext = AudioContext || webkitAudioContext;
-	audio.context = new audiocontext();
-	audio.analyser = audio.context.createAnalyser();
-	audio.analyser.fftSize = 256;
-	audio.analyser.smoothingTimeConstant = 1;
-	audio.dataArray = new Uint8Array(audio.analyser.frequencyBinCount);
-	audio.gainNode = audio.context.createGain();
-	audio.buffer = audio.context.createMediaElementSource(audio.domElement);
-	audio.init = function () {
-		audio.buffer.connect(audio.gainNode);
-		audio.gainNode.connect(audio.analyser);
-		audio.analyser.connect(audio.context.destination);
-	};
-	audio.update = function () {
-		audio.analyser.getByteTimeDomainData(audio.dataArray);
-		var sum = 0;
-		for (i = 0; i < 5; i++) {
-			sum += audio.dataArray[i];
-		}
-		sum /= 5;
-		audio.high = sum;
-	};
+	var audio = manager.getAudio();
 
 	// Scene resources
 	var scene = new THREE.Scene();
@@ -606,7 +581,7 @@ var Constructor = function () {
 		timeline.keyframes = [];
 		timeline.now = 0;
 		timeline.moveto = function (index) {
-			inputs.audio.play();
+			audio.domElement.play();
 			if (timeline.keyframes[index]) {
 				if (index == 0) {
 					state.freeroam = false;
