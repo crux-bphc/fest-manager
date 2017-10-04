@@ -55,7 +55,7 @@ body
 						a.label MAIN
 						ul
 							each val, key in navigation
-								a(href=val.route _triggers=val.triggers class=val.initial)
+								a(class=val.initial href=val.route _triggers=val.triggers)
 									i
 									span= val.label
 					div.secondary-wrapper
@@ -65,7 +65,9 @@ body
 			div.remnant.main(tabindex="1")
 				div.wrapper.face
 				div.wrapper.tray
-
+		div.hidden
+			video#video-stream(loop muted src="/static/buildings/input/main.mp4")
+			audio#audio-stream(src="/static/buildings/input/main.mp3")
 		script(type="application/ld+json" src="/static/scripts/schema.json")
 		script(type="text/javascript" src="/static/lib/jquery.min.js")
 		script(type="text/javascript" src="/static/lib/deep-diff-0.3.8.min.js")

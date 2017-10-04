@@ -218,9 +218,9 @@ div.footer > .patronage > img {
 	height: 100vh;
 }
 .slide.now > * {
-	transition: filter 2s 2s, opacity 1s 2s;
+	transition: opacity 1s 2s;
 	opacity: 1;
-	filter: blur(0);
+	/*filter: blur(0);*/
 }
 
 .slide.now .button {
@@ -228,8 +228,8 @@ div.footer > .patronage > img {
 }
 .slide > * {
 	opacity: 0;
-	filter: blur(10px);
-	transition: filter 1s, opacity 0.7s;
+	/*filter: blur(10px);*/
+	transition: opacity 0.7s;
 	will-change: opacity;
 }
 

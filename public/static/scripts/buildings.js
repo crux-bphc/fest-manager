@@ -242,7 +242,7 @@ var Constructor = function () {
 		passes.update = function () {
 			var bomb;
 			if (audio.high && audio.high > 190) {
-				console.log(audio.high);
+				// console.log(audio.high);
 				clearTimeout(bomb);
 				bomb = setTimeout(function () {
 					passes.glitchPass.uniforms.byp.value = 1;
