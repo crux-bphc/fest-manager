@@ -3,7 +3,7 @@ var Buildings = null;
 
 var Constructor = function () {
 
-	if (navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+	if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
 		return true;
 	}
 	var avgArray = Array(128).fill(0);
@@ -93,6 +93,7 @@ var Constructor = function () {
 	var renderer = new THREE.WebGLRenderer({
 		antialias: true,
 	});
+	var init = true;
 	var composer = new THREE.EffectComposer(renderer);
 	composer.setSize(window.innerWidth, window.innerHeight);
 	var textures = {};
@@ -723,7 +724,7 @@ var Constructor = function () {
 	}
 
 	window.addEventListener('keyup', function (e) {
-		if (!state.freeroam) return;
+		if(init == true) return;
 		if ([40].indexOf(e.keyCode || e.which) != -1)
 			timeline.next();
 		if ([38].indexOf(e.keyCode || e.which) != -1)
@@ -763,6 +764,12 @@ var Constructor = function () {
 		toggle: toggle,
 		next: timeline.next,
 		prev: timeline.prev,
+		start: function() {
+			init = false;
+			timeline.next();
+			toggle();
+			setTimeout(function() {$('#slide1 .button, #slide1 .calling').remove();},1000);
+		},
 		mute: function() {
 			if(inputs.audio.muted) {
 				inputs.audio.muted = false;
@@ -775,3 +782,4 @@ var Constructor = function () {
 		}
 	};
 };
+Constructor();

@@ -10,7 +10,7 @@ div.immersive-wrapper
     div.container#fallback
         div.underlay
         div.subject
-            img(onload="Constructor()" src="/static/images/logo.png")
+            img(src="/static/images/logo.png")
             .message You are seeing this because this page is not supported on your device.
             .links
                 .title Quick Links
@@ -26,7 +26,7 @@ div.immersive-wrapper
             div.message
                 span.big Welcome to our desolate world
                 span.small The lack of humanity will surely please you
-            div.button(onclick="Buildings.next();Buildings.toggle();")
+            div.button(onclick="Buildings.start()")
                 span ENTER EXPERIENCE
             div.calling
                 .line
@@ -99,6 +99,17 @@ div.hidden
 +groundShaders("ground")
 +screenShaders("screen")
 +starShaders("stars")
+script(src="/static/lib/three/three.min.js")
+script(src="/static/lib/three/EffectComposer.js")
+script(src="/static/lib/three/RenderPass.js")
+script(src="/static/lib/three/ShaderPass.js")
+script(src="/static/lib/three/CopyShader.js")
+script(src="/static/lib/three/ConvolutionShader.js")
+script(src="/static/lib/three/GlitchPass.js")
+script(src="/static/lib/three/DigitalGlitch.js")
+script(src="/static/lib/three/BokehShader.js")
+script(src="/static/lib/three/BokehPass.js")
+script(src="/static/scripts/buildings.js")
 script.
     var ANIMATING = false;
     var onMousewheel = function(e) {
