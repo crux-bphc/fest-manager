@@ -58,9 +58,9 @@ var Constructor = function () {
 
 	// Input streams
 	var inputs = {};
-	inputs.video = $('#video-stream')[0];
-
 	var audio = manager.getAudio();
+	inputs.video = $('#video-stream')[0];
+	inputs.audio = audio.domElement;
 
 	// Scene resources
 	var scene = new THREE.Scene();
