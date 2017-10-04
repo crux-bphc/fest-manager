@@ -84,7 +84,7 @@
 	border:2px solid #9973f2;
 	color:#9973f2;
 	letter-spacing: 0.1em;
-	pointer-events: all;
+	/*pointer-events: all;*/
 	padding: 0em 2em;
 	font-size: 1.1em;
 	cursor:pointer;
@@ -94,6 +94,7 @@
 .immersive-wrapper .button span {
 	margin-right: -0.1em;
 }
+
 #cursor {
 	background: none;
 	height: 1.5em;
@@ -243,6 +244,11 @@ div.footer > .patronage > img {
 	opacity: 1;
 	filter: blur(0);
 }
+
+.slide.now .button {
+	pointer-events: all;
+}
+
 .slide .content {
 	display: flex;
 	align-items: center;
@@ -427,11 +433,12 @@ div.footer > .patronage > img {
 	}
 	.controller.active > div {
 		opacity: 1;
-		pointer-events: all;
 	}
+
 	.controller > div {
 		height: 50%;
 		width:100%;
+		pointer-events: none;
 		transition: opacity 1s;
 		opacity: 0;
 		pointer-events: none;
@@ -444,6 +451,15 @@ div.footer > .patronage > img {
 	.controller > div:active {
 		background:rgba(150,150,150,0.1);
 	}
+
+	.controller > div > i {
+		pointer-events: all;
+		height: 2em;
+		width: 2em;
+		text-align: center;
+		line-height: 2em;
+	}
+
 	.controller > div.up > i {
 		transform:rotate(-90deg);
 	}

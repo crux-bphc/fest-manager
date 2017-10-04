@@ -13,6 +13,10 @@
 	overflow-y: hidden;
 	pointer-events: none;
 }
+.buttonsContainer {
+	margin-top: 60px;
+	display: none;
+}
 .map-button {
 	margin:1em;
 	line-height: 3em;

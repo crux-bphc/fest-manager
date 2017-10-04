@@ -8,21 +8,13 @@ var applyStateChanges = function (req) {
 	};
 	req.stateparams.immersive = true;
 	req.stateparams.submenu = [{
-			label: "Get in Touch",
+			label: "Contact",
 			route: "/about/contact",
 		},
-		// {
-		// 	label: "How to Reach",
-		// 	route: "/about/map",
-		// },
-		// {
-		// 	label: "Sponsors",
-		// 	route: "/about/sponsors",
-		// },
-		// {
-		// 	label: "Credits",
-		// 	route: "/about/credits",
-		// },
+		{
+			label: "Reaching here",
+			route: "/about/map",
+		},
 		{
 			label: "ATMOS 2016",
 			route: "https://bits-atmos.org/2016",
