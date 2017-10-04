@@ -51,6 +51,3 @@ public/static/data/*
 
 #export directory
 public/static/exports/*
-
-#input directory
-public/static/buildings/input/*
