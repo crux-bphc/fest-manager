@@ -98,7 +98,7 @@
 	background: none;
 	height: 1.5em;
 	width:1.5em;
-	position:absolute;
+	position:fixed;
 	border-radius: 50%;
 	transition: transform 0.1s;
 	border: 2px solid #e0e0e0;
@@ -163,6 +163,22 @@ div.footer {
 	align-items: center;
 	background: linear-gradient(transparent, rgba(0,0,0,0.6));
 	justify-content: center;
+}
+div.footer > .mute {
+	position:absolute;
+	right: 0;
+	line-height: 5em;
+	padding: 0em 2em;
+	font-weight: 400;
+	font-size: 0.9em;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	pointer-events: all;
+	transition: all 0.1s;
+	color: rgba(255,255,255,0.75);
+}
+div.footer > .mute:active {
+	transform: scale(0.8);
 }
 div.footer > .sharables > a {
 	font-size: initial;
@@ -387,10 +403,11 @@ div.footer > .patronage > img {
 	}
 	div.footer .sharables {
 		position:absolute;
-		right: 0;
+		right: 5em;
 	}
 	div.footer > .sharables > a {
 		margin: 0em;
+		width: 3em;
 	}
 	#slide1 .calling {
 		width: 100%;

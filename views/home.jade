@@ -85,13 +85,14 @@ div.immersive-wrapper
             a.icon-facebook(href="https://facebook.com/bits-atmos")
             a.icon-twitter(href="https://twitter.com/BITSAtmos")
             a.icon-google(href="https://plus.google.com/103653254627475556103")
+        div.mute(onclick="Buildings.mute()") MUTE
         div.patronage
             img(src="/static/images/make.png")
             img(src="/static/images/digital-india-logo.png")
     #cursor
 div.hidden
     video#video-stream(loop muted src="/static/buildings/input/main.mp4")
-    audio#audio-stream(autoplay src="/static/buildings/input/main.mp3")
+    audio#audio-stream(src="/static/buildings/input/main.mp3")
 +centralShaders("central")
 +logoShaders("logo")
 +buildingShaders("buildings")

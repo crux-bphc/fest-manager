@@ -604,6 +604,7 @@ var Constructor = function () {
 		timeline.keyframes = [];
 		timeline.now = 0;
 		timeline.moveto = function (index) {
+			inputs.audio.play();
 			if (timeline.keyframes[index]) {
 				if (index == 0) {
 					state.freeroam = false;
@@ -762,5 +763,15 @@ var Constructor = function () {
 		toggle: toggle,
 		next: timeline.next,
 		prev: timeline.prev,
+		mute: function() {
+			if(inputs.audio.muted) {
+				inputs.audio.muted = false;
+				$('.mute').html("MUTE");
+			}
+			else {
+				inputs.audio.muted = true;
+				$('.mute').html("UNMUTE");
+			}
+		}
 	};
 };
