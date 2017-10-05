@@ -3,7 +3,7 @@ link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
 
-div.immersive-wrapper
+div.immersive-wrapper.pybits-background
 	div.section.header
 		h1.title= title
 
@@ -32,4 +32,4 @@ div.immersive-wrapper
 			| This Code of Conduct was forked from the
 			a(href='https://us.pycon.org/2017/about/code-of-conduct/') PyCon Code of Conduct
 
-	+navigationMixin()
+	+navigationMixin(true)

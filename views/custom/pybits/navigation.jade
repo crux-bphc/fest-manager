@@ -3,9 +3,8 @@ mixin navigationMixin(isHome)
         div.left(class=(isHome?"white":"black"))
             img(src=(isHome?"/static/pybits/psf-logo.png":"/static/pybits/psf-logo-black.png"))
         div.right
-            if !isHome
-                li
-                    a(href="/pybits") Home
+            li
+                a(href="/pybits") Home
             li
                 a(href="/pybits/talks") Talks
             li

@@ -2,6 +2,19 @@
 body {
     overflow: auto;
 }
+
+.pybits-background {
+    color:white;
+    background-image:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), linear-gradient(rgba(255,234,50,0.9), rgba(51,100,157,0.9) 70%), url("/static/pybits/back.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100vw;
+    box-sizing: border-box;
+    padding-top: 4.5vw;
+}
+
 .main {
     background-color: #212121;
 }
@@ -26,12 +39,11 @@ ul {
     color: #bbb;
 }
 p {
-    border-left: 2px solid #ccc;
     padding-left: 1em;
     line-height: 1.2;
     font-weight: 400;
     font-size: 1.2em;
-    color: #666;
+    color: #ddd;
     max-width: 80%;
 }
 

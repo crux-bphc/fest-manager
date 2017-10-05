@@ -4,7 +4,7 @@ link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
 
-#t-wrapper
+#t-wrapper.pybits-background
 	.row
 		.s-con
 			figure.speaker
@@ -47,4 +47,4 @@ link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
 				a(href='#')
 			p.sname
 				| :Speaker Name
-	+navigationMixin()
+	+navigationMixin(true)
