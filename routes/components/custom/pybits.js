@@ -15,10 +15,6 @@ var applyStateChanges = function (req) {
 			route: "/pybits/talks",
 		},
 		{
-			label: "Sprints",
-			route: "/pybits/sprints",
-		},
-		{
 			label: "Workshops",
 			route: "/pybits/workshops",
 		},
