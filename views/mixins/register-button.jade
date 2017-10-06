@@ -12,7 +12,7 @@ mixin cartActionsMixin(event, user, text)
                 div.pending.button
                     i.icon-close(onclick="RegisterButton.remove(this, '#{event._id}'), #{event.price ? false : true}")
                     a(title="Go to cart" href="/dashboard/cart")
-                        span Payment Pending
+                        span Pay at townscript. If paid, ignore.
             - else if(event.teamSize > 1)
                 div.latent(tabindex="1")
                     div.add_to_cart.button

@@ -27,11 +27,6 @@ $('document').ready(function () {
 	});
 
 	window.onhashchange = function () {
-		if(window.location.hash == "#Workshop") {
-			$('.tsbutton').removeClass('hidden');
-			console.log("Tsbutton");
-		}
-		else $('.tsbutton').addClass('hidden');
 		if (window.location.hash.length > 1) {
 			var selector = '.event-container.' + window.location.hash.substring(1);
 			$('.event-container').addClass("disabled");

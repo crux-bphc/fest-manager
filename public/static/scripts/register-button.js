@@ -3,7 +3,7 @@ var RegisterButton = function () {
 		teamed: '<div class="latent" tabindex="1"><div class="button add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register</span></div><div class="button join_team" onclick="RegisterButton.join(this, \'$id\', isFree)"><i class="icon-group_add"></i><span>Join Team</span></div><div class="button new_team" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_box"></i><span>New Team</span></div></div>',
 		single: '<div class="button add_to_cart" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_shopping_cart"></i><span>Register</span></div>',
 		subscribed: '<div class="button subscribed"><i class="icon-check"></i><span>Registered</span></div>',
-		pending: '<div class="button pending"><i class="icon-close" onclick="RegisterButton.remove(this, \'$id\', $isFree)"></i><a href=\'/dashboard/cart\'><span>Payment Pending</span></a></div>',
+		pending: '<div class="button pending"><i class="icon-close" onclick="RegisterButton.remove(this, \'$id\', $isFree)"></i><a href=\'/dashboard/cart\'><span>Pay at townscript. If paid, ignore.</span></a></div>',
 	};
 
 	var failAlert = function (res) {
