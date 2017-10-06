@@ -114,9 +114,8 @@ script.
             Buildings.prev();
         }
     };
-    document.body.onmousewheel = onMousewheel;
-    document.body.ondommousescroll = onMousewheel;
-    window.addEventListener('DOMMouseScroll', onMousewheel, true);
+    document.getElementsByClassName("immersive-wrapper")[0].onmousewheel = onMousewheel;
+    document.getElementsByClassName("immersive-wrapper")[0].ondommousescroll = onMousewheel;
     $.fn.nextOrFirst = function(selector){
         var next = this.next(selector);
         return (next.length) ? next : this.prevAll(selector).last();
