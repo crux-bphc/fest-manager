@@ -10,17 +10,11 @@ div.section.header
 				a.icon-shopping_cart(href="/dashboard/cart")
 		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
-//- div.section.tags
-//- 	a.active(href="#") All
-//- 	a(href="#TechExpo") Tech Expo
-//- 	a(href="#Programming") Programming
-//- 	a(href="#MeanMachines") Mean Machines
-//- 	a(href="#FandM") Finance and Management
-//- 	a(href="#Quiz") Quizzing
-//- 	a(href="#Robotics") Robotics
-//- 	a(href="#DeepSciences") Deep Sciences
-//- 	a(href="#DoItNow") Do it now
-//- 	a(href="#PaperPresentation") Paper Presentation
+div.section(style="display:flex;")
+	div.remnant
+	button(onclick="popup('atmos-workshops-413303');" class="tsbutton") Buy workshop tickets
+	noscript#tsNoJsMsg Javascript on your browser is not enabled.
+	script(src="//www.townscript.com/popup-widget/townscript-widget.nocache.js" type="text/javascript")
 div.section.events-wrapper
 	each event in events
 		- if(event.route.toLowerCase() == "techexpo" || event.route.toLowerCase() == "@pybits")

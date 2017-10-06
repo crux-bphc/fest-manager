@@ -278,6 +278,9 @@
 .open-event .description h5 {
     font-weight: 600;
 }
+.tsbutton {
+    margin-bottom: 1em;
+}
 
 @media only screen and (max-width: 600px) {
     .section.tags {
@@ -304,4 +307,3 @@
         line-height: 2em;
     }
 }
-
