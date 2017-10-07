@@ -24,9 +24,10 @@ div.immersive-wrapper#home.pybits-background
 			div
 				i.icon-location_city
 				div BITS Hyderabad
-		+cartActionsMixin(event, user)
-		div#warning
-			span Note: We'll open the payment gateway soon.
+		div.cart-actions
+			button(onclick="popup('atmos-001120');" class="button") Register Now
+			noscript#tsNoJsMsg Javascript on your browser is not enabled.
+			script(src="//www.townscript.com/organizer-popup-widget/townscript-organizer-widget.nocache.js" type="text/javascript")
 	+navigationMixin(true)
 	div.about.hidden
 		p PyBITS is a Python conference inspired by PyCon India, organized as a part of ATMOS, the annual national techno-management fest of BITS Pilani Hyderabad Campus. It is aimed at promoting the usage of Python among the attendees, and at introducing them to new ideas as to the applicability of Python in various programming domains
