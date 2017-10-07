@@ -74,9 +74,8 @@ router.get('/sprints', function (req, res, next) {
 router.get('/workshops', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS Workshops';
 	req = applyStateChanges(req);
-	// res.renderState('custom/pybits/workshops', {
-	req.stateparams.subtitle = "PyBITS Workshops";
-	res.renderState('custom/pybits/workshops', {
+	req.stateparams.subtitle = "PyBITS Workshops > Page Under Construction";
+	res.renderState('wip', {
 		title: 'PyBITS Workshops',
 		user: req.user,
 		pybits: true,
