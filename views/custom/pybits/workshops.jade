@@ -1,15 +1,34 @@
 include navigation
+
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
 link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
 
-#w-wrapper
-	#workshop1
-		h1.w-head Workshop 1
-		p.w-desc
-			| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	#workshop2
-		h1.w-head Workshop 2
-		p.w-desc
-			| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+#t-wrapper.pybits-background
+	.row
+		.s-con
+			figure.speaker
+				img(src='/static/images/pybits/pylogo.png')
+				figcaption
+					i.ion-android-open
+				a(href='#')
+			p.sname
+				| :Basic Python Workshop
+	.row
+		.s-con
+			figure.speaker
+				img(src='/static/images/pybits/scrapy.png')
+				figcaption
+					i.ion-android-open
+				a(href='#')
+			p.sname
+				| :Scrapy Workshop
+		.s-con
+			figure.speaker
+				img(src='/static/images/pybits/pandas.png')
+				figcaption
+					i.ion-android-open
+				a(href='#')
+			p.sname
+				| :Pandas Workshop
 	+navigationMixin(true)

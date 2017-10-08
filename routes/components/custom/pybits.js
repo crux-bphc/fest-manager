@@ -74,8 +74,8 @@ router.get('/sprints', function (req, res, next) {
 router.get('/workshops', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS Workshops';
 	req = applyStateChanges(req);
-	req.stateparams.subtitle = "PyBITS Workshops > Page Under Construction";
-	res.renderState('wip', {
+	req.stateparams.subtitle = "PyBITS Workshops";
+	res.renderState('custom/pybits/workshops', {
 		title: 'PyBITS Workshops',
 		user: req.user,
 		pybits: true,
@@ -85,6 +85,7 @@ router.get('/workshops', function (req, res, next) {
 router.get('/2016', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS 2016';
 	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS 2016";
 	res.renderState('custom/pybits/2016', {
 		title: 'PyBITS 2016',
 		user: req.user,
@@ -94,6 +95,7 @@ router.get('/2016', function (req, res, next) {
 router.get('/coc', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS Code of Conduct';
 	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS Code of Conduct";
 	res.renderState('custom/pybits/coc', {
 		title: 'PyBITS Code of Conduct',
 		user: req.user,

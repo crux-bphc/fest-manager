@@ -1,6 +1,12 @@
 @import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 body {
     overflow: auto;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
 
 .pybits-background {
@@ -273,4 +279,10 @@ p {
 .w-desc {
     width: 60%;
     border: 0px white solid;
+}
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
