@@ -11,6 +11,7 @@ var login = require('./login');
 router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Atmos';
 	req.stateparams.immersive = true;
+	req.stateparams.subtitle = "27th to 29th October"
 	res.renderState('home.jade', {
 		user: req.user,
 		title: 'Home'
