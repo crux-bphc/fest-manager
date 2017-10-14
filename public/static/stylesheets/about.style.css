@@ -70,6 +70,14 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.section.body .about > div {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .section.body .about h2 {
     font-weight: 600;
     letter-spacing: 1em;
@@ -130,12 +138,15 @@
     .section.body .about {
         box-sizing: border-box;
         padding: 3em 1em;
-        height: 70%;
+        height: 90%;
         display: block;
-        top:15%;
+        top:5%;
         max-width: 100%;
         text-align: justify;
         border-left: 0em;
+    }
+    .section.body .about > div {
+        height: 90vh;
     }
     .icon-navigate_next {
         animation: none;

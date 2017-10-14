@@ -86,19 +86,9 @@ var manager = function () {
 					window.onhashchange();
 					tray.removeClass('tray').addClass('face').siblings().removeClass('face').addClass('tray');
 					$('.main .face').scrollTop(0);
-					$('.scrollable').enscroll({
-						showOnHover: true,
-						verticalTrackClass: 'enscroll-track',
-						verticalHandleClass: 'enscroll-handle'
-					}, function (data) {});
 
 					window.setTimeout(function () {
 						$('.main .tray').html('');
-						$('.enscroll-track').each(function (i, item) {
-							$(item).parent().css('height', $(item).parent().prev('.scrollable').height());
-							console.log("Item:", $(item).parent().prev('.scrollable'));
-							console.log("Height:", $(item).parent().prev('.scrollable').height());
-						});
 					}, 500);
 					client.removeClass('loading');
 				});
