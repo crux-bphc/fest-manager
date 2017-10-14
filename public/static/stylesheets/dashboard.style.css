@@ -67,7 +67,7 @@ div.ambassador > span {
 	font-weight: 600;
 	margin-left: 5px;
 }
-div.details {
+div.left > div.details {
 	padding-top:1em;
 	position:absolute;
 	top: 100%;
@@ -172,7 +172,11 @@ div.ca .content .button {
 		flex-direction: column-reverse;
 		margin-bottom: 1em;
 	}
+<<<<<<< HEAD
 	.section.body div.separator {
+=======
+	.section.body > div.separate {
+>>>>>>> notifications: Style template for notification list.
 		display: none;
 	}
 	.section.body div:not(.separator) {
