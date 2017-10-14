@@ -212,7 +212,6 @@ var Constructor = function () {
 	var postProcess = function () {
 		passes.renderPass = new THREE.RenderPass(scene, camera);
 		passes.glitchPass = new THREE.GlitchPass(1);
-		passes.bokehPass = new THREE.BokehPass(scene, camera, state.bokeh);
 		passes.glitchPass.renderToScreen = true;
 		passes.update = function () {
 			var bomb;
@@ -227,7 +226,6 @@ var Constructor = function () {
 		};
 		composer.addPass(passes.renderPass);
 		composer.addPass(passes.glitchPass);
-		// composer.addPass(passes.bokehPass);
 	};
 
 	var start = function (texture) {
@@ -601,10 +599,6 @@ var Constructor = function () {
 				targets.add('lookAtX', camera.follow, 'x', frame.lookAt.to.x, frame.lookAt.through.x);
 				targets.add('lookAtY', camera.follow, 'y', frame.lookAt.to.y, frame.lookAt.through.y);
 				targets.add('lookAtZ', camera.follow, 'z', frame.lookAt.to.z, frame.lookAt.through.z);
-				if (frame.aperture)
-					targets.add('aperture', passes.bokehPass.uniforms.aperture, 'value', frame.aperture.to, frame.aperture.through);
-				if (frame.focus)
-					targets.add('focus', passes.bokehPass.uniforms.focus, 'value', frame.focus.to, frame.focus.through);
 			}
 		};
 		timeline.next = function () {
@@ -621,12 +615,6 @@ var Constructor = function () {
 			lookAt: {
 				to: new THREE.Vector3(-150, 50, -150),
 			},
-			aperture: {
-				to: Math.pow(10, 5),
-			},
-			focus: {
-				to: 5 * Math.pow(10, 3)
-			}
 		});
 		timeline.keyframes.push({
 			position: {
@@ -635,12 +623,6 @@ var Constructor = function () {
 			lookAt: {
 				to: KHALIFA.building.position.clone().add(new THREE.Vector3(0, KHALIFA.height / 2, 0)),
 			},
-			aperture: {
-				to: Math.pow(10, 6),
-			},
-			focus: {
-				to: 400,
-			}
 		});
 		timeline.keyframes.push({
 			position: {
@@ -682,12 +664,6 @@ var Constructor = function () {
 			lookAt: {
 				to: new THREE.Vector3(150, 700, 150),
 			},
-			focus: {
-				to: 1.5 * TILE_LENGTH
-			},
-			aperture: {
-				to: Math.pow(10, 8)
-			}
 		});
 	};
 

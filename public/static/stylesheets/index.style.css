@@ -13,6 +13,7 @@
     -webkit-tap-highlight-color: transparent;
     text-decoration: none;
     color: unset;
+    font-family: 'Helvetica', 'Arial', sans-serif
 }
 
 body {
@@ -21,7 +22,7 @@ body {
     justify-content: space-around;
     align-items: center;
     min-height: 100vh;
-    font-family: 'Proxima Nova', sans-serif;
+    font-family: sans-serif;
 }
 
 .main .disabled {
