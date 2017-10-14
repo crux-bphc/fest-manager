@@ -283,7 +283,7 @@ var manager = function () {
 		getState: function () {
 			return client.state;
 		},
-		getAudio: function() {
+		getAudio: function () {
 			return audio;
 		},
 		getLocation: client.getLocation.bind(client)

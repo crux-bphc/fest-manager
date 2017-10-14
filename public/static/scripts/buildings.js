@@ -700,7 +700,7 @@ var Constructor = function () {
 	}
 
 	window.addEventListener('keyup', function (e) {
-		if(init == true) return;
+		if (init == true) return;
 		if ([40].indexOf(e.keyCode || e.which) != -1)
 			timeline.next();
 		if ([38].indexOf(e.keyCode || e.which) != -1)
@@ -740,18 +740,19 @@ var Constructor = function () {
 		toggle: toggle,
 		next: timeline.next,
 		prev: timeline.prev,
-		start: function() {
+		start: function () {
 			init = false;
 			timeline.next();
 			toggle();
-			setTimeout(function() {$('#slide1 .button, #slide1 .calling').remove();},1000);
+			setTimeout(function () {
+				$('#slide1 .button, #slide1 .calling').remove();
+			}, 1000);
 		},
-		mute: function() {
-			if(inputs.audio.muted) {
+		mute: function () {
+			if (inputs.audio.muted) {
 				inputs.audio.muted = false;
 				$('.mute').html("MUTE");
-			}
-			else {
+			} else {
 				inputs.audio.muted = true;
 				$('.mute').html("UNMUTE");
 			}
