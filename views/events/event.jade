@@ -44,7 +44,7 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
                     i &#x20b9;
                     span #{event.prize}
         if(event.about)
-            div.description !{marked(event.about)}
+            div.description.markdown-body !{marked(event.about)}
         div.foot
             a.download(title="Download as PDF" absolute target="_blank" href="/static/data/docs/#{event.name}.pdf") Download
 
