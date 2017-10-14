@@ -82,6 +82,39 @@ router.get('/workshops', function (req, res, next) {
 	});
 });
 
+router.get('/workshops/basic', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBITS Basic Python Workshop';
+	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS Workshops";
+	res.renderState('custom/pybits/workshops/basic', {
+		title: 'PyBITS Basic Python Workshop',
+		user: req.user,
+		pybits: true,
+	});
+});
+
+router.get('/workshops/scrapy', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBITS Scrapy Workshop';
+	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS Workshops";
+	res.renderState('custom/pybits/workshops/scrapy', {
+		title: 'PyBITS Scrapy Workshop',
+		user: req.user,
+		pybits: true,
+	});
+});
+
+router.get('/workshops/flask', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBITS Flask Workshop';
+	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS Workshops";
+	res.renderState('custom/pybits/workshops/flask', {
+		title: 'PyBITS Flask Workshop',
+		user: req.user,
+		pybits: true,
+	});
+});
+
 router.get('/2016', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS 2016';
 	req = applyStateChanges(req);
