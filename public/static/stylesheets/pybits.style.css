@@ -171,6 +171,8 @@ p {
     vertical-align: top;
     border-radius: 50%;
     padding: 10px !important;
+    box-sizing: border-box;
+    background-color: #0000;
 }
 
 .speaker figcaption {
