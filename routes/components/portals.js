@@ -135,7 +135,7 @@ router.get('/:body/:eventroute', middleware.authenticate, middleware.elevate, fu
 		error.status = 403;
 		return next(error);
 	}
-	var eventName;
+	var eventName, event;
 	bodiesService.findOne({
 			code: req.params.body
 		})
@@ -146,12 +146,13 @@ router.get('/:body/:eventroute', middleware.authenticate, middleware.elevate, fu
 				route: req.params.eventroute
 			});
 		})
-		.then(function (event) {
+		.then(function (result) {
 			// Block iterates over teams in event and extracts users grouped by their team.
-			if (!event) throw new Error("No event found.");
-			eventName = event.name;
+			if (!result) throw new Error("No event found.");
+			eventName = result.name;
+			event = result;
 			var teams = [];
-			var userProjection = '_id teams name email institute';
+			var userProjection = '_id teams name email institute phone';
 			var _query = function (team) {
 				return userService.find({
 					teams: team
@@ -172,7 +173,7 @@ router.get('/:body/:eventroute', middleware.authenticate, middleware.elevate, fu
 				user: req.user,
 				title: eventName,
 				teams: teams,
-				phone: req.user.phone || "NA"
+				event: event,
 			});
 		})
 		.catch(function (err) {

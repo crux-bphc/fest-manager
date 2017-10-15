@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DB=$(echo "var fq=require('fuzzquire'); var config = fq('config-loader'); console.log(config.database.name);" | node | tail -n1)
-mongo $DB $DIR/../utils/export-users.js
+mongo $DB $DIR/../utils/export-users.js > public/static/data/users.txt
 

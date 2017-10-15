@@ -144,8 +144,10 @@
         max-width: 100%;
         text-align: justify;
         border-left: 0em;
+        overflow-y: auto;
     }
     .section.body .about > div {
+        display: block;
         height: 90vh;
     }
     .icon-navigate_next {

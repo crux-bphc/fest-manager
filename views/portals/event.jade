@@ -10,6 +10,7 @@ div#_event
                 ul.controls
                     li.icon-autorenew(onclick="manager.refresh()")
                     li.icon-delete.disabled
+                    li.icon-arrow_downward(onclick="download('#{event.route}')")
             - var search = {icon: 'search', placeholder: 'Search', editable: true};
             +fieldMixin(search)
     div.section.body
@@ -29,6 +30,23 @@ div#_event
                             span= user.institute
                         div.phone(title=user.phone)
                             i.icon-phone
-                            span= phone
+                            span= user.phone
     if !teams
         span.underwhelmingMessage Nothing to see here. Add new records.
+script.
+    function download(filename) {
+        var lines = [];
+        lines.push("name|institute|email|phone");
+        $('.team > .user').each(function(i, item) {
+            var text = "";
+            ['name','institute','email','phone'].forEach(function(key) {
+                text += $(item).find('.'+key).text().replace(/,/g, " ");
+                text += '|';
+            });
+            lines.push(text);
+        });
+        var dummy = $('<a/>');
+        dummy.attr('href','data:text/plain;charset=utf-8,'+encodeURIComponent(lines.join('\n')));
+        dummy.attr('download', filename + '.csv');
+        dummy[0].click();
+    }
