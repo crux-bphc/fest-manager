@@ -1,0 +1,54 @@
+include ../navigation
+link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
+link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
+
+.immersive-wrapper.pybits-background
+	.section.body.scrollable.markdown-body.dark-theme(data-simplebar='data-simplebar')
+		h1.title=title
+		p
+			| By 
+			strong Madhu Vadlamani
+			| , 
+			em Lead Analytics at Kony, Inc.
+		p
+			strong 28th October, 10 AM to 1 PM.
+		h2 Role of python in Data Science
+		|     Python is a very powerful programming language used for many different applications. Over time, the huge community around this open source language has created quite a few tools to efficiently work with Python. In recent years, a number of tools have been built specifically for data science. As a result, analyzing data with Python has never been easier.
+		|     You've to start with very beginning of basic arithmetic and variables, and learn how to handle data structures, such as Python lists, Numpy arrays, and Pandas DataFrames. Along the way, you’ll learn about Python functions and control flow.
+		h2 How sentimental analysis in python helps drive firm on the social interactions
+		ol
+			li
+				| What is sentiment analysis?
+				p
+					| Sentiment Analysis is the process of ‘computationally’ determining whether a piece of writing is positive, negative or neutral. It’s also known as opinion mining, deriving the opinion or attitude of a speaker.
+			li
+				| Why sentiment analysis?
+				ol
+					li
+						| Business
+						p
+							| In marketing field companies use it to develop their strategies, to understand customers’ feelings towards products or brand, how people respond to their campaigns or product launches and why consumers don’t buy some products.
+					li
+						| Politics
+						p
+							| In political field, it is used to keep track of political view, to detect consistency and inconsistency between statements and actions at the government level. It can be used to predict election results as well!
+					li
+						| Public Actions
+						p
+							| Sentiment analysis also is used to monitor and analyse social phenomenalike  spotting of potentially dangerous situations and determining the general mood of the blogs
+		h2 About The Speaker
+		figure.speaker
+			img(src='/static/images/pybits/madhu.jpg')
+		p
+			strong Madhu Vadlamani
+			|  is Lead Analytics at Kony, Inc.
+		p
+			| Check out his 
+			a(href='https://pyconfhyd.talkfunnel.com/2017/18-general-talks-impact-of-python-in-data-science') Data Science
+			|  and follow him on 
+			a(href='https://twitter.com/AnalyticsMadhu') Twitter
+			|  and 
+			a(href='https://www.linkedin.com/in/madhuvad/') LinkedIn
+			| .
+
+	+navigationMixin(true)

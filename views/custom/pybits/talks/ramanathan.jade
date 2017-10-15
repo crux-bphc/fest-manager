@@ -1,0 +1,35 @@
+include ../navigation
+link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
+link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
+
+.immersive-wrapper.pybits-background
+	.section.body.scrollable.markdown-body.dark-theme(data-simplebar='data-simplebar')
+		h1.title=title
+		p
+			| By 
+			strong Ramanathan Muthaiah
+			| , 
+			em FireEye CyberSecurity
+		p
+			strong 28th October, 10 AM to 1 PM.
+
+		h2 Outline
+
+		h2 Requirements
+
+		h2 About The Speaker
+		figure.speaker
+			img(src='/static/images/pybits/pylogo.png')
+		p
+			strong Ramanathan Muthaiah
+			|  is a Data Scientist at Endurance International Group
+		p
+			| He has about two and a half decades of work experience in systems management, continuous integration, mainline health monitoring, release management, tools automation in various industry domains, like mobile, semiconductors, cybersecurity, and networking. Over the years, he has worked on various projects, thus accumulating a set of good practices from both technical and procedural  aspects.
+		p
+			| Follow him on 
+			a(href='https://www.linkedin.com/in/ramanathan-muthaiah-6574352/') LinkedIn
+			| .
+
+
+
+	+navigationMixin(true)
