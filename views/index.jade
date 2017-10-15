@@ -67,8 +67,8 @@ body
 				div.wrapper.face
 				div.wrapper.tray
 		div.hidden
-			video#video-stream(loop muted src="/static/buildings/input/main.mp4")
-			audio#audio-stream(src="/static/buildings/input/main.mp3")
+			video#video-stream(loop muted src="/static/buildings/input/main.mp4" preload="none")
+			audio#audio-stream(src="/static/buildings/input/main.mp3" preload="none")
 		script(type="application/ld+json" src="/static/scripts/schema.json")
 		script(type="text/javascript" src="/static/lib/jquery.min.js")
 		script(type="text/javascript" src="/static/lib/deep-diff-0.3.8.min.js")
