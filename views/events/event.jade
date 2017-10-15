@@ -20,7 +20,14 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
             if(event.startTime)
                 div.time
                     span Time
-                    span #{event.startTime} - #{event.endTime}
+                    div
+                        span.datetime
+                            span #{event.startTime.split('|')[0]}
+                            b #{event.startTime.split('|')[1]}
+                        span -
+                        span.datetime
+                            span #{event.endTime.split('|')[0]}
+                            b #{event.endTime.split('|')[1]}
             if(event.venue)
                 div.venue
                     span Venue

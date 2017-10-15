@@ -177,6 +177,30 @@
     display: flex;
     margin: 1em 0;
 }
+.open-event .details .time > div {
+    display: inline-flex;
+    vertical-align: top;
+    align-items: center;
+    height: 3em;
+}
+.open-event .details .datetime {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.2em;
+    padding:0 0.3em;
+    font-size: 0.8em
+}
+.open-event .details .datetime > span {
+    width: 100%;
+    text-align: center;
+}
+.open-event .details .datetime > b {
+    width:100%;
+    text-align: center;
+    font-weight: 600;
+}
+
+
 .open-event .details > * {
     padding: 0 1em 0 0;
     border: 1px solid rgba(0,0,0,0.05);
@@ -277,6 +301,7 @@
 .open-event .description h4,
 .open-event .description h5 {
     font-weight: 600;
+    line-height: 1.2em;
 }
 .tsbutton {
     margin-bottom: 1em;
