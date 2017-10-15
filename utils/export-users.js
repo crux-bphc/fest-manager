@@ -8,5 +8,5 @@ db.usersmodels.find({}, {
 }).forEach(function (user) {
 	if (user.institute)
 		user.institute = user.institute.replace(/,/g, " ");
-	print(user.name + "|" + user.institute + "|" + user.email + "|" + user.phone + "|" + user.referred_by);
+	print(user.name + "|" + user.institute + "|" + user.email + "|'" + user.phone + "'|" + user.referred_by);
 });

@@ -16,5 +16,5 @@ db.usersmodels.find({
 		user.address = user.address.replace(/[\n\r]+/g, "").replace(/ +/g, " ").replace(/,/g, " ");
 	if (user.why)
 		user.why = user.why.replace(/[\n\r]+/g, "").replace(/ +/g, " ").replace(/,/g, " ");
-	print(user.name + "|" + user.institute + "|" + user.email + "|" + user.address + "|" + user.phone + "|" + user.pincode + "|" + user.why);
+	print(user.name + "|" + user.institute + "|" + user.email + "|" + user.address + "|'" + user.phone + "'|'" + user.pincode + "'|" + user.why);
 });
