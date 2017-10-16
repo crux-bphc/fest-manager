@@ -372,7 +372,7 @@ input[type = "file"] {
     overflow: hidden;
 }
 
-.navbar .controls .button.user .dropdown .drawer > div li.notification {
+.navbar .controls .button.user .dropdown .drawer > div a.notification {
     display: flex;
     line-height: 1.2em;
     padding: 0.5em 1em;
@@ -381,11 +381,11 @@ input[type = "file"] {
     position:relative;
 }
 
-.navbar .controls .button.user .dropdown .drawer > div li.notification:hover {
+.navbar .controls .button.user .dropdown .drawer > div a.notification:hover {
     background:#fafafa;
 }
 
-.navbar .controls .button.user .dropdown .drawer > div li.notification > i {
+.navbar .controls .button.user .dropdown .drawer > div a.notification > i {
     width:2em;
     height: 2em;
     display: block;
@@ -397,24 +397,24 @@ input[type = "file"] {
     flex-shrink: 0;
 }
 
-.navbar .controls .button.user .dropdown .drawer > div li.notification > .details {
+.navbar .controls .button.user .dropdown .drawer > div a.notification > .details {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding: 0 1em;
 }
 
-.navbar .controls .button.user .dropdown .drawer > div li.notification .title {
+.navbar .controls .button.user .dropdown .drawer > div a.notification .title {
     color: gray;
     padding: 0.15em 0em;
     font-size: 1em;
 }
 
-.navbar .controls .button.user .dropdown .drawer > div li.notification .date {
+.navbar .controls .button.user .dropdown .drawer > div a.notification .date {
     font-size: 0.8em;
     padding: 0.15em 0em;
 }
-.navbar .controls .button.user .dropdown .drawer > div li.notification .message {
+.navbar .controls .button.user .dropdown .drawer > div a.notification .message {
     font-size: 0.9em;
     color: #4499DD;
     padding: 0.1em 0em;

@@ -228,9 +228,9 @@ var manager = function () {
 			headers: {
 				"Client": "Fest-Manager/dash",
 			},
-		}).done(function(user){
-			client.notifications.list = user.notifications;
-			pushNotifications();
+		}).done(function(list){
+			client.notifications.list = list;
+			client.notifications.push();
 		});
 	};
 	// Mark as read
@@ -242,7 +242,8 @@ var manager = function () {
 				"Client": "Fest-Manager/dash",
 			},
 		}).done(function () {
-			$(this).find(".ticker").html("");
+			console.log('Hello fuckers')
+			$('.navbar .button.user label .ticker').html("");
 			$('.navbar .button.user label')[0].removeEventListener('click', client.notifications.done, false);
 		});
 	}
@@ -254,10 +255,11 @@ var manager = function () {
 		}
 		var length = client.notifications.list.filter(function(item){return !item.read}).length;
 		$('.navbar .button.user .ticker').html(length ? length : "");
-		var template = "<li class='notification'><i class='$icon'></i><div class='details'><span class='title'>$title</span>$message<span class='date'>$date</span></div></li>";
+		var template = "<a class='notification' href='$route'><i class='$icon'></i><div class='details'><span class='title'>$title</span>$message<span class='date'>$date</span></div></a>";
 		html = "";
 		client.notifications.list.forEach(function(item){
-			html += template.replace('$icon', item.icon)
+			html += template.replace('$route', item.route)
+							.replace('$icon', item.icon)
 							.replace('$title', item.title)
 							.replace('$message', (item.message ? "<span class='message'>" + item.message + "</span>" : ''))
 							.replace('$date', item.date);

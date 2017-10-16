@@ -108,6 +108,26 @@ router.post('/checkout/', function (req, res, next) {
 			res.status(500).send(err);
 		});
 });
+
+router.get('/notifications', function(req, res, next) {
+	res.send(req.user.notifications);
+});
+router.post('/notifications', function(req, res, next) {
+	var list = req.user.notifications;
+	list.forEach(function(item){
+		item.read = true;
+	});
+	model.update({
+		_id: req.user._id
+	}, {
+		notifications: list
+	}).then(function(){
+		res.json({
+			status: 200,
+			msg: 'Success',
+		});
+	});
+});
 module.exports = {
 	route: '/users',
 	model: model,
