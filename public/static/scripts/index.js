@@ -5,6 +5,7 @@ var manager = function () {
 		main: $('.window > .remnant > .main'),
 		navigation: $('.window > .remnant > .sidebar'),
 		notifications: {
+			blur: $('#blurCarpet')[0],
 			list: [],
 		},
 		hash: "",
@@ -26,9 +27,10 @@ var manager = function () {
 			e.metaKey ||
 			(e.button && e.button == 1) ||
 			$(this).attr('absolute')
-		) return;
+		) return true;
 		e.preventDefault();
 		client.route($(this).attr("href"));
+		return true;
 	};
 	client.getLocation = function () {
 		return client.state.location;
@@ -109,8 +111,10 @@ var manager = function () {
 	client.setState = function (state) {
 		const diff = DeepDiff(state, this.state);
 		this.state = state;
-		this.notifications.list = state.user.notifications || [];
-		this.notifications.push();
+		if(state.user) {
+			this.notifications.list = state.user.notifications || [];
+			this.notifications.push();
+		}
 		if (diff)
 			diff.forEach(function (change) {
 				var trigger = change.path.join('/');
@@ -220,6 +224,10 @@ var manager = function () {
         new SimpleBar($('.navbar .dropdown .drawer > div')[0]);
 	};
 
+	client.notifications.blur.onclick = function(e) {
+		console.log('Clicked');
+		$('#dropdown').prop('checked', false);
+	};
 	// Fetch Notifications
 	client.notifications.get = function () {
 		$.ajax({
@@ -242,18 +250,17 @@ var manager = function () {
 				"Client": "Fest-Manager/dash",
 			},
 		}).done(function () {
-			console.log('Hello fuckers')
 			$('.navbar .button.user label .ticker').html("");
 			$('.navbar .button.user label')[0].removeEventListener('click', client.notifications.done, false);
 		});
-	}
+	};
 	// Push Notifications
 	client.notifications.push = function () {
 		if(!client.notifications.list.length) {
-			$('.dropdown .drawer .simplebar-content').html("<span class='empty'>All caught up!</span>")
+			$('.dropdown .drawer .simplebar-content').html("<span class='empty'>All caught up!</span>");
 			return;
 		}
-		var length = client.notifications.list.filter(function(item){return !item.read}).length;
+		var length = client.notifications.list.filter(function(item){return !item.read;}).length;
 		$('.navbar .button.user .ticker').html(length ? length : "");
 		var template = "<a class='notification' href='$route'><i class='$icon'></i><div class='details'><span class='title'>$title</span>$message<span class='date'>$date</span></div></a>";
 		html = "";

@@ -38,7 +38,8 @@ body
 					span.text
 				div.controls
 					input.hidden(type="checkbox" id="dropdown")
-					div.button.user(_triggers="navbar/avatar=visible")
+					div#blurCarpet
+					div.button.user(_triggers="navbar/avatar=visible" tabindex="0")
 						if user
 							label(for="dropdown")
 								span.ticker

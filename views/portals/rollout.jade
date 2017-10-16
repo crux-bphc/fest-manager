@@ -1,0 +1,14 @@
+include ../mixins/form
+link(rel="stylesheet" href="/static/stylesheets/simplemde.min.css")
+script(src="/static/lib/simplemde.min.js")
+div#_portal
+    .section.header
+        h1.title= title
+        div.stretch
+            div.remnant
+                ul.controls
+                    li.icon-check#submit-button(tooltip="Save")
+                    a.icon-close#cancel-button(href="/dashboard" tooltip="Cancel")
+    - var form = { fields: fields, method: "POST", action: "/portals/rollout" };
+    +formMixin(form)
+script(src="/static/scripts/rollout.js")

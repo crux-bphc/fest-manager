@@ -2,7 +2,7 @@ var nodemailer = require('nodemailer');
 var jade = require('jade');
 var fs = require('fs');
 const config = require('./config-loader');
-
+var userService = require('../routes/api/services/users').model;
 // Usage: send(mailOptions).then(res => console.log(res)).catch(err => console.log(err));
 
 var isEnabled = config.email ? true : false;
@@ -32,55 +32,62 @@ var printMail = function (mailOptions) {
 var send = function (mailOptions) {
 	return new Promise(function (resolve, reject) {
 		if (isEnabled) {
-			if (!mailOptions.template) {
-				reject("Specify path to jade template.");
+			if (!mailOptions.silent) {
+				printMail(mailOptions);
 			}
-			if (!mailOptions.params) {
-				reject("Specify params for jade template.");
+			if (isProduction) {
+				transporter.sendMail(mailOptions, function (error, info) {
+					if (error) {
+						console.log("Error:", error);
+						reject(error);
+					} else {
+						resolve({
+							req: mailOptions,
+							res: info.response
+						});
+					}
+				});
+			} else {
+				resolve({
+					req: mailOptions,
+				});
 			}
-			jade.renderFile(mailOptions.template, mailOptions.params, function (err, html) {
-				if (err) reject(err);
-				mailOptions.html = html;
-				if (!mailOptions.silent) {
-					printMail(mailOptions);
-				}
-				if (isProduction) {
-					transporter.sendMail(mailOptions, function (error, info) {
-						if (error) {
-							console.log("Error:", error);
-							reject(error);
-						} else {
-							resolve({
-								req: mailOptions,
-								res: info.response
-							});
-						}
-					});
-				} else {
-					resolve({
-						req: mailOptions,
-					});
-				}
-			});
 		} else {
 			reject("Add email creds to your config.");
 		}
 	});
 };
 
-var sendToMany = function (userData, mailOptions, silent = false) {
-	if (mailOptions.template) {
-		mailOptions.template = "views/" + mailOptions.template + ".jade";
-	}
+var sendToMany = function (query, mailOptions, silent = false) {
+	if(!mailOptions.template) return;
 	mailOptions.silent = silent;
 	var promises = [];
-	userData.forEach(user => {
-		var options = Object.assign({}, mailOptions);
-		options.to = user.email;
-		options.params = user.params;
-		promises.push(send(options));
+	userService.find(query)
+	.then(function(users) {
+		users.forEach(user => {
+			var options = Object.assign({}, mailOptions);
+			options.template = options.template.replace(/user.name/g, user.name || "Not Provided")
+												.replace(/user.institute/g, user.institute || "Not Provided")
+												.replace(/user.email/g, user.email || "Not Provided")
+												.replace(/user.phone/g, user.phone || "Not Provided");
+			var marked = require('marked');
+			marked.setOptions({
+				renderer: new marked.Renderer(),
+				gfm: true,
+				tables: true,
+				breaks: false,
+				pedantic: false,
+				sanitize: false,
+				smartLists: true,
+				smartypants: false
+			});
+			options.html = marked(options.template);
+			delete options.template;
+			options.to = user.email;
+			promises.push(send(options));
+		});
+		return Promise.all(promises);
 	});
-	return Promise.all(promises);
 };
 
 module.exports = sendToMany;

@@ -19,9 +19,9 @@ notification.createNotification(req.user._id, {
 
 **/
 
-function pushToMany(id, notification){
+function pushToMany(query, notification){
 	notification.date = moment().format('DD/MM/YY hh:mm A');
-	userService.update({_id: id},{$push: {notifications: notification}} ,function(){
+	userService.update(query, {$push: {notifications: notification}}, {multi: true}, function(){
 		console.log("Notification Added");
 	});
 }
