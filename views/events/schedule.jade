@@ -1,20 +1,11 @@
-
 h1 Schedule
+br
 div.section.events-schedule
-	-var arr=events;
-	-var index=0;
-	-var temp;
-	-while(index!=arr.length){
-		-for(i=index;i<arr.length;i++){
-			-if(arr[i].startTime<arr[index].startTime){
-				-temp=arr[i];
-				-arr[i]=arr[index];
-				-arr[index]=temp;
-			-}
-		-}
-		-index++;
-	-}
-	each event in arr
+	each event in events
 		if(event.startTime)
 			div
-				span #{event.name}  - #{event.startTime} - #{event.endTime}
+				div.name.
+					#{event.name}  
+				div.time.
+					#{event.startTime} - #{event.endTime}
+			br

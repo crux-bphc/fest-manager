@@ -55,7 +55,7 @@ router.get('/schedule', function (req, res) {
 		if (err) return next(err);
 
 		var compare = function (a, b) {
-			if (a.name > b.name)
+			if (a.startTime > b.startTime)
 				return true;
 			return false;
 		};
