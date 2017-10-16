@@ -1,0 +1,85 @@
+#! /usr/bin/env node
+
+// Script to modify user permissions in the database.
+// Usage: tools/manage-user <operation> <emails of superusers>
+// Example: tools/manageuser superuser aero31aero@gmail.com calvrix@github.com
+// Valid Operations: superuser, null, {body-code}.
+
+// Handle arguments here.
+var operation = process.argv[2];
+var emails = process.argv.slice(3);
+
+// Global dependencies
+var mongoose = require('mongoose');
+var fq = require('fuzzquire');
+
+var getPrivilege = function (operation) {
+	if (operation == 'null') {
+		return null;
+	}
+	if (operation == 'superuser') {
+		return {
+			level: 2,
+		};
+	} else {
+		var Bodies = fq('api/bodies').model;
+		Bodies.findOne({
+			code: operation
+		}, function (error, data) {
+			if (error) {
+				console.log("manage-user: Mongoose Error:", error);
+				process.exit(1);
+			}
+			if (!data) {
+				console.log("manage-user: Body", operation, "does not exist. Aborting.");
+				process.exit(1);
+			}
+		});
+		return {
+			level: 1,
+			body: operation,
+		}; // TODO: Fix this race condition.
+	}
+};
+
+var main = function () {
+	fq('mongoose')(); //connect to database
+	var privilege = getPrivilege(operation);
+	console.log("manage-user: Applying privilege", JSON.stringify(privilege));
+	var promises = [];
+	var Users = fq('api/users').model;
+	emails.forEach(function (email) {
+		var promise = Users.findOneAndUpdate({
+					email: email
+				}, // query
+				{
+					$set: {
+						privilege: privilege
+					}
+				}, // operations
+				{
+					upsert: true
+				}) // options
+			.then(data => {
+				if (data) {
+					console.log("manage-user: Updated ", data.email);
+				} else {
+					console.log("manage-user: Created new user.");
+				}
+			});
+		promises.push(promise);
+	});
+
+	Promise.all(promises)
+		.then(data => {
+			console.log("manage-user: All users handled successfully.");
+			process.exit(0);
+		}).catch(error => {
+			console.log("manage-user: Unknown mongo error. Check database manually/run script again.");
+			console.log(error);
+			process.exit(1);
+		});
+};
+
+// Start execution
+main();
