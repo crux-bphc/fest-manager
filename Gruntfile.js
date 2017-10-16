@@ -16,7 +16,10 @@ grunt.initConfig({
 			'Gruntfile.js',
 			'app.js',
 			'config.js',
-			'package.json'
+			'package.json',
+			'tools/destroy-and-rebuild-database',
+			'tools/manage-user',
+			'tools/migrate',
 		],
 	},
 	js_beautify: {
@@ -37,6 +40,9 @@ grunt.initConfig({
 			'Gruntfile.js',
 			'app.js',
 			'config.js',
+			'tools/destroy-and-rebuild-database',
+			'tools/manage-user',
+			'tools/migrate',
 		]
 	},
 	mochaTest: {
