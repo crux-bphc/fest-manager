@@ -23,7 +23,7 @@ if (isEnabled) {
 }
 
 var printMail = function (mailOptions) {
-	if (!isProduction) console.log("Email: Dev environment. Not sending actual email.");
+	if (!isProduction) console.log("mailer: Running in dev environment. Not sending actual email.");
 	console.log("--- EMAIL DATA BEGIN ---");
 	console.log(mailOptions);
 	console.log("--- EMAIL DATA END ---");
