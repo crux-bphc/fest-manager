@@ -92,17 +92,6 @@ router.get('/talks/satish', function (req, res, next) {
 	});
 });
 
-router.get('/talks/madhu', function (req, res, next) {
-	req.stateparams.pagetitle = 'Talk by Madhu Vadlamani';
-	req = applyStateChanges(req);
-	req.stateparams.subtitle = "PyBITS Talks";
-	res.renderState('custom/pybits/talks/madhu', {
-		title: 'Impact of Python in Data Science',
-		user: req.user,
-		pybits: true,
-	});
-});
-
 router.get('/sprints', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS Sprints';
 	req = applyStateChanges(req);
