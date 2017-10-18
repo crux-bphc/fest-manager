@@ -65,9 +65,11 @@ router.get('/administration', middleware.authenticate, middleware.elevate, funct
 		})
 		.then(function (results) {
 			var promises = [];
-			results.forEach(function(event) {
-				promises.push(userService.find({events: event._id})
-					.then(function(users){
+			results.forEach(function (event) {
+				promises.push(userService.find({
+						events: event._id
+					})
+					.then(function (users) {
 						console.log(users.length);
 						events.push({
 							name: event.name,

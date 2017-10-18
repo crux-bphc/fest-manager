@@ -3,7 +3,7 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
-   
+
     .place:before {
         content:"</HYDERABAD>";
         font-family:Roboto;
@@ -21,14 +21,14 @@
         bottom:1%;
         right:0%;
     }
-  
+
     .no1 {
         padding-right: 30px;
         color:#fff;
         width:160px;
         display: inline-block;
     }
-    
+
     .phoneimg {
         padding-right: 8px;
         filter: invert(100%);
@@ -66,9 +66,9 @@
     font-size: 3em;
     margin: auto;
 }
-    
 
-   
+
+
  @keyframes upcome {
         0%{transform: translateY(3em);opacity:0;}
         50%{transform: translateY(3em);opacity:0;}
@@ -102,6 +102,7 @@ body {
   height: 100%;
   position: relative;
   overflow: hidden;
+  background: rgba(0,0,0,0.8);
 }
 .wrap body {
   margin: 0;
@@ -113,8 +114,25 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  background: url("background%202.jpg") no-repeat center center;
+  background: url("/static/images/gdg/back.jpg") no-repeat center center;
   background-size: cover;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+center .cart-actions {
+  width: 12em
+}
+
+center .cart-actions .button {
+    display: block;
+    box-sizing: border-box;
+    line-height: 3em;
+    padding:0em 2em;
+    margin-top:1.5em;
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 0;
+    height: unset;
+    background: unset;
+    color: rgba(255,255,255,0.7);
 }

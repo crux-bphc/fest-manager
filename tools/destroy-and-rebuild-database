@@ -104,6 +104,15 @@ var getEvents = function (models) {
 		route: "@pybits",
 	});
 
+	data.push({
+		name: "Google Developer Group",
+		tagline: "Remove this before final release",
+		body: lastbody,
+		category: "Workshop",
+		type: "Workshop",
+		route: "@gdg",
+	});
+
 	return data;
 };
 
