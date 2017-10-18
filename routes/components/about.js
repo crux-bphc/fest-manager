@@ -19,6 +19,10 @@ var applyStateChanges = function (req) {
 			label: "ATMOS 2016",
 			route: "https://bits-atmos.org/2016",
 		},
+		{
+			label: "Accomodation",
+			route: "/about/accomodation",
+		},
 	];
 	return req;
 };
@@ -55,6 +59,15 @@ router.get('/history', function (req, res, next) {
 	req = applyStateChanges(req);
 	res.renderState('about/history', {
 		title: 'History of Atmos',
+		user: req.user
+	});
+});
+
+router.get('/accomodation', function (req, res, next) {
+	req.stateparams.pagetitle = 'Accomodation';
+	req = applyStateChanges(req);
+	res.renderState('about/accomodation', {
+		title: 'Accomodation',
 		user: req.user
 	});
 });
