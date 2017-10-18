@@ -65,14 +65,17 @@ router.post('/check', function (req, res, next) {
 			email: req.body.email
 		})
 		.then(function (user) {
+			if (!user) {
+				var newuser = new model({
+					email: req.body.email,
+				});
+				console.log(newuser);
+				return newuser.save();
+			};
 			return user;
 		})
 		.catch(function (err) {
-			var user = new model({
-				email: email,
-				coupons: true
-			});
-			return user.save();
+			console.log(err);
 		})
 		.then(function (user) {
 			res.json(user);
