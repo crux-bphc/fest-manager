@@ -63,7 +63,23 @@ router.get('/administration', middleware.authenticate, middleware.elevate, funct
 				$gt: 0
 			}
 		})
-		.then(function (events) {
+		.then(function (results) {
+			var promises = [];
+			results.forEach(function(event) {
+				promises.push(userService.find({events: event._id})
+					.then(function(users){
+						console.log(users.length);
+						events.push({
+							name: event.name,
+							_id: event._id,
+							price: event.price,
+							people: users.length,
+						});
+					}));
+			});
+			return Promise.all(promises);
+		})
+		.then(function () {
 			res.renderState('portals/administration', {
 				title: "User Administration",
 				user: req.user,
