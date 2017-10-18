@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var express = require('express');
 var router = express.Router();
 var shortID = require('mongoose-shortid-nodeps');
-var eventsModel = require('./events.js').model;
+var eventModel = require('./events').model;
 
 var usersSchema = new Schema({
 	name: String,
@@ -35,12 +35,130 @@ var usersSchema = new Schema({
 	pincode: String,
 	year: String,
 	why: String,
-	privilege: Schema.Types.Mixed
+	privilege: Schema.Types.Mixed,
 }, {
 	timestamps: true
 });
 
 var model = mongoose.model('usersModels', usersSchema);
+
+var authenticate = function (req, res, next) { // custom middleware to check if a user
+	if (req.isAuthenticated()) // is authenticated in the current session
+		return next();
+	res.redirect('/components/login');
+};
+
+var elevate = function (req, res, next) {
+	if (req.user.privilege)
+		return next();
+	let error = new Error('Access denied');
+	error.status = 401;
+	return next(error);
+};
+
+router.post('/check', function (req, res, next) {
+	model.findOne({
+			email: req.body.email
+		})
+		.then(function (user) {
+			return user;
+		})
+		.catch(function (err) {
+			var user = new model({
+				email: email,
+				coupons: true
+			});
+			return user.save();
+		})
+		.then(function (user) {
+			res.json(user);
+		});
+});
+
+var addtocart = function (id, user) {
+	var userModel = model;
+	var teamModel = require("./teams").model;
+	var event_id = mongoose.Types.ObjectId(id);
+	var eventTeams, eventTeamSize, eventPrice, userEvents, userTeams, teamId;
+	if (user.events && user.events.indexOf(id) != -1) {
+		return new Promise(function (resolve, reject) {
+			resolve("Already purchased.");
+		});
+	}
+	return model.findOne({
+			_id: user
+		})
+		.then(function (user) {
+			return eventModel.findOne({
+				_id: event_id
+			});
+		})
+		.then(function (event) {
+			if (typeof event !== 'undefined') {
+				eventTeams = event.teams;
+				eventPrice = event.price;
+				eventTeamSize = event.teamSize;
+				var team = new teamModel({
+					name: user.name,
+					members: [user._id],
+					event: event_id
+				});
+				return team.save();
+			} else throw 'Event Not Found';
+		})
+		.then(function (team) {
+			teamId = team._id;
+			var userTeams = user.teams || [];
+			var userEvents = user.events || [];
+			userTeams.push(teamId);
+			var update = {
+				teams: userTeams
+			};
+			userEvents.push(event_id);
+			update.events = userEvents || [];
+			return userModel.update({
+				_id: user._id
+			}, update);
+		})
+		.then(function (num) {
+			eventTeams.push(teamId);
+			return eventModel.update({
+				_id: event_id
+			}, {
+				teams: eventTeams
+			});
+		});
+};
+
+router.put('/force', authenticate, elevate, function (req, res, next) {
+	var changes = {
+		name: req.body.user.name,
+		institute: req.body.user.institute,
+		email: req.body.user.email,
+		phone: req.body.user.phone,
+		events: req.body.user.events
+	};
+	var promises = [];
+	if (changes.events)
+		changes.events.forEach(function (event) {
+			promises.push(addtocart(event, req.body.user._id));
+		});
+	Promise.all(promises)
+		.then(function () {
+			return model.update({
+				_id: req.body.user._id
+			}, {
+				$set: changes
+			});
+		})
+		.then(function () {
+			res.status(200).end("Success");
+		})
+		.catch(function (err) {
+			console.log(err);
+			res.status(500).send(err);
+		});
+});
 
 router.put('/me/', function (req, res, next) {
 	var body = req.body;
@@ -66,7 +184,7 @@ router.put('/me/', function (req, res, next) {
 });
 
 router.post('/cart/', function (req, res, next) {
-	eventsModel.find({
+	eventModel.find({
 			_id: {
 				$in: req.user.pending
 			}
@@ -109,19 +227,19 @@ router.post('/checkout/', function (req, res, next) {
 		});
 });
 
-router.get('/notifications', function(req, res, next) {
+router.get('/notifications', function (req, res, next) {
 	res.send(req.user.notifications);
 });
-router.post('/notifications', function(req, res, next) {
+router.post('/notifications', function (req, res, next) {
 	var list = req.user.notifications;
-	list.forEach(function(item){
+	list.forEach(function (item) {
 		item.read = true;
 	});
 	model.update({
 		_id: req.user._id
 	}, {
 		notifications: list
-	}).then(function(){
+	}).then(function () {
 		res.json({
 			status: 200,
 			msg: 'Success',
@@ -132,4 +250,8 @@ module.exports = {
 	route: '/users',
 	model: model,
 	router: router,
+	middleware: {
+		authenticate: authenticate,
+		elevate: elevate,
+	}
 };

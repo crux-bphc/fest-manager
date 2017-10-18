@@ -111,7 +111,7 @@ var manager = function () {
 	client.setState = function (state) {
 		const diff = DeepDiff(state, this.state);
 		this.state = state;
-		if(state.user) {
+		if (state.user) {
 			this.notifications.list = state.user.notifications || [];
 			this.notifications.push();
 		}
@@ -221,10 +221,10 @@ var manager = function () {
 		var route = $('.window').attr('route');
 		if (window.location.hash) route += (window.location.hash);
 		client.route(route);
-        new SimpleBar($('.navbar .dropdown .drawer > div')[0]);
+		new SimpleBar($('.navbar .dropdown .drawer > div')[0]);
 	};
 
-	client.notifications.blur.onclick = function(e) {
+	client.notifications.blur.onclick = function (e) {
 		console.log('Clicked');
 		$('#dropdown').prop('checked', false);
 	};
@@ -236,13 +236,13 @@ var manager = function () {
 			headers: {
 				"Client": "Fest-Manager/dash",
 			},
-		}).done(function(list){
+		}).done(function (list) {
 			client.notifications.list = list;
 			client.notifications.push();
 		});
 	};
 	// Mark as read
-	client.notifications.done = function() {
+	client.notifications.done = function () {
 		$.ajax({
 			type: 'POST',
 			url: '/api/users/notifications',
@@ -256,20 +256,22 @@ var manager = function () {
 	};
 	// Push Notifications
 	client.notifications.push = function () {
-		if(!client.notifications.list.length) {
+		if (!client.notifications.list.length) {
 			$('.dropdown .drawer .simplebar-content').html("<span class='empty'>All caught up!</span>");
 			return;
 		}
-		var length = client.notifications.list.filter(function(item){return !item.read;}).length;
+		var length = client.notifications.list.filter(function (item) {
+			return !item.read;
+		}).length;
 		$('.navbar .button.user .ticker').html(length ? length : "");
 		var template = "<a class='notification' href='$route'><i class='$icon'></i><div class='details'><span class='title'>$title</span>$message<span class='date'>$date</span></div></a>";
 		html = "";
-		client.notifications.list.forEach(function(item){
+		client.notifications.list.forEach(function (item) {
 			html += template.replace('$route', item.route)
-							.replace('$icon', item.icon)
-							.replace('$title', item.title)
-							.replace('$message', (item.message ? "<span class='message'>" + item.message + "</span>" : ''))
-							.replace('$date', item.date);
+				.replace('$icon', item.icon)
+				.replace('$title', item.title)
+				.replace('$message', (item.message ? "<span class='message'>" + item.message + "</span>" : ''))
+				.replace('$date', item.date);
 		});
 		$('.dropdown .drawer .simplebar-content').html(html);
 		$('.navbar .button.user label')[0].addEventListener('click', client.notifications.done, false);

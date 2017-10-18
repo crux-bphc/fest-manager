@@ -59,35 +59,35 @@ var send = function (mailOptions) {
 };
 
 var sendToMany = function (query, mailOptions, silent = false) {
-	if(!mailOptions.template) return;
+	if (!mailOptions.template) return;
 	mailOptions.silent = silent;
 	var promises = [];
 	userService.find(query)
-	.then(function(users) {
-		users.forEach(user => {
-			var options = Object.assign({}, mailOptions);
-			options.template = options.template.replace(/user.name/g, user.name || "Not Provided")
-												.replace(/user.institute/g, user.institute || "Not Provided")
-												.replace(/user.email/g, user.email || "Not Provided")
-												.replace(/user.phone/g, user.phone || "Not Provided");
-			var marked = require('marked');
-			marked.setOptions({
-				renderer: new marked.Renderer(),
-				gfm: true,
-				tables: true,
-				breaks: false,
-				pedantic: false,
-				sanitize: false,
-				smartLists: true,
-				smartypants: false
+		.then(function (users) {
+			users.forEach(user => {
+				var options = Object.assign({}, mailOptions);
+				options.template = options.template.replace(/user.name/g, user.name || "Not Provided")
+					.replace(/user.institute/g, user.institute || "Not Provided")
+					.replace(/user.email/g, user.email || "Not Provided")
+					.replace(/user.phone/g, user.phone || "Not Provided");
+				var marked = require('marked');
+				marked.setOptions({
+					renderer: new marked.Renderer(),
+					gfm: true,
+					tables: true,
+					breaks: false,
+					pedantic: false,
+					sanitize: false,
+					smartLists: true,
+					smartypants: false
+				});
+				options.html = marked(options.template);
+				delete options.template;
+				options.to = user.email;
+				promises.push(send(options));
 			});
-			options.html = marked(options.template);
-			delete options.template;
-			options.to = user.email;
-			promises.push(send(options));
+			return Promise.all(promises);
 		});
-		return Promise.all(promises);
-	});
 };
 
 module.exports = sendToMany;
