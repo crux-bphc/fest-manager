@@ -2,6 +2,7 @@ const passport = require('passport');
 const fq = require('fuzzquire');
 const config = fq('config-loader');
 const userService = fq('services/users').model;
+const middleware = fq('services/users').middleware;
 
 var findOrCreate = function (accessToken, profile, provider, done) {
 	userService.findOne({
@@ -116,25 +117,8 @@ var strategies = function () {
 	return strategies;
 }();
 
-var authenticate = function (req, res, next) { // custom middleware to check if a user
-	if (req.isAuthenticated()) // is authenticated in the current session
-		return next();
-	res.redirect('/components/login');
-};
-
-var elevate = function (req, res, next) {
-	if (req.user.privilege)
-		return next();
-	let error = new Error('Access denied');
-	error.status = 401;
-	return next(error);
-};
-
 module.exports = {
 	configureSerializers: configureSerializers,
 	strategies: strategies,
-	middleware: {
-		authenticate: authenticate,
-		elevate: elevate,
-	},
+	middleware: middleware,
 };

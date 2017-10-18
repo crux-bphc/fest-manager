@@ -21,6 +21,7 @@ var eventsSchema = new Schema({
 	route: String,
 	prize: Number,
 	teamSize: Number,
+	users: [Schema.Types.ObjectId],
 }, {
 	timestamps: true
 });

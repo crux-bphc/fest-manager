@@ -86,6 +86,7 @@ var getEvents = function (models) {
 				category: "Random",
 				type: pre,
 				route: elem.code + ++index, // jshint ignore:line
+				price: 200 * (index - 1),
 			};
 			if (newevent.route.startsWith('rome')) {
 				newevent.immersive = "https://crux-bphc.github.io/pybits-static/";

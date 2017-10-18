@@ -7,8 +7,8 @@ div#_portal
         div.stretch
             div.remnant
                 ul.controls
-                    li.icon-check#submit-button(tooltip="Save")
-                    a.icon-close#cancel-button(href="/dashboard" tooltip="Cancel")
+                    li.icon-check#submit-button(title="Save")
+                    a.icon-close#cancel-button(href="/dashboard" title="Cancel")
     - var form = { fields: fields, method: "POST", action: "/portals/rollout" };
     +formMixin(form)
 script(src="/static/scripts/rollout.js")
