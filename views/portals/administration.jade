@@ -20,8 +20,8 @@ div#_portal
         div.foldup#tickets(tabindex="1")
             div.list
                 each event in events
-                    input.hidden(type="checkbox" id=event.id)
-                    label.event(for=event.id)
+                    input.hidden(type="checkbox" id=event._id)
+                    label.event(for=event._id)
                         span.name= event.name
                         div.footer
                             span.count= event.people

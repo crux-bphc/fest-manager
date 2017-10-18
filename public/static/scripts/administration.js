@@ -86,6 +86,7 @@
 				list: {}
 			}; // implementing a set with Object
 			portal.events.push = function (arr) {
+				arr = arr || [];
 				portal.events.list = {};
 				arr.forEach(function (item) {
 					portal.events.list[item] = true;

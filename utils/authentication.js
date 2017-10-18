@@ -26,22 +26,6 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				passport.serializeUser(function (user, done) {
 					return done(null, user._id);
 				});
-				var userData = [{
-					email: user.email,
-					params: {
-						title: "Sample Email",
-					},
-				}];
-				var mailOptions = {
-					subject: 'Atmos Registration Successful', // Subject line
-					template: 'email-templates/test',
-				};
-				fq('utils/mailer')(userData, mailOptions)
-					.catch(err => console.log(err))
-					.then(function (data) {
-						console.log('data');
-						done(err, user);
-					});
 			});
 		} else {
 			if (provider == 'googleID') {

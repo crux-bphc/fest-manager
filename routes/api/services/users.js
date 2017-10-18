@@ -5,6 +5,10 @@ var router = express.Router();
 var shortID = require('mongoose-shortid-nodeps');
 var eventModel = require('./events').model;
 
+var toId = function (str) {
+	return mongoose.Types.ObjectId(str);
+};
+
 var usersSchema = new Schema({
 	name: String,
 	email: {
@@ -75,20 +79,24 @@ router.post('/check', function (req, res, next) {
 		});
 });
 
-var addtocart = function (id, user) {
+var addtocart = function (id, userId) {
+
 	var userModel = model;
 	var teamModel = require("./teams").model;
 	var event_id = mongoose.Types.ObjectId(id);
 	var eventTeams, eventTeamSize, eventPrice, userEvents, userTeams, teamId;
-	if (user.events && user.events.indexOf(id) != -1) {
-		return new Promise(function (resolve, reject) {
-			resolve("Already purchased.");
-		});
-	}
+	var user;
 	return model.findOne({
-			_id: user
+			_id: userId
 		})
-		.then(function (user) {
+		.then(function (result) {
+			user = result;
+			if (user.events && user.events.indexOf(id) != -1) {
+				throw {
+					status: 0,
+					msg: "Already purchased."
+				};
+			}
 			return eventModel.findOne({
 				_id: event_id
 			});
@@ -108,16 +116,17 @@ var addtocart = function (id, user) {
 		})
 		.then(function (team) {
 			teamId = team._id;
-			var userTeams = user.teams || [];
-			var userEvents = user.events || [];
-			userTeams.push(teamId);
 			var update = {
-				teams: userTeams
+				$push: {
+					teams: team._id,
+					events: event_id,
+				},
+				$pullAll: {
+					pending: [event_id],
+				}
 			};
-			userEvents.push(event_id);
-			update.events = userEvents || [];
 			return userModel.update({
-				_id: user._id
+				_id: userId
 			}, update);
 		})
 		.then(function (num) {
@@ -127,6 +136,10 @@ var addtocart = function (id, user) {
 			}, {
 				teams: eventTeams
 			});
+		})
+		.catch(function (err) {
+			if (err.status == 0) console.log(err.msg);
+			return err;
 		});
 };
 

@@ -46,11 +46,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.section.body input[name="accordion"]:checked + div.foldup {
-    top:0;
-    opacity: 1;
-    pointer-events: all;
-}
 .section.body .foldup label.event {
     display: inline-block;
     width: 15em;
