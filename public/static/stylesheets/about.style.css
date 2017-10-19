@@ -107,6 +107,7 @@
     overflow-y:auto;
     transition: all 0.5s;
     pointer-events: none;
+    will-change: opacity, transform;
 }
 
 .section.body .about > input:checked + .scrollable {
@@ -117,6 +118,13 @@
 }
 .section.body .about .simplebar-content > ol {
     padding-left: 0em;
+}
+.section.body .about .button {
+    border: 2px solid #ccc;
+    color:#ccc;
+    display: inline-block;
+    line-height: 3em;
+    padding: 0em 1.5em;
 }
 
 .section.body .about h2 {

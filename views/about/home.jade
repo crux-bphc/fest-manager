@@ -9,8 +9,8 @@ div.section.body#about
         div.navigation
             label.active(for="about-control") ABOUT
             label(for="accommodation-control") ACCOMMODATION
-            label(for="tandc-control") TERMS OF SERVICE
-            label(for="pp-control") PRIVACY POLICY
+            label(for="terms-control") TERMS OF SERVICE
+            label(for="privacy-control") PRIVACY POLICY
         input.hidden(type="radio" name="accordion" id="about-control" checked)
         div.scrollable(data-simplebar="init")
             h2 ATMOS
@@ -26,6 +26,8 @@ div.section.body#about
                 center 1 Day : Rs. 250/-
                 center 2 Days: Rs. 400/-
                 center 3 Days: Rs. 500/-
+            center
+                a.button(href="https://www.townscript.com/e/accomodation-234231") REGISTER HERE
             p
                 |The accommodation is provided in the hostel common rooms, which are of the size of a big hall and will accommodate 35 people. Every person availing the accommodation will be given a mattress. Some basic requirements (e.g. bucket) will be given as a common asset to people sharing a room. In addition to the above charges, a caution deposit of Rs. 100 is charged to everyone availing the accommodation which is refunded if the person is not found guilty of damaging any of the institute property.
                 |The above charges are charged on a day to day basis. (9:00 am to 9:00 am).
@@ -35,7 +37,7 @@ div.section.body#about
             p
                 b Food Options:
                 |There are various food outlets that serve delicious food, at various spots on campus. In addition to that, the campus messes will also be operating and serving food three times a day (breakfast, lunch and dinner). The prices for the same will be displayed on the mess notice boards.
-        input.hidden(type="radio" name="accordion" id="tandc-control")
+        input.hidden(type="radio" name="accordion" id="terms-control")
         div.scrollable(data-simplebar="init")
             h2 TERMS OF SERVICE
             ol
@@ -71,7 +73,7 @@ div.section.body#about
                 li
                     b Governing Law
                     p These terms and conditions are governed by and construed in accordance with the laws of Telangana, India and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.
-        input.hidden(type="radio" name="accordion" id="pp-control")
+        input.hidden(type="radio" name="accordion" id="privacy-control")
         div.scrollable(data-simplebar="init")
             h2 PRIVACY POLICY
             p This privacy policy has been compiled to better serve those who are concerned with how their 'Personally Identifiable Information' (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.
@@ -133,3 +135,8 @@ script.
         $('.about label').removeClass('active');
         $('.about label[for="' + this.id + '"]').addClass('active');
     });
+    $("#" + window.location.hash.slice(1) + "-control").prop('checked',true);
+    if(window.location.hash.slice(1)) {
+        $('.about label').removeClass('active');
+        $('.about label[for="' + window.location.hash.slice(1) + '-control"]').addClass('active');
+    }
