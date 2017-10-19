@@ -94,8 +94,7 @@
     top: -1.5em;
     line-height: 2em;
     color:rgba(255,255,255,0.7);
-    width:100%;
-    text-align: center;
+    padding-left: 2em;
     font-weight: 600;
 }
 .inner-navigation .left.black::before {
