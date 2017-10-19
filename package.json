@@ -22,6 +22,7 @@
     "html-pdf": "^2.1.0",
     "jade": "~1.11.0",
     "marked": "^0.3.6",
+    "moment": "^2.19.1",
     "mongoose": "^4.10.5",
     "mongoose-shortid-nodeps": "^0.6.5",
     "morgan": "~1.8.1",

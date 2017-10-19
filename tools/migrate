@@ -1,51 +1,51 @@
 #! /usr/bin/env node
 
-// DANGEROUS STUFF ABOUT TO HAPPEN. RUN AWAY AND REMOVE SERVER SSH LOGS TO COVER YOUR TRACKS.
+var eventModels = require('../routes/api/services/events').model;
+var teamModels = require('../routes/api/services/teams').model;
+var userModels = require('../routes/api/services/users').model;
 
-var projectroot = require('project-root-path');
-var eventsService = require(projectroot + "/routes/api/services/events").model;
-var usersService = require(projectroot + "/routes/api/services/users").model;
+var events = process.argv.slice(2);
 
+// Global dependencies
 var mongoose = require('mongoose');
 
-// Internal functions here. Do not change unless you know what you're doing.
-
-var toId = function(str) {
-    return mongoose.Types.ObjectId(str);
-};
-
-var migrateEvent = function(eventroute) {
-    return eventsService.findOne({
-            route: eventroute
-        })
-        .then(function(event) {
-            return usersService.updateMany({
-                events: event._id
-            }, {
-                $pull: {
-                    events: event._id
-                },
-                $push: {
-                    pending: event._id
-                }
-            })
-        });
-}
-
 var main = function() {
-    var eventroute = process.argv.slice(2);
-    console.log(eventroute);
+
     var connection = require('../utils/mongoose');
     connection();
-    migrateEvent(eventroute).then(function() {
-        console.log("Migraine Complete");
-        process.exit(0);
-    }).catch(function(err) {
-        console.log(err);
-        console.log("Error while execution. Exiting.");
-        process.exit(1);
+    var promises = [];
+    var id;
+    eventModels.findOne({
+    	route: events[0]
+    })
+    .then(function(event) {
+    	console.log(event);
+    	id = event._id;
+    	return teamModels.find({
+    		_id: {$in: event.teams}
+    	});
+    })
+    .then(function(teams) {
+    	console.log(teams);
+    	teams.forEach(function(team) {
+    		promises.push(userModels.update({
+    			_id: {$in: team.members}
+    		}, {
+    			$pullAll: {events: [id]},
+    			$push: {pending: id}
+    		}, {multi: true}));
+    	});
+    	Promise.all(promises)
+		.then(function(data) {
+			console.log(data);
+			process.exit(0);
+		})
+		.catch(function(err) {
+			console.log(err);
+			process.exit(1);
+		});
     });
-};
+}
 
 // Start execution
 main();

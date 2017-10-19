@@ -70,17 +70,6 @@ router.get('/talks/saikat', function (req, res, next) {
 	});
 });
 
-router.get('/talks/ramanathan', function (req, res, next) {
-	req.stateparams.pagetitle = 'Talk by Ramanathan Muthaiah';
-	req = applyStateChanges(req);
-	req.stateparams.subtitle = "PyBITS Talks";
-	res.renderState('custom/pybits/talks/ramanathan', {
-		title: 'Introduction to Continuous Integration in SW Development',
-		user: req.user,
-		pybits: true,
-	});
-});
-
 router.get('/talks/satish', function (req, res, next) {
 	req.stateparams.pagetitle = 'Talk by Satish Rao';
 	req = applyStateChanges(req);
@@ -98,6 +87,17 @@ router.get('/talks/madhu', function (req, res, next) {
 	req.stateparams.subtitle = "PyBITS Talks";
 	res.renderState('custom/pybits/talks/madhu', {
 		title: 'Impact of Python in Data Science',
+		user: req.user,
+		pybits: true,
+	});
+});
+
+router.get('/talks/ramanathan', function (req, res, next) {
+	req.stateparams.pagetitle = 'Talk by Ramanathan Muthaiah';
+	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS Talks";
+	res.renderState('custom/pybits/talks/ramanathan', {
+		title: 'Introduction to Continuous Integration in SW Development',
 		user: req.user,
 		pybits: true,
 	});

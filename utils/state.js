@@ -18,6 +18,7 @@ module.exports = function () {
 			user.isElevated = req.user.privilege ? true : false;
 			user.privilege = req.user.privilege;
 			user.email = req.user.email;
+			user.notifications = req.user.notifications;
 			if (req.user.institute && req.user.phone) {
 				user.profile = true; //True if profile is complete
 			}

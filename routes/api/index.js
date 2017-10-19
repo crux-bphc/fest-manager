@@ -15,6 +15,8 @@ services.forEach(function (service) {
 });
 
 var typeahead = require('./typeahead');
+var notify = require('./notify');
 router.use("/typeahead", typeahead);
+router.use("/notify", notify);
 
 module.exports = router;

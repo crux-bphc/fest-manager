@@ -2,6 +2,7 @@ const passport = require('passport');
 const fq = require('fuzzquire');
 const config = fq('config-loader');
 const userService = fq('services/users').model;
+const middleware = fq('services/users').middleware;
 
 var findOrCreate = function (accessToken, profile, provider, done) {
 	userService.findOne({
@@ -25,22 +26,6 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 				passport.serializeUser(function (user, done) {
 					return done(null, user._id);
 				});
-				var userData = [{
-					email: user.email,
-					params: {
-						title: "Sample Email",
-					},
-				}];
-				var mailOptions = {
-					subject: 'Atmos Registration Successful', // Subject line
-					template: 'email-templates/test',
-				};
-				fq('utils/mailer')(userData, mailOptions)
-					.catch(err => console.log(err))
-					.then(function (data) {
-						console.log('data');
-						done(err, user);
-					});
 			});
 		} else {
 			if (provider == 'googleID') {
@@ -116,25 +101,8 @@ var strategies = function () {
 	return strategies;
 }();
 
-var authenticate = function (req, res, next) { // custom middleware to check if a user
-	if (req.isAuthenticated()) // is authenticated in the current session
-		return next();
-	res.redirect('/components/login');
-};
-
-var elevate = function (req, res, next) {
-	if (req.user.privilege)
-		return next();
-	let error = new Error('Access denied');
-	error.status = 401;
-	return next(error);
-};
-
 module.exports = {
 	configureSerializers: configureSerializers,
 	strategies: strategies,
-	middleware: {
-		authenticate: authenticate,
-		elevate: elevate,
-	},
+	middleware: middleware,
 };

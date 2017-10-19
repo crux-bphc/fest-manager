@@ -12,9 +12,18 @@ var applyStateChanges = function (req) {
 		route: '/portals',
 	};
 	req.stateparams.submenu = [{
-		route: "/portals/dosh",
-		label: "Dosh Portal"
-	}];
+			route: "/portals/rollout",
+			label: "Rollout Notifications",
+		},
+		{
+			route: "/portals/administration",
+			label: "User Administration",
+		},
+		{
+			route: "/portals/dosh",
+			label: "Dosh Portal"
+		}
+	];
 	return req;
 };
 
@@ -35,6 +44,51 @@ router.get('/', middleware.authenticate, middleware.elevate, function (req, res,
 	else if (req.user.privilege.level == 1) {
 		res.redirect('/components/portals/' + (req.user.privilege.body == "ca" ? 'ca/view' : req.user.privilege.body));
 	}
+});
+
+router.get('/rollout', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	req = applyStateChanges(req);
+	res.renderState('portals/rollout', {
+		title: "Roll out notifications",
+		user: req.user,
+		fields: fq('forms/rollout')(),
+	});
+});
+
+router.get('/administration', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	req = applyStateChanges(req);
+	events = [];
+	eventsService.find({
+			price: {
+				$gt: 0
+			}
+		})
+		.then(function (results) {
+			var promises = [];
+			results.forEach(function (event) {
+				promises.push(userService.find({
+						events: event._id
+					})
+					.then(function (users) {
+						console.log(users.length);
+						events.push({
+							name: event.name,
+							_id: event._id,
+							price: event.price,
+							people: users.length,
+						});
+					}));
+			});
+			return Promise.all(promises);
+		})
+		.then(function () {
+			res.renderState('portals/administration', {
+				title: "User Administration",
+				user: req.user,
+				events: events,
+				fields: fq('forms/administration')(),
+			});
+		});
 });
 
 

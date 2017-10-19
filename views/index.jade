@@ -37,18 +37,42 @@ body
 					i.icon-navigate_next
 					span.text
 				div.controls
-					a.button.user(_triggers="navbar/avatar=visible" href="/dashboard")
+					input.hidden(type="checkbox" id="dropdown")
+					div#blurCarpet
+					div.button.user(_triggers="navbar/avatar=visible" tabindex="0")
 						if user
-							div
+							label(for="dropdown")
+								span.ticker
 								img(src=user.profileImage)
+							div.dropdown
+								div.header
+									div.details(_route="/dashboard")
+										- if (typeof user.name !== "undefined") {
+										span.username.
+											#{user.name}
+										- }
+										- if (typeof user.email !== "undefined") {
+										span.useremail.
+											#{user.email}
+										- }
+										- else if (typeof user.phone !== "undefined") {
+										span.useremail.
+											#{user.phone}
+										- }
+									a.button.cart(href="/dashboard/cart" style="display:none;")
+										i.icon-shopping_cart
+									a.button.account(href="/dashboard/account" style="display:inline-block;")
+										i.icon-mode_edit
+								div.subheader
+									span Notifications
+								div.drawer
+									div.scrollable
 					a.button(href="/logout" _triggers="navbar/logout=visible")
 						i.icon-power_settings_new
 						div Logout
 					a.button(href="/login" _triggers="navbar/login=visible")
 						i.icon-account_circle
 						div Register / Login
-					div.button.close(_triggers="navbar/exit=visible")
-						i.icon-close
 		div.remnant
 			div.sidebar(tabindex="2" _triggers="sidebar/visible=visible")
 				div.wrapper

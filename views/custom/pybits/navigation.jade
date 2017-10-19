@@ -1,7 +1,8 @@
 mixin navigationMixin(isHome)
     div.inner-navigation
         div.left(class=(isHome?"white":"black"))
-            img(src=(isHome?"/static/pybits/psf-logo.png":"/static/pybits/psf-logo-black.png"))
+            img(src=(isHome?"/static/images/pybits/psf-logo.png":"/static/images/pybits/psf-logo-black.png"))
+            img(src="/static/images/pybits/hydpy.png" style="padding-left: 2em")
         div.right
             li
                 a(href="/pybits") Home
