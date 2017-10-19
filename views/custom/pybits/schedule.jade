@@ -1,0 +1,58 @@
+include navigation
+link(rel="stylesheet" href="/static/stylesheets/events.style.css")
+link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
+link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
+
+div.immersive-wrapper.pybits-background
+    div.section.body.scrollable(data-simplebar)
+        #sc-wrapper
+            div.day
+                #content
+                    h1.date 28th October
+                    ul.timeline
+                        li.event(data-date='10:00am - 10:30am')
+                            h3.sc-title Registration
+                        li.event(data-date='10:30am - 11:15am')
+                            a(href='/pybits/talks/saikat')
+                                h3.sc-title Saikat Kumar Dey
+                                p Making Chat Bots Using Python
+                        li.event(data-date='11:15am - 12:00pm')
+                            a(href='/pybits/talks/ramanathan')
+                                h3.sc-title Ramanathan Muthaiah
+                                p Continuous Integration in Software Development
+                        li.event(data-date='12:00pm - 01:00pm')
+                            a(href='/pybits/talks/adapa')
+                                h3.sc-title Sunil Mohan Adapa
+                                p Freedom Box and the Dystopian World
+                        li.event(data-date='01:00pm - 02:00pm')
+                            h3.sc-title Break and Networking Session
+                        li.event(data-date='02:00pm - 02:45pm')
+                            a(href='/pybits/talks/madhu')
+                                h3.sc-title Madhu Vadlamani
+                                p Data Science and Sentimental Analysis
+                        li.event(data-date='02:45pm - 03:30pm')
+                            a(href='/pybits/talks/satish')
+                                h3.sc-title Satish Rao
+                                p Internet of Thing and Python
+                        li.event(data-date='03:30pm - 04:00pm')
+                            h3.sc-title Lightning Talks
+            div.day
+                #content
+                    h1.date 29th October
+                    ul.timeline
+                        li.event(data-date='10:00am - 01:00pm')
+                            a(href='/pybits/workshops/flask')
+                                h3.sc-title Flask Workshop
+                            h3.sc-title +
+                            a(href='/pybits/workshops/basic')
+                                h3.sc-title Basic Python Workshop
+                        li.event(data-date='01:00pm - 02:00pm')
+                            h3.sc-title Break
+                        li.event(data-date='02:00pm - 05:00pm')
+                            a(href='/pybits/workshops/scrapy')
+                                h3.sc-title Scrapy Workshop
+                            h3.sc-title +
+                            a(href='/pybits/workshops/basic')
+                                h3.sc-title Basic Python Workshop(contd.)
+
+    +navigationMixin(true)

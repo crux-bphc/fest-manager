@@ -26,6 +26,10 @@ var applyStateChanges = function (req) {
 			label: "Code of Conduct",
 			route: "/pybits/coc",
 		},
+		{
+			label: "Schedule",
+			route: "/pybits/schedule",
+		},
 	];
 	return req;
 };
@@ -175,6 +179,16 @@ router.get('/coc', function (req, res, next) {
 	req.stateparams.subtitle = "PyBITS Code of Conduct";
 	res.renderState('custom/pybits/coc', {
 		title: 'PyBITS Code of Conduct',
+		user: req.user,
+	});
+});
+
+router.get('/schedule', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBITS Schedule';
+	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS Schedule";
+	res.renderState('custom/pybits/schedule', {
+		title: 'PyBITS Schedule',
 		user: req.user,
 	});
 });
