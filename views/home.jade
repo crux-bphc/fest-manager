@@ -81,7 +81,6 @@ div.immersive-wrapper
             a.icon-facebook(href="https://facebook.com/bits-atmos")
             a.icon-twitter(href="https://twitter.com/BITSAtmos")
             a.icon-google(href="https://plus.google.com/103653254627475556103")
-        div.mute(onclick="Buildings.mute()") MUTE
         div.patronage
             img(src="/static/images/make.png")
             img(src="/static/images/digital-india-logo.png")
@@ -96,6 +95,7 @@ script(src="/static/lib/three/constructors.min.js")
 script(src="/static/scripts/buildings.js")
 script.
     var ANIMATING = false;
+    $('.mute-button').addClass('visible');
     var onMousewheel = function(e) {
         if(ANIMATING) return false;
         ANIMATING = true;

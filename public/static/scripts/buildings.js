@@ -727,10 +727,12 @@ var Constructor = function () {
 		mute: function () {
 			if (inputs.audio.muted) {
 				inputs.audio.muted = false;
-				$('.mute').html("MUTE");
+				$('.mute').removeClass("icon-volume_off");
+				$('.mute').addClass("icon-volume_up");
 			} else {
 				inputs.audio.muted = true;
-				$('.mute').html("UNMUTE");
+				$('.mute').removeClass("icon-volume_up");
+				$('.mute').addClass("icon-volume_off");
 			}
 		}
 	};
