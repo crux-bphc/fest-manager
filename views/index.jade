@@ -39,6 +39,8 @@ body
 				div.controls
 					input.hidden(type="checkbox" id="dropdown")
 					div#blurCarpet
+					div.button.mute-button(onclick="Buildings.mute()")
+						i.mute.icon-volume_up(style="font-size:1.5em")
 					div.button.user(_triggers="navbar/avatar=visible" tabindex="0")
 						if user
 							label(for="dropdown")
