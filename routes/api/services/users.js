@@ -71,7 +71,7 @@ router.post('/check', function (req, res, next) {
 				});
 				console.log(newuser);
 				return newuser.save();
-			};
+			}
 			return user;
 		})
 		.catch(function (err) {

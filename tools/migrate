@@ -9,43 +9,53 @@ var events = process.argv.slice(2);
 // Global dependencies
 var mongoose = require('mongoose');
 
-var main = function() {
+var main = function () {
 
-    var connection = require('../utils/mongoose');
-    connection();
-    var promises = [];
-    var id;
-    eventModels.findOne({
-    	route: events[0]
-    })
-    .then(function(event) {
-    	console.log(event);
-    	id = event._id;
-    	return teamModels.find({
-    		_id: {$in: event.teams}
-    	});
-    })
-    .then(function(teams) {
-    	console.log(teams);
-    	teams.forEach(function(team) {
-    		promises.push(userModels.update({
-    			_id: {$in: team.members}
-    		}, {
-    			$pullAll: {events: [id]},
-    			$push: {pending: id}
-    		}, {multi: true}));
-    	});
-    	Promise.all(promises)
-		.then(function(data) {
-			console.log(data);
-			process.exit(0);
+	var connection = require('../utils/mongoose');
+	connection();
+	var promises = [];
+	var id;
+	eventModels.findOne({
+			route: events[0]
 		})
-		.catch(function(err) {
-			console.log(err);
-			process.exit(1);
+		.then(function (event) {
+			console.log(event);
+			id = event._id;
+			return teamModels.find({
+				_id: {
+					$in: event.teams
+				}
+			});
+		})
+		.then(function (teams) {
+			console.log(teams);
+			teams.forEach(function (team) {
+				promises.push(userModels.update({
+					_id: {
+						$in: team.members
+					}
+				}, {
+					$pullAll: {
+						events: [id]
+					},
+					$push: {
+						pending: id
+					}
+				}, {
+					multi: true
+				}));
+			});
+			Promise.all(promises)
+				.then(function (data) {
+					console.log(data);
+					process.exit(0);
+				})
+				.catch(function (err) {
+					console.log(err);
+					process.exit(1);
+				});
 		});
-    });
-}
+};
 
 // Start execution
 main();
