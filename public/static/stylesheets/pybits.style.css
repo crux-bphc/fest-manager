@@ -318,11 +318,8 @@ p {
     .timeline {
         padding: 50px !important;
     }
-    #content {
-        align-items: right !important;
-    }
     .date {
-        font-size: 3.5vw !important;
+        font-size: 3.3vw !important;
     }
 }
 @media only screen and (max-width: 400px) {
@@ -345,7 +342,7 @@ strong {
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: right;
+    align-items: flex-end;
     padding-right: 7vw;
 }
 .event p {
