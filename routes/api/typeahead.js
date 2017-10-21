@@ -9,6 +9,16 @@ const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 
 var fuzzItUp = function (data, input) {
+	var rval = [];
+	// Do a regular search first.
+	data = Object.assign([], data);
+	data.forEach(function (elem) {
+		if (elem.toLowerCase().indexOf(input.toLowerCase()) != -1) {
+			rval.push(elem);
+			data.splice(data.indexOf(elem), 1); // Remove matched elements to prevent duplicates.
+		}
+	});
+	// Then do a fuzzy search.
 	var options = {
 		// shouldSort: true, // This causes less weighted results to come on top.
 		findAllMatches: true,
@@ -22,7 +32,6 @@ var fuzzItUp = function (data, input) {
 	};
 	var fuse = new Fuse(data, options);
 	var results = fuse.search(input);
-	var rval = [];
 	results.forEach(function (elem) {
 		rval.push(data[elem]);
 	});
@@ -39,10 +48,10 @@ var registerTypeahead = function (name, data, empty) {
 		var matching = fuzzItUp(data, query);
 		var regex = /\{(.*?)\}/gi;
 		res.json(matching
-			.slice(0, 10)
-			.sort()
+			.slice(0, 10) // Take top ten results
+			.sort() // Sort them after clipping
 			.map(function (elem) {
-				return elem.replace(regex, '');
+				return elem.replace(regex, ''); // Filter out our invisible search terms
 			}));
 	});
 };
