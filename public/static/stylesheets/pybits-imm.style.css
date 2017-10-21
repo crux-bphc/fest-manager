@@ -46,7 +46,7 @@
     display: inline-block;
 }
 
-#home .logo .button {
+#home .logo .button, #about a.button {
     display: block;
     box-sizing: border-box;
     line-height: 3em;
