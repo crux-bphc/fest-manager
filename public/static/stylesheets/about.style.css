@@ -53,78 +53,29 @@
 }
 .section.body .about {
     z-index: +10;
-    padding: 1em 0em;
+    padding: 1em;
     line-height: 1.7em;
     font-weight: 300;
     font-size: 1.1em;
     color:#ccc;
     text-align: justify;
     box-sizing: border-box;
+    padding: 0em 2em;
     position:absolute;
     max-width: 60vw;
-    width: 60vw;
+    /*width: 60vw;*/
     top: 0;
     height:100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.section.body .about > .navigation {
-    width: 100%;
+
+.section.body .about > div {
+    height: 60vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    line-height: 2em;
-    color: #d5d5d5;
-    position:absolute;
-    bottom:10%;
-    box-sizing: border-box;
-    left: 0;
-}
-.section.body .about > .navigation > label {
-    text-transform: uppercase;
-    font-weight: 400;
-    cursor: pointer;
-    font-size: 0.9em;
-    list-style-type: none;
-    transition: color 0.2s;
-}
-.section.body .about > .navigation > label.active {
-    box-shadow: 0px -4px 0px -2px white;
-}
-.section.body .about > .navigation > label:hover {
-    color: white;
-}
-
-.section.body .about > .scrollable {
-    display: block;
-    position: absolute;
-    transform: translateY(-10%);
-    transform-origin: 50% 100%;
-    opacity: 0;
-    max-height: 60vh;
-    overflow-y:auto;
-    transition: all 0.5s;
-    pointer-events: none;
-    will-change: opacity, transform;
-}
-
-.section.body .about > input:checked + .scrollable {
-    opacity: 1;
-    transition: all 0.5s 0.2s;
-    transform: none;
-    pointer-events: all;
-}
-.section.body .about .simplebar-content > ol {
-    padding-left: 0em;
-}
-.section.body .about .button {
-    border: 2px solid #ccc;
-    color:#ccc;
-    display: inline-block;
-    line-height: 3em;
-    padding: 0em 1.5em;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .section.body .about h2 {
@@ -132,23 +83,10 @@
     letter-spacing: 1em;
     padding-bottom: 15px;
     position: relative;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.section.body .about h3 {
-    text-transform: uppercase;
-    font-weight: 600;
-}
-.section.body .about li li {
-    list-style-type: lower-roman;
 }
 .section.body .about p {
     margin-top: 15px;
     width: 100%;
-}
-.section.body .about b {
-    font-weight: 600;
 }
 .section.body .about h2::after {
     position:absolute;
@@ -165,25 +103,6 @@
         opacity: 0;
     }
 }
-.icon-navigate_next {
-    border: 1px solid rgba(220,220,220,0.25);
-    color:#ccc;
-    height: 2em;
-    display: flex;
-    font-size: 1.2em;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    width:2em;
-    transform: rotateZ(90deg);
-    position:absolute;
-    line-height: 2em;
-    bottom: 2em;
-    will-change: transform;
-    box-sizing: border-box;
-    animation: seekattention 1s infinite;
-    display: none;
-}
 @keyframes seekattention {
     50% {
         transform: rotateZ(90deg) translateX(50%);
@@ -199,34 +118,36 @@
 @media only screen and (max-width: 600px) {
     .section.body .about {
         box-sizing: border-box;
-        padding: 0em 1em;
-        height: 100%;
+        padding: 3em 1em;
+        height: 90%;
         display: block;
-        width: 100vw;
-        overflow-x: hidden;
-        max-width: 100vw;
+        top:5%;
+        max-width: 100%;
         text-align: justify;
         border-left: 0em;
         overflow-y: auto;
     }
-    .section.body .about > .navigation {
-        bottom:2em;
-        padding: 0em 1em;
-    }
-    .section.body .about > .scrollable {
+    .section.body .about > div {
         display: block;
-        height: 80vh;
-        max-height: 80vh;
-        left: 0;
-        max-width: 100%;
-        padding: 0em 2em;
-        box-sizing: border-box;
-        padding-top:100px;
-        padding-bottom: 4em;
+        height: 90vh;
     }
     .icon-navigate_next {
         animation: none;
         font-size: initial;
         bottom: 2em;
     }
+}
+
+.about a.button {
+    display: block;
+    box-sizing: border-box;
+    line-height: 3em;
+    padding:0em 2em;
+    margin-top:1.5em;
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 0;
+    height: unset;
+    background: unset;
+    color: rgba(255,255,255,0.7);
+    width: 15em;
 }
