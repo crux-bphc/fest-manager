@@ -5,6 +5,15 @@ module.exports = function() {
         label: "Name",
         editable: true,
         type: "text",
+        required: false,
+        typeahead: false,
+        none: true,
+    });
+    fields.push({
+        name: "bitsID",
+        label: "BITS ID",
+        editable: true,
+        type: "text",
         required: true,
         typeahead: false,
         none: true,
@@ -15,6 +24,7 @@ module.exports = function() {
         editable: true,
         type: "text",
         required: true,
+        value: "Birla Institute of Technology & Science - Hyderabad",
         typeahead: "institutes",
         none: true,
     });

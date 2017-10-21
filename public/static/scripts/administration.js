@@ -3,6 +3,28 @@
 		user: null,
 		setData: function (data) {
 			$("#field-institute").val(data.institute);
+			$("#field-bitsID").val(data.bitsID);
+			if(data.email.indexOf('hyderabad.bits-pilani.ac.in') !== -1) {
+				$.fn.setCursorPosition = function(pos, end) {
+				  this.each(function(index, elem) {
+				    if (elem.setSelectionRange) {
+				      elem.setSelectionRange(pos, end);
+				    } else if (elem.createTextRange) {
+				      var range = elem.createTextRange();
+				      range.collapse(true);
+				      range.moveEnd('character', pos);
+				      range.moveStart('character', end);
+				      range.select();
+				    }
+				  });
+				  return this;
+				};
+				var id = data.email.split('@')[0].slice(1);
+				$("#field-bitsID").val(id.slice(0,4) + "XXXX" + id.slice(4) + "H");
+				$("#field-bitsID").focus();
+				$("#field-bitsID").setCursorPosition(4, 8);
+				$("#field-institute").val("Birla Institute of Technology & Science, Hyderabad");
+			}
 			$("#field-name").val(data.name);
 			$("#field-phone").val(data.phone);
 			$("#field-email").val(data.email);
@@ -101,8 +123,11 @@
 			};
 
 			$('#field-key').on('keydown', function (e) {
-				if (e.keyCode == 13 || e.which == 13 || e.keyCode == 9 || e.which == 9)
+				if (e.keyCode == 13 || e.which == 13 || e.keyCode == 9 || e.which == 9) {
+					if($(this).val().indexOf('@') == -1)
+						$(this).val($(this).val() + "@hyderabad.bits-pilani.ac.in");
 					portal.findOrCreate($(this).val());
+				}
 			});
 			$('#details input').on('change', function () {
 				if (portal.user) {

@@ -40,6 +40,7 @@ var usersSchema = new Schema({
 	year: String,
 	why: String,
 	privilege: Schema.Types.Mixed,
+	bitsID: String,
 }, {
 	timestamps: true
 });
@@ -152,7 +153,8 @@ router.put('/force', authenticate, elevate, function (req, res, next) {
 		institute: req.body.user.institute,
 		email: req.body.user.email,
 		phone: req.body.user.phone,
-		events: req.body.user.events
+		bitsID: req.body.user.bitsID,
+		events: req.body.user.events,
 	};
 	var promises = [];
 	if (changes.events)

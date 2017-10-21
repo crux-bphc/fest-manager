@@ -6,30 +6,27 @@ var bodiesService = fq('services/bodies').model;
 var eventsService = fq('services/events').model;
 var userService = fq('services/users').model;
 
-var applyStateChanges = function (req) {
+var applyStateChanges = function (req, superuser) {
 	req.stateparams.title = req.stateparams.title = {
 		text: 'Portals',
 		route: '/portals',
 	};
-	req.stateparams.submenu = [{
-			route: "/portals/rollout",
-			label: "Rollout Notifications",
-		},
-		{
-			route: "/portals/administration",
-			label: "User Administration",
-		},
-		{
-			route: "/portals/dosh",
-			label: "Dosh Portal"
-		}
-	];
+	if(superuser)
+		req.stateparams.submenu = [{
+				route: "/portals/rollout",
+				label: "Rollout Notifications",
+			},
+			{
+				route: "/portals/administration",
+				label: "User Administration",
+			}
+		];
 	return req;
 };
 
 router.get('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
-	req = applyStateChanges(req);
-	if (req.user.privilege.level == 2)
+	if (req.user.privilege.level == 2) {
+		req = applyStateChanges(req, true);
 		bodiesService.find(function (err, items) {
 			if (err) {
 				return next(err);
@@ -41,22 +38,35 @@ router.get('/', middleware.authenticate, middleware.elevate, function (req, res,
 				title: 'Portals Home'
 			});
 		});
+	}
 	else if (req.user.privilege.level == 1) {
-		res.redirect('/components/portals/' + (req.user.privilege.body == "ca" ? 'ca/view' : req.user.privilege.body));
+		req = applyStateChanges(req, false);
+		res.redirect('/components/portals/administration');
 	}
 });
 
 router.get('/rollout', middleware.authenticate, middleware.elevate, function (req, res, next) {
-	req = applyStateChanges(req);
-	res.renderState('portals/rollout', {
-		title: "Roll out notifications",
-		user: req.user,
-		fields: fq('forms/rollout')(),
-	});
+	if(req.user.privilege.level == 2) {
+		req = applyStateChanges(req, true);
+		res.renderState('portals/rollout', {
+			title: "Roll out notifications",
+			user: req.user,
+			fields: fq('forms/rollout')(),
+		});
+	}
+	else if(req.user.privilege.level == 1) {
+		req = applyStateChanges(req, false);
+		res.redirect('/components/portals/administration');
+	}
 });
 
 router.get('/administration', middleware.authenticate, middleware.elevate, function (req, res, next) {
-	req = applyStateChanges(req);
+	if(req.user.privilege.level == 2) {
+		req = applyStateChanges(req, true);
+	}
+	else if(req.user.privilege.level == 1) {
+		req = applyStateChanges(req, false);
+	}
 	events = [];
 	eventsService.find({
 			price: {
@@ -70,7 +80,6 @@ router.get('/administration', middleware.authenticate, middleware.elevate, funct
 						events: event._id
 					})
 					.then(function (users) {
-						console.log(users.length);
 						events.push({
 							name: event.name,
 							_id: event._id,
@@ -90,39 +99,6 @@ router.get('/administration', middleware.authenticate, middleware.elevate, funct
 			});
 		});
 });
-
-
-router.get('/dosh', middleware.authenticate, middleware.elevate, function (req, res, next) {
-	var params = {
-		title: 'Register Newcomer',
-		user: req.user,
-	};
-
-	req = applyStateChanges(req);
-	params.fields = [{
-			name: "qr-email",
-			placeholder: "Scan User Email",
-			editable: true,
-			type: "text",
-			required: true,
-			value: "",
-			qrcode: true,
-			icon: "qrcode",
-			typeahead: false,
-		},
-		{
-			name: "email",
-			placeholder: "Enter User Email",
-			editable: true,
-			type: "text",
-			required: true,
-			value: "",
-			typeahead: 'email',
-		}
-	];
-	res.renderState('portals/doshPortal', params);
-});
-
 
 router.get('/ca/view', middleware.authenticate, middleware.elevate, function (req, res, next) {
 
