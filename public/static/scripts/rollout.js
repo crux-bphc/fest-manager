@@ -25,7 +25,7 @@ $("#submit-button").click(function () {
 		});
 	}).fail(function (err) {
 		swal({
-			title: "Registration Failed",
+			title: "Rollout Failed",
 			text: "Something went wrong. Please try again.",
 			type: "error",
 			confirmButtonText: "OK",

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fuzzquire = require('fuzzquire');
-var eventsService = require('./services/events');
+var eventsService = require('./services/events').model;
 
 router.post('/', function (req, res) {
 	var notification = {};
@@ -34,12 +34,13 @@ router.post('/', function (req, res) {
 				msg: "Success",
 			});
 		} else {
+			console.log("Dropped to event type rollout", req.body.to);
 			eventsService.findOne({
-					route: req.body.to
+					route: "japan2"
 				})
 				.then(function (event) {
 					push({
-						events: event._id
+						$or:[{events: event._id},{pending: event._id}]
 					}, notification);
 					mail({
 						events: event._id
@@ -48,6 +49,9 @@ router.post('/', function (req, res) {
 						status: 200,
 						msg: "Success",
 					});
+				})
+				.catch(function (err) {
+					console.log(err);
 				});
 		}
 	} else {

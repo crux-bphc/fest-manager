@@ -107,7 +107,7 @@ router.get('/ca/view', middleware.authenticate, middleware.elevate, function (re
 		error.status = 403;
 		return next(error);
 	}
-
+	req = applyStateChanges(req, true);
 	userService.find({
 			isAmbassador: true
 		}, '_id name email institute phone address pincode why')
@@ -129,7 +129,7 @@ router.get('/:body', middleware.authenticate, middleware.elevate, function (req,
 		error.status = 403;
 		return next(error);
 	}
-
+	req = applyStateChanges(req);
 	var name;
 	bodiesService.findOne({
 		code: req.params.body
@@ -165,6 +165,7 @@ router.get('/:body/:eventroute', middleware.authenticate, middleware.elevate, fu
 		error.status = 403;
 		return next(error);
 	}
+	req = applyStateChanges(req, true);
 	var eventName, event;
 	bodiesService.findOne({
 			code: req.params.body
