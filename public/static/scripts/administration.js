@@ -3,7 +3,6 @@
 		user: null,
 		setData: function (data) {
 			$("#field-institute").val(data.institute);
-			$("#field-bitsID").val(data.bitsID);
 			if(data.email.indexOf('hyderabad.bits-pilani.ac.in') !== -1) {
 				$.fn.setCursorPosition = function(pos, end) {
 				  this.each(function(index, elem) {
@@ -19,10 +18,15 @@
 				  });
 				  return this;
 				};
-				var id = data.email.split('@')[0].slice(1);
-				$("#field-bitsID").val(id.slice(0,4) + "XXXX" + id.slice(4) + "H");
-				$("#field-bitsID").focus();
-				$("#field-bitsID").setCursorPosition(4, 8);
+				if(data.bitsID && data.bitsID.length != 0) {
+					$("#field-bitsID").val(data.bitsID);
+				}
+				else {
+					var id = data.email.split('@')[0].slice(1);
+					$("#field-bitsID").val(id.slice(0,4) + "XXXX" + id.slice(4) + "H");
+					$("#field-bitsID").focus();
+					$("#field-bitsID").setCursorPosition(4, 8);
+				}
 				$("#field-institute").val("Birla Institute of Technology & Science, Hyderabad");
 			}
 			$("#field-name").val(data.name);
