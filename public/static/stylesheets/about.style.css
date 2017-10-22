@@ -88,6 +88,18 @@
     margin-top: 15px;
     width: 100%;
 }
+.section.body .about .links {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin-top: -20px;
+}
+.section.body .about .links a {
+    flex-grow: 1;
+    display: table-cell;
+    text-align: center;
+}
 .section.body .about h2::after {
     position:absolute;
     height: 3px;

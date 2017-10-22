@@ -1,6 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.woff?627ynx') format('woff');
+  src:  url('fonts/icomoon.eot?uwtzrz');
+  src:  url('fonts/icomoon.eot?uwtzrz#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?uwtzrz') format('truetype'),
+    url('fonts/icomoon.woff?uwtzrz') format('woff'),
+    url('fonts/icomoon.svg?uwtzrz#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -248,6 +252,33 @@
 .icon-envelope:before {
   content: "\f0e0";
 }
+.icon-bolt:before {
+  content: "\f0e7";
+}
+.icon-flash:before {
+  content: "\f0e7";
+}
 .icon-shield:before {
   content: "\f132";
+}
+.icon-sun-o:before {
+  content: "\f185";
+}
+.icon-moon-o:before {
+  content: "\f186";
+}
+.icon-paper-plane-o:before {
+  content: "\f1d9";
+}
+.icon-send-o:before {
+  content: "\f1d9";
+}
+.icon-settings:before {
+  content: "\e8b8";
+}
+.icon-volume_off:before {
+  content: "\e04f";
+}
+.icon-volume_up:before {
+  content: "\e050";
 }

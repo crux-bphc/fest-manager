@@ -21,7 +21,7 @@ var applyStateChanges = function (req) {
 		},
 		{
 			label: "Terms of Service",
-			route: "/about/service",
+			route: "/about/terms",
 		},
 		{
 			label: "Privacy Policy",
@@ -92,7 +92,7 @@ router.get('/privacy', function (req, res, next) {
 	});
 });
 
-router.get('/service', function (req, res, next) {
+router.get('/terms', function (req, res, next) {
 	req.stateparams.pagetitle = 'Terms Of Service';
 	req.stateparams.subtitle = 'Terms Of Service';
 	req = applyStateChanges(req);
