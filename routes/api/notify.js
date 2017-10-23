@@ -40,7 +40,11 @@ router.post('/', function (req, res) {
 				})
 				.then(function (event) {
 					push({
-						$or:[{events: event._id},{pending: event._id}]
+						$or: [{
+							events: event._id
+						}, {
+							pending: event._id
+						}]
 					}, notification);
 					mail({
 						events: event._id
