@@ -11,7 +11,7 @@ var applyStateChanges = function (req, superuser) {
 		text: 'Portals',
 		route: '/portals',
 	};
-	if(superuser)
+	if (superuser)
 		req.stateparams.submenu = [{
 				route: "/portals/rollout",
 				label: "Rollout Notifications",
@@ -38,33 +38,30 @@ router.get('/', middleware.authenticate, middleware.elevate, function (req, res,
 				title: 'Portals Home'
 			});
 		});
-	}
-	else if (req.user.privilege.level == 1) {
+	} else if (req.user.privilege.level == 1) {
 		req = applyStateChanges(req, false);
 		res.redirect('/components/portals/administration');
 	}
 });
 
 router.get('/rollout', middleware.authenticate, middleware.elevate, function (req, res, next) {
-	if(req.user.privilege.level == 2) {
+	if (req.user.privilege.level == 2) {
 		req = applyStateChanges(req, true);
 		res.renderState('portals/rollout', {
 			title: "Roll out notifications",
 			user: req.user,
 			fields: fq('forms/rollout')(),
 		});
-	}
-	else if(req.user.privilege.level == 1) {
+	} else if (req.user.privilege.level == 1) {
 		req = applyStateChanges(req, false);
 		res.redirect('/components/portals/administration');
 	}
 });
 
 router.get('/administration', middleware.authenticate, middleware.elevate, function (req, res, next) {
-	if(req.user.privilege.level == 2) {
+	if (req.user.privilege.level == 2) {
 		req = applyStateChanges(req, true);
-	}
-	else if(req.user.privilege.level == 1) {
+	} else if (req.user.privilege.level == 1) {
 		req = applyStateChanges(req, false);
 	}
 	events = [];
