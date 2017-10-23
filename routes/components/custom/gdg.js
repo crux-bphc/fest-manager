@@ -5,7 +5,7 @@ var eventsService = fq("services/events").model;
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
-		text: 'GDG',
+		text: 'Google Developer Group',
 		route: 'gdg',
 	};
 	req.stateparams.immersive = true;
@@ -13,7 +13,6 @@ var applyStateChanges = function (req) {
 };
 
 router.get('/', function (req, res, next) {
-	req.stateparams.pagetitle = 'GDG';
 	req = applyStateChanges(req);
 	req.stateparams.subtitle = false;
 	eventsService.findOne({
@@ -21,7 +20,7 @@ router.get('/', function (req, res, next) {
 		})
 		.then(function (event) {
 			res.renderState('custom/gdg/home', {
-				title: 'GDG',
+				title: 'Google Developer Group',
 				user: req.user,
 				event: event,
 			});
