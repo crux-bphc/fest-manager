@@ -47,12 +47,14 @@ var registerTypeahead = function (name, data, empty) {
 		var query = req.params.query + "";
 		var matching = fuzzItUp(data, query);
 		var regex = /\{(.*?)\}/gi;
-		res.json(matching
+		var results = matching
 			.slice(0, 10) // Take top ten results
 			.sort() // Sort them after clipping
 			.map(function (elem) {
 				return elem.replace(regex, ''); // Filter out our invisible search terms
-			}));
+			});
+		console.log(results);
+		res.json(results);
 	});
 };
 

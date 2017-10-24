@@ -19,6 +19,10 @@ var applyStateChanges = function (req, superuser) {
 			{
 				route: "/portals/administration",
 				label: "User Administration",
+			},
+			{
+				route: "/portals/accommodation",
+				label: "Accommodation",
 			}
 		];
 	return req;
@@ -95,6 +99,33 @@ router.get('/administration', middleware.authenticate, middleware.elevate, funct
 				fields: fq('forms/administration')(),
 			});
 		});
+});
+
+router.get('/accommodation', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	if (req.user.privilege.level == 2) {
+		req = applyStateChanges(req, true);
+		fq('api/accomm').model.find()
+			.then(function (results) {
+				res.renderState('portals/accommodation', {
+					title: "Accommodation",
+					user: req.user,
+					addition: {
+						fields: fq('forms/accommodation')().addition,
+						method: 'POST',
+						action: '/portal/accommodation',
+					},
+					form: {
+						fields: fq('forms/accommodation')().allotment,
+						method: 'POST',
+						action: '/api/users/update-one',
+					},
+					accomm: results,
+				});
+			});
+	} else if (req.user.privilege.level == 1) {
+		req = applyStateChanges(req, false);
+		res.redirect('/components/portals/administration');
+	}
 });
 
 router.get('/ca/view', middleware.authenticate, middleware.elevate, function (req, res, next) {

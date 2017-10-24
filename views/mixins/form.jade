@@ -1,7 +1,7 @@
 include field
 
 mixin formMixin(form)
-    form.container(method="#{form.method}" action="#{form.action}")
+    form.container
         if form.type == "portal"
             div.left
                 - hero = form.fields.find(x => x.name == "hero")

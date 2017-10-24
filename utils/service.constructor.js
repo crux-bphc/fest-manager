@@ -16,9 +16,20 @@ function service(model, router) {
 	});
 
 	router.get('/:id', middleware.authenticate, middleware.elevate, function (req, res, next) {
-		model.find({
+		model.findOne({
 			_id: req.params.id
 		}, function (err, item) {
+			if (err) {
+				err.status = 404;
+				next(err);
+				return 0;
+			}
+			res.send(item);
+		});
+	});
+
+	router.post('/get-one', middleware.authenticate, middleware.elevate, function (req, res, next) {
+		model.findOne(req.body.filter, function (err, item) {
 			if (err) {
 				err.status = 404;
 				next(err);

@@ -21,7 +21,7 @@ div#_portal
             div.list
                 each event in events
                     input.hidden(type="checkbox" id=event._id)
-                    label.event(for=event._id)
+                    label.item(for=event._id)
                         span.name= event.name
                         div.footer
                             span.count= event.people
