@@ -342,3 +342,26 @@ var manager = function () {
 		getLocation: client.getLocation.bind(client)
 	};
 }();
+
+// Custom Jquery extensions
+$.fn.set = function (data) { // Treats editable and uneditable fields alike
+	this.each(function (index, elem) {
+		$(elem).val(data);
+		$(elem).html(data);
+	});
+	return this;
+};
+$.fn.setCursorPosition = function (pos, end) { // Does what it says
+	this.each(function (index, elem) {
+		if (elem.setSelectionRange) {
+			elem.setSelectionRange(pos, end);
+		} else if (elem.createTextRange) {
+			var range = elem.createTextRange();
+			range.collapse(true);
+			range.moveEnd('character', pos);
+			range.moveStart('character', end);
+			range.select();
+		}
+	});
+	return this;
+};

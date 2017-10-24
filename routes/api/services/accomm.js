@@ -6,8 +6,10 @@ var router = express.Router();
 var accommSchema = new Schema({
 	label: String,
 	vacancy: Number,
-	filled: Number,
-	price: Number // per day
+	filled: {
+		type: Number,
+		default: 0
+	},
 }, {
 	timestamps: true
 });

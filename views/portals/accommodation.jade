@@ -1,0 +1,35 @@
+include ../mixins/form
+
+link(href="/static/stylesheets/accommodation.style.css" rel="stylesheet")
+link(rel="stylesheet" href="/static/lib/jquery-ui-custom/jquery-ui.min.css")
+script(src="/static/lib/jquery-ui-custom/jquery-ui.min.js")
+div#_portal
+    .section.header
+        h1.title= title
+        div.stretch
+            div.remnant
+                ul.controls
+                    li.icon-add#add-button(title="Add accommodation")
+                    li.latent.icon-check#submit-button(title="Save")
+                    a.latent.icon-close#reset-button(title="Cancel")
+            - var search = {name: "key", editable: true, placeholder: "Enter Atmos ID", type: "text", typeahead: "email"}
+            +fieldMixin(search)
+    .section.body
+        .addition.foldup
+            +formMixin(addition)
+        .allotment
+            +formMixin(form)
+            div.list
+                each item in accomm
+                    input.hidden(type="radio" name="room" id=item.label tabindex="#{item.vacancy - item.filled ? 0 : -1}")
+                    label(class="item #{item.vacancy - item.filled ? '' : 'registered'}" for=item.label)
+                        span.name= item.label
+                        span.count= item.vacancy - item.filled
+            div.footer
+                div.remnant.message
+                    span.instruct No transaction
+                    span.price
+                div.button.disabled#checkout Check Out
+script(src="/static/scripts/accommodation.js")
+script.
+    portal();

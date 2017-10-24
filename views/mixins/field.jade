@@ -27,4 +27,4 @@ mixin fieldMixin(data)
 				else
 					input(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value)
 			else
-				span(id="field-#{data.name}")= data.value
+				input(id="field-#{data.name}" disabled value=data.value)

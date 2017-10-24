@@ -1,0 +1,38 @@
+.section.body .foldup {
+    display: none;
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    background: white;
+    margin-top: -2em;
+}
+.section.body .foldup.active {
+    display: block;
+}
+.allotment .footer {
+    display: flex;
+    width: 100%;
+    height: 3em;
+}
+.allotment .message {
+    font-size: initial;
+    background: #fdfdfd;
+    color: #4D9;
+    height: 100%;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding: 0em 1em;
+    display: inline-flex;
+    align-items: center;
+}
+.allotment span {
+    display: inline-block;
+}
+.allotment .price {
+    margin-left: 0.25em;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+.allotment .price:not(:empty)::before {
+    content: '\20b9';
+}

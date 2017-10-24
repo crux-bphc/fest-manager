@@ -81,20 +81,6 @@
 	margin-top:1em;
 }
 
-.main .button {
-	line-height: 3em;
-	padding:0 1em;
-	border-radius:4px;
-	color:#444;
-	white-space: nowrap;
-	font-weight: 600;
-	background:#f0f0f0;
-	display: inline-block;
-}
-
-.main .button:hover {
-	background:#e0e0e0;
-}
 .section.body div.ca .content .button {
 	position: relative;
 }

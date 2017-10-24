@@ -23,7 +23,7 @@ var usersSchema = new Schema({
 	teams: [shortID],
 	referred_by: String,
 	events: [Schema.Types.ObjectId],
-	accommodation: Number,
+	accommodation: Schema.Types.Mixed,
 	token: String,
 	facebookID: String,
 	googleID: String,
