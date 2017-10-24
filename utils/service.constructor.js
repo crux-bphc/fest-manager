@@ -1,8 +1,10 @@
 var express = require('express');
+var fq = require('fuzzquire');
+var middleware = fq('authentication').middleware;
 
 /* routing CRUD operations for users service */
 function service(model, router) {
-	router.get('/', function (req, res, next) {
+	router.get('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
 		model.find(function (err, items) {
 			if (err) {
 				err.status = 500;
@@ -13,7 +15,7 @@ function service(model, router) {
 		});
 	});
 
-	router.get('/:id', function (req, res, next) {
+	router.get('/:id', middleware.authenticate, middleware.elevate, function (req, res, next) {
 		model.find({
 			_id: req.params.id
 		}, function (err, item) {
@@ -26,7 +28,7 @@ function service(model, router) {
 		});
 	});
 
-	router.post('/', function (req, res, next) {
+	router.post('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
 		var item = new model(req.body);
 		item.save(function (err) {
 			if (err) {
@@ -37,7 +39,7 @@ function service(model, router) {
 		});
 	});
 
-	router.put('/', function (req, res, next) {
+	router.put('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
 		model.update({
 			_id: req.body._id || req.body.id
 		}, req.body, function (err) {
@@ -50,7 +52,7 @@ function service(model, router) {
 		});
 	});
 
-	router.delete('/:id', function (req, res, next) {
+	router.delete('/:id', middleware.authenticate, middleware.elevate, function (req, res, next) {
 		model.findByIdAndRemove(req.params.id, function (err, item) {
 			if (err) {
 				err.status = 500;
@@ -58,6 +60,23 @@ function service(model, router) {
 			}
 			res.send("Success");
 		});
+	});
+
+	router.put('/update-one', middleware.authenticate, middleware.elevate, function (req, res, next) {
+		model.findOneAndUpdate(req.body.filter, // query
+				{
+					$set: req.body.data
+				}, // operations
+				{
+					upsert: true
+				}) // options
+			.then(data => {
+				return res.send("Success");
+			})
+			.catch(error => {
+				console.error(error);
+				return res.status(500).send("Error");
+			});
 	});
 	return router;
 }

@@ -122,7 +122,7 @@ app.use('/upload', upload);
 app.use('/auth', auth);
 app.use('/transaction', transaction);
 app.use('/components', clientCheckpoint, components);
-app.use('/api', clientCheckpoint, api);
+app.use('/api', api);
 app.use('/', index);
 
 // catch 404 and forward to error handler
