@@ -51,13 +51,25 @@ router.get('/', function (req, res, next) {
 router.get('/schedule', function (req, res, next) {
 	req.stateparams.pagetitle = 'Schedule';
 	req = applyStateChanges(req);
-	req.stateparams.subtitle = "Schedule";
-	req.stateparams.immersive = true;
-	res.renderState('events/schedule', {
-		title: 'Schedule',
-		user: req.user,
-		pybits: true,
-	});
+	req.stateparams.subtitle = "Events Schedule";
+	req.stateparams.immersive = false;
+	eventsService.find({}).then(events => {
+		var days = [
+			[],
+			[],
+			[]
+		];
+		events.forEach(elem => {
+			if (elem.startTime.startsWith('27')) days[0].push(elem);
+			if (elem.startTime.startsWith('28')) days[1].push(elem);
+			if (elem.startTime.startsWith('29')) days[2].push(elem);
+		});
+		res.renderState('events/schedule', {
+			title: 'Schedule',
+			user: req.user,
+			days: days,
+		});
+	}).catch(next);
 });
 
 router.get('/:eventroute', function (req, res, next) {
