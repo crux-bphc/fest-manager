@@ -48,6 +48,28 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+router.get('/schedule', function (req, res) {
+	req.stateparams.pagetitle = 'Schedule';
+	req = applyStateChanges(req);
+	eventsService.find(function (err, events) {
+		if (err) return next(err);
+
+		var compare = function (a, b) {
+			if (a.startTime > b.startTime)
+				return true;
+			return false;
+		};
+
+		events.sort(compare);
+
+		res.renderState('events/schedule', {
+			title: 'Schedule',
+			user: req.user,
+			events: events
+		});
+	});
+});
+
 router.get('/:eventroute', function (req, res, next) {
 	req = applyStateChanges(req);
 	eventsService.findOne({

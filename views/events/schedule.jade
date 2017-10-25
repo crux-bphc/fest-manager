@@ -1,0 +1,11 @@
+h1 Schedule
+br
+div.section.events-schedule
+	each event in events
+		if(event.startTime)
+			div
+				div.name.
+					#{event.name}  
+				div.time.
+					#{event.startTime} - #{event.endTime}
+			br
