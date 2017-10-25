@@ -20,6 +20,7 @@ grunt.initConfig({
 			'tools/destroy-and-rebuild-database',
 			'tools/manage-user',
 			'tools/migrate',
+			'tools/cat-user',
 		],
 	},
 	js_beautify: {
