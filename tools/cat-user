@@ -1,0 +1,66 @@
+#! /usr/bin/env node
+
+// Script to view users in the database.
+// Usage: tools/cat-user <emails of users>
+// Example: tools/cat-user aero31aero@gmail.com calvrix@github.com
+// Output format: All values tab separated
+// data-<filter>: <email> <phone/'undefined'> <name> <institution>
+// Usage in scripts: tools/cat-user | grep "data-" | cut -f 2-               # fetches all users
+// Usage in scripts: tools/cat-user | grep "data-phone:" | cut -f 2-         # fetches users with phones
+// Usage in scripts: tools/cat-user | grep "data-no-phone:" | cut -f 2-      # fetches users wihout phones
+
+// Handle arguments here.
+var emails = process.argv.slice(2);
+
+// Global dependencies
+var mongoose = require('mongoose');
+var fq = require('fuzzquire');
+
+var catUser = function(user) {
+	if(user.phone){
+		console.log(`data-phone:\t${user.email}\t${user.phone}\t${user.name}\t${user.institute}`);
+	} else {
+		console.log(`data-no-phone:\t${user.email}\tundefined\t${user.name}\t${user.institute}`);
+	}
+};
+
+var main = function () {
+	fq('mongoose')(); //connect to database
+	console.log("cat-user: Fetching users");
+	var promises = [];
+	var Users = fq('api/users').model;
+	if(emails.length != 0){
+		emails.forEach(function (email) {
+			var promise = Users.findOne({
+						email: email
+					}) // options
+				.then(data => {
+					if (data) {
+						catUser(data);
+					} else {
+						console.log("cat-user: User not found.");
+					}
+				});
+			promises.push(promise);
+		});
+	} else {
+		console.log("cat-user: No emails specified. Catting all users.");
+		var promise = Users.find({}) // find all
+			.then(data => {
+				data.forEach(catUser);
+			});
+		promises.push(promise);
+	}
+	Promise.all(promises)
+		.then(data => {
+			console.log("cat-user: Execution completed without errors.");
+			process.exit(0);
+		}).catch(error => {
+			console.log("cat-user: Unknown mongo error. Check database manually/run script again.");
+			console.log(error);
+			process.exit(1);
+		});
+};
+
+// Start execution
+main();
