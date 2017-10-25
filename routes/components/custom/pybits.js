@@ -63,6 +63,17 @@ router.get('/talks', function (req, res, next) {
 	});
 });
 
+router.get('/talks/adapa', function (req, res, next) {
+	req.stateparams.pagetitle = 'Keynote by Sunil Mohan Adapa';
+	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS Keynote";
+	res.renderState('custom/pybits/talks/adapa', {
+		title: 'FreedomBox and the Dystopian World',
+		user: req.user,
+		pybits: true,
+	});
+});
+
 router.get('/talks/saikat', function (req, res, next) {
 	req.stateparams.pagetitle = 'Talk by Saikat Kumar Dey';
 	req = applyStateChanges(req);

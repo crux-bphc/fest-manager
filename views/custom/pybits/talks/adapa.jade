@@ -1,0 +1,37 @@
+include ../navigation
+link(rel="stylesheet" href="/static/stylesheets/pybits-imm.style.css")
+link(rel="stylesheet" href="/static/stylesheets/pybits.style.css")
+
+.immersive-wrapper.pybits-background
+	.section.body.scrollable.markdown-body.dark-theme(data-simplebar='data-simplebar')
+		h1.title=title
+		p
+			| By 
+			strong Sunil Mohan Adapa
+			| , 
+			em Developer, FreedomBox Foundation
+		p
+			strong 28th October, 12 AM to 1 PM.
+		h2 Description
+		p
+			| As the internet permeates further into our daily lives, we are faced with more and more issues regarding the privacy of our personal data. Many online services are being suspected of tracking identifiable data across sessions and websites, and profiting from the same through means such as targeted advertising. While users can increase the level of anonymity through use of VPNs and other such software, FreedomBox aims to take this a step further
+		h2 About FreedomBox
+		p
+			| The project currently describes a FreedomBox as “a personal server running a free software operating system, with free applications designed to create and preserve personal privacy”.
+			| FreedomBox is a ready made personal server, designed with privacy and data ownership in mind. It is a subset of the Debian operating system and includes free software only. It can be installed in many flavors of cheap and power-efficient hardware, for example on any computer running Debian or in a virtual machine.
+			| In order to replace third-party communication services that are data mining your entire life, you will be able to host services yourself and use them at home or over the Internet through a browser or specialized apps. These services include chat and voice calls, webmail, file sharing and calendar, address book and news feed synchronization.
+			| You can check the 
+			a(href='https://wiki.debian.org/FreedomBox/Introduction') Introduction section
+			|  of their docs for a more detailed description.
+		h2 About The Speaker
+		figure.speaker
+			img(src='/static/images/pybits/adapa.jpg')
+		p
+			strong Sunil Mohan Adapa
+			|  is a Developer at FreedomBox Foundation
+
+
+
+
+
+	+navigationMixin(true)
