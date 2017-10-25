@@ -48,6 +48,18 @@ router.get('/', function (req, res, next) {
 	});
 });
 
+router.get('/schedule', function (req, res, next) {
+	req.stateparams.pagetitle = 'Schedule';
+	req = applyStateChanges(req);
+	req.stateparams.subtitle = "Schedule";
+	req.stateparams.immersive = true;
+	res.renderState('events/schedule', {
+		title: 'Schedule',
+		user: req.user,
+		pybits: true,
+	});
+});
+
 router.get('/:eventroute', function (req, res, next) {
 	req = applyStateChanges(req);
 	eventsService.findOne({
