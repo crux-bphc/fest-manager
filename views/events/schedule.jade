@@ -1,0 +1,27 @@
+link(rel='stylesheet', href='/static/stylesheets/events.style.css')
+mixin scheduleMixin(events)
+	for event in events
+		li.event(data-date=event.startTime)
+			h3.sc-title
+				a(href="/events/#{event.route}")=event.name
+
+#schedule.immersive-wrapper
+	.section.body.scrollable(data-simplebar='data-simplebar')
+		#sc-wrapper
+			.row
+				.day
+					#content
+						h1.date 27th October
+						ul.timeline
+							+scheduleMixin(days[0])
+				.day
+					#content
+						h1.date 28th October
+						ul.timeline
+							+scheduleMixin(days[1])
+			.row
+				.day
+					#content.center
+						h1.date 29th October
+						ul.timeline
+							+scheduleMixin(days[2])

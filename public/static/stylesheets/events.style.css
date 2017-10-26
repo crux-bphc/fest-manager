@@ -335,3 +335,128 @@ span.declaration {
         line-height: 2em;
     }
 }
+#schedule {
+    height: 100%;
+    background-color: black;
+}
+.scrollable {
+    height: 80vh;
+}
+#sc-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.day {
+    flex-grow: 1;
+    width: 50vw;
+    align-items: flex-end;
+}
+@media only screen and (max-width: 400px) {
+    .timeline {
+        max-width: 11vw !important;
+    }
+}
+strong {
+    font-weight: 600;
+}
+.date {
+    font-family: "Work Sans", sans-serif;
+    letter-spacing: 1.5px;
+    color: white;
+    font-weight: 100;
+    font-size: 2.5vw;
+    padding-top: 25px;
+}
+#content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 7vw;
+}
+.event p {
+    font-family: "Work Sans", sans-serif;
+}
+.timeline {
+    border-left: 4px solid #4298C3;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Source Sans Pro', sans-serif;
+    /*margin: 50px auto;*/
+    letter-spacing: 0.5px;
+    position: relative;
+    line-height: 1.4em;
+    font-size: 1.03em;
+    padding: 50px;
+    list-style: none;
+    text-align: left;
+    font-weight: 100;
+    max-width: 30%;
+}
+.day .center {
+    align-items: center !important;
+}
+.center .timeline {
+    max-width: 100%;
+    width: 50vw;
+}
+.timeline .date,
+.timeline .sc-title {
+    font-family: "Work Sans", sans-serif;
+    letter-spacing: 1.5px;
+    font-weight: 100;
+    font-size: 1.5vw;
+}
+.timeline .event {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.timeline .event:last-of-type {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
+}
+.timeline .event:before,
+.timeline .event:after {
+    position: absolute;
+    display: block;
+    top: 0;
+}
+.timeline .event:before {
+    left: -217.5px;
+    color: rgba(255, 255, 255, 0.4);
+    content: attr(data-date);
+    text-align: right;
+    font-weight: 100;
+    font-size: 0.9em;
+    min-width: 120px;
+}
+@media only screen and (max-width: 500px) {
+    .timeline .event:before {
+        left: -185px;
+    }
+}
+@media only screen and (max-width: 420px) {
+    .timeline .event:before {
+        font-size: 0.75em;
+    }
+}
+.timeline .event:after {
+    box-shadow: 0 0 0 4px #4298c3;
+    left: -57.85px;
+    background: #313534;
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    content: "";
+    top: 5px;
+}
