@@ -1,6 +1,5 @@
 include ../mixins/form
 
-link(rel="stylesheet" href="/static/lib/jquery-ui-custom/jquery-ui.min.css")
 link(rel="stylesheet" href="/static/stylesheets/administration.style.css")
 div#_portal
     div.section.header
@@ -14,8 +13,8 @@ div#_portal
     div.section.body
         input.hidden#details-control(name="accordion" type="radio" tabindex="-1")
         div.foldup#details(tabindex="1")
-            - var form = {fields: fields, method: 'POST', url: '/api/users/force'}
-            +formMixin(form)
+            //- - var form = {fields: fields, method: 'POST', url: '/api/users/force'}
+            //- +formMixin(form)
         input.hidden#tickets-control(name="accordion" type="radio" tabindex="-1")
         div.foldup#tickets(tabindex="1")
             div.list
