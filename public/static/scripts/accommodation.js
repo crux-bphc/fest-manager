@@ -175,8 +175,9 @@ var portal = function () {
 		$('.list input').prop('checked', false);
 	};
 	allotment.calculate = function () {
-		var amount = allotment.state.duration == 1 ? 250 : (allotment.state.duration == 2 ? 400 : 500);
-		if (!allotment.state.checkedout) amount += 100;
+		var pricetable = [0, 250, 400, 500, 550];
+		var amount = pricetable[allotment.state.duration];
+		if (!allotment.state.checkedout && allotment.state.duration != 0) amount += 100;
 		$('#submit-button').removeClass('disabled');
 		if (amount > allotment.state.balance) {
 			$('.allotment .footer .instruct').html('Collect');
