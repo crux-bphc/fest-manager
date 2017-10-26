@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 var shortID = require('mongoose-shortid-nodeps');
 var eventModel = require('./events').model;
+var fq = require('fuzzquire');
 
 var toId = function (str) {
 	return mongoose.Types.ObjectId(str);
@@ -61,16 +62,64 @@ var elevate = function (req, res, next) {
 	return next(error);
 };
 
-router.post('/check', function (req, res, next) {
-	model.findOne({
-			email: req.body.email
+router.post('/accommodate', authenticate, elevate, function (req, res, next) {
+	var changes = req.body.data;
+	var user;
+	model.findOne(req.body.filter)
+		.then(function (result) {
+			user = result;
+			if (user.festID) throw 'FestID already exists';
+			else return model.find({
+				festID: {
+					$exists: true
+				}
+			});
 		})
+		.then(function (users) {
+			changes.festID = 'AUR' + (users.length + 1);
+			user.festID = changes.festID;
+		})
+		.catch(function () {})
+		.then(function () {
+			return model.findOneAndUpdate(req.body.filter, // query
+				{
+					$set: changes
+				}, // operations
+				{
+					upsert: true
+				}); // options
+		})
+		.then(function () {
+			return model.find({
+				"accommodation.room": changes.accommodation.room
+			});
+		})
+		.then(function (users) {
+			var accommService = fq('api/accomm').model;
+			return accommService.update({
+				label: changes.accommodation.room
+			}, {
+				$set: {
+					filled: users.length
+				}
+			});
+		})
+		.then(data => {
+			return res.send(user.festID);
+		})
+		.catch(error => {
+			console.error(error);
+			return res.status(500).send("Error");
+		});
+});
+
+router.post('/check', authenticate, elevate, function (req, res, next) {
+	model.findOne(req.body.filter)
 		.then(function (user) {
 			if (!user) {
 				var newuser = new model({
 					email: req.body.email,
 				});
-				console.log(newuser);
 				return newuser.save();
 			}
 			return user;
