@@ -12,9 +12,7 @@ div.section.header
 		+fieldMixin(search)
 div.section(style="display:flex;")
 	div.remnant
-	button(onclick="popup('atmos-workshops-413303');" class="tsbutton") Buy workshop tickets
-	noscript#tsNoJsMsg Javascript on your browser is not enabled.
-	script(src="//www.townscript.com/popup-widget/townscript-widget.nocache.js" type="text/javascript")
+		span.declaration Online Registrations Closed
 div.section.events-wrapper
 	each event in events
 		- if(event.route.toLowerCase() == "techexpo" || event.route.toLowerCase() == "@pybits")

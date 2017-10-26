@@ -9,13 +9,8 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
         div.top
             div.title= event.name
             div.remnant
-            +cartActionsMixin(event, user)
+            span.declaration Online Registrations Closed
         div.category= event.category
-        div.remnant(style="display:flex;justify-content:flex-end;")
-            if(event.price != 0)
-                button(onclick="popup('atmos-workshops-413303');" class="tsbutton") Pay with townscript
-                noscript#tsNoJsMsg Javascript on your browser is not enabled.
-                script(src="//www.townscript.com/popup-widget/townscript-widget.nocache.js" type="text/javascript")
         div.details
             if(event.startTime)
                 div.time

@@ -306,7 +306,10 @@
 .tsbutton {
     margin-bottom: 1em;
 }
-
+span.declaration {
+    line-height: 2em;
+    font-weight: 600;
+}
 @media only screen and (max-width: 600px) {
     .section.tags {
         overflow-x: scroll;
