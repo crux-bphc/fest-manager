@@ -17,12 +17,16 @@ var applyStateChanges = function (req, superuser) {
 				label: "Rollout Notifications",
 			},
 			{
-				route: "/portals/administration",
-				label: "User Administration",
+				route: "/portals/registration",
+				label: "Registration",
 			},
 			{
 				route: "/portals/accommodation",
 				label: "Accommodation",
+			},
+			{
+				route: "/portals/tickets",
+				label: "Tickets",
 			}
 		];
 	return req;
@@ -62,7 +66,20 @@ router.get('/rollout', middleware.authenticate, middleware.elevate, function (re
 	}
 });
 
-router.get('/administration', middleware.authenticate, middleware.elevate, function (req, res, next) {
+router.get('/registration', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	if (req.user.privilege.level == 2) {
+		req = applyStateChanges(req, true);
+	} else if (req.user.privilege.level == 1) {
+		req = applyStateChanges(req, false);
+	}
+	res.renderState('portals/registration', {
+		title: "Registration",
+		user: req.user,
+		fields: fq('forms/registration')(),
+	});
+});
+
+router.get('/tickets', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	if (req.user.privilege.level == 2) {
 		req = applyStateChanges(req, true);
 	} else if (req.user.privilege.level == 1) {
@@ -92,11 +109,10 @@ router.get('/administration', middleware.authenticate, middleware.elevate, funct
 			return Promise.all(promises);
 		})
 		.then(function () {
-			res.renderState('portals/administration', {
-				title: "User Administration",
+			res.renderState('portals/tickets', {
+				title: "Tickets",
 				user: req.user,
 				events: events,
-				fields: fq('forms/administration')(),
 			});
 		});
 });

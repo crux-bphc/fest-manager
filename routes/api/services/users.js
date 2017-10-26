@@ -40,7 +40,7 @@ var usersSchema = new Schema({
 	year: String,
 	why: String,
 	privilege: Schema.Types.Mixed,
-	bitsID: String,
+	festID: String,
 }, {
 	timestamps: true
 });
@@ -146,14 +146,67 @@ var addtocart = function (id, userId) {
 			return err;
 		});
 };
-
-router.put('/force', authenticate, elevate, function (req, res, next) {
+router.put('/generate', authenticate, elevate, function (req, res, next) {
 	var changes = {
 		name: req.body.user.name,
 		institute: req.body.user.institute,
 		email: req.body.user.email,
 		phone: req.body.user.phone,
-		bitsID: req.body.user.bitsID,
+		referred_by: req.body.user.referred_by,
+	};
+	var increments;
+	model.find({
+			festID: {
+				$exists: true
+			}
+		})
+		.then(function (registered) {
+			increments = registered.length;
+			return model.findOne({
+				_id: req.body.user._id
+			});
+		})
+		.then(function (user) {
+			if (user.isAmbassador)
+				return model.find({
+					referred_by: user.email
+				});
+			else
+				throw 'Not ambassador';
+		})
+		.then(function (referrals) {
+			if (referrals.length >= 15) {
+				changes.festID = 'CA' + (increments + 1);
+				res.json({
+					festID: 'CA' + (increments + 1),
+					waive: true,
+				});
+			} else {
+				changes.festID = 'ATMOS' + (increments + 1);
+				res.json({
+					festID: 'ATMOS' + (increments + 1),
+					waive: false,
+				});
+			}
+		})
+		.catch(function (err) {
+			changes.festID = 'ATMOS' + (increments + 1);
+			res.json({
+				festID: 'ATMOS' + (increments + 1),
+				waive: false,
+			});
+		})
+		.then(function () {
+			return model.update({
+				_id: req.body.user._id
+			}, {
+				$set: changes,
+			});
+		});
+});
+
+router.put('/force', authenticate, elevate, function (req, res, next) {
+	var changes = {
 		events: req.body.user.events,
 	};
 	var promises = [];

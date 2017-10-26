@@ -1,0 +1,18 @@
+include ../mixins/form
+
+link(rel="stylesheet" href="/static/lib/jquery-ui-custom/jquery-ui.min.css")
+script(src="/static/lib/jquery-ui-custom/jquery-ui.min.js")
+div#_portal
+    .section.header
+        h1.title= title
+        div.stretch
+            div.remnant
+                ul.controls
+                    li.icon-check#submit-button(title="Save")
+                    a.icon-close#cancel-button(href="/dashboard" title="Cancel")
+            +fieldMixin({type: 'text', editable: true, name: 'key', typeahead: 'email', placeholder: 'E-mail'})
+    .section.body
+        #details
+            - var form = { fields: fields };
+            +formMixin(form)
+script(src="/static/scripts/registration.js")

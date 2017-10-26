@@ -10,15 +10,6 @@ module.exports = function() {
         none: true,
     });
     fields.push({
-        name: "bitsID",
-        label: "BITS ID",
-        editable: true,
-        type: "text",
-        required: true,
-        typeahead: false,
-        none: true,
-    });
-    fields.push({
         name: "institute",
         label: "Institute",
         editable: true,
@@ -43,6 +34,15 @@ module.exports = function() {
         type: "text",
         required: false,
         typeahead: false,
+        none: true,
+    });
+    fields.push({
+        name: "referred_by",
+        label: "Referred By",
+        editable: true,
+        type: "text",
+        required: false,
+        typeahead: 'email',
         none: true,
     });
     return fields;
