@@ -34,6 +34,10 @@ router.get('/', function (req, res, next) {
 	eventsService.find(function (err, events) {
 		if (err) return next(err);
 
+		events = events.filter(elem => {
+			return !elem.route.endsWith('!');
+		});
+
 		events.sort(function (a, b) {
 			if (a.name > b.name) return -1;
 			if (a.name < b.name) return 1;
@@ -78,7 +82,7 @@ router.get('/:eventroute', function (req, res, next) {
 		route: req.params.eventroute
 	}, function (err, data) {
 		if (err) return next(err);
-		if (!data) {
+		if (!data || data.route.endsWith('!')) {
 			var err1 = new Error('Not Found');
 			err1.status = 404;
 			return next(err1);
