@@ -1,12 +1,11 @@
 #! /usr/bin/env node
 
 // Script to add events to a user's cart
-// Usage: tools/add-to-cart <email of user> <event route>
-// Example: tools/add-to-cart aero31aero@gmail.com reverse-coding
+// Usage: tools/add-to-cart <email of user>,<event route> <another-email>,<another-route>
+// Example: tools/add-to-cart aero31aero@gmail.com,reverse-coding vermaabhilash70@gmail.com,@pybits
 
 // Handle arguments here.
-var email = process.argv[2];
-var route = process.argv[3];
+var args = process.argv.slice(2);
 
 // Global dependencies
 var mongoose = require('mongoose');
@@ -21,46 +20,68 @@ var userid = null;
 
 var handleError = function (error) {
 	console.log("add-to-cart: Error:", error);
-	process.exit(1);
 };
 
-var callAddToCart = function () {
-	addToCart(eventid, userid).then(data => {
-		console.log("add-to-cart: Added event to user's cart.");
-		process.exit(0);
+var makeCommands = function () {
+	var commands = [];
+	args.forEach(arg => {
+		commands.push({
+			email: arg.split(',')[0],
+			route: arg.split(',')[1],
+		});
+	});
+	return commands;
+};
+
+var callAddToCart = function (eventid, userid, email) {
+	return addToCart(eventid, userid).then(data => {
+		console.log(`add-to-cart: Added event to ${email}'s cart.`);
+	}).catch(handleError);
+};
+
+var mainPromise = function (command) {
+	return Events.findOne({
+		route: command.route,
+	}).then(event => {
+		if (!event) {
+			console.log("add-to-cart: Event not found. Skipping.");
+		}
+		return Users.findOne({
+			email: command.email,
+		}).then(user => {
+			if (!user) {
+				console.log("add-to-cart: User not found. Creating.");
+				user = {
+					email: command.email,
+				};
+				var userobj = new Users(user);
+				return userobj.save().then(user => {
+					userid = user._id;
+					return callAddToCart(event._id, user._id, user.email);
+				}).catch(handleError);
+			} else {
+				return callAddToCart(event._id, user._id, user.email);
+			}
+		}).catch(handleError);
 	}).catch(handleError);
 };
 
 var main = function () {
 	fq('mongoose')(); //connect to database
-	var called = false;
-	Events.findOne({
-		route: route,
-	}).then(event => {
-		if (!event) {
-			console.log("add-to-cart: Event not found. Exiting.");
-			process.exit(1);
-		}
-		eventid = event._id;
-		Users.findOne({
-			email: email
-		}).then(user => {
-			if (!user) {
-				console.log("add-to-cart: User not found. Creating.");
-				user = {
-					email: email,
-				};
-				var userobj = new Users(user);
-				userobj.save().then(user => {
-					userid = user._id;
-					callAddToCart();
-				});
-			} else {
-				userid = user._id;
-				callAddToCart();
-			}
-		}).catch(handleError);
+	var promises = [];
+	var commands = makeCommands();
+	commands.forEach(command => {
+		promises.push(mainPromise(command));
 	});
+	Promise.all(promises)
+		.then(data => {
+			console.log("add-to-cart: Execution completed without errors.");
+			process.exit(0);
+		}).catch(error => {
+			console.log("add-to-cart: Unknown mongo error. Check database manually/run script again.");
+			console.log(error);
+			process.exit(1);
+		});
 };
 
 // Start execution
