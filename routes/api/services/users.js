@@ -374,5 +374,6 @@ module.exports = {
 	middleware: {
 		authenticate: authenticate,
 		elevate: elevate,
-	}
+	},
+	addToCart: addtocart,
 };

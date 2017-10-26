@@ -1,0 +1,67 @@
+#! /usr/bin/env node
+
+// Script to add events to a user's cart
+// Usage: tools/add-to-cart <email of user> <event route>
+// Example: tools/add-to-cart aero31aero@gmail.com reverse-coding
+
+// Handle arguments here.
+var email = process.argv[2];
+var route = process.argv[3];
+
+// Global dependencies
+var mongoose = require('mongoose');
+var fq = require('fuzzquire');
+var addToCart = fq('api/users').addToCart;
+var Events = fq('api/events').model;
+var Users = fq('api/users').model;
+
+// Global variables
+var eventid = null;
+var userid = null;
+
+var handleError = function (error) {
+	console.log("add-to-cart: Error:", error);
+	process.exit(1);
+};
+
+var callAddToCart = function () {
+	addToCart(eventid, userid).then(data => {
+		console.log("add-to-cart: Added event to user's cart.");
+		process.exit(0);
+	}).catch(handleError);
+};
+
+var main = function () {
+	fq('mongoose')(); //connect to database
+	var called = false;
+	Events.findOne({
+		route: route,
+	}).then(event => {
+		if (!event) {
+			console.log("add-to-cart: Event not found. Exiting.");
+			process.exit(1);
+		}
+		eventid = event._id;
+		Users.findOne({
+			email: email
+		}).then(user => {
+			if (!user) {
+				console.log("add-to-cart: User not found. Creating.");
+				user = {
+					email: email,
+				};
+				var userobj = new Users(user);
+				userobj.save().then(user => {
+					userid = user._id;
+					callAddToCart();
+				});
+			} else {
+				userid = user._id;
+				callAddToCart();
+			}
+		}).catch(handleError);
+	});
+};
+
+// Start execution
+main();

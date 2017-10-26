@@ -16,8 +16,8 @@ var emails = process.argv.slice(2);
 var mongoose = require('mongoose');
 var fq = require('fuzzquire');
 
-var catUser = function(user) {
-	if(user.phone){
+var catUser = function (user) {
+	if (user.phone) {
 		console.log(`data-phone:\t${user.email}\t${user.phone}\t${user.name}\t${user.institute}`);
 	} else {
 		console.log(`data-no-phone:\t${user.email}\tundefined\t${user.name}\t${user.institute}`);
@@ -29,11 +29,11 @@ var main = function () {
 	console.log("cat-user: Fetching users");
 	var promises = [];
 	var Users = fq('api/users').model;
-	if(emails.length != 0){
+	if (emails.length != 0) {
 		emails.forEach(function (email) {
 			var promise = Users.findOne({
-						email: email
-					}) // options
+					email: email
+				}) // options
 				.then(data => {
 					if (data) {
 						catUser(data);

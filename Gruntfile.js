@@ -21,6 +21,7 @@ grunt.initConfig({
 			'tools/manage-user',
 			'tools/migrate',
 			'tools/cat-user',
+			'tools/add-to-cart',
 		],
 	},
 	js_beautify: {
@@ -44,6 +45,8 @@ grunt.initConfig({
 			'tools/destroy-and-rebuild-database',
 			'tools/manage-user',
 			'tools/migrate',
+			'tools/cat-user',
+			'tools/add-to-cart',
 		]
 	},
 	mochaTest: {
