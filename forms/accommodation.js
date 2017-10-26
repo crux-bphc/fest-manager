@@ -31,14 +31,6 @@ module.exports = function() {
         none: true,
     });
     allotment.push({
-        name: 'festID',
-        label: 'Fest ID',
-        editable: false,
-        type: "text",
-        required: false,
-        none: true,
-    });
-    allotment.push({
         name: 'starttime',
         label: 'Check in',
         editable: false,

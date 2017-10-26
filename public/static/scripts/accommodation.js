@@ -22,7 +22,7 @@ var portal = function () {
 			});
 		}).fail(function (err) {
 			swal({
-				title: "Fuck you mofo",
+				title: "Some error occurred",
 				text: err,
 				type: "error",
 				confirmButtonText: "OK",
@@ -42,7 +42,7 @@ var portal = function () {
 
 	var allotment = {
 		state: {
-			atmosID: null,
+			email: null,
 			room: null,
 			starttime: null,
 			duration: null,
@@ -52,12 +52,13 @@ var portal = function () {
 	};
 	allotment.submit = function (isFinal = false) {
 		allotment.state.balance = allotment.calculate();
+		console.log(allotment.state);
 		$.ajax({
-			type: 'PUT',
-			url: '/api/users/update-one',
+			type: 'POST',
+			url: '/api/users/accommodate',
 			data: {
 				filter: {
-					email: allotment.state.atmosID
+					email: allotment.state.email
 				},
 				data: {
 					accommodation: {
@@ -72,12 +73,21 @@ var portal = function () {
 			headers: {
 				'Client': 'Fest-Manager/dash'
 			}
-		}).done(function () {
-			swal({
-				title: 'Successful',
-				type: 'success',
-				confirmButtonText: 'OK',
-			});
+		}).done(function (data) {
+			if (!allotment.state.checkedout)
+				swal({
+					title: 'Atmos ID - ' + data,
+					type: 'success',
+					text: 'has been accommodated',
+					confirmButtonText: 'OK',
+				});
+			else
+				swal({
+					title: 'Atmos ID - ' + data,
+					type: 'success',
+					text: 'Checked out',
+					confirmButtonText: 'OK',
+				});
 		}).fail(function () {
 			swal({
 				title: 'Update failed',
@@ -87,9 +97,7 @@ var portal = function () {
 		});
 	};
 	allotment.setState = function (data) {
-		console.log('Setting state', data);
 		$('#field-name').val(data.name);
-		$('#field-festID').val(data.email);
 		if (data.accommodation) {
 			$('#field-duration').val(data.accommodation.duration);
 			$('.list input').prop('checked', false);
@@ -103,28 +111,44 @@ var portal = function () {
 			allotment.state.balance = data.accommodation.balance || 0;
 		}
 
-		allotment.state.atmosID = data.email;
+		allotment.state.email = data.email;
 		allotment.state.starttime = $('#field-starttime').val();
 		allotment.state.duration = $('#field-duration').val();
 		allotment.state.room = $('.allotment .list input:checked').attr("id");
 		$('.latent').addClass('active');
 	};
 	allotment.findOrCreate = function () {
-		$.ajax({
-			type: 'POST',
-			url: '/api/users/get-one',
-			data: {
+		var data;
+		if ($('#field-key').val().indexOf('@') == -1) {
+			data = {
+				filter: {
+					festID: $('#field-key').val()
+				}
+			};
+		} else {
+			data = {
 				filter: {
 					email: $('#field-key').val()
 				},
-			},
+				email: $('#field-key').val()
+			};
+		}
+		$.ajax({
+			type: 'POST',
+			url: '/api/users/check',
+			data: data,
 			headers: {
 				'Client': 'Fest-Manager/dash'
 			},
 		}).done(function (data) {
 			if (data) {
 				console.log('Data returned', data);
-				data.accommodation = data.accommodation || {};
+				if (data.accommodation) {
+					$('#checkout').removeClass('disabled');
+				} else {
+					$('#checkout').addClass('disabled');
+					data.accommodation = {};
+				}
 				if (data.accommodation.checkedout == "true" || data.accommodation.checkedout == true) {
 					swal({
 						title: 'User checked out',
@@ -158,7 +182,7 @@ var portal = function () {
 			$('.allotment .footer .price').html(Math.abs(allotment.state.balance - amount));
 		} else if (amount < allotment.state.balance) {
 			$('.allotment .footer .instruct').html('Refund');
-			if (moment.duration(moment().diff(moment(allotment.state.starttime, 'DD/MM hh:mmA'))).asHours() > 1 && !allotment.state.checkedout) {
+			if (moment.duration(moment().diff(moment(allotment.state.starttime, 'DD/MM hh:mmA'))).asHours() > 3 && !allotment.state.checkedout) {
 				$('.allotment .footer .instruct').html('Not happening, too late');
 				$('#submit-button').addClass('disabled');
 				return;
