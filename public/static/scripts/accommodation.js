@@ -88,6 +88,7 @@ var portal = function () {
 					text: 'Checked out',
 					confirmButtonText: 'OK',
 				});
+			manager.refresh();
 		}).fail(function () {
 			swal({
 				title: 'Update failed',

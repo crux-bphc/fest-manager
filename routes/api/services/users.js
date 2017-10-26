@@ -76,7 +76,7 @@ router.post('/accommodate', authenticate, elevate, function (req, res, next) {
 			});
 		})
 		.then(function (users) {
-			changes.festID = 'AUR' + (users.length + 1);
+			changes.festID = 'AUR' + (users.length + 1001);
 			user.festID = changes.festID;
 		})
 		.catch(function () {})
@@ -122,6 +122,7 @@ router.post('/check', authenticate, elevate, function (req, res, next) {
 				});
 				return newuser.save();
 			}
+			console.log(user);
 			return user;
 		})
 		.catch(function (err) {
@@ -225,23 +226,23 @@ router.put('/generate', authenticate, elevate, function (req, res, next) {
 		})
 		.then(function (referrals) {
 			if (referrals.length >= 15) {
-				changes.festID = 'CA' + (increments + 1);
+				changes.festID = 'CA' + (increments + 1001);
 				res.json({
-					festID: 'CA' + (increments + 1),
+					festID: 'CA' + (increments + 1001),
 					waive: true,
 				});
 			} else {
-				changes.festID = 'ATMOS' + (increments + 1);
+				changes.festID = 'ATMOS' + (increments + 1001);
 				res.json({
-					festID: 'ATMOS' + (increments + 1),
+					festID: 'ATMOS' + (increments + 1001),
 					waive: false,
 				});
 			}
 		})
 		.catch(function (err) {
-			changes.festID = 'ATMOS' + (increments + 1);
+			changes.festID = 'ATMOS' + (increments + 1001);
 			res.json({
-				festID: 'ATMOS' + (increments + 1),
+				festID: 'ATMOS' + (increments + 1001),
 				waive: false,
 			});
 		})

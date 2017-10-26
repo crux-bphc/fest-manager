@@ -13,7 +13,10 @@
 				type: "POST",
 				url: "/api/users/check",
 				data: {
-					email: email,
+					filter: {
+						email: email,
+					},
+					email: email
 				},
 				headers: {
 					"Client": "Fest-Manager/dash"
