@@ -206,8 +206,9 @@ router.put('/generate', authenticate, elevate, function (req, res, next) {
 		email: req.body.user.email,
 		phone: req.body.user.phone,
 		referred_by: req.body.user.referred_by,
-		festID: req.body.user.festID,
 	};
+	if(req.body.user.festID)
+		changes.festID = req.body.user.festID.trim().replace(' ','').toUpperCase();
 	var increments;
 	model.findOne({
 		festID: changes.festID,

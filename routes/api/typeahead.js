@@ -53,7 +53,6 @@ var registerTypeahead = function (name, data, empty) {
 			.map(function (elem) {
 				return elem.replace(regex, ''); // Filter out our invisible search terms
 			});
-		console.log(results);
 		res.json(results);
 	});
 };

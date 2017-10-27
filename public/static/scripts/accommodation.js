@@ -1,4 +1,4 @@
-(function () {
+$('document').ready(function () {
 	var current = null;
 	var addition = {
 		state: {
@@ -246,4 +246,4 @@
 	$('form').on('submit', function (e) {
 		e.preventDefault();
 	});
-})();
+});

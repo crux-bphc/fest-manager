@@ -1,4 +1,4 @@
-(function () {
+$('document').ready(function () {
 	var portal = {
 		user: null,
 		setData: function (data) {
@@ -104,4 +104,4 @@
 		},
 	};
 	portal.init();
-})();
+});
