@@ -109,10 +109,10 @@ router.get('/tickets', middleware.authenticate, middleware.elevate, function (re
 			return Promise.all(promises);
 		})
 		.then(function () {
-			var compare = function (a,b) {
-				if(a.name > b.name) return -1;
+			var compare = function (a, b) {
+				if (a.name > b.name) return -1;
 				else return 1;
-			}
+			};
 			res.renderState('portals/tickets', {
 				title: "Tickets",
 				user: req.user,

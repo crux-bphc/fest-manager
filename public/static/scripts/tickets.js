@@ -14,7 +14,7 @@
 		},
 		findOrCreate: function (email) {
 			var data;
-			if(/[fh]201...../.test($('#field-key').val()))
+			if (/[fh]201...../.test($('#field-key').val()))
 				data = {
 					filter: {
 						email: $('#field-key').val().trim() + '@hyderabad.bits-pilani.ac.in'

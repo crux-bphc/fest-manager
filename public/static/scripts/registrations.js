@@ -2,6 +2,7 @@
 	var portal = {
 		user: null,
 		setData: function (data) {
+			$("#field-festID").val(data.festID);
 			$("#field-institute").val(data.institute);
 			$("#field-name").val(data.name);
 			$("#field-phone").val(data.phone);
@@ -62,7 +63,7 @@
 			}).fail(function (err) {
 				swal({
 					title: "Update Failed",
-					text: "Something went wrong. Please try again.",
+					text: "Duplicate Fest ID. Please change and try again.",
 					type: "error",
 					confirmButtonText: "OK",
 					confirmButtonColor: "#202729",

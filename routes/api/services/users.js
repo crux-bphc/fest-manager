@@ -120,8 +120,7 @@ router.post('/check', authenticate, elevate, function (req, res, next) {
 			if (!user && req.body.else) {
 				var newuser = new model(req.body.else);
 				return newuser.save();
-			}
-			else if(!user) {
+			} else if (!user) {
 				throw 'Not found';
 			}
 			return user;
@@ -132,7 +131,7 @@ router.post('/check', authenticate, elevate, function (req, res, next) {
 		.then(function (user) {
 			res.json(user);
 		})
-		.catch(function(){
+		.catch(function () {
 			res.status(404).end();
 		});
 });
@@ -207,56 +206,30 @@ router.put('/generate', authenticate, elevate, function (req, res, next) {
 		email: req.body.user.email,
 		phone: req.body.user.phone,
 		referred_by: req.body.user.referred_by,
+		festID: req.body.user.festID,
 	};
 	var increments;
-	model.find({
-			festID: {
-				$exists: true
-			}
-		})
-		.then(function (registered) {
-			increments = registered.length;
-			return model.findOne({
-				_id: req.body.user._id
-			});
-		})
-		.then(function (user) {
-			if (user.isAmbassador)
-				return model.find({
-					referred_by: user.email
-				});
-			else
-				throw 'Not ambassador';
-		})
-		.then(function (referrals) {
-			if (referrals.length >= 15) {
-				changes.festID = 'CA' + (increments + 1001);
-				res.json({
-					festID: 'CA' + (increments + 1001),
-					waive: true,
-				});
-			} else {
-				changes.festID = 'ATMOS' + (increments + 1001);
-				res.json({
-					festID: 'ATMOS' + (increments + 1001),
-					waive: false,
-				});
-			}
-		})
-		.catch(function (err) {
-			changes.festID = 'ATMOS' + (increments + 1001);
-			res.json({
-				festID: 'ATMOS' + (increments + 1001),
-				waive: false,
-			});
-		})
-		.then(function () {
+	model.findOne({
+		festID: changes.festID,
+	}).then(data => {
+		if (!data) {
 			return model.update({
-				_id: req.body.user._id
+				email: changes.email,
 			}, {
 				$set: changes,
+			}, {
+				upsert: true,
 			});
+		} else {
+			throw new Error("Dup Id");
+		}
+	}).then(data => {
+		res.json({
+			festID: changes.festID,
 		});
+	}).catch(error => {
+		res.status(500).send("Duplicate FestID. Try something else.");
+	});
 });
 
 router.put('/force', authenticate, elevate, function (req, res, next) {

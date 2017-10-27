@@ -10,6 +10,16 @@ module.exports = function() {
         none: true,
     });
     fields.push({
+        name: "festID",
+        label: "Fest ID",
+        editable: true,
+        type: "text",
+        required: true,
+        typeahead: false,
+        none: true,
+        value: "ATMOS",
+    });
+    fields.push({
         name: "institute",
         label: "Institute",
         editable: true,
