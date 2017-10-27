@@ -1,4 +1,4 @@
-var portal = function () {
+(function () {
 	var current = null;
 	var addition = {
 		state: {
@@ -131,7 +131,9 @@ var portal = function () {
 				filter: {
 					email: $('#field-key').val()
 				},
-				email: $('#field-key').val()
+				else: {
+					email: $('#field-key').val()
+				}
 			};
 		}
 		$.ajax({
@@ -241,4 +243,4 @@ var portal = function () {
 	$('form').on('submit', function (e) {
 		e.preventDefault();
 	});
-};
+})();

@@ -16,7 +16,9 @@
 					filter: {
 						email: email,
 					},
-					email: email
+					else: {
+						email: email
+					},
 				},
 				headers: {
 					"Client": "Fest-Manager/dash"

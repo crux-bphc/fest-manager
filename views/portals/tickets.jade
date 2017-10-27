@@ -1,23 +1,20 @@
 include ../mixins/form
 
-link(rel="stylesheet" href="/static/stylesheets/administration.style.css")
+link(rel="stylesheet" href="/static/stylesheets/tickets.style.css")
 div#_portal
     div.section.header
-        h1.title User Administration
+        h1.title Tickets
         div.stretch
             div.remnant
                 ul.controls
                     li.disabled.icon-check#submit-button(title="Save")
                     li.disabled.icon-close#reset-button(title="Reset")
-            +fieldMixin({type: 'text', editable: true, name: 'key', typeahead: 'email', placeholder: 'E-mail'})
+            +fieldMixin({type: 'text', editable: true, name: 'key', placeholder: 'Fest ID'})
     div.section.body
-        input.hidden#details-control(name="accordion" type="radio" tabindex="-1")
-        div.foldup#details(tabindex="1")
-            //- - var form = {fields: fields, method: 'POST', url: '/api/users/force'}
-            //- +formMixin(form)
-        input.hidden#tickets-control(name="accordion" type="radio" tabindex="-1")
+        h2#greet
+        br
         div.foldup#tickets(tabindex="1")
-            div.list
+            div.list.disabled
                 each event in events
                     input.hidden(type="checkbox" id=event._id)
                     label.item(for=event._id)
@@ -25,6 +22,6 @@ div#_portal
                         div.footer
                             span.count= event.people
                             span.price= event.price
-
-script(src="/static/lib/jquery-ui-custom/jquery-ui.min.js")
-script(src="/static/scripts/administration.js" type="text/javascript")
+        div#remarks
+            input(type="text" name="remarks" placeholder="Enter remarks")
+script(src="/static/scripts/tickets.js" type="text/javascript")

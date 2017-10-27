@@ -2,58 +2,48 @@
 	var portal = {
 		user: null,
 		setData: function (data) {
-			$("#field-institute").val(data.institute);
-			if (data.email.indexOf('hyderabad.bits-pilani.ac.in') !== -1) {
-				$.fn.setCursorPosition = function (pos, end) {
-					this.each(function (index, elem) {
-						if (elem.setSelectionRange) {
-							elem.setSelectionRange(pos, end);
-						} else if (elem.createTextRange) {
-							var range = elem.createTextRange();
-							range.collapse(true);
-							range.moveEnd('character', pos);
-							range.moveStart('character', end);
-							range.select();
-						}
-					});
-					return this;
-				};
-				if (data.bitsID && data.bitsID.length != 0) {
-					$("#field-bitsID").val(data.bitsID);
-				} else {
-					var id = data.email.split('@')[0].slice(1);
-					$("#field-bitsID").val(id.slice(0, 4) + "XXXX" + id.slice(4) + "H");
-					$("#field-bitsID").focus();
-					$("#field-bitsID").setCursorPosition(4, 8);
-				}
-				$("#field-institute").val("Birla Institute of Technology & Science, Hyderabad");
-			}
-			$("#field-name").val(data.name);
-			$("#field-phone").val(data.phone);
-			$("#field-email").val(data.email);
+			$('#remarks input').val(data.remarks);
+			$('#greet').html(data.name);
 			$("#_portal .list input[type='checkbox']").prop('checked', false);
-			$("#_portal .list .event").removeClass('registered');
+			$("#_portal .list .item").removeClass('registered');
 			if (data.events)
 				data.events.forEach(function (event) {
 					$("#" + event).prop('checked', true);
-					$("#" + event + " + .event").addClass('registered');
+					$("#" + event + " + .item").addClass('registered');
 				});
 		},
 		findOrCreate: function (email) {
+			var data;
+			if(/[fh]201...../.test($('#field-key').val()))
+				data = {
+					filter: {
+						email: $('#field-key').val().trim() + '@hyderabad.bits-pilani.ac.in'
+					},
+					else: {
+						email: 'f' + $('#field-key').val().trim() + '@hyderabad.bits-pilani.ac.in',
+						festID: $('#field-key').val().trim()
+					}
+				};
+			else {
+				data = {
+					filter: {
+						festID: $('#field-key').val()
+					}
+				};
+			}
 			$.ajax({
 				type: "POST",
 				url: "/api/users/check",
-				data: {
-					email: email,
-				},
+				data: data,
 				headers: {
 					"Client": "Fest-Manager/dash"
 				}
-			}).done(function (data) {
-				portal.setData(data);
-				portal.user = data;
+			}).done(function (result) {
+				portal.setData(result);
+				portal.user = result;
 				portal.events.push(portal.user.events);
 				$('.controls > li').removeClass('disabled');
+				$('#tickets .list').removeClass('disabled');
 			}).catch(function (err) {
 				swal({
 					type: 'error',
@@ -86,6 +76,7 @@
 					confirmButtonColor: "#202729"
 				});
 				$('#_portal').removeClass('saving');
+				portal.reset();
 			}).fail(function (err) {
 				swal({
 					title: "Update Failed",
@@ -103,8 +94,11 @@
 		reset: function () {
 			portal.user = null;
 			portal.setData({});
+			$('#field-key').val();
+			$('#field-key').focus();
 			portal.events.push([]);
 			$('.controls > li').addClass('disabled');
+			$('#tickets .list').addClass('disabled');
 		},
 		init: function () {
 			portal.events = {
@@ -127,14 +121,12 @@
 
 			$('#field-key').on('keydown', function (e) {
 				if (e.keyCode == 13 || e.which == 13 || e.keyCode == 9 || e.which == 9) {
-					if ($(this).val().indexOf('@') == -1)
-						$(this).val($(this).val() + "@hyderabad.bits-pilani.ac.in");
 					portal.findOrCreate($(this).val());
 				}
 			});
-			$('#details input').on('change', function () {
+			$('#remarks input').on('change', function () {
 				if (portal.user) {
-					portal.user[this.id.replace("field-", "")] = $(this).val();
+					portal.user.remarks = $(this).val();
 				}
 			});
 			$('#tickets input').on('change', function () {
@@ -151,6 +143,7 @@
 				$('.controls > li').addClass('disabled');
 			});
 			$('#submit-button').click(portal.update);
+			$('#field-key').focus();
 		},
 	};
 	portal.init();

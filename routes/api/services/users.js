@@ -42,6 +42,7 @@ var usersSchema = new Schema({
 	why: String,
 	privilege: Schema.Types.Mixed,
 	festID: String,
+	remarks: String
 }, {
 	timestamps: true
 });
@@ -116,13 +117,13 @@ router.post('/accommodate', authenticate, elevate, function (req, res, next) {
 router.post('/check', authenticate, elevate, function (req, res, next) {
 	model.findOne(req.body.filter)
 		.then(function (user) {
-			if (!user) {
-				var newuser = new model({
-					email: req.body.email,
-				});
+			if (!user && req.body.else) {
+				var newuser = new model(req.body.else);
 				return newuser.save();
 			}
-			console.log(user);
+			else if(!user) {
+				throw 'Not found';
+			}
 			return user;
 		})
 		.catch(function (err) {
@@ -130,6 +131,9 @@ router.post('/check', authenticate, elevate, function (req, res, next) {
 		})
 		.then(function (user) {
 			res.json(user);
+		})
+		.catch(function(){
+			res.status(404).end();
 		});
 });
 
@@ -257,6 +261,7 @@ router.put('/generate', authenticate, elevate, function (req, res, next) {
 
 router.put('/force', authenticate, elevate, function (req, res, next) {
 	var changes = {
+		remarks: req.body.user.remarks || "",
 		events: req.body.user.events,
 	};
 	var promises = [];
