@@ -81,13 +81,16 @@
 			$('.controls > li').addClass('disabled');
 		},
 		init: function () {
+			var collect = function () {
+				if ($('#field-key').val().indexOf('@') == -1)
+					$('#field-key').val($('#field-key').val() + "@bits-atmos.org");
+				portal.findOrCreate($('#field-key').val());
+			};
 			$('#field-key').on('keydown', function (e) {
-				if (e.keyCode == 13 || e.which == 13 || e.keyCode == 9 || e.which == 9) {
-					if ($(this).val().indexOf('@') == -1)
-						$(this).val($(this).val() + "@bits-atmos.org");
-					portal.findOrCreate($(this).val());
-				}
+				if (e.keyCode == 13 || e.which == 13 || e.keyCode == 9 || e.which == 9)
+					collect();
 			});
+			$('#keysubmit').click(collect);
 			$('#details input').on('change', function () {
 				if (portal.user) {
 					portal.user[this.id.replace("field-", "")] = $(this).val();

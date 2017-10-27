@@ -14,6 +14,7 @@ div#_portal
                     a.latent.icon-close#reset-button(title="Cancel")
             - var search = {name: "key", editable: true, placeholder: "Enter Atmos ID", type: "text", typeahead: "email"}
             +fieldMixin(search)
+            div.button#keysubmit Go
     .section.body
         .addition.foldup
             +formMixin(addition)

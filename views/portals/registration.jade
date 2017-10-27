@@ -9,8 +9,9 @@ div#_portal
             div.remnant
                 ul.controls
                     li.icon-check#submit-button(title="Save")
-                    a.icon-close#cancel-button(href="/dashboard" title="Cancel")
+                    li.icon-close#reset-button(title="Cancel")
             +fieldMixin({type: 'text', editable: true, name: 'key', typeahead: 'email', placeholder: 'E-mail'})
+            div.button#keysubmit Go
     .section.body
         #details
             - var form = { fields: fields };

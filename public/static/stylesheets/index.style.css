@@ -815,6 +815,11 @@ h5 {
     padding: 0% 1em;
 }
 
+.header .stretch .button {
+    margin-left: 1em;
+    padding: 0em 2em;
+}
+
 .field-container {
     display: flex;
     flex-direction: row;

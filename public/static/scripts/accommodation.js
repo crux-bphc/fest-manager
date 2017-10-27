@@ -239,7 +239,10 @@
 			$('#field-duration').focus();
 		}
 	});
-	$('#field-key').on('change', allotment.findOrCreate);
+	$('#keysubmit').click(function(){
+		allotment.findOrCreate();
+		$('#field-duration').focus();
+	});
 	$('form').on('submit', function (e) {
 		e.preventDefault();
 	});
