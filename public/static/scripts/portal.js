@@ -43,59 +43,59 @@ function closeEditor() {
 
 function formEditor(data) {
 	if (data) {
-		if (data[0].about)
-			description.value(data[0].about);
+		if (data.about)
+			description.value(data.about);
 		else
 			description.value("");
-		if (data[0].name)
-			$('#field-title').val(data[0].name);
+		if (data.name)
+			$('#field-title').val(data.name);
 		else
 			$('#field-title').val("");
-		if (data[0].tagline)
-			$('#field-tagline').val(data[0].tagline);
+		if (data.tagline)
+			$('#field-tagline').val(data.tagline);
 		else
 			$('#field-tagline').val("");
-		if (data[0].category)
-			$('#field-category').val(data[0].category);
+		if (data.category)
+			$('#field-category').val(data.category);
 		else
 			$('#field-category').val("");
-		if (data[0].type)
-			$('#field-type').val(data[0].type);
+		if (data.type)
+			$('#field-type').val(data.type);
 		else
 			$('#field-type').val("");
-		if (data[0].venue)
-			$('#field-venue').val(data[0].venue);
+		if (data.venue)
+			$('#field-venue').val(data.venue);
 		else
 			$('#field-venue').val("");
-		if (data[0].startTime)
-			$('#field-starttime').val(data[0].startTime);
+		if (data.startTime)
+			$('#field-starttime').val(data.startTime);
 		else
 			$('#field-starttime').val("");
-		if (data[0].endTime)
-			$('#field-endtime').val(data[0].endTime);
+		if (data.endTime)
+			$('#field-endtime').val(data.endTime);
 		else
 			$('#field-endtime').val("");
-		if (data[0].price)
-			$('#field-price').val(data[0].price);
+		if (data.price)
+			$('#field-price').val(data.price);
 		else
 			$('#field-price').val("");
-		if (data[0].prize)
-			$('#field-prize').val(data[0].prize);
+		if (data.prize)
+			$('#field-prize').val(data.prize);
 		else
 			$('#field-prize').val("");
-		if (data[0].route)
-			$('#field-route').val(data[0].route);
+		if (data.route)
+			$('#field-route').val(data.route);
 		else
 			$('#field-route').val("");
-		if (data[0].teamSize != null)
-			$('#field-teamSize').val(data[0].teamSize);
+		if (data.teamSize != null)
+			$('#field-teamSize').val(data.teamSize);
 		else
 			$('#field-teamSize').val("");
-		if (data[0].thumbnail) {
+		if (data.thumbnail) {
 			$('#image-editor-0').parent().addClass('filled');
-			$('#image-editor-0').attr('value', data[0].thumbnail);
+			$('#image-editor-0').attr('value', data.thumbnail);
 			$('#cropit-preview-0').css({
-				'background-image': 'url("' + data[0].thumbnail + '")'
+				'background-image': 'url("' + data.thumbnail + '")'
 			});
 		} else {
 			$('#image-editor-0').attr('value', "");
@@ -104,11 +104,11 @@ function formEditor(data) {
 			});
 			$('#image-editor-0').parent().removeClass('filled');
 		}
-		if (data[0].hero) {
-			$('#image-editor-1').attr('value', data[0].hero);
+		if (data.hero) {
+			$('#image-editor-1').attr('value', data.hero);
 			$('#image-editor-1').parent().addClass('filled');
 			$('#cropit-preview-1').css({
-				'background-image': 'url("' + data[0].hero + '")'
+				'background-image': 'url("' + data.hero + '")'
 			});
 		} else {
 			$('#image-editor-1').attr('value', "");
