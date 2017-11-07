@@ -22,6 +22,7 @@ grunt.initConfig({
 			'tools/migrate',
 			'tools/cat-user',
 			'tools/add-to-cart',
+			'bin/www',
 		],
 	},
 	js_beautify: {
@@ -47,6 +48,7 @@ grunt.initConfig({
 			'tools/migrate',
 			'tools/cat-user',
 			'tools/add-to-cart',
+			'bin/www',
 		]
 	},
 	mochaTest: {

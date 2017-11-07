@@ -239,7 +239,7 @@ $('document').ready(function () {
 			$('#field-duration').focus();
 		}
 	});
-	$('#keysubmit').click(function(){
+	$('#keysubmit').click(function () {
 		allotment.findOrCreate();
 		$('#field-duration').focus();
 	});
