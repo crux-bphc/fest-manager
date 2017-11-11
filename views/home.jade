@@ -1,123 +1,35 @@
-include buildings/central-shaders
-include buildings/logo-shaders
-include buildings/buildings-shaders
-include buildings/ground-shaders
-include buildings/screen-shaders
-include buildings/star-shaders
-
-link(href="/static/stylesheets/home.style.css" rel="stylesheet")
-div.immersive-wrapper
-    div.container#fallback
-        div.underlay
-        div.subject
-            img(src="/static/images/logo.png")
-            .message View this page on a desktop/laptop for best experience.
-            .links
-                .title Quick Links
-                .list
-                    a(href="/about") About
-                    a(href="/events#Competition") Competitions
-                    a(href="/events#Workshop") Workshops
-                    a(href="/about/contact") Contact the team
-                    a(href="/about/map") Getting here
-    div.slider
-        div.slide#slide1
-            div.message
-                span.big Welcome to our desolate world
-                span.small The lack of humanity will surely please you
-            div.button(onclick="Buildings.start()")
-                span ENTER EXPERIENCE
-            div.calling
-                .line
-                span
-                    span Navigate using up and down arrow keys
-        div.slide.left#slide2
-            div.content
-                h2 You have landed
-        div.slide.right#slide3
-            div.content
-                h2 Meet our Sponsors
-        div.slide.right#slide4
-            div.content
-                h2 Proshows
-                div
-                    li Coming Soon
-        div.slide.right#slide5
-            div.content
-                h2 Competitions
-                div.flashlist
-                    li.active TechExpo
-                    li Robowars
-                    li MiniGP
-                    li Bombsquad
-                    li Enigma
-                    li Paper Presentation
-                a.button(href="/events#Competition") SEE ALL COMPETITIONS
-        div.slide.left#slide5
-            div.content
-                h2 Workshops
-                div.flashlist
-                    li.active Fast Track Automation
-                    li Ethical Hacking
-                    li PCB Design
-                    li Internet of Things
-                a.button(href="/events#Workshop") SEE ALL WORKSHOPS
-        div.slide.right#slide6
-            div.content
-                h2 Contact Us
-                div.list
-                    li
-                        .name Sharath Golluri
-                        .phone 9133234270
-                a.button(href="/about/contact") MEET THE TEAM
-    div.controller
-        div.up(onclick="Buildings.prev()")
-            i.icon-navigate_next
-        div.down(onclick="Buildings.next()")
-            i.icon-navigate_next
-    div.footer
-        div.sharables
-            a.icon-facebook(href="https://facebook.com/bits-atmos")
-            a.icon-twitter(href="https://twitter.com/BITSAtmos")
-            a.icon-google(href="https://plus.google.com/103653254627475556103")
-        div.mute(onclick="Buildings.mute()") MUTE
-        div.patronage
-            img(src="/static/images/make.png")
-            img(src="/static/images/digital-india-logo.png")
-+centralShaders("central")
-+logoShaders("logo")
-+buildingShaders("buildings")
-+groundShaders("ground")
-+screenShaders("screen")
-+starShaders("stars")
-script(src="/static/lib/three/three.min.js")
-script(src="/static/lib/three/constructors.min.js")
-script(src="/static/scripts/buildings.js")
-script.
-    var ANIMATING = false;
-    var onMousewheel = function(e) {
-        if(ANIMATING) return false;
-        ANIMATING = true;
-        var delta = e.wheelDelta || e.delta;
-        if(delta < 0) {
-            Buildings.next();
-        }
-        else if(delta > 0) {
-            Buildings.prev();
-        }
-    };
-    document.getElementsByClassName("immersive-wrapper")[0].onmousewheel = onMousewheel;
-    document.getElementsByClassName("immersive-wrapper")[0].ondommousescroll = onMousewheel;
-    $.fn.nextOrFirst = function(selector){
-        var next = this.next(selector);
-        return (next.length) ? next : this.prevAll(selector).last();
-    }
-    $('.flashlist').each(function(index, item){
-        setInterval(function() {
-            var current = $(item).find('.active');
-            current.removeClass('active').addClass('leaving').nextOrFirst().addClass('active');
-            setTimeout(function() {
-                current.removeClass('leaving');
-            },1000);
-        }, 3000);
-    });
+doctype html
+html(lang='en')
+  head
+    title ARENA
+    meta(charset='UTF-8')
+    meta(name='description', content='Arena Landing Page')
+    meta(name='keywords', content='arena, bphc, sports, fest, bits, pilani')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='author', content='DoTA')
+    script(type='text/javascript', src='/public/static/scripts/home.js')
+    link(rel='stylesheet', type='text/css', href='/public/static/stylesheets/home.style.css')
+  body.background
+    .arena-logo
+      img(src='/public/static/images/Arena_logo.png', alt='Arena Logo')
+    .heading
+      p
+      p ARENA
+      h4 Where Legends are Born
+    .countdown
+      div
+        #cntDay
+          p
+        #cntHrs
+          p
+        #cntMin
+          p
+        #cntSec
+          p
+    .dates
+      p
+        | 25
+        sup th
+        |  January - 28
+        sup th
+        |  January
