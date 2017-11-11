@@ -1,6 +1,6 @@
 {
-  "short_name": "ATMOS",
-  "name": "ATMOS - A Neon Dystopia",
+  "short_name": "ARENA",
+  "name": "ARENA",
   "icons": [
     {
       "src": "images/logo.png",
@@ -10,6 +10,6 @@
   ],
   "start_url": "/",
   "background_color": "#efeff0",
-  "theme_color": "#202729",
+  "theme_color": "gold",
   "display": "standalone"
 }

@@ -9,9 +9,8 @@ var about = require('./about');
 var login = require('./login');
 
 router.get('/', function (req, res, next) {
-	req.stateparams.pagetitle = 'Atmos';
+	req.stateparams.pagetitle = 'Arena - Home';
 	req.stateparams.immersive = true;
-	req.stateparams.subtitle = "27th to 29th October";
 	res.renderState('home.jade', {
 		user: req.user,
 		title: 'Home'
@@ -19,16 +18,16 @@ router.get('/', function (req, res, next) {
 });
 
 router.use('/', custom);
-router.use('/events', events);
-router.use('/dashboard', dashboard);
-router.use('/portals', portals);
-router.use('/about', about);
-router.use('/ca', ca);
-router.use('/login', login);
-router.use('/logout', function (req, res, next) {
-	req.logout();
-	res.redirect('/components/login');
-});
+// router.use('/events', events);
+// router.use('/dashboard', dashboard);
+// router.use('/portals', portals);
+// router.use('/about', about);
+// router.use('/ca', ca);
+// router.use('/login', login);
+// router.use('/logout', function (req, res, next) {
+// 	req.logout();
+// 	res.redirect('/components/login');
+// });
 router.use('/404', function (req, res, next) {
 	req.stateparams.immersive = true;
 	res.renderState('errors/404', {
