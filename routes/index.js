@@ -22,10 +22,6 @@ router.get('/?*', function (req, res, next) {
 				label: "Events",
 				route: "/events",
 			},
-			workshops: {
-				label: "Workshops",
-				route: "/events#Workshop",
-			},
 			dashboard: {
 				label: "Dashboard",
 				route: "/dashboard",
@@ -34,10 +30,6 @@ router.get('/?*', function (req, res, next) {
 					path: "user/isAuthenticated",
 					for: "visible"
 				},
-			},
-			ca: {
-				label: "Campus Ambassador",
-				route: "/ca",
 			},
 			portals: {
 				route: "/portals",

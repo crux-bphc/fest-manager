@@ -9,7 +9,7 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
         div.top
             div.title= event.name
             div.remnant
-            span.declaration On spot registration available
+                +cartActionsMixin(event, user, "Register")
         div.category= event.category
         div.details
             if(event.startTime)

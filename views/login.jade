@@ -8,18 +8,29 @@ if error
 			confirmButtonColor: "#202729"
 		});
 link(href="/static/stylesheets/login.style.css" rel="stylesheet")
-div.parent-center
-	div.auth-container
-		div.title LOGIN
-		if methods.google
-			a.child-center.google(href="/auth/google" absolute)
-				i.icon-google
-				span Continue with Google
-		if methods.facebook
-			a.child-center.facebook(href="/auth/facebook" absolute)
-				i.icon-facebook
-				span Continue with Facebook
-		if methods.github
-			a.child-center.github(href="/auth/github" absolute)
-				i.icon-github
-				span Continue with GitHub
+div.grandparent
+	div.parent.left
+		div
+			span.title HOW TO REGISTER
+			div.text
+				span On the description page of the sport you will participate in, click on the NEW TEAM button.
+				br
+				br
+				span Only team captains are expected to register on behalf of their team. Irrespective of it being a team sport or an individual sport, a Team ID will be assigned to you, on registering. It will also be visible on your dashboard. The rest of the team will be registered on the spot during Arena using this Team ID.
+				br
+				br
+				span Make sure you fill all your details on the screen after logging in. This will help us ensure you are notified of any news as soon as possible.
+	div.parent.right
+		div.auth-container
+			if methods.google
+				a.child-center.google(href="/auth/google" absolute)
+					i.icon-google
+					span Continue with Google
+			if methods.facebook
+				a.child-center.facebook(href="/auth/facebook" absolute)
+					i.icon-facebook
+					span Continue with Facebook
+			if methods.github
+				a.child-center.github(href="/auth/github" absolute)
+					i.icon-github
+					span Continue with GitHub

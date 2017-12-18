@@ -1,43 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600');
-
-.section.tags {
-    line-height: 3em;
+.section.header {
+    opacity: 0;
 }
-.section.tags a {
-    padding: 0em 1em;
-    color:#444;
-    margin: 2px 2px;
-    font-weight: 600;
-    display: inline-block;
-    vertical-align: middle;
-    text-decoration: none;
-    border-radius:4px;
-    background:#f0f0f0;
-}
-.section.tags a:hover {
-    background:#e0e0e0;
-}
-.section.tags a.active {
-    background:#c0cacf;
-}
-
 .events-wrapper {
     display: flex;
     flex-wrap: wrap;
     position:relative;
-    justify-content: space-between;
-}
-
-.events-wrapper > div:empty {
-    height: 0;
-    width: 100%;
-    border: none;
-    margin-left: 5px;
-    margin-right: 5px;
+    justify-content: space-around;
 }
 .events-wrapper::before {
     position:absolute;
-    content: "Nothing to see here yet. Coming soon.";
     padding: 2em 0em;
     color:#777;
     font-weight: 500;
@@ -45,82 +17,69 @@
     text-align: center;
     font-size: 1.2em;
 }
-
-.events-wrapper .event-container {
-    box-sizing: border-box;
-    border-radius: 1px;
+.events-wrapper .hex-container {
+    transform: rotateZ(45deg);
     height: 25vw;
-    min-width: 20vw;
-    width: 33%;
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    background: #ddd;
-    font-size: 1.2em;
-    margin: 1px;
+    width: 25vw;
     max-width: 100%;
     overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.events-wrapper .event-container {
+    transform-style: preserve-3d;
+    box-sizing: border-box;
+    border-radius: 1px;
+    transform: rotateZ(-45deg);
+    display: flex;
+    height: 100%;
+    position: relative;
+    flex-direction: row;
+    font-size: 1.2em;
+    margin: 1px;
+    overflow: hidden;
     cursor: pointer;
-    flex-grow: 1;
 }
 
 .events-wrapper .event-container.disabled {
     display: none;
 }
-
-.events-wrapper .event-container.Proshow, .events-wrapper .event-container.TechExpo, .events-wrapper .event-container.PyBITS {
-    min-width: 49%;
-}
-
-.events-wrapper .event-container.Proshow > .face, .events-wrapper .event-container.TechExpo > .face, .events-wrapper .event-container.PyBITS > .face {
-    font-size: 1.5em;
-}
-
-.events-wrapper .event-container.Proshow > .face > .name, .events-wrapper .event-container.TechExpo > .face > .name, .events-wrapper .event-container.PyBITS > .face > .name {
-    font-weight: 600;
-}
-
-.events-wrapper .event-container.Proshow > .image, .events-wrapper .event-container.TechExpo > .image, .events-wrapper .event-container.PyBITS > .image {
-    background-position: center center;
-}
-
 .events-wrapper .event-container > .face {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(50, 50, 50, 0.9);
     position: relative;
     z-index: +100;
     letter-spacing: 0.02em;
-    background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+    background-image: radial-gradient(at center, rgba(255, 255, 255, 0.6),  rgba(200, 200, 210, 0.4));
     box-sizing: border-box;
     padding: 1.2em;
     display: flex;
     width: 100%;
     height: 100%;
+    align-items: center;
+    text-align: center;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
+    opacity: 0;
+    transform: scale(1.5);
+    transition:opacity 0.2s, transform 0.3s;
 }
-
-.events-wrapper .event-container > .face > .tag {
-    font-size: 0.7em;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #aac1d0;
+.events-wrapper .event-container:hover > .face {
+    opacity: 1;
+    transform:none;
 }
 
 .events-wrapper .event-container > .face > .name {
     font-size: 1.5em;
-    font-weight: 300;
-}
-
-.events-wrapper .event-container > .face > .tagline {
-    font-size: 0.9em;
-    font-weight: 300;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .events-wrapper .event-container .image {
     width: 100%;
     height: 100%;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     position: absolute;
     z-index: 0;

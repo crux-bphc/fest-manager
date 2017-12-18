@@ -8,23 +8,7 @@ var applyStateChanges = function (req) {
 		text: 'Events',
 		route: '/events',
 	};
-	req.stateparams.submenu = [{
-			label: "Competitions",
-			route: "/events#Competition"
-		},
-		{
-			label: "Workshops",
-			route: "/events#Workshop"
-		},
-		{
-			label: "Talks",
-			route: "/events#Talk"
-		},
-		{
-			label: "Conferences",
-			route: "/events#Conference"
-		}
-	];
+	req.stateparams.immersive = true;
 	return req;
 };
 

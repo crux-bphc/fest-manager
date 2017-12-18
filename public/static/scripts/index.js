@@ -190,12 +190,11 @@ var manager = function () {
 	};
 	client.header.stageEventHandlers = function () {
 		$('#menu').click(function () {
-			swal("Site is under construction");
-			// $(".window > .remnant").toggleClass("shift_to_expose_menu");
-			// if ($(".window > .remnant").hasClass("shift_to_expose_menu")) {
-			// 	$(".sidebar").focus();
-			// 	client.main.stageEventHandlers();
-			// }
+			$(".window > .remnant").toggleClass("shift_to_expose_menu");
+			if ($(".window > .remnant").hasClass("shift_to_expose_menu")) {
+				$(".sidebar").focus();
+				client.main.stageEventHandlers();
+			}
 		});
 		$(".navbar .icon-close").click(function () {
 			var routeto = client.oldroute || '/about';

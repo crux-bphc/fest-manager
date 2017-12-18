@@ -70,9 +70,9 @@ body
 					a.button(href="/logout" _triggers="navbar/logout=visible")
 						i.icon-power_settings_new
 						div Logout
-					a.disabled.button(href="/login" _triggers="navbar/login=visible")
+					a.button(href="/login" _triggers="navbar/login=visible")
 						i.icon-account_circle
-						div Register / Login
+						div Registration
 		div.remnant
 			div.sidebar(tabindex="2" _triggers="sidebar/visible=visible")
 				div.wrapper
@@ -83,10 +83,6 @@ body
 								a(class=val.initial href=val.route _triggers=val.triggers)
 									i
 									span= val.label
-					div.secondary-wrapper
-						div.section.secondary
-							a.label
-							ul
 			div.remnant.main(tabindex="1")
 				div.wrapper.face
 				div.wrapper.tray

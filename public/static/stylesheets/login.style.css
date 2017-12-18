@@ -1,12 +1,41 @@
-.parent-center {
-  height: 80%;
+.grandparent {
+  display: flex;
+  margin-top: 5%;
+  height:80%;
+  justify-content: space-between;
+  flex-direction: row;
+  background:#ccc;
+}
+.parent {
+  font-size: 1.2em;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 1.2em;
+  width:49.9%;
+  box-sizing: border-box;
+  padding: 20px;
+  background:white;
 }
 
+.parent.left > div {
+  max-width: 35vw;
+  min-width: 35vw;
+}
+
+.parent .title {
+  font-size: 1.5em;
+  color:#444;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom:1em;
+}
+
+.parent .text {
+  font-family: inherit;
+  text-align: justify;
+}
 .auth-container {
   width: 20em;
   box-sizing: border-box;
@@ -15,14 +44,6 @@
   font-size: 1em;
   padding-bottom: 2em;
   font-weight: 600;
-}
-.auth-container .title {
-  font-size: 1.5em;
-  color:#444;
-  display: block;
-  text-align: center;
-  font-weight: 600;
-  margin-bottom:1em;
 }
 
 .child-center {

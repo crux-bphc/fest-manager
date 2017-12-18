@@ -6,6 +6,7 @@ const userService = fq('services/users').model;
 
 router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Login';
+	req.stateparams.immersive = true;
 	var params = {
 		title: 'Login to Atmos 2017',
 		methods: config.passports,
