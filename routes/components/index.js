@@ -21,7 +21,15 @@ router.use('/', custom);
 router.use('/events', events);
 router.use('/dashboard', dashboard);
 router.use('/portals', portals);
-// router.use('/about', about);
+router.use('/privacy-policy', function (req, res, next) {
+	console.log('Helo');
+	req.stateparams.pagetitle = 'Privacy Policy';
+	req.stateparams.subtitle = 'Privacy Policy';
+	res.renderState('about/privacy', {
+		title: 'Privacy Policy',
+		user: req.user
+	});
+});
 // router.use('/ca', ca);
 router.use('/login', login);
 router.use('/logout', function (req, res, next) {

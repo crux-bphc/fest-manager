@@ -4,7 +4,7 @@ var middleware = fq('authentication').middleware;
 
 /* routing CRUD operations for users service */
 function service(model, router) {
-	router.get('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	router.get('/', function (req, res, next) {
 		model.find(function (err, items) {
 			if (err) {
 				err.status = 500;
@@ -15,7 +15,7 @@ function service(model, router) {
 		});
 	});
 
-	router.get('/:id', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	router.get('/:id', function (req, res, next) {
 		model.findOne({
 			_id: req.params.id
 		}, function (err, item) {
@@ -28,7 +28,7 @@ function service(model, router) {
 		});
 	});
 
-	router.post('/get-one', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	router.post('/get-one', function (req, res, next) {
 		model.findOne(req.body.filter, function (err, item) {
 			if (err) {
 				err.status = 404;
