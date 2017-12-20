@@ -25,11 +25,6 @@ body {
     font-family: sans-serif;
 }
 
-.disabled {
-    opacity: 0.2 !important;
-    pointer-events: none;
-}
-
 input[type = "file"] {
     display:none;
 }
@@ -989,7 +984,6 @@ form .field-container > .remnant > textarea {
     cursor: pointer;
     white-space: nowrap;
     font-weight: 600;
-    background:#f0f0f0;
     display: inline-block;
 }
 

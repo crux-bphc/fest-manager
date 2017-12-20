@@ -69,7 +69,6 @@ form .footer > .field-container {
 .table .item {
 	display: flex;
 	width: 100%;
-	flex-wrap: wrap;
 	pointer-events: none;
 	position: relative;
 	flex-direction: row;
