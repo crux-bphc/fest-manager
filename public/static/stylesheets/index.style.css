@@ -450,22 +450,23 @@ input[type = "file"] {
     min-width: 200px;
     margin-left: -20%;
     display: block;
-    padding: 2em;
+    padding: 0em;
     position:relative;
     font-size: 1.1em;
     box-sizing: border-box;
     color: #191919;
     transition: margin-left 0.3s ease-out, margin-top 0s 0.3s ease-out;
-    background: whitesmoke;
+    background: gold;
 }
 
 .sidebar > .wrapper {
-    position:fixed;
+    position:relative;
     display: block;
     top:0;
     padding-top:2em;
     padding-left: inherit;
     left: 0;
+    width:100%;
     margin-top:4.5vw;
     margin-left: inherit;
     transition: inherit;
@@ -521,63 +522,50 @@ input[type = "file"] {
 .sidebar .section {
     list-style-type: none;
     margin: 1.25em 0;
+    width:100%;
 }
 
 .sidebar .section > .label {
     color: #445256;
     padding-bottom: 1em;
     display: block;
+    text-align: center;
 }
 
 .sidebar .section > ul {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 .sidebar .section > ul > a {
-    line-height: 2em;
+    line-height: 4em;
     cursor: pointer;
     display: flex;
+    width:100%;
+    position:relative;
+    height:3em;
+    margin: 0.5em 0em;
     align-items: center;
     transition: all 0.3s ease-out;
     border-color: #a5a8a9;
     white-space: nowrap;
 }
 
-.sidebar .section > ul > a:hover > i {
-    color: #e5e8e9;
-    margin-left: 0.25em;
-    border-color: #e5e8e9;
-}
-
-.sidebar .section > ul > a.active > i {
-    font-weight: 500;
-    color: #e5e8e9;
-    margin-left: 0.5em;
-    border-color: #e5e8e9;
-    background: #e5e8e9;
-}
-
-.sidebar .section > ul > a.active > span {
-    font-weight: 500;
-    color: #e5e8e9;
+.sidebar .section > ul > a.active {
+    background: rgba(0,0,0,0.2);
 }
 
 .sidebar .section > ul > a > span {
     vertical-align: top;
     transition: font-weight 0.2s;
+    position: absolute;
+    width:100%;
+    color: #252525;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: bolder;
 }
-
-.sidebar .section > ul > a > i {
-    border: 2px solid;
-    border-color: inherit;
-    border-radius: 50%;
-    height: 6px;
-    width: 6px;
-    margin-right: 0.5em;
-    transition:margin-left 0.2s, background 0.2s;
-}
-
 
 /*
  *  Specific declarations for primary section
