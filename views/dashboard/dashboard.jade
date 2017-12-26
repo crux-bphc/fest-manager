@@ -25,20 +25,15 @@ div.section.body
 					#{user.institute}
 			- }
 	div.separator
-	div.qr
-		img.imgQR(src="#{user.qrData}")
 		div.ca
-			a.button(href="/events") Register in Events and Workshops
+			a.button(href="/ca") Become a Campus Ambassador
 	div.events
 		if (subscribed.length || pending.length)
-			if subscribed.length
-				div.event-list(data-title="Registered Events")
-					+eventList(subscribed, user, false)
 			if pending.length
-				div.event-list.pending(data-title="In cart")
+				div.event-list.pending(data-title="Teams")
 					+eventList(pending, user, true)
-					a.button(href="/dashboard/cart") Proceed To Cart
+					a.button(href="https://paytm.com") Pay Here
 		else
-			div.event-list(data-title="Registered Events")
+			div.event-list(data-title="Teams")
 				span(style="margin-left: 1em;") You have not registered for anything. Go to the events section to register.
 script(src="/static/scripts/cart.js" type="text/javascript")
