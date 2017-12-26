@@ -454,22 +454,22 @@ input[type = "file"] {
     position:relative;
     font-size: 1.1em;
     box-sizing: border-box;
-    color: #191919;
+    background: #262626;
     transition: margin-left 0.3s ease-out, margin-top 0s 0.3s ease-out;
-    background: gold;
 }
 
 .sidebar > .wrapper {
     position:relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     top:0;
-    padding-top:2em;
     padding-left: inherit;
     left: 0;
     width:100%;
-    margin-top:4.5vw;
+    height: 100%;
     margin-left: inherit;
-    transition: inherit;
 }
 
 .sidebar.visible {
@@ -548,12 +548,13 @@ input[type = "file"] {
     margin: 0.5em 0em;
     align-items: center;
     transition: all 0.3s ease-out;
-    border-color: #a5a8a9;
+    color: gold;
     white-space: nowrap;
 }
 
 .sidebar .section > ul > a.active {
-    background: rgba(0,0,0,0.2);
+    background: gold;
+    color: #262626;
 }
 
 .sidebar .section > ul > a > span {
@@ -561,7 +562,6 @@ input[type = "file"] {
     transition: font-weight 0.2s;
     position: absolute;
     width:100%;
-    color: #252525;
     text-transform: uppercase;
     font-size: 0.8em;
     font-weight: bolder;
