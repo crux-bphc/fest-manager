@@ -260,21 +260,6 @@ router.get('/:body/:eventroute', middleware.authenticate, middleware.elevate, fu
 		});
 });
 
-function generate_pdf(event) {
-	var pdf = require('html-pdf');
-	var fs = require('fs');
-	var path = require('path');
-	var marked = require('marked');
-
-	var template = fs.readFileSync(path.join(__dirname, '../../utils/letterhead.html')).toString();
-	var filename = path.join(__dirname, '../../public/static/data/docs/' + event.name + '.pdf');
-
-	template = template.replace('$$--title--$$', event.name).replace('$$--content--$$', marked(event.about));
-	pdf.create(template).toStream(function (err, stream) {
-		stream.pipe(fs.createWriteStream(filename));
-	});
-}
-
 router.post('/:body/add', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	if (req.params.body != req.user.privilege.body && req.user.privilege.level != 2) {
 		var error = new Error('Access Denied');
@@ -288,7 +273,6 @@ router.post('/:body/add', middleware.authenticate, middleware.elevate, function 
 		event.body = body._id;
 		event.save(function (err) {
 			if (err) return res.send("Error");
-			generate_pdf(event);
 			res.send("Success");
 		});
 	});
@@ -304,7 +288,6 @@ router.post('/:body/edit', middleware.authenticate, middleware.elevate, function
 		_id: req.body._id || req.body.id
 	}, req.body, function (err) {
 		if (err) return res.send("Error");
-		generate_pdf(req.body);
 		res.send("Success");
 	});
 });
