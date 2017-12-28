@@ -30,7 +30,7 @@ router.use('/privacy-policy', function (req, res, next) {
 		user: req.user
 	});
 });
-// router.use('/ca', ca);
+router.use('/ca', ca);
 router.use('/login', login);
 router.use('/logout', function (req, res, next) {
 	req.logout();

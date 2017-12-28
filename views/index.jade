@@ -31,7 +31,7 @@ body
 			div.wrapper
 				div#menu.button(tabindex=1)
 					i.icon-menu
-				a.logo(href="/")
+				a.logo(href="/" _triggers="sidebar/visible=visible")
 					img(src="/static/images/logo.png")
 				span.subtitle.hidden
 					i.icon-navigate_next
@@ -76,6 +76,7 @@ body
 		div.remnant
 			div.sidebar(tabindex="2" _triggers="sidebar/visible=visible")
 				div.wrapper
+					img(src="/static/images/logo.png")
 					div.section.primary
 						ul
 							each val, key in navigation
