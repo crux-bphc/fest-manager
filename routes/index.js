@@ -14,10 +14,6 @@ router.get('/?*', function (req, res, next) {
 				label: "Home",
 				route: "/",
 			},
-			about: {
-				label: "About",
-				route: "/about",
-			},
 			events: {
 				label: "Events",
 				route: "/events",

@@ -1,82 +1,83 @@
 @import url("/static/fonts/Sports World/font.css");
-.immersive-wrapper {
-	background-image: url("/static/images/bg.jpg");
-	background-position: center;
-	background-size: cover;
+.slide {
 	height:100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	overflow: hidden;
-	position:absolute;
 	width: 100%;
+	position: relative;
 }
-.center {
+#home {
+	background-image: url("/static/images/bg.jpg");
+	background-position: center;
+	background-size: cover;
+}
+#home .center {
 	font-size: 12em;
 	color:white;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 }
-.center > .countdown {
+#home .center > .countdown {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
-.center > .countdown > .subtitle {
+#home .center > .countdown > .subtitle {
 	display: flex;
 	flex-direction: column;
 	height: 0.725em;
 	justify-content: space-between;
 }
-.center > .countdown > .subtitle span {
+#home .center > .countdown > .subtitle span {
 	font-size:0.4em;
 	line-height: 0.725em;
 	display: block;
 	margin-bottom:0.05em;
 	white-space: nowrap;
 }
-.center span {
+#home .center span {
 	font-family: 'Sports World';
 	line-height: 0.725em;
 }
-.center > .hashtag {
+#home .center > .hashtag {
 	margin-top:1em;
 	font-size: 0.3em;
 }
-.center > .hashtag::before {
+#home .center > .hashtag::before {
 	content:"#";
 	color:gold;
 }
 
-.footer {
+#home .footer {
 	position:absolute;
-	bottom:0;
+	bottom:-7em;
 	left: 0;
 	width: 100%;
-	height: 15em;
+	height: 22em;
 	display: flex;
 }
-.footer > div {
-	width:60%;
+#home .footer > div {
+	width:100%;
 	height: inherit;
 	position: absolute;
 }
-.footer > .left {
+#home .footer > .left {
 	left:0;
 	text-align: left;
 }
-.footer > .right {
+#home .footer > .right {
 	right:0;
 	text-align: right;
 }
-.footer > div > svg {
+#home .footer > div > svg {
 	position:absolute;
 	bottom:0;
 	left: 0;
-	-webkit-filter: drop-shadow(0px -2px 4px rgba(0,0,0,0.2));
+	-webkit-filter: drop-shadow(0px -4px 2px rgba(0,0,0,0.2));
 }
-.footer > div > .contact {
+#home .footer > div > .contact {
 	font-size: initial;
 	color: #191919;
 	position: absolute;
@@ -89,10 +90,40 @@
 	right:inherit;
 	text-align: inherit;
 	margin: 2em;
+	margin-top: -1em;
 }
-.footer > div > .contact > .name {
+#home .footer > div > .contact > .name {
 	font-size:1.2em;
 	font-weight: bold;
+}
+
+
+#about {
+	box-sizing: border-box;
+	color: #262626;
+}
+#about > .center {
+	width: 90%;
+	max-width: 900px;
+	display: flex;
+	align-items: center;
+}
+#about h2 {
+	font-size: 8em;
+	width: 10em;
+	line-height: 0.75;
+	letter-spacing: -0.07em;
+	text-align: right;
+	font-weight: 900;
+	white-space: wrap;
+	margin-right: -0.07em;
+}
+#about p {
+	background:#fff;
+	padding: 2em 2em;
+	box-sizing: border-box;
+	line-height: 1.5em;
+	border-left: 1px solid rgba(0,0,0,0.1);
 }
 @media only screen and (max-height: 500px) {
 	.center > .hashtag {

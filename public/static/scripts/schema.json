@@ -1,16 +1,16 @@
 {
   "@context": "http://www.schema.org",
   "@type": "Festival",
-  "name": "BITS Atmos",
-  "url": "https://bits-atmos.org",
-  "image": "https://bits-atmos.org/static/images/meta.jpg",
-  "description": "ATMOS is the annual techno-management fest of Birla Institute of Technology and Science, Pilani – Hyderabad Campus. Right from its inception in 2012, it has consistently strived to provide an excellent and platform on the national stage for people all over the country to showcase their technical, and managerial skills, as well as improving the technical and entrepreneurial culture in colleges across India. Alongside technical events, ATMOS provides a wide range of opportunities to test and stimulate your intellect spread across its three days. Even for someone who is technically handicapped, or lacks the knowledge to take part in events, it provides a plethora of activities in the form of interesting, awe-inspiring and motivational talks, pro-shows. It also provides the opportunity to hone your technical skills with workshops and technical exhibitions conducted in various disciplines by trained-professionals who are at the forefront of their field.",
-  "startDate": "2017-10-27T08:00",
-  "endDate": "2017-10-29T00:00",
+  "name": "BITS Arena",
+  "url": "https://bits-arena.com",
+  "image": "https://bits-arena.com/static/images/logo.png",
+  "description": "Sports have always been one of the primary channels used by man to quench his thirst for competition as well as promote camaraderie and unity among participants and fans alike. It is the spirit of the game that urges man to dream push his limits, and achieve glory. Once a year, here at BITS Pilani Hyderabad Campus, we allow this spirit to entirely consume us as we host our annual sports fest, Arena. Arena is one of the biggest sporting festivals conducted in India. The preparation ahead of the fest is grueling, the buildup intense, and participation nothing short of mind blowing as we welcome competitors not only from Telangana and Andhra Pradesh but on a national level as well. This year we plan on hosting the 6th edition of Arena, Arena '18. Keeping up with the ambitions and expectations from a campus such as ours, we are envisioning an Arena bigger, grander and more thrilling than ever before. Join us as we compete to the edge of our capabilities, vie for the glory on the field and most importantly enjoy the game.",
+  "startDate": "2018-01-25T08:00",
+  "endDate": "2018-01-28T00:00",
   "location": {
     "@type": "Place",
     "name": "BITS Pilani Hyderabad Campus",
-    "sameAs": "https://bits-atmos.org",
+    "sameAs": "https://bits-arena.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Shameerpet Mandal, Jawahar Nagar, Hyderabad, Telangana 500078",
