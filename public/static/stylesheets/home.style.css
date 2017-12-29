@@ -19,6 +19,12 @@
 	align-items: center;
 	flex-direction: column;
 }
+#home .center > .banner {
+	font-size: initial;
+	font-weight: 600;
+	color:white;
+	line-height: 5em;
+}
 #home .center > .countdown {
 	display: flex;
 	flex-direction: row;
@@ -101,9 +107,11 @@
 #about {
 	box-sizing: border-box;
 	color: #262626;
+	position: relative;
 }
 #about > .center {
 	width: 90%;
+	position: relative;
 	max-width: 900px;
 	display: flex;
 	align-items: center;
@@ -125,6 +133,28 @@
 	line-height: 1.5em;
 	border-left: 1px solid rgba(0,0,0,0.1);
 }
+#about .contact {
+	position:absolute;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	top: 100%;
+	width: 100%;
+	justify-content: center;
+}
+#about .contact i {
+	font-size: 2em;
+}
+#about .contact div {
+	display: flex;
+	margin-left: 1em;
+	line-height: 1.2em;
+	flex-direction: column;
+}
+#about .contact div .name {
+	font-weight: 600;
+}
+
 @media only screen and (max-height: 500px) {
 	.center > .hashtag {
 		margin-top:0.25em;
