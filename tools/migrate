@@ -36,10 +36,10 @@ var main = function () {
 					}
 				}, {
 					$pullAll: {
-						events: [id]
+						pending: [id]
 					},
 					$push: {
-						pending: id
+						events: id
 					}
 				}, {
 					multi: true

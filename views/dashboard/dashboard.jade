@@ -28,10 +28,10 @@ div.section.body
 		div.ca
 			a.button(href="/ca") Become a Campus Ambassador
 	div.events
-		if (subscribed.length || pending.length)
-			if pending.length
+		if (subscribed.length)
+			if subscribed.length
 				div.event-list.pending(data-title="Teams")
-					+eventList(pending, user, true)
+					+eventList(subscribed, user, true)
 					a.button(href="https://paytm.com") Pay Here
 		else
 			div.event-list(data-title="Teams")

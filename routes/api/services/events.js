@@ -29,6 +29,7 @@ var eventsSchema = new Schema({
 var model = mongoose.model('eventsModel', eventsSchema);
 
 router.post('/addtocart', function (req, res, next) {
+	if(!req.user.institute || !req.user.name || !req.user.phone) return res.status(404).send("Profile is incomplete");
 	var eventModel = model;
 	var userModel = require("./users").model;
 	var teamModel = require("./teams").model;
@@ -60,19 +61,12 @@ router.post('/addtocart', function (req, res, next) {
 			user = req.user;
 			var userEvents = user.events;
 			var userTeams = user.teams;
-			var userPending = user.pending || [];
 			userTeams.push(teamId);
 			var update = {
 				teams: userTeams
 			};
-			if (!eventPrice) {
-				userEvents.push(event_id);
-				update.events = userEvents;
-			} else {
-				userPending.push(event_id);
-				update.pending = userPending;
-			}
-			console.log(userModel);
+			userEvents.push(event_id);
+			update.events = userEvents;
 			return userModel.update({
 				_id: req.user._id
 			}, update);
@@ -112,6 +106,7 @@ router.post('/addtocart', function (req, res, next) {
 });
 
 router.post("/jointeam", function (req, res, next) {
+	if(!req.user.institute || !req.user.name || !req.user.phone) return res.status(404).send("Profile is incomplete");
 	var eventModel = model;
 	var userModel = require("./users").model;
 	var teamModel = require("./teams").model;

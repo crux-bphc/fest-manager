@@ -3,13 +3,13 @@ var RegisterButton = function () {
 		teamed: '<div class="latent" tabindex="1"><div class="button add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register Team</span></div><div class="button join_team" onclick="RegisterButton.join(this, \'$id\', isFree)"><i class="icon-group_add"></i><span>Join Team</span></div><div class="button new_team" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_box"></i><span>New Team</span></div></div>',
 		single: '<div class="button add_to_cart" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_shopping_cart"></i><span>Register</span></div>',
 		subscribed: '<div class="button subscribed"><i class="icon-check"></i><span>Registered</span></div>',
-		pending: '<div class="button pending"><i class="icon-close" onclick="RegisterButton.remove(this, \'$id\', $isFree)"></i><a href=\'https://paytm.com\'><span>PAY HERE</span></a></div>',
+		pending: '<div class="button pending"></i><a href="#" title="Not available yet"><span>PAY HERE</span></a></div>',
 	};
 
 	var failAlert = function (res) {
 		swal({
 			title: "Failed !",
-			text: res.msg,
+			text: res.responseText,
 			type: "error",
 			confirmButtonText: "OK",
 			confirmButtonColor: "#202729"

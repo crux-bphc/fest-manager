@@ -167,6 +167,7 @@
 
 .event-list .wrapper .icon-close {
     position:absolute;
+    display: none;
     top:0px;
     padding: 0.5em 0.5em;
     right: 0;
@@ -180,7 +181,7 @@
     box-shadow: -4px 0px 0px 0px #2db55d;
 }
 .event-list .wrapper.pending {
-    box-shadow: -4px 0px 0px 0px orange;
+    box-shadow: -4px 0px 0px 0px #2db55d;
 }
 .event-list .wrapper .foot {
     width:100%;
