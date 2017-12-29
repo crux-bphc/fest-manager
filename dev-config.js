@@ -33,17 +33,21 @@ var config = {
     googleServiceAccount: {
         "type": "service_account",
         "project_id": "pearl-2018",
-        "private_key_id": "881dfa4e0087e69f95c13a2cd5b99aff6e43a0b2",
-        "private_key": "XXXXXXXX",
-        "client_email": "pearl-41@pearl-2018.iam.gserviceaccount.com",
-        "client_id": "108883000641250891138",
+        "private_key_id": "XXXXX",
+        "private_key": "XXXXX",
+        "client_email": "XXXXX",
+        "client_id": "XXXXX",
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
         "token_uri": "https://accounts.google.com/o/oauth2/token",
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pearl-41%40pearl-2018.iam.gserviceaccount.com"
     },
 
-    googleSpreadsheetId: "1BsOH79AJpjdOia0g3TL2RyP5o36ablXMd1b6WG0bozo",
+    spreadsheets: {
+        terpsichore: "XXXXX",
+        kaleidoscope: "XXXXX",
+        tilldeaf: "XXXXX",
+    },
 
     port: 3000,
 };

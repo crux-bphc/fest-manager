@@ -136,7 +136,7 @@ var manager = function () {
 	};
 
 	client.navigation.setTitle = function (state) {
-		var title = "Atmos"; // TODO remove the hardcoded fest name.
+		var title = "Pearl"; // TODO remove the hardcoded fest name.
 		if (state.pagetitle) {
 			// title = state.pagetitle + " - " + title;
 			title = state.pagetitle;
@@ -277,32 +277,6 @@ var manager = function () {
 		$('.navbar .button.user label')[0].addEventListener('click', client.notifications.done, false);
 	};
 
-	// Audio analyser resources
-	var audio = {};
-	audio.domElement = $('audio')[0];
-	audiocontext = AudioContext || webkitAudioContext;
-	audio.context = new audiocontext();
-	audio.analyser = audio.context.createAnalyser();
-	audio.analyser.fftSize = 256;
-	audio.analyser.smoothingTimeConstant = 1;
-	audio.dataArray = new Uint8Array(audio.analyser.frequencyBinCount);
-	audio.gainNode = audio.context.createGain();
-	audio.buffer = audio.context.createMediaElementSource(audio.domElement);
-	audio.init = function () {
-		audio.buffer.connect(audio.gainNode);
-		audio.gainNode.connect(audio.analyser);
-		audio.analyser.connect(audio.context.destination);
-	};
-	audio.update = function () {
-		audio.analyser.getByteTimeDomainData(audio.dataArray);
-		var sum = 0;
-		for (i = 0; i < 5; i++) {
-			sum += audio.dataArray[i];
-		}
-		sum /= 5;
-		audio.high = sum;
-	};
-
 	// if ('serviceWorker' in navigator) {
 	//  window.addEventListener('load', function () {
 	//      navigator.serviceWorker.register('/sw.js').then(function (registration) {
@@ -335,9 +309,6 @@ var manager = function () {
 		refresh: client.refresh.bind(client),
 		getState: function () {
 			return client.state;
-		},
-		getAudio: function () {
-			return audio;
 		},
 		getLocation: client.getLocation.bind(client)
 	};

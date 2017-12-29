@@ -6,40 +6,27 @@ var config = fq('config-loader');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var async = require('async');
 
-var doc = new GoogleSpreadsheet(config.googleSpreadsheetId);
+var docs = {
+	terpsichore: new GoogleSpreadsheet(config.spreadsheets.terpsichore),
+	kaleidoscope: new GoogleSpreadsheet(config.spreadsheets.kaleidoscope),
+	tilldeaf: new GoogleSpreadsheet(config.spreadsheets.tilldeaf),
+};
 var sheet;
-
 var worker = function (req, res, next) {
 
 	async.series([
 		function setAuth(step) {
-
 			var creds = config.googleServiceAccount;
-			doc.useServiceAccountAuth(creds, step);
-
+			docs[req.body.event].useServiceAccountAuth(creds, step);
 		},
 
 		function check(step) {
-
-			if (((typeof req.body.name === 'undefined') || (typeof req.body.institute === 'undefined') || (typeof req.body.event === 'undefined') || (typeof req.body.link === 'undefined') || (typeof req.body.email === 'undefined'))) {
-				return res.json({
-					status: 500,
-					msg: "Some POST parameters missing."
-				});
-			}
 			step();
 		},
 
 		function addRecord(step) {
-
-			doc.addRow(1, {
-
-				"Name": req.body.name,
-				"Insitute": req.body.institute,
-				"Event": req.body.event,
-				"Submission": req.body.link,
-				"Email": req.body.email
-			}, function (err, row) {
+			console.log('Event: ',req.body.event);
+			docs[req.body.event].addRow(1, req.body, function (err, row) {
 
 				if (err) {
 					console.log(err);
@@ -50,6 +37,7 @@ var worker = function (req, res, next) {
 				}
 				row.save(function (err) {
 					if (err) {
+						console.log(err);
 						return res.json({
 							status: 500,
 							msg: "Insert Failed !"

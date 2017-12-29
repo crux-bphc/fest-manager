@@ -1,0 +1,13 @@
+include ../mixins/form
+link(href="/static/stylesheets/prelims.style.css" rel="stylesheet")
+.immersive-wrapper
+    .center
+        .logo
+            img(src="/static/images/logo.png")
+            span= title
+        - form = {fields: form, route: route}
+        +formMixin(form)
+        .stretch
+            .button#submit Submit
+script(src="/static/scripts/prelims.js")
+

@@ -1,0 +1,61 @@
+.immersive-wrapper {
+  position:absolute;
+  box-sizing: border-box;
+  padding-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.immersive-wrapper .center {
+  width: 50%;
+  padding: 2em 2em;
+  background: #191919;
+  color: rgba(178,142,84,1);
+  box-shadow: 0px 5px 10px rgba(0,0,0,1);
+}
+.immersive-wrapper .center .logo {
+  height:10em;
+  display: flex;
+  padding: 1em 0em;
+  align-items: center;
+  justify-content: center;
+}
+.immersive-wrapper .center .logo img {
+  height: 100%;
+  padding-right: 2.5em;
+  margin-right: 2.5em;
+  border-right: 1px solid rgba(178,142,84,0.1);
+}
+.immersive-wrapper .center .logo span {
+  font-size: 2em;
+  text-transform: uppercase;
+  max-width: 40%;
+}
+
+.immersive-wrapper .center form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+form .field-container {
+  width: 100%;
+}
+form .field-container input, form .field-container {
+  color: rgba(178,142,84,1);
+}
+.immersive-wrapper .stretch {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+}
+.immersive-wrapper .button {
+  background: none;
+  border: 1px solid rgba(178,142,84,1);
+  border-radius: 0px;
+  color: rgba(178,142,84,1);
+  opacity: 0.5;
+}
+.immersive-wrapper .button:hover {
+  background: none;
+  opacity: 1;
+}

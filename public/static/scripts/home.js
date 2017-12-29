@@ -45,7 +45,7 @@
     ctx.fillStyle = "rgb(255,255,255)";
     ctx.globalAlpha = SNOW[i].alpha;
     ctx.beginPath();
-    ctx.arc(SNOW[i].x, SNOW[i].y, 25/SNOW[i].z, 0, 2*Math.PI);
+    ctx.arc(SNOW[i].x, SNOW[i].y, 30/SNOW[i].z, 0, 2*Math.PI);
     ctx.closePath();
     ctx.fill();
   }
