@@ -5,6 +5,7 @@ link(rel="stylesheet" href="/static/stylesheets/marked.css")
 div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false"))
     div.header
         div.hero(style="background-image:url('#{event.hero}')")
+            a.icon-close(href="/events")
     div.body
         div.top
             div.title= event.name
