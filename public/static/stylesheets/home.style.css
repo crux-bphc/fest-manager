@@ -34,7 +34,7 @@
     height: 100%;
     position: absolute;
     z-index: 0;
-    background: url('https://cdn.dribbble.com/users/463836/screenshots/1876492/attachments/344600/Mountain__2560x1440x.jpg');
+    background: url('/static/images/landing/background.jpg');
     background-size: cover;
     filter: sepia(1);
     background-position: center center;
@@ -68,6 +68,7 @@
 .parallax > .footer {
   position:absolute;
   bottom: 5em;
+  z-index: +20;
   width:100%;
   color:white;
   display: flex;
@@ -91,7 +92,7 @@
   width: 100%;
   justify-content: center;
 }
-.parallax > .footer > .list > div {
+.parallax > .footer > .list > a {
   margin: 0em 2em;
   cursor:pointer;
   font-weight: 600;

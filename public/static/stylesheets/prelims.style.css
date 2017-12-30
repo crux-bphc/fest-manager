@@ -59,3 +59,31 @@ form .field-container input, form .field-container {
   background: none;
   opacity: 1;
 }
+@media only screen and (max-width: 800px) {
+  .immersive-wrapper .center {
+    width: 100%;
+  }
+  .immersive-wrapper .center form {
+    width:100%;
+  }
+  .immersive-wrapper > .center > .logo {
+    height: 5em;
+  }
+  .immersive-wrapper > .center > .logo > img {
+    padding-right: 1em;
+    margin-right: 1em;
+  }
+  .immersive-wrapper > .center > .logo > span {
+    font-size: 1.5em;
+    max-width: 70%;
+  }
+  form .field-container {
+    padding-right: 0em;
+  }
+  .immersive-wrapper {
+    padding: 0em !important;
+  }
+  .immersive-wrapper .center .stretch {
+    justify-content: center;
+  }
+}
