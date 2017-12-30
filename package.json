@@ -17,7 +17,7 @@
     "express": "~4.15.2",
     "express-session": "^1.15.3",
     "fuse.js": "^3.0.5",
-    "fuzzquire": "0.0.5",
+    "fuzzquire": "0.0.7",
     "google-spreadsheet": "^2.0.4",
     "html-entities": "^1.2.1",
     "html-pdf": "^2.1.0",
