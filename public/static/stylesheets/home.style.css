@@ -1,6 +1,9 @@
 .main .wrapper.face {
 	overflow-y: hidden;
 }
+* {
+  -webkit-select: none;
+}
 
 .immersive-wrapper {
 	position:absolute;
@@ -12,23 +15,37 @@
 	left: 0;
 	overflow-x:hidden;
 	box-sizing: border-box;
-	padding: 0% 5% !important;
+	padding: 0 !important;
 	justify-content: space-around;
 	align-items: center;
-	background: url('https://cdn.dribbble.com/users/463836/screenshots/1876492/attachments/344600/Mountain__2560x1440x.jpg');
-	background-size: cover;
-	background-position: center center;
 }
 .slide {
 	position:relative;
 	width:100%;
 	height:100%;
 }
-.parallax > canvas, .parallax > div.background {
+.parallax {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.parallax > .background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    background: url('https://cdn.dribbble.com/users/463836/screenshots/1876492/attachments/344600/Mountain__2560x1440x.jpg');
+    background-size: cover;
+    filter: sepia(1);
+    background-position: center center;
+}
+.parallax > canvas {
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: +15;
+  filter: sepia(1);
   position: absolute;
 }
 .parallax > .background > img {
@@ -38,5 +55,50 @@
 	height:100%;
 }
 #mistscape {
-  -webkit-filter: blur(80px);
+  display: none;
+}
+.parallax > .center {
+  height: 20em;
+  position: absolute;
+  z-index: 10;
+}
+.parallax > .center > img {
+  height: 100%;
+}
+.parallax > .footer {
+  position:absolute;
+  bottom: 5em;
+  width:100%;
+  color:white;
+  display: flex;
+  align-items: center;
+  line-height: 2em;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.parallax > .footer > .face {
+  z-index: +20;
+  color: white;
+  font-size: 2em;
+  letter-spacing: 0.1em;
+  line-height: 2em;
+  -webkit-select:none;
+  cursor: default;
+}
+.parallax > .footer > .list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.parallax > .footer > .list > div {
+  margin: 0em 2em;
+  cursor:pointer;
+  font-weight: 600;
+  padding: 0em 2em;
+  line-height: 4em;
+  font-weight: 600;
+  color: rgba(178,142,84,1);
+  border: 1px solid rgba(178,142,84,1);
+  background: rgba(0,0,0,0.5);
 }

@@ -72,13 +72,14 @@
       y: Math.random() * innerHeight/2 + innerHeight/2,
       vx: Math.random() * -10,
       vy: Math.random() * 2.5,
+      radius: Math.random() * innerWidth/10 + innerWidth/10,
     });
   }
   var draw = function(i) {
     var blob = MIST[i];
     ctx.fillStyle = "rgb(255,255,255)";
     ctx.beginPath();
-    ctx.arc(blob.x, blob.y, innerWidth/5, 0, 2*Math.PI);
+    ctx.arc(blob.x, blob.y, blob.radius, 0, 2*Math.PI);
     ctx.closePath();
     ctx.globalAlpha = 0.2;
     ctx.fill();
