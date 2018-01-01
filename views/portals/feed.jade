@@ -1,0 +1,13 @@
+include ../mixins/form
+link(rel="stylesheet" href="/static/lib/jquery-ui-custom/jquery-ui.min.css")
+div.section.header
+    h1= title
+    div.stretch
+            div.remnant
+                ul.controls
+                    li.icon-check#submit-button(tooltip="Save")
+                    a.icon-close#cancel-button(href="/portals" tooltip="Cancel")
+- var form = { fields: fields, method: "PUT", action: "/api/scores/feed/add" };
++formMixin(form)
+script(src="/static/lib/jquery-ui-custom/jquery-ui.min.js")
+script(src="/static/scripts/feed.js")

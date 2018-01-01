@@ -9,6 +9,7 @@ services.push(require('./services/events'));
 services.push(require('./services/teams'));
 services.push(require('./services/accomm'));
 services.push(require('./services/bodies'));
+services.push(require('./services/feed'));
 
 services.forEach(function (service) {
 	router.use(service.route, constructor(service.model, service.router));
