@@ -83,4 +83,13 @@ userService.find({}, {
 	registerTypeahead('ambassador', ambassadors);
 });
 
+registerTypeahead('sports', [
+	'Cricket',
+	'Tennis',
+	'Football',
+	'Generic/None',
+	], [
+	'Generic/None',
+	]);
+
 module.exports = router;
