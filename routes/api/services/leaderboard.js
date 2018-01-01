@@ -31,13 +31,13 @@ router.put('/add', middleware.authenticate, middleware.elevate, (req, res, next)
 			};
 		}
 		if(req.body.rank == 1){
-			data.gold.push(req.body.sport);
+			if(data.gold.indexOf(req.body.sport) == -1) data.gold.push(req.body.sport);
 		} else if(req.body.rank == 2){
-			data.silver.push(req.body.sport);
+			if(data.silver.indexOf(req.body.sport) == -1) data.silver.push(req.body.sport);
 		} else if(req.body.rank == 3){
-			data.bronze.push(req.body.sport);
+			if(data.bronze.indexOf(req.body.sport) == -1) data.bronze.push(req.body.sport);
 		} else {
-			data.others.push(req.body.sport);
+			if(data.others.indexOf(req.body.sport) == -1) data.others.push(req.body.sport);
 		}
 		return model.findOneAndUpdate({name: req.body.name}, data, {upsert: true});
 	}).then(result=>{
