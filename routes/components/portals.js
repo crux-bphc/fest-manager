@@ -66,6 +66,19 @@ router.get('/rollout', middleware.authenticate, middleware.elevate, function (re
 	}
 });
 
+router.get('/feed', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	if (req.user.privilege.level == 2) {
+		req = applyStateChanges(req, true);
+	} else if (req.user.privilege.level == 1) {
+		req = applyStateChanges(req, false);
+	}
+	res.renderState('portals/feed', {
+		title: "News Feed",
+		user: req.user,
+		fields: fq('forms/feed')(),
+	});
+});
+
 router.get('/registration', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	if (req.user.privilege.level == 2) {
 		req = applyStateChanges(req, true);

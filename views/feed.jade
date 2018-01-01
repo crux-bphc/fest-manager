@@ -1,0 +1,15 @@
+h1 Live Feed
+table
+	thead
+		td Time
+		td Subject
+		td Commentary
+		td Team1
+		td Team2
+	each row in data
+		tr
+			td=row.createdAt
+			td=row.subject
+			td=row.text
+			td=row.team1
+			td=row.team2

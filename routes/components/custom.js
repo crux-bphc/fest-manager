@@ -4,6 +4,9 @@ var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
 
 // Load custom modules here
+
+router.use('/feed', fq('custom/feed'));
+
 var applyStateChanges = function (req) {
 	req.stateparams.immersive = false;
 	req.stateparams.forceHideSidebar = true;
