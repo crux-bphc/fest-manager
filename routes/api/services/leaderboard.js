@@ -20,8 +20,8 @@ var model = mongoose.model('leaderboard', schema);
 router.put('/add', middleware.authenticate, middleware.elevate, (req, res, next) => {
 	model.findOne({
 		name: req.body.name,
-	}).then(data=>{
-		if(!data){
+	}).then(data => {
+		if (!data) {
 			data = {
 				name: req.body.name,
 				gold: [],
@@ -30,19 +30,23 @@ router.put('/add', middleware.authenticate, middleware.elevate, (req, res, next)
 				others: [],
 			};
 		}
-		if(req.body.rank == 1){
-			if(data.gold.indexOf(req.body.sport) == -1) data.gold.push(req.body.sport);
-		} else if(req.body.rank == 2){
-			if(data.silver.indexOf(req.body.sport) == -1) data.silver.push(req.body.sport);
-		} else if(req.body.rank == 3){
-			if(data.bronze.indexOf(req.body.sport) == -1) data.bronze.push(req.body.sport);
+		if (req.body.rank == 1) {
+			if (data.gold.indexOf(req.body.sport) == -1) data.gold.push(req.body.sport);
+		} else if (req.body.rank == 2) {
+			if (data.silver.indexOf(req.body.sport) == -1) data.silver.push(req.body.sport);
+		} else if (req.body.rank == 3) {
+			if (data.bronze.indexOf(req.body.sport) == -1) data.bronze.push(req.body.sport);
 		} else {
-			if(data.others.indexOf(req.body.sport) == -1) data.others.push(req.body.sport);
+			if (data.others.indexOf(req.body.sport) == -1) data.others.push(req.body.sport);
 		}
-		return model.findOneAndUpdate({name: req.body.name}, data, {upsert: true});
-	}).then(result=>{
+		return model.findOneAndUpdate({
+			name: req.body.name
+		}, data, {
+			upsert: true
+		});
+	}).then(result => {
 		res.send("Success");
-	}).catch(error=>{
+	}).catch(error => {
 		res.status(500).send(error);
 	});
 });

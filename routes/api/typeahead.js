@@ -88,8 +88,8 @@ registerTypeahead('sports', [
 	'Tennis',
 	'Football',
 	'Generic/None',
-	], [
+], [
 	'Generic/None',
-	]);
+]);
 
 module.exports = router;

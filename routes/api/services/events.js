@@ -29,7 +29,7 @@ var eventsSchema = new Schema({
 var model = mongoose.model('eventsModel', eventsSchema);
 
 router.post('/addtocart', function (req, res, next) {
-	if(!req.user.institute || !req.user.name || !req.user.phone) return res.status(404).send("Profile is incomplete");
+	if (!req.user.institute || !req.user.name || !req.user.phone) return res.status(404).send("Profile is incomplete");
 	var eventModel = model;
 	var userModel = require("./users").model;
 	var teamModel = require("./teams").model;
@@ -106,7 +106,7 @@ router.post('/addtocart', function (req, res, next) {
 });
 
 router.post("/jointeam", function (req, res, next) {
-	if(!req.user.institute || !req.user.name || !req.user.phone) return res.status(404).send("Profile is incomplete");
+	if (!req.user.institute || !req.user.name || !req.user.phone) return res.status(404).send("Profile is incomplete");
 	var eventModel = model;
 	var userModel = require("./users").model;
 	var teamModel = require("./teams").model;
