@@ -1,0 +1,17 @@
+h1 Leaderboard
+table
+	thead
+		td Rank
+		td Team Name
+		td Gold
+		td Silver
+		td Bronze
+		td Others
+	each row in data
+		tr
+			td 0
+			td=row.name
+			td=row.gold.length
+			td=row.silver.length
+			td=row.bronze.length
+			td=row.others.length

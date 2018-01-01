@@ -7,5 +7,6 @@ var eventsService = fq("services/events").model;
 
 router.use('/pybits', fq('custom/pybits'));
 router.use('/gdg', fq('custom/gdg'));
+router.use('/scores', fq('custom/scores'));
 
 module.exports = router;
