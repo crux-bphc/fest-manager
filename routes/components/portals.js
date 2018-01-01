@@ -27,6 +27,10 @@ var applyStateChanges = function (req, superuser) {
 			{
 				route: "/portals/tickets",
 				label: "Tickets",
+			},
+			{
+				route: "/portals/scores",
+				label: "Score Update",
 			}
 		];
 	return req;
@@ -64,6 +68,31 @@ router.get('/rollout', middleware.authenticate, middleware.elevate, function (re
 		req = applyStateChanges(req, false);
 		res.redirect('/components/portals/administration');
 	}
+});
+
+router.get('/scores', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	if (req.user.privilege.level == 2) {
+		req = applyStateChanges(req, true);
+	} else if (req.user.privilege.level == 1) {
+		req = applyStateChanges(req, false);
+	}
+	res.renderState('portals/scores', {
+		title: "Scores Home",
+		user: req.user,
+	});
+});
+
+router.get('/scores/leaderboard', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	if (req.user.privilege.level == 2) {
+		req = applyStateChanges(req, true);
+	} else if (req.user.privilege.level == 1) {
+		req = applyStateChanges(req, false);
+	}
+	res.renderState('portals/leaderboard', {
+		title: "Scores Leaderboard",
+		user: req.user,
+		fields: fq('forms/leaderboard')(),
+	});
 });
 
 router.get('/registration', middleware.authenticate, middleware.elevate, function (req, res, next) {
