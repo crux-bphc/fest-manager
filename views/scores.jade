@@ -7,7 +7,7 @@ table
 		td Silver
 		td Bronze
 		td Others
-	each row in data
+	each row in viewdata.leaderboard
 		tr
 			td 0
 			td=row.name
@@ -15,3 +15,18 @@ table
 			td=row.silver.length
 			td=row.bronze.length
 			td=row.others.length
+h1 Live Feed
+table
+	thead
+		td Time
+		td Sport
+		td Commentary
+		td Team1
+		td Team2
+	each row in viewdata.feed
+		tr
+			td=row.createdAt
+			td=row.sport
+			td=row.text
+			td=row.team1
+			td=row.team2

@@ -95,6 +95,19 @@ router.get('/scores/leaderboard', middleware.authenticate, middleware.elevate, f
 	});
 });
 
+router.get('/scores/feed', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	if (req.user.privilege.level == 2) {
+		req = applyStateChanges(req, true);
+	} else if (req.user.privilege.level == 1) {
+		req = applyStateChanges(req, false);
+	}
+	res.renderState('portals/feed', {
+		title: "Scores Feed",
+		user: req.user,
+		fields: fq('forms/feed')(),
+	});
+});
+
 router.get('/registration', middleware.authenticate, middleware.elevate, function (req, res, next) {
 	if (req.user.privilege.level == 2) {
 		req = applyStateChanges(req, true);
