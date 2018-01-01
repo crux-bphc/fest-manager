@@ -7,13 +7,15 @@
         $('form input').each(function(i, item){
             data[$(item).attr('id').replace('field-','')] = $(item).val();
         });
-        console.log(data);
         $.ajax({
             url: $('form').attr('route'),
             method: 'POST',
             data: data,
         }).done(function(response){
-            console.log(response);
+            swal("Response recorded!");
+            $('form input').val('');
+        }).fail(function(err){
+            swal("Some error occurred. Try again.");
         });
     });
 })();
