@@ -43,7 +43,7 @@ function service(model, router) {
 		var item = new model(req.body);
 		item.save(function (err) {
 			if (err) {
-				res.send("Error");
+				res.status(500).send("Error");
 				return 0;
 			}
 			res.send("Success");
