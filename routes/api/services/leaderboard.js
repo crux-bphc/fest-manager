@@ -51,6 +51,16 @@ router.put('/add', middleware.authenticate, middleware.elevate, (req, res, next)
 	});
 });
 
+router.get('/bits', (req, res, next) => {
+	model.find({}).then(data => {
+		var newdata = data.filter(elem => {
+			if(elem.name) return elem.name.startsWith('Birla Institute of Technology');
+			return false;
+		});
+		res.json(newdata);
+	})
+});
+
 module.exports = {
 	route: '/scores/leaderboard',
 	model: model,
