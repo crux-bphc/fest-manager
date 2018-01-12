@@ -29,6 +29,24 @@ var schema = new Schema({
 schema.plugin(require('mongoose-paginate'));
 var model = mongoose.model('eventsModel', schema);
 
+router.get('/index', (req, res, next) => {
+	model.find({}).then(data => {
+		var newdata = [];
+		data.forEach(elem => {
+			var rval = {};
+			rval.name = elem.name;
+			rval.tagline = elem.tagline;
+			rval.route = elem.route;
+			rval._id = elem._id;
+			rval.category = elem.category;
+			newdata.push(rval);
+		});
+		res.json(newdata);
+	}).catch(error => {
+		res.status(500).send(error);
+	})
+});
+
 router.post('/addtocart', function (req, res, next) {
 	if (!req.user.institute || !req.user.name || !req.user.phone) return res.status(404).send("Profile is incomplete");
 	var eventModel = model;
