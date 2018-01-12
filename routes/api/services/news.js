@@ -20,6 +20,7 @@ var schema = new Schema({
     timestamps: true
 });
 
+schema.plugin(require('mongoose-paginate'));
 var model = mongoose.model('news', schema);
 
 router.get('/index', (req, res, next) => {

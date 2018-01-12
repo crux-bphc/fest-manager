@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var express = require('express');
 var router = express.Router();
 
-var bodiesSchema = new Schema({
+var schema = new Schema({
 	name: {
 		type: String,
 		required: true
@@ -25,7 +25,8 @@ var bodiesSchema = new Schema({
 	timestamps: true
 });
 
-var model = mongoose.model('bodiesModel', bodiesSchema);
+schema.plugin(require('mongoose-paginate'));
+var model = mongoose.model('bodiesModel', schema);
 
 module.exports = {
 	route: '/bodies',

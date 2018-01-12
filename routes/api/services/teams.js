@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var shortID = require('mongoose-shortid-nodeps');
 
-var teamsSchema = new Schema({
+var schema = new Schema({
 	_id: {
 		type: shortID,
 		len: 7,
@@ -23,7 +23,8 @@ var teamsSchema = new Schema({
 	timestamps: true
 });
 
-var model = mongoose.model('teamsModel', teamsSchema);
+schema.plugin(require('mongoose-paginate'));
+var model = mongoose.model('teamsModel', schema);
 
 module.exports = {
 	route: '/teams',

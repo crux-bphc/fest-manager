@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var express = require('express');
 var router = express.Router();
 
-var accommSchema = new Schema({
+var schema = new Schema({
 	label: String,
 	vacancy: Number,
 	filled: {
@@ -14,7 +14,8 @@ var accommSchema = new Schema({
 	timestamps: true
 });
 
-var model = mongoose.model('accommModel', accommSchema);
+schema.plugin(require('mongoose-paginate'));
+var model = mongoose.model('accommModel', schema);
 
 module.exports = {
 	route: '/accomm',
