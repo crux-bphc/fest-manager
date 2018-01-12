@@ -20,6 +20,7 @@ var schema = new Schema({
 	timestamps: true
 });
 
+schema.plugin(require('mongoose-paginate'));
 var model = mongoose.model('feed', schema);
 
 router.put('/add', middleware.authenticate, middleware.elevate, (req, res, next) => {

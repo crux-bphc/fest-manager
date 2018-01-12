@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var shortID = require('mongoose-shortid-nodeps');
 
-var eventsSchema = new Schema({
+var schema = new Schema({
 	name: String,
 	tagline: String,
 	body: String,
@@ -26,7 +26,8 @@ var eventsSchema = new Schema({
 	timestamps: true
 });
 
-var model = mongoose.model('eventsModel', eventsSchema);
+schema.plugin(require('mongoose-paginate'));
+var model = mongoose.model('eventsModel', schema);
 
 router.post('/addtocart', function (req, res, next) {
 	if (!req.user.institute || !req.user.name || !req.user.phone) return res.status(404).send("Profile is incomplete");

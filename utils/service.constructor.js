@@ -5,14 +5,23 @@ var middleware = fq('authentication').middleware;
 /* routing CRUD operations for users service */
 function service(model, router) {
 	router.get('/', function (req, res, next) {
-		model.find(function (err, items) {
-			if (err) {
-				err.status = 500;
-				next(err);
-				return 0;
-			}
-			res.send(items);
-		});
+		if(req.query.page){
+			model.paginate({}, {
+				page: req.query.page,
+				limit: 10,
+			}).then(data=> {
+				res.json(data);
+			}).catch(error => {
+				res.status(500).send(error);
+			});
+		}
+		else {
+			model.find({}).then(data => {
+				res.json(data);
+			}).catch(error => {
+				res.status(500).send(error);
+			})
+		}
 	});
 
 	router.get('/:id', function (req, res, next) {
