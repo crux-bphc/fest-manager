@@ -25,6 +25,7 @@
     "marked": "^0.3.6",
     "moment": "^2.19.1",
     "mongoose": "^4.10.5",
+    "mongoose-paginate": "^5.0.3",
     "mongoose-shortid-nodeps": "^0.6.5",
     "morgan": "~1.8.1",
     "nodemailer": "^4.0.1",

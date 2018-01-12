@@ -10,7 +10,7 @@ var toId = function (str) {
 	return mongoose.Types.ObjectId(str);
 };
 
-var usersSchema = new Schema({
+var schema = new Schema({
 	name: String,
 	email: {
 		type: String,
@@ -47,7 +47,8 @@ var usersSchema = new Schema({
 	timestamps: true
 });
 
-var model = mongoose.model('usersModels', usersSchema);
+schema.plugin(require('mongoose-paginate'));
+var model = mongoose.model('usersModels', schema);
 
 var authenticate = function (req, res, next) { // custom middleware to check if a user
 	if (req.isAuthenticated()) // is authenticated in the current session
