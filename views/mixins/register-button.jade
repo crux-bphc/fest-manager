@@ -10,9 +10,9 @@ mixin cartActionsMixin(event, user, text)
                         i.icon-check
                         span Registered
                 else
-                    div.pending.button
-                        a(title="Go to cart" href="https://paytm.com")
-                            span PAY HERE
+                    div.subscribed.button
+                        i.icon-check
+                        span Registered
             - else if(event.teamSize > 1)
                 div.latent(tabindex="1")
                     div.add_to_cart.button

@@ -11,7 +11,6 @@ mixin eventList(events, user, isPending)
                     div.foot
                         div.price
                             span !{event.price ? '&#x20b9;' + event.price : "FREE"}
-                        if(event.teamSize > 1)
-                            div.team
-                                span Team ID:
-                                span= (user.teams.filter(team => event.teams.indexOf(team) != -1))
+                        div.team
+                            span Team ID:
+                            span= (user.teams.filter(team => event.teams.indexOf(team) != -1))

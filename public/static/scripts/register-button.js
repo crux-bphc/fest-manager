@@ -3,7 +3,7 @@ var RegisterButton = function () {
 		teamed: '<div class="latent" tabindex="1"><div class="button add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register Team</span></div><div class="button join_team" onclick="RegisterButton.join(this, \'$id\', isFree)"><i class="icon-group_add"></i><span>Join Team</span></div><div class="button new_team" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_box"></i><span>New Team</span></div></div>',
 		single: '<div class="button add_to_cart" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_shopping_cart"></i><span>Register</span></div>',
 		subscribed: '<div class="button subscribed"><i class="icon-check"></i><span>Registered</span></div>',
-		pending: '<div class="button pending"></i><a href="#" title="Not available yet"><span>PAY HERE</span></a></div>',
+		pending: '<div class="button subscribed"><i class="icon-check"></i><span>Registered</span></div>',
 	};
 
 	var failAlert = function (res) {
@@ -32,7 +32,7 @@ var RegisterButton = function () {
 				if (typeof res.teamID !== 'undefined') {
 					swal({
 						title: "Successful",
-						text: "Event added to cart! Your team ID is " + res.teamID + "\nShare this Team ID with your team members. Ask them to click on JOIN TEAM and fill the ID in, when prompted.\n Make sure you pay the entry fee. Follow the link 'PAY HERE'",
+						text: "Event added to cart! Your team ID is " + res.teamID + "\nShare this Team ID with your team members. Ask them to click on JOIN TEAM and fill the ID in, when prompted.",
 						type: "success",
 						confirmButtonText: "OK",
 						confirmButtonColor: "#202729"
@@ -41,7 +41,7 @@ var RegisterButton = function () {
 				} else {
 					swal({
 						title: "Successful",
-						text: "You have been registered. Make sure you pay the entry fee. Follow the link 'PAY HERE'",
+						text: "You have been registered.",
 						type: "success",
 						confirmButtonText: "OK",
 						confirmButtonColor: "#202729"
