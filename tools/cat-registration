@@ -1,0 +1,96 @@
+#! /usr/bin/env node
+
+// Script to view users in the database.
+// Usage: tools/cat-registration <body name> <event name>
+// Example: tools/cat-registration music-club till-deaf
+// Output format: All values tab separated. One team per row.
+// data: user-[phone/no-phone]: <email> <phone/'undefined'> <name> <institution> {repeat users}
+
+// Handle arguments here.
+var bodycode = process.argv[2];
+var eventcode = process.argv[3];
+
+// Global dependencies
+var mongoose = require('mongoose');
+var fq = require('fuzzquire');
+
+var catUser = function (user) {
+	if (user.phone) {
+		return `user-phone:\t${user.email}\t${user.phone}\t${user.name}\t${user.institute}`;
+	} else {
+		return `user-no-phone:\t${user.email}\tundefined\t${user.name}\t${user.institute}`;
+	}
+};
+
+var catData = function (teams) {
+	teams.forEach(team => {
+		var str = [];
+		team.forEach(user => {
+			str.push(catUser(user));
+		});
+		console.log("data:\t" + str.join('\t'));
+	});
+	console.log("cat-registration: Execution completed without errors.");
+	process.exit(0);
+}
+
+var main = function () {
+	fq('mongoose')(); //connect to database
+	console.log("cat-registration: Fetching all registered teams.");
+	var promises = [];
+	var Users = fq('api/users').model;
+	var Bodies = fq('api/bodies').model;
+	var Events = fq('api/events').model;
+	var eventName, event;
+	Bodies.findOne({
+		code: bodycode,
+	})
+	.then(function (body) {
+		if (!body) {
+			console.log("cat-registration: Body not found.");
+			process.exit(1);
+		}
+		return Events.findOne({
+			body: body._id,
+			route: eventcode,
+		});
+	})
+	.then(function (result) {
+		// Block iterates over teams in event and extracts users grouped by their team.
+		if (!result) {
+			console.log("cat-registration: Event not found.");
+			process.exit(1);
+		}
+		eventName = result.name;
+		event = result;
+		var teams = [];
+		var userProjection = '_id teams name email institute phone';
+		var _query = function (team) {
+			return Users.find({
+				teams: team
+			}, userProjection);
+		};
+
+		// Returns an array of promises to pass to Promise.all to resolve when all are done.
+		var promises = event.teams.map(function (team) {
+			return _query(team);
+		});
+
+		return Promise.all(promises);
+	})
+	.then(function (teams) {
+		if (!teams) {
+			console.log("cat-registration: Teams not found. No registrations yet.");
+			process.exit(1);
+		}
+		return catData(teams);
+	})
+	.catch(function (err) {
+		return console.log("cat-registration: Unknown mongo error. Check database manually/run script again.");
+	});
+};
+
+// Start execution
+main();
+
+
