@@ -44,7 +44,7 @@ router.get('/index', (req, res, next) => {
 		res.json(newdata);
 	}).catch(error => {
 		res.status(500).send(error);
-	})
+	});
 });
 
 router.post('/addtocart', function (req, res, next) {
