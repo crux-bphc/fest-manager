@@ -21,6 +21,7 @@ grunt.initConfig({
 			'tools/manage-user',
 			'tools/migrate',
 			'tools/cat-user',
+			'tools/cat-registration',
 			'tools/add-to-cart',
 			'bin/www',
 		],

@@ -32,7 +32,7 @@ var catData = function (teams) {
 	});
 	console.log("cat-registration: Execution completed without errors.");
 	process.exit(0);
-}
+};
 
 var main = function () {
 	fq('mongoose')(); //connect to database

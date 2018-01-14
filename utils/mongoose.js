@@ -5,7 +5,9 @@ var connection = function (callback) {
 	const config = require('./config-loader');
 	var databasename = process.env.FM_DATABASE || config.database.name || "fest-manager-default";
 	var mongoDB = config.database.url + databasename;
-	mongoose.connect(mongoDB);
+	mongoose.connect(mongoDB, {
+		useMongoClient: true,
+	});
 	var db = mongoose.connection;
 	db.on('error', function (error) {
 		console.error.bind(console, 'mongoose: MongoDB connection error:');
