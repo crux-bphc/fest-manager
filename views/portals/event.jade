@@ -17,8 +17,10 @@ div#_event
         h3.title Registered Teams
         for team in teams
             div.team
-                for user in team
+                for user in team.members
                     div.user
+                        div.hidden.team
+                            span= team.id
                         div.name(title=user.name)
                             i.icon-account_circle
                             span= user.name
@@ -36,10 +38,10 @@ div#_event
 script.
     function download(filename) {
         var lines = [];
-        lines.push("name|institute|email|phone");
+        lines.push("team|name|institute|email|phone");
         $('.team > .user').each(function(i, item) {
             var text = "";
-            ['name','institute','email','phone'].forEach(function(key) {
+            ['team','name','institute','email','phone'].forEach(function(key) {
                 text += $(item).find('.'+key).text().replace(/,/g, " ");
                 text += '|';
             });
