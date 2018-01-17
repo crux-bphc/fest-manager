@@ -30,5 +30,8 @@ var config = {
 		user: "vermaabhilash70@gmail.com",
 	},
 	port: 3000,
+	state: {
+		registrations: true,
+	},
 };
 module.exports = config;

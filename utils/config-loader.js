@@ -17,4 +17,17 @@ try {
 		process.exit(2);
 	}
 }
+
+var set = function(prop, value) {
+	if( prop == undefined || prop == null){
+		prop = value;
+	}
+	return prop;
+}
+var setDefaults = function () {
+	config.state = set(config.state, {});
+	config.state.registrations = set(config.state.registrations, true);
+	config.port = set(config.port, 3000);
+}
+setDefaults();
 module.exports = config;

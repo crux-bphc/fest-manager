@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
+var config = fq('config-loader');
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
@@ -95,6 +96,7 @@ router.get('/:eventroute', function (req, res, next) {
 			user: req.user,
 			event: data,
 			marked: marked,
+			config: config,
 		});
 	});
 });
