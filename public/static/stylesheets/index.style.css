@@ -15,6 +15,10 @@
     color: unset;
     font-family: 'Helvetica', 'Arial', sans-serif
 }
+.button.disabled {
+    pointer-events: none;
+    opacity: 0.8;
+}
 
 body {
     display: flex;

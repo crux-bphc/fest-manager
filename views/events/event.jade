@@ -2,6 +2,7 @@ include ../mixins/event
 include ../mixins/register-button
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 link(rel="stylesheet" href="/static/stylesheets/marked.css")
+
 div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false"))
     div.header
         div.hero(style="background-image:url('#{event.hero}')")
@@ -9,7 +10,7 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
         div.top
             div.title= event.name
             div.remnant
-            span.declaration On spot registration available
+                +cartActionsMixin(event, user, "Register", config)
         div.category= event.category
         div.details
             if(event.startTime)

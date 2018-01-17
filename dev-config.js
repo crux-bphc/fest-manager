@@ -50,5 +50,8 @@ var config = {
     },
 
     port: 3000,
+    state: {
+        registrations: true,
+    },
 };
 module.exports = config;
