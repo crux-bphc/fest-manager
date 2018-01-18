@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var express = require('express');
 var router = express.Router();
+var fq = require('fuzzquire');
 var shortID = require('mongoose-shortid-nodeps');
 
 var schema = new Schema({
@@ -28,6 +29,29 @@ var schema = new Schema({
 
 schema.plugin(require('mongoose-paginate'));
 var model = mongoose.model('events', schema);
+
+router.get('/index', (req, res, next) => {
+	model.find({}).then(data => {
+		var newdata = [];
+		data.forEach(elem => {
+			var rval = {};
+			rval.name = elem.name;
+			rval.tagline = elem.tagline;
+			rval.route = elem.route;
+			rval._id = elem._id;
+			rval.category = elem.category;
+			rval.prize = elem.prize;
+			rval.venue = elem.venue;
+			newdata.push(rval);
+		});
+		if (req.query.sort && data[0][req.query.sort] !== undefined) {
+			newdata = fq('sort')(newdata, req.query.sort);
+		}
+		res.json(newdata);
+	}).catch(error => {
+		res.status(500).send(error);
+	});
+});
 
 router.post('/addtocart', function (req, res, next) {
 	var eventModel = model;

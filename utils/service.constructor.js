@@ -16,6 +16,9 @@ function service(model, router) {
 			});
 		} else {
 			model.find({}).then(data => {
+				if (req.query.sort && data[0][req.query.sort] !== undefined) {
+					data = fq('sort')(data, req.query.sort);
+				}
 				res.json(data);
 			}).catch(error => {
 				res.status(500).send(error);
