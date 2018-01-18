@@ -282,8 +282,11 @@ router.get('/:body/:eventroute', middleware.authenticate, middleware.elevate, fu
 
 			// Returns an array of promises to pass to Promise.all to resolve when all are done.
 			var promises = event.teams.map(function (team) {
-				return _query(team).then(function(result) {
-					return {id: team, members: result};
+				return _query(team).then(function (result) {
+					return {
+						id: team,
+						members: result
+					};
 				});
 			});
 

@@ -106,7 +106,7 @@ app.use(function (req, res, next) {
 		var state = stateHandler.getState(req);
 		options = optionsHandler.updateOptions(options);
 		res.render(filename, options, function (err, string) {
-			if(err) console.log(err);
+			if (err) console.log(err);
 
 			res.send({
 				html: string,
