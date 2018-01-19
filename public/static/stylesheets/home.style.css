@@ -13,11 +13,22 @@
 	background-size: cover;
 }
 #home .center {
-	font-size: 12em;
+	font-size: 5em;
 	color:white;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+}
+#home .center > .day{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+}
+#home .center > .day > .dates{
+	font-size:0.75em;
+}
+#home .center > .day > .month{
+	font-size: 0.75em;
 }
 #home .center > .banner {
 	font-size: initial;
@@ -29,12 +40,15 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	font-size:0.5em;
+	margin-top:0.5em;
 }
 #home .center > .countdown > .subtitle {
 	display: flex;
 	flex-direction: column;
 	height: 0.725em;
 	justify-content: space-between;
+	padding-left:0.3em;
 }
 #home .center > .countdown > .subtitle span {
 	font-size:0.4em;
@@ -165,22 +179,69 @@
 	.footer {
 		height:10em;
 	}
-	.footer > div > .contact {
-		margin:1em;
-		margin-top:2em;
+	.slide#home > .footer > div > .contact {
+		margin-left:0;
 		font-size:0.8em;
+	}
+	.slide#about > .center > h2{
+		font-size:0.25em;
+	}
+	.slide#about > .center > p{
+		font-size:0.075em;
+	}
+	#about .contact i {
+		font-size: 0.35em;
+	}
+	#about .contact .details {
+		font-size: 0.09em;
+	}
+	#home .center > .day{
+		margin-top:1.25em;
+		font-size:1em;
+	}
+	#home .center > .day > .dates{
+		font-size:0.5em;
+	}
+	#home .center > .day > .month{
+		font-size: 0.5em;
 	}
 }
 @media only screen and (max-width: 600px) {
 	.center {
 		font-size: 8em;
 	}
-	.footer > div > .contact {
+	.slide#about > .center > h2{
+		font-size:0.25em;
+	}
+	.slide#about > .center > p{
+		font-size:0.075em;
+	}
+	.slide#home > .footer > div > .contact {
 		margin: 0.5em;
 		margin-top: 2.5em;
+		margin-left:0;
 		font-size: 0.8em;
 	}
 	.footer {
 		height:10em;
+	}
+	#about .contact i {
+		font-size: 0.35em;
+	}
+	#about .contact .details {
+		font-size: 0.09em;
+	}
+	#home .center > .day{
+		font-size:1em
+	}
+
+	#home .center > .banner{
+		font-size:0.2em
+	}
+	#home .center > .day > .dates{
+		font-size:0.5em;
+	}
+	#home .center > .day > .month{
+		font-size: 0.5em;
 	}
 }
