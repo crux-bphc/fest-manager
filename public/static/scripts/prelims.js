@@ -1,5 +1,8 @@
 (function(){
     $('#submit').click(function () {
+        $(this).html("Submitting...");
+        $(this).css("cursor","none");
+        $(this).attr("disabled", "disabled");
         if (!manager.validateForm()) {
             return;
         }
@@ -13,9 +16,15 @@
             data: data,
         }).done(function(response){
             swal("Response recorded!");
+            $('#submit').html("Submit");
+            $('#submit').css("cursor","pointer");
+            $('#submit').removeAttr("disabled"); 
             $('form input').val('');
         }).fail(function(err){
             swal("Some error occurred. Try again.");
+            $('#submit').html("Submit");
+            $('#submit').css("cursor","pointer");
+            $('#submit').removeAttr("disabled");  
         });
     });
 })();
