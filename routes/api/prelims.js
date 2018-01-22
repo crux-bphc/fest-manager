@@ -25,7 +25,7 @@ var worker = function (req, res, next) {
 		},
 
 		function addRecord(step) {
-			console.log('Event: ',req.body.event);
+			console.log('Event: ', req.body.event);
 			docs[req.body.event].addRow(1, req.body, function (err, row) {
 
 				if (err) {
