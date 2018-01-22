@@ -48,7 +48,7 @@ var schema = new Schema({
 });
 
 schema.plugin(require('mongoose-paginate'));
-var model = mongoose.model('usersModels', schema);
+var model = mongoose.model('users', schema);
 
 var authenticate = function (req, res, next) { // custom middleware to check if a user
 	if (req.isAuthenticated()) // is authenticated in the current session

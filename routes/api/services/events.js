@@ -27,7 +27,7 @@ var schema = new Schema({
 });
 
 schema.plugin(require('mongoose-paginate'));
-var model = mongoose.model('eventsModel', schema);
+var model = mongoose.model('events', schema);
 
 router.post('/addtocart', function (req, res, next) {
 	var eventModel = model;

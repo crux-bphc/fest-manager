@@ -26,7 +26,7 @@ var schema = new Schema({
 });
 
 schema.plugin(require('mongoose-paginate'));
-var model = mongoose.model('bodiesModel', schema);
+var model = mongoose.model('bodies', schema);
 
 module.exports = {
 	route: '/bodies',

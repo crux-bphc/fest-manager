@@ -24,7 +24,7 @@ var schema = new Schema({
 });
 
 schema.plugin(require('mongoose-paginate'));
-var model = mongoose.model('teamsModel', schema);
+var model = mongoose.model('teams', schema);
 
 module.exports = {
 	route: '/teams',
