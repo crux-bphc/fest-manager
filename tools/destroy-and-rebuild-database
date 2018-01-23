@@ -6,7 +6,7 @@
 
 // Configurable variables here.
 var pathToCollections = '../routes/api/services';
-var listToClean = ['users', 'bodies', 'events', 'teams', 'accomm'];
+var listToClean = ['users', 'bodies', 'events', 'teams', 'accomm', 'leaderboard'];
 
 // Handle arguments here.
 var superusers = process.argv.slice(2);
@@ -116,6 +116,179 @@ var getEvents = function (models) {
 	return data;
 };
 
+var getScores = function () {
+	data = [{
+			"_id": "5a49ff33c2d45e765fc357e8",
+			"name": "Birla Institute of Technology & Science - Goa",
+			"updatedAt": "2018-01-01T09:28:19.353Z",
+			"__v": 0,
+			"createdAt": "2018-01-01T09:28:19.353Z",
+			"others": [],
+			"bronze": [],
+			"silver": [
+				"Cricket"
+			],
+			"gold": []
+		},
+		{
+			"_id": "5a49ff58c2d45e765fc35837",
+			"name": "Harvard University",
+			"updatedAt": "2018-01-01T09:28:56.824Z",
+			"__v": 0,
+			"createdAt": "2018-01-01T09:28:56.824Z",
+			"others": [],
+			"bronze": [
+				"Cricket"
+			],
+			"silver": [],
+			"gold": [
+				"Tennis",
+				"Wolf"
+			]
+		},
+		{
+			"_id": "5a49ff17c2d45e765fc357b3",
+			"name": "Birla Institute of Technology & Science - Hyderabad",
+			"updatedAt": "2018-01-01T09:27:51.016Z",
+			"__v": 0,
+			"createdAt": "2018-01-01T09:27:51.016Z",
+			"others": [
+				"Football"
+			],
+			"bronze": [
+				"Wolf"
+			],
+			"silver": [
+				"Tennis",
+				"Generic/None",
+				"Eat, Sleep, Repeat"
+			],
+			"gold": [
+				"Cricket",
+				"Contact"
+			]
+		},
+		{
+			"_id": "5a588fd9c2d45e765fd2c9d8",
+			"name": "Universitas Islam Indonesia",
+			"updatedAt": "2018-01-12T10:37:13.074Z",
+			"__v": 0,
+			"createdAt": "2018-01-12T10:37:13.074Z",
+			"others": [],
+			"bronze": [
+				"Football"
+			],
+			"silver": [],
+			"gold": []
+		},
+		{
+			"_id": "5a588fefc2d45e765fd2ca0a",
+			"name": "Indian Institute of Information Technology - Design and Manufacturing - Jabalpur",
+			"updatedAt": "2018-01-12T10:37:35.920Z",
+			"__v": 0,
+			"createdAt": "2018-01-12T10:37:35.920Z",
+			"others": [],
+			"bronze": [
+				"Tennis"
+			],
+			"silver": [],
+			"gold": []
+		},
+		{
+			"_id": "5a58900bc2d45e765fd2ca47",
+			"name": "The Chinese University of Hong Kong",
+			"updatedAt": "2018-01-12T10:38:03.117Z",
+			"__v": 0,
+			"createdAt": "2018-01-12T10:38:03.117Z",
+			"others": [],
+			"bronze": [],
+			"silver": [],
+			"gold": [
+				"Generic/None"
+			]
+		},
+		{
+			"_id": "5a58904dc2d45e765fd2cac3",
+			"name": "Yeditepe University",
+			"updatedAt": "2018-01-12T10:39:09.749Z",
+			"__v": 0,
+			"createdAt": "2018-01-12T10:39:09.749Z",
+			"others": [],
+			"bronze": [],
+			"silver": [],
+			"gold": [
+				"Baseball"
+			]
+		},
+		{
+			"_id": "5a589062c2d45e765fd2cb06",
+			"name": "Dartmouth College",
+			"updatedAt": "2018-01-12T10:39:30.589Z",
+			"__v": 0,
+			"createdAt": "2018-01-12T10:39:30.589Z",
+			"others": [],
+			"bronze": [],
+			"silver": [
+				"Baseball"
+			],
+			"gold": []
+		},
+		{
+			"_id": "5a589098c2d45e765fd2cb89",
+			"name": "Brandeis University",
+			"updatedAt": "2018-01-12T10:40:24.546Z",
+			"__v": 0,
+			"createdAt": "2018-01-12T10:40:24.546Z",
+			"others": [
+				"Carrom"
+			],
+			"bronze": [],
+			"silver": [],
+			"gold": []
+		},
+		{
+			"_id": "5a5890adc2d45e765fd2cbe2",
+			"name": "Grand Canyon University",
+			"updatedAt": "2018-01-12T10:40:45.510Z",
+			"__v": 0,
+			"createdAt": "2018-01-12T10:40:45.510Z",
+			"others": [
+				"Battlecode"
+			],
+			"bronze": [],
+			"silver": [],
+			"gold": []
+		},
+		{
+			"_id": "5a5890bfc2d45e765fd2cc15",
+			"name": "Massachusetts Institute of Technology",
+			"updatedAt": "2018-01-12T10:41:03.712Z",
+			"__v": 0,
+			"createdAt": "2018-01-12T10:41:03.712Z",
+			"others": [],
+			"bronze": [],
+			"silver": [],
+			"gold": [
+				"Battlecode"
+			]
+		},
+		{
+			"_id": "5a66df3f5a4025f180025676",
+			"name": "Birla Institute of Technology and Science, Dubai",
+			"updatedAt": "2018-01-23T07:07:43.447Z",
+			"__v": 0,
+			"createdAt": "2018-01-23T07:07:43.447Z",
+			"others": [],
+			"bronze": [],
+			"silver": [],
+			"gold": [
+				"Oil spilling"
+			]
+		}
+	];
+	return data;
+}
+
 // Internal functions here. Do not change unless you know what you're doing.
 
 var toId = function (str) {
@@ -152,6 +325,9 @@ var populateModels = function (models) {
 		}
 		if (elem.name == 'events') {
 			return promises.push(elem.model.insertMany(getEvents(models)));
+		}
+		if (elem.name == 'leaderboard') {
+			return promises.push(elem.model.insertMany(getScores()));
 		}
 	});
 	return Promise.all(promises);
