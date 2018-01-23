@@ -20,9 +20,6 @@ Object.keys(strategies).forEach(strategy => strategies[strategy]());
 var connection = fq('mongoose');
 connection();
 
-var stateHandler = fq('state');
-var optionsHandler = fq('options');
-
 var index = fq('routes');
 var upload = fq("routes/upload");
 var components = fq('routes/components');
@@ -61,16 +58,6 @@ morgan.token('date', function () {
 	});
 });
 app.use(morgan('express: (:date IST) :user \t :method :url :status :response-time ms - :res[content-length]'));
-
-app.use(cookieParser('damn ninjas cutting onions'));
-app.use(bodyParser.json({
-	limit: "20mb"
-}));
-app.use(bodyParser.urlencoded({
-	limit: "20mb",
-	extended: true,
-	parameterLimit: 50000
-}));
 app.use(cookieSession({
 	keys: ['qwerty', 'uiop']
 }));
@@ -91,6 +78,16 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(fq('render-state'));
+app.use(cookieParser('damn ninjas cutting onions'));
+app.use(bodyParser.json({
+	limit: "20mb"
+}));
+app.use(bodyParser.urlencoded({
+	limit: "20mb",
+	extended: true,
+	parameterLimit: 50000
+}));
 app.use(router);
 
 let clientCheckpoint = function (req, res, next) {
@@ -99,23 +96,6 @@ let clientCheckpoint = function (req, res, next) {
 	else
 		res.redirect(req.url);
 };
-
-app.use(function (req, res, next) {
-	req.stateparams = {};
-	res.renderState = function (filename, options) {
-		var state = stateHandler.getState(req);
-		options = optionsHandler.updateOptions(options);
-		res.render(filename, options, function (err, string) {
-			if (err) console.log(err);
-
-			res.send({
-				html: string,
-				state: state,
-			});
-		});
-	};
-	return next();
-});
 
 app.use('/export', data);
 app.use('/upload', upload);
@@ -140,6 +120,13 @@ app.use(function (err, req, res, next) {
 	// set locals, only providing error in development
 	res.locals.message = err.message;
 	res.locals.error = req.app.get('env') === 'development' ? err : {};
+	if (req.originalUrl.startsWith('/api/') || (req.user && req.user.privilege)) {
+		res.status(500).send({
+			msg: err.message,
+			err: err
+		});
+		return;
+	}
 	// render the error page
 	res.status(err.status || 500);
 	res.renderState('error', {

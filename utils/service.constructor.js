@@ -12,7 +12,9 @@ function service(model, router) {
 			}).then(data => {
 				res.json(data);
 			}).catch(error => {
-				res.status(500).send(error);
+				console.log(err);
+				res.status(500).send("There was some error. Please check the syntax or contact an admin.");
+				return;
 			});
 		} else {
 			model.find({}).then(data => {
@@ -21,7 +23,9 @@ function service(model, router) {
 				}
 				res.json(data);
 			}).catch(error => {
-				res.status(500).send(error);
+				console.log(err);
+				res.status(500).send("There was some error. Please check the syntax or contact an admin.");
+				return;
 			});
 		}
 	});
@@ -31,9 +35,9 @@ function service(model, router) {
 			_id: req.params.id
 		}, function (err, item) {
 			if (err) {
-				err.status = 404;
-				next(err);
-				return 0;
+				console.log(err);
+				res.status(500).send("There was some error. Please check the syntax or contact an admin.");
+				return;
 			}
 			res.send(item);
 		});
@@ -42,9 +46,9 @@ function service(model, router) {
 	router.post('/get-one', function (req, res, next) {
 		model.findOne(req.body.filter, function (err, item) {
 			if (err) {
-				err.status = 404;
-				next(err);
-				return 0;
+				console.log(err);
+				res.status(500).send("There was some error. Please check the syntax or contact an admin.");
+				return;
 			}
 			res.send(item);
 		});
@@ -52,35 +56,46 @@ function service(model, router) {
 
 	router.post('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
 		var item = new model(req.body);
-		item.save(function (err) {
+		item.save(function (err, data) {
 			if (err) {
-				res.status(500).send("Error");
-				return 0;
+				console.log(err);
+				res.status(500).send(err);
+				return;
 			}
-			res.send("Success");
+			res.send({
+				status: "Success",
+				data: data,
+			});
 		});
 	});
 
 	router.put('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
 		model.update({
 			_id: req.body._id || req.body.id
-		}, req.body, function (err) {
+		}, req.body, function (err, data) {
 			if (err) {
-				err.status = 500;
-				next(err);
-				return 0;
+				console.log(err);
+				res.status(500).send(err);
+				return;
 			}
-			res.send("Success");
+			res.send({
+				status: "Success",
+				data: data,
+			});
 		});
 	});
 
 	router.delete('/:id', middleware.authenticate, middleware.elevate, function (req, res, next) {
-		model.findByIdAndRemove(req.params.id, function (err, item) {
+		model.findByIdAndRemove(req.params.id, function (err, data) {
 			if (err) {
-				err.status = 500;
-				next(err);
+				console.log(err);
+				res.status(500).send(err);
+				return;
 			}
-			res.send("Success");
+			res.send({
+				status: "Success",
+				data: data,
+			});
 		});
 	});
 
@@ -93,11 +108,15 @@ function service(model, router) {
 					upsert: true
 				}) // options
 			.then(data => {
-				return res.send("Success");
+				return res.send({
+					status: "Success",
+					data: data,
+				});
 			})
-			.catch(error => {
-				console.error(error);
-				return res.status(500).send("Error");
+			.catch(err => {
+				console.log(err);
+				res.status(500).send(err);
+				return;
 			});
 	});
 	return router;
