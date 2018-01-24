@@ -5,8 +5,8 @@ var middleware = fq('authentication').middleware;
 var getOptions = function (data) {
 	var options = {};
 	if (data.page) {
-		options.page = data.page;
-		options.limit = data.limit || 10;
+		options.page = parseInt(data.page);
+		options.limit = parseInt(data.limit) || 10;
 	}
 	if (data.fields) {
 		options.select = data.fields.split(',').join(' ');
