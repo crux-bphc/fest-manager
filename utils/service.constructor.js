@@ -2,32 +2,38 @@ var express = require('express');
 var fq = require('fuzzquire');
 var middleware = fq('authentication').middleware;
 
-/* routing CRUD operations for users service */
+var getOptions = function (data) {
+	var options = {};
+	if (data.page) {
+		options.page = data.page;
+		options.limit = data.limit || 10;
+	}
+	if (data.fields) {
+		options.select = data.fields.split(',').join(' ');
+	}
+	if (data.sort) {
+		options.sort = {};
+		options.sort[data.sort] = data.direction || 'asc';
+	}
+	return options;
+}
+
 function service(model, router) {
 	router.get('/', function (req, res, next) {
+		var options = getOptions(req.query);
+		var promise = undefined
 		if (req.query.page) {
-			model.paginate({}, {
-				page: req.query.page,
-				limit: 10,
-			}).then(data => {
-				res.json(data);
-			}).catch(error => {
-				console.log(err);
-				res.status(500).send("There was some error. Please check the syntax or contact an admin.");
-				return;
-			});
+			promise = model.paginate({}, options);
 		} else {
-			model.find({}).then(data => {
-				if (req.query.sort && data[0][req.query.sort] !== undefined) {
-					data = fq('sort')(data, req.query.sort);
-				}
-				res.json(data);
-			}).catch(error => {
-				console.log(err);
-				res.status(500).send("There was some error. Please check the syntax or contact an admin.");
-				return;
-			});
+			promise = model.find({}, {}, options);
 		}
+		promise.then(data => {
+			res.json(data);
+		}).catch(err => {
+			console.log(err);
+			res.status(500).send(err);
+			return;
+		});
 	});
 
 	router.get('/:id', function (req, res, next) {
@@ -36,7 +42,7 @@ function service(model, router) {
 		}, function (err, item) {
 			if (err) {
 				console.log(err);
-				res.status(500).send("There was some error. Please check the syntax or contact an admin.");
+				res.status(500).send(err);
 				return;
 			}
 			res.send(item);
@@ -47,7 +53,7 @@ function service(model, router) {
 		model.findOne(req.body.filter, function (err, item) {
 			if (err) {
 				console.log(err);
-				res.status(500).send("There was some error. Please check the syntax or contact an admin.");
+				res.status(500).send(err);
 				return;
 			}
 			res.send(item);
