@@ -728,10 +728,6 @@ input[type = "file"] {
     padding: 0;
 }
 
-.main * {
-    font-weight: 300;
-}
-
 h1,
 h2,
 h3,
@@ -1111,6 +1107,9 @@ table {
     border-collapse: collapse;
     margin: 20px 0;
     padding: 0;
+}
+table thead {
+    font-weight:600;
 }
 table tr th, table tr td {
     border: 1px solid #CCC;

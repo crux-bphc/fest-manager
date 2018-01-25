@@ -7,9 +7,9 @@ table
 		td Silver
 		td Bronze
 		td Others
-	each row in viewdata.leaderboard
+	each row,i in viewdata.leaderboard
 		tr
-			td 0
+			td=i+1
 			td=row.name
 			td=row.gold.length
 			td=row.silver.length
