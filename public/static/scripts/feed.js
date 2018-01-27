@@ -29,7 +29,7 @@ $(document).ready(function () {
 				team2: $('#field-team2').val(),
 			}
 		}).done(function (data, textStatus, req) {
-			if (data == "Success") {
+			if (data.status || data == "Success") {
 				manager.route('/portals/feed');
 			}
 		}).fail(function (err) {
