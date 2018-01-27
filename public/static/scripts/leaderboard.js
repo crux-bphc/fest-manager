@@ -26,7 +26,7 @@ $(document).ready(function () {
 				rank: $('#field-rank').val() || "",
 			}
 		}).done(function (data, textStatus, req) {
-			if (data == "Success") {
+			if (data.status || data == "Success") {
 				manager.route('/portals/scores');
 			}
 		}).fail(function (err) {
