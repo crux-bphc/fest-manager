@@ -287,7 +287,7 @@ var getScores = function () {
 		}
 	];
 	return data;
-}
+};
 
 // Internal functions here. Do not change unless you know what you're doing.
 

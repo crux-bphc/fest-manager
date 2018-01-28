@@ -16,12 +16,12 @@ var getOptions = function (data) {
 		options.sort[data.sort] = data.direction || 'asc';
 	}
 	return options;
-}
+};
 
 function service(model, router) {
 	router.get('/', function (req, res, next) {
 		var options = getOptions(req.query);
-		var promise = undefined
+		var promise;
 		if (req.query.page) {
 			promise = model.paginate({}, options);
 		} else {
