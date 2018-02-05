@@ -7,11 +7,42 @@ div.immersive-wrapper
         canvas#mistscape
         div.center
             img(src="/static/images/logo.png")
+            div.countdown
+                .days(title="d")
+                .hours(title="h")
+                .minutes(title="m")
+                .seconds(title="s")
         div.footer
-            div.face PRELIMS REGISTRATIONS OPEN NOW
-            div.list
-                a(href="/prelims/kaleidoscope") KALEIDOSCOPE
-                a(href="/prelims/tilldeaf") TILL DEAF DO WE PART
-                a(href="/prelims/terpsichore") TERPSICHORE
+            i.icon-navigate_next
+            span.contact
+                .name Abhinav Eittireddy
+                span 9172897213
+            span.contact
+                .name Aditya Iyer
+                span 9830029258
+            span.contact
+                .name Chandan Kumar
+                span 8273698270
+    div.slide.secondary
+        div.prelims
+            div.heading
+                .subheading REGISTER FOR
+                span PRELIMS
+            div.links
+                a(href="/prelims/kaleidoscope") Kaleidoscope
+                a(href="/prelims/tilldeaf") Till Deaf Do We Part
+                a(href="/prelims/terpsichore") Terpsichore
+        div.sponsors
+            div.heading
+                .subheading PREVIOUS
+                span SPONSORS
+            .item
+            .item
+            .item
+            .item
+            .item
+            .item
+            .item
+            .item
 
 script(src="/static/scripts/home.js")
