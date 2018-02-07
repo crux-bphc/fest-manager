@@ -166,6 +166,7 @@
   padding: 3em 0em;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .secondary > * > .heading {
   font-size: 3em;
@@ -268,5 +269,11 @@
     content: "Register Now!";
     right: 2.5em;
     position:absolute;
+  }
+  .parallax .countdown > * {
+    width: 3em;
+  }
+  .secondary .prelims {
+    flex-direction: column;
   }
 }
