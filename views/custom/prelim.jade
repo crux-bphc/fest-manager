@@ -7,6 +7,9 @@ link(href="/static/stylesheets/prelims.style.css" rel="stylesheet")
             span= title
         - form = {fields: form, route: route}
         +formMixin(form)
+        if brochure
+            .stretch
+                a(href=brochure) Download Brochure
         .stretch
             .button#submit Submit
 script(src="/static/scripts/prelims.js")

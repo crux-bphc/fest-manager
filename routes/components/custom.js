@@ -15,12 +15,14 @@ var handler = function (req, res) {
 		kaleidoscope: "Kaleidoscope"
 	};
 	req = applyStateChanges(req);
-	res.renderState('custom/prelim', {
+	var options = {
 		title: Titles[req.params.id],
 		user: req.user,
 		form: fq('forms/' + req.params.id)(),
 		route: '/api/prelims/' + req.params.id,
-	});
+	};
+	if(req.params.id == 'terpsichore') options.brochure = '/static/data/Terpsichore.pdf';
+	res.renderState('custom/prelim', options);
 }
 router.use('/prelims/:id', handler);
 

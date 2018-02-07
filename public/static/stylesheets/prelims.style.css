@@ -48,6 +48,12 @@ form .field-container input, form .field-container {
   display: flex;
   justify-content: flex-end;
 }
+.immersive-wrapper .stretch a {
+  padding-bottom: 2em;
+}
+.immersive-wrapper .stretch a:hover {
+  text-decoration: underline;
+}
 .immersive-wrapper .button {
   background: none;
   border: 1px solid rgba(178,142,84,1);
