@@ -136,6 +136,9 @@
 }
 .parallax > .footer > .contact > .name {
   font-size: 0.8em;
+  line-height: 1.5em;
+  font-weight: 600;
+  color: #b08652;
 }
 .parallax > .footer > i {
   line-height: 1.5em;
@@ -273,7 +276,35 @@
   .parallax .countdown > * {
     width: 3em;
   }
-  .secondary .prelims {
+  .parallax .footer {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .parallax .footer .contact {
+    margin: 1em 0em;
+  }
+  .parallax .center {
+    margin-top: -25%;
+  }
+  .secondary .prelims .links, .secondary .prelims {
     flex-direction: column;
+  }
+  .secondary .prelims .heading {
+    width: 100%;
+  }
+  .secondary .prelims .links {
+    width: 100%;
+  }
+  .secondary .prelims .links a {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0em 1.5em;
+    border: none;
+    font-weight: 600;
+  }
+  .secondary .sponsors .heading {
+    margin-left: 0.5em;
   }
 }
