@@ -34,6 +34,11 @@ $(document).ready(function () {
 				isAmbassador: isAmbassador
 			}
 		}).done(function (data, textStatus, req) {
+			swal({
+				title: "Registered Successfully",
+				type: "success",
+				confirmButtonText: "OK",
+			});
 			if (data == "Success") {
 				manager.route('/dashboard');
 			}

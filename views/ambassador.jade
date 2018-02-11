@@ -17,7 +17,8 @@ div.section.body
             p Pearl is the national annual cultural festival of the reputed BITS Pilani, Hyderabad Campus. We have embraced the tradition of electing dynamic ambassadors from different colleges whose primary responsibility lies in conducting a successful publicity initiative of Pearl: in and around his/her college. This year we are exhilarated to enlarge our acquaintance base and recruit capable and enthusiastic students from across different colleges along the length and the breadth of the country.
             p Over the past 9 years, the fest has branched out into diverse activities. In the previous year alone, it has attracted a footfall of more than 50,000 and a reach of more than 300 colleges in India. This year, Pearl aims to reach out to all the colleges in India with a vision of promoting excellent campus culture. College Ambassadors will play a pivotal role in fulfilling this vision and be a part of this amazing journey that we intend to embark upon.
         if(user)
-            div.button#open-form-button Register Now
+            if !user.isAmbassador
+                div.button#open-form-button Register Now
         else
             a.button(href="/login") Login to register
         div.responsibilities
