@@ -96,6 +96,7 @@ var getFields = function (user) {
 
 router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = "Campus Ambassador";
+	req.stateparams.immersive = false;
 	var params = {
 		title: 'Register for Campus Ambassador',
 		user: req.user,

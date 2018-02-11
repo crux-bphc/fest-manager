@@ -4,7 +4,8 @@ var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
 
 var applyStateChanges = function (req) {
-	req.stateparams.immersive = true;
+	req.stateparams.immersive = false;
+	req.stateparams.forceHideSidebar = true;
 	return req;
 };
 

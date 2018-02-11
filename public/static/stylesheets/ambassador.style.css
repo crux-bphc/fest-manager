@@ -18,24 +18,29 @@ form.active {
 form .field-container {
     width:50%;
 }
+div.section.body > .content .about {
+    box-sizing: border-box;
+    padding: 0 10%;
+}
 div.section.body div.content {
     display: block;
     line-height: 1.5em;
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 0;
     text-align: justify;
     font-size: 1em;
     font-weight: 400;
     color:#666667;
     text-align: center;
+    margin-top: 1.5em;
 }
 div.section.body div.content.inactive {
     display: none;
 }
 div.section.body div.content > div {
     margin-bottom: 4em;
+    margin-top: 2em;
 }
 div.section.body div.content h2 {
     text-align: center;

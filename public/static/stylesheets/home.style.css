@@ -108,6 +108,31 @@
   margin-left: 0.5em;
   font-size: 0.8em;
 }
+.parallax > .header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: +100;
+  left: 0;
+  text-align: right;
+}
+.parallax > .header a {
+  font-size: 1em;
+  color: #b08652;
+  height: 3em;
+  display: inline-block;
+  padding: 0em 1em;
+  margin: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.parallax > .header a::after {
+  content: "\e409";
+  font-size: 1.5em;
+  line-height: 2em;
+  font-family: "icomoon";
+}
 .parallax > .footer {
   display: flex;
   align-items: center;

@@ -8,7 +8,8 @@ var applyStateChanges = function (req) {
 		text: 'Google Developer Group',
 		route: 'gdg',
 	};
-	req.stateparams.immersive = true;
+	req.stateparams.immersive = false;
+	req.stateparams.forceHideSidebar = true;
 	return req;
 };
 

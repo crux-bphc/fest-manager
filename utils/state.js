@@ -8,6 +8,7 @@ module.exports = function () {
 		state.pagetitle = req.stateparams.pagetitle || null;
 		state.title = req.stateparams.title || {};
 		state.submenu = req.stateparams.submenu || {};
+		state.forceHideSidebar = req.stateparams.forceHideSidebar || false;
 		return state;
 	};
 
@@ -39,9 +40,13 @@ module.exports = function () {
 	};
 
 	var appendSidebarState = function (state) {
-		var items = ['dashboard', 'portals', 'events', 'home', 'about', 'ca'];
+		var items = ['dashboard', 'portals', 'home', 'ca'];
 		var sidebar = {};
 		sidebar.visible = !state.isImmersive;
+		if (state.forceHideSidebar){
+			sidebar.visible = false;
+		}
+		sidebar.hideburger = state.forceHideSidebar; // for hiding menu button
 		sidebar.menu = {};
 		items.forEach(function (elem) {
 			if (state.location.startsWith('/components/' + elem)) {
@@ -62,6 +67,8 @@ module.exports = function () {
 
 	var getState = function (req) {
 		var state = {};
+		state.visible = true;
+		state.invisible = false;
 		state = appendStateFromRequest(state, req);
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);

@@ -30,7 +30,7 @@ body
 		div.navbar(_triggers="navbar/visible=visible")
 			div.wrapper
 				div#menu.button(tabindex=1)
-					i.icon-menu
+					i.icon-menu(_triggers="sidebar/hideburger=hidden")
 				span.subtitle.hidden
 					i.icon-navigate_next
 					span.text
@@ -39,6 +39,9 @@ body
 					div#blurCarpet
 					div.button.mute-button(onclick="Buildings.mute()")
 						i.mute.icon-volume_up(style="font-size:1.5em")
+					a.button(href="/ca" _triggers="navbar/ambassador=visible")
+						i.icon-account_circle
+						div Register for Campus Ambassador
 					div.button.user(_triggers="navbar/avatar=visible" tabindex="0")
 						if user
 							label(for="dropdown")
@@ -70,18 +73,16 @@ body
 					a.button(href="/logout" _triggers="navbar/logout=visible")
 						i.icon-power_settings_new
 						div Logout
-					a.button(href="/login" _triggers="navbar/login=visible")
-						i.icon-account_circle
-						div Register / Login
+					//- a.button(href="/login" _triggers="navbar/login=visible")
+					//- 	i.icon-account_circle
+					//- 	div Register / Login
 		div.remnant
 			div.sidebar(tabindex="2" _triggers="sidebar/visible=visible")
 				div.wrapper
 					div.section.primary
-						a.label MAIN
 						ul
 							each val, key in navigation
 								a(class=val.initial href=val.route _triggers=val.triggers)
-									i
 									span= val.label
 					div.secondary-wrapper
 						div.section.secondary

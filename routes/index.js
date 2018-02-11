@@ -14,18 +14,18 @@ router.get('/?*', function (req, res, next) {
 				label: "Home",
 				route: "/",
 			},
-			about: {
-				label: "About",
-				route: "/about",
-			},
-			events: {
-				label: "Events",
-				route: "/events",
-			},
-			workshops: {
-				label: "Workshops",
-				route: "/events#Workshop",
-			},
+			// about: {
+			// 	label: "About",
+			// 	route: "/about",
+			// },
+			// events: {
+			// 	label: "Events",
+			// 	route: "/events",
+			// },
+			// workshops: {
+			// 	label: "Workshops",
+			// 	route: "/events#Workshop",
+			// },
 			dashboard: {
 				label: "Dashboard",
 				route: "/dashboard",

@@ -1,13 +1,15 @@
 include ../mixins/form
 link(rel="stylesheet" href="/static/lib/jquery-ui-custom/jquery-ui.min.css")
-div.section.header
-	h1= title
-	div.stretch
-			div.remnant
-				ul.controls
-					li.icon-check#submit-button(tooltip="Save")
-					a.icon-close#cancel-button(href="/dashboard" tooltip="Cancel")
-- var form = { fields: fields, method: "PUT", action: "/api/users/me" };
-+formMixin(form)
+.immersive-wrapper
+	.form
+		div.section.header
+			h1=title
+			div.stretch
+					div.remnant
+						ul.controls
+							li.icon-check#submit-button(tooltip="Save")
+							a.icon-close#cancel-button(href="/dashboard" tooltip="Cancel")
+		- var form = { fields: fields, method: "PUT", action: "/api/users/me" };
+		+formMixin(form)
 script(src="/static/lib/jquery-ui-custom/jquery-ui.min.js")
 script(src="/static/scripts/register.js")

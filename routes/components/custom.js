@@ -5,7 +5,8 @@ var eventsService = fq("services/events").model;
 
 // Load custom modules here
 var applyStateChanges = function (req) {
-	req.stateparams.immersive = true;
+	req.stateparams.immersive = false;
+	req.stateparams.forceHideSidebar = true;
 	return req;
 };
 var handler = function (req, res) {

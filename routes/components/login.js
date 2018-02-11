@@ -7,7 +7,7 @@ const userService = fq('services/users').model;
 router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Login';
 	var params = {
-		title: 'Login to Atmos 2017',
+		title: 'Login to Pearl 2018',
 		methods: config.passports,
 	};
 	req.session.callback = req.query.callback;

@@ -10,15 +10,6 @@ var applyStateChanges = function (req) {
 		text: 'Dashboard',
 		route: '/dashboard',
 	};
-	req.stateparams.submenu = [{
-			route: "/dashboard/account",
-			label: "Account"
-		},
-		{
-			route: "/dashboard/cart",
-			label: "Cart"
-		}
-	];
 	return req;
 };
 

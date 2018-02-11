@@ -5,6 +5,8 @@ var router = express.Router();
 var shortID = require('mongoose-shortid-nodeps');
 var eventModel = require('./events').model;
 var fq = require('fuzzquire');
+var base = require('project-root-path');
+var path = require('path');
 
 var toId = function (str) {
 	return mongoose.Types.ObjectId(str);
@@ -266,6 +268,18 @@ router.put('/me/', function (req, res, next) {
 	var changeddata = {};
 	changeddata = Object.assign(req.user, req.body);
 	if (req.user._id) {
+		if(changeddata.isAmbassador) {
+			const fs = require('fs');
+			const mail = fq('utils/mailer');
+			var emailOptions = {};
+			emailOptions.title = "Registered as Campus Ambassador";
+			fs.readFile(path.join(base, './views/email-templates/ambassador.md'), 'utf8', function(err, data) {
+				emailOptions.template = data;
+				mail({
+					email: req.user.email
+				}, emailOptions);
+			});
+		}
 		model.update({
 			email: req.user.email
 		}, changeddata, function (err, user) {

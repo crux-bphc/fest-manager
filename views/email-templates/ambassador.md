@@ -1,6 +1,6 @@
 # Hi <span style="text-transform:capitalize;">user.name</span>! Welcome to Pearl
 
-### You have successfully registered for Pearl.
+### You have successfully registered for the Pearl Campus Ambassador Program.
 
 ### Your details are:
 * Name: <b style="color:#49D">user.name</b>
