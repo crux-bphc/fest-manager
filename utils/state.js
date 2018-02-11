@@ -35,6 +35,8 @@ module.exports = function () {
 		navbar.login = !state.user.isAuthenticated;
 		navbar.avatar = state.user.isAuthenticated;
 		navbar.exit = false;
+		if(state.location == '/components/' && !state.user.isAuthenticated)
+			navbar.ambassador = true;
 		state.navbar = navbar;
 		return state;
 	};

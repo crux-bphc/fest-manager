@@ -1,5 +1,5 @@
-# Hi <span style="text-transform:capitalize;">user.name</span>! Welcome to Pearl
-
+## Hi <span style="text-transform:capitalize;">user.name</span>! Welcome to Pearl
+<br/>
 ### You have successfully registered for the Pearl Campus Ambassador Program.
 
 ### Your details are:
@@ -10,14 +10,8 @@
 
 Pearl is going to be better than ever before. We have bigger events, competitions and pro-shows going for us. Be a part of the experience and don't miss out on anything.
 
-### For more explore our website: https://bits-atmos.org
+### For more explore our website https://bits-pearl.org or find out more about the campus ambassador program at https://bits-pearl.org/ca
 
-### Some quick links:
-1. [Events](https://bits-atmos.org/events)
-2. [Workshop Tickets](https://www.townscript.com/e/atmos-workshops-413303)
-3. [Team](https://bits-atmos.org/about/contact)
-4. [Getting here](https://bits-atmos.org/about/map)
-5. [FAQ and Accommodation policy](https://bits-atmos.org/about/faq)
-6. [T&C and Privacy Policy](https://bits-atmos.org/about/more)
+You will be informed of your responsibilities and tasks in subsequent mails. We are looking forward to collaborating with you. Thank you for registering.
 
 If you have any query, reach out to us on <b>[pearl@hyderabad.bits-pilani.ac.in](mailto:pearl@hyderabad.bits-pilani.ac.in)</b> or call us on <b>9603403456</b> or <b>8897454710</b>.

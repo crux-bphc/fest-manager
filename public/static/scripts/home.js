@@ -56,7 +56,7 @@
 		update();
 		requestAnimationFrame(animate);
 	}
-	// animate();
+	animate();
 	window.onresize = resize();
 })();
 

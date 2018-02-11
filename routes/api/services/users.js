@@ -272,7 +272,7 @@ router.put('/me/', function (req, res, next) {
 			const fs = require('fs');
 			const mail = fq('utils/mailer');
 			var emailOptions = {};
-			emailOptions.title = "Registered as Campus Ambassador";
+			emailOptions.subject = "Registered as Campus Ambassador";
 			fs.readFile(path.join(base, './views/email-templates/ambassador.md'), 'utf8', function(err, data) {
 				emailOptions.template = data;
 				mail({
