@@ -23,10 +23,8 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 			user[provider] = profile.id;
 			user.save(function (err) {
 				if (err) console.log(err);
-				passport.serializeUser(function (user, done) {
-					return done(null, user._id);
-				});
 			});
+			return done(null, user);
 		} else {
 			if (provider == 'googleID') {
 				user.profileImage = profile._json.image.url;
