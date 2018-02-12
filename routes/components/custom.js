@@ -22,9 +22,9 @@ var handler = function (req, res) {
 		form: fq('forms/' + req.params.id)(),
 		route: '/api/prelims/' + req.params.id,
 	};
-	if(req.params.id == 'terpsichore') options.brochure = '/static/data/Terpsichore.pdf';
+	if (req.params.id == 'terpsichore') options.brochure = '/static/data/Terpsichore.pdf';
 	res.renderState('custom/prelim', options);
-}
+};
 router.use('/prelims/:id', handler);
 
 module.exports = router;
