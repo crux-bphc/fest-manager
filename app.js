@@ -72,7 +72,7 @@ app.use(session({
 		ttl: 260
 	}),
 	cookie: {
-		maxAge : 2592000000, // 30 days
+		maxAge: 2592000000, // 30 days
 		secure: true
 	},
 	secret: 'damn ninjas cutting onions'
