@@ -7,7 +7,7 @@
   font-size: 1.2em;
 }
 
-.module-login.auth-container {
+.module-login .auth-container {
   width: 20em;
   box-sizing: border-box;
   padding:3em 2em;
@@ -16,7 +16,7 @@
   padding-bottom: 2em;
   font-weight: 600;
 }
-.module-login.auth-container .title {
+.module-login .auth-container .title {
   font-size: 1.5em;
   color:#444;
   display: block;
@@ -25,7 +25,7 @@
   margin-bottom:1em;
 }
 
-.module-login.child-center {
+.module-login .child-center {
   font-size: inherit;
   text-decoration: none;
   display: flex;
@@ -39,16 +39,16 @@
   border-style: solid;
   opacity: 0.8;
 }
-.module-login.child-center i {
+.module-login .child-center i {
   margin-right: 0.5em;
 }
-.module-login.child-center span {
+.module-login .child-center span {
   font-family: 'Proxima Nova';
   font-size: 0.9em;
   font-weight: 500;
 }
 
-.module-login.error {
+.module-login .error {
 	background: #F44336;
 	color: #ffffff;
 	line-height: 2.5;
@@ -62,18 +62,18 @@
 	font-family: sans-serif;
 }
 
-.module-login.error span {
+.module-login .error span {
 	display: inline-block;
 }
 
-.module-login.error .title {
+.module-login .error .title {
 	font-weight:bolder;
 	margin-right: 1em;
 }
-.module-login.error .message {
+.module-login .error .message {
 	font-size: 0.9em;
 }
-.module-login.error .cross {
+.module-login .error .cross {
 	display: block;
 	right:5%;
 	position:absolute;
@@ -81,46 +81,46 @@
 	font-weight: bolder;
 }
 
-.module-login.child-center:active {
+.module-login .child-center:active {
   box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
 }
 
 
 /* Facebook */
-.module-login.child-center.facebook {
+.module-login .child-center.facebook {
   color: #4C69BA;
   border-color: #4C69BA;
 }
 /*.loginBtn--facebook:before {
   background-image: url('/images/icon_facebook.png');
 }*/
-.module-login.child-center.facebook:hover,
-.module-login.child-center.facebook:focus {
+.module-login .child-center.facebook:hover,
+.module-login .child-center.facebook:focus {
   color: #5B7BD5;
 }
 
 /* GitHub */
-.module-login.child-center.github {
+.module-login .child-center.github {
   color: #222;
   border-color: #222;
 }
 /*.loginBtn--github:before {
   background-image: url('/images/icon_github.png');
 }*/
-.module-login.child-center.github:hover,
-.module-login.child-center.github:focus {
+.module-login .child-center.github:hover,
+.module-login .child-center.github:focus {
   color: #444;
 }
 
 /* Google */
-.module-login.child-center.google {
+.module-login .child-center.google {
   color: #DD4B39;
   border-color: #DD4B39;
 }
 /*.child-center.google:before {
   background-image: url('/images/icon_google.png');
 }*/
-.module-login.child-center.google:hover,
-.module-login.child-center.google:focus {
+.module-login .child-center.google:hover,
+.module-login .child-center.google:focus {
   color: #E74B37;
 }
