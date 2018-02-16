@@ -1,12 +1,14 @@
 @import url("/static/fonts/Amber Taste/font.css");
 
-.main .wrapper.face {
+.main .wrapper.face.module-home {
   overflow-y: hidden;
 }
 * {
   -webkit-select: none;
 }
 
+
+/*Don't add the module class to this element. This is out of the container div.*/
 .immersive-wrapper {
   position:absolute;
   background-color: rgba(0,0,0,0.5); /*immersive mode starts with this color*/
@@ -20,17 +22,17 @@
   justify-content: space-around;
   align-items: center;
 }
-.slide {
+.module-home .slide {
   position:relative;
   width:100%;
   height:100%;
 }
-.parallax {
+.module-home .parallax {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.parallax > .background {
+.module-home .parallax > .background {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -42,14 +44,14 @@
     top:0;
     background-position: center center;
 }
-.parallax > .overlay {
+.module-home .parallax > .overlay {
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 10;
     background: rgba(0,0,0,0.6);
 }
-.parallax > canvas {
+.module-home .parallax > canvas {
   top: 0;
   left: 0;
   width: 100%;
@@ -59,25 +61,25 @@
   position: fixed;
   z-index: 0;
 }
-.parallax > .background > img {
+.module-home .parallax > .background > img {
   position:absolute;
   top:0;
   left: 0;
   height:100%;
 }
-#mistscape {
+.module-home #mistscape {
   display: none;
 }
-.parallax > .center {
+.module-home .parallax > .center {
   height: 20em;
   position: absolute;
   z-index: 10;
   margin-top:-5%;
 }
-.parallax > .center > img {
+.module-home .parallax > .center > img {
   height: 100%;
 }
-.parallax .countdown {
+.module-home .parallax .countdown {
   position:absolute;
   top:105%;
   z-index: +20;
@@ -96,19 +98,19 @@
   cursor: default;
   color: #b08753;
 }
-.parallax .countdown > * {
+.module-home .parallax .countdown > * {
   font-family: 'Amber-Taste-Basic';
   font-size: 1em;
   width: 5em;
   flex-shrink: 0;
   text-align: center;
 }
-.parallax .countdown > *::after {
+.module-home .parallax .countdown > *::after {
   content: attr(title);
   margin-left: 0.5em;
   font-size: 0.8em;
 }
-.parallax > .header {
+.module-home .parallax > .header {
   width: 100%;
   position: absolute;
   top: 0;
@@ -116,7 +118,7 @@
   left: 0;
   text-align: right;
 }
-.parallax > .header a {
+.module-home .parallax > .header a {
   font-size: 1em;
   color: #b08652;
   height: 3em;
@@ -127,13 +129,13 @@
   align-items: center;
   justify-content: flex-end;
 }
-.parallax > .header a::after {
+.module-home .parallax > .header a::after {
   content: "\e409";
   font-size: 1.5em;
   line-height: 2em;
   font-family: "icomoon";
 }
-.parallax > .footer {
+.module-home .parallax > .footer {
   display: flex;
   align-items: center;
   line-height: 2em;
@@ -144,7 +146,7 @@
   z-index: +30;
   flex-direction: row;
 }
-.parallax > .footer::before {
+.module-home .parallax > .footer::before {
   bottom: 100%;
   line-height: 2em;
   padding-bottom: 1em;
@@ -152,20 +154,20 @@
   color:white;
   position:absolute;
 }
-.parallax > .footer > .contact {
+.module-home .parallax > .footer > .contact {
   color: #fff;
   font-weight: 400;
   width: 12em;
   text-align: center;
   text-transform: uppercase;
 }
-.parallax > .footer > .contact > .name {
+.module-home .parallax > .footer > .contact > .name {
   font-size: 0.8em;
   line-height: 1.5em;
   font-weight: 600;
   color: #b08652;
 }
-.parallax > .footer > i {
+.module-home .parallax > .footer > i {
   line-height: 1.5em;
   width:1.5em;
   text-align: center;
@@ -188,7 +190,7 @@
 }
 
 /*Secondary Slides*/
-.secondary > .prelims {
+.module-home .secondary > .prelims {
   width: 100%;
   background: rgba(0,0,0,0.5);
   padding: 3em 0em;
@@ -196,26 +198,26 @@
   justify-content: space-between;
   align-items: center;
 }
-.secondary > * > .heading {
+.module-home .secondary > * > .heading {
   font-size: 3em;
   color: white;
   font-weight: 600;
   margin-left: 1em;
 }
-.secondary > * > .heading > *:not(.subheading) {
+.module-home .secondary > * > .heading > *:not(.subheading) {
   font-weight: 600;
 }
-.secondary > * > .heading > .subheading {
+.module-home .secondary > * > .heading > .subheading {
   font-size: 0.4em;
   font-weight: 600;
 }
-.secondary > .prelims > .links {
+.module-home .secondary > .prelims > .links {
   flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-.secondary > .prelims > .links > a {
+.module-home .secondary > .prelims > .links > a {
   line-height: 3em;
   height: 3em;
   padding: 0em 2em;
@@ -223,7 +225,7 @@
   color: #b08753;
   margin: 0em 2em;
 }
-.secondary > .sponsors {
+.module-home .secondary > .sponsors {
   width: 100%;
   background:rgba(255,255,255,1);
   padding: 3em 0em;
@@ -232,13 +234,13 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-.secondary > .sponsors > .heading {
+.module-home .secondary > .sponsors > .heading {
   width: 100%;
   margin-bottom: 1em;
   color:black;
 
 }
-.secondary > .sponsors > .item {
+.module-home .secondary > .sponsors > .item {
   width:auto;
   height: 15vw;
   border:0px solid #000;
@@ -247,17 +249,17 @@
   display:flex;
   flex-direction: column;
 }
-.secondary > .sponsors > .item > .logo{
+.module-home .secondary > .sponsors > .item > .logo{
   margin:1.2vw;
   flex-grow:1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.secondary > .sponsors > .item > .logo > img {
+.module-home .secondary > .sponsors > .item > .logo > img {
   max-height: 10vw;
 }
-.secondary > .sponsors > .item > .desc{
+.module-home .secondary > .sponsors > .item > .desc{
   font-size: 1.5vw;
   font-weight: 4px;
   margin: 0.5vw;
@@ -265,71 +267,71 @@
  }
 @media only screen and (max-width: 800px)
 {
-  .parallax .center {
+  .module-home .parallax .center {
     height: 15em;
   }
-  .parallax > .footer {
+  .module-home .parallax > .footer {
     bottom: 2em;
     flex-direction: column;
     justify-content: space-between;
   }
-  .parallax > .footer > a {
+  .module-home .parallax > .footer > a {
     border: none;
   }
-  .parallax > .footer > .face {
+  .module-home .parallax > .footer > .face {
     font-size: 1.5em;
     padding: 2em;
     text-align: center;
   }
-  .parallax > .footer > .list {
+  .module-home .parallax > .footer > .list {
     flex-direction: column;
     width: 100%;
   }
-  .parallax > .footer > .list > a {
+  .module-home .parallax > .footer > .list > a {
     width: 100%;
     display: flex;
     margin:0em;
     flex-direction: row;
     box-shadow: 0px -5px 10px rgba(0,0,0,0.5);
   }
-  .parallax > .footer > .list > a::after {
+  .module-home .parallax > .footer > .list > a::after {
     font-size: 0.8em;
     content: "Register Now!";
     right: 2.5em;
     position:absolute;
   }
-  .parallax .countdown > * {
+  .module-home .parallax .countdown > * {
     width: 3em;
   }
-  .parallax .footer {
+  .module-home .parallax .footer {
     flex-direction: row;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
-  .parallax .footer .contact {
+  .module-home .parallax .footer .contact {
     margin: 1em 0em;
   }
-  .parallax .center {
+  .module-home .parallax .center {
     margin-top: -25%;
   }
-  .secondary .prelims .links, .secondary .prelims {
+  .module-home .secondary .prelims .links, .secondary .prelims {
     flex-direction: column;
   }
-  .secondary .prelims .heading {
+  .module-home .secondary .prelims .heading {
     width: 100%;
   }
-  .secondary .prelims .links {
+  .module-home .secondary .prelims .links {
     width: 100%;
   }
-  .secondary .prelims .links a {
+  .module-home .secondary .prelims .links a {
     width: 100%;
     box-sizing: border-box;
     padding: 0em 1.5em;
     border: none;
     font-weight: 600;
   }
-  .secondary .sponsors .heading {
+  .module-home .secondary .sponsors .heading {
     margin-left: 0.5em;
   }
 }
