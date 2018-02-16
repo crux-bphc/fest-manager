@@ -60,51 +60,51 @@
 	window.onresize = resize();
 })();
 
-//Mistscape
-(function () {
-	var landscape = document.getElementById("mistscape");
-	var ctx = landscape.getContext('2d');
-	landscape.width = innerWidth;
-	landscape.height = innerHeight;
-	var MIST = [];
-	for (i = 0; i < 10; i++) {
-		MIST.push({
-			x: Math.random() * innerWidth,
-			y: Math.random() * innerHeight / 2 + innerHeight / 2,
-			vx: Math.random() * -10,
-			vy: Math.random() * 2.5,
-			radius: Math.random() * innerWidth / 10 + innerWidth / 10,
-		});
-	}
-	var draw = function (i) {
-		var blob = MIST[i];
-		ctx.fillStyle = "rgb(255,255,255)";
-		ctx.beginPath();
-		ctx.arc(blob.x, blob.y, blob.radius, 0, 2 * Math.PI);
-		ctx.closePath();
-		ctx.globalAlpha = 0.2;
-		ctx.fill();
-	};
-	var update = function () {
-		for (i = 0; i < 5; i++) {
-			MIST[i].x += MIST[i].vx;
-			MIST[i].y += MIST[i].vy;
-			if (MIST[i].x < -innerWidth / 5 || MIST[i].x > innerWidth + innerWidth / 5) {
-				MIST[i].x = 6 * innerWidth / 5;
-			}
-			if (MIST[i].y < 3 * innerHeight / 4 || MIST[i].y > innerHeight) {
-				MIST[i].vy *= -1;
-			}
-			draw(i);
-		}
-	};
-	var animate = function () {
-		ctx.clearRect(0, 0, innerWidth, innerHeight);
-		update();
-		requestAnimationFrame(animate);
-	};
-	animate();
-})();
+// //Mistscape
+// (function () {
+// 	var landscape = document.getElementById("mistscape");
+// 	var ctx = landscape.getContext('2d');
+// 	landscape.width = innerWidth;
+// 	landscape.height = innerHeight;
+// 	var MIST = [];
+// 	for (i = 0; i < 10; i++) {
+// 		MIST.push({
+// 			x: Math.random() * innerWidth,
+// 			y: Math.random() * innerHeight / 2 + innerHeight / 2,
+// 			vx: Math.random() * -10,
+// 			vy: Math.random() * 2.5,
+// 			radius: Math.random() * innerWidth / 10 + innerWidth / 10,
+// 		});
+// 	}
+// 	var draw = function (i) {
+// 		var blob = MIST[i];
+// 		ctx.fillStyle = "rgb(255,255,255)";
+// 		ctx.beginPath();
+// 		ctx.arc(blob.x, blob.y, blob.radius, 0, 2 * Math.PI);
+// 		ctx.closePath();
+// 		ctx.globalAlpha = 0.2;
+// 		ctx.fill();
+// 	};
+// 	var update = function () {
+// 		for (i = 0; i < 5; i++) {
+// 			MIST[i].x += MIST[i].vx;
+// 			MIST[i].y += MIST[i].vy;
+// 			if (MIST[i].x < -innerWidth / 5 || MIST[i].x > innerWidth + innerWidth / 5) {
+// 				MIST[i].x = 6 * innerWidth / 5;
+// 			}
+// 			if (MIST[i].y < 3 * innerHeight / 4 || MIST[i].y > innerHeight) {
+// 				MIST[i].vy *= -1;
+// 			}
+// 			draw(i);
+// 		}
+// 	};
+// 	var animate = function () {
+// 		ctx.clearRect(0, 0, innerWidth, innerHeight);
+// 		update();
+// 		requestAnimationFrame(animate);
+// 	};
+// 	animate();
+// })();
 
 (function () {
 	window.setInterval(function () {
