@@ -24,11 +24,13 @@ function checkPermission(level){
 		if(req.user.privilege >= level)
 			return next();
 		else
+		{
 			let error = new Error('Access denied');
 			error.status = 401;
 			return next(error);
-	}
-};
+		}
+	};
+}
 
 function service(model, router, permission) {
 	router.get('/', checkPermission(permission.read_all), function (req, res, next) {
