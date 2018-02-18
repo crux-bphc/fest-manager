@@ -12,7 +12,7 @@ services.push(require('./services/bodies'));
 services.push(require('./services/feed'));
 
 services.forEach(function (service) {
-	router.use(service.route, constructor(service.model, service.router));
+	router.use(service.route, constructor(service.model, service.router, service.permission));
 });
 
 var typeahead = require('./typeahead');

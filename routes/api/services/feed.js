@@ -37,8 +37,17 @@ router.put('/add', middleware.authenticate, middleware.elevate, (req, res, next)
 	});
 });
 
+permission = {
+	read_one : 0,
+	read_all : 0
+	insert : 1,
+	update : 2,
+    delete: 2
+};
+
 module.exports = {
 	route: '/feed',
 	model: model,
 	router: router,
+	permission: permission
 };

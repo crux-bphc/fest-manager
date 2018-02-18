@@ -30,8 +30,8 @@ function checkPermission(level){
 	}
 };
 
-function service(model, router) {
-	router.get('/', checkPermission(0), function (req, res, next) {
+function service(model, router, permission) {
+	router.get('/', checkPermission(permission.read_all), function (req, res, next) {
 		var options = getOptions(req.query);
 		var promise;
 		if (req.query.page) {
@@ -48,7 +48,7 @@ function service(model, router) {
 		});
 	});
 
-	router.get('/:id',checkPermission(0), function (req, res, next) {
+	router.get('/:id', checkPermission(permission.read_one), function (req, res, next) {
 		model.findOne({
 			_id: req.params.id
 		}, function (err, item) {
@@ -61,7 +61,7 @@ function service(model, router) {
 		});
 	});
 
-	router.post('/get-one', middleware.authenticate, checkPermission(1), function (req, res, next) {
+	router.post('/get-one', middleware.authenticate, checkPermission(permission.insert), function (req, res, next) {
 		model.findOne(req.body.filter, function (err, item) {
 			if (err) {
 				console.log(err);
@@ -72,7 +72,7 @@ function service(model, router) {
 		});
 	});
 
-	router.post('/', middleware.authenticate, checkPermission(1), function (req, res, next) {
+	router.post('/', middleware.authenticate, checkPermission(permission.insert), function (req, res, next) {
 		var item = new model(req.body);
 		item.save(function (err, data) {
 			if (err) {
@@ -87,7 +87,7 @@ function service(model, router) {
 		});
 	});
 
-	router.put('/', middleware.authenticate, checkPermission(1), function (req, res, next) {
+	router.put('/', middleware.authenticate, checkPermission(permission.update), function (req, res, next) {
 		model.update({
 			_id: req.body._id || req.body.id
 		}, req.body, function (err, data) {
@@ -103,7 +103,7 @@ function service(model, router) {
 		});
 	});
 
-	router.delete('/:id', middleware.authenticate, checkPermission(2), function (req, res, next) {
+	router.delete('/:id', middleware.authenticate, checkPermission(permission.delete), function (req, res, next) {
 		model.findByIdAndRemove(req.params.id, function (err, data) {
 			if (err) {
 				console.log(err);
@@ -117,7 +117,7 @@ function service(model, router) {
 		});
 	});
 
-	router.put('/update-one', middleware.authenticate, checkPermission(1), function (req, res, next) {
+	router.put('/update-one', middleware.authenticate, checkPermission(permission.update), function (req, res, next) {
 		model.findOneAndUpdate(req.body.filter, // query
 				{
 					$set: req.body.data

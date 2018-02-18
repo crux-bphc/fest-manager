@@ -28,8 +28,17 @@ var schema = new Schema({
 schema.plugin(require('mongoose-paginate'));
 var model = mongoose.model('bodies', schema);
 
+var permission = {
+	read_one : 0,
+	read_all : 0,
+	insert : 2,
+	update : 2,
+    delete: 2
+};
+
 module.exports = {
 	route: '/bodies',
 	model: model,
 	router: router,
+	permission: permission
 };

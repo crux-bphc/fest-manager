@@ -361,6 +361,15 @@ router.post('/notifications', function (req, res, next) {
 		});
 	});
 });
+
+var permission = {
+	read_one : 0,
+	read_all : 2,
+	insert : 1,
+	update : 1,
+    delete: 2
+};
+
 module.exports = {
 	route: '/users',
 	model: model,
@@ -370,4 +379,5 @@ module.exports = {
 		elevate: elevate,
 	},
 	addToCart: addtocart,
+	permission: permission
 };
