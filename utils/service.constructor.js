@@ -18,13 +18,13 @@ var getOptions = function (data) {
 	return options;
 };
 
-function checkPermission(level){
-	return function(req, res, next)
-	{
-		if(req.user.privilege >= level)
+function checkPermission(level) {
+	return function (req, res, next) {
+		if (level === 0) {
 			return next();
-		else
-		{
+		} else if (req.user && req.user.privilege && req.user.privilege.level >= level) {
+			return next();
+		} else {
 			let error = new Error('Access denied');
 			error.status = 401;
 			return next(error);
