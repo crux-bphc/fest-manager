@@ -44,6 +44,12 @@ if (config.passports.google) {
 		}), callbackHandler);
 }
 
+if (config.passports.googleToken) {
+	router.get('/google/token', passport.authenticate('google-token'), function(req, res){
+		res.send(req.user);
+	});
+}
+
 if (config.passports.github) {
 	router.get('/github',
 		passport.authenticate('github', {
