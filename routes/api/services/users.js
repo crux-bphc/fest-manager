@@ -268,12 +268,12 @@ router.put('/me/', function (req, res, next) {
 	var changeddata = {};
 	changeddata = Object.assign(req.user, req.body);
 	if (req.user._id) {
-		if(changeddata.isAmbassador) {
+		if (changeddata.isAmbassador) {
 			const fs = require('fs');
 			const mail = fq('utils/mailer');
 			var emailOptions = {};
 			emailOptions.subject = "Registered as Campus Ambassador";
-			fs.readFile(path.join(base, './views/email-templates/ambassador.md'), 'utf8', function(err, data) {
+			fs.readFile(path.join(base, './views/email-templates/ambassador.md'), 'utf8', function (err, data) {
 				emailOptions.template = data;
 				mail({
 					email: req.user.email
@@ -361,6 +361,15 @@ router.post('/notifications', function (req, res, next) {
 		});
 	});
 });
+
+var permission = {
+	read_one: 0,
+	read_all: 2,
+	insert: 1,
+	update: 1,
+	delete: 2
+};
+
 module.exports = {
 	route: '/users',
 	model: model,
@@ -370,4 +379,5 @@ module.exports = {
 		elevate: elevate,
 	},
 	addToCart: addtocart,
+	permission: permission
 };

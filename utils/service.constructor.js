@@ -18,8 +18,22 @@ var getOptions = function (data) {
 	return options;
 };
 
-function service(model, router) {
-	router.get('/', function (req, res, next) {
+function checkPermission(level) {
+	return function (req, res, next) {
+		if (level === 0) {
+			return next();
+		} else if (req.user && req.user.privilege && req.user.privilege.level >= level) {
+			return next();
+		} else {
+			let error = new Error('Access denied');
+			error.status = 401;
+			return next(error);
+		}
+	};
+}
+
+function service(model, router, permission) {
+	router.get('/', checkPermission(permission.read_all), function (req, res, next) {
 		var options = getOptions(req.query);
 		var promise;
 		if (req.query.page) {
@@ -36,7 +50,7 @@ function service(model, router) {
 		});
 	});
 
-	router.get('/:id', function (req, res, next) {
+	router.get('/:id', checkPermission(permission.read_one), function (req, res, next) {
 		model.findOne({
 			_id: req.params.id
 		}, function (err, item) {
@@ -49,7 +63,7 @@ function service(model, router) {
 		});
 	});
 
-	router.post('/get-one', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	router.post('/get-one', middleware.authenticate, checkPermission(permission.insert), function (req, res, next) {
 		model.findOne(req.body.filter, function (err, item) {
 			if (err) {
 				console.log(err);
@@ -60,7 +74,7 @@ function service(model, router) {
 		});
 	});
 
-	router.post('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	router.post('/', checkPermission(permission.insert), function (req, res, next) {
 		var item = new model(req.body);
 		item.save(function (err, data) {
 			if (err) {
@@ -75,7 +89,7 @@ function service(model, router) {
 		});
 	});
 
-	router.put('/', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	router.put('/', checkPermission(permission.update), function (req, res, next) {
 		model.update({
 			_id: req.body._id || req.body.id
 		}, req.body, function (err, data) {
@@ -91,7 +105,7 @@ function service(model, router) {
 		});
 	});
 
-	router.delete('/:id', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	router.delete('/:id', checkPermission(permission.delete), function (req, res, next) {
 		model.findByIdAndRemove(req.params.id, function (err, data) {
 			if (err) {
 				console.log(err);
@@ -105,7 +119,7 @@ function service(model, router) {
 		});
 	});
 
-	router.put('/update-one', middleware.authenticate, middleware.elevate, function (req, res, next) {
+	router.put('/update-one', checkPermission(permission.update), function (req, res, next) {
 		model.findOneAndUpdate(req.body.filter, // query
 				{
 					$set: req.body.data
