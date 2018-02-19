@@ -29,11 +29,11 @@ schema.plugin(require('mongoose-paginate'));
 var model = mongoose.model('bodies', schema);
 
 var permission = {
-	read_one : 0,
-	read_all : 0,
-	insert : 2,
-	update : 2,
-    delete: 2
+	read_one: 0,
+	read_all: 0,
+	insert: 2,
+	update: 2,
+	delete: 2
 };
 
 module.exports = {

@@ -18,11 +18,11 @@ schema.plugin(require('mongoose-paginate'));
 var model = mongoose.model('accomm', schema);
 
 var permission = {
-	read_one : 0,
-	read_all : 1,
-	insert : 1,
-	update : 1,
-    delete: 2
+	read_one: 0,
+	read_all: 1,
+	insert: 1,
+	update: 1,
+	delete: 2
 };
 
 module.exports = {
