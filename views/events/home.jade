@@ -2,7 +2,7 @@ include ../mixins/event
 include ../mixins/field
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 
-div.section.header
+div.module-events.section.header
 	h1.title= title
 	div.stretch
 		div.remnant
@@ -10,10 +10,10 @@ div.section.header
 				a.icon-shopping_cart(href="/dashboard/cart")
 		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
-div.section(style="display:flex;")
+div.module-events.section(style="display:flex;")
 	div.remnant
 		span.declaration On spot registration available
-div.section.events-wrapper
+div.module-events.section.events-wrapper
 	each event in events
 		- if(event.route.toLowerCase() == "techexpo" || event.route.toLowerCase() == "@pybits")
 			+eventMixin(event, true)
