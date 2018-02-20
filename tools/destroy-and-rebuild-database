@@ -79,6 +79,7 @@ var getEvents = function (models) {
 		var prefixes = ['Workshop', 'Conference', 'Talk', 'Competition'];
 		prefixes.forEach(function (pre, index) {
 			lastbody = elem._id;
+			var time = Math.floor(Math.random() * 3) + 27; // 27/28/29
 			var newevent = {
 				name: pre + " by " + elem.name,
 				tagline: pre + " event by " + elem.name,
@@ -87,6 +88,8 @@ var getEvents = function (models) {
 				type: pre,
 				route: elem.code + ++index, // jshint ignore:line
 				price: 200 * (index - 1),
+				startTime: time + " Oct | 5 PM",
+				endTime: time + " Oct | 8 PM",
 			};
 			if (newevent.route.startsWith('rome')) {
 				newevent.immersive = "https://crux-bphc.github.io/pybits-static/";
