@@ -33,6 +33,7 @@
     "passport-facebook": "^2.1.1",
     "passport-github": "^1.1.0",
     "passport-google-oauth": "^1.0.0",
+    "passport-google-token": "^0.1.2",
     "project-root-path": "^1.0.0",
     "qrcode": "^0.8.2",
     "randomstring": "^1.1.5",

@@ -38,10 +38,15 @@ if (config.passports.google) {
 			function (req, res) {}
 		));
 
+	router.get('/google/token', passport.authenticate('google-token'), function (req, res) {
+		res.send(req.user);
+	});
+
 	router.get('/google/callback',
 		passport.authenticate('google', {
 			failureRedirect: '/login'
 		}), callbackHandler);
+
 }
 
 if (config.passports.github) {
