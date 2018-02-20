@@ -82,19 +82,18 @@ var strategies = function () {
 				}
 			));
 		};
-	}
-	if (config.passports.googleToken) {
+
 		strategies.googleToken = function () {
 			var GoogleTokenStrategy = require('passport-google-token').Strategy;
 
-			passport.use(new GoogleTokenStrategy(config.passports.googleToken,
+			passport.use(new GoogleTokenStrategy(config.passports.google,
 				function (accessToken, refreshToken, profile, done) {
 					findOrCreate(accessToken, profile, 'googleToken', done);
-					//done(null, profile);
 				}
 			));
 		};
 	}
+
 	if (config.passports.github) {
 		strategies.github = function () {
 			var GithubStrategy = require('passport-github').Strategy;

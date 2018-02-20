@@ -18,10 +18,6 @@ var config = {
             callbackURL: "http://localhost:3000/auth/github/callback",
             profileFields: ['emails']
         },
-        googleToken: {
-            clientID: '566366256828-ius4a49h14bnl77f8v7esr0g85e8isf8.apps.googleusercontent.com',
-            clientSecret: 'oQZZbTwcXvebPYUA5zBdbiB8'
-        },
     },
     database: {
         name: "fest-manager-dev",
