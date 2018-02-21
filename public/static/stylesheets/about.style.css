@@ -1,4 +1,4 @@
-.section.body {
+.section.body.module-about {
     width: 100%;
     height: 100%;
     display: flex;
@@ -8,7 +8,7 @@
     overflow: hidden;
     flex-wrap: nowrap;
 }
-.section.body > .logo {
+.module-about.section.body > .logo {
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
@@ -20,11 +20,11 @@
     opacity: 1;
     mix-blend-mode: overlay;
 }
-.section.body > .logo > img {
+.module-about.section.body > .logo > img {
     height: 100%;
     display: inline-block;
 }
-.section.body > .underlay {
+.module-about.section.body > .underlay {
     background-image: radial-gradient(at center, black, transparent 50%, black), url("/static/images/about.jpg");
     background-color: rgba(30,30,30,1);
     background-size: cover;
@@ -35,7 +35,7 @@
     height: 100%;
     top: 0;
 }
-.section.body .credits {
+.module-about.section.body .credits {
     position:absolute;
     bottom: 2em;
     right:2em;
@@ -47,11 +47,11 @@
     align-items: flex-end;
     display: none;
 }
-.section.body .credits > .person {
+.module-about.section.body .credits > .person {
     font-weight: 600;
     display: block;
 }
-.section.body .about {
+.module-about.section.body .about {
     z-index: +10;
     padding: 1em;
     line-height: 1.7em;
@@ -71,36 +71,36 @@
     justify-content: center;
 }
 
-.section.body .about > div {
+.module-about.section.body .about > div {
     height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.section.body .about h2 {
+.module-about.section.body .about h2 {
     font-weight: 600;
     letter-spacing: 1em;
     padding-bottom: 15px;
     position: relative;
 }
-.section.body .about p {
+.module-about.section.body .about p {
     margin-top: 15px;
     width: 100%;
 }
-.section.body .about .links {
+.module-about.section.body .about .links {
     list-style-type: none;
     display: flex;
     width: 100%;
     padding: 0;
     margin-top: -20px;
 }
-.section.body .about .links a {
+.module-about.section.body .about .links a {
     flex-grow: 1;
     display: table-cell;
     text-align: center;
 }
-.section.body .about h2::after {
+.module-about.section.body .about h2::after {
     position:absolute;
     height: 3px;
     width: 0.75em;
@@ -128,7 +128,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .section.body .about {
+    .module-about.section.body .about {
         box-sizing: border-box;
         padding: 3em 1em;
         height: 90%;
@@ -139,7 +139,7 @@
         border-left: 0em;
         overflow-y: auto;
     }
-    .section.body .about > div {
+    .module-event.section.body .about > div {
         display: block;
         height: 90vh;
     }
@@ -150,7 +150,7 @@
     }
 }
 
-.about a.button {
+.module-about .about a.button {
     display: block;
     box-sizing: border-box;
     line-height: 3em;

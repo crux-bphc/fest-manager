@@ -311,7 +311,7 @@ span.declaration {
     font-weight: 600;
 }
 @media only screen and (max-width: 600px) {
-    .section.tags {
+    .module-events .section.tags {
         overflow-x: scroll;
         white-space: nowrap;
     }
@@ -328,10 +328,10 @@ span.declaration {
     .events-wrapper .event-container.Proshow > .face > .name, .events-wrapper .event-container.TechExpo > .face > .name {
         font-weight: 300;
     }
-    .open-event .hero {
+    .module-events.open-event .hero {
         height:40vw;
     }
-    .open-event .category {
+    .module-events.open-event .category {
         line-height: 2em;
     }
 }
