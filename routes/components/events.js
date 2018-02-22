@@ -3,6 +3,7 @@ var router = express.Router();
 var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
 var config = fq('config-loader');
+var sort=fq('sort');
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
@@ -39,11 +40,7 @@ router.get('/', function (req, res, next) {
 			return !elem.route.endsWith('!');
 		});
 
-		events.sort(function (a, b) {
-			if (a.name > b.name) return -1;
-			if (a.name < b.name) return 1;
-			return 0;
-		});
+		events = sort(events, 'name');
 
 		res.renderState('events/home', {
 			title: 'Events',
