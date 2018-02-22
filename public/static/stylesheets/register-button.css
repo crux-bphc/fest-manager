@@ -1,3 +1,7 @@
+.cart-actions {
+    display: flex;
+    justify-content: flex-end;
+}
 .cart-actions .button {
     height:2.5em;
     display: inline-flex;

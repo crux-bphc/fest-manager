@@ -23,7 +23,14 @@ $('document').ready(function () {
 	};
 
 	$('.section.tags a').click(function () {
+		console.log($(this).hasClass('active'));
+		if($(this).hasClass('active')) {
+			window.location.hash = "#";
+			$(this).removeClass('active');
+			return;
+		}
 		$(this).addClass("active").siblings().removeClass("active");
+		window.location.hash = $(this).data("tag");
 	});
 
 	window.onhashchange = function () {

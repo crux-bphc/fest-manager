@@ -48,7 +48,5 @@ div.module-events.section.open-event(id=event._id team=(event.teamSize > 1 ? "tr
                     span #{event.prize}
         if(event.about)
             div.description.markdown-body !{marked(event.about)}
-        div.foot
-            a.download(title="Download as PDF" absolute target="_blank" href="/static/data/docs/#{event.name}.pdf") Download
 
 script(src="/static/scripts/events.js" type="text/javascript")
