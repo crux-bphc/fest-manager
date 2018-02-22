@@ -49,6 +49,7 @@
     height: 100%;
     position: absolute;
     z-index: 10;
+    top:0;
     background: rgba(0,0,0,0.6);
 }
 .module-home .parallax > canvas {
@@ -74,7 +75,8 @@
   height: 20em;
   position: absolute;
   z-index: 10;
-  margin-top:-5%;
+  margin-top: -10em;
+  top:40%;
 }
 .module-home .parallax > .center > img {
   height: 100%;
@@ -269,6 +271,8 @@
 {
   .module-home .parallax .center {
     height: 15em;
+    margin-top: -7.5em;
+    top: 35%;
   }
   .module-home .parallax > .footer {
     bottom: 2em;

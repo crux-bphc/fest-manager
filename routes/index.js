@@ -18,10 +18,10 @@ router.get('/?*', function (req, res, next) {
 			// 	label: "About",
 			// 	route: "/about",
 			// },
-			// events: {
-			// 	label: "Events",
-			// 	route: "/events",
-			// },
+			events: {
+				label: "Events",
+				route: "/events",
+			},
 			// workshops: {
 			// 	label: "Workshops",
 			// 	route: "/events#Workshop",

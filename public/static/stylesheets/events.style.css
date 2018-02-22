@@ -1,24 +1,50 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600');
 
-.section.tags.module-events{
+.module-events .section.tags {
     line-height: 3em;
 }
 .module-events .section.tags a {
-    padding: 0em 1em;
     color:#444;
     margin: 2px 2px;
     font-weight: 600;
     display: inline-block;
     vertical-align: middle;
     text-decoration: none;
-    border-radius:4px;
-    background:#f0f0f0;
+    cursor: pointer;
+}
+.module-events .section.tags a::after {
+    position: relative;
+    font-family: 'icomoon';
+    content: "\e5cd";
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 0.5em;
+    margin-right: 1em;
+    transform:scale(0);
+    transition: transform 0.2s;
 }
 .module-events .section.tags a:hover {
-    background:#e0e0e0;
+    color:#121212;
 }
 .module-events .section.tags a.active {
-    background:#c0cacf;
+    color: #b28e54;
+}
+.module-events .section.tags a.active::after {
+    transform:scale(1);
+}
+.module-events a.outward {
+    line-height: 3em;
+    padding: 0em 1em;
+    color: #191919;
+    font-weight: 600;
+    background: #b28e54;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+}
+.module-events a.outward span {
+    font-weight: 600;
+    margin-left: 0.5em;
 }
 
 .events-wrapper {
@@ -48,20 +74,29 @@
 
 .events-wrapper .event-container {
     box-sizing: border-box;
-    border-radius: 1px;
-    height: 25vw;
+    border-radius: 2px;
+    height: 30vw;
     min-width: 20vw;
-    width: 33%;
+    width: 29%;
     display: flex;
     position: relative;
-    flex-direction: row;
+    flex-direction: column;
     background: #ddd;
     font-size: 1.2em;
-    margin: 1px;
+    margin: 3px;
     max-width: 100%;
     overflow: hidden;
     cursor: pointer;
     flex-grow: 1;
+    background:linear-gradient(45deg, #f0f0f0, #fafafa);
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0,0,0,1);
+    padding: 0.7em;
+}
+.events-wrapper .event-container:hover {
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3), 0px 8px 20px rgba(0,0,0,0.5);
+    z-index: +10;
+    transform: scale(1.01);
 }
 
 .events-wrapper .event-container.disabled {
@@ -85,16 +120,15 @@
 }
 
 .events-wrapper .event-container > .face {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(30,30,30, 0.9);
     position: relative;
     z-index: +100;
     letter-spacing: 0.02em;
-    background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
     box-sizing: border-box;
-    padding: 1.2em;
     display: flex;
     width: 100%;
-    height: 100%;
+    padding: .75em 0;
+    height: 30%;
     flex-direction: column;
     justify-content: flex-end;
     font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
@@ -108,13 +142,21 @@
 }
 
 .events-wrapper .event-container > .face > .name {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 300;
+    white-space: nowrap;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow:hidden;
 }
 
 .events-wrapper .event-container > .face > .tagline {
     font-size: 0.9em;
     font-weight: 300;
+    white-space: nowrap;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow:hidden;
 }
 
 .events-wrapper .event-container .image {
@@ -122,8 +164,10 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    position: absolute;
+    position: relative;
     z-index: 0;
+    box-sizing: border-box;
+    border-bottom: none;
 }
 
 .events-wrapper .event-container .details {
@@ -167,6 +211,9 @@
     padding:0% 6%;
     position:relative;
     padding-bottom:4em;
+}
+.module-events.open-event .body .top .remnant {
+    justify-content: flex-end;
 }
 
 .module-events.open-event .details {

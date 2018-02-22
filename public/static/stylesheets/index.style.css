@@ -735,10 +735,6 @@ input[type = "file"] {
     padding: 0;
 }
 
-.main * {
-    font-weight: 300;
-}
-
 h1,
 h2,
 h3,
@@ -755,6 +751,9 @@ h5 {
 }
 .main .section.header > .stretch {
     height: 4em;
+}
+.main .section.header > h1 {
+    text-transform: uppercase;
 }
 
 .main .controls {
