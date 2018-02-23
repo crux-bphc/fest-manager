@@ -1,5 +1,3 @@
-@import url("/static/fonts/Amber Taste/font.css");
-
 .main .wrapper.face.module-home {
   overflow-y: hidden;
 }
@@ -21,6 +19,7 @@
   padding: 0 !important;
   justify-content: space-around;
   align-items: center;
+  overflow-x: hidden;
 }
 .module-home .slide {
   position:relative;
@@ -33,31 +32,99 @@
     align-items: center;
 }
 .module-home .parallax > .background {
-    width: 100%;
+    width: 100vw;
     position: fixed;
-    height: 100%;
+    height: 100vh;
+    left: 0;
     z-index: -1;
+    background-image: url('/static/images/landing/background.jpg');
+    background-size: cover;
 }
 .module-home .parallax > .background > div {
     background-size: cover;
     width: 100%;
     height: 100%;
-    filter: sepia(1);
     left: 0;
     top:0;
     position: absolute;
     transform: scale(1);
     background-position: center center;
+    will-change: transform, opacity;
 }
 .module-home .parallax > .background > div.face {
     opacity: 1;
     transform:scale(1.5);
-    transition: transform 20s linear, opacity 1s;
+    transition: transform 20s linear, opacity 2s;
 }
 .module-home .parallax > .background > div.tray {
     transform:scale(1);
-    transition: transform 0s 2s, opacity 3s;
+    transition: transform 0s 2s, opacity 1s;
     opacity: 0;
+}
+.module-home .parallax > .overlay > .meta.hidden {
+  opacity: 0;
+}
+.module-home .parallax > .overlay > .meta {
+  background: radial-gradient(at center, rgba(0,0,0,0.6), transparent 90%);
+  border-radius: 10px;
+  height: 6em;
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+  color: white;
+  display: block;
+  padding: 0.5em 1em;
+  transition: all 0.2s cubic-bezier(0,0,0,1);
+  overflow: hidden;
+}
+.module-home .parallax > .overlay > .meta:hover {
+}
+.module-home .parallax > .overlay > .meta:hover > #meta-author,
+.module-home .parallax > .overlay > .meta:hover > #meta-location {
+  opacity: 1;
+  transition: all 0.2s 0.2s;
+}
+#meta-author {
+  line-height: 1.5em;
+  display: inline-block;
+  opacity: 0;
+  transition: all 0.1s;
+  font-weight: 600;
+  opacity: 1;
+}
+#meta-author:hover {
+  color: #5588AA;
+}
+#meta-tagline {
+  font-size: 1.5em;
+  line-height: 2em;
+  display: block;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  font-family: 'Rock Salt', cursive;
+}
+#meta-location {
+  line-height: 1.5em;
+  display: inline-block;
+  opacity: 1;
+  transition: all 0.1s;
+  margin-left: 2em;
+}
+#meta-author::before {
+  content: "\e3af";
+  font-family: "icomoon";
+  display: inline-block;
+  margin-right: 0.5em;
+  vertical-align: top;
+  font-size: 1.2em;
+}
+#meta-location::before {
+  content: "\e8b4";
+  font-family: "icomoon";
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 0.5em;
+  font-size: 1.2em;
 }
 .module-home .parallax > .overlay {
     width: 100%;
@@ -65,7 +132,7 @@
     position: absolute;
     z-index: 10;
     top:0;
-    background: radial-gradient(at center, transparent, rgba(0,0,0,1));
+    background: radial-gradient(at center, transparent, rgba(0,0,0,0.5));
 }
 .module-home .parallax > canvas {
   top: 0;
@@ -73,7 +140,6 @@
   width: 100%;
   height: 100%;
   z-index: +15;
-  filter: sepia(1);
   position: fixed;
   z-index: 0;
 }
@@ -86,14 +152,12 @@
 .module-home #mistscape {
   display: none;
 }
-.module-home .parallax > .center {
+.module-home .parallax .center {
   height: 20em;
-  position: absolute;
+  position: relative;
   z-index: 10;
-  margin-top: -10em;
-  top:40%;
 }
-.module-home .parallax > .center > img {
+.module-home .parallax .center > img {
   height: 100%;
 }
 .module-home .parallax .countdown {

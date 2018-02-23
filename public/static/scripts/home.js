@@ -69,20 +69,29 @@ function shuffle(arra1) {
 		});
 		return Promise.all(promises);
 	};
-	let switcher = function () {
-		let newIndex = (index + ~~(Math.random() * 10)) % loadedData.length;
-		if (newIndex == index) index++;
-		else index = newIndex;
+	let prepare = function() {
+		index = (index + 1) % loadedData.length;
+		$('.background > .tray').css({
+			'background-image': 'url(' + loadedData[index].image + ')'
+		});
+	}
+	let change = function () {
 		$('.background > .tray')
-			.css({
-				'background-image': 'url(' + loadedData[index].image + ')'
-			})
 			.removeClass('tray').addClass('face')
-			.siblings().removeClass('face').addClass('tray');
+			.siblings('div').removeClass('face').addClass('tray');
+		$('#meta-author').html(loadedData[index].person).attr('href',loadedData[index].url);
+		$('#meta-location').html(loadedData[index].location);
+		$('#meta-tagline').html(loadedData[index].tagline);
+		setTimeout(prepare, 2000);
 	};
 	let startShow = function () {
-		switcher();
-		setInterval(switcher, 8000);
+		prepare();
+		setTimeout(function() {
+			$('.parallax .center').animate({opacity: 0,transform:'scale(0.9)'}, 1000);
+			$('.overlay .meta').removeClass('hidden');
+			change();
+			setInterval(change, 8000);
+		}, 5000);
 	}
 	initLoad().then(data => {
 		console.log("Images Loaded:", loadedData.length);

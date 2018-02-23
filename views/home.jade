@@ -2,18 +2,25 @@ link(href='/static/stylesheets/home.style.css', rel='stylesheet')
 .module-home.immersive-wrapper
   .slide.parallax
     .background
-      div.face
+      div.face(style="/static/images/landing/background.jpg")
       div.tray
     .overlay
+      div.meta.hidden
+        span#meta-tagline
+        a#meta-author
+        span#meta-location
     .center
-      img(src='/static/images/logo.png')
-      .countdown
-        .days(title='d')
-        .hours(title='h')
-        .minutes(title='m')
-        .seconds(title='s')
+      img(src='/static/images/logo_white.png')
+
+    //-   .countdown
+    //-     .days(title='d')
+    //-     .hours(title='h')
+    //-     .minutes(title='m')
+    //-     .seconds(title='s')
     .footer
       i.icon-navigate_next
+  .slide.secondary
+    .contact
       span.contact
         .name Chandan Kumar
         .name Cultural Secretary
@@ -26,7 +33,6 @@ link(href='/static/stylesheets/home.style.css', rel='stylesheet')
         .name Manas Bansal
         .name Sponsorship &amp; Marketing
         .name 9666131548
-  .slide.secondary
     .prelims
       .heading
         .subheading REGISTER FOR

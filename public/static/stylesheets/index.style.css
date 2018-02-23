@@ -1,5 +1,5 @@
 @import url('/static/fonts/icomoon/font.css');
-
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt');
 /* entypo */
 
 [class*="icon-"]:before {
@@ -162,9 +162,7 @@ input[type = "file"] {
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-}
-.navbar .logo img {
-    height:1.25em;
+    font-family: 'Rock Salt';
 }
 
 .navbar .subtitle {
@@ -480,6 +478,7 @@ input[type = "file"] {
     color: #b28e54;
     transition: margin-left 0.3s ease-out, margin-top 0s 0.3s ease-out;
     z-index: +200;
+    background: #191919;
 }
 
 .sidebar > .wrapper {
