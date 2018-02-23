@@ -3,7 +3,7 @@ var router = express.Router();
 var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
 var config = fq('config-loader');
-var sort=fq('sort');
+var sort = fq('sort');
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
