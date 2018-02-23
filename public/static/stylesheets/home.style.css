@@ -338,4 +338,10 @@
   .module-home .secondary .sponsors .heading {
     margin-left: 0.5em;
   }
+  .metadata {
+    text-align: left;
+    width: 40%;
+    padding: 20px 20px 20px 20px;
+    border: 20px 20px 20px 20px;
+  }
 }
