@@ -52,7 +52,7 @@
 .module-home .parallax > .background > div.face {
     opacity: 1;
     transform:scale(1.5);
-    transition: transform 15s linear, opacity 1s;
+    transition: transform 20s linear, opacity 1s;
 }
 .module-home .parallax > .background > div.tray {
     transform:scale(1);
