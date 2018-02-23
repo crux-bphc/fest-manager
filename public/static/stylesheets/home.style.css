@@ -65,7 +65,7 @@
   opacity: 0;
 }
 .module-home .parallax > .overlay > .meta {
-  background: radial-gradient(at center, rgba(0,0,0,0.6), transparent 90%);
+  background: radial-gradient(at center, rgba(0,0,0,0.6), transparent 60%);
   border-radius: 10px;
   height: 6em;
   position: absolute;
@@ -156,9 +156,25 @@
   height: 20em;
   position: relative;
   z-index: 10;
+  display: flex;justify-content: center;
 }
 .module-home .parallax .center > img {
   height: 100%;
+}
+.module-home .parallax .center .loader {
+  content: "";
+  position:absolute;
+  top: 120%;
+  width: 100%;
+  background: #fff;
+  height: 2px;
+  animation: load 4s 1 linear;
+}
+
+@keyframes load {
+  from {
+    width: 0;
+  }
 }
 .module-home .parallax .countdown {
   position:absolute;
@@ -235,19 +251,6 @@
   color:white;
   position:absolute;
 }
-.module-home .parallax > .footer > .contact {
-  color: #fff;
-  font-weight: 400;
-  width: 12em;
-  text-align: center;
-  text-transform: uppercase;
-}
-.module-home .parallax > .footer > .contact > .name {
-  font-size: 0.8em;
-  line-height: 1.5em;
-  font-weight: 600;
-  color: #b08652;
-}
 .module-home .parallax > .footer > i {
   line-height: 1.5em;
   width:1.5em;
@@ -271,9 +274,65 @@
 }
 
 /*Secondary Slides*/
+.module-home .secondary > .events {
+  padding: 3em 0em;
+  display: flex;
+  align-items: center;
+  background: rgba(0,0,0,0.8);
+}
+.module-home .secondary > .events > .list {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  margin-right: 4em;
+}
+.module-home .secondary > .events > .list > a {
+  line-height: 3em;
+  background: #b08753;
+  border-radius: 1px;
+  padding: 0em 2em;
+  color: black;
+  display: flex;
+  align-items: center;
+  margin: 0em 2em;
+  cursor: pointer;
+  font-weight: 600;
+}
+.module-home .secondary > .events > .list > a > i {
+  margin-right: 0.5em;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+.module-home .secondary > .contact {
+  background: rgba(0,0,0,0.9);
+  padding: 3em 0em;
+  display: flex;
+  align-items: center;
+}
+.module-home .secondary > .contact > .list {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  margin-right: 2em;
+}
+.module-home .secondary > .contact > .list > .item {
+  color: #fff;
+  font-weight: 400;
+  width: 12em;
+  margin: 1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.module-home .secondary > .contact > .list > .item > span {
+  font-size: 0.8em;
+  line-height: 1.5em;
+  font-weight: 600;
+  color: #b08652;
+  display: block;
+}
 .module-home .secondary > .prelims {
   width: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.7);
   padding: 3em 0em;
   display: flex;
   justify-content: space-between;

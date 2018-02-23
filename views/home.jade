@@ -2,7 +2,7 @@ link(href='/static/stylesheets/home.style.css', rel='stylesheet')
 .module-home.immersive-wrapper
   .slide.parallax
     .background
-      div.face(style="/static/images/landing/background.jpg")
+      div.face
       div.tray
     .overlay
       div.meta.hidden
@@ -11,28 +11,10 @@ link(href='/static/stylesheets/home.style.css', rel='stylesheet')
         span#meta-location
     .center
       img(src='/static/images/logo_white.png')
-
-    //-   .countdown
-    //-     .days(title='d')
-    //-     .hours(title='h')
-    //-     .minutes(title='m')
-    //-     .seconds(title='s')
+      span.loader
     .footer
       i.icon-navigate_next
   .slide.secondary
-    .contact
-      span.contact
-        .name Chandan Kumar
-        .name Cultural Secretary
-        .name 7660002320
-      span.contact
-        .name Abhinav Eittireddy
-        .name President
-        .name 9542929354
-      span.contact
-        .name Manas Bansal
-        .name Sponsorship &amp; Marketing
-        .name 9666131548
     .prelims
       .heading
         .subheading REGISTER FOR
@@ -41,6 +23,33 @@ link(href='/static/stylesheets/home.style.css', rel='stylesheet')
         a(href='/prelims/kaleidoscope') Kaleidoscope
         a(href='/prelims/tilldeaf') Till Deaf Do We Part
         a(href='/prelims/terpsichore') Terpsichore
+    .events
+      .heading
+        .subheading CHECK OUT
+        span EVENTS
+      .list
+        a(href="/events")
+          i.icon-dashboard
+          span EXPLORE
+        a(href="https://www.townscript.com/e/pearl2018-240304")
+          i.icon-ticket
+          span BUY TICKETS
+    .contact
+      .heading
+        span CONTACT
+      .list
+        span.item
+          span Chandan Kumar
+          span Cultural Secretary
+          span 7660002320
+        span.item
+          span Abhinav Eittireddy
+          span President
+          span 9542929354
+        span.item
+          span Manas Bansal
+          span Sponsorship &amp; Marketing
+          span 9666131548
     .sponsors
       .heading
         .subheading PREVIOUS

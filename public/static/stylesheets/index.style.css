@@ -158,11 +158,19 @@ input[type = "file"] {
 }
 
 .navbar .logo {
-    font-size: 1.25em;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
+    font-size: 1.25em;
     font-family: 'Rock Salt';
+}
+.navbar .logo > span {
+    display: inline-block;
+    font-family: inherit;
+}
+.navbar .logo > span:last-child {
+    margin-left: .5em;
+    font-size: 0.7em;
 }
 
 .navbar .subtitle {
@@ -1142,6 +1150,9 @@ table tbody tr:nth-child(2n-1) {
         margin-left: -200px;
         padding:2em 1em;
         overflow-y: auto;
+    }
+    .navbar .logo > span:last-child {
+        display: none;
     }
     .navbar .subtitle {
         display: none;
