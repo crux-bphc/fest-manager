@@ -2,7 +2,7 @@ mixin eventMixin(event, showImage)
     if event.route
         a.event-container(class="#{event.category} #{event.type}" href="/events/#{event.route}")
             if showImage
-                div.image(style="background-image:url(#{event.thumbnail})")
+                div.image(style="background-image:url('#{event.thumbnail}')")
             div.face
                 span.tag= (event.type.toLowerCase() == "headliner" ? "Competition" : event.type)
                 h3.name= event.name
