@@ -20,18 +20,71 @@
 	}, 1000);
 })();
 
+function shuffle(arra1) {
+	let ctr = arra1.length;
+	let temp;
+	let index;
+
+	// While there are elements in the array
+	while (ctr > 0) {
+		// Pick a random index
+		index = Math.floor(Math.random() * ctr);
+		// Decrease ctr by 1
+		ctr--;
+		// And swap the last element with it
+		temp = arra1[ctr];
+		arra1[ctr] = arra1[index];
+		arra1[index] = temp;
+	}
+	return arra1;
+}
+
 // Fetch porn from reddit
 (function () {
 	let index = ~~(Math.random() * slideshow.length);
+	let loadedData = [];
+	let initLoad = function () {
+		slideshow = shuffle(slideshow);
+		var promises = [];
+		const options = {
+			method: 'GET',
+			mode: 'no-cors'
+		};
+		slideshow.forEach(elem => {
+			var myelem = Object.assign({}, elem);
+			var promise = fetch(elem.image, options).then(data => {
+				myelem.data = data;
+				loadedData.push(myelem);
+				console.log("Loaded:", myelem.image);
+				if (loadedData.length == 3) {
+					console.log("Images Loaded: 3. Starting the shit show.");
+					startShow();
+				}
+				return Promise.resolve();
+			}).catch(err => {
+				console.error(err);
+				return Promise.resolve();
+			});
+			promises.push(promise);
+		});
+		return Promise.all(promises);
+	};
 	let switcher = function () {
-		index = (index + 1) % slideshow.length;
+		let newIndex = (index + ~~(Math.random() * 10)) % loadedData.length;
+		if (newIndex == index) index++;
+		else index = newIndex;
 		$('.background > .tray')
 			.css({
-				'background-image': 'url(' + slideshow[index].image + ')'
+				'background-image': 'url(' + loadedData[index].image + ')'
 			})
 			.removeClass('tray').addClass('face')
 			.siblings().removeClass('face').addClass('tray');
 	};
-	switcher();
-	setInterval(switcher, 8000);
+	let startShow = function () {
+		switcher();
+		setInterval(switcher, 8000);
+	}
+	initLoad().then(data => {
+		console.log("Images Loaded:", loadedData.length);
+	})
 })();
