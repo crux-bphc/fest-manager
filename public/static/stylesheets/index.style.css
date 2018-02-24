@@ -15,6 +15,10 @@
     color: unset;
     font-family: 'Helvetica', 'Arial', sans-serif
 }
+a, a:hover, a:visited, a:active {
+    color: unset;
+    text-decoration: none;
+}
 .button.disabled {
     pointer-events: none;
     opacity: 0.8;
@@ -27,6 +31,7 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: sans-serif;
+    font-size: initial;
 }
 
 .main .disabled {
@@ -124,6 +129,7 @@ input[type = "file"] {
     box-shadow:none;
     transition: margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
     z-index: +1000;
+    margin-bottom: 0px;
     /*display: none;*/
 }
 
@@ -477,9 +483,9 @@ input[type = "file"] {
     position:relative;
     font-size: 1.1em;
     box-sizing: border-box;
-    color: #b28e54;
     transition: margin-left 0.3s ease-out, margin-top 0s 0.3s ease-out;
     z-index: +200;
+    background: #191919;
 }
 
 .sidebar > .wrapper {
@@ -570,6 +576,7 @@ input[type = "file"] {
     white-space: nowrap;
     justify-content: center;
     position: relative;
+    color: #b28e54;
     font-weight: inherit;
 }
 .sidebar .section > ul > a::after {
@@ -590,6 +597,7 @@ input[type = "file"] {
     vertical-align: top;
     transition: font-weight 0.2s;
     font-size: 0.8em;
+    line-height: 3.5em;
 }
 
 
@@ -641,6 +649,9 @@ input[type = "file"] {
 .sidebar .secondary-wrapper > .secondary > ul > a {
     transform: translateX(-1em);
     opacity: 0;
+}
+.sidebar .secondary-wrapper > .secondary > ul > a > span {
+    line-height: inherit;
 }
 
 .sidebar .secondary-wrapper > .secondary.active > ul > a {

@@ -41,7 +41,7 @@ var manager = function () {
 	client.route = function (route, status = true, reload = false) {
 		if (!route) return;
 		if (route.startsWith("http")) {
-			window.open(route, '_blank');
+			window.open(route, '_self');
 			return;
 		}
 		if (route[0] != '/')

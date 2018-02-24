@@ -7,15 +7,18 @@
 * {
     -webkit-select: none;
 }
+
 .module-home {
     background: #F3F3F3;
 }
+
 .module-home * {
     font-family: "Montserrat";
 }
 
-.module-home, .module-home p {
-    color:#2F2C4E;
+.module-home,
+.module-home p {
+    color: #2F2C4E;
 }
 
 ::-webkit-scrollbar {
@@ -24,6 +27,7 @@
     background: transparent;
     /* optional: just make scrollbar invisible */
 }
+
 
 
 /*Don't add the module class to this element. This is out of the container div.*/
@@ -42,16 +46,6 @@
     justify-content: space-around;
     align-items: center;
     overflow-x: hidden;
-}
-body {
-    background-color: #F3F3F3;
-    font-family: "Montserrat";
-}
-
-body,
-p,
-{
-    color: #2F2C4E;
 }
 
 .logo-site {
@@ -324,8 +318,6 @@ p,
 
 #contactForm .progressBar {
     display: block;
->>>>>>> 30cea49... home: Renewal.
-    width: 100%;
     height: 5px;
     background: rgba(197, 157, 95, 0.4);
     position: relative;
@@ -444,8 +436,6 @@ p,
 
 #contact .content #contactsBloc {
     display: block;
->>>>>>> 30cea49... home: Renewal.
-    text-align: center;
 }
 
 #contact .content .contactBloc {
@@ -488,6 +478,7 @@ p,
 .logo-site {
     margin-top: 50vh;
 }
+
 
 
 /* PROJETS */
@@ -1216,6 +1207,7 @@ p,
 
 
 
+
 /* STYLE DES PAGES DETAILS */
 
 .img-container {
@@ -1447,8 +1439,9 @@ p,
 
 
 .fullpage {
-    position: fixed;
+    position: fixed !important;
     z-index: 1200;
+    will-change: transform;
 }
 
 .text-baseline a,
@@ -1776,6 +1769,7 @@ span {
     color: #C59D5F;
     text-decoration: none;
 }
+
 
 
 
@@ -2230,6 +2224,7 @@ content-404 a {
 }
 
 
+
 /********** Responsive ***********/
 
 @media (max-width: 1500px) {
@@ -2364,6 +2359,7 @@ content-404 a {
         height: 80px !important;
     }
 }
+
 
 
 
@@ -2837,6 +2833,7 @@ content-404 a {
     padding: 10px 7px 3px 9px;
     background-color: rgba(255, 255, 255, 0.9);
 }
+
 
 
 }
