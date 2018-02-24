@@ -13,7 +13,7 @@
     -webkit-tap-highlight-color: transparent;
     text-decoration: none;
     color: unset;
-    font-family: 'Helvetica', 'Arial', sans-serif
+    font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
 }
 a, a:hover, a:visited, a:active {
     color: unset;
@@ -127,9 +127,10 @@ input[type = "file"] {
     margin-top:-4.5vw;
     position: relative;
     box-shadow:none;
-    transition: margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
+    transition: color 0.2s, margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
     z-index: +1000;
     margin-bottom: 0px;
+    color: #fff;
     /*display: none;*/
 }
 
@@ -144,7 +145,6 @@ input[type = "file"] {
     max-height: 80px;
     width: 100%;
     align-items: center;
-    color: white;
     padding-right: 0;
     position:fixed;
 }
@@ -156,21 +156,20 @@ input[type = "file"] {
 
 }
 
-.navbar .button.close {
-    font-size: 2em;
-    color:white;
-    background:none !important;
-    opacity: 0.9;
-}
-
 .navbar .logo {
     font-size: 1.25em;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
+    color: inherit;
 }
-.navbar .logo img {
+.navbar .logo span {
+    font-family: 'Rock Salt', sans-serif;
     height:1.25em;
+}
+.navbar .logo span:last-child {
+    font-size: 70%;
+    margin-left: .5em;
 }
 
 .navbar .subtitle {
@@ -186,8 +185,9 @@ input[type = "file"] {
     font-size: 1em;
     display: flex;
     flex-grow: 1;
-    color: #a5a8a9;
+    color: #e3e3e3;
     height: 100%;
+    font-weight: 600;
     justify-content: flex-end;
 }
 
@@ -226,19 +226,27 @@ input[type = "file"] {
     opacity: 0;
     margin-left: -1.5em;
     display: flex;
+    color: inherit;
 }
 
 .window.immersive #menu {
     opacity: 1;
-    margin-left: 0;
+    margin-left: 20px;
     pointer-events: all;
 }
-
+.window.immersive .controls {
+    margin-right: 20px;
+    color: inherit;
+}
 .window.immersive .navbar {
     z-index: +9999;
 }
+.window.immersive .navbar.purple {
+    color: #2F2C4E;
+}
 .window.immersive .navbar > .wrapper {
-    background-image: linear-gradient(rgba(0,0,0,0.6),transparent);
+    margin-top: 20px;
+    /*background-image: linear-gradient(rgba(0,0,0,0.6),transparent);*/
 }
 
 .navbar .controls > .button {
@@ -565,7 +573,6 @@ input[type = "file"] {
 }
 
 .sidebar .section > ul > a {
-    line-height: 3.5em;
     cursor: pointer;
     display: flex;
     text-transform: uppercase;
@@ -577,27 +584,16 @@ input[type = "file"] {
     justify-content: center;
     position: relative;
     color: #b28e54;
-    font-weight: inherit;
+    font-weight: 600;
 }
-.sidebar .section > ul > a::after {
-    content:"";
-    position: absolute;
-    width: 100%;
-    left: 0%;
-    bottom: 0px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 10%, rgba(178, 142, 84, 0.5) 50%, transparent 90%);
-}
-
 .sidebar .section > ul > a.active {
     background: rgba(0,0,0,0.25);
 }
 .sidebar .section > ul > a > span {
-    font-weight: 600;
     vertical-align: top;
     transition: font-weight 0.2s;
     font-size: 0.8em;
-    line-height: 3.5em;
+    line-height: 4em;
 }
 
 
@@ -765,6 +761,7 @@ h5 {
 }
 .main .section.header > h1 {
     text-transform: uppercase;
+    font-weight: 300;
 }
 
 .main .controls {
@@ -999,7 +996,7 @@ form .field-container > .remnant > textarea {
     text-align: center;
     color: #505057;
 }
-.main .button {
+.main a.button {
     line-height: 3em;
     padding:0 1em;
     border-radius:4px;
@@ -1011,7 +1008,7 @@ form .field-container > .remnant > textarea {
     display: inline-block;
 }
 
-.main .button:hover {
+.main a.button:hover {
     background:#e0e0e0;
 }
 

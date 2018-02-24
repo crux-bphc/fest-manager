@@ -1,5 +1,3 @@
-var homepage = function () {
-    console.log('Start');
     function animateBG(banner) {
         $('.' + banner).addClass('animate-bg');
         if (banner == 'one') {
@@ -208,7 +206,7 @@ var homepage = function () {
     $(document).ready(function() {
         $('.fullpage').fullpage({
             sectionSelector: '.fp-section',
-            anchors: ['Agence', 'Expertise', 'Projets_intro', 'Projets', 'Confiance', 'Realisations_intro', 'Realisations', 'Contact_intro', "Contact"],
+            anchors: ['Welcome', 'About', 'Projects', 'Events', 'Sponsors', 'Random', 'Testimonials', 'GettingHere', "Contact"],
             normalScrollElements: '.modal',
             responsiveWidth: 1200,
             afterLoad: function() {
@@ -372,12 +370,14 @@ var homepage = function () {
         $(".text-baseline").animate({ color: "#FFFFFFF" }, 500);
         $(".follow-icon a").animate({ color: "#FFFFFFF" }, 500);
         $(".nav-btn").animate({ 'stroke': '#C59D5F' }, 200);
+        $(".navbar").removeClass('purple');
     }
 
     function elementsInPurple() {
         $(".text-baseline").animate({ color: "#2F2C4E" }, 500);
         $(".follow-icon a").animate({ color: "#2F2C4E" }, 500);
         $(".nav-btn").animate({ 'stroke': '#C59D5F' }, 200);
+        $(".navbar").addClass('purple');
     }
 
     function displayElements() {
@@ -623,4 +623,3 @@ var homepage = function () {
             e.preventDefault();
         }
     });
-}

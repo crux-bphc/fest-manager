@@ -6,7 +6,7 @@
  * Copyright (C) 2015 alvarotrigo.com - A project by Alvaro Trigo
  */
 (function(global, factory) {
-    'use strict';
+    // 'use strict';
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], function($) {
           return factory($, global, global.document, global.Math);
@@ -17,7 +17,7 @@
         factory(jQuery, global, global.document, global.Math);
     }
 })(typeof window !== 'undefined' ? window : this, function($, window, document, Math, undefined) {
-    'use strict';
+    // 'use strict';
 
     // keeping central set of classnames and selectors
     var WRAPPER =               'fullpage-wrapper';
@@ -90,7 +90,7 @@
 
     $.fn.fullpage = function(options) {
         //only once my friend!
-        if($('html').hasClass(ENABLED)){ displayWarnings(); return; }
+        // if($('html').hasClass(ENABLED)){ displayWarnings(); return; }
 
         // common jQuery objects
         var $htmlBody = $('html, body');
@@ -307,6 +307,7 @@
         * Adds or remove the possibility of scrolling through sections by using the mouse wheel or the trackpad.
         */
         function setMouseWheelScrolling(value){
+            // if($('html').hasClass(ENABLED)) return;
             if(value){
                 addMouseWheelHandler();
                 addMiddleWheelHandler();
@@ -531,8 +532,8 @@
             };
 
             init();
-
             bindEvents();
+            $('html').addClass(ENABLED);
         }
 
         function init(){
@@ -561,12 +562,11 @@
         function bindEvents(){
             $window
                 //when scrolling...
-                .on('scroll', scrollHandler)
+                // .on('scroll', scrollHorizontallyndler)
 
                 //detecting any change on the URL to scroll to the given anchor link
                 //(a way to detect back history button as we play with the hashes on the URL)
                 .on('hashchange', hashChangeHandler)
-
                 //when opening a new tab (ctrl + t), `control` won't be pressed when coming back.
                 .blur(blurHandler)
 
@@ -638,7 +638,6 @@
 
             //adding a class to recognize the container internally in the code
             container.addClass(WRAPPER);
-            $('html').addClass(ENABLED);
 
             //due to https://github.com/alvarotrigo/fullPage.js/issues/1502
             windowsHeight = $window.height();
@@ -2482,12 +2481,12 @@
 
 
             if(support == 'DOMMouseScroll'){
-                document[ _addEventListener ](prefix + 'MozMousePixelScroll', MouseWheelHandler, false);
+                $(WRAPPER_SEL)[0][ _addEventListener ](prefix + 'MozMousePixelScroll', MouseWheelHandler, false);
             }
 
             //handle MozMousePixelScroll in older Firefox
             else{
-                document[ _addEventListener ](prefix + support, MouseWheelHandler, false);
+                $(WRAPPER_SEL)[0][ _addEventListener ](prefix + support, MouseWheelHandler, false);
             }
         }
 

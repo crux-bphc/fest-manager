@@ -1,18 +1,11 @@
-link(href='/static/stylesheets/home.style.css', rel='stylesheet')
 link(rel='stylesheet', href='/static/stylesheets/jquery.fullPage.2.css')
 link(rel='stylesheet', href='/static/stylesheets/animate.css')
 link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
-link(href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff|Montserrat:300,900', rel='stylesheet')
 link(rel='stylesheet', type='text/css', href='/static/fonts/flaticon/font.css')
 script(src='/static/lib/bootstrap.min.js')
 script(src='/static/lib/jquery-ui.min.js')
-.module-home.immersive-wrapper
+.module-home.immersive-wrapper.unloaded
   .elements-navigation
-    span.nav
-      svg(width='30', id='', viewbox='0 0 24 24', style='enable-background:new 0 0 24 24;', xml:space='preserve')
-        line.nav-btn(x1='2', y1='12', x2='22', y2='12')
-        line.nav-btn(x1='2', y1='6', x2='22', y2='6')
-        line.nav-btn(x1='2', y1='18', x2='22', y2='18')
     .baseline
       .precision-intro
         span.montserrat.text-baseline(style='margin-left:10px; font-weight:700; line-height:75px; text-transform:uppercase;')
@@ -43,27 +36,27 @@ script(src='/static/lib/jquery-ui.min.js')
             .logo-site
               span.title WANDERLUST
               .subtext
-                | For as long as we can remember we have travelled the world looking at all the new experiences with awe. We thought its time we celebrated the feeling.
+                | For as long as we can remember we have travelled the world letting all the new experiences fill us with awe. We thought its time we celebrated the craving.
         .low-band
           .row.row-eq-height
             .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-4.col-md-offset-4.col-xs-12.text-center.vertical-bot.is-animated_link
               a(href='#Expertise')
                 img.arrow-pop(src='/static/images/landing/arrow-pop.png', alt='')
-                img(src='/static/images/landing/slide2.png', alt='', onload='homepage()')
+                img(src='/static/images/landing/slide2.png', alt='')
     .fp-section.second.bg-g
       .row.row-eq-height
         .col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-12.text-center.vertical-bot(style='color:white;')
           p.text-center.is-animated__single
-            span.herr.yellow.calque-360  360°
+            span.herr.yellow.calque-360  2018
           p.is-animated
             span.demo.montserrat.black.intro-text
               span.light
-                | NOTRE EXPERTISE AU SERVICE DE
+                | AFTER 8 EDITIONS OF PEARL
                 br
               span.bold(style='font-weight:700;')
-                | VOTRE COMMUNICATION GLOBALE :
+                | WE ARE MAKING IT
                 br
-                |                                     IDENTITE, STRATEGIE, WEB &amp; PRINT
+                |                                     BIGGER, BETTER &amp; LIVELIER
     .fp-section.bordered-out.text-center.third
       .container-banner.is-animated__container
         .two
@@ -71,10 +64,10 @@ script(src='/static/lib/jquery-ui.min.js')
           .row.container-header
             .center-header.col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-12.col-xs-12.text-left.white(style='font-weight:700; font-size:100px; line-height:120px; position:absolute; top:0; bottom:0; left:0; right:0;')
               b.line-big-title.animated
-                span.line VOUS
-                span.yellow.line ACCOMPAGNER
-                span.line DANS TOUS VOS
-                span.line PROJETS
+                span.line COME HAVE
+                span.yellow.line A GOOD TIME.
+                span.line CHECK OUT
+                span.line WHAT'S PLANNED
           .low-band
             .row.row-eq-height
               .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-4.col-sm-offset-4.col-xs-12.text-center.vertical-bot.is-animated__slide
@@ -84,65 +77,47 @@ script(src='/static/lib/jquery-ui.min.js')
     .fp-section.fourth.bg-g
       .row
         .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
-          .little-title.herr.yellow.section-title Découvrez
-          .big-title.montserrat.black.section-subtitle Nos métiers
+          .little-title.herr.yellow.section-title Explore
+          .big-title.montserrat.black.section-subtitle Events
       br.delete-mobile
       br.delete-mobile
       br.delete-mobile
       .row
         .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1.col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1.text-center.padding-responsive
           .row.row-eq-height
-            .col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence
+            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Competitions")
               div
-                .little-title.herr Univers de
-                .bold-title.montserrat.black Marque
-              hr.little-spacer
-              p(style='text-transform:uppercase;') IDENTITÉ VISUELLE
-              p(style='text-transform:uppercase;') CHARTE GRAPHIQUE
-              p(style='text-transform:uppercase;') VISUELS PUBLICITAIRES
-              p(style='text-transform:uppercase;') UNIVERS, BOARDS
-              p(style='text-transform:uppercase;') SHOOTING PHOTO
-              p(style='text-transform:uppercase;') CAPTATION VIDÉO
-            .col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence
+                .little-title.herr Competitions
+                //- .bold-title.montserrat.black Marque
+              span.little-spacer
+              p CATHARSIS FILM FESTIVAL
+              p TILL DEAF DO WE PART
+              p TERPSICHORE
+              p GLITTERATI
+              p AND MORE...
+            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Workshops")
               div
-                .little-title.herr Créations
-                .bold-title.montserrat.black Web
-              hr.little-spacer
-              p(style='text-transform:uppercase;') WEBDESIGN
-              p(style='text-transform:uppercase;') DÉVELOPPEMENT
-              p(style='text-transform:uppercase;') SITE VITRINE
-              p(style='text-transform:uppercase;') SITE CORPORATE
-              p(style='text-transform:uppercase;') SITE E-COMMERCE
-              p(style='text-transform:uppercase;') MISE EN RELATION
-              p(style='text-transform:uppercase;') AUDIT, MAINTENANCE
-            .col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence
+                .little-title.herr Informals
+                //- .bold-title.montserrat.black Web
+              span.little-spacer
+              p COMING SOON
+            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Talks")
               div
-                .little-title.herr Stratégie
-                .bold-title.montserrat.black DIGITALE
-              hr.little-spacer
-              p(style='text-transform:uppercase;') SEO, ADWORDS
-              p(style='text-transform:uppercase;') RÉSEAUX SOCIAUX
-              p(style='text-transform:uppercase;') CONCEPT VIRAL
-              p(style='text-transform:uppercase;') JEU CONCOURS
-              p(style='text-transform:uppercase;') CONTENU RÉDACTIONNEL
-              p(style='text-transform:uppercase;') BANNIÈRES, EMAILINGS
-              p(style='text-transform:uppercase;') MOTION DESIGN
-            .col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence
+                .little-title.herr Talks
+                //- .bold-title.montserrat.black DIGITALE
+              span.little-spacer
+              p COMING SOON
+            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Proshows")
               div
-                .little-title.herr Supports
-                .bold-title.montserrat.black PRINT
-              hr.little-spacer
-              p(style='text-transform:uppercase;') PLAQUETTE
-              p(style='text-transform:uppercase;') CATALOGUE
-              p(style='text-transform:uppercase;') PACKAGING
-              p(style='text-transform:uppercase;') AFFICHAGE
-              p(style='text-transform:uppercase;') ROLL-UP
-              p(style='text-transform:uppercase;') KAKÉMONOS
+                .little-title.herr Shows
+                //- .bold-title.montserrat.black PRINT
+              span.little-spacer
+              p COMING SOON
     .fp-section.fifth.bg-g.reset-mobile-size
       .row
         .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
-          .little-title.herr.yellow.section-title Ils nous font
-          .big-title.montserrat.black.section-subtitle Confiance
+          .little-title.herr.yellow.section-title Meet our previous
+          .big-title.montserrat.black.section-subtitle Sponsors
       br
       br
       br
@@ -150,30 +125,30 @@ script(src='/static/lib/jquery-ui.min.js')
         .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1.col-sm-12.col-xs-12.text-center
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
-              img(src='/static/images/landing/clients/g7.png', alt='')
+              img(src='/static/images/sponsors/telanganatourism.png', alt='')
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
-              img(src='/static/images/landing/clients/delarte.png', alt='')
+              img(src='/static/images/sponsors/sbh.png', alt='')
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
-              img(src='/static/images/landing/clients/servier.png', alt='')
+              img(src='/static/images/sponsors/4.png', alt='')
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
-              img(src='/static/images/landing/clients/look.png', alt='')
+              img(src='/static/images/sponsors/timesofindia.png', alt='')
       .row.hide-mobile
         .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1.col-sm-12.col-xs-12.text-center
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
-              img(src='/static/images/landing/clients/sodezign.png', alt='')
+              img(src='/static/images/sponsors/16.png', alt='')
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
-              img(src='/static/images/landing/clients/assurland.png', alt='')
+              img(src='/static/images/sponsors/12.png', alt='')
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
-              img(src='/static/images/landing/clients/lnf.png', alt='')
+              img(src='/static/images/sponsors/7.png', alt='')
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
-              img(src='/static/images/landing/clients/launay.png', alt='')
+              img(src='/static/images/sponsors/8.png', alt='')
     .fp-section.bordered-out.text-center.sixth.hide-mobile
       .container-banner.is-animated__container
         .three
@@ -181,11 +156,11 @@ script(src='/static/lib/jquery-ui.min.js')
           .row.container-header
             .center-header.col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-12.col-xs-12.text-left.white(style='font-weight:700; font-size:100px; line-height:120px; position:absolute; top:0; bottom:0; left:0; right:0;')
               b.line-big-title.animated
-                span.line VOUS
+                span.line SEE WHAT
                 span.line
-                  span.yellow PROPOSER
-                span.line LES MEILLEURES
-                span.line RÉALISATIONS
+                  span.yellow OUR GUESTS
+                span.line HAD TO SAY
+                span.line ABOUT US
           .low-band
             .row.row-eq-height
               .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-4.col-sm-offset-4.col-xs-12.text-center.vertical-bot.is-animated__slide
@@ -194,99 +169,80 @@ script(src='/static/lib/jquery-ui.min.js')
                   img(src='/static/images/landing/slide2.png', alt='')
     .fp-section.bg-g.references
       .row.row-eq-height.slider
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(images/landing/janssen.jpg) center;')
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/nucleya.jpg) center;')
           div
             .row
               .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
                 h2.slide-title.montserrat.white.test-title
-                  a.open-project Janssen
-                .slide-description.herr.yellow
-                  | laboratoires
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(images/landing/trattoria.jpg) center;')
+                  a.open-project NUCLEYA
+                .slide-description.rocksalt.yellow
+                  | We're the best they've got
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(/static/images/landing/testimonials/sashi.jpg) center;')
           div
             .row
               .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
                 h2.slide-title.montserrat.white.test-title
-                  a.open-project Trattoria
-                .slide-description.herr.yellow
-                  | by del arte
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(images/landing/sodezign.jpg) center;')
+                  a.open-project SHASHI THAROOR
+                .slide-description.rocksalt.yellow
+                  | Fucking peasants
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(/static/images/landing/testimonials/wolf.jpg) center;')
           div
             .row
               .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
                 h2.slide-title.montserrat.white.test-title
-                  a.open-project Sodezign
-                .slide-description.herr.yellow
-                  | meubles design
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(images/landing/launay.jpg) center;')
+                  a.open-project WOLFMOTHER
+                .slide-description.rocksalt.yellow
+                  | Kya chutiya log hai Behnchod!
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(/static/images/landing/testimonials/vishal.jpg) center;')
           div
             .row
               .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
                 h2.slide-title.montserrat.white.test-title
-                  a.open-project Groupe Launay
-                .slide-description.herr.yellow
-                  | promoteur immobilier
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(images/landing/dare.jpg) center;')
+                  a.open-project VISHAL / SHEKHAR
+                .slide-description.rocksalt.yellow
+                  | Audi kaafi achha hai
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/indianjam.jpg) center;')
           div
             .row
               .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
                 h2.slide-title.montserrat.white.test-title
-                  a.open-project Dare
-                .slide-description.herr.yellow
-                  | by ipsen
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(images/landing/clickandcare.jpg) center;')
+                  a.open-project INDIAN JAM PROJECT
+                .slide-description.rocksalt.yellow
+                  | Mazaa aa gaya
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/abish.jpg) center;')
           div
             .row
               .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
                 h2.slide-title.montserrat.white.test-title
-                  a.open-project Click &amp; care
-                .slide-description.herr.yellow
-                  | aide à la personne
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(images/landing/servier.jpg) center;')
+                  a.open-project ABISH MATHEW
+                .slide-description.rocksalt.yellow
+                  | I wish I'd never come
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/farhan.jpg) center;')
           div
             .row
               .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
                 h2.slide-title.montserrat.white.test-title
-                  a.open-project Random
-                .slide-description.herr.yellow
-                  | laboratoires
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(images/landing/transat.jpg) center;')
+                  a.open-project FARHAN AKHTAR
+                .slide-description.rocksalt.yellow
+                  | They're the worst audience ever
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/sonu.jpg) center;')
           div
             .row
               .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
                 h2.slide-title.montserrat.white.test-title
-                  a.open-project Adalksjd
-                .slide-description.herr.yellow
-                  | agence de voyage
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(images/landing/g7.jpg) center;')
-          div
-            .row
-              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
-                h2.slide-title.montserrat.white.test-title
-                  a.open-project Adasdee
-                .slide-description.herr.yellow
+                  a.open-project SONU NIGAM
+                .slide-description.rocksalt.yellow
                   | compagnie de taxis
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(images/landing/lnf.jpg) center;')
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/zakir.jpg) center;')
           div
             .row
               .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
                 h2.slide-title.montserrat.white.test-title
-                  a.open-project Rsdfs
-                    | Les nouveaux
-                    br
-                    |  fromagers
-                .slide-description.herr.yellow
+                  a.open-project ZAKIR KHAN
+                .slide-description.rocksalt.yellow
                   | fromagerie en ligne
-        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(images/landing/mybpmatters.jpg) center;')
-          div
-            .row
-              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
-                h2.slide-title.montserrat.white.test-title
-                  a.open-project Voww
-                .slide-description.herr.yellow
-                  | by Servier
         .control-left.left
-          img.arrow-counter(src='/static/images/landing/left-arrow.png', alt='', intermin='1', intermax='3')
+          img(src='/static/images/landing/left-arrow.png', alt='', intermin='1', intermax='3')
         .control-right.right
           img(src='/static/images/landing/right-arrow.png', alt='')
     .fp-section.bordered-out.text-center.height
@@ -296,9 +252,9 @@ script(src='/static/lib/jquery-ui.min.js')
           .row.container-header
             .center-header.col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-12.col-xs-12.text-left.white(style='font-weight:700; font-size:100px; line-height:120px; position:absolute; top:0; bottom:0; left:0; right:0;')
               b.line-big-title.animated
-                span.line ÊTRE
-                span.yellow.line DISPONIBLE
-                span.line POUR VOUS
+                span.line FIND
+                span.yellow.line YOUR WAY
+                span.line TO HERE
           .low-band
             .row.row-eq-height
               .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-4.col-sm-offset-4.col-xs-12.text-center.vertical-bot.is-animated__slide
@@ -308,46 +264,40 @@ script(src='/static/lib/jquery-ui.min.js')
     .fp-section.nineth.bg-g
       .row
         .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
-          .little-title.herr.yellow.section-title N'attendez-plus
-          .big-title.montserrat.black.section-subtitle Contactez-nous
-      .row.is-animated__form
-        .col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3.col-xs-10.col-xs-offset-1(style='visibility: visible; animation-name: pulse;')
-          .wpb_raw_code.wpb_content_element.wpb_raw_html
-            .wpb_wrapper
-              form#contactForm(method='post', action='http://www.licornpublishing.com/SITE')
-                p.error
-                #inputContainer
-                  input#email(value='VOTRE MAIL', data-empty='true', name='email', type='text')
-                  input#tel(value='VOTRE TELEPHONE', data-empty='true', name='tel', type='text')
-                  textarea#message(type='text', data-empty='true', name='message') VOTRE MESSAGE
-                  span.success Votre message a bien été envoyé
-                  span.steps
-                    strong 01
-                    |  / 03
-                  span#nextStep.submit
-                  input#comment(name='comment', value='', type='text')
-                  input#submitContact(name='submitContact', value='Envoyer', type='submit')
-                span.progressBar
-                  span
+          .little-title.herr.yellow.section-title Get in touch
+          .big-title.montserrat.black.section-subtitle Contact Us
+      br
+      br
       .row
         .col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3.col-xs-8.col-xs-offset-2.is-animated__data.contact-line
           .row.contacts
-            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-left.mobile-text-center
-              b(style='text-transform:uppercase;') Siège Social
-              br
-              p 101 Rue de Sèvres, 75006 PARIS
-            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-left.mobile-text-center
-              a(href='https://www.google.fr/maps/place/LICORN+PUBLISHING/@48.098922,-1.6837633,17z/data=!3m1!4b1!4m5!3m4!1s0x480edfcf6d3f465b:0x766765cbb0f47057!8m2!3d48.0989184!4d-1.6815693', target='_blank')
-                b(style='text-transform:uppercase;') Agence
-                br
-                p 48 Rue de Ginguené, 35000 RENNES
-            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-right.mobile-text-center
-              b.bold.phone-number(style='font-size:35px;')
-                a(href='tel:+33983069368')
-                  b 09 83 06 93 68
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b(style='text-transform:uppercase;') Abhinav Eittireddy
               br
               p
-                a(href='mailto:contact@licornpublishing.com')  contact[@]licornpublishing.com
+                | President
+                br
+                a(href='tel:+9542929354') 9542929354
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b(style='text-transform:uppercase;') Manas Bansal
+              br
+              p
+                | Sponsorship &amp; Marketing
+                br
+                a(href='tel:+9666131548') 9666131548
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b(style='text-transform:uppercase;') Chandan Kumar
+              br
+              p
+                | Cultural Secretary
+                br
+                a(href='tel:+7660002320') 7660002320
+          br
+          .row
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b.bold.phone-number(style='font-size:35px;')
+                a(href='mailto:pearl@hyderabad.bits-pilani.ac.in')
+                  b pearl@hyderabad.bits-pilani.ac.in
   script(src='/static/lib/jquery.fullPage.js')
   script(src='/static/scripts/home.js')
   script.

@@ -1,5 +1,6 @@
 @import url("https://fast.fonts.net/cssapi/65d53f76-7f50-4ee5-a8eb-8a6595ff1a35.css");
 
+
 .main .wrapper.face.module-home {
     overflow-y: hidden;
 }
@@ -56,6 +57,7 @@
 .logo-site .title {
     font-family: 'Bebas Neue';
     color: white;
+    font-weight: 600;
     font-size: 10em;
 }
 
@@ -491,21 +493,29 @@
 
 .references>.fp-tableCell>.row {
     height: 100vh;
+    width: 100vw;
+    margin-left: 0;
+    box-sizing: border-box;
+    padding: 0px 15px;
 }
 
 .references>.fp-tableCell>.row>div {
     height: 100vh;
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    justify-content: center;
 }
 
 .references>.fp-tableCell>.row>div>div {
-    width: 100%;
+    width: 30vw;
+    position: absolute;
     text-align: center;
 }
 
 .slidum {
     background-size: cover !important;
+    padding: 0px;
 }
 
 .slide-title {
@@ -524,7 +534,7 @@
 
 .control-left {
     position: absolute;
-    left: 30px;
+    left: 15px;
     z-index: 40;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
@@ -535,7 +545,7 @@
 
 .control-right {
     position: absolute;
-    right: 30px;
+    right: 15px;
     z-index: 40;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
@@ -545,7 +555,7 @@
 }
 
 .control-left:hover {
-    left: 34px;
+    left: 19px;
     -webkit-transition: width 2s;
     /* Safari */
     transition: width 2s;
@@ -558,7 +568,7 @@
 }
 
 .control-right:hover {
-    right: 34px;
+    right: 19px;
     -webkit-transition: width 2s;
     /* Safari */
     transition: width 2s;
@@ -844,6 +854,7 @@
     top: auto;
     height: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -854,12 +865,12 @@
 
 
 .two {
-    background: url('/static/images/landing/clients.jpg') center;
+    background: url('/static/images/landing/agence.jpg') center;
     background-size: 100% 100%;
 }
 
 .three {
-    background: url('/static/images/landing/projet.jpg') center;
+    background: url('/static/images/landing/clients.jpg') center;
     background-size: 100% 100%;
 }
 
@@ -868,7 +879,9 @@
     background-size: 100% 100%;
 }
 
-
+a.open-project {
+    white-space: nowrap;
+}
 
 .low-band {
     position: absolute;
@@ -946,18 +959,66 @@
     font-family: Herr Von Muellerhoff, san-serif;
 }
 
+.rocksalt {
+    font-family: Rock Salt, san-serif;
+}
+
 .pluri-competence {
     border-radius: 7px;
     margin-left: 18px;
     margin-right: 18px;
     padding-bottom: 50px;
+    cursor: pointer;
     -webkit-box-shadow: 0px 0px 60px -10px rgba(0, 0, 0, 0.13);
     -moz-box-shadow: 0px 0px 60px -10px rgba(0, 0, 0, 0.13);
     box-shadow: 0px 0px 60px -10px rgba(0, 0, 0, 0.13);
+    transition: box-shadow 0.3s ease-out;
+}
+.pluri-competence:hover {
+    -webkit-box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.1);
+}
+.pluri-competence .little-spacer {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    border-top: 1px solid #eee;
+}
+.pluri-competence .little-spacer::after {
+    animation: fadeout 0.2s 1 ease-out;
+    opacity: 0;
+    border-top:1px solid #C59D5F;
+    content: "";
+    width: 0;
+    top:0;
+    position: absolute;
+}
+@keyframes fadeout {
+    from {
+        opacity: 1;
+        width: 100%;
+    }
+    to {
+        width: 70%;
+    }
+}
+.pluri-competence:hover .little-spacer::after {
+    width: 100%;
+    opacity: 1;
+    animation: expand 0.5s 1 ease-out;
+}
+@keyframes expand {
+    from {
+        width: 0;
+    }
 }
 
 .pluri-competence p {
     margin: 0px;
+    line-height: 2em;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .yellow {
@@ -1508,6 +1569,18 @@
     bottom: 5px;
     width: 20px;
     z-index: 600;
+    animation: call 1s infinite linear;
+}
+@keyframes call {
+    0% {
+        transform: translateY(50%);
+    }
+    50% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(50%);
+    }
 }
 
 .pop-project {
@@ -1562,7 +1635,7 @@
     text-decoration: none;
 }
 
-span {
+.module-home span {
     position: relative;
     z-index: 1;
     line-height: 23px;
@@ -1674,6 +1747,7 @@ span {
 .line-big-title .line {
     display: block;
     height: 80px;
+    white-space: nowrap;
 }
 
 .project-subtitle {
@@ -2166,9 +2240,11 @@ h2>a:focus:before {
 }
 
 
+.fp-section.second p {
+    margin-top: 20px;
+}
 
-
-.intro-text {
+.module-home .intro-text {
     font-size: 30px;
     line-height: 40px;
 }
@@ -2648,6 +2724,13 @@ content-404 a {
 }
 
 @media (max-width: 768px) {
+    .one video {
+        width: auto;
+        height: 100%;
+    }
+    .logo-site .title {
+        font-size: 5em;
+    }
     .grid {
         width: 680px
     }

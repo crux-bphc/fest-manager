@@ -12,7 +12,7 @@ router.get('/?*', function (req, res, next) {
 		navigation: {
 			home: {
 				label: "Home",
-				route: "https://bits-pearl.org",
+				route: "/",
 			},
 			// about: {
 			// 	label: "About",
