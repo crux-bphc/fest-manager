@@ -5,15 +5,15 @@ mixin cartActionsMixin(event, user, text)
     div.cart-actions
         - if(config.state.registrations)
             - if(typeof user !== 'undefined')
-                - if(user.events.indexOf(event._id) != -1)
+                - if(user.events.indexOf(event._id) != -1 || user.pending.indexOf(event._id) != -1)
                     if(event.price==0)
                         div.subscribed.button
                             i.icon-check
                             span Registered
                     else
-                        div.subscribed.button
-                            i.icon-check
-                            span Registered
+                        a.pending.button(href="https://townscript.com/e/pearl2018-240304")
+                            i.icon-ticket
+                            span Buy Tickets
                 - else if(event.teamSize > 1)
                     div.latent(tabindex="1")
                         div.add_to_cart.button

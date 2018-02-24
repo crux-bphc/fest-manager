@@ -60,7 +60,7 @@
 .cart-actions .button.pending {
     background:orange;
     color:#fff;
-    cursor: default;
+    cursor: pointer;
     border-color:transparent;
 }
 .cart-actions .button.pending > .icon-close {
