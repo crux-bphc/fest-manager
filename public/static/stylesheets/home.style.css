@@ -879,6 +879,29 @@
     background-size: 100% 100%;
 }
 
+.fp-section .pending {
+    background: #191919;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+.fp-section .pending.now {
+    transform: translateX(-100%);
+}
+
+.fp-section .normal {
+    font-size: initial;
+    line-height: 1.5em;
+    font-weight: 600;
+}
+.small-break {
+    margin-top: 1em;
+}
+.link {
+    cursor: pointer;
+}
+
 a.open-project {
     white-space: nowrap;
 }
@@ -888,19 +911,30 @@ a.open-project {
     bottom: -150px;
     left: 20px;
     right: 20px;
+    z-index: +200;
     border-bottom: 20px solid white;
 }
-
-
 .vertical-bot {
     vertical-align: baseline;
 }
-
+.flex-center {
+    justify-content: center;
+    display: flex;
+}
 .row-eq-height {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+}
+#transit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#transit div {
+    width: 60%;
+    position: absolute;
 }
 
 .link-contact-other {
@@ -924,7 +958,9 @@ a.open-project {
     margin-top: -15px;
 }
 
-
+.offwhite {
+    color: #E3E3E3;
+}
 
 .big-title {
     font-size: 35px;
@@ -1747,6 +1783,7 @@ a.open-project {
 .line-big-title .line {
     display: block;
     height: 80px;
+    line-height: 80px;
     white-space: nowrap;
 }
 

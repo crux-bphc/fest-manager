@@ -255,12 +255,42 @@ script(src='/static/lib/jquery-ui.min.js')
                 span.line FIND
                 span.yellow.line YOUR WAY
                 span.line TO HERE
+                span.link.small-break.normal.row-eq-height.pending-trigger(data-target="transit")
+                  i.icon-map(style="font-size:1.5em")
+                  | &nbsp; See transit options
           .low-band
             .row.row-eq-height
               .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-4.col-sm-offset-4.col-xs-12.text-center.vertical-bot.is-animated__slide
                 a(href='#Contact')
                   img.arrow-pop(src='/static/images/landing/arrow-pop.png', alt='')
                   img(src='/static/images/landing/slide2.png', alt='')
+          .row.container-header.pending#transit.white
+            div
+              h1.white.timingsHeading.row-eq-height.flex-center
+                | TSRTC BUS SERVICE &nbsp;
+                i.icon-close.link.pending-untrigger(data-target="transit")
+              section.white.normal.small-break 212 From Secunderabad Railway Station (Gurudwara Point) to BITS Main gate:
+              section.white.small-break 07:50, 08:20, 08:50, 09:50, 11:00, 12:00, 13:00, 14:10, 15:05, 16:05, 17:20, 18:15, 19:15, 20:15, 21:15.
+              section.white.normal.small-break 212 From BITS Main Gate to Secunderabad Railway Station:
+              section.white.small-break 06:55 , 07:55 , 08:50, 09:20, 09:50, 11:00, 12:00, 13:00, 14:00, 15:05, 16:05, 17:20, 18:15, 19:15, 20:15
+              hr.little-spacer
+              section.offwhite.small-break
+                |City buses having numbers
+                strong &nbsp;211S,
+                strong &nbsp;211A,
+                strong &nbsp;211C,
+                strong &nbsp;211D,
+                strong &nbsp;211E,
+                strong &nbsp;211J,
+                strong &nbsp;211K,
+                strong &nbsp;211T,
+                strong &nbsp;211U,
+                strong &nbsp;567,
+                strong &nbsp;568,
+                strong &nbsp;569
+                |&nbsp;which ply from Secunderabad Railway Station to various destinations to the Campus side. Further, there are many APSRTC buses from Secunderabad, Jubilee bus stand to Karim Nagar, Siddhipet, Ramagundam, Gajwel, Cheriyal etc. People can board any of these buses, get down either at Thumkunta or Dongala Mysamma junction which is 1KM away and take an auto to the campus.
+            div.buttonsContainer
+              a(href="https://www.google.co.in/maps/place/BITS+Pilani/@17.5435125,78.5722199,17z/data=!4m5!3m4!1s0x3bcb835ea819f7f7:0xf65eaaa5a110605f!8m2!3d17.5449703!4d78.5716459?hl=en" target="_blank")
     .fp-section.nineth.bg-g
       .row
         .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
@@ -302,7 +332,7 @@ script(src='/static/lib/jquery-ui.min.js')
   script(src='/static/scripts/home.js')
   script.
     setTimeout(function() { $(".nav").fadeIn(700); }, 2200);
-    $(document).on('click', '.scroll-project', function(e) {
+    $('.scroll-project').on('click', function(e) {
       e.preventDefault();
       var elpos = $(this).offset();
       console.log(elpos);
@@ -310,13 +340,13 @@ script(src='/static/lib/jquery-ui.min.js')
       scrollTop: elpos.top,
       }, 1000);
     });
-    $(document).on('click', '.white-slide', function(e) {
+    $('.white-slide').on('click', function(e) {
       e.preventDefault();
       console.log("bon click");
       $('.modal').animate({ scrollTop: 1 }, 1000);
     });
-    $(document).on('click', '.left', function() { Slide($(this)); });
-    $(document).on('click', '.right', function() { Slide($(this)); });
+    $('.left').on('click', function() { Slide($(this)); });
+    $('.right').on('click', function() { Slide($(this)); });
     function Slide(btn) {
       if (btn.hasClass('right')) {
         if ($('.animate-hided').length > 0) {
@@ -365,6 +395,12 @@ script(src='/static/lib/jquery-ui.min.js')
         $('.slidum').eq(4).removeClass("hided");
         $('.slider').append($('.slidum').eq(0));
       }
+    });
+    $('.pending-trigger').click(function() {
+      $('#' + $(this).data('target')).addClass('now');
+    });
+    $('.pending-untrigger').click(function() {
+      $('#' + $(this).data('target')).removeClass('now');
     });
     $(window).scroll(function() {
       /* Check the location of each desired element */
