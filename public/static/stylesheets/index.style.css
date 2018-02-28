@@ -1149,8 +1149,11 @@ table tbody tr:nth-child(2n-1) {
 @media only screen and (max-width: 800px) {
     .sidebar, .sidebar.visible {
         margin-left: -200px;
-        padding:2em 1em;
+        padding:2em 0em;
         overflow-y: auto;
+    }
+    .navbar .logo {
+        font-size: 1em;
     }
     .navbar .subtitle {
         display: none;
@@ -1181,6 +1184,18 @@ table tbody tr:nth-child(2n-1) {
         pointer-events: all;
         margin-left: 0px;
         opacity: unset;
+    }
+    .window.immersive .navbar > .wrapper {
+        margin-top: 0px;
+    }
+    .navbar .logo span:first-child {
+        white-space: nowrap;
+    }
+    .window.immersive #menu {
+        margin-left: 0px;
+    }
+    .window.immersive .navbar .controls {
+        margin-right: 0px;
     }
     .window > .remnant.shift_to_expose_menu {
         transform: translateX(200px);

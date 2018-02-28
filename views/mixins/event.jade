@@ -5,6 +5,6 @@ mixin eventMixin(event, showImage)
                 div.image(style="background-image:url('#{event.thumbnail}')")
             div.face
                 span.tag= (event.type.toLowerCase() == "headliner" ? "Competition" : event.type)
-                h3.name= event.name
+                span.name= event.name
                 span.tagline= event.tagline
             div.details

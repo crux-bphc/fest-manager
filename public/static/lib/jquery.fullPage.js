@@ -365,7 +365,8 @@
         */
         function moveSectionUp(){
             var prev = $(SECTION_ACTIVE_SEL).prev(SECTION_SEL);
-
+            while(prev.is(':hidden'))
+                prev = prev.prev(SECTION_SEL);
             //looping to the bottom if there's no more sections above
             if (!prev.length && (options.loopTop || options.continuousVertical)) {
                 prev = $(SECTION_SEL).last();
@@ -381,7 +382,8 @@
         */
         function moveSectionDown(){
             var next = $(SECTION_ACTIVE_SEL).next(SECTION_SEL);
-
+            while(next.is(':hidden'))
+                next = next.next(SECTION_SEL);
             //looping to the top if there's no more sections below
             if(!next.length &&
                 (options.loopBottom || options.continuousVertical)){
@@ -442,11 +444,11 @@
             isResizing = true;
 
             windowsHeight = $window.height();  //updating global var
-
+            console.log(windowsHeight);
             $(SECTION_SEL).each(function(){
                 var slidesWrap = $(this).find(SLIDES_WRAPPER_SEL);
                 var slides = $(this).find(SLIDE_SEL);
-
+                console.log("Changing height", $(this));
                 //adjusting the height of the table-cell for IE and Firefox
                 if(options.verticalCentered){
                     $(this).find(TABLE_CELL_SEL).css('height', getTableHeight($(this)) + 'px');
@@ -487,7 +489,7 @@
 
             if(active){
                 if(!isResponsive){
-                    setAutoScrolling(false, 'internal');
+                    setAutoScrolling(true, 'internal');
                     setFitToSection(false, 'internal');
                     $(SECTION_NAV_SEL).hide();
                     $body.addClass(RESPONSIVE);
@@ -532,7 +534,7 @@
             };
 
             init();
-            // bindEvents();
+            bindEvents();
             $('html').addClass(ENABLED);
         }
 
@@ -572,7 +574,6 @@
 
                 //when resizing the site, we adjust the heights of the sections, slimScroll...
                 .resize(resizeHandler);
-
             $document
                 //Sliding with arrow keys, both, vertical and horizontal
                 .keydown(keydownHandler)
@@ -1356,6 +1357,7 @@
             if(typeof element === 'undefined'){ return; } //there's no element to scroll, leaving the function
 
             var dtop = getDestinationPosition(element);
+            dtop = element.position().top;
             var slideAnchorLink;
             var slideIndex;
 
@@ -2055,8 +2057,8 @@
         function resizeHandler(){
             //checking if it needs to get responsive
             responsive();
-
-            // rebuild immediately on touch devices
+            reBuild(true);
+            // // rebuild immediately on touch devices
             if (isTouchDevice) {
                 var activeElement = $(document.activeElement);
 
@@ -2515,7 +2517,7 @@
         function addTouchHandler(){
             if(isTouchDevice || isTouch){
                 if(options.autoScrolling){
-                    $body.off(events.touchmove).on(events.touchmove, preventBouncing);
+                    $(WRAPPER_SEL).off(events.touchmove).on(events.touchmove, preventBouncing);
                 }
 
                 $(WRAPPER_SEL)

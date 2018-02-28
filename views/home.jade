@@ -2,6 +2,7 @@ link(rel='stylesheet', href='/static/stylesheets/jquery.fullPage.2.css')
 link(rel='stylesheet', href='/static/stylesheets/animate.css')
 link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
 link(rel='stylesheet', type='text/css', href='/static/fonts/flaticon/font.css')
+link(rel='stylesheet', type='text/css', href='/static/fonts/Bebas Neue/font.css')
 script(src='/static/lib/bootstrap.min.js')
 script(src='/static/lib/jquery-ui.min.js')
 .module-home.immersive-wrapper.unloaded
@@ -19,7 +20,7 @@ script(src='/static/lib/jquery-ui.min.js')
         //- <a href="https://plus.google.com/109191267979904561298"><span class="flaticon-google-plus"></span></a>
         a(href='https://www.instagram.com/pearl.bitsh/')
           span.flaticon-instagram-logo
-      a.link-contact(href='#Contact') CONTACT
+      a.link-contact.hide-mobile(href='#Contact') CONTACT
     .border-bottom
     .border-top
     .border-left
@@ -57,6 +58,7 @@ script(src='/static/lib/jquery-ui.min.js')
                 | WE ARE MAKING IT
                 br
                 |                                     BIGGER, BETTER &amp; LIVELIER
+              a.button(href="https://townscript.com/e/pearl2018-240304")
     .fp-section.bordered-out.text-center.third
       .container-banner.is-animated__container
         .two
@@ -84,7 +86,7 @@ script(src='/static/lib/jquery-ui.min.js')
       br.delete-mobile
       .row
         .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1.col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1.text-center.padding-responsive
-          .row.row-eq-height
+          .row.row-eq-height.unresponsive
             a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Competitions")
               div
                 .little-title.herr Competitions
@@ -95,7 +97,7 @@ script(src='/static/lib/jquery-ui.min.js')
               p TERPSICHORE
               p GLITTERATI
               p AND MORE...
-            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Workshops")
+            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Informals")
               div
                 .little-title.herr Informals
                 //- .bold-title.montserrat.black Web
@@ -113,15 +115,15 @@ script(src='/static/lib/jquery-ui.min.js')
                 //- .bold-title.montserrat.black PRINT
               span.little-spacer
               p COMING SOON
-    .fp-section.fifth.bg-g.reset-mobile-size
+    .fp-section.fifth.bg-g
       .row
         .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
           .little-title.herr.yellow.section-title Meet our previous
           .big-title.montserrat.black.section-subtitle Sponsors
+      br.hide-mobile
+      br.hide-mobile
       br
-      br
-      br
-      .row.hide-mobile
+      .row
         .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1.col-sm-12.col-xs-12.text-center
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
@@ -135,7 +137,7 @@ script(src='/static/lib/jquery-ui.min.js')
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
               img(src='/static/images/sponsors/timesofindia.png', alt='')
-      .row.hide-mobile
+      .row
         .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1.col-sm-12.col-xs-12.text-center
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
@@ -149,6 +151,7 @@ script(src='/static/lib/jquery-ui.min.js')
           .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
             .bg-gf.p25
               img(src='/static/images/sponsors/8.png', alt='')
+    //-mobile hidden
     .fp-section.bordered-out.text-center.sixth.hide-mobile
       .container-banner.is-animated__container
         .three
@@ -167,7 +170,7 @@ script(src='/static/lib/jquery-ui.min.js')
                 a(href='#Realisations')
                   img.arrow-pop(src='/static/images/landing/arrow-pop.png', alt='')
                   img(src='/static/images/landing/slide2.png', alt='')
-    .fp-section.bg-g.references
+    .fp-section.bg-g.references.hide-mobile
       .row.row-eq-height.slider
         .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/nucleya.jpg) center;')
           div
@@ -176,7 +179,7 @@ script(src='/static/lib/jquery-ui.min.js')
                 h2.slide-title.montserrat.white.test-title
                   a.open-project NUCLEYA
                 .slide-description.rocksalt.yellow
-                  | We're the best they've got
+                  | Random Text Here
         .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(/static/images/landing/testimonials/sashi.jpg) center;')
           div
             .row
@@ -184,7 +187,7 @@ script(src='/static/lib/jquery-ui.min.js')
                 h2.slide-title.montserrat.white.test-title
                   a.open-project SHASHI THAROOR
                 .slide-description.rocksalt.yellow
-                  | Fucking peasants
+                  | Terrific to be among you all
         .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(/static/images/landing/testimonials/wolf.jpg) center;')
           div
             .row
@@ -255,7 +258,7 @@ script(src='/static/lib/jquery-ui.min.js')
                 span.line FIND
                 span.yellow.line YOUR WAY
                 span.line TO HERE
-                span.link.small-break.normal.row-eq-height.pending-trigger(data-target="transit")
+                span.link.small-break.normal.mobile-center.flex.pending-trigger(data-target="transit")
                   i.icon-map(style="font-size:1.5em")
                   | &nbsp; See transit options
           .low-band
@@ -273,8 +276,8 @@ script(src='/static/lib/jquery-ui.min.js')
               section.white.small-break 07:50, 08:20, 08:50, 09:50, 11:00, 12:00, 13:00, 14:10, 15:05, 16:05, 17:20, 18:15, 19:15, 20:15, 21:15.
               section.white.normal.small-break 212 From BITS Main Gate to Secunderabad Railway Station:
               section.white.small-break 06:55 , 07:55 , 08:50, 09:20, 09:50, 11:00, 12:00, 13:00, 14:00, 15:05, 16:05, 17:20, 18:15, 19:15, 20:15
-              hr.little-spacer
-              section.offwhite.small-break
+              hr.little-spacer.hide-mobile
+              section.offwhite.small-break.hide-mobile
                 |City buses having numbers
                 strong &nbsp;211S,
                 strong &nbsp;211A,
@@ -317,6 +320,28 @@ script(src='/static/lib/jquery-ui.min.js')
                 a(href='tel:+9666131548') 9666131548
             .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
               b(style='text-transform:uppercase;') Chandan Kumar
+              br
+              p
+                | Cultural Secretary
+                br
+                a(href='tel:+7660002320') 7660002320
+          .row.contacts
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b(style='text-transform:uppercase;') Uday Yellamanchili
+              br
+              p
+                | Publicity
+                br
+                a(href='tel:+9542929354') 9542929354
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center.hide-mobile
+              b(style='text-transform:uppercase;') Aditya Iyer
+              br
+              p
+                | General Secretary
+                br
+                a(href='tel:+9666131548') 9666131548
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center.hide-mobile
+              b(style='text-transform:uppercase;') Vaishnavi Reddy
               br
               p
                 | Cultural Secretary
