@@ -251,7 +251,7 @@
 
 
                 if (nextIndex == 3 || nextIndex == 6 || nextIndex == 8) {
-                    $('.line-big-title').removeClass('fadeOut')
+                    $('.line-big-title').removeClass('fadeOut');
                     setTimeout(function() {
                         $('.line-big-title').addClass('fadeIn');
                     }, 500);

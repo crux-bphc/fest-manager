@@ -25,6 +25,9 @@ mixin fieldMixin(data)
 				else if data.type == "image"
 					+imgUpload({id: data.id, width: data.width, height: data.height, file_name: "testabcd", name: data.name})
 				else
-					input(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value)
+					if data.pattern
+						input(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value pattern=data.pattern)
+					else
+						input(id="field-#{data.name}" type=data.type placeholder=data.placeholder required=data.required value=data.value)
 			else
 				input(id="field-#{data.name}" disabled value=data.value)
