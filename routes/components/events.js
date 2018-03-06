@@ -17,6 +17,7 @@ router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Events';
 	req = applyStateChanges(req);
 	eventsService.find(function (err, events) {
+		console.log(err);
 		if (err) return next(err);
 
 		events = events.filter(elem => {

@@ -1,7 +1,19 @@
 include ../mixins/event
 include ../mixins/field
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
-
+style.
+	@media only screen and (max-width: 600px) {
+		.stretch {
+			flex-direction: column;
+			align-items: flex-start;
+			height: 6em !important;
+			margin: 1em 0em;
+			justify-content: space-around;
+		}
+		.stretch > * {
+			width:100%;
+		}
+	}
 div.module-events.section.header
 	h1.title= title
 	div.stretch
@@ -21,6 +33,7 @@ div.module-events.section.header
 		a(data-tag="Writing") Writing
 		a(data-tag="Photography") Photography
 		a(data-tag="FineArts") Fine Arts
+		a(data-tag="Speaking") Speaking
 		a(data-tag="Miscellaneous") Miscellaneous
 
 div.section.events-wrapper

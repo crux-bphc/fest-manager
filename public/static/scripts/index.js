@@ -41,7 +41,7 @@ var manager = function () {
 	client.route = function (route, status = true, reload = false) {
 		console.log(route);
 		if (!route) return;
-		if (route.startsWith("http")) {
+		if (route.startsWith("http") || route.startsWith("mailto") || route.startsWith("tel")) {
 			window.open(route, '_self');
 			return;
 		}
