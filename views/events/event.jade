@@ -8,6 +8,8 @@ div.module-events.section.open-event(id=event._id team=(event.teamSize > 1 ? "tr
         div.hero(style="background-image:url('#{event.hero}')")
     div.body
         div.top
+            a.back(href="javascript:history.back()" absolute)
+                i.icon-navigate_next
             div.title= event.name
             div.remnant
                 +cartActionsMixin(event, user, "Register", config)

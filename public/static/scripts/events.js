@@ -23,22 +23,33 @@ $('document').ready(function () {
 	};
 
 	$('.section.tags a').click(function () {
-		console.log($(this).hasClass('active'));
-		if($(this).hasClass('active')) {
-			window.location.hash = "#";
+		if ($(this).hasClass('active')) {
+			window.location.hash = "#Competition";
 			$(this).removeClass('active');
 			return;
 		}
 		$(this).addClass("active").siblings().removeClass("active");
-		window.location.hash = $(this).data("tag");
+		window.location.hash = $(this).attr("href").split('#')[1];
 	});
 
 	window.onhashchange = function () {
 		if (window.location.hash.length > 1) {
-			var selector = '.event-container.' + window.location.hash.substring(1);
+
+			if (window.location.hash.startsWith("#Competition")) {
+				$('.tags').css({
+					display: 'flex'
+				}).find('a');
+			} else $('.tags').css({
+				display: 'none'
+			});
+
+			var filters = window.location.hash.substring(1).split('/');
+			var selector = '.event-container.' + filters.join('.');
+			$('.catch-filters .active').removeClass('active');
+			$('.catch-filters').find('.' + filters.join(',.')).addClass('active');
 			$('.event-container').addClass("disabled");
 			$(selector).removeClass('disabled');
-			console.log("Hash:", window.location.hash);
+
 		} else {
 			$('.event-container').removeClass("disabled");
 		}

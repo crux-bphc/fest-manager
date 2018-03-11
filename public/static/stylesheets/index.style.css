@@ -17,7 +17,7 @@
 }
 a, a:hover, a:visited, a:active {
     color: unset;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 .button.disabled {
     pointer-events: none;
@@ -501,10 +501,9 @@ input[type = "file"] {
     display: block;
     top:0;
     width: 100%;
-    padding-top:2em;
     padding-left: inherit;
     left: 0;
-    margin-top:4.5vw;
+    padding-top: 2.5vw;
     margin-left: inherit;
     transition: inherit;
 }
@@ -517,6 +516,9 @@ input[type = "file"] {
 .window.immersive > .remnant.shift_to_expose_menu > .sidebar {
     margin-left:0;
     transition: margin-left 0.3s ease-out;
+}
+.window.immersive > .remnant.shift_to_expose_menu > .sidebar > .wrapper {
+    padding-top: 100px;
 }
 .window.immersive > .remnant.shift_to_expose_menu > .main {
     opacity: 0.7;
@@ -564,7 +566,7 @@ input[type = "file"] {
 .sidebar .section > .label {
     color: #445256;
     padding-bottom: 1em;
-    display: block;
+    display: none;
 }
 
 .sidebar .section > ul {
@@ -620,13 +622,20 @@ input[type = "file"] {
     position:relative;
 }
 
-.sidebar .secondary-wrapper > .section.secondary {
-    position:absolute;
-    opacity: 0;
-    pointer-events: none;
+.sidebar .secondary-wrapper::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    background: #c8ae8433;
+    height: 1px;
+    top: -1.25em;
 }
-.sidebar .secondary-wrapper > .secondary > label {
-    text-transform: uppercase;
+
+.sidebar .secondary-wrapper > .section.secondary {
+    opacity: 0;
+    margin-top: 2.5em;
+    pointer-events: none;
 }
 
 .sidebar .secondary-wrapper > .secondary.disabled {
@@ -645,9 +654,7 @@ input[type = "file"] {
 .sidebar .secondary-wrapper > .secondary > ul > a {
     transform: translateX(-1em);
     opacity: 0;
-}
-.sidebar .secondary-wrapper > .secondary > ul > a > span {
-    line-height: inherit;
+    color: #c8ae84;
 }
 
 .sidebar .secondary-wrapper > .secondary.active > ul > a {

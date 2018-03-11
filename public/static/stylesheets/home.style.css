@@ -32,7 +32,7 @@
 .second .button::after {
     content: "GET YOUR TICKETS NOW";
 }
-a.button:hover {
+.module-home a.button:hover {
     color: #C59D5F;
     background: none !important;
 }
@@ -920,7 +920,7 @@ a.button:hover {
     cursor: pointer;
 }
 
-a.open-project {
+.module-home a.open-project {
     white-space: nowrap;
 }
 

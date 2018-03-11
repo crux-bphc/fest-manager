@@ -3,13 +3,34 @@ var router = express.Router();
 var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
 var config = fq('config-loader');
-var sort=fq('sort');
+var sort = fq('sort');
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
 		text: 'Events',
 		route: '/events',
 	};
+	req.stateparams.submenu = [{
+			route: "/events#Competition",
+			label: "Competitions",
+			class: "Competition",
+		},
+		{
+			route: "/events#Informal",
+			label: "Informals",
+			class: "Informal",
+		},
+		{
+			route: "/events#Talk",
+			label: "Talks",
+			class: "Talk",
+		},
+		{
+			route: "/events#Proshow",
+			label: "Shows",
+			class: "Show",
+		}
+	];
 	return req;
 };
 
