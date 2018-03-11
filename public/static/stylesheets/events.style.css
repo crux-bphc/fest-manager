@@ -292,6 +292,14 @@
     font-size:2em;
     font-weight: 600;
 }
+.module-events.open-event .back {
+    transform: rotateZ(180deg);
+    position: absolute;
+    font-size: 3em;
+    line-height: .666em;
+    right: 100%;
+    cursor: pointer;
+}
 
 .module-events.open-event .category {
     font-weight: 600;

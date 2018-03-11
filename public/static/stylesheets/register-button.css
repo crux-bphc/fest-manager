@@ -61,7 +61,8 @@
     background:orange;
     color:#fff;
     cursor: pointer;
-    border-color:transparent;
+    border: none;
+    line-height: 2.5em;
 }
 .cart-actions .button.pending > .icon-close {
     cursor: pointer;

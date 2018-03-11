@@ -23,18 +23,17 @@ div.module-events.section.header
 				span BUY TICKETS
 		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
-	div.section.tags
-		a(data-tag="Music") Music
-		a(data-tag="Dance") Dance
-		a(data-tag="Drama") Drama
-		a(data-tag="Film") Film
-		a(data-tag="Art") Art
-		a(data-tag="Quiz") Quiz
-		a(data-tag="Writing") Writing
-		a(data-tag="Photography") Photography
-		a(data-tag="FineArts") Fine Arts
-		a(data-tag="Speaking") Speaking
-		a(data-tag="Miscellaneous") Miscellaneous
+	div.section.tags.catch-filters
+		a(href="/events#Competition/Music" class="Music") Music
+		a(href="/events#Competition/Dance" class="Dance") Dance
+		a(href="/events#Competition/Drama" class="Drama") Drama
+		a(href="/events#Competition/Film" class="Film") Film
+		a(href="/events#Competition/Art" class="Art") Art
+		a(href="/events#Competition/Quiz" class="Quiz") Quiz
+		a(href="/events#Competition/Writing" class="Writing") Writing
+		a(href="/events#Competition/Photography" class="Photography") Photography
+		a(href="/events#Competition/FineArts" class="FineArts") Fine Arts
+		a(href="/events#Competition/Miscellaneous" class="Miscellaneous") Miscellaneous
 
 div.section.events-wrapper
 	each event in events

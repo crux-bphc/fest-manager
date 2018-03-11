@@ -39,9 +39,8 @@ var manager = function () {
 		client.route(client.state.location, true, true);
 	};
 	client.route = function (route, status = true, reload = false) {
-		console.log(route);
 		if (!route) return;
-		if (route.startsWith("http") || route.startsWith("mailto") || route.startsWith("tel")) {
+		if (route.startsWith("http") || route.startsWith("tel") || route.startsWith("mailto")) {
 			window.open(route, '_self');
 			return;
 		}
@@ -49,18 +48,18 @@ var manager = function () {
 			route = '/' + route;
 		if (route.indexOf('/components') == -1)
 			route = '/components' + route;
-		console.log(route, this.state.location + (client.hash ? '#' + client.hash : ""));
 		if (route == this.state.location + (client.hash ? '#' + client.hash : "") && !reload) return;
 
 		// If not the same route, apply following logic
 		if (window.innerWidth < 800)
 			$('.window > .remnant').removeClass('shift_to_expose_menu');
-		if (!route) return;
 
 		if (route.indexOf('#') != -1) {
 			client.hash = route.split('#')[1];
 			if (route.split('#')[0] == this.state.location) {
 				window.location.hash = '#' + client.hash;
+				var url = client.state.location.replace('/components', '') + (client.hash ? '#' + client.hash : "");
+				window.history.replaceState(url, "", url);
 				return;
 			}
 		} else {
@@ -165,7 +164,7 @@ var manager = function () {
 		state.submenu.forEach(function (menuitem) {
 			var htmlstring = '<a';
 			if (menuitem.route) {
-				htmlstring += ' href="' + menuitem.route + '"';
+				htmlstring += ' class="' + menuitem.class + '" href="' + menuitem.route + '"';
 			}
 			htmlstring += '>' + '<i></i>';
 			if (menuitem.label) {
@@ -228,7 +227,6 @@ var manager = function () {
 	};
 
 	client.notifications.blur.onclick = function (e) {
-		console.log('Clicked');
 		$('#dropdown').prop('checked', false);
 	};
 	// Fetch Notifications
