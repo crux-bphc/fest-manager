@@ -6,3 +6,4 @@ Our documentation is very incomplete and we could use quite a bit of help in thi
 2. **[Typeahead Guide](typeahead)** - A feature guide on using the typeahead/autocomplete feature for custom fields.
 3. **[Form Guide](form)** - A guide and list of the currently supported features for forms and fields.
 4. **[Directory Structure](structure)** - Basic walkthrough of the directory structure of the project.
+5. **[API Guide](api)** - A list of supported API calls and methods along with slick features.
