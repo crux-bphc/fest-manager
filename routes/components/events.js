@@ -16,9 +16,9 @@ var applyStateChanges = function (req) {
 			class: "Competition",
 		},
 		{
-			route: "/events#Informal",
-			label: "Informals",
-			class: "Informal",
+			route: "/events#Workshop",
+			label: "Workshops",
+			class: "Workshop",
 		},
 		{
 			route: "/events#Talk",
