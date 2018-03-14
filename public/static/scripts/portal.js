@@ -69,8 +69,8 @@ function formEditor(data) {
 			description.value(data.about);
 		else
 			description.value("");
-		portal.simpleTextFields.forEach(function(field) {
-			if(data[field] != null)
+		portal.simpleTextFields.forEach(function (field) {
+			if (data[field] != null)
 				$('#field-' + field).val(data[field]);
 			else
 				$('#field-' + field).val("");
@@ -103,9 +103,9 @@ function formEditor(data) {
 		}
 	} else {
 		description.value("");
-		portal.simpleTextFields.forEach(function(field) {
+		portal.simpleTextFields.forEach(function (field) {
 			$('#field-' + field).val("");
-		})
+		});
 		$('#image-editor-0').parent().removeClass("filled");
 		$('#image-editor-0').attr('value', "");
 		$('#cropit-preview-0').css("background-image", "none");
@@ -146,7 +146,7 @@ function submit_item() {
 	if ($('#image-editor-1').attr("value") != "")
 		body.hero = $('#image-editor-1').attr("value");
 	body.about = description.value();
-	portal.simpleTextFields.forEach(function(field) {
+	portal.simpleTextFields.forEach(function (field) {
 		body[field] = $('#field-' + field).val();
 	});
 	body.price = $("#field-price").val() == "" ? 0 : Number.parseInt($('#field-price').val());
