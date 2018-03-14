@@ -1,5 +1,5 @@
 print("name|institute|email|address|phone|pincode|why");
-db.usersmodels.find({
+db.users.find({
 	isAmbassador: true
 }, {
 	"name": true,
