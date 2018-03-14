@@ -40,7 +40,7 @@ grunt.initConfig({
 		files: ['routes/**/*.js',
 			'utils/**/*.js',
 			'views/**/*.js',
-			'public/static/scripts/**/*.js',
+			'public/static/scripts/**/*.(!home).js',
 			'Gruntfile.js',
 			'app.js',
 			'config.js',
