@@ -40,7 +40,7 @@ module.exports = function(event) {
         editable: true,
         value: event ? event.type : "",
         type: "select",
-        options: ["Competition", "Informal", "Talk", "Proshow"],
+        options: ["Competition", "Workshop", "Talk", "Proshow"],
         none: true,
         group: 0,
     });
