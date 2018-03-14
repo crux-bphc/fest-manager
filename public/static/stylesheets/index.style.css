@@ -574,7 +574,7 @@ input[type = "file"] {
     padding: 0;
 }
 
-.sidebar .section > ul > a {
+.sidebar .section > ul > .menu-item > a {
     cursor: pointer;
     display: flex;
     text-transform: uppercase;
@@ -588,10 +588,10 @@ input[type = "file"] {
     color: #b28e54;
     font-weight: 600;
 }
-.sidebar .section > ul > a.active {
+.sidebar .section > ul > .menu-item > a.active {
     background: rgba(0,0,0,0.25);
 }
-.sidebar .section > ul > a > span {
+.sidebar .section > ul > .menu-item > a > span {
     vertical-align: top;
     transition: font-weight 0.2s;
     font-size: 0.8em;
@@ -655,6 +655,7 @@ input[type = "file"] {
     transform: translateX(-1em);
     opacity: 0;
     color: #c8ae84;
+    display: block;
 }
 
 .sidebar .secondary-wrapper > .secondary.active > ul > a {

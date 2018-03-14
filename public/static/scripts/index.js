@@ -152,15 +152,26 @@ var manager = function () {
 	};
 
 	client.navigation.generateSubMenu = function (state) {
-		var holder = $('.section.secondary');
-		if (!state.submenu.length > 0) { // jshint ignore:line
-			holder.removeClass('active');
+		var holders = $('.section.secondary').toArray();
+		var holder = false;
+		holders.forEach(function(elem) {
+			$(elem).removeClass('active');
+			$(elem).find('ul').empty();
+			if(!state.title || !state.title.route) {
+				return;
+			}
+			var selector = 'a[href="/' + state.title.route.split('/')[1] + '"]';
+			var siblings = $(elem).parent().siblings(selector).toArray();
+			if (siblings.length === 1) {
+				holder = $(elem);
+			}
+		});
+		if (!state.submenu.length > 0 || !holder) { // jshint ignore:line
 			return;
 		}
 		holder.addClass('active');
 		holder.find('.label').text(state.title.text);
 		holder.find('.label').attr('href', state.title.route);
-		holder.find('ul').empty();
 		state.submenu.forEach(function (menuitem) {
 			var htmlstring = '<a';
 			if (menuitem.route) {

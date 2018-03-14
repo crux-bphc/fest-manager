@@ -85,12 +85,12 @@ body
 					div.section.primary
 						ul
 							each val, key in navigation
-								a(class=val.initial href=val.route _triggers=val.triggers)
-									span= val.label
-					div.secondary-wrapper
-						div.section.secondary
-							a.label
-							ul.catch-filters
+								div.menu-item
+									a(class=val.initial href=val.route _triggers=val.triggers)
+										span= val.label
+									div.secondary-wrapper
+										div.section.secondary
+											ul.catch-filters
 			div.remnant.main(tabindex="1")
 				div.wrapper.face
 				div.wrapper.tray
