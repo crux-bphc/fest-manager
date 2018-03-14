@@ -12,6 +12,7 @@ var schema = new Schema({
 	body: String,
 	type: String,
 	category: String,
+	tickets: String,
 	thumbnail: String,
 	hero: String,
 	about: String,

@@ -45,10 +45,10 @@ module.exports = function(event) {
         group: 0,
     });
     fields.push({
-        name: "title",
-        placeholder: "Title",
+        name: "name",
+        placeholder: "Name",
         editable: true,
-        value: event ? event.title : "",
+        value: event ? event.name : "",
         type: "text",
         required: true,
         none: true,
@@ -69,6 +69,15 @@ module.exports = function(event) {
         editable: true,
         type: "text",
         value: event ? event.category : "",
+        none: true,
+        group: 1,
+    });
+    fields.push({
+        name: "tickets",
+        placeholder: "Route to tickets",
+        editable: true,
+        type: "text",
+        value: event ? event.tickets : "",
         none: true,
         group: 1,
     });
@@ -118,7 +127,7 @@ module.exports = function(event) {
         group: 2,
     });
     fields.push({
-        name: "starttime",
+        name: "startTime",
         placeholder: "Start Time",
         editable: true,
         value: event ? event.startTime : "",
@@ -129,7 +138,7 @@ module.exports = function(event) {
         group: 2,
     });
     fields.push({
-        name: "endtime",
+        name: "endTime",
         placeholder: "End Time",
         editable: true,
         type: "text",
