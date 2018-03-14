@@ -9,9 +9,9 @@ $('document').ready(function () {
 				var elem = this;
 				$(elem).addClass('hidden');
 				var fields = [];
-				fields.push($(elem).find('span.tag').text().toLowerCase());
-				fields.push($(elem).find('h3.name').text().toLowerCase());
-				fields.push($(elem).find('span.tagline').text().toLowerCase());
+				fields.push($(elem).find('.tag').text().toLowerCase());
+				fields.push($(elem).find('.name').text().toLowerCase());
+				fields.push($(elem).find('.tagline').text().toLowerCase());
 				fields.forEach(function (field, index) {
 					if (field.indexOf(val) != -1) {
 						$(elem).removeClass('hidden');
