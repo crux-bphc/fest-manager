@@ -58,6 +58,15 @@ morgan.token('date', function () {
 	});
 });
 app.use(morgan('express: (:date IST) :user \t :method :url :status :response-time ms - :res[content-length]'));
+
+var logger = fq('logger');
+global.logging = {
+	log: true,
+	warn: true,
+	error: true,
+};
+logger();
+
 app.use(cookieSession({
 	keys: ['qwerty', 'uiop']
 }));
