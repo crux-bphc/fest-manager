@@ -12,7 +12,10 @@ html
 		link(href="/static/stylesheets/sweetalert.css" rel="stylesheet")
 		link(href="/static/stylesheets/github-markdown.css" rel="stylesheet")
 		link(href="/static/lib/simplebar.css" rel="stylesheet")
+		link(href="/static/stylesheets/bootstrap.min.css" rel="stylesheet")
 		link(href="/static/stylesheets/index.style.css" rel="stylesheet")
+		link(href='/static/stylesheets/home.style.css', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Rock+Salt|Herr+Von+Muellerhoff|Montserrat:300,400,600,900', rel='stylesheet')
 		title Pearl
 		meta(name="robots" content="index, follow")
 		meta(name="apple-mobile-web-app-capable" content="yes")
@@ -31,6 +34,9 @@ body
 			div.wrapper
 				div#menu.button(tabindex=1)
 					i.icon-menu(_triggers="sidebar/hideburger=hidden")
+				a.logo(href="/")
+					span PEARL ,
+					span 23 - 25 March
 				span.subtitle.hidden
 					i.icon-navigate_next
 					span.text
@@ -70,12 +76,9 @@ body
 					a.button(href="/logout" _triggers="navbar/logout=visible")
 						i.icon-power_settings_new
 						div Logout
-					a.button(href="/ca" _triggers="navbar/ambassador=visible")
-						div Register for Campus Ambassador
-						i.icon-navigate_next(style="font-size:1.2em")
-					//- a.button(href="/login" _triggers="navbar/login=visible")
-					//- 	i.icon-account_circle
-					//- 	div Register / Login
+					a.button(href="/login" _triggers="navbar/login=visible")
+						i.icon-account_circle
+						div Login
 		div.remnant
 			div.sidebar(tabindex="2" _triggers="sidebar/visible=visible")
 				div.wrapper
@@ -87,7 +90,7 @@ body
 					div.secondary-wrapper
 						div.section.secondary
 							a.label
-							ul
+							ul.catch-filters
 			div.remnant.main(tabindex="1")
 				div.wrapper.face
 				div.wrapper.tray

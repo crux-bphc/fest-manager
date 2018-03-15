@@ -5,30 +5,35 @@ mixin cartActionsMixin(event, user, text)
     div.cart-actions
         - if(config.state.registrations)
             - if(typeof user !== 'undefined')
-                - if(user.events.indexOf(event._id) != -1)
+                - if(user.events.indexOf(event._id) != -1 || user.pending.indexOf(event._id) != -1)
                     if(event.price==0)
-                        div.subscribed.button
+                        a.subscribed.button
                             i.icon-check
                             span Registered
                     else
-                        div.subscribed.button
-                            i.icon-check
-                            span Registered
+                        a.pending.button(href="https://townscript.com/e/pearl2018-240304")
+                            i.icon-ticket
+                            span Buy Tickets
                 - else if(event.teamSize > 1)
-                    div.latent(tabindex="1")
-                        div.add_to_cart.button
+                    a.latent(tabindex="1")
+                        a.add_to_cart.button
                             i.icon-add_shopping_cart
                             span Register
-                        div.new_team.button(onclick="RegisterButton.add(this, '#{event._id}'), #{event.price ? false : true}")
+                        a.new_team.button(onclick="RegisterButton.add(this, '#{event._id}'), #{event.price ? false : true}")
                             i.icon-add_box
                             span New Team
-                        div.join_team.button(onclick="RegisterButton.join(this, '#{event._id}', #{event.price ? false : true})")
+                        a.join_team.button(onclick="RegisterButton.join(this, '#{event._id}', #{event.price ? false : true})")
                             i.icon-group_add
                             span Join Team
                 - else
-                    div.add_to_cart.button(onclick="RegisterButton.add(this, '#{event._id}', #{event.price ? false : true})")
-                        i.icon-add_shopping_cart
-                        span Register
+                    if event.tickets
+                        a.add_to_cart.button(href=event.tickets)
+                            i.icon-add_shopping_cart
+                            span Register
+                    else
+                        a.add_to_cart.button(onclick="RegisterButton.add(this, '#{event._id}', #{event.price ? false : true})")
+                            i.icon-add_shopping_cart
+                            span Register
             - else
                 a.add_to_cart.button(href="/login?callback=/events/#{event.route}")
                     i.icon-add_shopping_cart

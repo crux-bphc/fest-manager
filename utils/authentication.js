@@ -20,6 +20,9 @@ var findOrCreate = function (accessToken, profile, provider, done) {
 			if (provider == 'googleID') {
 				user.profileImage = profile._json.image.url;
 			}
+			if (provider == 'googleToken') {
+				user.profileImage = profile._json.picture;
+			}
 			user[provider] = profile.id;
 			user.save(function (err) {
 				if (err) console.log(err);
@@ -79,7 +82,18 @@ var strategies = function () {
 				}
 			));
 		};
+
+		strategies.googleToken = function () {
+			var GoogleTokenStrategy = require('passport-google-token').Strategy;
+
+			passport.use(new GoogleTokenStrategy(config.passports.google,
+				function (accessToken, refreshToken, profile, done) {
+					findOrCreate(accessToken, profile, 'googleToken', done);
+				}
+			));
+		};
 	}
+
 	if (config.passports.github) {
 		strategies.github = function () {
 			var GithubStrategy = require('passport-github').Strategy;

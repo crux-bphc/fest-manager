@@ -5,7 +5,6 @@ module.exports = function(event) {
         placeholder: "Add a description",
         editable: true,
         type: "textarea",
-        required: true,
         rows: 8,
         value: event ? event.description : "",
         typeahead: false,
@@ -41,16 +40,17 @@ module.exports = function(event) {
         editable: true,
         value: event ? event.type : "",
         type: "select",
-        options: ["Headliner", "Competition", "Workshop", "Talk", "Conference", "Proshow"],
+        options: ["Competition", "Workshop", "Talk", "Proshow"],
         none: true,
         group: 0,
     });
     fields.push({
-        name: "title",
-        placeholder: "Title",
+        name: "name",
+        placeholder: "Name",
         editable: true,
-        value: event ? event.title : "",
+        value: event ? event.name : "",
         type: "text",
+        required: true,
         none: true,
         group: 1,
     });
@@ -69,6 +69,15 @@ module.exports = function(event) {
         editable: true,
         type: "text",
         value: event ? event.category : "",
+        none: true,
+        group: 1,
+    });
+    fields.push({
+        name: "tickets",
+        placeholder: "Route to tickets",
+        editable: true,
+        type: "text",
+        value: event ? event.tickets : "",
         none: true,
         group: 1,
     });
@@ -118,19 +127,23 @@ module.exports = function(event) {
         group: 2,
     });
     fields.push({
-        name: "starttime",
+        name: "startTime",
         placeholder: "Start Time",
         editable: true,
         value: event ? event.startTime : "",
         type: "text",
+        pattern: "\\d{4}(-\\d{2}){4}",
+        title: "Format: yyyy-mm-dd-HH-MM",
         none: true,
         group: 2,
     });
     fields.push({
-        name: "endtime",
+        name: "endTime",
         placeholder: "End Time",
         editable: true,
         type: "text",
+        pattern: "\\d{4}(-\\d{2}){4}",
+        title: "Format: yyyy-mm-dd-HH-MM",
         none: true,
         value: event ? event.endTime : "",
         group: 2,

@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var express = require('express');
 var router = express.Router();
 var fq = require('fuzzquire');
+var sort = fq('sort');
 var shortID = require('mongoose-shortid-nodeps');
 
 var schema = new Schema({
@@ -11,6 +12,7 @@ var schema = new Schema({
 	body: String,
 	type: String,
 	category: String,
+	tickets: String,
 	thumbnail: String,
 	hero: String,
 	about: String,
@@ -49,6 +51,25 @@ router.get('/index', (req, res, next) => {
 		}
 		res.json(newdata);
 	}).catch(error => {
+		res.status(500).send(error);
+	});
+});
+
+router.get('/schedule', (req, res, next) => {
+	model.find().then(events => {
+		events = events.filter(event => event.startTime != undefined);
+		events = sort(events, 'startTime');
+		events = events.map(event => ({
+			_id: event._id,
+			name: event.name,
+			route: event.route,
+			tagline: event.tagline,
+			startTime: event.startTime,
+			endTime: event.endTime,
+		}));
+		return res.json(events);
+	}).catch(error => {
+		console.error(error);
 		res.status(500).send(error);
 	});
 });
@@ -474,11 +495,13 @@ router.post("/deletefromcart", function (req, res, next) {
 });
 
 var permission = {
-	read_one : 0,
-	read_all : 0,
-	insert : 1,
-	update : 1,
-    delete: 2
+
+	read_one: 0,
+	read_all: 0,
+	insert: 1,
+	update: 1,
+	delete: 2
+
 };
 
 module.exports = {

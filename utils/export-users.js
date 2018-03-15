@@ -1,5 +1,5 @@
 print("name|institute|email|phone|referred_by");
-db.usersmodels.find({}, {
+db.users.find({}, {
 	"name": true,
 	"email": true,
 	"phone": true,

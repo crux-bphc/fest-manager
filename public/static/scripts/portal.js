@@ -1,19 +1,40 @@
 var globalEventID = Date.now();
 var currentEditable;
 var description;
+var portal;
 (function () {
 	portal = $("#_portal");
-
+	portal.simpleTextFields = ["name", "tagline", "category", "tickets", "type", "venue", "startTime", "endTime", "price", "prize", "route", "teamSize"];
 	description = new SimpleMDE({
 		element: $("#field-description")[0],
 		toolbar: false,
 		status: false
 	});
 	portal.find('.controls .icon-check').click(function () {
-		submit_item();
-		closeEditor();
+		$("form.container").submit();
 	});
 })();
+
+
+$("form.container").submit(function (event) {
+	if (!this.checkValidity()) {
+		$(this).find(":invalid").first().focus();
+		var invalid = $(this).find(":invalid");
+		var text = "Fix following fields:";
+		for (var i = 0; i < invalid.length; i++) {
+			text = text + " " + invalid[i].id.split('-', 2)[1];
+		}
+		text += ".";
+		swal({
+			title: "Form Validation Error",
+			text: text,
+			type: "error",
+		});
+		return event.preventDefault();
+	}
+	submit_item();
+	closeEditor();
+});
 
 var implementSearch = function () {
 	$('input#field-search').bind('keyup change', function (e) {
@@ -43,54 +64,17 @@ function closeEditor() {
 
 function formEditor(data) {
 	if (data) {
+		console.log(data);
 		if (data.about)
 			description.value(data.about);
 		else
 			description.value("");
-		if (data.name)
-			$('#field-title').val(data.name);
-		else
-			$('#field-title').val("");
-		if (data.tagline)
-			$('#field-tagline').val(data.tagline);
-		else
-			$('#field-tagline').val("");
-		if (data.category)
-			$('#field-category').val(data.category);
-		else
-			$('#field-category').val("");
-		if (data.type)
-			$('#field-type').val(data.type);
-		else
-			$('#field-type').val("");
-		if (data.venue)
-			$('#field-venue').val(data.venue);
-		else
-			$('#field-venue').val("");
-		if (data.startTime)
-			$('#field-starttime').val(data.startTime);
-		else
-			$('#field-starttime').val("");
-		if (data.endTime)
-			$('#field-endtime').val(data.endTime);
-		else
-			$('#field-endtime').val("");
-		if (data.price)
-			$('#field-price').val(data.price);
-		else
-			$('#field-price').val("");
-		if (data.prize)
-			$('#field-prize').val(data.prize);
-		else
-			$('#field-prize').val("");
-		if (data.route)
-			$('#field-route').val(data.route);
-		else
-			$('#field-route').val("");
-		if (data.teamSize != null)
-			$('#field-teamSize').val(data.teamSize);
-		else
-			$('#field-teamSize').val("");
+		portal.simpleTextFields.forEach(function (field) {
+			if (data[field] != null)
+				$('#field-' + field).val(data[field]);
+			else
+				$('#field-' + field).val("");
+		});
 		if (data.thumbnail) {
 			$('#image-editor-0').parent().addClass('filled');
 			$('#image-editor-0').attr('value', data.thumbnail);
@@ -119,17 +103,9 @@ function formEditor(data) {
 		}
 	} else {
 		description.value("");
-		$('#field-title').val("");
-		$('#field-tagline').val("");
-		$('#field-category').val("");
-		$('#field-type').val("");
-		$('#field-venue').val("");
-		$('#field-starttime').val("");
-		$('#field-endtime').val("");
-		$('#field-price').val("");
-		$('#field-prize').val("");
-		$('#field-route').val("");
-		$('#field-teamSize').val("");
+		portal.simpleTextFields.forEach(function (field) {
+			$('#field-' + field).val("");
+		});
 		$('#image-editor-0').parent().removeClass("filled");
 		$('#image-editor-0').attr('value', "");
 		$('#cropit-preview-0').css("background-image", "none");
@@ -170,15 +146,9 @@ function submit_item() {
 	if ($('#image-editor-1').attr("value") != "")
 		body.hero = $('#image-editor-1').attr("value");
 	body.about = description.value();
-	body.name = $('#field-title').val();
-	body.tagline = $('#field-tagline').val();
-	body.category = $('#field-category').val();
-	body.startTime = $('#field-starttime').val();
-	body.endTime = $('#field-endtime').val();
-	body.type = $('#field-type').val();
-	body.venue = $('#field-venue').val();
-	body.route = $('#field-route').val();
-	body.prize = $('#field-prize').val();
+	portal.simpleTextFields.forEach(function (field) {
+		body[field] = $('#field-' + field).val();
+	});
 	body.price = $("#field-price").val() == "" ? 0 : Number.parseInt($('#field-price').val());
 	body.teamSize = $("#field-teamSize").val() == "" ? 1 : Number.parseInt($('#field-teamSize').val());
 	$.ajax({

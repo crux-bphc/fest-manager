@@ -3,11 +3,13 @@ include ../mixins/register-button
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
 link(rel="stylesheet" href="/static/stylesheets/marked.css")
 
-div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false"))
+div.module-events.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false"))
     div.header
         div.hero(style="background-image:url('#{event.hero}')")
     div.body
         div.top
+            a.back(href="javascript:history.back()" absolute)
+                i.icon-navigate_next
             div.title= event.name
             div.remnant
                 +cartActionsMixin(event, user, "Register", config)
@@ -48,7 +50,5 @@ div.section.open-event(id=event._id team=(event.teamSize > 1 ? "true" : "false")
                     span #{event.prize}
         if(event.about)
             div.description.markdown-body !{marked(event.about)}
-        div.foot
-            a.download(title="Download as PDF" absolute target="_blank" href="/static/data/docs/#{event.name}.pdf") Download
 
 script(src="/static/scripts/events.js" type="text/javascript")

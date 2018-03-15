@@ -58,6 +58,15 @@ morgan.token('date', function () {
 	});
 });
 app.use(morgan('express: (:date IST) :user \t :method :url :status :response-time ms - :res[content-length]'));
+
+var logger = fq('logger');
+global.logging = {
+	log: true,
+	warn: true,
+	error: true,
+};
+logger();
+
 app.use(cookieSession({
 	keys: ['qwerty', 'uiop']
 }));
@@ -104,6 +113,7 @@ app.use('/auth', auth);
 app.use('/transaction', transaction);
 app.use('/components', clientCheckpoint, components);
 app.use('/api', api);
+app.use('/sudo', fq('mongo-admin'));
 app.use('/', index);
 
 // catch 404 and forward to error handler

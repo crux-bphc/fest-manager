@@ -17,23 +17,24 @@ router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'News Feed';
 	req = applyStateChanges(req);
 	feedmodel.find({}).then(data => {
-			data.sort((a, b) => {
-				if (a.createdAt > b.createdAt) {
-					return -1;
-				}
-				if (a.createdAt < b.createdAt) {
-					return 1;
-				}
-				return 0;
-			});
-			res.renderState('feed', {
-				title: "News Feed",
-				user: req.user,
-				data: data,
-			});
-		}).catch(err => {
-			console.log(err);
-			next();});
+		data.sort((a, b) => {
+			if (a.createdAt > b.createdAt) {
+				return -1;
+			}
+			if (a.createdAt < b.createdAt) {
+				return 1;
+			}
+			return 0;
+		});
+		res.renderState('feed', {
+			title: "News Feed",
+			user: req.user,
+			data: data,
+		});
+	}).catch(err => {
+		console.log(err);
+		next();
+	});
 });
 
 module.exports = router;

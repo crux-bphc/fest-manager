@@ -1,24 +1,50 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600');
 
-.section.tags {
+.module-events .section.tags {
     line-height: 3em;
 }
-.section.tags a {
-    padding: 0em 1em;
+.module-events .section.tags a {
     color:#444;
     margin: 2px 2px;
     font-weight: 600;
     display: inline-block;
     vertical-align: middle;
     text-decoration: none;
-    border-radius:4px;
-    background:#f0f0f0;
+    cursor: pointer;
 }
-.section.tags a:hover {
-    background:#e0e0e0;
+.module-events .section.tags a::after {
+    position: relative;
+    font-family: 'icomoon';
+    content: "\e5cd";
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 0.5em;
+    margin-right: 1em;
+    transform:scale(0);
+    transition: transform 0.2s;
 }
-.section.tags a.active {
-    background:#c0cacf;
+.module-events .section.tags a:hover {
+    color:#121212;
+}
+.module-events .section.tags a.active {
+    color: #b28e54;
+}
+.module-events .section.tags a.active::after {
+    transform:scale(1);
+}
+.module-events a.outward {
+    line-height: 3em;
+    padding: 0em 1em;
+    color: #191919;
+    font-weight: 600;
+    background: #b28e54;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+}
+.module-events a.outward span {
+    font-weight: 600;
+    margin-left: 0.5em;
 }
 
 .events-wrapper {
@@ -48,20 +74,29 @@
 
 .events-wrapper .event-container {
     box-sizing: border-box;
-    border-radius: 1px;
-    height: 25vw;
+    border-radius: 2px;
+    height: 30vw;
     min-width: 20vw;
-    width: 33%;
+    width: 29%;
     display: flex;
     position: relative;
-    flex-direction: row;
+    flex-direction: column;
     background: #ddd;
     font-size: 1.2em;
-    margin: 1px;
+    margin: 3px;
     max-width: 100%;
     overflow: hidden;
     cursor: pointer;
     flex-grow: 1;
+    background:linear-gradient(45deg, #f0f0f0, #fafafa);
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0,0,0,1);
+    padding: 0.7em;
+}
+.events-wrapper .event-container:hover {
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3), 0px 8px 20px rgba(0,0,0,0.5);
+    z-index: +10;
+    transform: scale(1.01);
 }
 
 .events-wrapper .event-container.disabled {
@@ -85,16 +120,15 @@
 }
 
 .events-wrapper .event-container > .face {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(30,30,30, 0.9);
     position: relative;
     z-index: +100;
     letter-spacing: 0.02em;
-    background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
     box-sizing: border-box;
-    padding: 1.2em;
     display: flex;
     width: 100%;
-    height: 100%;
+    padding: .75em 0;
+    height: 30%;
     flex-direction: column;
     justify-content: flex-end;
     font-family: 'Source Sans Pro', 'Proxima Nova', sans-serif;
@@ -108,13 +142,22 @@
 }
 
 .events-wrapper .event-container > .face > .name {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 300;
+    white-space: nowrap;
+    max-width: 100%;
+    display: block;
+    text-overflow: ellipsis;
+    overflow:hidden;
 }
 
 .events-wrapper .event-container > .face > .tagline {
     font-size: 0.9em;
     font-weight: 300;
+    white-space: nowrap;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow:hidden;
 }
 
 .events-wrapper .event-container .image {
@@ -122,8 +165,10 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    position: absolute;
+    position: relative;
     z-index: 0;
+    box-sizing: border-box;
+    border-bottom: none;
 }
 
 .events-wrapper .event-container .details {
@@ -137,7 +182,7 @@
     flex-direction: column;
 }
 
-.open-event.section {
+.module-events.open-event.section {
     position:absolute;
     margin:0;
     top:0;
@@ -146,11 +191,11 @@
     width:100%;
     z-index: +100;
 }
-.open-event .top {
+.module-events.open-event .top {
     display: flex;
     align-items: center;
 }
-.open-event .hero {
+.module-events.open-event .hero {
     display: block;
     width:100%;
     height:25vw;
@@ -162,14 +207,17 @@
     margin-bottom:2em;
 }
 
-.open-event .body {
+.module-events.open-event .body {
     box-sizing: border-box;
     padding:0% 6%;
     position:relative;
     padding-bottom:4em;
 }
+.module-events.open-event .body .top .remnant {
+    justify-content: flex-end;
+}
 
-.open-event .details {
+.module-events.open-event .details {
     width:100%;
     height:3em;
     font-size:1.1em;
@@ -177,31 +225,31 @@
     display: flex;
     margin: 1em 0;
 }
-.open-event .details .time > div {
+.module-events.open-event .details .time > div {
     display: inline-flex;
     vertical-align: top;
     align-items: center;
     height: 3em;
 }
-.open-event .details .datetime {
+.module-events.open-event .details .datetime {
     display: inline-flex;
     flex-direction: column;
     line-height: 1.2em;
     padding:0 0.3em;
     font-size: 0.8em
 }
-.open-event .details .datetime > span {
+.module-events.open-event .details .datetime > span {
     width: 100%;
     text-align: center;
 }
-.open-event .details .datetime > b {
+.module-events.open-event .details .datetime > b {
     width:100%;
     text-align: center;
     font-weight: 600;
 }
 
 
-.open-event .details > * {
+.module-events.open-event .details > * {
     padding: 0 1em 0 0;
     border: 1px solid rgba(0,0,0,0.05);
     padding: 0em 1em;
@@ -209,29 +257,29 @@
     display: table-cell;
     box-sizing: border-box;
 }
-.open-event .details > * > span:first-child {
+.module-events.open-event .details > * > span:first-child {
     display: inline-block;
     margin-right: 1em;
     color:#999;
 }
-.open-event.details > * > span:last-child {
+.module-events.open-event.details > * > span:last-child {
     display: inline-block;
     color:black;
 }
-.open-event .details > .prize {
+.module-events.open-event .details > .prize {
     display: flex;
     border:none;
     align-items: flex-start;
     justify-content: flex-end;
 }
-.open-event .details > .money > span:last-child {
+.module-events.open-event .details > .money > span:last-child {
     font-weight: 600;
 }
-.open-event .details > .money > * {
+.module-events.open-event .details > .money > * {
     display: inline-block;
     color:#444;
 }
-.open-event .details > .money > i {
+.module-events.open-event .details > .money > i {
     font-style: normal;
     line-height:3em;
     color:#777;
@@ -239,13 +287,21 @@
     vertical-align: top;
     font-size: 0.8em;
 }
-.open-event .title {
+.module-events.open-event .title {
     box-sizing: border-box;
     font-size:2em;
     font-weight: 600;
 }
+.module-events.open-event .back {
+    transform: rotateZ(180deg);
+    position: absolute;
+    font-size: 3em;
+    line-height: .666em;
+    right: 100%;
+    cursor: pointer;
+}
 
-.open-event .category {
+.module-events.open-event .category {
     font-weight: 600;
     font-size:1em;
     line-height: 1.5;
@@ -258,16 +314,16 @@
     border-radius:4px;
     color:#202729;
 }
-.open-event .category::before {
+.module-events.open-event .category::before {
     content:"#";
     right:100%;
 }
-.open-event .foot {
+.module-events.open-event .foot {
     display: flex;
     justify-content: flex-end;
     margin-top:2em;
 }
-.open-event .foot .download {
+.module-events.open-event .foot .download {
     font-weight: 600;
     padding:0 1em;
     display: inline-block;
@@ -280,26 +336,26 @@
     text-decoration: none;
 }
 
-.open-event .foot .download:hover {
+.module-events.open-event .foot .download:hover {
     background:#eaeaea;
 }
 
-.open-event .description {
+.module-events.open-event .description {
     box-sizing: border-box;
     font-size:15px;
     line-height: 1.5em;
 }
-.open-event .description > section {
+.module-events.open-event .description > section {
     padding-top:1em;
 }
-.open-event .description p {
+.module-events.open-event .description p {
     text-align: justify;
 }
-.open-event .description h1,
-.open-event .description h2,
-.open-event .description h3,
-.open-event .description h4,
-.open-event .description h5 {
+.module-events.open-event .description h1,
+.module-events.open-event .description h2,
+.module-events.open-event .description h3,
+.module-events.open-event .description h4,
+.module-events.open-event .description h5 {
     font-weight: 600;
     line-height: 1.2em;
 }
@@ -311,13 +367,19 @@ span.declaration {
     font-weight: 600;
 }
 @media only screen and (max-width: 600px) {
-    .section.tags {
+    .module-events .section.tags {
         overflow-x: scroll;
         white-space: nowrap;
     }
     .events-wrapper .event-container {
-        width:100%;
-        height: 80vw;
+        width:100% !important;
+        height: 100vw;
+        padding: 0em;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+    }
+    .events-wrapper .event-container .face {
+        padding: 0em 1em;
     }
     .events-wrapper .event-container.Proshow, .events-wrapper .event-container.TechExpo {
         min-width: unset;
@@ -328,10 +390,10 @@ span.declaration {
     .events-wrapper .event-container.Proshow > .face > .name, .events-wrapper .event-container.TechExpo > .face > .name {
         font-weight: 300;
     }
-    .open-event .hero {
+    .module-events.open-event .hero {
         height:40vw;
     }
-    .open-event .category {
+    .module-events.open-event .category {
         line-height: 2em;
     }
 }

@@ -1,4 +1,4 @@
-.section.body, .section.body .contacts, .section.body .underlay {
+.section.body.module-contact, .module-contact.section.body .contacts, .module-contact.section.body .underlay {
     width:100%;
     height: 100%;
     position:absolute;
@@ -8,7 +8,7 @@
     padding:0;
     overflow: hidden;
 }
-.section.body::after {
+.module-contact.section.body::after {
     position:absolute;
     content:"";
     top:0;
@@ -20,17 +20,17 @@
     opacity: 0.5;
     mix-blend-mode: overlay;
 }
-.section.body .underlay {
+.module-contact.section.body .underlay {
     background-size: contain;
     background-color: rgba(0,0,0,1);
     background-blend-mode: overlay;
     transition:background-image 1s;
     background-position: center center;
 }
-.section.body {
+.module-contact.section.body {
     background:#181818;
 }
-.section.body .contacts {
+.module-contact.section.body .contacts {
     display: flex;
     box-sizing: border-box;
     padding-top: 40px;
@@ -42,7 +42,7 @@
     align-items: center;
     justify-content: space-around;
 }
-.section.body .contacts > li {
+.module-contact.section.body .contacts > li {
     display: flex;
     position: relative;
     z-index: +10;
@@ -59,7 +59,7 @@
     pointer-events: none;
     transition:color 1s cubic-bezier(0,0,0,1), opacity 0.5s;
 }
-.section.body .contacts > div {
+.module-contact.section.body .contacts > div {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -69,7 +69,7 @@
     align-items: center;
     justify-content: center;
 }
-.section.body .contacts > div > img {
+.module-contact.section.body .contacts > div > img {
     height: 80%;
     position:absolute;
     z-index: 1;
@@ -79,46 +79,46 @@
     transition: opacity 0.5s cubic-bezier(0,0,0,1);
     transition-delay: 0.1s;
 }
-.section.body .contacts > div > img.default {
+.module-contact.section.body .contacts > div > img.default {
     height:50%;
     opacity: 0.1;
     z-index: 0;
     top:25%;
 }
-.section.body .contacts > div > img.active {
+.module-contact.section.body .contacts > div > img.active {
     opacity:0.7;
     transition-delay: 0s;
 }
-.section.body .contacts > li > span {
+.module-contact.section.body .contacts > li > span {
     pointer-events: all;
     font-weight: 400;
     text-align: center;
 }
-.section.body .contacts > li:hover {
+.module-contact.section.body .contacts > li:hover {
     color: #f7f7f7;
 }
-.section.body .contacts > li.fade {
+.module-contact.section.body .contacts > li.fade {
     opacity: 0.05;
 }
-.section.body .contacts > li > .post {
+.module-contact.section.body .contacts > li > .post {
     font-weight: 800;
     letter-spacing: 0.06em;
     font-size: 1.1em;
     text-transform: uppercase;
 }
-.section.body .contacts > li > .phone {
+.module-contact.section.body .contacts > li > .phone {
     font-size: 0.8em;
     -webkit-user-select: initial;
     -moz-user-select: initial;
     -ms-user-select: initial;
     user-select: initial;
 }
-.section.body .contacts > li > .others {
+.module-contact.section.body .contacts > li > .others {
     line-height: 1.5em;
     display: flex;
     justify-content: center;
 }
-.section.body .contacts > li > .others > a {
+.module-contact.section.body .contacts > li > .others > a {
     line-height: 1.5em;
     color: inherit;
     text-decoration: none;
@@ -126,13 +126,13 @@
     margin: 0.5em;
 }
 @media only screen and (max-width: 600px) {
-    .section.body, .section.body .contacts {
+    .module-contact.section.body, ..module-contact.section.body .contacts {
         background:#181818;
         height: unset;
         width: 100vw;
         overflow:visible;
     }
-    .section.body .contacts > div {
+    .module-contact.section.body .contacts > div {
         width: 100vw;
         height: 100vh;
         position: relative;
@@ -142,16 +142,16 @@
         overflow: hidden;
         background:inherit;
     }
-    .section.body .contacts > div::after {
+    .module-contact.section.body .contacts > div::after {
         background: linear-gradient(transparent, #181818);
     }
-    .section.body .contacts > div > img {
+    .module-contact.section.body .contacts > div > img {
         position: relative;
         opacity: 1;
         height: 80vh;
         top: unset;
     }
-    .section.body .contacts > li {
+    .module-contact.section.body .contacts > li {
         height: 100vw;
         margin-top: -100vw;
         width: 100vw;
@@ -161,7 +161,7 @@
         display: flex;
         justify-content: flex-end;
     }
-    .section.body .contacts > li.fade {
+    .module-contact.section.body .contacts > li.fade {
         opacity: 1;
     }
 }

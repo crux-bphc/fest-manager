@@ -1,4 +1,8 @@
-.cart-actions .button {
+.cart-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+.cart-actions a.button {
     height:2.5em;
     display: inline-flex;
     align-items: center;
@@ -6,7 +10,6 @@
     font-size:1em;
     padding:0em 1em;
     margin-left:10px;
-    border-radius:20px;
     color:rgba(0,0,0,0.7);
     cursor:pointer;
     box-sizing: border-box;
@@ -56,8 +59,9 @@
 .cart-actions .button.pending {
     background:orange;
     color:#fff;
-    cursor: default;
-    border-color:transparent;
+    cursor: pointer;
+    border: none;
+    line-height: 2.5em;
 }
 .cart-actions .button.pending > .icon-close {
     cursor: pointer;

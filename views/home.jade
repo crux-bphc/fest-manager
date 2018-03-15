@@ -1,182 +1,461 @@
-link(href='/static/stylesheets/home.style.css', rel='stylesheet')
-.immersive-wrapper
-  .slide.parallax
-    .background
-    .overlay
-    canvas#snowscape
-    canvas#mistscape
-    .center
-      img(src='/static/images/logo.png')
-      .countdown
-        .days(title='d')
-        .hours(title='h')
-        .minutes(title='m')
-        .seconds(title='s')
-    .footer
-      i.icon-navigate_next
-      span.contact
-        .name Chandan Kumar
-        .name Cultural Secretary
-        .name 7660002320
-      span.contact
-        .name Abhinav Eittireddy
-        .name President
-        .name 9542929354
-      span.contact
-        .name Manas Bansal
-        .name Sponsorship &amp; Marketing
-        .name 9666131548
-  .slide.secondary
-    .prelims
-      .heading
-        .subheading REGISTER FOR
-        span PRELIMS
-      .links
-        a(href='/prelims/kaleidoscope') Kaleidoscope
-        a(href='/prelims/tilldeaf') Till Deaf Do We Part
-        a(href='/prelims/terpsichore') Terpsichore
-    .sponsors
-      .heading
-        .subheading PREVIOUS
-        span SPONSORS
-       .item
-        .logo
-         img(src='/static/images/sponsors/1.png')
-        .desc Title Sponsor
-      .item
-        .logo
-         img(src='/static/images/sponsors/2.png')
-        .desc Co-Title Sponsor
-      .item
-        .logo
-         img(src='/static/images/sponsors/3.png')
-        .desc In Association With
-      .item
-        .logo
-         img(src='/static/images/sponsors/4.png')
-        .desc In Association With
-      .item
-        .logo
-         img(src='/static/images/sponsors/5.png')
-        .desc Powered By
-      .item
-        .logo
-         img(src='/static/images/sponsors/6.png')
-        .desc Exclusive Partner-Bollywood Night
-      .item
-        .logo
-         img(src='/static/images/sponsors/7.png')
-        .desc Exclusive Partner-EDM Night
-      .item
-        .logo
-         img(src='/static/images/sponsors/8.png')
-        .desc Exclusive Partner-Fusion Night
-      .item
-        .logo
-         img(src='/static/images/sponsors/9.png')
-        .desc Exclusive Partner-Comedy Night
-      .item
-        .logo
-         img(src='/static/images/sponsors/10.png')
-        .desc Associate Sponsor
-      .item
-        .logo
-         img(src='/static/images/sponsors/11.png')
-        .desc Till Deaf Do We Part Sponsor
-      .item
-        .logo
-         img(src='/static/images/sponsors/12.png')
-        .desc Food Fest Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/13.png')
-        .desc Terpsichore Title Sponsor
-      .item
-        .logo
-         img(src='/static/images/sponsors/14.png')
-        .desc Special Association
-      .item
-        .logo
-         img(src='/static/images/sponsors/15(1).png')
-        .desc Education Partners
-      .item
-        .logo
-         img(src='/static/images/sponsors/15(2).png')
-        .desc Education Partners
-      .item
-        .logo
-         img(src='/static/images/sponsors/15(3).png')
-        .desc Education Partners
-      .item
-        .logo
-         img(src='/static/images/sponsors/16.png')
-        .desc Mobility Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/17.png')
-        .desc Deodrant Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/19.png')
-        .desc Travel Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/20.png')
-        .desc Cabs Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/21.png')
-        .desc Dare Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/22.png')
-        .desc Online Music Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/23.png')
-        .desc Online Shopping Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/24.png')
-        .desc Talent Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/25(1).png')
-        .desc Media Partners
-      .item
-        .logo
-         img(src='/static/images/sponsors/25(2).png')
-        .desc Media Partners
-      .item
-        .logo
-         img(src='/static/images/sponsors/26.png')
-        .desc Online Publicity Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/27.png')
-        .desc Online Publicity Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/28.png')
-        .desc Digital Talent Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/29.png')
-        .desc SMS Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/30.png')
-        .desc Coupons Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/31.png')
-        .desc Printing Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/32.png')
-        .desc Steel Partner
-      .item
-        .logo
-         img(src='/static/images/sponsors/33.png')
-        .desc Poker Partner
-script(src='/static/scripts/home.js')
+link(rel='stylesheet', href='/static/stylesheets/jquery.fullPage.2.css')
+link(rel='stylesheet', href='/static/stylesheets/animate.css')
+link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+link(rel='stylesheet', type='text/css', href='/static/fonts/flaticon/font.css')
+link(rel='stylesheet', type='text/css', href='/static/fonts/Bebas Neue/font.css')
+script(src='/static/lib/bootstrap.min.js')
+script(src='/static/lib/jquery-ui.min.js')
+.module-home.immersive-wrapper.unloaded
+  .elements-navigation
+    .baseline
+      .precision-intro
+        span.montserrat.text-baseline(style='margin-left:10px; font-weight:700; line-height:75px; text-transform:uppercase;')
+          a(href='https://bits-pearl.org/static/data/Brochure.pdf') Download Sponsorship Brochure
+    .links
+      .follow-icon
+        a(href='https://www.facebook.com/bitspearl/')
+          i.flaticon-facebook-logo
+        a(href='https://twitter.com/pearl_bitsh')
+          i.flaticon-twitter-logo-silhouette
+        //- <a href="https://plus.google.com/109191267979904561298"><span class="flaticon-google-plus"></span></a>
+        a(href='https://www.instagram.com/pearl.bitsh/')
+          span.flaticon-instagram-logo
+      a.link-contact.hide-mobile(href='#Contact') CONTACT
+    .border-bottom
+    .border-top
+    .border-left
+    .border-right
+  .fullpage
+    .fp-section.bordered-out.text-center.intro
+      .container-banner.fadeIn(style='height:100vh !important;')
+        .one.animate-bg
+          video(autoplay playsinline muted loop)
+            source(src='/static/images/landing/Wanderlust_Cover.mp4', type='video/mp4')
+        .row
+          .col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-lg-offset-3.col-sm-8.col-sm-offset-2.col-xs-12.text-center.is-animated_logo
+            //- <img class="logo-site" src="img/logo_white.png" alt=""/>
+            .logo-site
+              span.title WANDERLUST
+              .subtext
+                | For as long as we can remember we have travelled the world letting all the new experiences fill us with awe. This Pearl, we celebrate the feeling.
+        .low-band
+          .row.row-eq-height
+            .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-4.col-md-offset-4.col-xs-12.text-center.vertical-bot.is-animated_link
+              a
+                img.arrow-pop(src='/static/images/landing/arrow-pop.png', alt='')
+                img(src='/static/images/landing/slide2.png', alt='')
+    .fp-section.second.bg-g
+      .row.row-eq-height
+        .col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-12.text-center.vertical-bot(style='color:white;')
+          p.text-center.is-animated__single
+            span.herr.yellow.calque-360  2018
+          p.is-animated
+            span.demo.montserrat.black.intro-text
+              span.light
+                | AFTER 8 EDITIONS OF PEARL
+                br
+              span.bold(style='font-weight:700;')
+                | WE ARE MAKING IT
+                br
+                |                                     BIGGER &amp; BETTER
+              a.button(href="https://townscript.com/e/pearl2018-240304")
+    .fp-section.bordered-out.text-center.third
+      .container-banner.is-animated__container
+        .two
+        .bg-title-section
+          .row.container-header
+            .center-header.col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-12.col-xs-12.text-left.white(style='font-weight:700; font-size:100px; line-height:120px; position:absolute; top:0; bottom:0; left:0; right:0;')
+              b.line-big-title.animated
+                span.line COME HAVE
+                span.yellow.line A GOOD TIME.
+                span.line CHECK OUT
+                span.line WHAT'S PLANNED
+          .low-band
+            .row.row-eq-height
+              .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-4.col-sm-offset-4.col-xs-12.text-center.vertical-bot.is-animated__slide
+                a
+                  img.arrow-pop(src='/static/images/landing/arrow-pop.png', alt='')
+                  img(src='/static/images/landing/slide2.png', alt='')
+    .fp-section.fourth.bg-g
+      .row
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+          .little-title.herr.yellow.section-title Explore
+          .big-title.montserrat.black.section-subtitle Events
+      br.delete-mobile
+      br.delete-mobile
+      br.delete-mobile
+      .row
+        .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1.col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1.text-center.padding-responsive
+          .row.row-eq-height.unresponsive
+            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Competition")
+              div
+                .little-title.herr Competitions
+                //- .bold-title.montserrat.black Marque
+              span.little-spacer
+              p CATHARSIS FILM FESTIVAL
+              p TILL DEAF DO WE PART
+              p CRIMSON CURTAIN
+              p TERPSICHORE
+              p AND MORE...
+            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Workshop")
+              div
+                .little-title.herr Workshops
+                //- .bold-title.montserrat.black Web
+              span.little-spacer
+              p COMING SOON
+            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Talk")
+              div
+                .little-title.herr Talks
+                //- .bold-title.montserrat.black DIGITALE
+              span.little-spacer
+              p COMING SOON
+            a.col-lg-3.col-md-3.col-sm-12.col-xs-12.text-center.is-animated__column.bg-gf.pluri-competence(href="/events#Proshow")
+              div
+                .little-title.herr Shows
+                //- .bold-title.montserrat.black PRINT
+              span.little-spacer
+              p COMING SOON
+    .fp-section.fifth.bg-g
+      .row
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+          .little-title.herr.yellow.section-title Meet our previous
+          .big-title.montserrat.black.section-subtitle Sponsors
+      br.hide-mobile
+      br.hide-mobile
+      br
+      .row
+        .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1.col-sm-12.col-xs-12.text-center
+          .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
+            .bg-gf.p25
+              img(src='/static/images/sponsors/telanganatourism.png', alt='')
+          .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
+            .bg-gf.p25
+              img(src='/static/images/sponsors/sbh.png', alt='')
+          .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
+            .bg-gf.p25
+              img(src='/static/images/sponsors/4.png', alt='')
+          .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
+            .bg-gf.p25
+              img(src='/static/images/sponsors/timesofindia.png', alt='')
+      .row
+        .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1.col-sm-12.col-xs-12.text-center
+          .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
+            .bg-gf.p25
+              img(src='/static/images/sponsors/16.png', alt='')
+          .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
+            .bg-gf.p25
+              img(src='/static/images/sponsors/12.png', alt='')
+          .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
+            .bg-gf.p25
+              img(src='/static/images/sponsors/7.png', alt='')
+          .col-lg-3.col-md-3.col-sm-6.col-xs-6.text-center.margin-client.is-animated__client
+            .bg-gf.p25
+              img(src='/static/images/sponsors/8.png', alt='')
+    //-mobile hidden
+    .fp-section.bordered-out.text-center.sixth.hide-mobile
+      .container-banner.is-animated__container
+        .three
+        .bg-title-section
+          .row.container-header
+            .center-header.col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-12.col-xs-12.text-left.white(style='font-weight:700; font-size:100px; line-height:120px; position:absolute; top:0; bottom:0; left:0; right:0;')
+              b.line-big-title.animated
+                span.line SEE WHAT
+                span.line
+                  span.yellow OUR GUESTS
+                span.line HAD TO SAY
+                span.line ABOUT US
+          .low-band
+            .row.row-eq-height
+              .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-4.col-sm-offset-4.col-xs-12.text-center.vertical-bot.is-animated__slide
+                a(href='#Realisations')
+                  img.arrow-pop(src='/static/images/landing/arrow-pop.png', alt='')
+                  img(src='/static/images/landing/slide2.png', alt='')
+    .fp-section.bg-g.references.hide-mobile
+      .row.row-eq-height.slider
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/nucleya.jpg) center;')
+          div
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+                h2.slide-title.montserrat.white.test-title
+                  a.open-project NUCLEYA
+                .slide-description.rocksalt.yellow
+                  | Thrilling
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(/static/images/landing/testimonials/sashi.jpg) center;')
+          div
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+                h2.slide-title.montserrat.white.test-title
+                  a.open-project SHASHI THAROOR
+                .slide-description.rocksalt.yellow
+                  | Terrific to be among you all
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(/static/images/landing/testimonials/wolf.jpg) center;')
+          div
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+                h2.slide-title.montserrat.white.test-title
+                  a.open-project WOLFMOTHER
+                .slide-description.rocksalt.yellow
+                  | Indian fans are really enthusiastic
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.printed(style='background: url(/static/images/landing/testimonials/vishal.jpg) center;')
+          div
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+                h2.slide-title.montserrat.white.test-title
+                  a.open-project VISHAL / SHEKHAR
+                .slide-description.rocksalt.yellow
+                  | Amazing crowd, amazing energY
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/indianjam.jpg) center;')
+          div
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+                h2.slide-title.montserrat.white.test-title
+                  a.open-project INDIAN JAM PROJECT
+                .slide-description.rocksalt.yellow
+                  | It was great performing at BITS
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/abish.jpg) center;')
+          div
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+                h2.slide-title.montserrat.white.test-title
+                  a.open-project ABISH MATHEW
+                .slide-description.rocksalt.yellow
+                  | Absolutely brilliant
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/farhan.jpg) center;')
+          div
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+                h2.slide-title.montserrat.white.test-title
+                  a.open-project FARHAN AKHTAR
+                .slide-description.rocksalt.yellow
+                  | It was memorable
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/sonu.jpg) center;')
+          div
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+                h2.slide-title.montserrat.white.test-title
+                  a.open-project SONU NIGAM
+                .slide-description.rocksalt.yellow
+                  | Lovely memories, loved performing
+        .col-lg-4.col-md-4.col-sm-12.col-xs-12.text-center.slidum.hided(style='background: url(/static/images/landing/testimonials/zakir.jpg) center;')
+          div
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+                h2.slide-title.montserrat.white.test-title
+                  a.open-project ZAKIR KHAN
+                .slide-description.rocksalt.yellow
+                  | Great audience, best campus till date
+        .control-left.left
+          img(src='/static/images/landing/left-arrow.png', alt='', intermin='1', intermax='3')
+        .control-right.right
+          img(src='/static/images/landing/right-arrow.png', alt='')
+    .fp-section.bordered-out.text-center.height
+      .container-banner.is-animated__container
+        .four
+        .bg-title-section
+          .row.container-header
+            .center-header.col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-12.col-xs-12.text-left.white(style='font-weight:700; font-size:100px; line-height:120px; position:absolute; top:0; bottom:0; left:0; right:0;')
+              b.line-big-title.animated
+                span.line FIND
+                span.yellow.line YOUR WAY
+                span.line TO PEARL
+                span.link.small-break.normal.mobile-center.flex.pending-trigger(data-target="transit")
+                  i.icon-map(style="font-size:1.5em")
+                  | &nbsp; See transit options
+          .low-band
+            .row.row-eq-height
+              .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-4.col-sm-offset-4.col-xs-12.text-center.vertical-bot.is-animated__slide
+                a(href='#Contact')
+                  img.arrow-pop(src='/static/images/landing/arrow-pop.png', alt='')
+                  img(src='/static/images/landing/slide2.png', alt='')
+          .row.container-header.pending#transit.white
+            div
+              h1.white.timingsHeading.row-eq-height.flex-center
+                | TSRTC BUS SERVICE &nbsp;
+                i.icon-close.link.pending-untrigger(data-target="transit")
+              section.white.normal.small-break 212 From Secunderabad Railway Station (Gurudwara Point) to BITS Main gate:
+              section.white.small-break 07:50, 08:20, 08:50, 09:50, 11:00, 12:00, 13:00, 14:10, 15:05, 16:05, 17:20, 18:15, 19:15, 20:15, 21:15.
+              section.white.normal.small-break 212 From BITS Main Gate to Secunderabad Railway Station:
+              section.white.small-break 06:55 , 07:55 , 08:50, 09:20, 09:50, 11:00, 12:00, 13:00, 14:00, 15:05, 16:05, 17:20, 18:15, 19:15, 20:15
+              hr.little-spacer.hide-mobile
+              section.offwhite.small-break.hide-mobile
+                |City buses having numbers
+                strong &nbsp;211S,
+                strong &nbsp;211A,
+                strong &nbsp;211C,
+                strong &nbsp;211D,
+                strong &nbsp;211E,
+                strong &nbsp;211J,
+                strong &nbsp;211K,
+                strong &nbsp;211T,
+                strong &nbsp;211U,
+                strong &nbsp;567,
+                strong &nbsp;568,
+                strong &nbsp;569
+                |&nbsp;which ply from Secunderabad Railway Station to various destinations to the Campus side. Further, there are many APSRTC buses from Secunderabad, Jubilee bus stand to Karim Nagar, Siddhipet, Ramagundam, Gajwel, Cheriyal etc. People can board any of these buses, get down either at Thumkunta or Dongala Mysamma junction which is 1KM away and take an auto to the campus.
+            div.buttonsContainer
+              a(href="https://www.google.co.in/maps/place/BITS+Pilani/@17.5435125,78.5722199,17z/data=!4m5!3m4!1s0x3bcb835ea819f7f7:0xf65eaaa5a110605f!8m2!3d17.5449703!4d78.5716459?hl=en" target="_blank")
+    .fp-section.nineth.bg-g
+      .row
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.title
+          .little-title.herr.yellow.section-title Get in touch
+          .big-title.montserrat.black.section-subtitle Contact Us
+      br
+      br
+      .row
+        .col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3.col-xs-8.col-xs-offset-2.is-animated__data.contact-line
+          .row.contacts
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center.hide-mobile
+              b(style='text-transform:uppercase;') Abhinav Eittireddy
+              br
+              p
+                | President
+                br
+                a(href='tel:+9542929354') 9542929354
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b(style='text-transform:uppercase;') Manas Bansal
+              br
+              p
+                | Sponsorship &amp; Marketing
+                br
+                a(href='tel:+9666131548') 9666131548
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b(style='text-transform:uppercase;') Chandan Kumar
+              br
+              p
+                | Cultural Secretary
+                br
+                a(href='tel:+7660002320') 7660002320
+          .row.contacts
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b(style='text-transform:uppercase;') Uday Yalamanchili
+              br
+              p
+                | Publicity
+                br
+                a(href='tel:+9603403456') 9603403456
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b(style='text-transform:uppercase;') Pradeep Reddy
+              br
+              p
+                | Professional Shows
+                br
+                a(href='tel:+8019683351') 8019683351
+            .col-lg-4.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center.hide-mobile
+              b(style='text-transform:uppercase;') Vaishnavi Reddy
+              br
+              p
+                | Cultural Secretary
+                br
+                a(href='tel:+9885623355') 9885623355
+          br
+          .row
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center.mobile-text-center
+              b.bold.phone-number(style='font-size:35px;')
+                a(href='mailto:pearl@hyderabad.bits-pilani.ac.in')
+                  b pearl@hyderabad.bits-pilani.ac.in
+  script(src='/static/lib/jquery.fullPage.js')
+  script(src='/static/scripts/home.js')
+  script.
+    setTimeout(function() { $(".nav").fadeIn(700); }, 2200);
+    $('.scroll-project').on('click', function(e) {
+      e.preventDefault();
+      var elpos = $(this).offset();
+      console.log(elpos);
+      $('.modal').animate({
+      scrollTop: elpos.top,
+      }, 1000);
+    });
+    $('.white-slide').on('click', function(e) {
+      e.preventDefault();
+      console.log("bon click");
+      $('.modal').animate({ scrollTop: 1 }, 1000);
+    });
+    $('.left').on('click', function() { Slide($(this)); });
+    $('.right').on('click', function() { Slide($(this)); });
+    function Slide(btn) {
+      if (btn.hasClass('right')) {
+        if ($('.animate-hided').length > 0) {
+          $('.animate-hided').addClass('hided');
+          $('.animate-show').addClass('printed').removeClass('animate-show');
+          $('.animate-hided').removeClass('animate-hided');
+        }
+        $('.slidum').eq(1).removeClass("printed");
+        $('.hided').eq(1).addClass("animate-show");
+        $('.slidum').eq(1).addClass("animate-hided");
+        $('.slidum').eq(4).removeClass("hided");
+        $('.slider').append($('.slidum').eq(0));
+      }
+      if (btn.hasClass('left')) {
+        if ($('.animate-hided').length > 0) {
+          $('.animate-hided').addClass('hided');
+          $('.animate-show').addClass('printed').removeClass('animate-show');
+          $('.animate-hided').removeClass('animate-hided');
+        }
+        $('.slidum').eq(0).addClass('animate-show').removeClass("hided");
+        var lastSlide = $('.slidum').length;
+        $('.slider').prepend($('.slidum:last'));
+        $('.printed').eq(2).removeClass('printed').addClass("animate-hided");
+      }
+    }
+    $("body").keydown(function(e) {
+      if (e.keyCode == 37) { // left
+        if ($('.animate-hided').length > 0) {
+          $('.animate-hided').addClass('hided');
+          $('.animate-show').addClass('printed').removeClass('animate-show');
+          $('.animate-hided').removeClass('animate-hided');
+        }
+        $('.slidum').eq(0).addClass('animate-show').removeClass("hided");
+        var lastSlide = $('.slidum').length;
+        $('.slider').prepend($('.slidum:last'));
+        $('.printed').eq(2).removeClass('printed').addClass("animate-hided");
+      } else if (e.keyCode == 39) { // right
+        if ($('.animate-hided').length > 0) {
+          $('.animate-hided').addClass('hided');
+          $('.animate-show').addClass('printed').removeClass('animate-show');
+          $('.animate-hided').removeClass('animate-hided');
+        }
+        $('.slidum').eq(1).removeClass("printed");
+        $('.hided').eq(1).addClass("animate-show");
+        $('.slidum').eq(1).addClass("animate-hided");
+        $('.slidum').eq(4).removeClass("hided");
+        $('.slider').append($('.slidum').eq(0));
+      }
+    });
+    $('.pending-trigger').click(function() {
+      $('#' + $(this).data('target')).addClass('now');
+    });
+    $('.pending-untrigger').click(function() {
+      $('#' + $(this).data('target')).removeClass('now');
+    });
+    $(window).scroll(function() {
+      /* Check the location of each desired element */
+      $('.hideme').each(function(i) {
+        var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+        var bottom_of_window = $(window).scrollTop() + $(window).height();
+        /* If the object is completely visible in the window, fade it it */
+        if (bottom_of_window > bottom_of_object) {
+          $(this).animate({ 'opacity': '1' }, 500);
+        }
+      });
+    });
+    (function($) {
+      $.fn.visible = function(partial) {
+        var $t = $(this),
+        $w = $(window),
+        viewTop = $w.scrollTop(),
+        viewBottom = viewTop + $w.height(),
+        _top = $t.offset().top,
+        _bottom = _top + $t.height(),
+        compareTop = partial === true ? _bottom : _top,
+        compareBottom = partial === true ? _top : _bottom;
+        return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+      };
+    })(jQuery);
+    $('.modal').on("scroll", function() {
+      $(".module").each(function(i, el) {
+      var el = $(el);
+        if (el.visible(true)) {
+          el.addClass("come-in");
+        }
+      });
+    });

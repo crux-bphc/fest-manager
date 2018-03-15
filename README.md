@@ -6,6 +6,10 @@ Fest Manager is a Single Page Express Application that can be used to easily dep
 
 ![](docs/images/atmos.png)
 
+The following Android apps also depend on fest-manager as a backend server:
+* Pearl 2018 (In production)
+* [Arena 2018](https://github.com/Department-of-Technical-Arts/ArenaApp2018)
+
 ## Installation
 
 This app depends on:

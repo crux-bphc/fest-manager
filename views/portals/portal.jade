@@ -23,7 +23,7 @@ div#_portal
 			+fieldMixin(search)
 	div.section.table
 		div.edit_item.collapsed
-			- var form  = {method: "POST", action: "/api/events", fields: fields, type: "portal"}
+			- var form  = {method: "POST", fields: fields, type: "portal"}
 			+formMixin(form)
 		div.item.head
 			div.title Name

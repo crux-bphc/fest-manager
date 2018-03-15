@@ -3,6 +3,7 @@ var router = express.Router();
 var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
 var config = fq('config-loader');
+var sort = fq('sort');
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
@@ -10,20 +11,24 @@ var applyStateChanges = function (req) {
 		route: '/events',
 	};
 	req.stateparams.submenu = [{
+			route: "/events#Competition",
 			label: "Competitions",
-			route: "/events#Competition"
+			class: "Competition",
 		},
 		{
+			route: "/events#Workshop",
 			label: "Workshops",
-			route: "/events#Workshop"
+			class: "Workshop",
 		},
 		{
+			route: "/events#Talk",
 			label: "Talks",
-			route: "/events#Talk"
+			class: "Talk",
 		},
 		{
-			label: "Conferences",
-			route: "/events#Conference"
+			route: "/events#Proshow",
+			label: "Shows",
+			class: "Show",
 		}
 	];
 	return req;
@@ -33,17 +38,14 @@ router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Events';
 	req = applyStateChanges(req);
 	eventsService.find(function (err, events) {
+		console.log(err);
 		if (err) return next(err);
 
 		events = events.filter(elem => {
 			return !elem.route.endsWith('!');
 		});
 
-		events.sort(function (a, b) {
-			if (a.name > b.name) return -1;
-			if (a.name < b.name) return 1;
-			return 0;
-		});
+		events = sort(events, 'name');
 
 		res.renderState('events/home', {
 			title: 'Events',
@@ -65,16 +67,19 @@ router.get('/schedule', function (req, res, next) {
 			[]
 		];
 		events.forEach(elem => {
-			if (elem.startTime.startsWith('27')) days[0].push(elem);
-			if (elem.startTime.startsWith('28')) days[1].push(elem);
-			if (elem.startTime.startsWith('29')) days[2].push(elem);
+			if (elem.startTime && elem.startTime.startsWith('27')) days[0].push(elem);
+			if (elem.startTime && elem.startTime.startsWith('28')) days[1].push(elem);
+			if (elem.startTime && elem.startTime.startsWith('29')) days[2].push(elem);
 		});
 		res.renderState('events/schedule', {
 			title: 'Schedule',
 			user: req.user,
 			days: days,
 		});
-	}).catch(next);
+	}).catch(err => {
+		console.log(err);
+		next(err);
+	});
 });
 
 router.get('/:eventroute', function (req, res, next) {

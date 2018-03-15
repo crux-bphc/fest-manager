@@ -1,18 +1,40 @@
 include ../mixins/event
 include ../mixins/field
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
-
-div.section.header
+style.
+	@media only screen and (max-width: 600px) {
+		.stretch {
+			flex-direction: column;
+			align-items: flex-start;
+			height: 6em !important;
+			margin: 1em 0em;
+			justify-content: space-around;
+		}
+		.stretch > * {
+			width:100%;
+		}
+	}
+div.module-events.section.header
 	h1.title= title
 	div.stretch
 		div.remnant
-			ul.controls
-				a.icon-shopping_cart(href="/dashboard/cart")
+			a.outward(href="https://www.townscript.com/e/pearl2018-240304")
+				i.icon-ticket
+				span BUY TICKETS
 		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
-div.section(style="display:flex;")
-	div.remnant
-		span.declaration On spot registration available
+	div.section.tags.catch-filters
+		a(href="/events#Competition/Music" class="Music") Music
+		a(href="/events#Competition/Dance" class="Dance") Dance
+		a(href="/events#Competition/Drama" class="Drama") Drama
+		a(href="/events#Competition/Film" class="Film") Film
+		a(href="/events#Competition/Art" class="Art") Art
+		a(href="/events#Competition/Quiz" class="Quiz") Quiz
+		a(href="/events#Competition/Writing" class="Writing") Writing
+		a(href="/events#Competition/Photography" class="Photography") Photography
+		a(href="/events#Competition/FineArts" class="FineArts") Fine Arts
+		a(href="/events#Competition/Miscellaneous" class="Miscellaneous") Miscellaneous
+
 div.section.events-wrapper
 	each event in events
 		- if(event.route.toLowerCase() == "techexpo" || event.route.toLowerCase() == "@pybits")

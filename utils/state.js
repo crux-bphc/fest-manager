@@ -35,7 +35,7 @@ module.exports = function () {
 		navbar.login = !state.user.isAuthenticated;
 		navbar.avatar = state.user.isAuthenticated;
 		navbar.exit = false;
-		if(state.location == '/components/' && !state.user.isAuthenticated)
+		if (state.location == '/components/' && !state.user.isAuthenticated)
 			navbar.ambassador = true;
 		state.navbar = navbar;
 		return state;
@@ -45,7 +45,7 @@ module.exports = function () {
 		var items = ['dashboard', 'portals', 'home', 'ca'];
 		var sidebar = {};
 		sidebar.visible = !state.isImmersive;
-		if (state.forceHideSidebar){
+		if (state.forceHideSidebar) {
 			sidebar.visible = false;
 		}
 		sidebar.hideburger = state.forceHideSidebar; // for hiding menu button
