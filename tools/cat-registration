@@ -92,5 +92,3 @@ var main = function () {
 
 // Start execution
 main();
-
-

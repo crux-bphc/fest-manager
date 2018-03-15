@@ -1,18 +1,41 @@
 include ../mixins/event
 include ../mixins/field
 link(rel="stylesheet" href="/static/stylesheets/events.style.css")
-
+style.
+	@media only screen and (max-width: 600px) {
+		.stretch {
+			flex-direction: column;
+			align-items: flex-start;
+			height: 6em !important;
+			margin: 1em 0em;
+			justify-content: space-around;
+		}
+		.stretch > * {
+			width:100%;
+		}
+	}
 div.module-events.section.header
 	h1.title= title
 	div.stretch
 		div.remnant
-			ul.controls
-				a.icon-shopping_cart(href="/dashboard/cart")
+			a.outward(href="https://www.townscript.com/e/pearl2018-240304")
+				i.icon-ticket
+				span BUY TICKETS
 		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
-div.section(style="display:flex;")
-	div.remnant
-		span.declaration On spot registration available
+	div.section.tags
+		a(data-tag="Music") Music
+		a(data-tag="Dance") Dance
+		a(data-tag="Drama") Drama
+		a(data-tag="Film") Film
+		a(data-tag="Art") Art
+		a(data-tag="Quiz") Quiz
+		a(data-tag="Writing") Writing
+		a(data-tag="Photography") Photography
+		a(data-tag="FineArts") Fine Arts
+		a(data-tag="Speaking") Speaking
+		a(data-tag="Miscellaneous") Miscellaneous
+
 div.section.events-wrapper
 	each event in events
 		- if(event.route.toLowerCase() == "techexpo" || event.route.toLowerCase() == "@pybits")

@@ -10,10 +10,31 @@ var description;
 		status: false
 	});
 	portal.find('.controls .icon-check').click(function () {
-		submit_item();
-		closeEditor();
+		$("form.container").submit();
 	});
 })();
+
+
+$("form.container").submit(function (event) {
+	console.log("Valid:", this.checkValidity());
+	if (!this.checkValidity()) {
+		$(this).find(":invalid").first().focus();
+		var invalid = $(this).find(":invalid");
+		var text = "Fix following fields:";
+		for (var i = 0; i < invalid.length; i++) {
+			text = text + " " + invalid[i].id.split('-', 2)[1];
+		}
+		text += ".";
+		swal({
+			title: "Form Validation Error",
+			text: text,
+			type: "error",
+		});
+		return event.preventDefault();
+	}
+	submit_item();
+	closeEditor();
+});
 
 var implementSearch = function () {
 	$('input#field-search').bind('keyup change', function (e) {

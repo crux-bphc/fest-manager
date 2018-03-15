@@ -39,16 +39,19 @@ var manager = function () {
 		client.route(client.state.location, true, true);
 	};
 	client.route = function (route, status = true, reload = false) {
+		console.log(route);
 		if (!route) return;
-		if (route.startsWith("http")) {
-			window.open(route, '_blank');
+		if (route.startsWith("http") || route.startsWith("mailto") || route.startsWith("tel")) {
+			window.open(route, '_self');
 			return;
 		}
 		if (route[0] != '/')
 			route = '/' + route;
 		if (route.indexOf('/components') == -1)
 			route = '/components' + route;
+		console.log(route, this.state.location + (client.hash ? '#' + client.hash : ""));
 		if (route == this.state.location + (client.hash ? '#' + client.hash : "") && !reload) return;
+
 		// If not the same route, apply following logic
 		if (window.innerWidth < 800)
 			$('.window > .remnant').removeClass('shift_to_expose_menu');

@@ -1,3 +1,7 @@
+.cart-actions {
+    display: flex;
+    justify-content: flex-end;
+}
 .cart-actions .button {
     height:2.5em;
     display: inline-flex;
@@ -56,7 +60,7 @@
 .cart-actions .button.pending {
     background:orange;
     color:#fff;
-    cursor: default;
+    cursor: pointer;
     border-color:transparent;
 }
 .cart-actions .button.pending > .icon-close {

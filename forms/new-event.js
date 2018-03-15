@@ -5,7 +5,6 @@ module.exports = function(event) {
         placeholder: "Add a description",
         editable: true,
         type: "textarea",
-        required: true,
         rows: 8,
         value: event ? event.description : "",
         typeahead: false,
@@ -51,6 +50,7 @@ module.exports = function(event) {
         editable: true,
         value: event ? event.title : "",
         type: "text",
+        required: true,
         none: true,
         group: 1,
     });
@@ -123,6 +123,8 @@ module.exports = function(event) {
         editable: true,
         value: event ? event.startTime : "",
         type: "text",
+        pattern: "\\d{4}(-\\d{2}){4}",
+        title: "Format: yyyy-mm-dd-HH-MM",
         none: true,
         group: 2,
     });
@@ -131,6 +133,8 @@ module.exports = function(event) {
         placeholder: "End Time",
         editable: true,
         type: "text",
+        pattern: "\\d{4}(-\\d{2}){4}",
+        title: "Format: yyyy-mm-dd-HH-MM",
         none: true,
         value: event ? event.endTime : "",
         group: 2,

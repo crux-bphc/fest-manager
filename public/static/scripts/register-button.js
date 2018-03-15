@@ -3,7 +3,7 @@ var RegisterButton = function () {
 		teamed: '<div class="latent" tabindex="1"><div class="button add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register</span></div><div class="button join_team" onclick="RegisterButton.join(this, \'$id\', isFree)"><i class="icon-group_add"></i><span>Join Team</span></div><div class="button new_team" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_box"></i><span>New Team</span></div></div>',
 		single: '<div class="button add_to_cart" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_shopping_cart"></i><span>Register</span></div>',
 		subscribed: '<div class="button subscribed"><i class="icon-check"></i><span>Registered</span></div>',
-		pending: '<div class="button pending"><i class="icon-close" onclick="RegisterButton.remove(this, \'$id\', $isFree)"></i><a href=\'/dashboard/cart\'><span>Pay at townscript. If paid, ignore.</span></a></div>',
+		pending: '<a class="button pending" href="https://townscript.com/e/pearl2018-240304"><i class="icon-ticket"></i><span>Buy Tickets</span></a>',
 	};
 
 	var failAlert = function (res) {
@@ -32,7 +32,7 @@ var RegisterButton = function () {
 				if (typeof res.teamID !== 'undefined') {
 					swal({
 						title: "Successful",
-						text: "Event added to cart! Your team ID is " + res.teamID,
+						text: "Event added to cart! Your team ID is " + res.teamID + ". Share this ID with your team members and ask them to join this team when they register for the event.",
 						type: "success",
 						confirmButtonText: "OK",
 						confirmButtonColor: "#202729"
@@ -58,12 +58,12 @@ var RegisterButton = function () {
 
 		swal({
 				title: "Join Team",
-				text: "Enter the team id to proceed",
+				text: "If someone from your team has already registered, ask them for the Team ID",
 				type: "input",
 				showCancelButton: true,
 				closeOnConfirm: false,
 				animation: "slide-from-top",
-				inputPlaceholder: "Team ID",
+				inputPlaceholder: "Enter the Team ID",
 				confirmButtonColor: "#202729",
 				confirmButtonText: "Join",
 				showLoaderOnConfirm: true

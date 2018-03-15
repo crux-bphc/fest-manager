@@ -3,29 +3,13 @@ var router = express.Router();
 var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
 var config = fq('config-loader');
+var sort=fq('sort');
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
 		text: 'Events',
 		route: '/events',
 	};
-	req.stateparams.submenu = [{
-			label: "Competitions",
-			route: "/events#Competition"
-		},
-		{
-			label: "Workshops",
-			route: "/events#Workshop"
-		},
-		{
-			label: "Talks",
-			route: "/events#Talk"
-		},
-		{
-			label: "Conferences",
-			route: "/events#Conference"
-		}
-	];
 	return req;
 };
 
@@ -33,17 +17,14 @@ router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Events';
 	req = applyStateChanges(req);
 	eventsService.find(function (err, events) {
+		console.log(err);
 		if (err) return next(err);
 
 		events = events.filter(elem => {
 			return !elem.route.endsWith('!');
 		});
 
-		events.sort(function (a, b) {
-			if (a.name > b.name) return -1;
-			if (a.name < b.name) return 1;
-			return 0;
-		});
+		events = sort(events, 'name');
 
 		res.renderState('events/home', {
 			title: 'Events',
