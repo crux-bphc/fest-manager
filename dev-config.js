@@ -19,10 +19,12 @@ var config = {
             profileFields: ['emails']
         },
     },
+
     database: {
         name: "fest-manager-dev",
         url: "mongodb://127.0.0.1/",
     },
+
     email: {
         clientID: "566366256828-qr24q6b72krj9p66u2eccfpak56cjc38.apps.googleusercontent.com",
         clientSecret: "qktNgemJfKIKp-NVEkG03C0F",
@@ -47,6 +49,11 @@ var config = {
         terpsichore: "XXXXX",
         kaleidoscope: "XXXXX",
         tilldeaf: "XXXXX",
+    },
+
+    admin: {
+        username: 'keyes',
+        password: 'locke',
     },
 
     port: 3000,

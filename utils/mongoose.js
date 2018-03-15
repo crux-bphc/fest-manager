@@ -3,8 +3,7 @@ var connection = function (callback) {
 	var mongoose = require('mongoose');
 	mongoose.Promise = global.Promise;
 	const config = require('./config-loader');
-	var databasename = process.env.FM_DATABASE || config.database.name || "fest-manager-default";
-	var mongoDB = config.database.url + databasename;
+	var mongoDB = config.database.url + config.database.name;
 	mongoose.connect(mongoDB, {
 		useMongoClient: true,
 	});
@@ -14,8 +13,8 @@ var connection = function (callback) {
 		if (callback) callback(error);
 	});
 	db.on('connected', function () {
-		console.log("mongoose: Connected to", databasename);
-		if (callback) callback(null, databasename);
+		console.log("mongoose: Connected to", config.database.name);
+		if (callback) callback(null, config.database.name);
 	});
 };
 module.exports = connection;
