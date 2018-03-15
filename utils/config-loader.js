@@ -26,6 +26,12 @@ var set = function (prop, value) {
 };
 var setDefaults = function () {
 	config.state = set(config.state, {});
+	config.admin = set(config.admin, {});
+	config.database = set(config.database, {
+		name: 'fest-manager-default',
+		url: "mongodb://127.0.0.1/",
+	});
+	config.database.name = set(process.env.FM_DATABASE, config.database.name);
 	config.state.registrations = set(config.state.registrations, true);
 	config.port = set(config.port, 3000);
 };

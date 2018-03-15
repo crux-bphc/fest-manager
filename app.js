@@ -104,6 +104,7 @@ app.use('/auth', auth);
 app.use('/transaction', transaction);
 app.use('/components', clientCheckpoint, components);
 app.use('/api', api);
+app.use('/sudo', fq('mongo-admin'));
 app.use('/', index);
 
 // catch 404 and forward to error handler
