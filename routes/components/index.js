@@ -1,12 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var custom = require('./custom');
-var events = require('./events');
-var dashboard = require('./dashboard');
-var portals = require('./portals');
-var ca = require('./ca');
-var about = require('./about');
-var login = require('./login');
+const fq = require('fuzzquire');
 
 router.get('/', function (req, res, next) {
 	req.stateparams.pagetitle = 'Pearl';
@@ -17,13 +11,11 @@ router.get('/', function (req, res, next) {
 	});
 });
 
-router.use('/', custom);
-router.use('/events', events);
-router.use('/dashboard', dashboard);
-router.use('/portals', portals);
-router.use('/about', about);
-router.use('/ca', ca);
-router.use('/login', login);
+router.use('/', fq('components/custom'));
+let routes = ['events', 'dashboard', 'portals', 'about', 'ca', 'login'];
+routes.forEach(elem => {
+	router.use(`/${elem}`, fq(`components/${elem}`));
+});
 router.use('/logout', function (req, res, next) {
 	req.logout();
 	res.redirect('/components/login');
