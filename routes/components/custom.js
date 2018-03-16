@@ -5,8 +5,6 @@ var eventsService = fq("services/events").model;
 
 // Load custom modules here
 
-router.use('/feed', fq('custom/feed'));
-
 var applyStateChanges = function (req) {
 	req.stateparams.immersive = false;
 	req.stateparams.forceHideSidebar = true;
@@ -29,5 +27,9 @@ var handler = function (req, res) {
 	res.renderState('custom/prelim', options);
 };
 router.use('/prelims/:id', handler);
+
+router.use('/sponsors', function (req, res) {
+	res.renderState('sponsors', {});
+});
 
 module.exports = router;

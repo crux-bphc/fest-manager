@@ -997,6 +997,17 @@
     position: relative;
 }
 
+.fifth .little-title {
+    margin-top: 0px;
+}
+.fifth a.link {
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.fifth a.link:hover {
+    color: #C59D5F;
+}
+
 .section-title {
     font-size: 60px;
 }

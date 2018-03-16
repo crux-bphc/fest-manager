@@ -1,0 +1,41 @@
+.module-sponsors .header h1 {
+    text-transform: uppercase;
+    line-height: 3;
+    display: block;
+    text-align: center;
+}
+.module-sponsors .sponsors {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.module-sponsors .sponsors > li {
+    list-style-type: none;
+    margin: 1em 1em;
+    margin-bottom: 4em;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);
+    display: inline-block;
+    border-radius: 5px;
+}
+.module-sponsors .sponsors > li > img {
+    width: 300px;
+}
+.module-sponsors .sponsors > li > span {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    color: #666;
+    font-weight: 600;
+    text-align: center;
+    line-height: 3em;
+}
+@media only screen and (max-width: 1600px) {
+    .module-sponsors .sponsors > li > img {
+        width: 230px;
+    }
+}
