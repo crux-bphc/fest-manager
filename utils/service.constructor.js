@@ -18,7 +18,7 @@ var getOptions = function (data) {
 	return options;
 };
 
-<<<<<<< HEAD
+
 function checkPermission(level){
 	return function(req, res, next)
 	{
@@ -26,15 +26,7 @@ function checkPermission(level){
 			return next();
 		else
 		{
-=======
-function checkPermission(level) {
-	return function (req, res, next) {
-		if (level === 0) {
-			return next();
-		} else if (req.user && req.user.privilege && req.user.privilege.level >= level) {
-			return next();
-		} else {
->>>>>>> 3b9dd162bd2de7ae02da17ae3e4abade04731bb4
+
 			let error = new Error('Access denied');
 			error.status = 401;
 			return next(error);
@@ -84,11 +76,9 @@ function service(model, router, permission) {
 		});
 	});
 
-<<<<<<< HEAD
+
 	router.post('/', middleware.authenticate, checkPermission(permission.insert), function (req, res, next) {
-=======
-	router.post('/', checkPermission(permission.insert), function (req, res, next) {
->>>>>>> 3b9dd162bd2de7ae02da17ae3e4abade04731bb4
+
 		var item = new model(req.body);
 		item.save(function (err, data) {
 			if (err) {
@@ -103,11 +93,9 @@ function service(model, router, permission) {
 		});
 	});
 
-<<<<<<< HEAD
+
 	router.put('/', middleware.authenticate, checkPermission(permission.update), function (req, res, next) {
-=======
-	router.put('/', checkPermission(permission.update), function (req, res, next) {
->>>>>>> 3b9dd162bd2de7ae02da17ae3e4abade04731bb4
+
 		model.update({
 			_id: req.body._id || req.body.id
 		}, req.body, function (err, data) {
@@ -123,11 +111,8 @@ function service(model, router, permission) {
 		});
 	});
 
-<<<<<<< HEAD
 	router.delete('/:id', middleware.authenticate, checkPermission(permission.delete), function (req, res, next) {
-=======
-	router.delete('/:id', checkPermission(permission.delete), function (req, res, next) {
->>>>>>> 3b9dd162bd2de7ae02da17ae3e4abade04731bb4
+
 		model.findByIdAndRemove(req.params.id, function (err, data) {
 			if (err) {
 				console.log(err);
@@ -141,11 +126,8 @@ function service(model, router, permission) {
 		});
 	});
 
-<<<<<<< HEAD
 	router.put('/update-one', middleware.authenticate, checkPermission(permission.update), function (req, res, next) {
-=======
-	router.put('/update-one', checkPermission(permission.update), function (req, res, next) {
->>>>>>> 3b9dd162bd2de7ae02da17ae3e4abade04731bb4
+
 		model.findOneAndUpdate(req.body.filter, // query
 				{
 					$set: req.body.data

@@ -19,7 +19,7 @@ var schema = new Schema({
 	venue: String,
 	startTime: String,
 	endTime: String,
-	teams: [shortID],
+	teams: [shortID],	
 	price: Number,
 	route: String,
 	prize: Number,

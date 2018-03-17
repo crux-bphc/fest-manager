@@ -23,7 +23,7 @@
     "html-pdf": "^2.1.0",
     "jade": "~1.11.0",
     "marked": "^0.3.6",
-    "moment": "^2.19.1",
+    "moment": "^2.21.0",
     "mongo-express": "0.45.0",
     "mongoose": "^4.10.5",
     "mongoose-paginate": "^5.0.3",
