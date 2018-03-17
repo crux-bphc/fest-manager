@@ -28,11 +28,11 @@ var model = mongoose.model('teams', schema);
 
 var permission = {
 
-	read_one : 0,
-	read_all : 0,
-	insert : 1,
-	update : 1,
-    delete: 2
+	read_one: 0,
+	read_all: 0,
+	insert: 1,
+	update: 1,
+	delete: 2
 
 };
 
