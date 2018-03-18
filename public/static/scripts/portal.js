@@ -17,6 +17,7 @@ var portal;
 
 
 $("form.container").submit(function (event) {
+	event.preventDefault();
 	if (!this.checkValidity()) {
 		$(this).find(":invalid").first().focus();
 		var invalid = $(this).find(":invalid");
@@ -30,7 +31,7 @@ $("form.container").submit(function (event) {
 			text: text,
 			type: "error",
 		});
-		return event.preventDefault();
+		return;
 	}
 	submit_item();
 	closeEditor();
