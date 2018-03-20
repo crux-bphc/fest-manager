@@ -4,6 +4,11 @@ var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
 var config = fq('config-loader');
 var sort = fq('sort');
+var moment = require('moment');
+
+var generateTimestamp = (time) => {
+	return moment(time, 'YYYY-MM-DD-HH-mm-ss').format('MMMM Do, dddd ha');
+};
 
 var applyStateChanges = function (req) {
 	req.stateparams.title = {
@@ -93,6 +98,11 @@ router.get('/:eventroute', function (req, res, next) {
 			err1.status = 404;
 			return next(err1);
 		}
+
+		// Convert timestamps to human readable format.
+		if (data.startTime) data.startTime = generateTimestamp(data.startTime);
+		if (data.endTime) data.endTime = generateTimestamp(data.endTime);
+
 		if (data.route.startsWith('@')) {
 			var myurl = '/components/' + data.route.split('@')[1];
 			return res.redirect(myurl);
