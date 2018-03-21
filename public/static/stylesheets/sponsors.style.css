@@ -6,7 +6,9 @@
 }
 .module-sponsors .sponsors {
     width: 100%;
+    padding: 2em 0;
     position: relative;
+    background: #f0f0ff;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -15,17 +17,21 @@
     list-style-type: none;
     margin: 1em 1em;
     margin-bottom: 4em;
-    overflow: hidden;
     background: #fff;
-    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 60px -10px rgba(0, 0, 0, 0.13);
     display: inline-block;
     border-radius: 5px;
 }
-.module-sponsors .sponsors > li > img {
-    width: 300px;
+.module-sponsors .sponsors > li > a {
+    display:block;
+    position: relative;
 }
-.module-sponsors .sponsors > li > span {
-    display: none;
+.module-sponsors .sponsors > li > a > img {
+    width: 300px;
+    border-radius: 5px;
+}
+.module-sponsors .sponsors > li > a > span {
+    display: block;
     position: absolute;
     top: 100%;
     width: 100%;
@@ -35,7 +41,10 @@
     line-height: 3em;
 }
 @media only screen and (max-width: 1600px) {
-    .module-sponsors .sponsors > li > img {
+    .module-sponsors .sponsors > li > a > img {
         width: 230px;
+    }
+    .module-sponsors .sponsors > li > a {
+	
     }
 }
