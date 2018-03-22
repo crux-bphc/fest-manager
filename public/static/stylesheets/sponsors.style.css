@@ -24,10 +24,12 @@
 }
 .module-sponsors .sponsors > li > a {
     display:block;
+    padding: 1em;
+    box-sizing: border-box;
     position: relative;
 }
 .module-sponsors .sponsors > li > a > img {
-    width: 300px;
+    width: 100%;
     border-radius: 5px;
 }
 .module-sponsors .sponsors > li > a > span {
@@ -45,6 +47,6 @@
         width: 230px;
     }
     .module-sponsors .sponsors > li > a {
-	
+
     }
 }
