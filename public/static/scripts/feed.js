@@ -22,13 +22,15 @@ $(document).ready(function () {
 			},
 			data: {
 				subject: $('#field-subject').val(),
+				// TODO remove this later. Added for compatibility with app.
+				sport: $('#field-subject').val(),
 				text: $('#field-text').val(),
 				team1: $('#field-team1').val(),
 				team2: $('#field-team2').val(),
 			}
 		}).done(function (data, textStatus, req) {
 			if (data == "Success") {
-				manager.route('/portals/feee');
+				manager.route('/portals/feed');
 			}
 		}).fail(function (err) {
 			swal({
