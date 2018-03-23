@@ -16,6 +16,7 @@
 }
 .section.body > div.qr {
 	height: 15em;
+	display: none;
 }
 .section.body > div:first-child {
 	margin-left: 0em;
