@@ -8,6 +8,10 @@ var middleware = fq('authentication').middleware;
 var schema = new Schema({
 	subject: {
 		type: String, // Team Name.
+		required: false,
+	},
+	sport: {
+		type: String, // For compat with pearl app.
 		required: true,
 	},
 	team1: String,
