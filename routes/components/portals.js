@@ -13,6 +13,10 @@ var applyStateChanges = function (req, superuser) {
 	};
 	if (superuser)
 		req.stateparams.submenu = [{
+				route: "/portals/feed",
+				label: "Live Feed Updates",
+			},
+			{
 				route: "/portals/rollout",
 				label: "Rollout Notifications",
 			},

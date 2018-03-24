@@ -30,7 +30,7 @@ $(document).ready(function () {
 			}
 		}).done(function (data, textStatus, req) {
 			if (data.status || data == "Success") {
-				manager.route('/portals/feed');
+				manager.route('/portals');
 			}
 		}).fail(function (err) {
 			swal({
