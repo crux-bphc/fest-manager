@@ -3,7 +3,7 @@ var router = express.Router();
 const fq = require('fuzzquire');
 
 router.get('/', function (req, res, next) {
-	req.stateparams.pagetitle = 'Pearl';
+	req.stateparams.pagetitle = 'Pearl 2018';
 	req.stateparams.immersive = true;
 	res.renderState('home.jade', {
 		user: req.user,

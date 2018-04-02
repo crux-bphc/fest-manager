@@ -44,6 +44,7 @@ var manager = function () {
 			window.open(route, '_blank');
 			return;
 		}
+		document.body.dispatchEvent(new Event('route'));
 		if (route[0] != '/')
 			route = '/' + route;
 		if (route.indexOf('/components') == -1)

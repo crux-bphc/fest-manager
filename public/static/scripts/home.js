@@ -1,461 +1,105 @@
-    function animateBG(banner) {
-        $('.' + banner).addClass('animate-bg');
-        if (banner == 'one') {
-            $('.one video')[0].play();
-        }
-    }
+(function() {
+    window.setInterval(function() {
+        var countDownDate = new Date("Mar 23, 2018 00:00:00").getTime();
+        // Get todays date and time
+        var now = new Date().getTime();
 
-    function resetAllanimateBG() {
-        $('.one').stop().animate({ backgroundSize: "100%" }, 500);
-        $('.two').stop().animate({ backgroundSize: "100%" }, 500);
-        $('.three').stop().animate({ backgroundSize: "100%" }, 500);
-        $('.four').stop().animate({ backgroundSize: "100%" }, 500);
-    }
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
 
-
-
-    //ANIMATION INITIALES
-
-    animateBG('one');
-
-    setTimeout(function() {
-        $('.one').animate({ opacity: "1" }, { queue: false, duration: 800 });
-        $('.one video')[0].play();
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Display the result in the element with id="cnt*"
+        $(".countdown .days").html(("0" + days).slice(-2));
+        $(".countdown .seconds").html(("0" + seconds).slice(-2));
+        $(".countdown .minutes").html(("0" + minutes).slice(-2));
+        $(".countdown .hours").html(("0" + hours).slice(-2));
     }, 1000);
+})();
 
+function shuffle(arra1) {
+    let ctr = arra1.length;
+    let temp;
+    let index;
 
-    setTimeout(function() {
-        $(".border-top").animate({ height: '20px' }, 700);
-        $(".border-bottom").animate({ height: '20px' }, 700);
-        $(".border-left").animate({ width: '20px' }, 700);
-        $(".border-right").animate({ width: '20px' }, 700);
-    }, 1700);
-
-
-
-    setTimeout(function() { $(".logo-site").animate({ marginTop: '42vh' }, { queue: false, duration: 900 }); }, 1900);
-    setTimeout(function() { $(".logo-site").fadeIn(1200); }, 1900);
-    setTimeout(function() { $(".logo-site .subtext").fadeIn(2000); }, 2500);
-    setTimeout(function() { $(".precision-intro").animate({ bottom: '5px' }, { queue: false, duration: 900 }); }, 2500);
-    setTimeout(function() { $(".precision-intro").fadeIn("fast"); }, 2700);
-    setTimeout(function() { $(".links").animate({ bottom: '20px' }, { queue: false, duration: 900 }); }, 2500);
-    setTimeout(function() { $(".links").fadeIn("fast"); }, 2700);
-    setTimeout(function() { $(".low-band").animate({ bottom: '0' }, 700); }, 3500);
-
-
-
-
-
-    //Utilisation du gif préférable
-    /*
-    function animateDivers() {
-        $('.arrow-pop').animate({'bottom':'11px'},300).animate({'bottom':'5px'},100).animate({'bottom':'8px'},200).animate({'bottom':'5px'}, animateDivers);
+    // While there are elements in the array
+    while (ctr > 0) {
+        // Pick a random index
+        index = Math.floor(Math.random() * ctr);
+        // Decrease ctr by 1
+        ctr--;
+        // And swap the last element with it
+        temp = arra1[ctr];
+        arra1[ctr] = arra1[index];
+        arra1[index] = temp;
     }
-    setTimeout(animateDivers(), 4000);
-    */
-
-
-
-    $('.nav').on('click', function() {
-        $('#modal').load('fragments/elements/nav.html').css('display', 'block').animate({ height: '100vh', }, 500);
-
-        setTimeout(function() {
-            $(".border-modal-top").animate({ height: '20px' }, 700);
-            $(".border-modal-bottom").animate({ height: '20px' }, 700);
-            $(".border-modal-left").animate({ width: '20px' }, 700);
-            $(".border-modal-right").animate({ width: '20px' }, 700);
-            $(".project-content").fadeIn(900);
-        }, 600);
-
-        setTimeout(function() { $(".title-lines").fadeIn(400); }, 1900);
-        setTimeout(function() { $(".toggle-btn").fadeIn(300); }, 2700);
-        setTimeout(function() { $(".pop-project").fadeIn(300); }, 2700);
-
-        setTimeout(function() { $('.close-modal').fadeIn().css('display', 'block'); }, 300);
-
-    });
-
-
-
-    $('.open-project').on('click', function() {
-        var projet = $(this).attr('name');
-        $('#modal').load('fragments/projects/' + projet + '.html');
-
-        $('.modal').css('display', 'block');
-
-        //On fait apparaitre le rectangle gris
-        $(".modal").animate({
-            height: '100vh',
-        }, 500);
-
-        //On fait apparaitre le contenu en fade
-        setTimeout(function() {
-            $(".border-modal-top").animate({ height: '20px' }, 700);
-            $(".border-modal-left").animate({ width: '20px' }, 700);
-            $(".border-modal-right").animate({ width: '20px' }, 700);
-            $(".project-content").fadeIn(900);
-        }, 600);
-
-        setTimeout(function() { $(".title-lines").fadeIn(400); }, 1900);
-        setTimeout(function() { $(".toggle-btn").fadeIn(300); }, 2700);
-        setTimeout(function() { $(".pop-project").fadeIn(300); }, 2700);
-
-
-        $('.close-modal').css('display', 'block');
-    });
-
-
-
-
-
-    $(document).on('click', '.change-project', function() {
-        var projet = $(this).attr('name');
-        console.log("Project : " + projet);
-
-        //On ferme le modal
-        $('.close-modal').css('display', 'none');
-
-        $(".project-content").fadeOut(400, function() { $(this).remove(); });
-
-        setTimeout(function() { $('#modal').load('fragments/projects/' + projet + '.html'); }, 500);
-
-
-        //On rouvre le modal
-        setTimeout(function() {
-            $(".project-content").fadeIn(900);
-        }, 900);
-
-        setTimeout(function() { $(".title-lines").fadeIn(400); }, 1900);
-        setTimeout(function() { $(".toggle-btn").fadeIn(300); }, 2700);
-        setTimeout(function() { $(".pop-project").fadeIn(300); }, 2700);
-
-
-        $('.close-modal').css('display', 'block');
-
-
-    });
-
-
-    $('.close-modal').on('click', function() {
-        $('.close-modal').css('display', 'none');
-
-        $(".border-modal-top").animate({ height: '0px' }, 400);
-        $(".border-modal-bottom").animate({ height: '0px' }, 400);
-        $(".border-modal-left").animate({ width: '0px' }, 400);
-        $(".border-modal-right").animate({ width: '0px' }, 400);
-        $(".project-content").fadeOut(900);
-
-        setTimeout(function() {
-            $(".modal").animate({ height: '0vh', }, 500);
-        }, 600);
-
-
-        setTimeout(function() {
-            $('#modal').html();
-        }, 1300);
-    });
-
-
-    $('.logo-top').on('click', function() {
-        $('.close-modal').click();
-    });
-
-
-    $(document).on('click', '.nav-close', function() {
-        $('.close-modal').css('display', 'none');
-
-        $(".border-modal-top").animate({ height: '0px' }, 200);
-        $(".border-modal-left").animate({ width: '0px' }, 200);
-        $(".border-modal-right").animate({ width: '0px' }, 200);
-        $(".project-content").fadeOut(600);
-
-        setTimeout(function() {
-            $(".modal").animate({ height: '0vh', }, 300);
-        }, 400);
-
-        setTimeout(function() {
-            $('#modal').html();
-        }, 500);
-
-    });
-
-
-    //ANIMATIONS
-    var
-        $secondTitre = $('.second .is-animated'),
-        $secondTexte = $('.second .is-animated__single'),
-
-        $thirdLogo = $('.third .is-animated__logo'),
-        $thirdTitre = $('.third .is-animated__title'),
-        $thirdSlide = $('.third .is-animated__slide'),
-
-        $fourthColumn = $('.fourth .is-animated__column'),
-
-        $fifthClient = $('.fifth .is-animated__client'),
-        $fifthTitle = $('.fifth .title'),
-
-
-        $heighthLogo = $('.heighth .is-animated__logo'),
-        $heighthTitre = $('.heighth .is-animated__title'),
-        $heighthSlide = $('.heighth .is-animated__slide'),
-
-        $ninethTitre = $('.nineth .is-animated__title'),
-        $ninethData = $('.nineth .is-animated__data'),
-        $ninethForm = $('.nineth .is-animated__form');
-
-    $(document).ready(function() {
-        $('.fullpage').fullpage({
-            sectionSelector: '.fp-section',
-            anchors: ['Welcome', 'About', 'Projects', 'Events', 'Sponsors', 'Random', 'Testimonials', 'GettingHere', "Contact"],
-            normalScrollElements: '.modal',
-            responsiveWidth: 1200,
-            recordHistory: true,
-            afterLoad: function() {
-
-                $('.second .is-animated').addClass('animated fadeInUp').css('animation-delay', '0.2s');
-
-            },
-            onLeave: function(index, nextIndex, direction) {
-                if (nextIndex == 2) {
-                    if (index == 1 && nextIndex == 2) {
-
-                        $secondTexte.addClass('animated fadeInUp');
-                        $secondTexte.eq(0).css('animation-delay', '.2s');
-                        $secondTitre.addClass('animated fadeInUp').css('animation-delay', '0.1s');
-
-                        setTimeout(function() { $(".logo-top").fadeIn(500); }, 400);
-                        elementsInPurple();
-                    }
-                }
-
-                if (nextIndex == 1) {
-                    animateBG('one');
-                }
-
-                if (nextIndex == 2) {}
-
-                if (nextIndex == 3) {
-                    animateBG('two');
-                }
-                if (nextIndex == 4) {}
-                if (nextIndex == 5) {}
-                if (nextIndex == 6) {
-                    animateBG('three');
-                }
-                if (nextIndex == 7) {}
-                if (nextIndex == 8) {
-                    animateBG('four');
-                }
-                if (nextIndex == 9) {}
-
-
-
-                if (nextIndex == 3 || nextIndex == 6 || nextIndex == 8) {
-                    $('.line-big-title').removeClass('fadeOut');
-                    setTimeout(function() {
-                        $('.line-big-title').addClass('fadeIn');
-                    }, 500);
-                } else {
-                    $('.line-big-title').addClass('fadeOut');
-                    $('.line-big-title').removeClass('fadeIn');
-
-                }
-
-
-                /* Réinitialisation des BG pour le replay à chaque apparition d'un slide */
-                if (nextIndex == 3 || nextIndex == 6 || nextIndex == 10 || nextIndex == 7 || nextIndex == 9) {
-                    resetAllanimateBG();
-                }
-
-                if (nextIndex == 2 || nextIndex == 4 || nextIndex == 5 || nextIndex == 9) {
-                    elementsInPurple();
-                    displayElements();
-                } else {
-                    elementsInWhite();
-                    if (nextIndex != 1) {
-                        displayElements();
-                    }
-                }
-
-
-                if (nextIndex == 1) {
-                    if (index == 2) {
-                        $(".logo-top").fadeOut(200);
-                        $(".text-baseline").animate({ color: "#FFFFFFF" }, 500);
-                        $(".follow-icon a").animate({ color: "#FFFFFFF" }, 500);
-                    }
-                }
-                if ((index == 1 || index == 2) && nextIndex == 3) {
-                    $thirdTitre.addClass('animated fadeIn').css('animation-delay', '0.2s');
-                    animateBG("two");
-                }
-                if (nextIndex == 4) {
-                    if (index == 3) {
-                        $fourthColumn.eq(3).css('animation-delay', '.4s');
-                        $fourthColumn.eq(0).css('animation-delay', '.4s');
-                        $fourthColumn.eq(1).css('animation-delay', '.3s');
-                        $fourthColumn.eq(2).css('animation-delay', '.3s');
-                        $fourthColumn.addClass('animated fadeInUp');
-
-                        setTimeout(function() {
-                            $fourthColumn.removeClass('animated fadeInUp');
-                        }, 2000);
-                    }
-                }
-                if (nextIndex == 4) {
-                    if (index == 5) {
-                        $fourthColumn.eq(3).css('animation-delay', '.4s');
-                        $fourthColumn.eq(0).css('animation-delay', '.4s');
-                        $fourthColumn.eq(1).css('animation-delay', '.3s');
-                        $fourthColumn.eq(2).css('animation-delay', '.3s');
-                        $fourthColumn.addClass('animated fadeInDown');
-
-                        setTimeout(function() {
-                            $fourthColumn.removeClass('animated fadeInDown');
-                        }, 2000);
-                    }
-                }
-                if (nextIndex == 5) {
-                    if (index == 4) {
-                        $fifthClient.addClass('animated fadeInUp');
-                        $fifthClient.eq(3).css('animation-delay', '.3s');
-                        $fifthClient.eq(0).css('animation-delay', '.3s');
-                        $fifthClient.eq(1).css('animation-delay', '.5s');
-                        $fifthClient.eq(2).css('animation-delay', '.5s');
-
-                        setTimeout(function() {
-                            $fifthClient.removeClass('animated fadeInUp');
-                        }, 2000);
-                    }
-                }
-                if (nextIndex == 5) {
-                    if (index == 6) {
-                        $fifthClient.addClass('animated fadeInDown');
-                        $fifthClient.eq(3).css('animation-delay', '.3s');
-                        $fifthClient.eq(0).css('animation-delay', '.3s');
-                        $fifthClient.eq(1).css('animation-delay', '.5s');
-                        $fifthClient.eq(2).css('animation-delay', '.5s');
-
-                        setTimeout(function() {
-                            $fifthClient.removeClass('animated fadeInDown');
-                        }, 2000);
-
-                    }
-                }
-                if ((index == 7 && nextIndex == 8)) {
-                    $heighthLogo.addClass('animated fadeInDown').css('animation-delay', '.5s');
-                    $heighthSlide.addClass('animated fadeInUp').css('animation-delay', '1s');
-                    $heighthTitre.addClass('animated fadeIn').css('animation-delay', '0.2s');
-
-                }
-                if ((index == 8 && nextIndex == 9)) {
-                    $ninethData.addClass('animated fadeInUp').css('animation-delay', '0.9s');
-                    $ninethForm.addClass('animated fadeInUp').css('animation-delay', '0.6s');
-                    $ninethTitre.addClass('animated fadeInUp').css('animation-delay', '0.2s');
-
-                    setTimeout(function() {
-                        $ninethData.removeClass('animated fadeInUp');
-                        $ninethForm.removeClass('animated fadeInUp');
-                        $ninethTitre.removeClass('animated fadeInUp');
-                    }, 2000);
-
-                }
-
-            }
-        }); // initialization
-    });
-
-    jQuery.Color.hook("stroke");
-
-    function elementsInWhite() {
-        $(".text-baseline").animate({ color: "#FFFFFFF" }, 500);
-        $(".follow-icon a").animate({ color: "#FFFFFFF" }, 500);
-        $(".nav-btn").animate({ 'stroke': '#C59D5F' }, 200);
-        $(".navbar").removeClass('purple');
-    }
-
-    function elementsInPurple() {
-        $(".text-baseline").animate({ color: "#2F2C4E" }, 500);
-        $(".follow-icon a").animate({ color: "#2F2C4E" }, 500);
-        $(".nav-btn").animate({ 'stroke': '#C59D5F' }, 200);
-        $(".navbar").addClass('purple');
-    }
-
-    function displayElements() {
-        setTimeout(function() { $(".logo-top").fadeIn(500); }, 400);
-        setTimeout(function() { $(".nav").fadeIn(500); }, 400);
-    }
-
-
-    (function(window) {
-
-        'use strict';
-
-        // class helper functions from bonzo https://github.com/ded/bonzo
-
-        function classReg(className) {
-            return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
-        }
-
-        // classList support for class management
-        // altho to be fair, the api sucks because it won't accept multiple classes at once
-        var hasClass, addClass, removeClass;
-
-        if ('classList' in document.documentElement) {
-            hasClass = function(elem, c) {
-                return elem.classList.contains(c);
-            };
-            addClass = function(elem, c) {
-                elem.classList.add(c);
-            };
-            removeClass = function(elem, c) {
-                elem.classList.remove(c);
-            };
-        } else {
-            hasClass = function(elem, c) {
-                return classReg(c).test(elem.className);
-            };
-            addClass = function(elem, c) {
-                if (!hasClass(elem, c)) {
-                    elem.className = elem.className + ' ' + c;
-                }
-            };
-            removeClass = function(elem, c) {
-                elem.className = elem.className.replace(classReg(c), ' ');
-            };
-        }
-
-        function toggleClass(elem, c) {
-            var fn = hasClass(elem, c) ? removeClass : addClass;
-            fn(elem, c);
-        }
-
-        var classie = {
-            // full names
-            hasClass: hasClass,
-            addClass: addClass,
-            removeClass: removeClass,
-            toggleClass: toggleClass,
-            // short names
-            has: hasClass,
-            add: addClass,
-            remove: removeClass,
-            toggle: toggleClass
+    return arra1;
+}
+
+// Fetch porn from reddit
+(function() {
+    let index = ~~(Math.random() * slideshow.length);
+    let loadedData = [];
+    let initLoad = function() {
+        slideshow = shuffle(slideshow);
+        var promises = [];
+        const options = {
+            method: 'GET',
+            mode: 'no-cors'
         };
+        slideshow.forEach(elem => {
+            var myelem = Object.assign({}, elem);
+            var promise = fetch(elem.image, options).then(data => {
+                myelem.data = data;
+                loadedData.push(myelem);
+                console.log("Loaded:", myelem.image);
+                // $('#loader').css({ width: (loadedData.length * 20) + '%' });
+                if (loadedData.length == 5) {
+                    startShow();
+                }
+                return Promise.resolve();
+            }).catch(err => {
+                console.error(err);
+                return Promise.resolve();
+            });
+            promises.push(promise);
+        });
+        return Promise.all(promises);
+    };
+    let prepare = function() {
+        index = (index + 1) % loadedData.length;
+        $('.background > .tray').css({
+            'background-image': 'url(' + loadedData[index].image + ')'
+        });
+    }
+    let change = function() {
+        console.log("Hello");
+        $('.background > .tray')
+            .removeClass('tray').addClass('face')
+            .siblings('div').removeClass('face').addClass('tray');
+        $('#meta-author').html(loadedData[index].person).attr('href', loadedData[index].url);
+        $('#meta-location').html(loadedData[index].location);
+        $('#meta-tagline').html(loadedData[index].tagline);
+        setTimeout(prepare, 2000);
+    };
+    let startShow = function() {
+        prepare();
+        setTimeout(function() {
+            $('.parallax .center').animate({ opacity: 0, transform: 'scale(0.5)' }, 200);
+            $('.overlay .meta').removeClass('hidden');
+            change();
+            var slideInterval = setInterval(change, 8000);
+            document.body.addEventListener("route", function(e) {
+                clearInterval(slideInterval);
+            });
+        }, 5000);
+    }
 
-        // transport
-        if (typeof define === 'function' && define.amd) {
-            // AMD
-            define(classie);
-        } else if (typeof exports === 'object') {
-            // CommonJS
-            module.exports = classie;
-        } else {
-            // browser global
-            window.classie = classie;
-        }
 
-    })(window);
-
-
-    var step = 1;
+    initLoad().then(data => {
+        console.log("Images Loaded:", loadedData.length);
+    })
+})();
