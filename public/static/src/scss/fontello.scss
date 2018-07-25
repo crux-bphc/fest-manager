@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "fontello";
+  src: url( "../font/fontello.eot?79140090" );
+  src: url( "../font/fontello.eot?79140090#iefix" ) format( "embedded-opentype" ),
+       url( "../font/fontello.woff2?79140090" ) format( "woff2" ),
+       url( "../font/fontello.woff?79140090" ) format( "woff" ),
+       url( "../font/fontello.ttf?79140090" ) format( "truetype" ),
+       url( "../font/fontello.svg?79140090#fontello" ) format( "svg" );
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    padding: 0;
+    width: 1em;
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: inherit;
+    text-align: center;
+    line-height: 1em;
+    speak: none;
+}
+.icon-trim:before {  margin: 0; }
+.icon-down:before { content: "\e800"; }
+.icon-up:before { content: "\e801"; }
+.icon-error:before { content: "\e80f"; }
+.icon-twitter:before { content: "\f099"; }
+.icon-facebook:before { content: "\f09a"; }
+.icon-spinner:before { content: "\f110"; }
+.icon-github:before { content: "\f113"; }
+.icon-rocket:before { content: "\f135"; }
+.icon-right:before { content: "\f18e"; }
+.icon-left:before { content: "\f190"; }
+.icon-shuttle:before { content: "\f197"; }
+.icon-google:before { content: "\f1a0"; }
+.icon-reddit:before { content: "\f1a1"; }
