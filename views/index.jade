@@ -1,103 +1,112 @@
-doctype html
 html
 	head
-		meta(name="viewport" content="width=device-width, initial-scale=1")
-		meta(name='Title', content='Pearl, Cultural Fest of Bits Pilani Hyderabad Campus')
-		meta(name='Keywords', content='Pearl, bphc, bits, cultural')
-		meta(name='Description', content='Pearl is the annual cultural fest of Birla Institute of Technology and Science, Pilani – Hyderabad Campus. Right from its inception in 2012, it ...')
-		meta(name='Language', content='English')
-		meta(name='Robots', content='INDEX,FOLLOW')
-		link(href="/static/manifest.json" rel="manifest")
-		link(href="/static/images/64x64.png" rel="icon")
-		link(href="/static/stylesheets/sweetalert.css" rel="stylesheet")
-		link(href="/static/stylesheets/github-markdown.css" rel="stylesheet")
-		link(href="/static/lib/simplebar.css" rel="stylesheet")
-		link(href="/static/stylesheets/bootstrap.min.css" rel="stylesheet")
-		link(href="/static/stylesheets/index.style.css" rel="stylesheet")
-		link(href='/static/stylesheets/home.style.css', rel='stylesheet')
-		link(href='https://fonts.googleapis.com/css?family=Rock+Salt|Herr+Von+Muellerhoff|Montserrat:300,400,600,900', rel='stylesheet')
-		title Pearl
-		meta(name="robots" content="index, follow")
-		meta(name="apple-mobile-web-app-capable" content="yes")
-		meta(property="og:type" content="website")
-		meta(property="og:site_name" content="PEARL, Bits Pilani Hyderabad Campus")
-		meta(property="og:title" content="PEARL, BITS Pilani Hyderabad Campus")
-		meta(property="og:url" content="https://bits-pearl.org/")
-		meta(property="og:image" content="https://bits-pearl.org/static/images/meta.png")
-		meta(name="twitter:title" content="PEARL, Bits Pilani Hyderabad Campus")
-		meta(name="twitter:image" content="https://bits-pearl.org/static/images/meta.jpg")
-		meta(name="twitter:card" content="Pearl, Bits Pilani Hyderabad Campus")
-		meta(name="twitter:site" content="@BITSPearl")
-body
-	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
-		div.navbar(_triggers="navbar/visible=visible")
-			div.wrapper
-				div#menu.button(tabindex=1)
-					i.icon-menu(_triggers="sidebar/hideburger=hidden")
-				a.logo(href="/")
-					span PEARL ,
-					span 23 - 25 March
-				span.subtitle.hidden
-					i.icon-navigate_next
-					span.text
-				div.controls
-					input.hidden(type="checkbox" id="dropdown")
-					div#blurCarpet
-					div.button.mute-button(onclick="Buildings.mute()")
-						i.mute.icon-volume_up(style="font-size:1.5em")
-					div.button.user(_triggers="navbar/avatar=visible" tabindex="0")
-						if user
-							label(for="dropdown")
-								span.ticker
-								img(src=user.profileImage)
-							div.dropdown
-								div.header
-									div.details(_route="/dashboard")
-										- if (typeof user.name !== "undefined") {
-										span.username.
-											#{user.name}
-										- }
-										- if (typeof user.email !== "undefined") {
-										span.useremail.
-											#{user.email}
-										- }
-										- else if (typeof user.phone !== "undefined") {
-										span.useremail.
-											#{user.phone}
-										- }
-									a.button.cart(href="/dashboard/cart" style="display:none;")
-										i.icon-shopping_cart
-									a.button.account(href="/dashboard/account" style="display:inline-block;")
-										i.icon-mode_edit
-								div.subheader
-									span Notifications
-								div.drawer
-									div.scrollable
-					a.button(href="/logout" _triggers="navbar/logout=visible")
-						i.icon-power_settings_new
-						div Logout
-					a.button(href="/login" _triggers="navbar/login=visible")
-						i.icon-account_circle
-						div Login
-		div.remnant
-			div.sidebar(tabindex="2" _triggers="sidebar/visible=visible")
-				div.wrapper
-					div.section.primary
-						ul
-							each val, key in navigation
-								a(class=val.initial href=val.route _triggers=val.triggers)
-									span= val.label
-					div.secondary-wrapper
-						div.section.secondary
-							a.label
-							ul.catch-filters
-			div.remnant.main(tabindex="1")
-				div.wrapper.face
-				div.wrapper.tray
-		script(type="application/ld+json" src="/static/scripts/schema.json")
-		script(type="text/javascript" src="/static/lib/jquery.min.js")
-		script(type="text/javascript" src="/static/lib/deep-diff-0.3.8.min.js")
-		script(src="/static/lib/sweetalert.min.js" type="text/javascript")
-		script(src="/static/lib/simplebar.js" type="text/javascript")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js" type="text/javascript")
-		script(type="text/javascript" src="/static/scripts/index.js")
+		title Atmos
+		meta(charset="utf-8")
+		meta(http-equiv="x-ua-compatible" content="IE=Edge")
+		meta(name="viewport" content="width=device-width,initial-scale=1")
+		link(type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")
+		link(type="text/css" rel="stylesheet" href="/static/dist/css/bundle.min.css")
+		link(href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Audiowide|Forum" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Galada" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet")
+	body
+		div(id="player")
+			audio(autoplay hidden)
+				source(src="music.mp3" type="audio/mpeg")
+		div(class="loader active")
+		div(class="stats center animated zoomInDown" style="display: none ; visibility: hidden;")
+		div(class="container error center fadeIn" style="display: none")
+			span(class="error-icon icon-error")
+			h1(class="error-title") Oops, there's a problem
+			p(class="error-info")
+			button(type="button" class="icon-rocket" onclick="top.location.reload( true )") Try again
+
+		div(class="container content center animated fadeIn" style="display: none") 
+			h1(style = "font-family: 'Monoton', cursive !important; font-size: 92px;") ATMOS 
+			<br>
+			p(style="font-family: 'Forum', cursive !important; letter-spacing: 0.75em;") INTO THE SIXTH DIMENSION
+			h3(style="letter-spacing: 0.5em;") 26-28 OCTOBER
+			br
+			hr
+			button(id="hyper-btn" class="icon-rocket")  
+				span EVENTS 
+		div(class="events center animated fadeIn" style="display: none")
+			div(style="margin-top: 10%")
+				h1
+					i(style = "font-family: 'Galada', cursive !important; font-size: 45px;") Events
+			br
+			div(class = "event-list" style="float:left; position: relative; margin-left: 15%;")
+				a(href="src/Events/Tech Expo-2018.pdf" download="" class="events-download-link") Tech Expo 2018
+				br
+				a(href="src/Events/Time versus Physics.pdf" download="" class="events-download-link") Time v/s Physics
+				br  
+				a(href="src/Events/Suit-Up.pdf" download="" class="events-download-link") Suit Up !
+				br
+				a(href="src/Events/SciTech Quiz.pdf" download="" class="events-download-link") Sci-Tech Quiz 
+				br
+				a(href="src/Events/RoboWars.pdf" download="" class="events-download-link") RoboWars
+				br
+				a(href="src/Events/Prodigal Designer.pdf" download="" class="events-download-link") Prodigal Designer
+				br
+				a(href="src/Events/Nostrum Vitae.pdf" download="" class="events-download-link") Nostrum Vitae
+				br
+				a(href="src/Events/N-Crypton.pdf" download="" class="events-download-link") N-Crypton
+				br
+				a(href="src/Events/miniGP-draft.docx.pdf" download="" class="events-download-link") Mini-GP
+				br
+				a(href="src/Events/MIDNIGHT AV QUIZ.pdf" download="" class="events-download-link") Midnight AB Quiz
+				br
+				a(href="src/Events/Manager's dilemma.pdf" download="" class="events-download-link") Manager's dilemma
+				br
+				a(href="src/Events/Law Follower.pdf" download="" class="events-download-link") Law Follower
+
+			div(class = "event-list" style="float: right; position: relative; margin-right: 15%;")
+				a(href="src/Events/GameOfDrones ATMOS'18.pdf" download="" class="events-download-link") Game of Drones
+				br
+				a(href="src/Events/Cubing-Atmosphere-Rules.pdf" download="" class="events-download-link") Cubing-Atmosphere
+				br
+				a(href="src/Events/CourtRoom.pdf" download="" class="events-download-link") CourtRoom
+				br
+				a(href="src/Events/codejam_problem_statement.pdf" download="" class="events-download-link") CodeJam
+				br
+				a(href="src/Events/CODE GOLF.pdf" download="" class="events-download-link") Code Golf
+				br
+				a(href="src/Events/capture the flag_problem_statement.pdf" download="" class="events-download-link") Capture the Flag
+				br
+				a(href="src/Events/beam it draft 2018.pdf" download="" class="events-download-link") Beam it!
+				br
+				a(href="src/Events/ARC Competition for ATMOS 2018.pdf" download="Predestination" class="events-download-link") Predestination
+				br
+				a(href="src/Events/Anatomy Of Murder.pdf" download="" class="events-download-link") Anatomy of Murder
+				br
+				a(href="src/Events/ALGOMANIAC.pdf" download="" class="events-download-link") ALGOMANIAC
+				br
+				a(href="src/Events/Alchemy ATMOS Event .pdf" download="Snitch In Time" class="events-download-link") Snitch in Time
+				br 
+				a(href="src/Events/Cataclysmic Deduction.pdf" download="Cataclysmic Deduction" class="events-download-link") Cataclysmic Deduction
+				br
+				br 
+					
+				div(style="position: relative; bottom: 100px; left: 40%")
+				button(id="home" class="icon-rocket")
+					span HOME
+
+		div(class="share center animated zoomInUp" style="display: none")
+			a(class="btn icon-twitter icon-trim" data-share="twitter" href="https://twitter.com/BITSAtmos")
+				span Tweet 
+			a(class="btn icon-facebook icon-trim" data-share="facebook"  href="https://www.facebook.com/bits.atmos") 
+				span Share
+
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r75/three.min.js")
+		script(src="/static/dist/js/polyfills.js")
+		script(src="/static/src/js/Device.js")
+		script(src="/static/src/js/Nebula.js")
+		script(src="/static/src/js/Planets.js")     
+		script(src="/static/src/js/Stage.js")
+		script(src="/static/src/js/Stars.js")
+		script(src="/static/src/js/Wormhole.js")
+		script(src="/static/dist/js/app.js")
+
+
