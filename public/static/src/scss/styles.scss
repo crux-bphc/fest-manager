@@ -1,0 +1,224 @@
+/**
+ * Main Styles
+ */
+@charset "UTF-8";
+@import "https://fonts.googleapis.com/css?family=Denk+One";
+
+/**
+ * Resets
+ */
+*,
+*:before,
+*:after {
+    font-family: "Denk One", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    transition:
+        background 500ms ease-out,
+        border 500ms ease-out,
+        color 500ms ease-out;
+}
+html,
+body {
+    display: block;
+    height: 100%;
+}
+
+/**
+ * Document
+ */
+body {
+    overflow: hidden;
+    overflow-y: auto;
+    font-size: 20px;
+    line-height: 32px;
+    background: #010101 url( "../images/bg.jpg" ) 50% 50% no-repeat;
+    background-size: cover;
+    color: #f0f0f0;
+}
+
+/**
+ * Links
+ */
+
+  .events-download-link {
+     color: white !important;
+     letter-spacing: 0.25em !important;
+ }
+ .events-download-link:hover{
+    text-decoration: underline !important; 
+}
+a,
+a:active,
+a.visited {
+    color: white !important;
+
+    &:hover {
+        text-decoration: underline !important;
+    }
+}
+
+/**
+ * Loader container
+ */
+.loader {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    background-color: rgba( 0, 0, 0, 0.8 );
+    transition: opacity 300ms ease-out;
+    z-index: -9999;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 60px;
+        height: 60px;
+        margin: -30px 0 0 -30px;
+        border: 8px solid rgba( 255, 255, 255, 0.2 );
+        border-top-color: #fff;
+        border-radius: 50%;
+        transform-origin: center;
+    }
+    &.active {
+        opacity: 1;
+        z-index: 9999;
+    }
+    &.active:before {
+        animation: spin 1s ease-in-out infinite;
+    }
+}
+
+/**
+ * Default center container
+ */
+.container {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    user-select: none;
+    transform: translateX( -50% ) translateY( -50% );
+    z-index: -9999;
+
+    &.error-icon {
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        font-size: 120px;
+        line-height: 0;
+    }
+    img {
+        display: block;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    h1, p {
+        margin: 20px 0;
+    }
+}
+
+/**
+ * Stats meter and share buttons
+ */
+.stats,
+.share {
+    display: none;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    z-index: -9999;
+}
+.stats {
+    top: 20px;
+}
+.share {
+    bottom: 20px;
+}
+
+/**
+ * Stage scene container
+ */
+#stage-container {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: #f0f0f0;
+    z-index: -1;
+}
+
+/**
+ * Buttons
+ */
+.btn, button {
+    display: inline-block;
+    font-size: inherit;
+    line-height: inherit;
+    width: auto;
+    font-weight: normal;
+    text-align: center;
+    color: #f0f0f0;
+    white-space: pre;
+    border: none;
+    border-radius: 50px;
+    background-color: rgba( 0, 0, 0, 0.5 );
+    padding: 10px 20px;
+    cursor: pointer;
+
+    & > span {
+        display: inline-block;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        vertical-align: middle;
+        text-indent: -200px;
+        transition: text-indent 300ms ease-in-out;
+    }
+    &:hover {
+        color: #fff;
+        border-color: lightskyblue;
+    }
+    &:hover > span {
+        text-indent: 10px;
+    }
+}
+
+/**
+ * Util classes
+ */
+.center {
+    text-align: center !important;
+}
+.active {
+    display: block !important;
+    z-index: 9999 !important;
+}
+
+/**
+ * Animations
+ */
+@keyframes spin {
+    0% { transform: rotate( 0deg ); }
+    100% { transform: rotate( 360deg ); }
+}
