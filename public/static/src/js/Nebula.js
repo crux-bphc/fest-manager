@@ -32,7 +32,7 @@
         // on setup
         onSetup: function( stage )
         {
-            stage.preloadTexture( "nebula", "dist/images/water.jpg" );
+            stage.preloadTexture( "nebula", "static/dist/images/water.jpg" );
         },
 
         // create objects

@@ -33,13 +33,13 @@
         // on add to stage
         onSetup: function( stage )
         {
-            stage.preloadTexture( "planet1", "dist/images/planet1.jpg" );
-            stage.preloadTexture( "planet2", "dist/images/planet2.jpg" );
-            stage.preloadTexture( "planet3", "dist/images/planet3.jpg" );
-            stage.preloadTexture( "planet4", "dist/images/planet4.jpg" );
-            stage.preloadTexture( "planet5", "dist/images/planet5.jpg" );
-            stage.preloadTexture( "water",   "dist/images/water.jpg" );
-            stage.preloadTexture( "moon",    "dist/images/moon.jpg" );
+            stage.preloadTexture( "planet1", "/static/dist/images/planet1.jpg" );
+            stage.preloadTexture( "planet2", "/static/dist/images/planet2.jpg" );
+            stage.preloadTexture( "planet3", "/static/dist/images/planet3.jpg" );
+            stage.preloadTexture( "planet4", "/static/dist/images/planet4.jpg" );
+            stage.preloadTexture( "planet5", "/static/dist/images/planet5.jpg" );
+            stage.preloadTexture( "water",   "/static/dist/images/water.jpg" );
+            stage.preloadTexture( "moon",    "/static/dist/images/moon.jpg" );
         },
 
         // on stage ready

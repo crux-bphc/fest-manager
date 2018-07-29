@@ -37,7 +37,7 @@
         // on setup
         onSetup: function( stage )
         {
-            stage.preloadTexture( "wormhole", "dist/images/water.jpg" );
+            stage.preloadTexture( "wormhole", "static/dist/images/water.jpg" );
         },
 
         // create objects

@@ -37,7 +37,7 @@
         // on add to stage
         onSetup: function( stage )
         {
-            stage.preloadTexture( "star", "dist/images/star.png" );
+            stage.preloadTexture( "star", "static/dist/images/star.png" );
         },
 
         // on stage ready
