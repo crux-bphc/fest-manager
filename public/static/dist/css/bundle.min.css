@@ -1,0 +1,365 @@
+/*!
+ * @Compiled: Sat Aug 20 2016 06:15:04 GMT-0400 (Eastern Daylight Time).
+ * @Description: An experimental interactive space scene rendered on the browser using WebGL and Three.js
+ * @Author: Rainner Lins | @raintek_ | <rainnerlins@gmail.com>
+ */
+
+/* Source: styles.css */
+
+@font-face {
+    font-family: 'Denk One';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Denk One'), local('DenkOne-Regular'), url(https://fonts.gstatic.com/s/denkone/v4/P7SaTFqoedlv-XRxXxfE2PesZW2xOQ-xsNqO47m55DA.ttf) format('truetype')
+}
+@font-face {
+    font-family: 'Ailerons-Typeface';
+    src:url('./Ailerons-Typeface.otf') format("opentype");
+    font-style: normal;
+    font-weight: 400;
+}
+
+*,
+:after,
+:before {
+    font-family: "Denk One", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    text-decoration: none;
+    border: none;
+    outline: 0;
+    box-sizing: border-box;
+    -webkit-transition: background .5s ease-out, border .5s ease-out, color .5s ease-out;
+    transition: background .5s ease-out, border .5s ease-out, color .5s ease-out
+}
+.events-download-link {
+    color: white !important;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 100 !important;
+}
+    .events-download-link:hover {
+    text-decoration: underline !important;
+}
+@media (max-width: 1000px) {
+    .events.content {
+
+        position: relative;
+        top: 100px !important;
+        margin-left: px !important;
+    }
+    .event-list {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
+body,
+html {
+    display: block;
+    height: 100%
+}
+
+body {
+    overflow: hidden;
+    overflow-y: auto;
+    font-size: 20px;
+    line-height: 32px;
+    background: #010101 url(../images/bg.jpg) 50% 50% no-repeat;
+    background-size: cover;
+    color: #f0f0f0
+}
+
+a,
+a.visited,
+a:active {
+    color: #049
+}
+
+a.visited:hover,
+a:active:hover,
+a:hover {
+    color: #036
+}
+
+.loader {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .8);
+    -webkit-transition: opacity .3s ease-out;
+    transition: opacity .3s ease-out;
+    z-index: -9999
+}
+
+.loader:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+    border: 8px solid rgba(255, 255, 255, .2);
+    border-top-color: #fff;
+    border-radius: 50%;
+    -webkit-transform-origin: center;
+    transform-origin: center
+}
+
+.timer{
+  display: inline-block;
+  padding: 10px;
+  min-width: 120px;
+  color: white;
+  font-size: 75px;
+  font-weight: 300;
+  text-align: center;
+  line-height: 0.5;
+  font-family: 'Ailerons-Typeface';
+}
+.timer  {
+    color: white;
+    letter-spacing: 0.25em;
+}
+
+.timer-heading{
+    margin-bottom: 15px !important
+
+}
+
+.loader.active {
+    opacity: 1;
+    z-index: 9999
+}
+
+.loader.active:before {
+    -webkit-animation: spin 1s ease-in-out infinite;
+    animation: spin 1s ease-in-out infinite
+}
+
+.container {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -9999
+}
+
+.container.error-icon {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 120px;
+    line-height: 0
+}
+
+.container img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto
+}
+
+.container h1,
+.container p {
+    margin: 20px 0
+}
+
+.share,
+.stats {
+    display: none;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    z-index: -9999
+}
+
+.stats {
+    top: 20px
+}
+
+.share {
+    bottom: 20px
+}
+
+#stage-container {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: #f0f0f0;
+    z-index: -1
+}
+
+.btn,
+button {
+    display: inline-block;
+    font-size: inherit;
+    line-height: inherit;
+    width: auto;
+    font-weight: 400;
+    text-align: center;
+    color: #f0f0f0;
+    white-space: pre;
+    border: none;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 10px 20px;
+    cursor: pointer
+}
+
+.btn>span,
+button>span {
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    vertical-align: middle;
+    text-indent: -200px;
+    -webkit-transition: text-indent .3s ease-in-out;
+    transition: text-indent .3s ease-in-out
+}
+
+.btn:hover,
+button:hover {
+    color: #fff;
+    border-color: #87cefa
+}
+
+.btn:hover>span,
+button:hover>span {
+    text-indent: 10px
+}
+
+.center {
+    text-align: center !important
+}
+
+.active {
+    display: block !important;
+    z-index: 9999 !important
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+/* Source: fontello.css */
+
+@font-face {
+    font-family: fontello;
+    src: url(../font/fontello.eot?79140090);
+    src: url(../font/fontello.eot?79140090#iefix) format("embedded-opentype"), url(../font/fontello.woff2?79140090) format("woff2"), url(../font/fontello.woff?79140090) format("woff"), url(../font/fontello.ttf?79140090) format("truetype"), url(../font/fontello.svg?79140090#fontello) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+
+[class*=" icon-"]:before,
+[class^=icon-]:before {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    padding: 0;
+    width: 1em;
+    font-family: fontello;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: inherit;
+    text-align: center;
+    line-height: 1em;
+    speak: none
+}
+
+.icon-trim:before {
+    margin: 0
+}
+
+.icon-down:before {
+    content: "\e800"
+}
+
+.icon-up:before {
+    content: "\e801"
+}
+
+.icon-error:before {
+    content: "\e80f"
+}
+
+.icon-twitter:before {
+    content: "\f099"
+}
+
+.icon-facebook:before {
+    content: "\f09a"
+}
+
+.icon-spinner:before {
+    content: "\f110"
+}
+
+.icon-github:before {
+    content: "\f113"
+}
+
+.icon-rocket:before {
+    content: "\f135"
+}
+
+.icon-right:before {
+    content: "\f18e"
+}
+
+.icon-left:before {
+    content: "\f190"
+}
+
+.icon-shuttle:before {
+    content: "\f197"
+}
+
+.icon-google:before {
+    content: "\f1a0"
+}
+
+.icon-reddit:before {
+    content: "\f1a1"
+}

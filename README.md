@@ -106,6 +106,9 @@ Compare `gather_subscriptions: Fix exception handling bad input.` with:
 - `gather_subscriptions: Fixing exception when given bad input.`, not in the imperative
 - `gather_subscriptions: Fixed exception when given bad input.`, not in the imperative
 
+## Atmos-2018
+- We acknowledge Rainner Lins(https://github.com/rainner/wormhole-extreme) for his amazing template rendered on the browser with the help of WebGL and three.js using javascript.
+
 ## License
 
 This software is released under the MIT License.
