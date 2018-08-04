@@ -114,7 +114,7 @@
             this.material = new THREE.PointsMaterial({
                 size: this.size,
                 color: 0xffffff,
-                opacity: 1,
+                opacity: 0.25,
                 map: stage.getTexture( "star" ),
                 blending: THREE.AdditiveBlending,
                 vertexColors: true,

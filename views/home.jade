@@ -22,15 +22,15 @@ div.container.error.center.fadeIn(style="display: none")
 	p.error-info
 	button.icon-rocket(type="button" onclick="top.location.reload( true )") Try again
 
-div.container.content.center.animated.fadeIn(style="display: none") 
-	h1(style = "font-family: 'Monoton', cursive !important; font-size: 92px;") ATMOS 
+div.container.content.center.animated.fadeIn(style="display: none;") 
+	img(src = "/static/dist/images/atmos-logo.png")
 	<br>
-	p(style="font-family: 'Forum', cursive !important; letter-spacing: 0.75em;")  INTO THE SIXTH DIMENSION
-	h3(style="letter-spacing: 0.5em;") 26-28 OCTOBER
+	p(style="font-family: 'Ailerons-Typeface', cursive !important; letter-spacing: 0.3em; font-size: 45px; line-spacing: 25px; line-height:0.6")  INTO THE SIXTH DIMENSION
+	h3(style="font-family: 'Ailerons-Typeface', cursive !important;  font-size: 40px;") 26-28 OCTOBER
 	br
 	hr
 	.timer(style="width: 100%")
-		h3.timer-heading(style="font-family: 'Kirang Haerang', cursive;") LANDING IN...
+		//- h3.timer-heading(style="font-family: 'Kirang Haerang', cursive;") 
 		.timer(id="days")
 		.timer(id="hours")
 		.timer(id="minutes")
@@ -108,8 +108,8 @@ div.share.center.animated.zoomInUp(style="display: none")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r75/three.min.js")
 script(src="/static/dist/js/polyfills.js")
 script(src="/static/src/js/Device.js")
-script(src="/static/src/js/Nebula.js")
-script(src="/static/src/js/Planets.js")     
+script(src="/static/src/js/Nebula.js")  
+script(src="/static/src/js/Planets.js")    
 script(src="/static/src/js/Stage.js")
 script(src="/static/src/js/Stars.js")
 script(src="/static/src/js/Wormhole.js")

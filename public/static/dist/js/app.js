@@ -43,10 +43,10 @@
         if (minutes < "10") { minutes = "0" + minutes; }
         if (seconds < "10") { seconds = "0" + seconds; }
 
-        $("#days").html(days+"<small><small><small>days</small></small></small>");
-        $("#hours").html(hours+"<small><small><small>hours</small></small></small>");
-        $("#minutes").html(minutes+"<small><small><small>mins</small></small></small>");
-        $("#seconds").html(seconds+"<small><small><small>secs</small></small></small>");      
+        $("#days").html(days+":");
+        $("#hours").html(hours +":");
+        $("#minutes").html(minutes +":");
+        $("#seconds").html(seconds );      
 }
 
 setInterval(function() { timer(); }, 1000);

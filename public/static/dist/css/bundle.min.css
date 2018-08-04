@@ -12,6 +12,12 @@
     font-weight: 400;
     src: local('Denk One'), local('DenkOne-Regular'), url(https://fonts.gstatic.com/s/denkone/v4/P7SaTFqoedlv-XRxXxfE2PesZW2xOQ-xsNqO47m55DA.ttf) format('truetype')
 }
+@font-face {
+    font-family: 'Ailerons-Typeface';
+    src:url('./Ailerons-Typeface.otf') format("opentype");
+    font-style: normal;
+    font-weight: 400;
+}
 
 *,
 :after,
@@ -111,10 +117,15 @@ a:hover {
   padding: 10px;
   min-width: 120px;
   color: white;
-  font-size: 40px;
-  font-weight: 600;
+  font-size: 75px;
+  font-weight: 300;
   text-align: center;
-  line-height: 1.2;
+  line-height: 0.5;
+  font-family: 'Ailerons-Typeface';
+}
+.timer  {
+    color: white;
+    letter-spacing: 0.25em;
 }
 
 .timer-heading{
@@ -140,7 +151,7 @@ a:hover {
     margin: 0;
     padding: 20px;
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -161,7 +172,7 @@ a:hover {
 .container img {
     display: block;
     width: 100%;
-    max-width: 200px;
+    max-width: 400px;
     margin: 0 auto
 }
 
