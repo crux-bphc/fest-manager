@@ -245,7 +245,6 @@ input[type = "file"] {
     color: #2F2C4E;
 }
 .window.immersive .navbar > .wrapper {
-    margin-top: 20px;
     /*background-image: linear-gradient(rgba(0,0,0,0.6),transparent);*/
 }
 
