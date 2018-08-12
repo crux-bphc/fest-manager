@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const fq = require('fuzzquire');
+const config = fq('config-loader');
 
 router.get('/', function (req, res, next) {
-	req.stateparams.pagetitle = 'Pearl';
+	req.stateparams.pagetitle = config.strings.name;
 	req.stateparams.immersive = true;
 	res.renderState('home.jade', {
 		user: req.user,

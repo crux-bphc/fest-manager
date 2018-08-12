@@ -3,10 +3,12 @@ var router = express.Router();
 var passport = require('passport');
 var fq = require('fuzzquire');
 var authenticate = fq('authentication').middleware.authenticate;
+var config = fq('config-loader');
 /* GET home page. */
 router.get('/?*', function (req, res, next) {
 	var params = {
 		title: 'Home',
+		strings: config.strings,
 		user: req.user,
 		route: req.url,
 		navigation: {

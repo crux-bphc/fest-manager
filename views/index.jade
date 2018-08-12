@@ -2,9 +2,9 @@ doctype html
 html
 	head
 		meta(name="viewport" content="width=device-width, initial-scale=1")
-		meta(name='Title', content='Pearl, Cultural Fest of Bits Pilani Hyderabad Campus')
-		meta(name='Keywords', content='Pearl, bphc, bits, cultural')
-		meta(name='Description', content='Pearl is the annual cultural fest of Birla Institute of Technology and Science, Pilani – Hyderabad Campus. Right from its inception in 2012, it ...')
+		meta(name='Title', content='#{strings.name}, #{strings.tagline}')
+		meta(name='Keywords', content='#{strings.keywords}')
+		meta(name='Description', content='#{strings.description}')
 		meta(name='Language', content='English')
 		meta(name='Robots', content='INDEX,FOLLOW')
 		link(href="/static/manifest.json" rel="manifest")
@@ -20,14 +20,14 @@ html
 		meta(name="robots" content="index, follow")
 		meta(name="apple-mobile-web-app-capable" content="yes")
 		meta(property="og:type" content="website")
-		meta(property="og:site_name" content="PEARL, Bits Pilani Hyderabad Campus")
-		meta(property="og:title" content="PEARL, BITS Pilani Hyderabad Campus")
-		meta(property="og:url" content="https://bits-pearl.org/")
-		meta(property="og:image" content="https://bits-pearl.org/static/images/meta.png")
-		meta(name="twitter:title" content="PEARL, Bits Pilani Hyderabad Campus")
-		meta(name="twitter:image" content="https://bits-pearl.org/static/images/meta.jpg")
-		meta(name="twitter:card" content="Pearl, Bits Pilani Hyderabad Campus")
-		meta(name="twitter:site" content="@BITSPearl")
+		meta(property="og:site_name" content="#{strings.name}, #{strings.tagline}")
+		meta(property="og:title" content="#{strings.name}, #{strings.organiser}")
+		meta(property="og:url" content="#{strings.url}")
+		meta(property="og:image" content="#{strings.image}")
+		meta(name="twitter:title" content="#{strings.name}, #{strings.organiser}")
+		meta(name="twitter:image" content="#{strings.image}")
+		meta(name="twitter:card" content="#{strings.name}, #{strings.organiser}")
+		meta(name="twitter:site" content="#{strings.twitter}")
 body
 	div.window.fullsize.loading(route= route _triggers="isImmersive=immersive")
 		div.navbar(_triggers="navbar/visible=visible")
@@ -35,8 +35,8 @@ body
 				div#menu.button(tabindex=1)
 					i.icon-menu(_triggers="sidebar/hideburger=hidden")
 				a.logo(href="/")
-					span PEARL ,
-					span 23 - 25 March
+					span #{strings.name} ,
+					span #{strings.duration}
 				span.subtitle.hidden
 					i.icon-navigate_next
 					span.text
