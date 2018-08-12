@@ -1,3 +1,6 @@
+const fq = require('fuzzquire');
+const config = fq('config-loader');
+
 module.exports = function () {
 
 	var appendStateFromRequest = function (state, req) {
@@ -67,6 +70,12 @@ module.exports = function () {
 		return state;
 	};
 
+	let appendConfigState = function (state) {
+		state.strings = config.strings;
+
+		return state;
+	};
+
 	var getState = function (req) {
 		var state = {};
 		state.visible = true;
@@ -75,6 +84,7 @@ module.exports = function () {
 		state = appendUserState(state, req);
 		state = appendNavbarState(state);
 		state = appendSidebarState(state);
+		state = appendConfigState(state);
 		return state;
 	};
 	return {

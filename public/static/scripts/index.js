@@ -138,7 +138,7 @@ var manager = function () {
 	};
 
 	client.navigation.setTitle = function (state) {
-		var title = "Pearl"; // TODO remove the hardcoded fest name.
+		var title = state.strings.name;
 		if (state.pagetitle) {
 			// title = state.pagetitle + " - " + title;
 			title = state.pagetitle;
