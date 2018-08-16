@@ -1,0 +1,52 @@
+include navigation
+include ../../mixins/register-button
+
+  //- bootstrap css 
+link(rel='stylesheet', href='/static/stylesheets/events.style.css')
+link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css')
+link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous")
+
+//-  jQuery, Popper.js, bootstrap js respectively 
+
+script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+
+script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous")
+
+script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous")
+
+//- owl-carousel css and JS
+link(rel="stylesheet", href='/static/lib/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css')
+
+link(rel="stylesheet", href='/static/lib/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css')
+
+script(src='/static/lib/OwlCarousel2-2.3.4/dist/owl.carousel.min.js')
+
+link(rel="stylesheet", href="/dist/css/pybits.main.css")
+script(src='/dist/js/pybits.main.js')
+div.immersive-wrapper#pybits-background
+  //- main div
+  div.container-fluid
+    .text-center#heading-home.pybits-home-back PYBITS 2018
+    ul#nav.list-inline.text-center
+      li.list-inline-item.text-center
+        a(href="#") HOME
+        &nbsp;
+      li.list-inline-item 
+        a(href="pybits/schedule").schedule-tab.text-center SCHEDULE
+        &nbsp;
+      li.list-inline-item 
+        a(href="pybits/talks").talks-tab.text-center TALKS
+        &nbsp; 
+      li.list-inline-item 
+        a(href="pybits/workshops").workshops-tab.text-center WORKSHOPS
+        &nbsp; 
+      li.list-inline-item 
+        a(href="pybits/proposal").code-of-conduct-tab.text-center PROPOSAL
+        &nbsp;
+      li.list-inline-item 
+        a(href="pybits/brochure").about-tab.text-center BROCHURE
+
+
+
+
+
