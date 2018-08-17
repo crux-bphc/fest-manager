@@ -586,7 +586,7 @@ input[type = "file"] {
     white-space: nowrap;
     justify-content: center;
     position: relative;
-    color: #b28e54;
+    color: white;
     font-weight: 600;
 }
 .sidebar .section > ul > a.active {
@@ -655,7 +655,7 @@ input[type = "file"] {
 .sidebar .secondary-wrapper > .secondary > ul > a {
     transform: translateX(-1em);
     opacity: 0;
-    color: #c8ae84;
+    color: white;
 }
 
 .sidebar .secondary-wrapper > .secondary.active > ul > a {
