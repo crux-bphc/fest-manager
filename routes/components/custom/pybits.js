@@ -10,8 +10,7 @@ var applyStateChanges = function (req) {
 	};
 	req.stateparams.immersive = true;
 	req.stateparams.subtitle = "PyBITS 2018";
-	req.stateparams.submenu = [
-		{
+	req.stateparams.submenu = [{
 			label: "Home",
 			route: "/pybits",
 		},
@@ -77,7 +76,7 @@ router.get('/workshops', function (req, res, next) {
 		title: 'PyBITS Workshops',
 		user: req.user,
 		pybits: true,
-	});highlights
+	});
 });
 
 router.get('/proposal', function (req, res, next) {

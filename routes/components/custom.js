@@ -31,6 +31,6 @@ router.use('/prelims/:id', handler);
 router.use('/sponsors', function (req, res) {
 	res.renderState('sponsors', {});
 });
-router.use('/pybits',require('./custom/pybits'));
+router.use('/pybits', require('./custom/pybits'));
 
 module.exports = router;
