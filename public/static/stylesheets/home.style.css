@@ -72,6 +72,89 @@
     transition: all 1s ease-in-out;
     padding: 5px;
 }
+.landing-links li {
+    font-size: 1.2em;
+    border-bottom: 1px white solid;
+    padding: 10px;
+}
+.heads {
+    overflow: hidden;
+}
+@keyframes zoom {
+    0% {
+        transform: scale(0,0);
+    }
+    60% {
+        transform: scale(0.8,0.8);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+#overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+#logo {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+#logo > img {
+    height: 40vh;
+    animation: zoom 5s;
+}
+#countdown {
+    position: absolute;
+    z-index: 10;
+    color: white;
+    right: 10vw;
+    font-size: 4em;
+}
+@media only screen and (max-width: 800px) {
+    #logo {
+        position: static;
+        height: 40vw;
+        width: 40vw;
+    }
+    #logo > img {
+        height: 40vw;
+        animation-name: none;
+    }
+    #countdown {
+        position: static;
+        font-size: 2em;
+        text-align: center;
+    }
+    #overlay {
+        flex-direction: column;
+    }
+    .landing-links li {
+        font-size: 0.8em;
+    }
+}
+@media only screen and (min-width: 800px) {
+    #countdown {
+        font-size: 2em;
+    }
+}
+@media only screen and (min-width: 950px) {
+    #countdown {
+        font-size: 3em;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    #countdown {
+        font-size: 4em;
+    }
+}
 .logo-site {
     margin-top: 32vh;
     display: none;

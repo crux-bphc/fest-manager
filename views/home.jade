@@ -1,34 +1,31 @@
-link(href="/static/stylesheets/home.style.css", rel="stylesheet")
+link(href='/static/stylesheets/home.style.css', rel='stylesheet')
 .immersive-wrapper
-  .loader
-    h3.text--center.text--white.loader__title.is-active LOADING
-    |     
-    .loader__progress
-  |   
-  script(type="text/javascript").
-    document=window.document,function(){function e(){return navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/webOS/i)||navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/iPad/i)||navigator.userAgent.match(/iPod/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/Windows Phone/i)}function t(){try{var e=document.createElement("canvas");return!!window.WebGLRenderingContext&&(e.getContext("webgl")||e.getContext("experimental-webgl"))}catch(t){return!1}}window.console||(window.console={});for(var n=["log","debug","warn","info"],a=0;a
-    <n.length;a++)console[n[a]]=function(){};var r=document.createElement("link");r.rel="stylesheet",r.type="text/css";var i=document.createElement("script");i.type="text/javascript",i.async=i.defer=!1;var o;o=t()&&!e()?"3D":"2D",r.href="/dist/css/"+o+"/main.css",i.src="/dist/js/"+o+"/bundle.js";var c=document.getElementsByTagName("head")[0];c.appendChild(r),c.appendChild(i)}()
-  |   
-  #mobile-body
-    .heads
-      .heads__viewport
-        .heads__sections
-          .heads__section.heads__section--ball
-            .part.part--title.ball__title(data-1700="opacity:0", data-2000="opacity:1")
-              h1.text--white.text--noMargin.text--left ATMOS
-              |               
-              h1.text--white.text--noMargin.text--left 2018
-            |             
-            .part.part--sphere(data-1400="transform:translate3d(0px, -300px, 0px) rotate(60deg); opacity:0", data-2800="transform:translate3d(0px, 250px, 0px) rotate(0deg); opacity:1")
-            |             
-            .part.part--grid(data-1500="transform:translate3d(0px, 300px, 0px); opacity:0", data-2600="transform:translate3d(0px, -200px, 0px); opacity:1")
-          |           
-          .part.part--stars
-  |   
-  .landing-links
-    ul
-      li
-        a(href="/ca") Campus Ambassador
-      |       
-      li
-        a(href="/events") Events
+.loader
+  h3.text--center.text--white.loader__title.is-active LOADING
+  .loader__progress
+script(type='text/javascript').
+  document=window.document,function(){function e(){return navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/webOS/i)||navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/iPad/i)||navigator.userAgent.match(/iPod/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/Windows Phone/i)}function t(){try{var e=document.createElement("canvas");return!!window.WebGLRenderingContext&&(e.getContext("webgl")||e.getContext("experimental-webgl"))}catch(t){return!1}}window.console||(window.console={});for(var n=["log","debug","warn","info"],a=0;a
+  <n.length;a++)console[n[a]]=function(){};var r=document.createElement("link");r.rel="stylesheet",r.type="text/css";var i=document.createElement("script");i.type="text/javascript",i.async=i.defer=!1;var o;o=t()&&!e()?"3D":"2D",r.href="/dist/css/"+o+"/main.css",i.src="/dist/js/"+o+"/bundle.js";var c=document.getElementsByTagName("head")[0];c.appendChild(r),c.appendChild(i)}()
+#mobile-body
+  .heads
+    .heads__viewport
+      .heads__sections
+        .heads__section.heads__section--ball
+          .part.part--title.ball__title(data-1700='opacity:0', data-2000='opacity:1')
+            h1.text--white.text--noMargin.text--left ATMOS
+            h1.text--white.text--noMargin.text--left 2018
+          .part.part--sphere(data-1400='transform:translate3d(0px, -300px, 0px) rotate(60deg); opacity:0', data-2800='transform:translate3d(0px, 250px, 0px) rotate(0deg); opacity:1')
+          .part.part--grid(data-1500='transform:translate3d(0px, 300px, 0px); opacity:0', data-2600='transform:translate3d(0px, -200px, 0px); opacity:1')
+        .part.part--stars
+#overlay
+  #logo
+    img#logo-img(src='/static/images/logo.png')
+  #countdown
+.landing-links
+  ul
+    li
+      a(href='/ca') Campus Ambassador
+    li
+      a(href='/events') Events
+      
+script(src="/static/scripts/home.js" type="text/javascript")

@@ -10,8 +10,7 @@ var applyStateChanges = function (req) {
 	};
 	req.stateparams.immersive = true;
 	req.stateparams.subtitle = "PyBITS 2018";
-	req.stateparams.submenu = [
-		{
+	req.stateparams.submenu = [{
 			label: "Home",
 			route: "/pybits",
 		},
