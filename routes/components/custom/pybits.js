@@ -77,7 +77,7 @@ router.get('/workshops', function (req, res, next) {
 		title: 'PyBITS Workshops',
 		user: req.user,
 		pybits: true,
-	});highlights
+	});
 });
 
 router.get('/proposal', function (req, res, next) {
