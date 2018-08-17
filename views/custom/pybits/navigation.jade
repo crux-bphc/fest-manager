@@ -1,0 +1,18 @@
+mixin navigationMixin(isHome)
+    div.inner-navigation
+        div.left(class=(isHome?"white":"black"))
+            img(src=(isHome?"/static/images/pybits/psf-logo.png":"/static/images/pybits/psf-logo-black.png"))
+            img(src="/static/images/pybits/hydpy.png" style="padding-left: 2em")
+        div.right
+            li
+                a(href="/pybits") Home
+            li
+                a(href="/pybits/schedule") Schedule
+            li
+                a(href="/pybits/talks") Talks
+            li
+                a(href="/pybits/workshops") Workshops
+            li
+                a(href="/pybits/coc") Proposal
+            li
+                a(href="/pybits/2016") Highlights
