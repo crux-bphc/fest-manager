@@ -152,7 +152,7 @@ input[type = "file"] {
 
 .navbar.visible {
     margin-top:0;
-    box-shadow: 0px 2px 0px 0px #b28e54;
+    box-shadow: 0px 2px 0px 0px #fff;
     transition:margin-top 0.3s, box-shadow 0.1s 0.3s;
 
 }
@@ -945,7 +945,7 @@ form .image .image-editor .resize {
     width: 100%;
     font-size: 0.9em;
     font-family: inherit;
-    border: 1px solid rgba(178,142,84,1);
+    border: 1px solid #000;
     outline: none;
     padding: 0% 1em;
     overflow: hidden;
@@ -986,8 +986,8 @@ form .field-container > .remnant > textarea {
 }
 
 .field-container > .remnant > input:focus {
-    box-shadow: 0px 0px 10px rgba(178,142,84,0.5);
-    border-color: goldenrod;
+    box-shadow: 0px 0px 10px rgba(0,0,10,0.2);
+    border-color: gray;
 }
 
 .field-container > .remnant {
