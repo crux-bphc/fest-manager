@@ -18,20 +18,14 @@ div.module-events.section.header
 	h1.title= title
 	div.stretch
 		div.remnant
-			a.outward(href="https://www.townscript.com/e/pearl2018-240304")
-				i.icon-ticket
-				span BUY TICKETS
+			//- a.outward(href="")
+			//- 	i.icon-ticket
+			//- 	span BUY TICKETS
 		- var search = {name: 'search', icon: 'search', placeholder: 'Search', editable: true};
 		+fieldMixin(search)
 	div.section.tags.catch-filters
-		a(href="/events#Competition/Drama" class="Drama") Drama
-		a(href="/events#Competition/Film" class="Film") Film
-		a(href="/events#Competition/Art" class="Art") Art
-		a(href="/events#Competition/Quiz" class="Quiz") Quiz
-		a(href="/events#Competition/Writing" class="Writing") Writing
-		a(href="/events#Competition/Photography" class="Photography") Photography
-		a(href="/events#Competition/FineArts" class="FineArts") Fine Arts
-		a(href="/events#Competition/Miscellaneous" class="Miscellaneous") Miscellaneous
+		//- a(href="/events#Competition/<tab_name> class="") <tab_name>
+		
 
 div.section.events-wrapper
 	each event in events
