@@ -28,8 +28,7 @@ var manager = function () {
 			(e.button && e.button == 1) ||
 			$(this).attr('absolute')
 		) return true;
-		// below statement was preventing anchor tags to open links (of custom routes such as 'pybits') in the same tab( but not with ' open with new tab ').
-		//e.preventDefault(); 
+		e.preventDefault();
 		client.route($(this).attr("href"));
 		return true;
 	};
