@@ -1,28 +1,12 @@
-//- .container
-//-         .row.mb100
-//-           .col-md-3  
-//-           .col-md-3
-//-             a(href="#")
-//-               img(style="display: inline !important; float: left;" src="/images/pdf-ico.png", alt="").image-speaker
-//-           .col-md-6.s-name <br><br>Download Brochure
-
-//-       div.bottom-nav
-//-         ul.list-inline
-//-           li.list-inline-item
-//-             a(href="#").home-tab Home
-//-           li.list-inline-item 
-//-             a(href="#").schedule-tab Schedule
-//-           li.list-inline-item 
-//-             a(href="#").talks-tab Talks
-//-           li.list-inline-item 
-//-             a(href="#").workshops-tab Workshops
-//-           li.list-inline-item 
-//-             a(href="#").code-of-conduct-tab(style = "color: black;")  Proposal
-//-           li.list-inline-item 
-//-             a(href="#").about-tab HIGHLIGHTS
 include navigation
 link(rel='stylesheet', href='/dist/css/pybits.main.css') 
 link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css') 
+style.
+	#nav-bottom {
+		margin-top:32.5vh;
+	}
 .immersive-wrapper#pybits-background
-	.container-fluid
-		.text-center#heading-not-home Brochure- Coming Soon 
+	.text-center#heading-not-home Brochure- Coming Soon
+	+navigationMixin(false)
+	script.
+		document.querySelectorAll('.list-inline-item > a')[5].classList.add('present-tab');
