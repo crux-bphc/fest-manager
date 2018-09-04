@@ -1,18 +1,23 @@
 mixin navigationMixin(isHome)
-    div.inner-navigation
-        div.left(class=(isHome?"white":"black"))
-            img(src=(isHome?"/static/images/pybits/psf-logo.png":"/static/images/pybits/psf-logo-black.png"))
-            img(src="/static/images/pybits/hydpy.png" style="padding-left: 2em")
-        div.right
-            li
-                a(href="/pybits") Home
-            li
-                a(href="/pybits/schedule") Schedule
-            li
-                a(href="/pybits/talks") Talks
-            li
-                a(href="/pybits/workshops") Workshops
-            li
-                a(href="/pybits/coc") Proposal
-            li
-                a(href="/pybits/2016") Highlights
+    ul(id = (isHome? "nav":"nav-bottom") class="list-inline text-center")
+        li.list-inline-item.text-center
+            a(href="/pybits") HOME
+            &nbsp;
+        li.list-inline-item 
+            a(href="/pybits/schedule").schedule-tab.text-center SCHEDULE
+            &nbsp;
+        li.list-inline-item 
+            a(href="/pybits/talks").talks-tab.text-center TALKS
+            &nbsp; 
+        li.list-inline-item 
+            a(href="/pybits/workshops").workshops-tab.text-center WORKSHOPS
+            &nbsp; 
+        li.list-inline-item 
+            a(href="/pybits/proposal").proposal-tab.text-center PROPOSAL
+            &nbsp;
+        li.list-inline-item 
+            a(href="/pybits/brochure").brochure-tab.text-center BROCHURE
+        li.list-inline-item 
+            a(href="/pybits/coc").coc-tab.text-center CODE OF CONDUCT
+        
+    
