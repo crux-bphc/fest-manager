@@ -135,6 +135,7 @@
     }
     #overlay {
         flex-direction: column;
+        background-color: black;
     }
     .landing-links li {
         font-size: 0.8em;
