@@ -1,12 +1,14 @@
 include navigation
-link(rel='stylesheet', href='/dist/css/pybits.main.css') 
+include ../../mixins/form
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.main.css')
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.proposal.css')
 link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css') 
-style.
-	#nav-bottom {
-		margin-top:32.5vh;
-	}
-.immersive-wrapper#pybits-background
-	.text-center#heading-not-home Proposal- Coming Soon
+script(type="text/javascript" src="/static/scripts/pybits.js")
+
+.immersive-wrapper.pybits-tab-background.text-center
+	h1#heading Proposal
+	h1 We are accepting proposals for PyBITS conference speakers and workshops. 
+		a(href="https://www.papercall.io/pybits") Click here to apply.
 	+navigationMixin(false)
 	script.
-		document.querySelectorAll('.list-inline-item > a')[5].classList.add('present-tab');
+		document.querySelectorAll('.list-inline-item > a')[4].classList.add('present-tab');
