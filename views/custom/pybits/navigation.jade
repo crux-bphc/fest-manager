@@ -1,9 +1,10 @@
 mixin navigationMixin(isHome)
+    hr(width="50%")
     ul(id = (isHome? "nav":"nav-bottom") class="list-inline text-center")
         li.list-inline-item.text-center
             a(href="/pybits") HOME
             &nbsp;
-        li.list-inline-item 
+        li.list-inline-item
             a(href="/pybits/schedule").schedule-tab.text-center SCHEDULE
             &nbsp;
         li.list-inline-item 
@@ -16,7 +17,7 @@ mixin navigationMixin(isHome)
             a(href="/pybits/proposal").proposal-tab.text-center PROPOSAL
             &nbsp;
         li.list-inline-item 
-            a(href="/pybits/brochure").brochure-tab.text-center BROCHURE
+            a(href="/pybits/about").brochure-tab.text-center ABOUT
         li.list-inline-item 
             a(href="/pybits/coc").coc-tab.text-center CODE OF CONDUCT
         

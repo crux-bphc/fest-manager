@@ -128,7 +128,7 @@ p {
   color: brown;
 }
 
-.list-inline-item {
+#nav > .list-inline-item {
   margin-top: 75px;
   padding: 15px;
   opacity: 1;

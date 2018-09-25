@@ -35,9 +35,9 @@ var applyStateChanges = function (req) {
 			route: "/pybits/proposal",
 		},
 		{
-			label: " Brochure",
-			route: "/pybits/brochure",
-		},
+			label: "About",
+			route: "/pybits/about",
+		}
 	];
 	return req;
 };
@@ -102,12 +102,12 @@ router.get('/schedule', function (req, res, next) {
 		user: req.user,
 	});
 });
-router.get('/brochure', function (req, res, next) {
-	req.stateparams.pagetitle = 'PyBITS Brochure';
+router.get('/about', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBITS About';
 	req = applyStateChanges(req);
-	req.stateparams.subtitle = "PyBITS Brochure";
-	res.renderState('custom/pybits/brochure', {
-		title: 'PyBITS Brochure',
+	req.stateparams.subtitle = "PyBITS About";
+	res.renderState('custom/pybits/about', {
+		title: 'PyBITS About',
 		user: req.user,
 	});
 });

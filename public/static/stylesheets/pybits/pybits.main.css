@@ -4,6 +4,9 @@ body {
   font-size: 1.5em;
 }
 /* navbar color */
+hr {
+  margin-left: 25%;
+}
 @media only screen and (max-width:750px){
   .window.immersive .navbar > .wrapper {
     background-color: black;
@@ -120,11 +123,16 @@ p {
   color: brown;
 }
 
-.list-inline-item {
+#nav > .list-inline-item {
   margin-top: 75px;
   padding: 15px;
   opacity: 1;
   animation: 1s ease-in-out 0s 1 fade-in forwards;
+  text-align: center;
+}
+#nav-bottom > .list-inline-item {
+  margin-top: 25px;
+  padding: 15px;
   text-align: center;
 }
 

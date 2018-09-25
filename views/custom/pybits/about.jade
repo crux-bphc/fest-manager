@@ -1,0 +1,25 @@
+include navigation
+include ../../mixins/form
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.main.css')
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.about.css')
+link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css') 
+script(type="text/javascript" src="/static/scripts/pybits.js")
+
+.immersive-wrapper.pybits-tab-background.text-center
+    h1#heading About
+    h1  PyBITS is a student centric Python conference conducted annually as a part of ATMOS(link). 
+        |PyBITS started with the aim of growing the Python community to include different educational 
+        |institutions in and around Hyderabad. The conference and workshops also 
+        |provide a common platform to seasoned programmers and	pythonistas to learn and discuss all things Python.
+    h1 PyBITS 2018 is a two day event which will include 
+    ul#two-day-events
+        li 
+            a(href="/pybits/talks") PyBits Conference
+        li 
+            a(href="/pybits/workshops") Workshops
+        li 
+            a(href="/pybits/dev-spirit") Dev Spirit
+    
+    +navigationMixin(false)
+    script.
+        document.querySelectorAll('.list-inline-item > a')[5].classList.add('present-tab');
