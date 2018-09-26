@@ -20,18 +20,24 @@ let london = (function (){
     $(window).keydown(function(e) {
         console.log('window-event');
         if(e.which === 40) {
-            console.log('event');
+            console.log('event'+currentPage);
+            if(currentPage == 0)
+            {
+                $('#page-2 .places .top').addClass('start');
+                $('#page-2 .places .bottom').addClass('start');
+                $('#page-2 .places .yr').addClass('start');
+                $('#page-2 .places .nm').addClass('start');
+                $('#page-2 .places .tickets').addClass('start');
+            }
             showNextPage();
-            
         }
         if(e.which === 38) {
             console.log('event-up-key');
             showPreviousPage();
         }  
     });
-    
-    return {
-        showNextPage : showNextPage,
-        showPreviousPage: showPreviousPage
-    };
+    if(currentPage === 1) {
+
+    }
+
 })();

@@ -1,4 +1,5 @@
 link(href='/static/stylesheets/home.style.css', rel='stylesheet')
+link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
 .immersive-wrapper.hash-home
   .scroll-wrapper
     .scroll-content#page-1
@@ -41,6 +42,17 @@ link(href='/static/stylesheets/home.style.css', rel='stylesheet')
           a(href='#')
             i.fab.fa-instagram
     .scroll-content#page-2
+      .places
+        .bNb BIGGER AND BETTER
+        picture
+          source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Top.png')
+          img.top(src='/static/images/home/Mobile Version/Tickets/mobile_top.png')
+        picture
+          source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Bottom.png')
+          img.bottom(src='/static/images/home/Mobile Version/Tickets/mobile_bottom.png')
+        .yr 2018
+        .nm ATMOS
+        a(href="#").tickets GET YOUR TICKETS NOW!
     .scroll-content#page-3
     .scroll-content#page-4
     .scroll-content#page-5
