@@ -2,6 +2,44 @@ link(href='/static/stylesheets/home.style.css', rel='stylesheet')
 .immersive-wrapper.hash-home
   .scroll-wrapper
     .scroll-content#page-1
+      .background-div
+          picture
+            source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/background.png')
+            img.background(src='/static/images/home/Mobile Version/Broken_portal/mobile_background.png')
+      .dust-div
+        picture
+          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks.png')
+          img.dust-one(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks1.png')
+      .dust-div
+        picture
+          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks1.png')
+          img.dust-two(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks2.png')
+        // <img src="/static/images/home/BrokenPortal/rocks1.png" class="dust-two">
+      .dust-div
+        picture
+          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks2.png')
+          img.dust-three(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks3.png')
+      .beam-div
+        picture
+          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/beam.png')
+          img.beam(src='/static/images/home/Mobile Version/Broken_portal/mobile_beam.png')
+      .top-div
+        picture
+          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/top.png')
+          img.top(src='/static/images/home/Mobile Version/Broken_portal/mobile_top.png')
+      .text-div
+        | INTO THE SIXTH DIMENSION
+      .text
+        .days
+          p.date 26-28
+          p.month OCTOBER
+        .social
+          a(href='#')
+            i.fab.fa-facebook-f
+          a(href='#')
+            i.fab.fa-twitter
+          a(href='#')
+            i.fab.fa-instagram
     .scroll-content#page-2
     .scroll-content#page-3
     .scroll-content#page-4
