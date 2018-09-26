@@ -1,0 +1,393 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+@media screen and (min-width: 480px) {
+    .beam-div {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .beam {
+      position: relative;
+      top: 48vh;
+      left: 0;
+      width: 100%;
+      height: 20vh;
+      opacity: 0;
+      animation-name: beams;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease;
+    }
+    @keyframes beams {
+  0% {
+    top: 48vh;
+    height: 20vh;
+    left: 0;
+    width: 0%;
+    opacity: 0.4;
+  }
+  20% {
+    top: 48vh;
+    height: 20vh;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+  }
+  50% {
+    top: 0;
+    height: 100vh;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+  }
+  80% {
+    top: 48vh;
+    height: 20vh;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 48vh;
+    height: 20vh;
+    left: 100%;
+    width: 100%;
+    opacity: 0.4;
+  }
+}
+ 
+}
+#fullpage{
+  overflow: hidden;
+}
+.container1,.container2,.container3,.container4,.container5{
+  position: relative;
+}
+
+
+.container1 {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-div {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.dust-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: left 1s, top 1s;
+}
+
+.dust-one {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  animation: oneanim;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+@keyframes oneanim {
+  0%{
+    top: -0.5vh;
+    left: -0.5vw;
+  }
+  50%{
+    top: 0.5vh;
+    left: 0.5vw;
+  }
+  100%{
+    top: -0.5vh;
+    left: -0.5vw;
+  }
+}
+
+.dust-two {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  animation: twoanim;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+@keyframes twoanim {
+  0%{
+    top: 0.5vh;
+    left: 0.5vw;
+  }
+  50%{
+    top: -0.5vh;
+    left: -0.5vw;
+  }
+  100%{
+    top: 0.5vh;
+    left: 0.5vw;
+  }
+}
+
+.dust-three {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  animation: threeanim;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+@keyframes threeanim {
+  0%{
+    top: 0.5vh;
+    left: -0.5vw;
+  }
+  50%{
+    top: -0.5vh;
+    left: 0.5vw;
+  }
+  100%{
+    top: 0.5vh;
+    left: -0.5vw;
+  }
+}
+.beam-div {
+  position: absolute;
+}
+@media screen and (max-width: 480px){
+.beam-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.beam {
+  position: relative;
+  top: 40vh;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  opacity: 0;
+  animation-name: beams;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
+@keyframes beams {
+  0% {
+    top: 40vh;
+    height: 20vh;
+    left: 0;
+    width: 0%;
+    opacity: 0.4;
+  }
+  20% {
+    top: 40vh;
+    height: 20vh;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+  }
+  50% {
+    top: 0;
+    height: 100vh;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+  }
+  80% {
+    top: 40vh;
+    height: 20vh;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 40vh;
+    height: 20vh;
+    left: 100%;
+    width: 100%;
+    opacity: 0.4;
+  }
+}
+
+
+}
+.top-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container1 .top {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.hometext{
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
+  justify-content: space-between;
+}
+
+.text-div {
+  position: absolute;
+  left:50%;
+  bottom:0.5vw;
+  transform: translateX(-50%);
+  font-size: 4.2vw;
+  font-family: 'Oswald', sans-serif;
+  color:#e1e1e1;
+  font-weight:800;
+  animation: textbeams 4s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes textbeams {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.container1 .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container1 .text .days {
+  position: absolute;
+  left: 1vw;
+  bottom: 1vh;
+  width: 8vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container1 .text .days p {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.container1 .text .social {
+  position: absolute;
+  right : 1vw;
+  bottom: 1vh;
+  width: 18vw;
+  text-align: right;
+}
+
+@media screen and (min-width: 480px) {
+    .container1 .text .social a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0 5px;
+  font-size: 2.0vw;
+  font-weight: 500;
+}
+
+.container1 .text .days .date {
+  font-size: 1.8vw;
+  font-weight: 700;
+}
+
+.container1 .text .days .month {
+  font-weight: 300;
+  font-size: 1.2vw;
+}   
+
+}
+
+@media screen and (max-width: 480px) {
+
+  .text-div{
+    font-size: 7vw;
+    text-align: center;
+  }
+
+    .container1 .text .social a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0 5px;
+  font-size: 3vw;
+  font-weight: 500;
+  }
+  .container1 .text .days .date {
+    font-size: 2.7vw;
+    font-weight: 700;
+  }
+
+  .container1 .text .days .month {
+    font-weight: 300;
+    font-size: 2vw;
+  }
+}
+
+ 

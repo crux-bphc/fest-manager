@@ -1,0 +1,224 @@
+.container2{
+  position: relative;
+  width:100%;
+  height:100vh;
+  overflow: hidden;
+}
+
+.places {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  
+}
+
+.bNb {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,60%);
+  font-family:sans-serif;
+  font-size: 4vw;
+  opacity: 0.5;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.container2 .top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transform:translateY(-250px);
+  animation: slide_top;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+.top.start{
+  transform:translateY(-0px);
+  animation: slide_top 2s ease-in-out;
+}
+
+.bottom {
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  transform:translateY(250px);
+  animation: slide_bottom;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+.bottom.start{
+  transform:translateY(0px);
+  animation: slide_bottom 2s ease-in-out;
+}
+
+
+.yr {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-80%);
+  font-family:sans-serif;
+  font-size: 10vw;
+  opacity: 0.3;
+  font-weight: 300;
+  margin: auto;
+  overflow: hidden;
+  opacity: 0;
+  animation: fade;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+.yr.start{
+  animation: fade 2s ease-in-out;
+}
+
+.nm {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-95%);
+  font-family: Montserrat;
+  font-size: 6vw;
+  margin: auto;
+  overflow: hidden;
+  opacity: 0;
+  animation: fade2;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+}
+
+.nm.start{
+  animation: fade2 4s ease-in-out;
+}
+@media screen and (min-width: 480px) {
+  .yr{
+    font-size: 10vw;
+  }
+  .nm{
+    font-size: 6vw;
+  }
+  .bNb{
+    font-size: 4vw;
+  }
+}
+@media screen and (max-width: 480px) {
+   .yr{
+    font-size: 12vw;
+  }
+  .nm{
+    font-size: 8vw;
+  }
+  .bNb{
+    font-size: 4vw;
+  }
+}
+.tickets {
+  position: absolute;
+  bottom:5vh;
+  left:50%;
+  transform: translateX(-50%);
+  font-family:'PT Sans Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 3vw;
+  padding: 0 0.5vw 0.3vw 0.5vw;
+  color: #fcfcfc;
+  border: 0.3vw solid #fcfcfc;
+  border-radius: 1vw;
+  overflow: hidden;
+  opacity: 1;
+  opacity: 0;
+  animation: fade3;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+}
+
+.tickets.start{
+  animation: fade3 4s ease-in-out;
+}
+
+.tickets:hover {
+  cursor: pointer;
+  bottom: 6vh;
+}
+
+@keyframes fade{
+    0%{
+      opacity:0
+    }
+    20%{
+      opacity:0;
+    }
+    100%{
+      opacity:0.3;
+    }
+  }
+
+@keyframes fade2{
+  0%{
+    opacity:0;
+  }
+  50%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+@keyframes fade3{
+  0%{
+    opacity:0;
+  }
+  75%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+@keyframes slide_top{
+  0%{
+    transform:translateY(-250px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slide_bottom{
+  0%{
+    transform:translateY(250px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+@keyframes bounce {
+  0%{
+    bottom: 5vh;
+  }
+  80%{
+    bottom: 8vh;
+  }
+  100%{
+    bottom: 5vh;
+  }
+}

@@ -1,31 +1,172 @@
-link(href='/static/stylesheets/home.style.css', rel='stylesheet')
+link(rel='stylesheet', href='/static/stylesheets/home/home.css')
+link(rel='stylesheet', href='/static/stylesheets/home/tickets.css')
+link(rel='stylesheet', href='/static/stylesheets/home/aboutus.css')
+link(rel='stylesheet', href='/static/stylesheets/home/events.css')
+link(rel='stylesheet', href='/static/stylesheets/home/contactus.css')
+link(href='https://fonts.googleapis.com/css?family=Oswald:700', rel='stylesheet')
+link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
+link(href='https://fonts.googleapis.com/css?family=Roboto+Condensed', rel='stylesheet')
+link(href='https://fonts.googleapis.com/css?family=Montserrat:400,600', rel='stylesheet')
+link(href='https://fonts.googleapis.com/css?family=Montserrat:300,500,700', rel='stylesheet')
+link(href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow', rel='stylesheet')
+link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
 .immersive-wrapper
-.loader
-  h3.text--center.text--white.loader__title.is-active LOADING
-  .loader__progress
+#fullpage
+  // 1)Home
+  #section0.container1.section
+    .background-div
+      picture
+        source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/background.png')
+        img.background(src='/static/images/home/Mobile Version/Broken_portal/mobile_background.png')
+    .dust-div 
+      picture
+        source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks.png')
+        img.dust-one(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks1.png')
+    .dust-div
+      picture
+        source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks1.png')
+        img.dust-two(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks2.png')
+      // <img src="/static/images/home/BrokenPortal/rocks1.png" class="dust-two">
+    .dust-div
+      picture
+        source(media='(min-width: 480px)', srcset='/static/images/homeBrokenPortal/rocks2.png')
+        img.dust-three(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks3.png')
+    .beam-div
+      picture
+        source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/beam.png')
+        img.beam(src='/static/images/home/Mobile Version/Broken_portal/mobile_beam.png')
+    .top-div
+      picture
+        source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/top.png')
+        img.top(src='/static/images/home/Mobile Version/Broken_portal/mobile_top.png')
+    .text-div
+      | INTO THE SIXTH DIMENSION
+    .text
+      .dayshei
+        p.dhei
+        p.mhei
+      .socihei
+        a(href='#')
+          i.fab.fa-facebook-f
+        a(href='#')
+          i.fab.fa-twitter
+        a(href='#')
+          i.fab.fa-instagram
+  // 2)Tickets
+  #section1.container2.section
+    .places
+      .bNb BIGGER AND BETTER
+      picture
+        source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Top.png')
+        img.top(src='/static/images/home/Mobile Version/Tickets/mobile_top.png')
+      picture
+        source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Bottom.png')
+        img.bottom(src='/static/images/home/Mobile Version/Tickets/mobile_bottom.png')
+      .yr 2018
+      .nm ATMOS
+      .tickets GET YOUR TICKETS NOW!
+  // 3)About Us
+  #section2.container3.section
+    #background
+    #building
+    #Content-flex
+      #Bold
+        br
+        | ABOUT US
+        br
+      .text3
+        .para3
+          h2 ATMOS '18
+          br
+          |   The 7th iteration of ATMOS, our annual techno-management fest, returns with grandeur greater than its predecessors this 26th of October.
+          br
+          br
+          |    Since its inception in 2010, ATMOS, reputed for its quality of workshops, quizzes, lectures, technical exhibitions, and competitions, is among the fastest growing tech-fests in our country providing one of the largest platforms for students, academicians and entrepreneurs across the country to showcase their talents in the fields of science and technology. With a staggeringly high footfall and participation of students from over 200 colleges every year, ATMOS 2018, true to its theme, Into the 6th Dimension, aims to rise to a whole new dimension.
+  // 4)Events
+  #section3.container4.section
+    #events.box
+      #event-grad.gradient
+      #event-link.links WORKSHOPS
+    #competitions.box
+      #competition-grad.gradient
+      #competition-link.links COMPETITIONS
+    #talks.box
+      #talk-grad.gradient
+      #talk-link.links TALKS
+  // 5)Contact Us
+  #section4.container5.section
+    // <div class="backgr"></div>
+    .contactusbackground
+      .floatingitems
+        .shadow
+          img.sha(src='./images/contactus/Shadowstransparent.png')
+        .trianlge
+          img.tri(src='./images/contactus/floatingbuilding.png')
+        .cloud
+          img.cl(src='./images/contactus/cloud1.png')
+        .cloud
+          img.cl(src='./images/contactus/cloud2.png')
+        .cloud
+          img.cl(src='./images/contactus/cloud3.png')
+      .contactustext
+        .title
+          p CONTACT US
+        .between
+        .contacts
+          .contact_div
+            | Aman Syed
+            p
+              | President
+              br
+              | 8790359970
+          .contact_div
+            | Yash Chokhani
+            p
+              | Coordinator
+              br
+              | 8187083476
+          .contact_div
+            | Ram Dheeraj Sirgiri
+            p
+              | Sponsorship
+              br
+              | 7036067666
+          .contact_div
+            | Rohith Reddy
+            p
+              | Publicity
+              br
+              | 8897454710
+          .contact_div
+            | Dharmesh Singhal
+            p
+              | Hospitality
+              br
+              | 7036187007
+          .contact_div
+            p
+              | Mail us at 
+              b atmos@hyderabad.bits-pilani.ac.in
+      .text
+        .social
+          a(href='#')
+            i.fab.fa-facebook-f
+          a(href='#')
+            i.fab.fa-twitter
+          a(href='#')
+            i.fab.fa-instagram
+script(type='text/javascript', src='/static/scripts/home/fullpage.js')
 script(type='text/javascript').
-  document=window.document,function(){function e(){return navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/webOS/i)||navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/iPad/i)||navigator.userAgent.match(/iPod/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/Windows Phone/i)}function t(){try{var e=document.createElement("canvas");return!!window.WebGLRenderingContext&&(e.getContext("webgl")||e.getContext("experimental-webgl"))}catch(t){return!1}}window.console||(window.console={});for(var n=["log","debug","warn","info"],a=0;a
-  <n.length;a++)console[n[a]]=function(){};var r=document.createElement("link");r.rel="stylesheet",r.type="text/css";var i=document.createElement("script");i.type="text/javascript",i.async=i.defer=!1;var o;o=t()&&!e()?"3D":"2D",r.href="/dist/css/"+o+"/main.css",i.src="/dist/js/"+o+"/bundle.js";var c=document.getElementsByTagName("head")[0];c.appendChild(r),c.appendChild(i)}()
-#mobile-body
-  .heads
-    .heads__viewport
-      .heads__sections
-        .heads__section.heads__section--ball
-          .part.part--title.ball__title(data-1700='opacity:0', data-2000='opacity:1')
-            h1.text--white.text--noMargin.text--left ATMOS
-            h1.text--white.text--noMargin.text--left 2018
-          .part.part--sphere(data-1400='transform:translate3d(0px, -300px, 0px) rotate(60deg); opacity:0', data-2800='transform:translate3d(0px, 250px, 0px) rotate(0deg); opacity:1')
-          .part.part--grid(data-1500='transform:translate3d(0px, 300px, 0px); opacity:0', data-2600='transform:translate3d(0px, -200px, 0px); opacity:1')
-        .part.part--stars
-#overlay
-  #logo
-    img#logo-img(src='/static/images/logo.png')
-  #countdown
-.landing-links
-  ul
-    li
-      a(href='/ca') Campus Ambassador
-    li
-      a(href='/events') Events
-      
-script(src="/static/scripts/home.js" type="text/javascript")
+  var myFullpage = new fullpage('#fullpage', {
+  // anchors: ['home', 'tickets', 'aboutus', 'event', 'contactus'],
+  // sectionsColor: ['#C63D0F', '#1BBC9B', '#7E8F7C'],
+  scrollBar: true
+  });
+
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+script(src='/static/scripts/home/jquery.waypoints.min.js')
+script(src='/static/scripts/home/inview.js')
+script(type='text/javascript', src='/static/scripts/home/scroll.js')
+script(type='text/javascript', src='/static/scripts/home/eventsGradient.js')
+script(type='text/javascript', src='/static/scripts/index.js')
+

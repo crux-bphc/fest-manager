@@ -1,0 +1,389 @@
+.container5 {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/contactus/gradient.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (min-width:580px){
+  .title {
+  position: absolute;
+  width: 50%;
+  height: auto;
+  top:-8vh;
+  right:-12vh;
+}
+
+.title p{
+  padding-top: 6vh;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13vmin;
+  font-weight: 600;
+}
+
+
+.shadow {
+  position: absolute;
+  left: 0;
+  bottom: 1%;
+  right: 0;
+  width: 50%;
+  height: 10%;
+  margin: 0 0 10vh 0;
+  transform-origin: 50% 50%;
+  opacity: 0.5;
+  animation-name: sha-scale;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.sha {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  margin: 0;
+}
+
+.trianlge {
+  position: absolute;
+  top: -2vw; 
+  left: 0;
+  right: 0;
+  width: 90%;
+  height: 95vh;
+  margin: auto;
+  animation-name: hover;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.tri {
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+}
+
+
+
+.cloud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 99vh;
+  margin: auto;
+  overflow: hidden;
+}
+
+.cl {
+  position: relative;
+  width: 100%;
+  height: 94vh;
+  left: -7%;
+  bottom: -5%;
+  overflow: hidden;
+  animation-name: slide;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.contacts {
+  position: absolute;
+  top:100%;
+  left:100%;
+  transform: translate(-100%,-100%);
+  width: 55vw;
+  height: 48vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact_div{
+  font-family: Roboto ;
+  text-align: center;
+  font-size: 1.7vw;
+  font-weight: 450;
+  color:#f3f3f3;
+  margin: 1vh 2vw 0vh 2vw;
+}
+
+.contact_div p{
+  margin:0;
+  padding: 0;
+  font-size: 1.4vw;
+  font-weight: 50;
+}
+.contact_div b{
+  font-weight: 450;
+}
+
+.co {
+  position: relative;
+  top: 5vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.text .days {
+  position: absolute;
+  left: 1vw;
+  bottom: 1vh;
+  width: 5vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.text .days p {
+  margin: 0;
+  padding: 0;
+}
+
+.text .days .date {
+  font-size: 1.7vw;
+  font-weight: 700;
+}
+
+.text .days .month {
+  font-weight: 300;
+  font-size: 1vw;
+}
+
+.text .para {
+  position: absolute;
+  bottom: 17vh;
+  right: 13vh;
+  width: 30vw;
+  text-align: right;
+  font-size: 1vw;
+}
+
+.text .para h2{
+  margin: 0;
+  padding: 0;s
+}
+
+.text .social {
+  position: absolute;
+  right : 1vw;
+  bottom: 1vh;
+  width: 10vw;
+  text-align: right;
+}
+
+.text .social a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0 5px;
+  font-size: 2vw;
+  font-weight: 500;
+}
+
+}
+@media screen and (max-width: 580px){
+
+  .contactusbackground{
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../images/contactus/mobile_floatingbuilding.png) ;
+     background-repeat: no-repeat;
+     background-position: 50% 40%;
+    background-size: 350px 650px;
+    margin: 0;
+    padding:0;
+  }
+  .floatingitems{
+    display: none;
+  }
+  .contactustext{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  
+  }
+  
+
+  .title{
+    margin-top: 0px;
+    align-self: center;
+  }
+  
+  .title p{
+    
+    font-family: 'Oswald', sans-serif;
+    font-size: 12vmin;
+    font-weight: 600;
+  }
+  .contacts {
+    align-self: center;
+    padding-bottom: 10vmin;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+  }
+
+  .contact_div{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 3.8vw;
+    font-weight: 450;
+    color:#f3f3f3;
+    padding: 4px;
+    margin: 1vh 2vw 0vh 2vw;
+  }
+
+  .contact_div p{
+    margin:0;
+    padding: 0;
+    font-size: 3.1vw;
+    font-weight: 50;
+  }
+  .contact_div b{
+    font-weight: 450;
+  }
+
+.text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.text .days {
+  position: absolute;
+  left: 1vw;
+  bottom: 1vh;
+  width: 5vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.text .days p {
+  margin: 0;
+  padding: 0;
+}
+
+.text .days .date {
+  font-size: 1.7vw;
+  font-weight: 700;
+}
+
+.text .days .month {
+  font-weight: 300;
+  font-size: 1vw;
+}
+
+.text .para {
+  position: absolute;
+  bottom: 17vh;
+  right: 13vh;
+  width: 30vw;
+  text-align: right;
+  font-size: 1vw;
+}
+
+.text .para h2{
+  margin: 0;
+  padding: 0;s
+}
+
+.text .social {
+  position: absolute;
+  right : 1vw;
+  bottom: 1vh;
+  width: 16vw;
+  text-align: right;
+}
+
+.text .social a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0 5px;
+  font-size: 2vw;
+  font-weight: 500;
+}
+
+}
+
+
+
+@keyframes hover {
+  0% {
+    top: -1vw;
+  }
+  50% {
+    top: 1vw;
+  }
+  100% {
+    top: -1vw;
+  }
+}
+
+@keyframes sha-scale {
+  0% {
+    width: 25%;
+    opacity: 0.2;
+    margin: 0 0 10vh 11.5vw;
+  }
+  50% {
+    width: 35%;
+    opacity: 0.5;
+    margin: 0 0 10vh 6vw;
+  }
+  100% {
+    width: 25%;
+    opacity: 0.2;
+    margin: 0 0 10vh 11.5vw;
+  }
+}
+
+@keyframes slide {
+  0% {
+    left: 2%;
+  }
+  50% {
+    left: -4%;
+  }
+  100% {
+    left: 2%;
+  }
+}
