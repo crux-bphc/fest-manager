@@ -1,0 +1,210 @@
+.container3{
+  position: relative;
+  height: 100vh;
+  margin: 0%;
+  padding: 0%;
+  overflow: hidden;
+}
+
+#background{
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
+  background: white;
+  background: url(../images/aboutus/Background.png) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* transform: scale(1.3,1.3) skewX(-6deg); */
+  /* animation-name: fadeinone;
+  animation-duration: 6s;
+  animation-timing-function: cubic-bezier(0.8, 0.93, 0.97); */
+}
+
+#background.start{
+  animation-name: fadeinone;
+  animation-duration: 6s;
+  animation-timing-function: cubic-bezier(0.8, 0.93, 0.97);
+  /* transform: scale(1.,1) skewX(0deg); */
+}
+
+@keyframes fadeinone {
+  0%{
+    transform: scale(1.3, 1.3) skewX(-6deg);
+  }
+  100%{
+    transform: scale(1, 1) skewX(0deg);
+  }
+}
+
+#building {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  left: -1.7vw;
+  margin: 0%;
+  padding: 0%;
+  background: url(../images/aboutus/building1.png) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: skewX(0deg);
+  /* animation-name: fadeintwo;
+  animation-duration: 6s;
+  animation-timing-function: cubic-bezier(0.8, 0.93, 0.97, 1); */
+}
+
+#building.start{
+  animation-name: fadeintwo;
+  animation-duration: 6s;
+  animation-timing-function: cubic-bezier(0.8, 0.93, 0.97, 1);
+}
+
+@keyframes fadeintwo{
+  0%{
+    transform: skewX(-5deg);
+  }
+  100%{
+    transform: skewX(0deg);
+  }
+}
+
+#Content-flex{
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+/*width: 70vw;*/
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+justify-content: center;
+opacity:0;
+padding: 50px;
+}
+
+#Content-flex.start{
+  opacity:0;
+  animation: moveup 1.2s ease-out forwards;
+}
+
+@keyframes moveup {
+  0%{top:500px; opacity:0}
+  100%{top:0px; opacity: 1}
+}
+
+#Bold{
+  color: #fff;
+  text-align: right;
+  font-size: 8vmin;
+  font-family: 'Oswald', sans-serif;
+}
+
+.text3{
+  text-align: right;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 3vmin;
+
+}
+.text3.para3{
+  margin: 0;
+ padding: 0;
+  text-align: right;
+}
+
+.text3 .para3 h2{
+margin: 0;
+padding: 0;
+font-size: 4vmin;
+}
+
+/*#Bold{
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  right: 0;
+  height: auto;
+  color: #fff;
+  text-align: right;
+  font-size: 12vh;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+.text3 {
+
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+width: 100%;
+height: 100vh;
+color: #fff;
+font-family: 'Roboto', sans-serif;
+}
+
+.text3 .para3 {
+bottom: 5vh;
+right: 0;
+width: 100%;
+text-align: right;
+font-size: 1.1vw;
+}
+
+.text3 .para3 h2{
+margin: 0;
+padding: 0;
+font-size: 2vw;
+}*/
+
+#Content{
+  margin: 0%;
+  padding: 5vh 0 0 0;
+  width: 100%;
+  height: auto;
+}
+
+.contact {
+width: 30%;
+height: 20vh;
+margin: 1.5%;
+border: 1px solid white;
+float: left;
+border-radius: 10vh;
+}
+
+@keyframes rot{
+  0%{
+    transform: rotateY(-90deg);
+  }
+  10%{
+    transform: rotateY(-80deg);
+  }
+  20%{
+    transform: rotateY(-70deg);
+  }
+  30%{
+    transform: rotateY(-60deg);
+  }
+  40%{
+    transform: rotateY(-50deg);
+  }
+  60%{
+    transform: rotateY(-40deg);
+  }
+  70%{
+    transform: rotateY(-30deg);
+  }
+  80%{
+    transform: rotateY(-20deg);
+  }
+  90%{
+    transform: rotateY(-10deg);
+  }
+  100%{
+    transform: rotateY(0deg);
+  }
+}

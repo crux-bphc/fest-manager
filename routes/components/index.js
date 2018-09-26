@@ -4,8 +4,8 @@ const fq = require('fuzzquire');
 const config = fq('config-loader');
 
 router.get('/', function (req, res, next) {
-	req.stateparams.pagetitle = config.strings.name;
-	req.stateparams.immersive = true;
+	 req.stateparams.pagetitle = config.strings.name;
+	 req.stateparams.immersive = true;
 	res.renderState('home.jade', {
 		user: req.user,
 		title: 'Home'

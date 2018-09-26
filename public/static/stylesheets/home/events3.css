@@ -1,0 +1,62 @@
+/* Events CSS */
+.container4{
+  width:100%;
+  height:100vh;
+  position:relative;
+  margin:0 auto;
+}
+.tab{
+  width:33.33vw;
+  height:100vh;
+  display:block;
+  float:left;
+  margin:0;
+}
+.tab img{
+  position:absolute;
+  width:33.33vw;
+  height:100vh;
+  z-index:-10;
+}
+.hightlight{
+  position:absolute;
+  width:33.33vw;
+  height:100vh;
+}
+.cover h1{
+  z-index:10;
+  font-size:2.3vw;
+  font-family:Montserrat;
+  color:white;
+  padding:10px;
+  margin-top:45vh;
+  transition:0.5s;
+}
+.t1{
+  margin-left: 12vw;
+}
+.t2{
+  margin-left: 9vw;
+}
+.t3{
+  margin-left: 14vw;
+}
+a{
+  text-decoration: none;
+  color:white;
+}
+.highlight{
+  width:32vw;
+ /* margin-top:30vh;*/
+  height:100vh;
+  position:absolute;
+  opacity:0.0;
+  background-image: linear-gradient(to bottom,white, green, blue);
+  transition: 0.6s;
+}
+.highlight:hover{
+  opacity:0.2;
+}
+ .cover:hover{
+  border-bottom:3px solid white;
+}
