@@ -11,7 +11,7 @@ html, body {
 
 @media screen and (min-width: 480px) {
     .beam-div {
-      position: relative;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
@@ -20,7 +20,7 @@ html, body {
     }
 
     .beam {
-      position: relative;
+      position: absolute;
       top: 48vh;
       left: 0;
       width: 100%;
@@ -86,7 +86,7 @@ html, body {
 }
 
 .background-div {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -95,7 +95,7 @@ html, body {
 }
 
 .background {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -113,7 +113,7 @@ html, body {
 }
 
 .dust-one {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -139,7 +139,7 @@ html, body {
 }
 
 .dust-two {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -165,7 +165,7 @@ html, body {
 }
 
 .dust-three {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -189,9 +189,6 @@ html, body {
     left: -0.5vw;
   }
 }
-.beam-div {
-  position: absolute;
-}
 @media screen and (max-width: 480px){
 .beam-div {
   position: absolute;
@@ -203,7 +200,7 @@ html, body {
 }
 
 .beam {
-  position: relative;
+  position: absolute;
   top: 40vh;
   left: 0;
   width: 100%;
@@ -265,7 +262,7 @@ html, body {
 }
 
 .container1 .top {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -390,4 +387,4 @@ html, body {
   }
 }
 
- 
+

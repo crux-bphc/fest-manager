@@ -1,6 +1,6 @@
 $(document).ready(()=>{
+
   // Start Animation onScroll for tickets
-  console.log('workinggg.');
   var elems = ['.container2 .top', '.bottom', '.yr', '.nm', '.tickets'];
 
   // var $elem = $(e);
@@ -8,7 +8,6 @@ $(document).ready(()=>{
     element: $('.yr')[0],
 
     enter: function() {
-      console.log('in enter');
       elems.forEach(function(e){
         // console.log("enter");
         $(e).addClass('start');
@@ -21,7 +20,7 @@ $(document).ready(()=>{
     //   })
     // }
   })
-  console.log(inview1)
+
   // Start Animation onScroll for aboutus
   var inview2 = new Waypoint.Inview({
     element: $('.para3')[0],

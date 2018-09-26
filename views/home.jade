@@ -1,3 +1,4 @@
+
 link(rel='stylesheet', href='/static/stylesheets/home/home.css')
 link(rel='stylesheet', href='/static/stylesheets/home/tickets.css')
 link(rel='stylesheet', href='/static/stylesheets/home/aboutus.css')
@@ -18,7 +19,7 @@ link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all
       picture
         source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/background.png')
         img.background(src='/static/images/home/Mobile Version/Broken_portal/mobile_background.png')
-    .dust-div 
+    .dust-div
       picture
         source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks.png')
         img.dust-one(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks1.png')
@@ -29,7 +30,7 @@ link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all
       // <img src="/static/images/home/BrokenPortal/rocks1.png" class="dust-two">
     .dust-div
       picture
-        source(media='(min-width: 480px)', srcset='/static/images/homeBrokenPortal/rocks2.png')
+        source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks2.png')
         img.dust-three(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks3.png')
     .beam-div
       picture
@@ -42,10 +43,10 @@ link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all
     .text-div
       | INTO THE SIXTH DIMENSION
     .text
-      .dayshei
-        p.dhei
-        p.mhei
-      .socihei
+      .days
+        p.date 26-28
+        p.month OCTOBER
+      .social
         a(href='#')
           i.fab.fa-facebook-f
         a(href='#')
@@ -99,15 +100,15 @@ link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all
     .contactusbackground
       .floatingitems
         .shadow
-          img.sha(src='./images/contactus/Shadowstransparent.png')
+          img.sha(src='/static/images/home/contactus/Shadowstransparent.png')
         .trianlge
-          img.tri(src='./images/contactus/floatingbuilding.png')
+          img.tri(src='/static/images/home/contactus/floatingbuilding.png')
         .cloud
-          img.cl(src='./images/contactus/cloud1.png')
+          img.cl(src='/static/images/home/contactus/cloud1.png')
         .cloud
-          img.cl(src='./images/contactus/cloud2.png')
+          img.cl(src='/static/images/home/contactus/cloud2.png')
         .cloud
-          img.cl(src='./images/contactus/cloud3.png')
+          img.cl(src='/static/images/home/contactus/cloud3.png')
       .contactustext
         .title
           p CONTACT US
@@ -155,18 +156,16 @@ link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all
             i.fab.fa-twitter
           a(href='#')
             i.fab.fa-instagram
-script(type='text/javascript', src='/static/scripts/home/fullpage.js')
+script(type='text/javascript', src='/static/scripts/fullpage.js')
 script(type='text/javascript').
   var myFullpage = new fullpage('#fullpage', {
   // anchors: ['home', 'tickets', 'aboutus', 'event', 'contactus'],
   // sectionsColor: ['#C63D0F', '#1BBC9B', '#7E8F7C'],
   scrollBar: true
   });
-
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
 script(src='/static/scripts/home/jquery.waypoints.min.js')
 script(src='/static/scripts/home/inview.js')
+script(type='text/javascript', src='/static/scripts/home/dustmove.js')
 script(type='text/javascript', src='/static/scripts/home/scroll.js')
 script(type='text/javascript', src='/static/scripts/home/eventsGradient.js')
-script(type='text/javascript', src='/static/scripts/index.js')
-
