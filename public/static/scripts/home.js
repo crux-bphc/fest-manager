@@ -1,23 +1,18 @@
 let london = (function (){
     console.log('in home js');
-    var currentPage = 1;
-    let scrollDiv = $('.hash-home');
-    let getTargetHeight = (page)=>{   
-        return page*window.innerHeight;
-    };
-
-    let maxLength = 5;
+    var currentPage = 0;
+    let maxLength = 4;
     
     let showNextPage = ()=>{
-        console.log('insShowNextPage',getTargetHeight(currentPage));
+        //console.log('insShowNextPage',getTargetHeight(currentPage));
         if(currentPage < maxLength)
             currentPage++;
         $('.scroll-wrapper').css('transform', 'translateY('+ -currentPage * window.innerHeight +'px)');
     };
 
     let showPreviousPage = ()=>{
-        console.log('inShowPreviousPage',getTargetHeight(currentPage));
-        if(currentPage > 1)
+        //console.log('inShowPreviousPage',getTargetHeight(currentPage));
+        if(currentPage > 0)
             currentPage--;
         $('.scroll-wrapper').css('transform', 'translateY('+  -currentPage * window.innerHeight +'px)');
     };
