@@ -1,6 +1,11 @@
 .hash-home {
     padding: 0 !important;
     height: 100vh !important;
+} 
+@media  screen and (min-width: 800px) {
+    .hash-home {
+        overflow: hidden;
+    }
 }
 .hash-home > .scroll-wrapper {
     width:100vw;
@@ -12,9 +17,9 @@
     box-sizing: border-box;
     transition: all 0.5s ease-in-out;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 0px;
-}
+} */
 
 #page-1 > .background-div {
     position: absolute;
