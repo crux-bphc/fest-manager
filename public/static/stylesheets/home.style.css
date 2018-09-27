@@ -1346,3 +1346,51 @@
     }
   }
   
+
+
+  .main .wrapper.face.module-home {
+    overflow-y: hidden;
+}
+
+* {
+    -webkit-select: none;
+}
+
+.module-home {
+    background: #F3F3F3;
+}
+
+.module-home * {
+    font-family: "Montserrat";
+}
+
+.module-home,
+.module-home p {
+    color: #2F2C4E;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    /* remove scrollbar space */
+    background: transparent;
+    /* optional: just make scrollbar invisible */
+}
+
+
+
+/*Don't add the module class to this element. This is out of the container div.*/
+
+.immersive-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 !important;
+    justify-content: space-around;
+    align-items: center;
+    overflow-x: hidden;
+}
+
