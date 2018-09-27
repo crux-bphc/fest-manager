@@ -291,10 +291,10 @@
   }
   
   @media screen and (max-width: 480px) {
-  
      #page-1 .text-div{
       font-size: 7vw;
       text-align: center;
+      margin-top: 80vh;
     }
   
       #page-1 .text .social a {
