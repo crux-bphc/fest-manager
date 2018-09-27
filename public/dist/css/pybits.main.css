@@ -4,7 +4,19 @@ body {
   font-size: 1.5em;
 }
 /* navbar color */
-
+.immersive-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 !important;
+  justify-content: space-around;
+  align-items: center;
+  overflow-x: hidden;
+}
 .present-tab{
   font-weight: 800 !important;
   color: black !important;
