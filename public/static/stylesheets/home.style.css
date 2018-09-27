@@ -207,7 +207,7 @@
   #page-1 .text-div {
     position: absolute;
     left:50%;
-    /* bottom:0.5vh; */
+    bottom:0.5vh;
     transform: translateX(-50%);
     font-size: 4.2vw;
     font-family: 'Oswald', sans-serif;
