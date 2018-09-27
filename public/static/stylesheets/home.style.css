@@ -1,7 +1,7 @@
 .hash-home {
     padding: 0 !important;
     height: 100vh !important;
-} 
+}
 @media  screen and (min-width: 800px) {
     .hash-home {
         overflow: hidden;
@@ -677,7 +677,7 @@
   font-size: 4vmin;
   }
   
-  #Bold{
+  #page-3 #background #content-flex #Bold{
     margin: 0%;
     padding: 0%;
     width: 100%;
@@ -690,7 +690,7 @@
     font-weight: 700;
   }
   
-  .text3 {
+  .scroll-content#page-3 #background .text3 {
   
   top: 0;
   left: 0;
@@ -702,7 +702,7 @@
   font-family: 'Roboto', sans-serif;
   }
   
-  .text3 .para3 {
+  .scroll-content#page-3 #background .text3 .para3 {
   bottom: 5vh;
   right: 0;
   width: 100%;
@@ -710,7 +710,7 @@
   font-size: 1.1vw;
   }
   
-  .text3 .para3 h2{
+  .scroll-content#page-3 #background .text3 .para3 h2{
   margin: 0;
   padding: 0;
   font-size: 2vw;
@@ -723,56 +723,15 @@
     height: auto;
   }
   
-  .contact {
-  width: 30%;
-  height: 20vh;
-  margin: 1.5%;
-  border: 1px solid white;
-  float: left;
-  border-radius: 10vh;
-  }
-  
-  @keyframes rot{
-    0%{
-      transform: rotateY(-90deg);
-    }
-    10%{
-      transform: rotateY(-80deg);
-    }
-    20%{
-      transform: rotateY(-70deg);
-    }
-    30%{
-      transform: rotateY(-60deg);
-    }
-    40%{
-      transform: rotateY(-50deg);
-    }
-    60%{
-      transform: rotateY(-40deg);
-    }
-    70%{
-      transform: rotateY(-30deg);
-    }
-    80%{
-      transform: rotateY(-20deg);
-    }
-    90%{
-      transform: rotateY(-10deg);
-    }
-    100%{
-      transform: rotateY(0deg);
-    }
-  }
   @media screen and (max-width: 800px) and (min-width: 600px) {
-    #Bold {
+    .scroll-content#page-3 #background #Bold {
         margin-top:25px !important;
         font-size: 40px !important;
     }
-    .text3 h2 {
+    .scroll-content#page-3 #background .text3 h2 {
         font-size: 30px !important;
     }
-    .para3 {
+    .scroll-content#page-3 #background .para3 {
         font-size: 20px !important;
         margin-bottom: 25px !important;
     }
@@ -785,13 +744,13 @@
         margin-bottom: 100px;
     }
     
-    #Bold {
+    .scroll-content#page-3 #background #Bold {
         font-size: 8vw !important;
     }
-    .text3 h2 {
+    .scroll-content#page-3 #background .text3 h2 {
         font-size: 10vw !important;
     }
-    .para3 {
+    .scroll-content#page-3 #background .para3 {
         font-size: 4vmin !important;
     }
   }
@@ -807,27 +766,27 @@
   */
 
   @media screen and (min-width: 800px){
-  .box {
+  .scroll-content#page-4 .box {
     width: 33.33%;
     height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: row;
   }
-  #events{
+  .scroll-content#page-4 #events{
     width:33.33%;
   }
-  #competitions {
+  .scroll-content#page-4 #competitions {
     width: 33.33%;
   }
-  #talks{
+  .scroll-content#page-4 #talks{
     width:33.33%;
     background: url(/static/images/home/Events/talks.png);
   }
     
     
     
-.links {
+  .scroll-content#page-4 .links {
   /* z-index: 999; */
   width: 100%;
   height: 6vh;
@@ -840,11 +799,11 @@
   padding: 47vh 0 47vh 0;
 }
 
-.links:hover {
+.scroll-content#page-4 .links:hover {
   cursor: pointer;
 }
 
-.links::after {
+.scroll-content#page-4 .links::after {
   content: '';
   display: block;
   width: 0;
@@ -853,52 +812,46 @@
   transition: width .3s;
 }
 
-.links:hover::after {
+.scroll-content#page-4 .links:hover::after {
   width: 100%;
   transition: width .3s;
 }
 
-.gradient{
-  cursor: pointer;
-}
-.hovered::after{
-  width: 100%;
-}
 
 
-#event-link {
+.scroll-content#page-4 #event-link {
   width: 56%;
 }
 
-#competition-link {
+.scroll-content#page-4 #competition-link {
   width: 60%;
 }
 
-#talk-link {
+.scroll-content#page-4 #talk-link {
   width: 25%;
 }
 
 }
 
 @media screen and (max-width: 800px){
-    .box {
+  .scroll-content#page-4 .box {
     height: 33.3% !important;
     width: 100vw;
     overflow: hidden;
     display: flex;
     align-items: center;
     }
-    #events{
+    .scroll-content#page-4 #events{
       height: 33.3% !important;
     }
-    #competitions {
+    .scroll-content#page-4 #competitions {
       height: 33.3% !important;
     }
-    #talks{
+    .scroll-content#page-4 #talks{
       height: 33.3% !important;
       background: url(/static/images/home/Events/mobile_talks.png) ;
     }
-    .gradient {
+    .scroll-content#page-4 .gradient {
         display: none;
         position: absolute;
         left: 0;
@@ -908,7 +861,7 @@
         background-image: url('/static/images/home/Events/Gradient Fill 1.png');
         transition: 0.6s;
    }
-  .links {
+   .scroll-content#page-4 .links {
     z-index: 999;
     width: 100%;
     margin-top: 33%;
@@ -919,11 +872,11 @@
     font-weight: 600;
     
    }
-    .links:hover {
+   .scroll-content#page-4 .links:hover {
       cursor: pointer;
     }
 
-    .links::after {
+    .scroll-content#page-4 .links::after {
       content: '';
       display: block;
       width: 0;
@@ -932,31 +885,31 @@
       transition: width .3s;
     }
 
-    .links:hover::after {
+    .scroll-content#page-4 .links:hover::after {
       width: 100%;
       transition: width .3s;
     }
 
-    .gradient{
+    .scroll-content#page-4 .gradient{
       cursor: pointer;
     }
-    .hovered::after{
+    .scroll-content#page-4 .hovered::after{
       width: 100%;
     }
 
 
-    #event-link {
+    .scroll-content#page-4 #event-link {
      width: 100%;
     }
 
-    #competition-link {
+    .scroll-content#page-4 #competition-link {
       width: 100%;
     }
 
-    #talk-link {
+    .scroll-content#page-4 #talk-link {
       width: 100%;
     }
-    #event-link.links:hover {
+    .scroll-content#page-4 #event-link.links:hover {
         opacity: 1;
     }
 
@@ -982,7 +935,7 @@
   background-size: cover;
 }
 
-#talks {
+.scroll-content#page-4 #talks {
     display: block;
     float: left;
   
@@ -1029,7 +982,7 @@
   }
   
   
-  .shadow {
+  .scroll-content#page-5 .shadow {
     position: absolute;
     z-index:100;
     left: 0;
@@ -1046,7 +999,7 @@
     animation-timing-function: ease-in-out;
   }
   
-  .sha {
+  .scroll-content#page-5 .sha {
     position: absolute;
     z-index:100;
     top: 0;
@@ -1056,7 +1009,7 @@
     margin: 0;
   }
   
-  .trianlge {
+  .scroll-content#page-5 .trianlge {
     position: absolute;
     z-index:100;
     top: -2vw; 
@@ -1071,7 +1024,7 @@
     animation-timing-function: ease-in-out;
   }
   
-  .tri {
+  .scroll-content#page-5 .tri {
     width: 100%;
     height: 100vh;
     margin: auto;
@@ -1080,7 +1033,7 @@
   
   
   
-  .cloud {
+  .scroll-content#page-5 .cloud {
     position: absolute;
     top: 0;
     left: 0;
@@ -1092,7 +1045,7 @@
     overflow: hidden;
   }
   
-  .cl {
+  .scroll-content#page-5 .cl {
     position: relative;
     width: 100%;
     height: 94vh;
@@ -1105,7 +1058,7 @@
     animation-timing-function: ease-in-out;
   }
   
-  .contacts {
+  .scroll-content#page-5 .contacts {
     position: absolute;
     top:100%;
     left:100%;
@@ -1117,7 +1070,7 @@
     flex-wrap: wrap;
   }
   
-  .contact_div{
+  .scroll-content#page-5 .contact_div{
     font-family: Roboto ;
     text-align: center;
     font-size: 1.7vw;
@@ -1126,17 +1079,17 @@
     margin: 1vh 2vw 0vh 2vw;
   }
   
-  .contact_div p{
+  .scroll-content#page-5 .contact_div p{
     margin:0;
     padding: 0;
     font-size: 1.4vw;
     font-weight: 50;
   }
-  .contact_div b{
+  .scroll-content#page-5 .contact_div b{
     font-weight: 450;
   }
   
-  .co {
+  .scroll-content#page-5 .co {
     position: relative;
     top: 5vh;
     left: 0;
@@ -1144,7 +1097,7 @@
     height: 100vh;
   }
   
-  .text {
+  .scroll-content#page-5 .text {
     position: absolute;
     top: 0;
     left: 0;
@@ -1156,7 +1109,7 @@
     font-family: 'Roboto', sans-serif;
   }
   
-  .text .days {
+  .scroll-content#page-5 .text .days {
     position: absolute;
     left: 1vw;
     bottom: 1vh;
@@ -1166,22 +1119,22 @@
     text-align: center;
   }
   
-  .text .days p {
+  .scroll-content#page-5 .text .days p {
     margin: 0;
     padding: 0;
   }
   
-  .text .days .date {
+  .scroll-content#page-5 .text .days .date {
     font-size: 1.7vw;
     font-weight: 700;
   }
   
-  .text .days .month {
+  .scroll-content#page-5 .text .days .month {
     font-weight: 300;
     font-size: 1vw;
   }
   
-  .text .para {
+  .scroll-content#page-5 .text .para {
     position: absolute;
     bottom: 17vh;
     right: 13vh;
@@ -1190,12 +1143,12 @@
     font-size: 1vw;
   }
   
-  .text .para h2{
+  .scroll-content#page-5 .text .para h2{
     margin: 0;
     padding: 0;
   }
   
-  .text .social {
+  .scroll-content#page-5 .text .social {
     position: absolute;
     right : 1vw;
     bottom: 1vh;
@@ -1203,7 +1156,7 @@
     text-align: right;
   }
   
-  .text .social a {
+  .scroll-content#page-5 .text .social a {
     text-decoration: none;
     color: #fff;
     padding: 0 5px;
@@ -1214,7 +1167,7 @@
   }
   @media screen and (max-width: 580px){
   
-    .contactusbackground{
+    .scroll-content#page-5 .contactusbackground{
       height: 100vh;
       width: 100vw;
       background-image: url(/static/images/home/contactus/mobile_floatingbuilding.png) ;
@@ -1224,10 +1177,10 @@
       margin: 0;
       padding:0;
     }
-    .floatingitems{
+    .scroll-content#page-5 .floatingitems{
       display: none;
     }
-    .contactustext{
+    .scroll-content#page-5 .contactustext{
       width: 100%;
       height: 100%;
       margin: 0;
@@ -1240,18 +1193,18 @@
     }
     
   
-    .title{
+    .scroll-content#page-5 .title{
       margin-top: 0px;
       align-self: center;
     }
     
-    .title p{
+    .scroll-content#page-5 .title p{
       
       font-family: 'Oswald', sans-serif;
       font-size: 12vmin;
       font-weight: 600;
     }
-    .contacts {
+    .scroll-content#page-5 .contacts {
       align-self: center;
       padding-bottom: 10vmin;
       display: flex;
@@ -1260,7 +1213,7 @@
   
     }
   
-    .contact_div{
+    .scroll-content#page-5 .contact_div{
       font-family: 'Roboto', sans-serif;
       text-align: center;
       font-size: 3.8vw;
@@ -1270,17 +1223,17 @@
       margin: 1vh 2vw 0vh 2vw;
     }
   
-    .contact_div p{
+    .scroll-content#page-5 .contact_div p{
       margin:0;
       padding: 0;
       font-size: 3.1vw;
       font-weight: 50;
     }
-    .contact_div b{
+    .scroll-content#page-5 .contact_div b{
       font-weight: 450;
     }
   
-  .text {
+    .scroll-content#page-5 .text {
     position: absolute;
     top: 0;
     left: 0;
@@ -1292,7 +1245,7 @@
     font-family: 'Roboto', sans-serif;
   }
   
-  .text .days {
+  .scroll-content#page-5 .text .days {
     position: absolute;
     left: 1vw;
     bottom: 1vh;
@@ -1302,22 +1255,22 @@
     text-align: center;
   }
   
-  .text .days p {
+  .scroll-content#page-5 .text .days p {
     margin: 0;
     padding: 0;
   }
   
-  .text .days .date {
+  .scroll-content#page-5 .text .days .date {
     font-size: 1.7vw;
     font-weight: 700;
   }
   
-  .text .days .month {
+  .scroll-content#page-5 .text .days .month {
     font-weight: 300;
     font-size: 1vw;
   }
   
-  .text .para {
+  .scroll-content#page-5 .text .para {
     position: absolute;
     bottom: 17vh;
     right: 13vh;
@@ -1326,12 +1279,12 @@
     font-size: 1vw;
   }
   
-  .text .para h2{
+  .scroll-content#page-5 .text .para h2{
     margin: 0;
     padding: 0;
   }
   
-  .text .social {
+  .scroll-content#page-5 .text .social {
     position: absolute;
     right : 1vw;
     bottom: 1vh;
@@ -1339,7 +1292,7 @@
     text-align: right;
   }
   
-  .text .social a {
+  .scroll-content#page-5 .text .social a {
     text-decoration: none;
     color: #fff;
     padding: 0 5px;
