@@ -1,7 +1,10 @@
+.pybits-tab-background {
+    padding-bottom: 5px !important;
+}
 #nav-bottom {
-    position: fixed;
+    position: absolute !important;
+    bottom: 5px;
     right: 0;
-    z-index: 999;
 }
 h1#heading {
     color: white;

@@ -1,9 +1,8 @@
 include navigation
 include ../../mixins/form
-link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.main.css')
 link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.proposal.css')
 link(rel='stylesheet', href='/static/stylesheets/pybits-imm.style.css') 
-script(type="text/javascript" src="/static/scripts/pybits.js")
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.main.css')
 
 .immersive-wrapper.pybits-tab-background.text-center
 	h1#heading Proposal
@@ -12,3 +11,4 @@ script(type="text/javascript" src="/static/scripts/pybits.js")
 	+navigationMixin(false)
 	script.
 		document.querySelectorAll('.list-inline-item > a')[4].classList.add('present-tab');
+script(type="text/javascript" src="/static/scripts/pybits.main.js")
