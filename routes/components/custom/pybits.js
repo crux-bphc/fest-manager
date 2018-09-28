@@ -37,6 +37,10 @@ var applyStateChanges = function (req) {
 		{
 			label: "About",
 			route: "/pybits/about",
+		},
+		{
+			label: "Dev-Sprint",
+			route: "/pybits/dev-sprint"
 		}
 	];
 	return req;
@@ -120,5 +124,16 @@ router.get('/coc', function (req, res, next) {
 		user: req.user,
 	});
 });
+
+router.get('/dev-sprint', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBITS Dev Sprint';
+	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS Dev Sprint";
+	res.renderState('custom/pybits/dev-sprint', {
+		title: 'PyBITS Dev Sprint',
+		user: req.user,
+	});
+});
+
 
 module.exports = router;
