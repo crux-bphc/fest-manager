@@ -12,7 +12,7 @@ div.module-events.section.open-event(id=event._id team=(event.teamSize > 1 ? "tr
                 i.icon-navigate_next
             div.title= event.name
             div.remnant
-                +cartActionsMixin(event, user, "Register", config)
+                +cartActionsMixin(event, user, "Register")
         div.category= event.category
         div.details
             if(event.startTime)
