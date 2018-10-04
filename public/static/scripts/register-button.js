@@ -3,7 +3,7 @@ var RegisterButton = function () {
 		teamed: '<a class="latent" tabindex="1"><a class="button add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register</span></a><a class="button join_team" onclick="RegisterButton.join(this, \'$id\', isFree)"><i class="icon-group_add"></i><span>Join Team</span></a><a class="button new_team" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_box"></i><span>New Team</span></a></a>',
 		single: '<a class="button add_to_cart" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_shopping_cart"></i><span>Register</span></a>',
 		subscribed: '<a class="button subscribed"><i class="icon-check"></i><span>Registered</span></a>',
-		pending: '<a class="button pending" href="https://townscript.com/e/pearl2018-240304"><i class="icon-ticket"></i><span>Buy Tickets</span></a>',
+		pending: `<a class="button pending" href="${manager.getState().strings.registrationLink}"><i class="icon-ticket"></i><span>Buy Tickets</span></a>`,
 	};
 
 	var failAlert = function (res) {

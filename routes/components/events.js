@@ -55,7 +55,8 @@ router.get('/', function (req, res, next) {
 		res.renderState('events/home', {
 			title: 'Events',
 			user: req.user,
-			events: events
+			events: events,
+			config: config,
 		});
 	});
 });

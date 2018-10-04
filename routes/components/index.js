@@ -8,7 +8,8 @@ router.get('/', function (req, res, next) {
 	req.stateparams.immersive = true;
 	res.renderState('home.jade', {
 		user: req.user,
-		title: 'Home'
+		title: 'Home',
+		config: config,
 	});
 });
 
