@@ -1,8 +1,7 @@
 #nav-bottom {
-    position: relative;
+    position: fixed;
+    bottom: 0;
     right: 0;
-    z-index: 999;
-    height: 10px !important;
 }
 h1#heading {
     color: white;
