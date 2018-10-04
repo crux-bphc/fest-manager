@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Electrolize');
-body {
-  font-size: 1.5em;
-}
 /* navbar color */
 .immersive-wrapper {
   position: absolute;
@@ -22,20 +19,15 @@ body {
   color: black !important;
 }
 #pybits-background {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   padding-bottom: 50px !important;
   
   background-size: cover;
-  /* animation: 1s ease-in-out 0.75s bg-fade-in forwards; */
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), linear-gradient(rgba(255,234,50,0.5), rgba(51,100,157,0.7) 75%), url('/static/images/pybits/pybits-background.jpg');
   overflow-y: auto;
   overflow-x: hidden;
 }
 .pybits-tab-background {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  
   background-size: cover;
-  /* animation: 1s ease-in-out 0.75s bg-fade-in forwards; */
   background-image:linear-gradient(rgba(30, 27, 27, 0.8), rgba(50, 34, 34, 0.8)), linear-gradient(rgba(200, 183, 39, 0.9), rgba(9, 112, 233, 0.7) 75%), url('/static/images/pybits/pybits-background.jpg');
   overflow-y: auto;
   overflow-x: hidden;
@@ -55,7 +47,7 @@ p {
 }
 #coc-heading p {
   color: white;
-  font-size: 19px;
+  font-size: 22px;
   border-right: none;
   font-weight: 400;
 }
