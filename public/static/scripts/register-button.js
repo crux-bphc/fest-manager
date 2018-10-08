@@ -3,7 +3,8 @@ var RegisterButton = function () {
 		teamed: '<a class="latent" tabindex="1"><a class="button add_to_cart"><i class="icon-add_shopping_cart"></i><span>Register</span></a><a class="button join_team" onclick="RegisterButton.join(this, \'$id\', isFree)"><i class="icon-group_add"></i><span>Join Team</span></a><a class="button new_team" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_box"></i><span>New Team</span></a></a>',
 		single: '<a class="button add_to_cart" onclick="RegisterButton.add(this, \'$id\', $isFree)"><i class="icon-add_shopping_cart"></i><span>Register</span></a>',
 		subscribed: '<a class="button subscribed"><i class="icon-check"></i><span>Registered</span></a>',
-		pending: `<a class="button pending" href="${manager.getState().strings.registrationLink}"><i class="icon-ticket"></i><span>Buy Tickets</span></a>`,
+		pendingNormal: `<a class="button pendingNormal" href="${manager.getState().strings.registrationLink}"><i class="icon-ticket"></i><span>Buy Tickets</span></a>`,
+		pendingWorkshop: `<a class="button pendingWorkshop" href="${manager.getState().strings.workshopRegistrationLink}"><i class="icon-ticket"></i><span>Buy Tickets</span></a>`,
 	};
 
 	var failAlert = function (res) {
@@ -16,7 +17,7 @@ var RegisterButton = function () {
 		});
 	};
 
-	var addToCart = function (button, id, isFree) {
+	var addToCart = function (button, id, isFree, eventType) {
 
 		$.ajax({
 			method: "POST",
@@ -47,7 +48,10 @@ var RegisterButton = function () {
 						confirmButtonColor: "#202729"
 					});
 				}
-				$('.cart-actions').html(templates[isFree ? "subscribed" : "pending"].replace('$id', id).replace('$isFree', isFree));
+				if(eventType == "Workshop")
+					$('.cart-actions').html(templates[isFree ? "subscribed" : "pendingWorkshop"].replace('$id', id).replace('$isFree', isFree));
+				else
+					$('.cart-actions').html(templates[isFree ? "subscribed" : "pendingNormal"].replace('$id', id).replace('$isFree', isFree));
 			} else {
 				failAlert(res);
 			}
@@ -94,7 +98,7 @@ var RegisterButton = function () {
 							confirmButtonText: "OK",
 							confirmButtonColor: "#202729"
 						});
-						$('.cart-actions').html(templates[isFree ? "subscribed" : "pending"].replace('$id', id).replace('$isFree', isFree));
+						$('.cart-actions').html(templates[isFree ? "subscribed" : "pendingNormal"].replace('$id', id).replace('$isFree', isFree));
 					} else {
 						failAlert(res);
 					}

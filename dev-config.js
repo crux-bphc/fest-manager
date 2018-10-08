@@ -73,6 +73,7 @@ var config = {
         image: "https://atmos.bits-hyd.org/static/images/meta.png",
         twitter: "@BITSAtmos",
         registrationLink: "https://www.google.co.in/",
+        workshopRegistrationLink:"https://www.facebook.com/",
     }
 };
 module.exports = config;
