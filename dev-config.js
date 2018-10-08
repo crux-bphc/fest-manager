@@ -61,7 +61,7 @@ var config = {
         registrations: true,
     },
 
-    strings: {
+    strings: { 
         name: "ATMOS",
         tagline: "Technical Fest of Bits Pilani Hyderabad Campus",
         organiser: "BITS Pilani Hyderabad Campus",
@@ -72,7 +72,7 @@ var config = {
         url: "https://atmos.bits-hyd.org/",
         image: "https://atmos.bits-hyd.org/static/images/meta.png",
         twitter: "@BITSAtmos",
-        registrationLink: "https://www.google.co.in/",
+        registrationLink: "https://www.townscript.com/o/atmos-001120/upcoming-events"
     }
 };
 module.exports = config;
