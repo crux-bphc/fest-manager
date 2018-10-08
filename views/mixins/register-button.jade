@@ -10,8 +10,12 @@ mixin cartActionsMixin(event, user, text)
                         a.subscribed.button
                             i.icon-check
                             span Registered
+                    else if(event.type == "Workshop")
+                        a.pendingWorkshop.button(href='#{config.strings.workshopRegistrationLink}')
+                            i.icon-ticket
+                            span Buy Tickets
                     else
-                        a.pending.button(href='#{config.strings.registrationLink}')
+                        a.pendingNormal.button(href='#{config.strings.registrationLink}')
                             i.icon-ticket
                             span Buy Tickets
                 - else if(event.teamSize > 1)
@@ -31,7 +35,7 @@ mixin cartActionsMixin(event, user, text)
                             i.icon-add_shopping_cart
                             span Register
                     else
-                        a.add_to_cart.button(onclick="RegisterButton.add(this, '#{event._id}', #{event.price ? false : true})")
+                        a.add_to_cart.button(onclick="RegisterButton.add(this, '#{event._id}', #{event.price ? false : true})", event.type)
                             i.icon-add_shopping_cart
                             span Register
             - else

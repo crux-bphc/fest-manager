@@ -56,14 +56,16 @@
     color:#fff;
     border-color:transparent;
 }
-.cart-actions .button.pending {
+.cart-actions .button.pendingNormal,
+.cart-actions .button.pendingWorkshop  {
     background:orange;
     color:#fff;
     cursor: pointer;
     border: none;
     line-height: 2.5em;
 }
-.cart-actions .button.pending > .icon-close {
+.cart-actions .button.pendingNormal > .icon-close,
+.cart-actions .button.pendingWorkshop > .icon-close {
     cursor: pointer;
     display: inline-block;
     line-height: 2.5em;
