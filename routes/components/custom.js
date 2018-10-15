@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fq = require('fuzzquire');
 var eventsService = fq("services/events").model;
+var sponsors = fq("utils/sponsors");
 
 // Load custom modules here
 
@@ -29,7 +30,7 @@ var handler = function (req, res) {
 router.use('/prelims/:id', handler);
 
 router.use('/sponsors', function (req, res) {
-	res.renderState('sponsors', {});
+	res.renderState('sponsors', {sponsors:sponsors});
 });
 router.use('/pybits', require('./custom/pybits'));
 

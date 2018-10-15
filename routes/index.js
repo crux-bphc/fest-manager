@@ -41,6 +41,10 @@ router.get('/?*', function (req, res, next) {
 				label: "Campus Ambassador",
 				route: "/ca",
 			},
+			sponsors: {
+				label: "Sponsors",
+				route: "/sponsors",
+			},
 			portals: {
 				route: "/portals",
 				initial: "disabled",
