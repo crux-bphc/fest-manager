@@ -35,13 +35,14 @@
 //-           li.list-inline-item 
 //-             a(href="#").about-tab HIGHLIGHTS
 include navigation
-link(rel='stylesheet', href='/dist/css/pybits.main.css') 
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.main.css') 
 style.
 	#nav-bottom {
 		position: fixed;
 		bottom: 0;
 		right: 0;
 	}
-.immersive-wrapper#pybits-background
-	.text-center#heading-not-home Workshops - Coming Soon.
-	+navigationMixin(false)
+#pybits-wrapper
+	.immersive-wrapper#pybits-background
+		.text-center#heading-not-home Workshops - Coming Soon.
+		+navigationMixin(false)

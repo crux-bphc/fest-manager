@@ -165,5 +165,5 @@ let sponsors = [
         meta:""
 
     }
-]
+];
 module.exports = sponsors;

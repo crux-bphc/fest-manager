@@ -3,6 +3,19 @@
         background-color: black;
     }
 }
+.immersive-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 !important;
+    justify-content: space-around;
+    align-items: center;
+    overflow-x: hidden;
+  }
 #pybits-wrapper {
     background-size: cover;
     animation: 1s ease-in-out 0.75s bg-fade-in forwards;
@@ -56,11 +69,12 @@
     justify-content: space-evenly;
     font-size: 2rem;
 }
-ul#nav {
+ul#nav, ul#nav-bottom {
 	list-style: none;
 	display: flex;
 	justify-content: space-evenly;
-	width: 100%;
+    width: 100%;
+    color: white;
 }
 #tickets {
 	font-size: 2rem;
@@ -71,3 +85,24 @@ ul#nav {
 	padding: 10px;
     margin: 20px;
 }
+#coc-heading{
+    margin-top:70px;
+    color: black;
+    font-size: 25px;
+    font-weight: 600;
+    margin-left:25px;
+  }
+  #coc-heading p {
+    color: white;
+    font-size: 19px;
+    border-right: none;
+    font-weight: 400;
+    line-height: 1.5em;
+  }
+  #pybits-background #heading-not-home {
+    margin-top:20%;
+    font-size: 3vw;
+    color: rgb(220, 220, 220);
+    font-weight: 1000; 
+    font-family: 'Electrolize', sans-serif;
+  }
