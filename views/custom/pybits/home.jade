@@ -21,12 +21,4 @@ link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.4.1/css/all
 				noscript#tsNoJsMsg Javascript on your browser is not enabled.
 				script(src='https://www.townscript.com/popup-widget/townscript-widget.nocache.js', type='text/javascript')
 			#event-more
-				ul#nav
-					li Home
-					li About
-					li Talks
-					li Workshops
-					li Developer Sprint
-					li Schedule
-					li Proposal
-					li Code of Conduct
+				+navigationMixin(true)
