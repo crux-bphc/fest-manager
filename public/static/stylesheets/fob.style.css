@@ -1,0 +1,74 @@
+.immersive-wrapper{
+  background:black;
+}
+.remnant{
+  background:black;
+}
+.cont{
+  width:95%;
+  margin:auto;
+/*  padding:15px;*/
+  background-color: #f4f5f7;
+  color:white;
+  background:black;
+}
+h1{
+  text-align: center;
+  size:15vw;
+  padding:15px;
+  margin-bottom: 7vh;
+  color:white;
+}
+.indpic{
+  padding:10px auto;
+  margin: 10px 0;
+  margin-bottom: 50px;
+  /*height:300px;*/
+  background:black;
+}
+div.division{
+  width:900px;
+  height:40px;
+}
+.inbox{
+  width:90%;
+  margin:auto;
+  /*border:2px solid #dee2e8;*/
+  border-radius: 10px;
+}
+.inbox img{
+  width:20vw;
+  height:20vw;
+  margin:5px auto;
+  margin-left:0%;
+  text-align: center;
+  border-radius: 10px;
+}
+.inbox h3{
+  text-align: center;
+  size:8vw;
+}
+.inbox h4{
+  text-align: center;
+  size:8vw;
+}
+@media only screen and (min-width: 990px){
+  .indpic{
+    height:400px;
+  }
+}
+@media only screen and (max-width: 990px){
+  .inbox img{
+    width:60vw;
+    height:55vw;
+    margin:5px auto;
+  }
+}
+@media only screen and (max-width: 800px){
+  .inbox img{
+    width:60vw;
+    height:55vw;
+    margin:auto;
+    margin-left:8vw;
+  }
+}
