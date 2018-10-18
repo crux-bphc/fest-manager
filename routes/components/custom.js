@@ -33,5 +33,7 @@ router.use('/sponsors', function (req, res) {
 	res.renderState('sponsors', {sponsors:sponsors});
 });
 router.use('/pybits', require('./custom/pybits'));
-
+router.use("/fob",function(req,res){
+	res.renderState("fob",{});
+});
 module.exports = router;
