@@ -1,48 +1,55 @@
-//- .container
-//-         .row.mb100
-//-           .col-md-2  
-//-           .col-md-2
-//-             img(style="display: inline !important; float: left;" src="/images/image-default.png", alt="").image-speaker
-//-           .col-md-1.s-name Speaker Name
-//-           .col-md-2
-//-           .col-md-2 
-//-             img(src="/images/image-default.png", alt="").image-speaker
-//-           .col-md-1.s-name Speaker Name
-//-         .row
-//-           .col-md-2
-//-             img(style="display: inline !important; float: left;" src="/images/image-default.png", alt="").image-speaker
-//-           .col-md-1.s-name Speaker Name
-//-           .col-md-2
-//-           .col-md-2
-//-             img(src="/images/image-default.png", alt="").image-speaker
-//-           .col-md-1.s-name Speaker Name
-//-           .col-md-1
-//-           .col-md-2 
-//-             img(src="/images/image-default.png", alt="").image-speaker
-//-           .col-md-1.s-name Speaker Name
-//-       div.bottom-nav
-//-         ul.list-inline
-//-           li.list-inline-item
-//-             a(href="#").home-tab Home
-//-           li.list-inline-item 
-//-             a(href="#").schedule-tab Schedule
-//-           li.list-inline-item 
-//-             a(href="#").talks-tab(style = "color: black;") Talks
-//-           li.list-inline-item 
-//-             a(href="#").workshops-tab Workshops
-//-           li.list-inline-item 
-//-             a(href="#").code-of-conduct-tab Proposal
-//-           li.list-inline-item 
-//-             a(href="#").about-tab HIGHLIGHTS
 include navigation
 link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.main.css') 
 style.
-	#nav-bottom {
-		position: fixed;
-		bottom: 0;
-		right: 0;
+	@media only screen and (min-width:750px){
+		#nav-bottom {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+		}
 	}
 #pybits-wrapper
 	.immersive-wrapper#pybits-background
-		.text-center#heading-not-home Talks - Coming Soon.
+		.row#talks-row-1
+			.s-con
+				figure.speaker
+					img(src='/static/images/pybits/chirag_shah.jpg')
+					figcaption
+						i Chirag Shah
+					//- a(href='/pybits/workshops/basic')
+				p.stitle
+					| Understanding caching in python
+			.s-con
+				figure.speaker
+					img(src='/static/images/pybits/pybits_workshop_guy.jpg')
+					figcaption
+						i Ladle Patel
+					//- a(href='/pybits/workshops/basic')
+				p.stitle
+					| Scalable Machine Learning
+			.s-con
+				figure.speaker
+					img(src='/static/images/pybits/madhukar_mishra.jpeg')
+					figcaption
+						i Madhukar Mishra
+					//- a(href='/pybits/workshops/basic')
+				p.stitle
+					| The Python Concurrency Story
+		.row#talks-row-2
+			.s-con
+				figure.speaker
+					img(src='/static/images/pybits/wasim_thabraze.jpeg')
+					figcaption
+						i Wasim Thabraze
+					//- a(href='/pybits/workshops/basic')
+				p.stitle
+					| Optional Static Binding in Python sing Mypy
+			.s-con
+				figure.speaker
+					img(src='/static/images/pybits/jayaditya_gupta.	jpg')
+					figcaption
+						i Jayaditya Gupta
+					//- a(href='/pybits/workshops/basic')
+				p.stitle
+					| Python in Security
 		+navigationMixin(false)
