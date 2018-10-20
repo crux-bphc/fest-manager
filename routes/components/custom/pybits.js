@@ -31,8 +31,8 @@ var applyStateChanges = function (req) {
 			route: "/pybits/workshops",
 		},
 		{
-			label: "Proposal",
-			route: "/pybits/proposal",
+			label: "Tickets",
+			route: "/pybits/tickets",
 		},
 		{
 			label: "About",
@@ -87,12 +87,12 @@ router.get('/workshops', function (req, res, next) {
 	});
 });
 
-router.get('/proposal', function (req, res, next) {
-	req.stateparams.pagetitle = 'PyBITS Proposal';
+router.get('/tickets', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBITS Tickets';
 	req = applyStateChanges(req);
-	req.stateparams.subtitle = "PyBITS Proposal";
-	res.renderState('custom/pybits/proposal', {
-		title: 'PyBITS Proposal',
+	req.stateparams.subtitle = "PyBITS Tickets";
+	res.renderState('custom/pybits/tickets', {
+		title: 'PyBITS Tickets',
 		user: req.user,
 	});
 });

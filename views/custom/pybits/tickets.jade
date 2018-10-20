@@ -1,0 +1,32 @@
+include navigation
+include ../../mixins/form
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.proposal.css')
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.main.css')
+#pybits-wrapper
+	.immersive-wrapper#pybits-background.text-center
+		#tickets-wrapper 
+			h1#tickets-heading Tickets
+			div.p-wrapper
+				p#p-tickets
+					|PyBITS 2018 is hosting a 
+					a(href="/pybits/talks").talks-link	conference 
+					| on October 27, 
+					a(href="/pybits/workshops").talks-link	workshops 
+					| on October 28, and a developer sprint(free) on October 28 by Zulip.
+					|There are three types of passes available:
+					ol#ol-tickets
+						li 
+							b ALL ACCESS PASS&nbsp;&nbsp;&nbsp;
+							| This pass gives you complete access to PyBITS 2018 including the workshops, conference and the sprint.
+						li 
+							b CONFERENCE PASS &nbsp;&nbsp;&nbsp;
+							| This pass gives you access to only to the conference to be held on October 27.
+						li 
+							b ZULIP DEVELOPER SPRINT &nbsp;&nbsp;&nbsp;
+							| Free ticket to the sprint. 
+				button.tsbutton#tickets(onclick="popup('pybits-2018-411030');") Register Now
+				noscript#tsNoJsMsg Javascript on your browser is not enabled.
+
+		+navigationMixin(false)
+script(type="text/javascript" src="/static/scripts/pybits.main.js")
+script(src='https://www.townscript.com/popup-widget/townscript-widget.nocache.js', type='text/javascript')
