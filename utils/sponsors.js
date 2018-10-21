@@ -1,19 +1,19 @@
 let sponsors = [
     {
-        link:"https://google.com",
+        link:"https://www.jio.com",
         img:"/static/images/sponsors/Jio.png",
         imgalt:"",
         meta:"DIGITAL LIFE PARTNER"
     },
     {   
-        link:"",
+        link:"https://www.timken.com/en-in/",
         img:"/static/images/sponsors/timken-big.jpg",
         imgalt:"",
         meta:"CO-TITLE"
 
     },
     {   
-        link:"",
+        link:"https://www.ibm.com/in-en/",
         img:"/static/images/sponsors/ibm.png",
         imgalt:"",
         meta:"POWERED BY IBM"
@@ -32,8 +32,8 @@ let sponsors = [
         meta:"Bus Partner"
     },
     {   
-        link:"",
-        img:"/static/images/sponsors/download.png",
+        link:"https://play.google.com/store/apps/details?id=com.kryptolabs.android.speakerswire",
+        img:"/static/images/sponsors/swoo.png",
         imgalt:"",
         meta:"TITLE SPONSOR-ENIGMA"
 
@@ -150,8 +150,8 @@ let sponsors = [
 
     },
     {   
-        link:"",
-        img:"/static/images/sponsors/mm.png",
+        link:"https://www.metrobikes.in/",
+        img:"/static/images/sponsors/Red.png",
         imgalt:"",
         meta:""
 
