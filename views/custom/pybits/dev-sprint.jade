@@ -1,5 +1,8 @@
 include navigation
-link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.main.css') 
+include ../../mixins/form
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.main.css')
+link(rel='stylesheet', href='/static/stylesheets/pybits/pybits.about.css')
+script(type="text/javascript" src="/static/scripts/pybits.js")
 style.
 	#nav-bottom {
 		position: fixed;
@@ -7,7 +10,13 @@ style.
 		right: 0;
 	}
 #pybits-wrapper
-	.immersive-wrapper#pybits-background
-		.text-center#heading-not-home Dev-Sprint Coming Soon.
+	#pybits-background.immersive-wrapper.text-center
+		h1#heading Dev Sprint
+		h1
+			| Developer sprints are like mini hackathons where programmers work (and eat/drink) and contribute to a particular project. They usually are assisted by the core team of the project. This PyBITS Zulip, a San Francisco based regular Google Summer of Code organization, is coming to introduce developers to open source projects of their org and help you all get started contributing to Zulip and other open source projects.
+		ul#two-day-events
+			li
+				a(href='https://goo.gl/forms/8Gvzfdi1GJfkrhlP2') Register Here!
+
 		+navigationMixin(false)
 script(src="/static/scripts/pybits.main.js")

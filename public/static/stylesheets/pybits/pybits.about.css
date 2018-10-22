@@ -27,6 +27,7 @@ ul#two-day-events {
    font-size:22px;
    margin-left: 5px;
    margin-right: 5px;
+   list-style: none;
 }
 #two-day-events>li:hover {
     border-left: 3px red solid;
