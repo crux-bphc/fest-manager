@@ -87,6 +87,17 @@ router.get('/workshops', function (req, res, next) {
 	});
 });
 
+router.get('/workshops/blockchain', function (req, res, next) {
+	req.stateparams.pagetitle = 'PyBITS Workshops';
+	req = applyStateChanges(req);
+	req.stateparams.subtitle = "PyBITS Workshops";
+	res.renderState('custom/pybits/workshops/blockchain', {
+		title: 'PyBITS Workshops',
+		user: req.user,
+		pybits: true,
+	});
+});
+
 router.get('/tickets', function (req, res, next) {
 	req.stateparams.pagetitle = 'PyBITS Tickets';
 	req = applyStateChanges(req);
