@@ -62,7 +62,7 @@ body {
   background: #151515;
   font-family: "Roboto", sans-serif;
   font-size: 1.6rem;
-  line-height: 3rem;
+  
   color: #353535;
   margin: 0;
   padding: 0;
@@ -172,11 +172,11 @@ em, i, strong, b {
 }
 
 em, i {
-  font-family: "montserrat-regular", serif;
+  font-family: "montserrat-regular", sans-serif;
 }
 
 strong, b {
-  font-family: "montserrat-regular", serif;
+  font-family: "montserrat-regular", sans-serif;
 }
 
 small {
@@ -716,13 +716,12 @@ input[type="button"] {
   font-family: "montserrat-bold", sans-serif;
   font-size: 1.4rem;
   text-transform: uppercase;
-  letter-spacing: .3rem;
+  
   height: 5.4rem;
   line-height: 5.4rem;
   padding: 0 3rem;
   margin: 0 .3rem 1.2rem 0;
-  background: #A5A5A5;
-  color: #222222;
+  color: inherit;
   text-decoration: none;
   cursor: pointer;
   text-align: center;
@@ -746,8 +745,8 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-  background: #989898;
-  color: #000000;
+  
+  color: #07617d;
   outline: 0;
 }
 
@@ -1277,6 +1276,11 @@ header .header-logo a {
  *   home - (_layout.scss)
  *
  * ------------------------------------------------------------------- */
+ .hash-home {
+  padding: 0 !important;
+  height: 100vh !important;
+}
+
 #home {
   width: 100%;
   height: 100%;
@@ -1290,6 +1294,9 @@ header .header-logo a {
   background-attachment: fixed;
   min-height: 750px;
   position: relative;
+  line-height: 3rem;
+
+
 }
 #home .overlay {
   position: absolute;
@@ -1328,7 +1335,7 @@ header .header-logo a {
   margin: 0 0 .9rem 0;
 }
 .home-content-tablecell h1 {
-  font-family: "montserrat-bold", serif;
+  
   font-size: 18rem;
   line-height: 1.133;
   color: #FFFFFF;
@@ -1337,8 +1344,11 @@ header .header-logo a {
   margin: 4.8rem 0 0 0;
 }
 .home-content-tablecell .more .button {
+  border-radius: 0px;
+  padding:0 3em;
   border-color: #FFFFFF;
   color: #FFFFFF;
+  letter-spacing: .3rem;
 }
 
 .logocontent{
@@ -1346,8 +1356,8 @@ header .header-logo a {
 }
 .imagelogo{
   display: inline-block;
-  height: 30rem;
-  width: 30rem;
+  height: 28rem;
+  width: 28rem;
   border-radius: 50%;
   
   background-image:url(./images/arena_logo.png);
@@ -1356,6 +1366,12 @@ header .header-logo a {
   background-size: 75% ;
   -webkit-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
+}
+@media only screen and (max-width: 600px) {
+  .imagelogo{
+    height: 25rem;
+    width: 25rem;
+  }
 }
 
 /* home social-list */
@@ -1419,8 +1435,9 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 
 .scroll-icon {
   display: inline-block;
-  font-family: "montserrat-bold", sans-serif;
+  font-family: "montserrat", sans-serif;
   font-size: 1.4rem;
+  font-weight: 700 ;
   text-transform: uppercase;
   letter-spacing: .3rem;
   color: #FFFFFF !important;
@@ -1541,6 +1558,9 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   .home-social-list::before {
     height: 24px;
   }
+  .home-content-tablecell .more .button {
+    padding: 0 1em;
+  }
 }
 @media only screen and (max-width: 400px) {
   #home {
@@ -1571,21 +1591,28 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   background-color: #FFFFFF;
   min-height: 696px;
   text-align: center;
+  font-family: "montserrat", sans-serif;
+  font-weight: 600;
 }
 #about .about-wrap {
   max-width: 850px;
 }
 #about span {
   color: #07617d;
+  font-family: "montserrat", sans-serif;
+  font-weight: 600;
 }
 #about h3 {
-  font-family: "montserrat-bold", sans-serif;
+ 
   font-size: 1.8rem;
   line-height: 1.667;
   color: #07617d;
   text-transform: uppercase;
   letter-spacing: .3rem;
   position: relative;
+  font-family: "montserrat", sans-serif;
+  font-weight: 600;
+  
 }
 #about h3::before {
   display: block;
@@ -1596,11 +1623,13 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   margin: 0 auto 2.4rem;
 }
 #about .lead {
-  font-family: "montserrat-regular", serif;
+  
   font-size: 3rem;
   line-height: 1.8;
   color: #2e383f;
   margin-top: 6rem;
+  font-family: "montserrat", sans-serif;
+  font-weight: 600;
 }
 
 /* ------------------------------------------------------------------- 
@@ -1654,7 +1683,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
     font-size: 1.5rem;
   }
   #about .lead {
-    font-size: 2.5rem;
+    font-size: 2.0rem;
   }
 }
 @media only screen and (max-width: 400px) {
@@ -1665,7 +1694,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
     max-width: 380px;
   }
   #about .lead {
-    font-size: 2.3rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -1841,10 +1870,12 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
  *
  * ------------------------------------------------------------------- */
 footer {
+  line-height: 3rem;
   margin: 1rem 0 0.4rem 0;
   padding: 0;
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.4);
+  background: #151515;
 }
 footer a, footer a:visited {
   color: #FFFFFF;
@@ -1885,6 +1916,9 @@ footer h4.h05::after {
 .footer-main {
   padding-top: 9.6rem;
   padding-bottom: 3rem;
+  background: #151515;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
 }
 .footer-main ul {
   font-size: 1.5rem;
@@ -2047,12 +2081,20 @@ contacts
 ------------ */
 
 .contactus{
+  line-height: 3rem;
   font-size: 50px;
   text-align: center ; 
   margin-bottom: 50px;
   color:white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+#contactusp{
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
 }
 .contacts{
+  
   text-align: center;
   
 }
@@ -2060,6 +2102,11 @@ contacts
 .contact_div p{
   font-size: 1.5srem;
   font-family:"montserrat-regular" ,sans-serif;
+  font-weight: 300;
+}
+.contact_div span{
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
 }
 
 
@@ -2077,6 +2124,9 @@ contacts
 .contact_div{
   margin: 20px 40px 20px 40px;
 }
+.contact_div b{
+  font-family:"montserrat-regular" ,sans-serif;
+}
 
 }
 @media only screen and (max-width: 768px) {
@@ -2087,8 +2137,13 @@ contacts
     font-size: 2.0rem;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 420px) {
   .contactus{
     font-size: 40px;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .contactus{
+    font-size: 30px;
   }
 }

@@ -2,6 +2,7 @@ link(href='/static/stylesheets/home.style.css', rel='stylesheet')
 link(rel='stylesheet' href='/static/home/base.css')
 link(rel='stylesheet' href='/static/home/vendor.css')
 link(rel='stylesheet' href='/static/home/main.css')
+link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Roboto:400,500,700") 
 script(src='/static/home/js/modernizr.js')
 script(src='/static/home/js/pace.min.js')
 //- #preloader
@@ -21,7 +22,7 @@ script(src='/static/home/js/pace.min.js')
             .animate-intro.logocontent
               span.imagelogo
             .more.animate-intro
-              a.smoothscroll.button.stroke(href='#about')
+              a.button.stroke(href='/events')
                 | Events
           // end col-twelve
         // end row
@@ -66,7 +67,7 @@ script(src='/static/home/js/pace.min.js')
       .row
         .contactustext
           .contactus
-            p CONTACT US
+            p(id= "contactusp") CONTACT US
           .between
           .contacts
             .contact_divb
@@ -77,26 +78,26 @@ script(src='/static/home/js/pace.min.js')
                   br
                   | 8790359970
               .contact_div
-                | Sohith Deva 
+                span| Sohith Deva 
                 p
                   | Sports Secretary 
                   br
                   | 7997084524
               .contact_div
-                | Kritika Kasliwal 
+                span| Kritika Kasliwal 
                 p
                   | Sports Secretary 
                   br
                   | 7997083711
             .contact_divb
               .contact_div
-                | Jayakanth Teegala 
+                span| Jayakanth Teegala 
                 p
                   | Publicity
                   br
                   | 9502637212
               .contact_div
-                | Pavan Teja Macharla 
+                span| Pavan Teja Macharla 
                 p
                   | Reg &amp; Accom
                   br
