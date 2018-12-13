@@ -1,150 +1,118 @@
 link(href='/static/stylesheets/home.style.css', rel='stylesheet')
-link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
-link(href='https://fonts.googleapis.com/css?family=Oswald:700', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Roboto+Condensed', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Montserrat:400,600', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Montserrat:300,500,700', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow', rel='stylesheet')
+link(rel='stylesheet' href='/static/home/base.css')
+link(rel='stylesheet' href='/static/home/vendor.css')
+link(rel='stylesheet' href='/static/home/main.css')
+script(src='/static/home/js/modernizr.js')
+script(src='/static/home/js/pace.min.js')
+//- #preloader
+  #loader
 .immersive-wrapper.hash-home
-  .scroll-wrapper
-    .scroll-content#page-1
-      .background-div
-          picture
-            source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/background.png')
-            img.background(src='/static/images/home/Mobile Version/Broken_portal/mobile_background.png')
-      .dust-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks.png')
-          img.dust-one(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks1.png')
-      .dust-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks1.png')
-          img.dust-two(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks2.png')
-        // <img src="/static/images/home/BrokenPortal/rocks1.png" class="dust-two">
-      .dust-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks2.png')
-          img.dust-three(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks3.png')
-      .beam-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/beam.png')
-          img.beam(src='/static/images/home/Mobile Version/Broken_portal/mobile_beam.png')
-      .top-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/top.png')
-          img.top(src='/static/images/home/Mobile Version/Broken_portal/mobile_top.png')
-      .text-div
-        | INTO THE SIXTH DIMENSION
-      .text
-        .days
-          p.date 26-28
-          p.month OCTOBER
-        .social
-          a(href='https://www.facebook.com/bits.atmos')
-            i.fab.fa-facebook-f
-          a(href='https://twitter.com/bitsatmos')
-            i.fab.fa-twitter
-          a(href='https://www.instagram.com/atmos_bitsh')
-            i.fab.fa-instagram
-    .scroll-content#page-2
-      .background-wrapper
-      .places
-        .bNb BIGGER AND BETTER
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Top.png')
-          img.top(src='/static/images/home/Mobile Version/Tickets/mobile_top.png')
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Bottom.png')
-          img.bottom(src='/static/images/home/Mobile Version/Tickets/mobile_bottom.png')
-        .yr 2018
-        .nm ATMOS
-        a(href="#{config.strings.registrationLink}").tickets GET YOUR TICKETS NOW!
-    .scroll-content#page-3
-      #background
-        #building
-        #content-flex
-          #Bold
-            br
-            | ABOUT US
-            br
-          .text3
-            .para3
-              h2 ATMOS '18
-              br
-              |   The 7th iteration of ATMOS, our annual techno-management fest, returns with grandeur greater than its predecessors this 26th of October.
-              br
-              br
-              |    Since its inception in 2010, ATMOS, reputed for its quality of workshops, quizzes, lectures, technical exhibitions, and competitions, is among the fastest growing tech-fests in our country providing one of the largest platforms for students, academicians and entrepreneurs across the country to showcase their talents in the fields of science and technology. With a staggeringly high footfall and participation of students from over 200 colleges every year, ATMOS 2018, true to its theme, Into the 6th Dimension, aims to rise to a whole new dimension.
-    .scroll-content#page-4
-      a(href="/events#Workshop")#events.box
-          #event-grad.gradient
-          #event-link.links WORKSHOPS
-      a(href="/events#Competition")#competitions.box
-        #competition-grad.gradient
-        #competition-link.links COMPETITIONS
-      a(href="/events#Talk")#talks.box
-        #talk-grad.gradient
-        #talk-link.links TALKS
-    .scroll-content#page-5
-      .contactusbackground
-          .floatingitems
-            .shadow
-              img.sha(src='/static/images/home/contactus/Shadowstransparent.png')
-            .trianlge
-              img.tri(src='/static/images/home/contactus/floatingbuilding.png')
-            .cloud
-              img.cl(src='/static/images/home/contactus/cloud1.png')
-            .cloud
-              img.cl(src='/static/images/home/contactus/cloud2.png')
-            .cloud
-              img.cl(src='/static/images/home/contactus/cloud3.png')
-          .contactustext
-            .title
-              p CONTACT US
-            .between
-            .contacts
+  section#home
+    .gird-overlay
+    .home-content-table
+      .home-content-tablecell
+        .row
+          .col-twelve
+            //
+              <h1 class="animate-intro letters">
+              ARENA<br>
+              </h1>
+              <h3 class="animate-intro">Where legends are born.</h3>
+            .animate-intro.logocontent
+              span.imagelogo
+            .more.animate-intro
+              a.smoothscroll.button.stroke(href='#about')
+                | Events
+          // end col-twelve
+        // end row
+      // end home-content-tablecell
+    // end home-content-table
+    ul.home-social-list
+      li.animate-intro
+        a(href='https://www.facebook.com/bits.arena/')
+          i.fa.fa-facebook-square
+      li.animate-intro
+        a(href='https://twitter.com/BITS_Arena')
+          i.fa.fa-twitter
+      li.animate-intro
+        a(href='https://www.instagram.com/bits_arena/')
+          i.fa.fa-instagram
+    // end home-social-list
+    .scrolldown
+      a.scroll-icon.smoothscroll(href='#about')
+        | Scroll Down&#x9;&#x9;   &#x9;
+        i.fa.fa-long-arrow-right(aria-hidden='true')
+  // end home
+  //
+    about
+    ==================================================
+  section#about
+    .row.about-wrap
+      .col-full
+        .about-profile-bg
+        .intro
+          h3.animate-this About Us
+          p.lead.animate-this
+            span Arena 
+            | is one of the biggest sporting festivals conducted in India. This year we plan on hosting the 7th edition of Arena, Arena &apos;19. Keeping up with the ambitions and ex&shy;pectations from a campus such as ours, we are envisioning an Arena bigger, grander and more thrilling than ever before.
+      // end col-full
+    // end about-wrap
+  // end about
+  //
+    footer
+    ==================================================
+  footer
+    .footer-main
+      .row
+        .contactustext
+          .contactus
+            p CONTACT US
+          .between
+          .contacts
+            .contact_divb
               .contact_div
-                | Aman Syed
+                span Aman Syed
                 p
                   | President
                   br
                   | 8790359970
               .contact_div
-                | Yash Chokhani
+                | Sohith Deva 
                 p
-                  | Coordinator
+                  | Sports Secretary 
                   br
-                  | 8187083476
+                  | 7997084524
               .contact_div
-                | Ram Dheeraj Sirgiri
+                | Kritika Kasliwal 
                 p
-                  | Sponsorship
+                  | Sports Secretary 
                   br
-                  | 7036067666
+                  | 7997083711
+            .contact_divb
               .contact_div
-                | Rohith Reddy
+                | Jayakanth Teegala 
                 p
                   | Publicity
                   br
-                  | 8897454710
+                  | 9502637212
               .contact_div
-                | Dharmesh Singhal
+                | Pavan Teja Macharla 
                 p
-                  | Hospitality
+                  | Reg &amp; Accom
                   br
-                  | 7036187007
-              .contact_div
-                p
-                  | Mail us at 
-                  b atmos@hyderabad.bits-pilani.ac.in
-          .text
-            .social
-              a(href='https://www.facebook.com/bits.atmos')
-                i.fab.fa-facebook-f
-              a(href='https://twitter.com/bitsatmos')
-                i.fab.fa-twitter
-              a(href='https://www.instagram.com/atmos_bitsh')
-                i.fab.fa-instagram
-script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.inview/1.0.0/jquery.inview.min.js')
-script(src='/static/scripts/home.js')
+                  | 8187080393
+            .contact_div
+              p
+                | Mail us at 
+                b arena@hyderabad.bits-pilani.ac.in
+      
+    .footer-bottom
+      .row
+        .col-twelve
+        
+    #go-top
+      a.smoothscroll(title='Back to Top' href='#home')
+        i.fa.fa-long-arrow-up(aria-hidden='true')
+script(src='/static/home/js/jquery-2.1.3.min.js')
+script(src='/static/home/js/plugins.js')
+script(src='/static/home/js/main.js')
