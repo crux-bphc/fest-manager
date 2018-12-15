@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.use('/', fq('components/custom'));
-let routes = ['events', 'dashboard', 'portals', 'about', 'ca', 'login'];
+let routes = ['events', 'dashboard', 'portals', 'about', 'login'];
 routes.forEach(elem => {
 	router.use(`/${elem}`, fq(`components/${elem}`));
 });
