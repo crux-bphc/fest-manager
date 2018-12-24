@@ -225,6 +225,13 @@
     display: flex;
     margin: 1em 0;
 }
+
+@media only screen and (max-width: 590px) {
+    .module-events.open-event .details {
+        height:auto;
+        flex-direction: column;
+    }
+}
 .module-events.open-event .details .time > div {
     display: inline-flex;
     vertical-align: top;
@@ -271,6 +278,11 @@
     border:none;
     align-items: flex-start;
     justify-content: flex-end;
+}
+@media only screen and (max-width: 590px) {
+    .module-events.open-event .details > .prize {
+        justify-content: flex-start;
+    }
 }
 .module-events.open-event .details > .money > span:last-child {
     font-weight: 600;
