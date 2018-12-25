@@ -4,9 +4,10 @@ mixin imgUpload(data)
 			input(type="file" required=data.required id="field-#{data.name}" name="field-#{data.name}" class="cropit-image-input")
 			div(class="cropit-preview", id="cropit-preview-#{data.id}")
 			div.status
-				i.icon-check.response(id="export-img-#{data.id}")
+				i.icon-check.response(id="export-img-#{data.id}") 
 		label(for="field-#{data.name}" id="label-#{data.name}")
 			i.icon-add_a_photo
+	script(src="/static/scripts/image-upload-mixin.js")
 	script.
 		imgCropInit({
 		input: "field-#{data.name}",

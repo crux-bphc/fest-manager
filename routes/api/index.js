@@ -11,6 +11,7 @@ services.push(require('./services/accomm'));
 services.push(require('./services/bodies'));
 services.push(require('./services/feed'));
 services.push(require('./services/news'));
+services.push(require('./services/images'));
 
 services.forEach(function (service) {
 	router.use(service.route, constructor(service.model, service.router, service.permission));

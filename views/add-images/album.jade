@@ -1,0 +1,10 @@
+include ../mixins/form
+script(type="text/javascript" src="/static/lib/jquery.uploadPreview.min.js")
+.immersive-wrapper 
+    #add-images-album-wrapper 
+        - var form = { fields: fields, method: "PUT", action: "/api/users/me"};
+        +formMixin(form)
+        #submit-button
+            button Submit
+script(src="/static/scripts/add-images.js")
+        
