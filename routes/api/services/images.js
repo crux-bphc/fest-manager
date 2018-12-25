@@ -11,7 +11,6 @@ var imageSchema = new Schema({
     img: String
 });
 var model = mongoose.model('images', imageSchema);
-var images = []; // stores image names as string.
 
 
 
@@ -19,24 +18,17 @@ router.post("/", function(req, res, next) {
     var album = (req.body.album).trim();
     var title = (req.body.title).trim();
     var subtitle = (req.body.subtitle).trim();
-    var imagePath = (req.body.image).trim();
+    var imagePath = (req.body.path).trim();
+    var imageName = imagePath.split("/")[4];
 
-    fs.readdir("public/static/data/images", function(err, files) {
-        files.forEach(file => {
-            if(file.search(/.png|.jpg|.jpeg/) != -1) {
-                images.push(file);
-            }
-        });
-        var latestImage = images[images.length -1];
         var imageModel = new model({
             albumname: album,
             title: title,
             subtitle: subtitle,
-            img: latestImage
+            img: imageName
         });
         imageModel.save();
         return res.json(req.body);
-    });
 });
 var permission = {
 	read_one: 0,

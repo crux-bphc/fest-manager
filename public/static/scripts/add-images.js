@@ -13,7 +13,8 @@ $(document).ready(function() {
                         album: $('#field-album-name').val(),
                         title: $('#field-title').val(),
                         subtitle: $('#field-subtitle').val() || "",
-                        image: $("#field-image").val()
+                        image: $("#field-image").val(),
+                        path: $("#image-editor-1").attr("value")
                     }
                 }).done(function (data) {
                     swal({
