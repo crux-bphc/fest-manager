@@ -24,6 +24,10 @@ router.get('/?*', function (req, res, next) {
 				label: "Events",
 				route: "/events",
 			},
+			organizingBody:{
+				label:"Organizing Body",
+				route:"/fob",
+			},
 			// workshops: {
 			// 	label: "Workshops",
 			// 	route: "/events#Workshop",

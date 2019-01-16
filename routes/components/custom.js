@@ -31,5 +31,8 @@ router.use('/prelims/:id', handler);
 router.use('/sponsors', function (req, res) {
 	res.renderState('sponsors', {});
 });
+router.use("/fob",function(req,res){
+	res.renderState("fob",{});
+});
 
 module.exports = router;
