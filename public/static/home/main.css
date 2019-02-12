@@ -1354,24 +1354,60 @@ header .header-logo a {
 .logocontent{
   display: inline;
 }
-.imagelogo{
+.logo-circle{
   display: inline-block;
-  height: 28rem;
-  width: 28rem;
+  height: 35rem;
+  width: 35rem;
   border-radius: 50%;
   
-  background-image:url(./images/arena_logo.png);
+  background-image:url(./images/circle.png);
   background-repeat: no-repeat;
   background-position: 50% center;
-  background-size: 75% ;
+  background-size: 128% ;
   -webkit-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
 @media only screen and (max-width: 600px) {
-  .imagelogo{
+  .logo-circle{
     height: 25rem;
     width: 25rem;
   }
+}
+.logo-circle span{
+  position: absolute;
+  transform: translateX(-50%);
+  height:35rem;
+  width:35rem;
+  transform-origin: 50% 40%;
+  background-size:75%;
+  background-repeat: no-repeat;
+  animation-delay: 2s
+}
+@media only screen and (max-width: 600px) {
+  .logo-circle span{
+    height: 25rem;
+    width: 25rem;
+  }
+}
+.logo-letters{
+  background-image:url(./images/letters-01.svg);
+  background-position: 48% 60%;
+}
+.logo-buddha{
+  background-image:url(./images/buddha.svg);
+  background-position: -47% -55%;
+}
+.logo-charminar{
+  background-image:url(./images/charminar.svg);
+  background-position: 40% -40%;
+}
+.logo-hcity{
+  background-image:url(./images/Hcity.svg);
+  background-position: 131% -15%;
+}
+.logo-metro{
+  background-image:url(./images/Metro.svg);
+  background-position: 75% 149%;
 }
 
 /* home social-list */
