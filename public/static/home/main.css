@@ -152,7 +152,8 @@ p img {
 }
 
 p.lead {
-  font-family: "montserrat-regular", sans-serif;
+  /* font-family: "montserrat-regular", sans-serif; */
+  font-family: "Medula One", cursive;
   font-size: 2rem;
   line-height: 1.8;
   color: #4f4f4f;
@@ -172,11 +173,11 @@ em, i, strong, b {
 }
 
 em, i {
-  font-family: "montserrat-regular", sans-serif;
+  font-family: "Medula One", cursive;
 }
 
 strong, b {
-  font-family: "montserrat-regular", sans-serif;
+  font-family: "Medula One", cursive;
 }
 
 small {
@@ -1285,7 +1286,7 @@ header .header-logo a {
   width: 100%;
   height: 100%;
   background-color: #151515;
-  background-image: url(./images/hero-bg.jpg);
+  background-image: url(./images/bg.jpg);
   background-repeat: no-repeat;
   background-position: center 30%;
   -webkit-background-size: cover;
@@ -1345,10 +1346,29 @@ header .header-logo a {
 }
 .home-content-tablecell .more .button {
   border-radius: 0px;
-  padding:0 3em;
-  border-color: #FFFFFF;
-  color: #FFFFFF;
+  display: block;
+  background-color: rgba(0, 0, 0, 0);
+  text-align: right;
+  transform: translateX(10%);
+  border-color: #000;
+  color: #000;
   letter-spacing: .3rem;
+}
+.more .button:hover{
+  background-color: rgba(0, 0, 0, 0) !important;
+  color:#c23;
+}
+
+@media only screen and (max-width: 600px) {
+  .more .button{
+    font-size:1rem;
+  }
+  .more{
+    transform:translateY(120%);
+  }
+  /* .home-content-tablecell .more .button {
+    
+  } */
 }
 
 .logocontent{
@@ -1360,14 +1380,18 @@ header .header-logo a {
 }
 .logo-circle{
   display: inline-block;
-  height: 40rem;
-  width: 40rem;
-  border-radius: 50%;
+  height: 36rem;
+  width: 32rem;
+  overflow: hidden;
+  /* border-radius: 100%; */
+  border-bottom-right-radius: 47%;
+  border-bottom-left-radius: 47%;
+  /* background-color:#fff; */
   perspective: 150px;
   background-image:url(./images/circle.png);
   background-repeat: no-repeat;
-  background-position: 50% center;
-  background-size: 128% ;
+  background-position: 49% 52%;
+  background-size: 180% ;
   -webkit-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
   opacity: 0;
@@ -1375,22 +1399,25 @@ header .header-logo a {
 }
 @media only screen and (max-width: 600px) {
   .logo-circle{
-    height: 25rem;
-    width: 25rem;
+    height: 23rem;
+    width: 21rem;
   }
 }
 .logo-circle span{
   position: absolute;
-  height:40rem;
-  width:40rem;
-  background-size:75%;
+  height: 40rem;
+  width: 40rem;
+  background-size:83%;
   background-repeat: no-repeat;
 }
 @media only screen and (max-width: 600px) {
   .logo-circle span{
-    height: 25rem;
-    width: 25rem;
+    height: 26.1rem;
+    width: 26.1rem;
   }
+  /* .logo-metro{
+    background-position-y: 291%
+  } */
 }
 @keyframes building_rot{
   0%{transform: rotateX(90deg) translateX(-50%); opacity: 0;}
@@ -1398,27 +1425,30 @@ header .header-logo a {
 }
 .logo-letters{
   background-image:url(./images/letters-01.svg);
-  background-position: 48% 60%;
+  background-position: 48% 22%;
   transform: translateX(-50%);
 }
 .logo-buddha,.logo-charminar,.logo-hcity{
   transform: translateX(-50%) rotateX(90deg);
   opacity: 0;
-  transform-origin: 50% 40%;
+  transform-origin: 50% 35%;
 }
 .logo-buddha{
   background-image:url(./images/buddha.svg);
-  background-position: -47% -55%;
+  /* background-position: -47% -55%; */
+  background-position: -105% -160%;
   animation: building_rot 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3s forwards
 }
 .logo-charminar{
   background-image:url(./images/charminar.svg);
-  background-position: 40% -40%;
+  /* background-position: 40% -40%; */
+  background-position: 38% -130%;
   animation: building_rot 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 4s forwards
 }
 .logo-hcity{
   background-image:url(./images/Hcity.svg);
-  background-position: 131% -15%;
+  /* background-position: 131% -15%; */
+  background-position: 186% -92%;
   animation: building_rot 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3.5s forwards
 }
 @keyframes metro_rot{
@@ -1429,13 +1459,16 @@ header .header-logo a {
 }
 @keyframes metro_rot1{
   0%{transform:rotateZ(0deg) translateX(-50%);}
-  100%{transform:rotateZ(-360deg) translateX(-50%);}
+  25%{transform:rotateZ(-20deg) translateX(-50%);}
+  75%{transform:rotateZ(20deg) translateX(-50%);}
+  100%{transform:rotateZ(0deg) translateX(-50%);}
 }
 .logo-metro{
   background-image:url(./images/Metro.svg);
-  background-position: 75% 149%;
-  transform-origin: 26% 330%;
-  animation: 10s metro_rot linear infinite;
+  /* background-position: 75% 149%; */
+  background-position: 75% 181%;
+  transform-origin: 25% 330%;
+  animation: 8s metro_rot1 1.2s linear infinite;
 }
 
 /* home social-list */
@@ -1464,12 +1497,13 @@ header .header-logo a {
   padding-left: 0;
 }
 .home-social-list li a, .home-social-list li a:visited {
-  color: #FFFFFF;
+  color: #000;
 }
 .home-social-list li a:hover, 
 .home-social-list li a:focus, 
 .home-social-list li a:active {
-  color: #07617d;
+  /* color: #07617d; */
+  color:#c23;
 }
 
 /* scroll down */
@@ -1489,7 +1523,7 @@ header .header-logo a {
   padding-left: 9px;
 }
 .scrolldown a:hover, .scrolldown a:focus, .scrolldown a:active {
-  color: #07617d !important;
+  color: #c23 !important;
 }
 
 html[data-useragent*='MSIE 10.0'] .scrolldown,
@@ -1504,7 +1538,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   font-weight: 700 ;
   text-transform: uppercase;
   letter-spacing: .3rem;
-  color: #FFFFFF !important;
+  color: black !important;
   background: transparent;
   position: relative;
   top: 36px;
@@ -1655,14 +1689,14 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   background-color: #FFFFFF;
   min-height: 696px;
   text-align: center;
-  font-family: "montserrat", sans-serif;
+  font-family: "Medula One",cursive;
   font-weight: 600;
 }
 #about .about-wrap {
   max-width: 850px;
 }
 #about span {
-  color: #07617d;
+  color: #c23;
   font-family: "montserrat", sans-serif;
   font-weight: 600;
 }
@@ -1670,7 +1704,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
  
   font-size: 1.8rem;
   line-height: 1.667;
-  color: #07617d;
+  color: #c23;
   text-transform: uppercase;
   letter-spacing: .3rem;
   position: relative;
@@ -1695,7 +1729,71 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   font-family: "montserrat", sans-serif;
   font-weight: 600;
 }
+#about .footfall{
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000000;
+  position: absolute;
+  left: 20%;
+  top: 83%;
+  font-size: 3.5rem;
+}
 
+#about .hits{
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000000;
+  position: absolute;
+  top: 83%;
+  font-size: 3.5rem;
+  left: 70%;
+}
+
+#about .third{
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000000;
+  position: absolute;
+  top: 83%;
+  font-size: 3.5rem;
+  left: 45%;
+}
+
+#text-counter .footfall{
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000000;
+  position: absolute;
+  top: 90%;
+  font-size: 3.5rem;
+  left: 20%;
+}
+
+#text-counter .hits{
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000000;
+  position: absolute;
+  top: 90%;
+  font-size: 3.5rem;
+  left: 70%;
+}
+
+#text-counter .third{
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000000;
+  position: absolute;
+  top: 90%;
+  font-size: 3.5rem;
+  left: 45%;
+}
+/* .row.about-wrap{
+  margin-bottom:10%;
+} */
 /* ------------------------------------------------------------------- 
  * responsive:
  * about 
@@ -2172,6 +2270,48 @@ contacts
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
+
+/* .created_by{
+  bottom:0;
+  transition: background-color 0.5s, color 0.5s;
+}
+.created_by:hover{
+  background-color:#655;
+  color:#000;
+} */
+/* @keyframes{
+  0%{
+
+  }
+} */
+.created_by .drop_up{
+  position: absolute;
+  opacity: 0;
+  height:5rem;
+  /* height:15rem; */
+  width:30rem;
+  overflow: hidden;
+  background-color: #dcdcdc;
+  color:#121212;
+  left:50%;
+  transform: translate(-50%,-50%);
+  transition:0.5s height,0.5s width, 0.5s opacity;
+}
+.created_by .drop_up:hover{
+  height:15rem;
+  width:20rem;
+  opacity:1;
+  border: 4px solid #1212;
+  border-radius:10%;
+  color:#fff !important;
+}
+.drop_up li a{
+  color:#000 !important;
+}
+.drop_up li a:hover{
+  color:#fff !important;
+}
+
 
 
 @media only screen and (min-width: 768px) {
