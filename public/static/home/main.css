@@ -1354,18 +1354,24 @@ header .header-logo a {
 .logocontent{
   display: inline;
 }
+@keyframes landing_anim{
+  0%{transform: scale(3) rotateY(360deg);opacity: 0;}
+  100%{transform: scale(1) rotateY(0deg);opacity: 1;}
+}
 .logo-circle{
   display: inline-block;
-  height: 35rem;
-  width: 35rem;
+  height: 40rem;
+  width: 40rem;
   border-radius: 50%;
-  
+  perspective: 150px;
   background-image:url(./images/circle.png);
   background-repeat: no-repeat;
   background-position: 50% center;
   background-size: 128% ;
   -webkit-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
+  opacity: 0;
+  animation: 1s landing_anim 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 @media only screen and (max-width: 600px) {
   .logo-circle{
@@ -1375,13 +1381,10 @@ header .header-logo a {
 }
 .logo-circle span{
   position: absolute;
-  transform: translateX(-50%);
-  height:35rem;
-  width:35rem;
-  transform-origin: 50% 40%;
+  height:40rem;
+  width:40rem;
   background-size:75%;
   background-repeat: no-repeat;
-  animation-delay: 2s
 }
 @media only screen and (max-width: 600px) {
   .logo-circle span{
@@ -1389,25 +1392,50 @@ header .header-logo a {
     width: 25rem;
   }
 }
+@keyframes building_rot{
+  0%{transform: rotateX(90deg) translateX(-50%); opacity: 0;}
+  100%{transform: rotateX(0deg) translateX(-50%); opacity: 1;}
+}
 .logo-letters{
   background-image:url(./images/letters-01.svg);
   background-position: 48% 60%;
+  transform: translateX(-50%);
+}
+.logo-buddha,.logo-charminar,.logo-hcity{
+  transform: translateX(-50%) rotateX(90deg);
+  opacity: 0;
+  transform-origin: 50% 40%;
 }
 .logo-buddha{
   background-image:url(./images/buddha.svg);
   background-position: -47% -55%;
+  animation: building_rot 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3s forwards
 }
 .logo-charminar{
   background-image:url(./images/charminar.svg);
   background-position: 40% -40%;
+  animation: building_rot 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 4s forwards
 }
 .logo-hcity{
   background-image:url(./images/Hcity.svg);
   background-position: 131% -15%;
+  animation: building_rot 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3.5s forwards
+}
+@keyframes metro_rot{
+  0%{transform:rotateZ(0deg) translateX(-50%);}
+  25%{transform:rotateZ(-2deg) translateX(-50%);}
+  75%{transform:rotateZ(2deg) translateX(-50%);}
+  100%{transform:rotateZ(0deg) translateX(-50%);}
+}
+@keyframes metro_rot1{
+  0%{transform:rotateZ(0deg) translateX(-50%);}
+  100%{transform:rotateZ(-360deg) translateX(-50%);}
 }
 .logo-metro{
   background-image:url(./images/Metro.svg);
   background-position: 75% 149%;
+  transform-origin: 26% 330%;
+  animation: 10s metro_rot linear infinite;
 }
 
 /* home social-list */
