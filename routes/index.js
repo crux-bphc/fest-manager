@@ -24,10 +24,10 @@ router.get('/?*', function (req, res, next) {
 				label: "Events",
 				route: "/events",
 			},
-			organizingBody:{
-				label:"Organizing Body",
-				route:"/fob",
-			},
+			// organizingBody:{
+			// 	label:"Organizing Body",
+			// 	route:"/fob",
+			// },
 			// workshops: {
 			// 	label: "Workshops",
 			// 	route: "/events#Workshop",
@@ -41,10 +41,10 @@ router.get('/?*', function (req, res, next) {
 					for: "visible"
 				},
 			},
-			// ca: {
-			// 	label: "Campus Ambassador",
-			// 	route: "/ca",
-			// },
+			ca: {
+				label: "Campus Ambassador",
+				route: "/ca",
+			},
 			portals: {
 				route: "/portals",
 				initial: "disabled",
