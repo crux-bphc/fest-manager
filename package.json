@@ -30,6 +30,7 @@
     "mongoose-shortid-nodeps": "^0.6.5",
     "morgan": "~1.8.1",
     "nodemailer": "^4.0.1",
+    "npm": "^6.5.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github": "^1.1.0",

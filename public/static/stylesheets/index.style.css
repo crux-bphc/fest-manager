@@ -131,7 +131,7 @@ input[type = "file"] {
     transition: color 0.2s, margin-top 0.3s 0.3s ease-out, box-shadow 0.1s;
     z-index: +1000;
     margin-bottom: 0px;
-    color: #fff;
+    color: #000;
     /*display: none;*/
 }
 
@@ -1017,7 +1017,7 @@ form .field-container > .remnant > textarea {
 }
 
 .main a.button:hover {
-    background:#e0e0e0;
+    background: rgba(0,0,0,0);
 }
 
 .list {
