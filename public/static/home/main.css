@@ -72,7 +72,7 @@ body {
  * links - (_document-setup) 
  * ------------------------------------------------------------------- */
 a, a:visited {
-  color: #07617d;
+  color: #c23;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -329,7 +329,7 @@ ul.disc li::before {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #07617d;
+  background: #c23;
   position: absolute;
   left: -17px;
   top: 11px;
@@ -338,7 +338,7 @@ ul.disc li::before {
 
 dt {
   margin: 0;
-  color: #07617d;
+  color: #c23;
 }
 
 dd {
@@ -468,7 +468,7 @@ td:last-child {
 }
 
 .pace .pace-progress {
-  background: #07617d;
+  background: #c23;
   position: fixed;
   z-index: 900;
   top: 0;
@@ -507,7 +507,7 @@ td:last-child {
   margin-left: -30px;
   margin-top: -30px;
   padding: 0;
-  background-color:#07617d;
+  background-color:#c23;
   border-radius: 100%;
   -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
   animation: sk-scaleout 1.0s infinite ease-in-out;
@@ -747,7 +747,7 @@ input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
   
-  color: #07617d;
+  color: #c23;
   outline: 0;
 }
 
@@ -807,8 +807,8 @@ button.stroke.large, .button.stroke.large {
 }
 
 button.stroke:hover, .button.stroke:hover {
-  border: 3px solid #07617d;
-  color: #07617d;
+  border: 3px solid #c23;
+  color: #c23;
 }
 
 button::-moz-focus-inner,
@@ -994,7 +994,7 @@ input::-moz-focus-inner {
   color: #252525;
 }
 .stats-tabs li a:hover {
-  color: #07617d;
+  color: #c23;
 }
 .stats-tabs li a em {
   display: block;
@@ -1509,7 +1509,7 @@ header .header-logo a {
 .home-social-list li a:hover, 
 .home-social-list li a:focus, 
 .home-social-list li a:active {
-  /* color: #07617d; */
+  /* color: #c23; */
   color:#c23;
 }
 
@@ -1878,7 +1878,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   font-family: "montserrat-bold", sans-serif;
   font-size: 1.8rem;
   line-height: 1.667;
-  color: #07617d;
+  color: #c23;
   text-transform: uppercase;
   letter-spacing: .3rem;
   position: relative;
@@ -2050,7 +2050,7 @@ footer a, footer a:visited {
   color: #FFFFFF;
 }
 footer a:hover, footer a:focus {
-  color: #07617d;
+  color: #c23;
 }
 footer .row {
   max-width: 1024px;
@@ -2118,7 +2118,7 @@ footer h4.h05::after {
   background-color: rgba(0, 0, 0, 0.9);
 }
 .footer-main #mc-form button {
-  background-color: #07617d;
+  background-color: #c23;
   color: #000000;
   width: 6rem;
   height: 6rem;
@@ -2140,7 +2140,7 @@ footer h4.h05::after {
   left: .2rem;
 }
 .footer-main #mc-form label {
-  color: #07617d;
+  color: #c23;
   font-family: "montserrat-regular", sans-serif;
 }
 
