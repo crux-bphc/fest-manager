@@ -1344,27 +1344,34 @@ header .header-logo a {
 .home-content-tablecell .more {
   margin: 4.8rem 0 0 0;
 }
-.home-content-tablecell .more .button {
+.home-content-tablecell .more a {
   border-radius: 0px;
   display: block;
   background-color: rgba(0, 0, 0, 0);
   text-align: right;
-  transform: translateX(10%);
-  border-color: #000;
+  transform: translateX(5%);
   color: #000;
+  line-height: 3em;
+  padding: 0 1em;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 600;
   letter-spacing: .3rem;
+  font-family: "montserrat-bold", sans-serif;
+  text-transform: uppercase;
+  height: 5.4rem;
 }
-.more .button:hover{
+.more a:hover{
   background-color: rgba(0, 0, 0, 0) !important;
   color:#c23;
 }
 
 @media only screen and (max-width: 600px) {
-  .more .button{
+  .more a{
     font-size:1rem;
   }
   .more{
-    transform:translateY(120%);
+    transform:translateY(110%);
   }
   /* .home-content-tablecell .more .button {
     
