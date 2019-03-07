@@ -57,10 +57,10 @@ router.get('/?*', function (req, res, next) {
 		}
 	};
 	if (config.strings.registrationLink) {
-		params.navigation['register'] = {
+		params.navigation.register = {
 			label: "Registration",
 			route: config.strings.registrationLink,
-		}
+		};
 	}
 
 	Object.keys(params.navigation).forEach(function (key) {
