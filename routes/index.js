@@ -44,7 +44,7 @@ router.get('/?*', function (req, res, next) {
 			ca: {
 				label: "Campus Ambassador",
 				route: "/ca",
-			},
+			},	
 			portals: {
 				route: "/portals",
 				initial: "disabled",
@@ -56,6 +56,12 @@ router.get('/?*', function (req, res, next) {
 			}
 		}
 	};
+	if (config.strings.registrationLink) {
+		params.navigation.register = {
+			label: "Registration",
+			route: config.strings.registrationLink,
+		};
+	}
 
 	Object.keys(params.navigation).forEach(function (key) {
 		params.navigation[key].triggers = 'sidebar/menu/' + key + '=active ';

@@ -31,6 +31,9 @@ script(src='/static/home/js/pace.min.js')
                 | Events
               a.ca-button(href='/ca')
                 | Campus Ambassador
+              if config.strings.registrationLink
+                a.reg-button(href='#{config.strings.registrationLink}')
+                  | Registration
           // end col-twelve
         // end row
       // end home-content-tablecell
