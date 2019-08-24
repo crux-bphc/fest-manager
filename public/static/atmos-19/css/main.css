@@ -1,0 +1,452 @@
+.atmos-19 {
+    font-family: 'Cardo', serif !important;
+}
+
+.atmos-19 p, h1, h2, h3, h4, h5, h6, p, span, button, input, sup, .row, .container {
+    font-family: 'Cardo', serif;
+}
+
+.logo-feature-image {
+    width: 220px;
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    color: #EFE2D8;
+    background: brown;
+}
+
+.landing {
+    background-image: url("../img/landing-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.timer-col {
+    padding: 20px;
+    text-align: center;
+}
+
+.timer {
+    margin-top: 0px;
+}
+
+.timer-circle {
+    width: calc(33.33vw - 23.3333333333px);
+    height: calc(33.33vw - 23.3333333333px);
+    text-align: center;
+    float: left;
+    background: rgba(212, 147, 100, 0.55);
+    border-radius: 5000px;
+    font-size: 50px;
+}
+
+button {
+    border: 0px;
+}
+
+.timer-circle span {
+    line-height: calc(33.33vw - 23.3333333333px);
+    text-align: center;
+}
+
+.timer-text {
+    font-family: 'Cardo', serif !important;
+    text-align: center;
+    font-size: 20px;
+}
+
+.timer-colon {
+    width: 15px;
+    float: left;
+    background: transparent;
+    text-align: center;
+    height: calc(33.33vw - 23.3333333333px);
+    font-size: 50px;
+    line-height: calc(33.33vw - 23.3333333333px);
+}
+
+.atmos-date-text {
+    font-size: 23px;
+    margin-top: 10px;
+}
+
+.landing-button {
+    width: 150px;
+    padding: 10px;
+    text-align: center;
+    background: rgba(251, 197, 154, 0.64);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    display: block;
+}
+
+.landing-buttons {
+    position: absolute;
+    bottom: 30px;
+}
+
+.landing-button:hover {
+    background: rgb(228, 222, 219);
+    color: black;
+}
+
+span.orange {
+    color: orange;
+    padding-left: 10px;
+}
+
+@media(max-width:900px) {
+    .logo-feature {
+        margin-top: 51px;
+    }
+}
+
+.uppercase {
+    text-transform: uppercase
+}
+
+/***** ABOUT US *****/
+
+.about-us-page {
+    background: wheat;
+    background-image: url('../img/texture-about-us.png');
+    background-size: auto;
+    background-repeat: repeat;
+    color: #000000;
+    position: relative;
+}
+
+.aboutus-heading {
+    margin-top: 100px;
+    color: #3D1000;
+    font-family: Cardo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 46px;
+    letter-spacing: 0.05em;
+}
+
+.descp {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 137.7%;
+    margin-top: 75px;
+}
+
+.pos-relative {
+    position: relative;
+    min-height: 100vh;
+}
+
+.register-button {
+    background: #FC6C02;
+    box-shadow: 0px 6px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    color: white;
+    padding: 10px;
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 50px;
+    left: 12.5%;
+}
+
+.register-button:hover {
+    background: white;
+    color: black;
+}
+
+.about-us-text {
+    font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif !important;
+}
+
+/**** CONTACT US ****/
+
+.contact-us-page {
+    width: 100%;
+    min-height: 100vh;
+    background: black;
+    background-image: url(../img/find-us-texture.png);
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+.social-group {
+    margin-top: 50px;
+}
+
+.social-icon img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.social-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.social-item {
+    text-align: center;
+    margin-bottom: 15px
+}
+
+.contact-find {
+    margin-top: 80px;
+}
+
+.contact-contact {
+    text-transform: uppercase;
+    margin-top: 40px;
+}
+
+.wrapper-div {
+    width: 200px;
+    margin: 0 auto;
+    margin-bottom: 35px !important;
+    text-align: left !important;
+}
+
+.clearfix {
+    width: 100%;
+    clear: both;
+    display: block;
+    content: '.';
+}
+
+.center-div-l {
+    float: left;
+}
+
+.center-div-r {
+    float: left;
+}
+
+.person-name {
+    font-size: 130%;
+}
+
+.person-contact {
+    color: orange;
+}
+
+.person-contact {
+    text-align: left;
+    float: left;
+}
+
+.locate-us {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-transform: uppercase
+}
+
+.location-pin {
+    width: 48px;
+    margin-bottom: 20px;
+}
+
+.navbar .logo span, .navbar .button div {
+    text-shadow: 1px 1px 1px black;
+}
+
+/***** DESKTOP SCREENS ****/
+
+@media ( min-width:571px) {
+    .landing {
+        background-image: url("../img/landing-desktop.jpeg");
+    }
+    .logo-feature {
+        margin-top: 50px;
+        margin-bottom: -50px;
+    }
+    .logo-feature-image {
+        width: 500px;
+    }
+    .timer-circle {
+        background: transparent;
+        width: 32%;
+        font-size: 100px;
+        line-height: inherit;
+        height: 100px;
+    }
+    .timer-circle span, .timer-colon {
+        line-height: 100px;
+    }
+    .atmos-date-text {
+        font-size: 40px;
+    }
+    .timer-col {
+        height: 140px;
+        margin: 0 auto;
+    }
+    .timer-wrapper {
+        width: 900px;
+        margin: 0 auto;
+    }
+    .landing-buttons {
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        bottom: 50px;
+        text-align: center;
+    }
+    .landing-buttons a {
+        display: inline;
+        background: rgba(251, 198, 154, 0.787);
+        padding: 15px;
+        color: black;
+        margin-right: 10px;
+    }
+    .contact-us-page {
+        height: auto !important;
+        min-height: 10px;
+    }
+    .contact-contact {
+        margin-top: 80px;
+    }
+}
+
+/****** ABOUT US DESKTOP ******/
+
+@media only screen and (min-width:1200px) {
+    .about-us-page {
+        background-image: url('../img/texture-about-us.png');
+        color: #000000;
+        background-size: auto;
+        background-repeat: repeat;
+        position: relative;
+    }
+    .aboutus-heading {
+        margin: auto;
+        margin-top: 117px;
+        font-family: Cardo;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 100px;
+        line-height: 61px;
+        color: #3D1000;
+    }
+    h2 {
+        font-size: 54px;
+    }
+    .descp {
+        width: 992px;
+        margin: auto;
+        margin-top: 84px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 32px;
+        line-height: 38px;
+        text-align: justify;
+        font-family: 'Roboto', sans-serif;
+    }
+    .register-button {
+        width: 275px;
+        position: absolute;
+        padding: 20px;
+        left: calc(50% - 137.5px);
+        bottom: 150px;
+        line-height: 30px;
+        background-color: rgb(83, 43, 26);
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 32px;
+    }
+    .register-button:hover {
+        background: white;
+        color: black;
+    }
+    .wheel-image {
+        position: absolute;
+        bottom: 75px;
+        width: 200px;
+        left: calc(50% - 100px);
+        height: 200px;
+        background-image: url('../img/gear.png');
+        background-size: contain;
+        margin: auto;
+    }
+    .about-us-text {
+        font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif !important;
+    }
+}
+
+/* Smaller Desktop */
+
+@media only screen and (min-width:992px and max-width:1024px) {
+    .about-us-page {
+        background-image: url('./atmos-19/img/bg.jpeg');
+        background-size: cover;
+        color: #000000;
+        position: relative;
+    }
+    .aboutus-heading {
+        margin: auto;
+        margin-top: 127px;
+        font-family: Cardo;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 100px;
+        line-height: 61px;
+        color: #3D1000;
+    }
+    h2 {
+        font-size: 54px;
+    }
+    .descp {
+        width: 600px;
+        margin: auto;
+        margin-top: 65px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 26px;
+        line-height: 38px;
+        text-align: justify;
+        font-family: 'Roboto', sans-serif;
+    }
+    .register-button {
+        width: 276px;
+        height: 59px;
+        margin-left: 25%;
+        margin-bottom: 100px;
+        line-height: 30px;
+        background-image: url('./atmos-19/img/bg1.png');
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 32px;
+    }
+    .register-button:hover {
+        background: white;
+        color: black;
+    }
+    .wheel-image {
+        position: relative;
+        height: 168px;
+        width: 168px;
+        background-image: url('./atmos-19/img/vh.png');
+        margin-top: 500px;
+        margin: auto;
+    }
+    .about-us-text {
+        font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif !important;
+    }
+}
