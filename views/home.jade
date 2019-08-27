@@ -2,9 +2,12 @@ link(rel="stylesheet" href="/static/atmos-19/css/bootstrap-grid.min.css")
 <!-- OOF TEST ME -->
 link(href='https://fonts.googleapis.com/css?family=Cardo&display=swap' rel='stylesheet')
 link(rel="stylesheet" href="/static/atmos-19/css/main.css")
-script(src="static/atmos-19/js/smooth-scroll.js")
 script(src="static/atmos-19/js/main.js")
 
+
+.page.loading-wrapper.text-center
+  img.loading-image(src="/static/atmos-19/img/logo-anim.webp")
+  h5.text-center.loading-text Loading
 
 .page.landing
   .container.atmos-19
@@ -34,8 +37,8 @@ script(src="static/atmos-19/js/main.js")
             |- 20
             sup th
       .col-12.landing-buttons
-        a.landing-button#learn-more Learn More
-        a.landing-button(href="#") Book Tickets
+        a.landing-button#learn-more(href="#learn-more") Learn More
+        a.landing-button(href="events") Events
 
 
 
@@ -48,13 +51,23 @@ script(src="static/atmos-19/js/main.js")
           h2  ABOUT US 
         .descp
           p.about-us-text
-            | Gone are the days of Geocities sites with their hardcoded,
-            | never-changing HTML. Sites and apps today are dynamic and
-            | interactive. Our job as designers is to make it so that the
-            | interface through which they interact with our web UI design is as close to ideal as possible.
+            | BITS Pilani Hyderabad presents to you its ninth edition of ATMOS,
+            | an exclusive national techno-management festival. Year after year,
+            | we keep pushing our limits and striving for more. Embracing the fact
+            | that change is the only constant, we are all geared up to surprise the
+            | world again with what we have to offer.
+            | On one hand, the guest lectures and technical workshops are oriented
+            | towards creating an atmosphere to enjoy and understand the solid
+            | foundations and growth of technology in the contemporary world.
+            | On the other hand, there are events and competitions from every
+            | possible branch of science and management, challenging some of
+            | the best minds across the country to prove their technical expertise
+            | and competitive spirit.
+
+
         .wheel-image
-        .register-button
-          span REGISTER
+        a.register-button(href="events")
+          | Events & Registration
 
 .page.contact-us-page#contact-us
   .container.atmos-19
@@ -67,45 +80,45 @@ script(src="static/atmos-19/js/main.js")
           span.social-icon
             img(src="static/atmos-19/img/facebook-logo.svg")
           span.social-text
-            a(href="#") facebook.com/atmos
+            a(href="www.fb/bits.atmos/") www.fb/bits.atmos/
         .col-12.social-item
           span.social-icon
             img(src="static/atmos-19/img/instagram-logo.svg")
           span.social-text
-            a(href="#") facebook.com/atmos
+            a(href="https://www.instagram.com/atmos.bitsh/") atmos.bitsh
         .col-12.social-item
           span.social-icon
             img(src="static/atmos-19/img/close-envelope.svg")
           span.social-text
-            a(href="#") facebook.com/atmos
+            a(href="mailto:atmos@hyderabad.bits-pilani.ac.in") atmos@hyderabad.bits-pilani.ac.in
       .col-md-6
         .col-12.text-center
           h3.contact-contact Contact Us
         .col-12.social-group
-          .social-item.wrapper-div
+          a.social-item.wrapper-div(href="tel:7981720729")
             div.social-icon.center-div-l
               img(src="static/atmos-19/img/phone-receiver.svg")
-            div.social-text.center-div-r
-              span.person-name Nikhil Peruru
+            .social-text.center-div-r
+              span.person-name Nikhil Peruri
               br
               span.person-contact President
             .clearfix
-          .social-item.wrapper-div
-            div.social-icon.center-div-l
+          a.social-item.wrapper-div(href="tel:+917358325253")
+            .social-icon.center-div-l
               img(src="static/atmos-19/img/phone-receiver.svg")
             div.social-text.center-div-r
               span.person-name Shaaban Karim
               br
               span.person-contact Technical Secretary
             .clearfix
-          .social-item.wrapper-div
-            div.social-icon.center-div-l
+          a.social-item.wrapper-div(href="tel:9441695734")
+            .social-icon.center-div-l
               img(src="static/atmos-19/img/phone-receiver.svg")
             div.social-text.center-div-r
               span.person-name Meghana V.
               br
               span.person-contact Publicity Head
             .clearfix
-      .col-12.locate-us.text-center
-          img.location-pin(src="static/atmos-19/img/maps-and-flags.svg")
-          h3 Locate Us
+      a.col-12.locate-us.text-center(href="https://www.bits-pilani.ac.in/Hyderabad/visitHyderabadCampus")
+        img.location-pin(src="static/atmos-19/img/maps-and-flags.svg")
+        h3 Locate Us

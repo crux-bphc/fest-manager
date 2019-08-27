@@ -1,7 +1,22 @@
 $(document).ready(function () {
+    $(".loading-wrapper").fadeOut();
     updateDate();
     setInterval(updateDate, 1000 * 60);
+
+    // $('#learn-more').on('click', function () {
+    //     console.log("Scrolling");
+    //     $("#about-us").smoothScroll();
+    // })
+
+
+
 })
+
+$(window).load(function() {
+    $(".loading-wrapper").fadeOut();
+    console.log("Loaded");
+    // page is fully loaded, including all frames, objects and images , not working ( why ? );
+});
 
 function updateDate() {
     var deadline = new Date("October 18, 2019 07:00:00").getTime();
@@ -18,7 +33,4 @@ function updateDate() {
     console.log("Updated");
 }
 
-$('#learn-more').on('click', function () {
-    console.log("Scrolling");
-    $("#about-us").smoothScroll();
-})
+

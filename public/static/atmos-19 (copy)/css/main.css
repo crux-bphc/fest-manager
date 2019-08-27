@@ -10,10 +10,6 @@ html {
     font-family: 'Cardo', serif;
 }
 
-a.wrapper-div {
-    display: block;
-}
-
 .logo-feature-image {
     width: 220px;
 }
@@ -109,24 +105,6 @@ span.orange {
     padding-left: 10px;
 }
 
-.loading-wrapper {
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    z-index: 1000;
-    background: url("../img/find-us-texture.png");
-}
-
-.loading-wrapper .loading-image {
-    width: 200px;
-    margin-top: 50%;
-}
-
-.loading-text {
-    margin-top: 10px;
-    font-size: 30px;
-}
-
 @media(max-width:900px) {
     .logo-feature {
         margin-top: 51px;
@@ -145,7 +123,6 @@ span.orange {
     background-size: auto;
     background-repeat: repeat;
     color: #000000;
-    min-height: 100vh;
     position: relative;
 }
 
@@ -183,10 +160,8 @@ span.orange {
     width: 70%;
     display: block;
     margin: 0 auto;
-    /* position: absolute; */
-    margin-top: 30px;
+    position: absolute;
     bottom: 50px;
-    margin-bottom: 30px;
     left: 12.5%;
 }
 
@@ -197,7 +172,6 @@ span.orange {
 
 .about-us-text {
     font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif !important;
-    text-align: justify;
 }
 
 /**** CONTACT US ****/
@@ -297,10 +271,6 @@ span.orange {
 /***** DESKTOP SCREENS ****/
 
 @media ( min-width:571px) {
-    .loading-wrapper .loading-image {
-        width: 200px;
-        margin-top: 200px;
-    }
     .landing {
         background-image: url("../img/landing-desktop.jpeg");
     }
@@ -329,7 +299,7 @@ span.orange {
         margin: 0 auto;
     }
     .timer-wrapper {
-        width: 850px;
+        width: 900px;
         margin: 0 auto;
     }
     .landing-buttons {
@@ -390,10 +360,10 @@ span.orange {
         text-align: justify;
         font-family: 'Roboto', sans-serif;
     }
-    .register-button, .register-button:visited, .register-button:focus, .register-button:active {
-        color: white !important;
+    .register-button {
+        color: white;
         width: 275px;
-        /* position: absolute; */
+        position: absolute;
         padding: 20px;
         left: calc(50% - 137.5px);
         bottom: 150px;
