@@ -1,0 +1,1 @@
+/home/divyanshu/mozilla/firefox-source/browser/components/customizableui/PanelMultiView.jsm
