@@ -1,0 +1,10 @@
+body {
+    color: black;
+    margin-bottom: 50px;
+}
+
+textarea {
+    padding: 2px;
+    border-radius: 3px;
+    border: 1px solid lightgrey;
+}

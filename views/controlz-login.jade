@@ -1,0 +1,23 @@
+html
+	head
+	link(rel="stylesheet" href="/static/atmos-19/css/controlz.css")
+	link(rel="stylesheet" href="/static/stylesheets/bootstrap.min.css")
+	body
+		.main.container
+			.row
+				.col-12
+					div
+						h1 ControlZ Portal
+						hr
+						div.alert.alert-info You are logged out
+						h3 Login
+						hr
+						form(action="/controlz-login" method="POST")
+							label Username
+							input(name="username")
+							br
+							label Password
+							input(name="password" type="password")
+							hr
+							button.btn.btn-primary Login
+

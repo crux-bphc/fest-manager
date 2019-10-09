@@ -1,0 +1,69 @@
+html
+	head
+	link(rel="stylesheet" href="/static/stylesheets/bootstrap.min.css")
+	link(rel="stylesheet" href="/static/atmos-19/css/controlz.css")
+	body
+		.main.container
+			.row
+				.col-12
+					h1 ControlZ Portal
+					a.btn.btn-danger(href="/controlz-logout") Logout
+					hr
+					-if(message)
+
+						div.alert.alert-warning
+							b Message from Server
+							br
+							p !{message}
+
+							a.btn.btn-primary(href="/controlz") Clear Message
+
+					.col-md-6
+						h2 New Registration
+						form(action="/controlz-registration" method="POST")
+							div Participant Name
+							div
+								input(name="name" required)
+							div Participant Mob No.
+							div
+								input(type="text" name="mob" required)
+							div Already Registered from TownScript etc?
+							div
+								select(name="online" required)
+									option yes
+									option no
+							div If From TownScript etc registration no
+							div
+								input(name="townscriptId")
+							div Workshop Name
+							div
+								select(name="workshop" required)
+									-for(element of workshops)
+										option=element.name
+							div Optional Comments
+							div
+								textarea(name="comments" style="width:100%;display:block;")
+							hr
+							button.btn-success.btn Genetate Id
+					.col-md-6
+					h2 Find / Verify User
+					div
+						form(action="/controlz-verify" method="POST")
+							div WorkShop ID Generated at CONTROLZ Desk
+							div
+								input(name="controlzId" required)
+							hr
+							button.btn-success.btn Verify
+			.row
+				.col-md-6
+					h2 Get Statistics
+					p Click on the button to aggregate some statistics for each workshop. ( Experimental )
+					hr
+					a.btn.btn-primary(href="controlz-statistics") Fetch Statistics about workshops
+				.col-md-6
+					h2 About this Portal
+					p Created By Divyanshu Agrawal ( agrawal.divyanshu@outlook.com ) for Department Of Techincal Arts. This software is provided on an AS IS basis and the creator is not liable for any losses arising from its use, directly or indirectly.
+
+
+
+
