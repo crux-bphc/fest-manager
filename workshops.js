@@ -75,6 +75,10 @@ var workshops = [
         name: "OTHER / UNKNOWN",
         short: "OTH"
     },
+    {
+        name: "UNDERWATER ROBOTICS",
+        short: "UNDWTR"
+    },
 ];
 
 module.exports = workshops;
