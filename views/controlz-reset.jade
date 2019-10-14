@@ -1,0 +1,17 @@
+html
+	head
+	link(rel="stylesheet" href="/static/stylesheets/bootstrap.min.css")
+	link(rel="stylesheet" href="/static/atmos-19/css/controlz.css")
+	body
+		.main.container
+			.row
+				.col-12
+					h1 ControlZ Reset
+					hr
+					.alert.alert-danger
+						b WARNING ! This will delete all portal data - can not be undone.
+						form(action="controlz-reset" method="POST")
+							hr
+							input.btn.btn-danger(type="submit" value="Delete all data!")
+							| 
+							a.btn.btn-success(href="controlz") Cancel

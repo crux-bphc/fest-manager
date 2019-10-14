@@ -18,6 +18,12 @@ a.wrapper-div {
     width: 220px;
 }
 
+.live {
+    display: block;
+    width: 100%;
+    margin: 50px 0px 50px 0px;
+}
+
 .page {
     width: 100%;
     min-height: 100vh;
@@ -310,6 +316,9 @@ span.orange {
     .loading-wrapper .loading-image {
         width: 200px;
         margin-top: 200px;
+    }
+    .live {
+        font-size: 50px;
     }
     .landing {
         background-image: url("../img/landing-desktop.jpeg");

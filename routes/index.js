@@ -5,6 +5,7 @@ var fq = require('fuzzquire');
 var authenticate = fq('authentication').middleware.authenticate;
 var config = fq('config-loader');
 var workshops = fq("workshops.js");
+var mongoose = require('mongoose');
 /* GET home page. */
 
 /*ContrlZ Portal */
@@ -82,6 +83,33 @@ router.get("/controlz-statistics", checkAuth, async (req, res) => {
 	res.redirect(`/controlz?message=${stats}`)
 });
 
+router.get("/controlz-reset", checkAuth, (req, res) => {
+	res.render("controlz-reset");
+}
+)
+
+router.get("/controlz-export", checkAuth, (req, res) => {
+	Attendee.find((err, attendees) => {
+		if (err) {
+			res.json(err);
+		} else {
+			res.json(attendees)
+		}
+	})
+}
+)
+
+
+
+router.post("/controlz-reset", checkAuth, (req, res) => {
+	mongoose.connection.db.dropCollection("attendees", (err, result) => {
+		if (err) {
+			res.json(err);
+		} else {
+			res.json(result);
+		}
+	})
+})
 
 
 
