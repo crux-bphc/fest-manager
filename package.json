@@ -16,6 +16,7 @@
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "express-session": "^1.15.3",
+    "findup-sync": "^4.0.0",
     "fuse.js": "^3.0.5",
     "fuzzquire": "0.0.7",
     "google-spreadsheet": "^2.0.4",

@@ -15,7 +15,7 @@ function checkAuth(req, res, next) {
 	if (!req.session.controlz) {
 		res.redirect("/controlz-login");
 	} else {
-		next()
+		next();
 	}
 }
 
@@ -27,9 +27,9 @@ router.get("/controlz-login", (req, res) => {
 router.post("/controlz-login", (req, res) => {
 	if (req.body.username == "Hajmola2019" && req.body.password == "Hajmola@4245") {
 		req.session.controlz = true;
-		res.redirect("/controlz")
+		res.redirect("/controlz");
 	} else {
-		res.redirect("/controlz-login?invalid-password=true")
+		res.redirect("/controlz-login?invalid-password=true");
 	}
 })
 
@@ -113,20 +113,24 @@ router.post("/controlz-reset", checkAuth, (req, res) => {
 
 
 
-router.post("/controlz-registration", checkAuth, (req, res) => {
+router.post("/controlz-registration", checkAuth, async (req, res) => {
 	var workshop = workshops.find((element) => {
 		if (element.name == req.body.workshop) {
 			return true;
 		}
 	})
+	var oldAttendees = await Attendee.find();
+	console.log(oldAttendees);
+
 	var online = (req.body.online == "yes");
-	var workshopId = workshop.short + Date.now().toString().substr(-6, 6) + Math.random().toString().substr(-1, 1);
+	var workshopId = workshop.short + oldAttendees.length;
 	var comment;
 	if (req.body.comment) {
 		comment = req.body.comment;
 	} else {
 		comment = "No comments";
 	}
+
 	var newAttendee = new Attendee({
 		name: req.body.name,
 		mob: req.body.mob,
