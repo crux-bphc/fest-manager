@@ -1,1384 +1,202 @@
-.hash-home {
-    padding: 0 !important;
-    height: 100vh !important;
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
 }
-@media  screen and (min-width: 800px) {
-    .hash-home {
-        overflow: hidden;
-    }
+
+/* Custom default button */
+home-.btn-secondary,
+home-.btn-secondary:hover,
+home-.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
 }
-.hash-home > .scroll-wrapper {
-    width:100vw;
-    transition: all 0.5s ease-in-out;
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: #333;
+  background-image: url("./Resources/background2.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  position: relative;
 }
-.hash-home  .scroll-content {
-    height: 100vh;
-    width: 100vw;
-    box-sizing: border-box;
-    transition: all 0.5s ease-in-out;
-}
-/* ::-webkit-scrollbar {
-    width: 0px;
-} */
 
-#page-1 > .background-div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  #page-1 .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-  }
-  
-  #page-1 > .dust-div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    transition: left 1s, top 1s;
-  }
-  
-  .dust-div .dust-one {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    animation: oneanim;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
-  }
-  @keyframes oneanim {
-    0%{
-      top: -0.5vh;
-      left: -0.5vw;
-    }
-    50%{
-      top: 0.5vh;
-      left: 0.5vw;
-    }
-    100%{
-      top: -0.5vh;
-      left: -0.5vw;
-    }
-  }
-  
-  .dust-div .dust-two {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    animation: twoanim;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
-  }
-  @keyframes twoanim {
-    0%{
-      top: 0.5vh;
-      left: 0.5vw;
-    }
-    50%{
-      top: -0.5vh;
-      left: -0.5vw;
-    }
-    100%{
-      top: 0.5vh;
-      left: 0.5vw;
-    }
-  }
-  
-  .dust-div .dust-three {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    animation: threeanim;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
-  }
-  @keyframes threeanim {
-    0%{
-      top: 0.5vh;
-      left: -0.5vw;
-    }
-    50%{
-      top: -0.5vh;
-      left: 0.5vw;
-    }
-    100%{
-      top: 0.5vh;
-      left: -0.5vw;
-    }
-  }
-  @media screen and (max-width: 480px){
-  #page-1 .beam-div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  #page-1 .beam-div .beam {
-    position: absolute;
-    top: 40vh;
-    left: 0;
-    width: 100%;
-    height: 20vh;
-    opacity: 0;
-    animation-name: beams;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
-  }
-  
-  @keyframes beams {
-    0% {
-      top: 40vh;
-      height: 20vh;
-      left: 0;
-      width: 0%;
-      opacity: 0.4;
-    }
-    20% {
-      top: 40vh;
-      height: 20vh;
-      left: 0;
-      width: 100%;
-      opacity: 1;
-    }
-    50% {
-      top: 0;
-      height: 100vh;
-      left: 0;
-      width: 100%;
-      opacity: 1;
-    }
-    80% {
-      top: 40vh;
-      height: 20vh;
-      left: 0;
-      width: 100%;
-      opacity: 1;
-    }
-    100% {
-      top: 40vh;
-      height: 20vh;
-      left: 100%;
-      width: 100%;
-      opacity: 0.4;
-    }
-  }
-  
-  
-  }
-  #page-1 .top-div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  #page-1 .top-div .top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-  }
-  #page-1 .text-div {
-    position: absolute;
-    left:50%;
-    bottom:0.5vh;
-    transform: translateX(-50%);
-    font-size: 4.2vw;
-    font-family: 'Oswald', sans-serif;
-    color:#e1e1e1;
-    font-weight:800;
-    animation: textbeams 4s ease infinite;
-    overflow: hidden;
-  }
-  
-  @keyframes textbeams {
-    0% {
-      opacity: 0;
-    }
-    20% {
-      opacity: 0.8;
-    }
-    80% {
-      opacity: 0.8;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  
-  #page-1 .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  #page-1 .text .days {
-    position: absolute;
-    left: 1vw;
-    bottom: 1vh;
-    width: 8vw;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  #page-1 .text .days p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  
-  
-  #page-1 .text .social {
-    position: absolute;
-    right : 1vw;
-    bottom: 1vh;
-    width: 18vw;
-    text-align: right;
-  }
-  
-  @media screen and (min-width: 480px) {
-      #page-1 .text .social a {
-    text-decoration: none;
-    color: #fff;
-    padding: 0 5px;
-    font-size: 2.0vw;
-    font-weight: 500;
-  }
-  
-  #page-1 .text .days .date {
-    font-size: 1.8vw;
-    font-weight: 700;
-  }
-  
-  #page-1 .text .days .month {
-    font-weight: 300;
-    font-size: 1.2vw;
-  }   
-  
-  }
-  
-  @media screen and (max-width: 480px) {
-     #page-1 .text-div{
-      font-size: 7vw;
-      text-align: center;
-      margin-top: 80vh;
-    }
-  
-      #page-1 .text .social a {
-    text-decoration: none;
-    color: #fff;
-    padding: 0 5px;
-    font-size: 3vw;
-    font-weight: 500;
-    }
-    #page-1 .text .days .date {
-      font-size: 2.7vw;
-      font-weight: 700;
-    }
-  
-    #page-1 .text .days .month {
-      font-weight: 300;
-      font-size: 2vw;
-    }
-  }
-  
- 
-  /* PAGE- 2 */
- #page-2 .background-wrapper {
-     position: absolute;
-     width: 100vw;
-     height: 100vh;
-     z-index: -500;
-     background: white;
- }
-  #page-2 .places {
-    position: relative;
-    width: 100%;
-    height: 100vh; 
-  }
-  
-  #page-2 .places .bNb {
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,60%);
-    font-family:oswald;
-    font-size: 4vw;
-    opacity: 0.5;
-    font-weight: 600;
-    overflow: hidden;
-  }
-  
-  #page-2 .places .top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-    z-index: -100;
-  }
-  #page-2 .places .top.start {
-      animation: slide_top;
-      animation-duration: 2s;
-      animation-delay: 0.1s;
-      animation-fill-mode: forwards;
-  }
-  
-  
-  #page-2 .places .bottom {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: hidden;
-    margin: auto;
-    width: 100vw;
-    height: 100vh;
-    z-index: -100;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-  }
-  #page-2 .places .bottom.start {
-    animation: slide_bottom;
-    animation-duration: 2s;
-    animation-delay: 0.1s;
-    animation-fill-mode: forwards;
-}
-  #page-2 .places .yr {
-    position: absolute;
-    top:52%;
-    left:50%;
-    transform: translate(-50%,-80%);
-    font-family:sans-serif;
-    font-size: 12vw;
-    opacity: 0.3;
-    font-weight: 300;
-    margin: auto;
-    overflow: hidden;
-    opacity: 0;
-    animation: fade;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-  }
-  
-  #page-2 .places .yr.start{
-    animation: fade 2s ease-in-out;
-    animation-fill-mode: forwards;
-  }
-  
-  #page-2 .places .nm {
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-95%);
-    font-family: Montserrat;
-    font-size: 6vw;
-    margin: auto;
-    overflow: hidden;
-    opacity: 0;
-    animation: fade2;
-    animation-duration: 4s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-  }
-  
-  #page-2 .places .nm.start{
-    animation: fade2 4s ease-in-out;
-    animation-fill-mode: forwards;
-  }
-  @media screen and (min-width: 800px) {
-      #page-2 .places .top {
-        transform: translateY(-250px);
-      }
-      #page-2 .places .bottom {
-        transform: translateY(250px);
-      }
-    
-    #page-2.places.yr{
-      font-size: 10vw;
-    }
-    #page-2.places.nm{
-      font-size: 6vw;
-    }
-    #page-2.places.bNb{
-      font-size: 4vw;
-    }
-  }
-  @media screen and (max-width: 480px) {
-    #page-2 .places .yr{
-      font-size: 14vw;
-    }
-    #page-2 .places .nm{
-      font-size: 15vw;
-    }
-    #page-2 .places .bNb{
-      font-size: 6vw;
-    }
-  }
-  #page-2 .places .tickets {
-    position: absolute;
-    bottom:5vh;
-    left:50%;
-    transform: translateX(-50%);
-    font-family:'PT Sans Narrow', sans-serif;
-    font-weight: 700;
-    font-size: 3vw;
-    padding: 0 0.5vw 0.3vw 0.5vw;
-    color: #fcfcfc;
-    border: 0.3vw solid #fcfcfc;
-    border-radius: 1vw;
-    overflow: hidden;
-    animation: fade3;
-    animation-fill-mode: forwards;
-    animation-duration: 4s;
-    animation-timing-function: ease-in-out;
-  }
-  
-  #page-2 .places .tickets.start{
-    animation: fade3 4s ease-in-out;
-    animation-fill-mode: forwards;
-  }
-  
-  #page-2.places.tickets:hover {
-    cursor: pointer;
-    bottom: 6vh;
-  }
-  
-  @keyframes fade{
-      0%{
-        opacity:0
-      }
-      20%{
-        opacity:0;
-      }
-      100%{
-        opacity:0.3;
-      }
-    }
-  
-  @keyframes fade2{
-    0%{
-      opacity:0;
-    }
-    50%{
-      opacity:0;
-    }
-    100%{
-      opacity:1;
-    }
-  }
-  
-  @keyframes fade3{
-    0%{
-      opacity:0;
-    }
-    75%{
-      opacity:0;
-    }
-    100%{
-      opacity:1;
-    }
-  }
-  
-  @keyframes slide_top{
-    0%{
-      transform:translateY(-250px);
-    }
-    100%{
-      transform: translateY(0px);
-    }
-  }
-  
-  @keyframes slide_bottom{
-    0%{
-      transform:translateY(250px);
-    }
-    100%{
-      transform: translateY(0px);
-    }
-  }
-  
-  @keyframes bounce {
-    0%{
-      bottom: 5vh;
-    }
-    80%{
-      bottom: 8vh;
-    }
-    100%{
-      bottom: 5vh;
-    }
-  }
-
-
-
-  /*
-
-    ABOUT-US
-  
-  */
-
-
-#page-3 #background{
-    z-index: -1000;
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    margin: 0%;
-    padding: 0%;
-    background: white;
-    background: url(/static/images/home/aboutus/Background.png) center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-    animation-duration: 6s;
-    animation-timing-function: cubic-bezier(0.8, 0.93, 0.97);
-  }
-  
-  #page-3 #background.start{
-    animation-name: fadeinone;
-    animation-duration: 6s;
-    animation-timing-function: cubic-bezier(0.8, 0.93, 0.97);
-    transform: scale(1.,1) skewX(0deg);
-    animation-fill-mode: forwards;
-  }
-  
-  @keyframes fadeinone {
-    0%{
-      transform: scale(1.3, 1.3) skewX(-6deg);
-    }
-    100%{
-      transform: scale(1, 1) skewX(0deg);
-    }
-  }
-  
-  #page-3 #background #building {
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    left: -1.7vw;
-    margin: 0%;
-    padding: 0%;
-    background: url(/static/images/home/aboutus/building1.png) center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    transform: skewX(0deg);
-    animation-duration: 6s;
-    animation-timing-function: cubic-bezier(0.8, 0.93, 0.97, 1);
-  }
-  
-  #page-3 #background #building.start{
-    animation-name: fadeintwo;
-    animation-duration: 6s;
-    animation-timing-function: cubic-bezier(0.8, 0.93, 0.97, 1);
-    animation-fill-mode: forwards;
-  }
-  
-  @keyframes fadeintwo{
-    0%{
-      transform: skewX(-5deg);
-    }
-    100%{
-      transform: skewX(0deg);
-    }
-  }
-  
-  #page-3 #background #content-flex{
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  /*width: 70vw;*/
+body {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  opacity:0;
-  padding: 50px;
-  }
-  
-  #page-3 #background #content-flex.start{
-    opacity:0;
-    animation: moveup 1.2s ease-out forwards;
-    animation-fill-mode: forwards;
-  }
-  
-  @keyframes moveup {
-    0%{top:500px; opacity:0}
-    100%{top:0px; opacity: 1}
-  }
-  
-  #page-3 #background #content-flex #Bold{
-    color: #fff;
-    text-align: right;
-    font-size: 8vmin;
-    font-family: 'Oswald', sans-serif;
-  }
-  
-  #page-3 #background #content-flex .text3{
-    text-align: right;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    font-size: 3vmin;
-  
-  }
-  #page-3 #background #content-flex .text3 .para3{
-    margin: 0;
-   padding: 0;
-    text-align: right;
-  }
-  
-  #page-3 #background #content-flex .text3 .para3 h2{
-  margin: 0;
-  padding: 0;
-  font-size: 4vmin;
-  }
-  
-  #page-3 #background #content-flex #Bold{
-    margin: 0%;
-    padding: 0%;
-    width: 100%;
-    right: 0;
-    height: auto;
-    color: #fff;
-    text-align: right;
-    font-size: 12vh;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-  }
-  
-  .scroll-content#page-3 #background .text3 {
-  
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
-  }
-  
-  .scroll-content#page-3 #background .text3 .para3 {
-  bottom: 5vh;
-  right: 0;
-  width: 100%;
-  text-align: right;
-  font-size: 1.1vw;
-  }
-  
-  .scroll-content#page-3 #background .text3 .para3 h2{
-  margin: 0;
-  padding: 0;
-  font-size: 2vw;
-  }
-  
-  #Content{
-    margin: 0%;
-    padding: 5vh 0 0 0;
-    width: 100%;
-    height: auto;
-  }
-  
-  @media screen and (max-width: 800px) and (min-width: 600px) {
-    .scroll-content#page-3 #background #Bold {
-        margin-top:25px !important;
-        font-size: 40px !important;
-    }
-    .scroll-content#page-3 #background .text3 h2 {
-        font-size: 30px !important;
-    }
-    .scroll-content#page-3 #background .para3 {
-        font-size: 20px !important;
-        margin-bottom: 25px !important;
-    }
-  }
-  @media screen and (max-width: 800px) {
-    #page-3 #background #content-flex {
-        font-size: 4vw;
-        animation: moveup 1.2s ease-out forwards;
-        animation-fill-mode: forwards;
-        margin-bottom: 100px;
-    }
-    
-    .scroll-content#page-3 #background #Bold {
-        font-size: 8vw !important;
-    }
-    .scroll-content#page-3 #background .text3 h2 {
-        font-size: 10vw !important;
-    }
-    .scroll-content#page-3 #background .para3 {
-        font-size: 4vmin !important;
-    }
-  }
-  @media screen and (min-width: 800px) {
-      #page-3 #background{
-        transform: scale(1.3,1.3) skewX(-6deg);
-        }
-    }
-  /* 
-  
-                                                        EVENTS PAGE - 4 
-  
-  */
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+  overflow-x: hidden;
+}
 
-  @media screen and (min-width: 800px){
-  .scroll-content#page-4 .box {
-    width: 33.33%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-  }
-  .scroll-content#page-4 #events{
-    width:33.33%;
-  }
-  .scroll-content#page-4 #competitions {
-    width: 33.33%;
-  }
-  .scroll-content#page-4 #talks{
-    width:33.33%;
-    background: url(/static/images/home/Events/talks.png);
-  }
-    
-    
-    
-  .scroll-content#page-4 .links {
-  /* z-index: 999; */
-  width: 100%;
-  height: 6vh;
-  margin: auto;
-  text-align: center;
+/*.cover-container {
+  max-width: 42em;
+}
+
+
+/*
+ * Header
+ */
+home-.masthead {
+  margin-bottom: 2rem;
+}
+
+home-.masthead-brand {
+  margin-bottom: 0;
+}
+
+home-.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+home-.nav-masthead .nav-link:hover,
+home-.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+home-.nav-masthead .nav-link + .nav-link {
+  margin-left: 2rem;
+}
+home-.border{
+    border: 1px solid white;
+}
+home-.nav-masthead .active {
   color: #fff;
-  font-size: 2.5vw;
-  font-family: Montserrat;
-  font-weight: 600;
-  padding: 47vh 0 47vh 0;
+  border-bottom-color: #fff;
 }
 
-.scroll-content#page-4 .links:hover {
-  cursor: pointer;
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+@font-face {
+  font-family: 'nevis';
+  src: url('Resources/nevis.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.scroll-content#page-4 .links::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 0.2vw;
-  background: #fff;
-  transition: width .3s;
+/*
+ * Cover
+ */
+home-.cover {
+  padding: 0 1.5rem;
+}
+home-.cover home-.btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
 }
 
-.scroll-content#page-4 .links:hover::after {
-  width: 100%;
-  transition: width .3s;
-}
+home-.title{
+    font-size: 120px;
+    position: relative;
+    left: 30.57%;
+    top: 42%;
+    bottom: 24.63%;
+    font-family: 'nevis';
+    text-align: center;
+  }
 
+home-.intro{
+    position: absolute;
+    left: 63.49%;
+    right: 3.65%;
+    top: 70.83%;
+    bottom: 20.37%;
 
-
-.scroll-content#page-4 #event-link {
-  width: 56%;
-}
-
-.scroll-content#page-4 #competition-link {
-  width: 60%;
-}
-
-.scroll-content#page-4 #talk-link {
-  width: 25%;
-}
-
-}
-
-@media screen and (max-width: 800px){
-  .scroll-content#page-4 .box {
-    height: 33.3% !important;
-    width: 100vw;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 156.25%;
+    line-height: 41px;
+    /* identical to box height */
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    }
-    .scroll-content#page-4 #events{
-      height: 33.3% !important;
-    }
-    .scroll-content#page-4 #competitions {
-      height: 33.3% !important;
-    }
-    .scroll-content#page-4 #talks{
-      height: 33.3% !important;
-      background: url(/static/images/home/Events/mobile_talks.png) ;
-    }
-    .scroll-content#page-4 .gradient {
-        display: none;
-        position: absolute;
-        left: 0;
-        height : inherit;
-        width: 100vw;
-        opacity:0;
-        background-image: url('/static/images/home/Events/Gradient Fill 1.png');
-        transition: 0.6s;
-   }
-   .scroll-content#page-4 .links {
-    z-index: 999;
-    width: 100%;
-    margin-top: 33%;
-    text-align: center !important;
-    color: #fff;
-    font-size: 6vmin;
-    font-family: Montserrat;
-    font-weight: 600;
-    
-   }
-   .scroll-content#page-4 .links:hover {
-      cursor: pointer;
-    }
 
-    .scroll-content#page-4 .links::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 0.2vw;
-      background: #fff;
-      transition: width .3s;
-    }
+    color: #FFFFFF;
 
-    .scroll-content#page-4 .links:hover::after {
-      width: 100%;
-      transition: width .3s;
-    }
-
-    .scroll-content#page-4 .gradient{
-      cursor: pointer;
-    }
-    .scroll-content#page-4 .hovered::after{
-      width: 100%;
-    }
-
-
-    .scroll-content#page-4 #event-link {
-     width: 100%;
-    }
-
-    .scroll-content#page-4 #competition-link {
-      width: 100%;
-    }
-
-    .scroll-content#page-4 #talk-link {
-      width: 100%;
-    }
-    .scroll-content#page-4 #event-link.links:hover {
-        opacity: 1;
-    }
 
 }
-
-#page-4 #events {
-  display: block;
+home-.stick{
   float: left;
-  transition: width 0.3s;
-  background: url(/static/images/home/Events/events.png) center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 99;
+  position: relative;
+  margin-top: 27.0%;
 }
-
-#page-4 #competitions {
-    display: block;
-    float: left;
+home-.timer{
     position: relative;
-  transition: width 0.3s;
-  background: url(/static/images/home/Events/competitions.png) center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.scroll-content#page-4 #talks {
-    display: block;
-    float: left;
-  
-  transition: width 0.3s;
-  
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-/* 
-
-                                                        CONTACT US
-
-*/
-#page-5 {
-    position: relative;
-    width: 100%;
-    height: 100vh;
+    /*height: auto;*/
+    left: 32.49%;
+    /*right: 25.89%;*/
+    top: 68.02%;
+    bottom: -58.61%;
+    /*font-size: 700.5%    ;*/
+    /*transform: rotate(-90deg);*/
+    resize: both;
     overflow: hidden;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url(/static/images/home/contactus/gradient.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  @media screen and (min-width:580px){
-    .hash-home .title {
-    position: absolute;
-    width: 50%;
-    height: auto;
-    top:-8vh;
-    right:-12vh;
-  }
-  
-  .hash-home .title p{
-    padding-top: 6vh;
-    font-family: 'Oswald', sans-serif;
-    font-size: 13vmin;
-    font-weight: 600;
-  }
-  
-  
-  .scroll-content#page-5 .shadow {
-    position: absolute;
-    z-index:100;
-    left: 0;
-    bottom: 1%;
-    right: 0;
-    width: 50%;
-    height: 10%;
-    margin: 0 0 10vh 0;
-    transform-origin: 50% 50%;
-    opacity: 0.5;
-    animation-name: sha-scale;
-    animation-duration: 6s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-  }
-  
-  .scroll-content#page-5 .sha {
-    position: absolute;
-    z-index:100;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10vh;
-    margin: 0;
-  }
-  
-  .scroll-content#page-5 .trianlge {
-    position: absolute;
-    z-index:100;
-    top: -2vw; 
-    left: 0;
-    right: 0;
-    width: 90%;
-    height: 95vh;
-    margin: auto;
-    animation-name: hover;
-    animation-duration: 6s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-  }
-  
-  .scroll-content#page-5 .tri {
-    width: 100%;
-    height: 100vh;
-    margin: auto;
-    z-index:100;
-  }
-  
-  
-  
-  .scroll-content#page-5 .cloud {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 99vh;
-    margin: auto;
-    overflow: hidden;
-  }
-  
-  .scroll-content#page-5 .cl {
-    position: relative;
-    width: 100%;
-    height: 94vh;
-    left: -7%;
-    bottom: -5%;
-    overflow: hidden;
-    animation-name: slide;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-  }
-  
-  .scroll-content#page-5 .contacts {
-    position: absolute;
-    top:100%;
-    left:100%;
-    transform: translate(-100%,-100%);
-    width: 55vw;
-    height: 48vh;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .scroll-content#page-5 .contact_div{
-    font-family: Roboto ;
-    text-align: center;
-    font-size: 1.7vw;
-    font-weight: 450;
-    color:#f3f3f3;
-    margin: 1vh 2vw 0vh 2vw;
-  }
-  
-  .scroll-content#page-5 .contact_div p{
-    margin:0;
-    padding: 0;
-    font-size: 1.4vw;
-    font-weight: 50;
-  }
-  .scroll-content#page-5 .contact_div b{
-    font-weight: 450;
-  }
-  
-  .scroll-content#page-5 .co {
-    position: relative;
-    top: 5vh;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  .scroll-content#page-5 .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  .scroll-content#page-5 .text .days {
-    position: absolute;
-    left: 1vw;
-    bottom: 1vh;
-    width: 5vw;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .scroll-content#page-5 .text .days p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .scroll-content#page-5 .text .days .date {
-    font-size: 1.7vw;
-    font-weight: 700;
-  }
-  
-  .scroll-content#page-5 .text .days .month {
-    font-weight: 300;
-    font-size: 1vw;
-  }
-  
-  .scroll-content#page-5 .text .para {
-    position: absolute;
-    bottom: 17vh;
-    right: 13vh;
-    width: 30vw;
-    text-align: right;
-    font-size: 1vw;
-  }
-  
-  .scroll-content#page-5 .text .para h2{
-    margin: 0;
-    padding: 0;
-  }
-  
-  .scroll-content#page-5 .text .social {
-    position: absolute;
-    right : 1vw;
-    bottom: 1vh;
-    width: 10vw;
-    text-align: right;
-  }
-  
-  .scroll-content#page-5 .text .social a {
-    text-decoration: none;
-    color: #fff;
-    padding: 0 5px;
-    font-size: 2vw;
-    font-weight: 500;
-  };
-  
-  }
-  @media screen and (max-width: 580px){
-  
-    .scroll-content#page-5 .contactusbackground{
-      height: 100vh;
-      width: 100vw;
-      background-image: url(/static/images/home/contactus/mobile_floatingbuilding.png) ;
-       background-repeat: no-repeat;
-       background-position: 50% 40%;
-      background-size: 350px 650px;
-      margin: 0;
-      padding:0;
-    }
-    .scroll-content#page-5 .floatingitems{
-      display: none;
-    }
-    .scroll-content#page-5 .contactustext{
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-start;
-    
-    }
-    
-  
-    .scroll-content#page-5 .title{
-      margin-top: 0px;
-      align-self: center;
-    }
-    
-    .scroll-content#page-5 .title p{
-      
-      font-family: 'Oswald', sans-serif;
-      font-size: 12vmin;
-      font-weight: 600;
-    }
-    .scroll-content#page-5 .contacts {
-      align-self: center;
-      padding-bottom: 10vmin;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-  
-    }
-  
-    .scroll-content#page-5 .contact_div{
-      font-family: 'Roboto', sans-serif;
-      text-align: center;
-      font-size: 3.8vw;
-      font-weight: 450;
-      color:#f3f3f3;
-      padding: 4px;
-      margin: 1vh 2vw 0vh 2vw;
-    }
-  
-    .scroll-content#page-5 .contact_div p{
-      margin:0;
-      padding: 0;
-      font-size: 3.1vw;
-      font-weight: 50;
-    }
-    .scroll-content#page-5 .contact_div b{
-      font-weight: 450;
-    }
-  
-    .scroll-content#page-5 .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  .scroll-content#page-5 .text .days {
-    position: absolute;
-    left: 1vw;
-    bottom: 1vh;
-    width: 5vw;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .scroll-content#page-5 .text .days p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .scroll-content#page-5 .text .days .date {
-    font-size: 1.7vw;
-    font-weight: 700;
-  }
-  
-  .scroll-content#page-5 .text .days .month {
-    font-weight: 300;
-    font-size: 1vw;
-  }
-  
-  .scroll-content#page-5 .text .para {
-    position: absolute;
-    bottom: 17vh;
-    right: 13vh;
-    width: 30vw;
-    text-align: right;
-    font-size: 1vw;
-  }
-  
-  .scroll-content#page-5 .text .para h2{
-    margin: 0;
-    padding: 0;
-  }
-  
-  .scroll-content#page-5 .text .social {
-    position: absolute;
-    right : 1vw;
-    bottom: 1vh;
-    width: 16vw;
-    text-align: right;
-  }
-  
-  .scroll-content#page-5 .text .social a {
-    text-decoration: none;
-    color: #fff;
-    padding: 0 5px;
-    font-size: 2vw;
-    font-weight: 500;
-  }
-  
-  }
-  
-  
-  
-  @keyframes hover {
-    0% {
-      top: -1vw;
-    }
-    50% {
-      top: 1vw;
-    }
-    100% {
-      top: -1vw;
-    }
-  }
-  
-  @keyframes sha-scale {
-    0% {
-      width: 25%;
-      opacity: 0.2;
-      margin: 0 0 10vh 11.5vw;
-    }
-    50% {
-      width: 35%;
-      opacity: 0.5;
-      margin: 0 0 10vh 6vw;
-    }
-    100% {
-      width: 25%;
-      opacity: 0.2;
-      margin: 0 0 10vh 11.5vw;
-    }
-  }
-  
-  @keyframes slide {
-    0% {
-      left: 2%;
-    }
-    50% {
-      left: -4%;
-    }
-    100% {
-      left: 2%;
-    }
-  }
-  
-
-
-  .main .wrapper.face.module-home {
-    overflow-y: hidden;
+}
+home-.dhm{
+    position: relative  ;
+    /*height: auto;*/
+    left: 32.49%;
+    /*right: 25.89%;*/
+    top: 63.02%;
+    bottom: -58.61%;
+    /*font-size: 700.5%    ;*/
+    /*transform: rotate(-90deg);*/
+    resize: both;
+    overflow:hidden ;
+}
+/*
+ * Footer
+ */
+home-.mastfoot {
+  color: rgba(255, 255, 255, .5);
 }
 
-* {
-    -webkit-select: none;
-}
+home-.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-.module-home {
-    background: #F3F3F3;
-}
-
-.module-home * {
-    font-family: "Montserrat";
-}
-
-.module-home,
-.module-home p {
-    color: #2F2C4E;
-}
-
-::-webkit-scrollbar {
-    width: 0px;
-    /* remove scrollbar space */
-    background: transparent;
-    /* optional: just make scrollbar invisible */
-}
-
-
-
-/*Don't add the module class to this element. This is out of the container div.*/
-
-
-
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  @media (min-width: 300px) {
+    .timer {
+      font-size: 7.357rem;
+    }
+    .dhm{
+        font-size: 1.357rem;
+    }
+    .intro{
+        font-size: 1.5625rem;
+    }
+  }
