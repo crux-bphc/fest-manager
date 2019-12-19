@@ -1,15 +1,83 @@
-link(rel="stylesheet" href="/static/stylesheets/about.style.css")
-
-div.module-about.section.body#about
-    div.underlay
-        div.credits
-            span Photograph by
-            span.person Ishaan Dewangan
-    div.about
-        div.scrollable(data-simplebar="init")
-            h2 ATMOS
-            p ATMOS is the annual techno-management fest of Birla Institute of Technology and Science, Pilani – Hyderabad Campus. Right from its inception in 2012, it has consistently strived to provide an excellent platform on the national stage for people from all over the country to showcase their technical, and managerial skills: as well as improving the technical and entrepreneurial culture in colleges across India. Alongside those events, ATMOS provides a wide range of opportunities to test and stimulate your intellect; spread across its three days. Even for those who are technically handicapped, or lack the knowledge to take part in events, it provides a plethora of activities in the form of interesting, awe-inspiring and motivational talks and Pro-shows. It also provides the opportunity to hone your technical skills with workshops and technical exhibitions conducted in various disciplines by trained professionals, who are at the forefront of their field.
-            ul.links
-                a.button(href="/about/accommodation") Accommodation
-                a.button(href="/about/contact") Contact Us
-                a.button(href="/about/map") Reaching Here
+doctype html
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=yes')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    meta(name='author', content='Mark Otto, Jacob Thornton, and Bootstrap contributors')
+    meta(name='generator', content='Jekyll v3.8.5')
+    title ARENA 2020
+    link(rel='canonical', href='https://getbootstrap.com/docs/4.3/examples/cover/')
+    // Bootstrap core CSS
+    link(href='/docs/4.3/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    style.
+      .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      }
+      @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+      }
+      }
+    link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap', rel='stylesheet')
+    // Custom styles for this template
+    link(href='cover.css', rel='stylesheet')
+  body.text-center
+    .cover-container.d-flex.w-100.h-100.p-4.mx-auto.flex-column
+      header.masthead.mb-auto
+        .inner
+          h4.masthead-brand LOGO
+          nav.nav.nav-masthead.justify-content-center(class='display:inline-block')
+            //
+              a class="nav-link active" href="#">Contact Us</!--a>
+              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="#" style="border: 1px solid white; padding-left: 2%;padding-right: 2%; border-radius: 25px;">Register</a>
+              <a class="nav-link" href="#" style="border: 1px solid white; padding-left: 2%;padding-right: 2%; border-radius: 25px;">Transportation</a>
+              </nav
+      main.inner.cover(role='main')
+        h1.cover-heading
+        p.lead
+        p.title
+          b A R E N A
+        img.stick(src='./Resources/stick.png')
+        p.intro
+          | The Annual BITS Hyderabad Sports Fest
+        p#demo.timer
+        script.
+          // Set the date we're counting down to
+          var countDownDate = new Date("Jan 1, 2020 23:59:59").getTime();
+          // Update the count down every 1 second
+          var x = setInterval(function() {
+          // Get today's date and time
+          var now = new Date().getTime();
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          // Display the result in the element with id="demo"
+          document.getElementById("demo").innerHTML = days + " : " + hours + " : "
+          + minutes + "\\n"  ;
+          // If the count down is finished, write some text
+          if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("demo").innerHTML = "EXPIRED";
+          }
+          }, 1000);
+        p.dhm
+          | DAYS             
+          b :
+          |         HOURS      
+          b :
+          |      MINUTES
+      footer.mastfoot.mt-auto
+        .inner
+          p
