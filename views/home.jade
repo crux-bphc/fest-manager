@@ -1,150 +1,262 @@
-link(href='/static/stylesheets/home.style.css', rel='stylesheet')
-link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
-link(href='https://fonts.googleapis.com/css?family=Oswald:700', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Roboto+Condensed', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Montserrat:400,600', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Montserrat:300,500,700', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow', rel='stylesheet')
+link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+link(rel='canonical', href='https://getbootstrap.com/docs/4.3/examples/cover/')
+      // Bootstrap core CSS
+link(href='/docs/4.3/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap', rel='stylesheet')
+      // Custom styles for this template
+      //link(href='cover.css', rel='stylesheet')
 .immersive-wrapper.hash-home
-  .scroll-wrapper
-    .scroll-content#page-1
-      .background-div
-          picture
-            source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/background.png')
-            img.background(src='/static/images/home/Mobile Version/Broken_portal/mobile_background.png')
-      .dust-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks.png')
-          img.dust-one(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks1.png')
-      .dust-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks1.png')
-          img.dust-two(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks2.png')
-        // <img src="/static/images/home/BrokenPortal/rocks1.png" class="dust-two">
-      .dust-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks2.png')
-          img.dust-three(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks3.png')
-      .beam-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/beam.png')
-          img.beam(src='/static/images/home/Mobile Version/Broken_portal/mobile_beam.png')
-      .top-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/top.png')
-          img.top(src='/static/images/home/Mobile Version/Broken_portal/mobile_top.png')
-      .text-div
-        | INTO THE SIXTH DIMENSION
-      .text
-        .days
-          p.date 26-28
-          p.month OCTOBER
-        .social
-          a(href='https://www.facebook.com/bits.atmos')
-            i.fab.fa-facebook-f
-          a(href='https://twitter.com/bitsatmos')
-            i.fab.fa-twitter
-          a(href='https://www.instagram.com/atmos_bitsh')
-            i.fab.fa-instagram
-    .scroll-content#page-2
-      .background-wrapper
-      .places
-        .bNb BIGGER AND BETTER
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Top.png')
-          img.top(src='/static/images/home/Mobile Version/Tickets/mobile_top.png')
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Bottom.png')
-          img.bottom(src='/static/images/home/Mobile Version/Tickets/mobile_bottom.png')
-        .yr 2018
-        .nm ATMOS
-        a(href="#{config.strings.registrationLink}").tickets GET YOUR TICKETS NOW!
-    .scroll-content#page-3
-      #background
-        #building
-        #content-flex
-          #Bold
-            br
-            | ABOUT US
-            br
-          .text3
-            .para3
-              h2 ATMOS '18
-              br
-              |   The 7th iteration of ATMOS, our annual techno-management fest, returns with grandeur greater than its predecessors this 26th of October.
-              br
-              br
-              |    Since its inception in 2010, ATMOS, reputed for its quality of workshops, quizzes, lectures, technical exhibitions, and competitions, is among the fastest growing tech-fests in our country providing one of the largest platforms for students, academicians and entrepreneurs across the country to showcase their talents in the fields of science and technology. With a staggeringly high footfall and participation of students from over 200 colleges every year, ATMOS 2018, true to its theme, Into the 6th Dimension, aims to rise to a whole new dimension.
-    .scroll-content#page-4
-      a(href="/events#Workshop")#events.box
-          #event-grad.gradient
-          #event-link.links WORKSHOPS
-      a(href="/events#Competition")#competitions.box
-        #competition-grad.gradient
-        #competition-link.links COMPETITIONS
-      a(href="/events#Talk")#talks.box
-        #talk-grad.gradient
-        #talk-link.links TALKS
-    .scroll-content#page-5
-      .contactusbackground
-          .floatingitems
-            .shadow
-              img.sha(src='/static/images/home/contactus/Shadowstransparent.png')
-            .trianlge
-              img.tri(src='/static/images/home/contactus/floatingbuilding.png')
-            .cloud
-              img.cl(src='/static/images/home/contactus/cloud1.png')
-            .cloud
-              img.cl(src='/static/images/home/contactus/cloud2.png')
-            .cloud
-              img.cl(src='/static/images/home/contactus/cloud3.png')
-          .contactustext
-            .title
-              p CONTACT US
-            .between
-            .contacts
-              .contact_div
-                | Aman Syed
-                p
-                  | President
-                  br
-                  | 8790359970
-              .contact_div
-                | Yash Chokhani
-                p
-                  | Coordinator
-                  br
-                  | 8187083476
-              .contact_div
-                | Ram Dheeraj Sirgiri
-                p
-                  | Sponsorship
-                  br
-                  | 7036067666
-              .contact_div
-                | Rohith Reddy
-                p
-                  | Publicity
-                  br
-                  | 8897454710
-              .contact_div
-                | Dharmesh Singhal
-                p
-                  | Hospitality
-                  br
-                  | 7036187007
-              .contact_div
-                p
-                  | Mail us at 
-                  b atmos@hyderabad.bits-pilani.ac.in
-          .text
-            .social
-              a(href='https://www.facebook.com/bits.atmos')
-                i.fab.fa-facebook-f
-              a(href='https://twitter.com/bitsatmos')
-                i.fab.fa-twitter
-              a(href='https://www.instagram.com/atmos_bitsh')
-                i.fab.fa-instagram
-script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.inview/1.0.0/jquery.inview.min.js')
-script(src='/static/scripts/home.js')
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=yes')
+    // Bootstrap CSS
+     meta(name='author', content='Mark Otto, Jacob Thornton, and Bootstrap contributors')
+    meta(name='generator', content='Jekyll v3.8.5')
+    title ARENA 2020
+    style.
+      .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      }
+      @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+      }
+      }
+      /*
+      * Globals
+      */
+      /* Links */
+      a,
+      a:focus,
+      a:hover {
+      color: #fff;
+      }
+      /* Custom default button */
+      .btn-secondary,
+      .btn-secondary:hover,
+      .btn-secondary:focus {
+      color: #333;
+      text-shadow: none;
+      /* Prevent inheritance from `body` */
+      background-color: #fff;
+      border: .05rem solid #fff;
+      }
+      /*
+      * Base structure
+      */
+      html,
+      body {
+      height: 100%;
+      background-color: #333;
+      background-image: url("./Resources/background2.jpg");
+      background-position: center;
+      /* Center the image */
+      background-repeat: no-repeat;
+      /* Do not repeat the image */
+      background-size: cover;
+      /* Resize the background image to cover the entire container */
+      position: relative;
+      overflow: hidden;
+      }
+      body {
+      display: -ms-flexbox;
+      display: flex;
+      color: #fff;
+      text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+      box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+      overflow-x: hidden;
+      }
+      /*.cover-container {
+      max-width: 42em;
+      }
+      /*
+      * Header
+      */
+      .masthead {
+      margin-bottom: 2rem;
+      }
+      .masthead-brand {
+      margin-bottom: 0;
+      }
+      .nav-masthead .nav-link {
+      padding: .25rem 0;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .5);
+      background-color: transparent;
+      border-bottom: .25rem solid transparent;
+      }
+      .nav-masthead .nav-link:hover,
+      .nav-masthead .nav-link:focus {
+      border-bottom-color: rgba(255, 255, 255, .25);
+      }
+      .nav-masthead .nav-link+.nav-link {
+      margin-left: 2rem;
+      }
+      .border {
+      border: 1px solid white;
+      }
+      .nav-masthead .active {
+      color: #fff;
+      border-bottom-color: #fff;
+      }
+      @media (min-width: 48em) {
+      .masthead-brand {
+      float: left;
+      }
+      .nav-masthead {
+      float: right;
+      }
+      }
+      @font-face {
+      font-family: 'nevis';
+      src: url('Resources/nevis.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      }
+      /*
+      * Cover
+      */
+      .cover {
+      padding: 0 1.5rem;
+      }
+      .cover .btn-lg {
+      padding: .75rem 1.25rem;
+      font-weight: 700;
+      }
+      .title {
+      font-size: 120px;
+      position: relative;
+      top: 25%;
+      bottom: 24.63%;
+      font-family: 'nevis';
+      text-align: center;
+      }
+      .intro {
+      position: relative;
+      left: 33.49%;
+      top: 35.83%;
+      /*bottom: 2.37%;*/
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 156.25%;
+      line-height: 41px;
+      /* identical to box height */
+      overflow: hidden;
+      color: #FFFFFF;
+      }
+      .stick {
+      float: left;
+      position: relative;
+      margin-top: 8.50%;
+      }
+      .timer {
+      position: relative;
+      /*height: auto;*/
+      left: 34%;
+      /*right: 25.89%;*/
+      top: 32.02%;
+      bottom: -58.61%;
+      /*font-size: 700.5%    ;*/
+      /*transform: rotate(-90deg);*/
+      resize: both;
+      overflow: hidden;
+      }
+      .dhm {
+      position: relative;
+      /*height: auto;*/
+      left: 34%;
+      /*right: 25.89%;*/
+      top: 25.02%;
+      bottom: -58.61%;
+      /*font-size: 700.5%    ;*/
+      /*transform: rotate(-90deg);*/
+      resize: both;
+      overflow: hidden;
+      }
+      /*
+      * Footer
+      */
+      .mastfoot {
+      color: rgba(255, 255, 255, .5);
+      }
+      .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      }
+      @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+      }
+      }
+      @media (min-width: 300px) {
+      .timer {
+      font-size: 7.357rem;
+      }
+      .dhm {
+      font-size: 1.357rem;
+      }
+      .intro {
+      font-size: 1.5625rem;
+      }
+      }
+    
+  body
+    .cover-container.d-flex.w-100.h-100.p-4.mx-auto.flex-column
+      header.masthead.mb-auto
+        .inner
+          img.masthead-brand(src='./Resources/logopngcolour.png', alt='LOGO', width='130', height='180')
+          nav.nav.nav-masthead.justify-content-center(class='display:inline-block')
+            //
+              a class="nav-link active" href="#">Contact Us</!--a>
+              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="#" style="border: 1px solid white; padding-left: 2%;padding-right: 2%; border-radius: 25px;">Register</a>
+              <a class="nav-link" href="#" style="border: 1px solid white; padding-left: 2%;padding-right: 2%; border-radius: 25px;">Transportation</a>
+              </nav
+      main.inner.cover(role='main')
+        h1.cover-heading
+        p.lead
+        p.title
+          b A R E N A
+        img.stick(src='./Resources/stick.png')
+        p.intro The Annual BITS Hyderabad Sports Fest
+        p#demo.timer
+        script.
+          // Set the date we're counting down to
+          var countDownDate = new Date("Jan 1, 2020 23:59:59").getTime();
+          // Update the count down every 1 second
+          var x = setInterval(function() {
+          // Get today's date and time
+          var now = new Date().getTime();
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          // Display the result in the element with id="demo"
+          document.getElementById("demo").innerHTML = days + " : " + hours + " : " +
+          minutes + "\\\\n";
+          // If the count down is finished, write some text
+          if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("demo").innerHTML = "EXPIRED";
+          }
+          }, 1000);
+        p.dhm
+          | DAYS             
+          b :
+          |         HOURS      
+          b :
+          |      MINUTES
+      footer.mastfoot.mt-auto
+        .inner
+          p
