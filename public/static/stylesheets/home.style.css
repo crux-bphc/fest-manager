@@ -5,16 +5,17 @@
   font-style: normal;
 }
 
-.landing > .wrapper.face {
-  background: url('/static/Arena_2020/background2.jpg') no-repeat center center fixed;
-  background-size: cover;
+.wrapper.face {
+  
   
 }
-.landing > .wrapper.face > .container {
+.wrapper.face.landing > .container {
+  background: url('/static/Arena_2020/background2.jpg') no-repeat center center fixed;
+  background-size: cover;
   width: 100%;
-  height: 100%;
+  height: 930px;
 }
-.landing > .wrapper.face > .container > .row1 > h1 {
+.wrapper.face.landing > .container > .row1 > h1 {
   font-size: 120px;
   position: relative;
   margin-top: 23%;
@@ -23,7 +24,7 @@
   text-align: center; 
   color: white;
 }
-.landing > .wrapper.face > .container > .row2{
+.wrapper.face.landing > .container > .row2{
   position: relative;
   margin-left: 5%;
   margin-top: 6%;
@@ -35,19 +36,20 @@
   overflow: visible;
   color:white;
 }
-.landing > .wrapper.face > .container > .row3{
+.wrapper.face.landing > .container > .row3{
   color: white;
   font-size: 70px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.landing > .wrapper.face > .container > .row4{
+.wrapper.face.landing > .container > .row4{
   font-size: 25px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
   color: white;
 }
-.wrapper.face > .container > .row5 > .col-lg-1 > .stick{
+.wrapper.face.landing > .container > .row5 > .col-lg-1 > .stick{
   position: absolute;
   left: 50px;
   bottom: -0.5px;
+  
 }
