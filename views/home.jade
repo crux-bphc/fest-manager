@@ -1,262 +1,65 @@
-link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
-link(rel='canonical', href='https://getbootstrap.com/docs/4.3/examples/cover/')
-      // Bootstrap core CSS
-link(href='/docs/4.3/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
-link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap', rel='stylesheet')
-      // Custom styles for this template
-      //link(href='cover.css', rel='stylesheet')
-.immersive-wrapper.hash-home
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=yes')
-    // Bootstrap CSS
-     meta(name='author', content='Mark Otto, Jacob Thornton, and Bootstrap contributors')
-    meta(name='generator', content='Jekyll v3.8.5')
-    title ARENA 2020
-    style.
-      .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      }
-      @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-      }
-      }
-      /*
-      * Globals
-      */
-      /* Links */
-      a,
-      a:focus,
-      a:hover {
-      color: #fff;
-      }
-      /* Custom default button */
-      .btn-secondary,
-      .btn-secondary:hover,
-      .btn-secondary:focus {
-      color: #333;
-      text-shadow: none;
-      /* Prevent inheritance from `body` */
-      background-color: #fff;
-      border: .05rem solid #fff;
-      }
-      /*
-      * Base structure
-      */
-      html,
-      body {
-      height: 100%;
-      background-color: #333;
-      background-image: url("./Resources/background2.jpg");
-      background-position: center;
-      /* Center the image */
-      background-repeat: no-repeat;
-      /* Do not repeat the image */
-      background-size: cover;
-      /* Resize the background image to cover the entire container */
-      position: relative;
-      overflow: hidden;
-      }
-      body {
-      display: -ms-flexbox;
-      display: flex;
-      color: #fff;
-      text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-      box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-      overflow-x: hidden;
-      }
-      /*.cover-container {
-      max-width: 42em;
-      }
-      /*
-      * Header
-      */
-      .masthead {
-      margin-bottom: 2rem;
-      }
-      .masthead-brand {
-      margin-bottom: 0;
-      }
-      .nav-masthead .nav-link {
-      padding: .25rem 0;
-      font-weight: 700;
-      color: rgba(255, 255, 255, .5);
-      background-color: transparent;
-      border-bottom: .25rem solid transparent;
-      }
-      .nav-masthead .nav-link:hover,
-      .nav-masthead .nav-link:focus {
-      border-bottom-color: rgba(255, 255, 255, .25);
-      }
-      .nav-masthead .nav-link+.nav-link {
-      margin-left: 2rem;
-      }
-      .border {
-      border: 1px solid white;
-      }
-      .nav-masthead .active {
-      color: #fff;
-      border-bottom-color: #fff;
-      }
-      @media (min-width: 48em) {
-      .masthead-brand {
-      float: left;
-      }
-      .nav-masthead {
-      float: right;
-      }
-      }
-      @font-face {
-      font-family: 'nevis';
-      src: url('Resources/nevis.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-      }
-      /*
-      * Cover
-      */
-      .cover {
-      padding: 0 1.5rem;
-      }
-      .cover .btn-lg {
-      padding: .75rem 1.25rem;
-      font-weight: 700;
-      }
-      .title {
-      font-size: 120px;
-      position: relative;
-      top: 25%;
-      bottom: 24.63%;
-      font-family: 'nevis';
-      text-align: center;
-      }
-      .intro {
-      position: relative;
-      left: 33.49%;
-      top: 35.83%;
-      /*bottom: 2.37%;*/
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 156.25%;
-      line-height: 41px;
-      /* identical to box height */
-      overflow: hidden;
-      color: #FFFFFF;
-      }
-      .stick {
-      float: left;
-      position: relative;
-      margin-top: 8.50%;
-      }
-      .timer {
-      position: relative;
-      /*height: auto;*/
-      left: 34%;
-      /*right: 25.89%;*/
-      top: 32.02%;
-      bottom: -58.61%;
-      /*font-size: 700.5%    ;*/
-      /*transform: rotate(-90deg);*/
-      resize: both;
-      overflow: hidden;
-      }
-      .dhm {
-      position: relative;
-      /*height: auto;*/
-      left: 34%;
-      /*right: 25.89%;*/
-      top: 25.02%;
-      bottom: -58.61%;
-      /*font-size: 700.5%    ;*/
-      /*transform: rotate(-90deg);*/
-      resize: both;
-      overflow: hidden;
-      }
-      /*
-      * Footer
-      */
-      .mastfoot {
-      color: rgba(255, 255, 255, .5);
-      }
-      .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      }
-      @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-      }
-      }
-      @media (min-width: 300px) {
-      .timer {
-      font-size: 7.357rem;
-      }
-      .dhm {
-      font-size: 1.357rem;
-      }
-      .intro {
-      font-size: 1.5625rem;
-      }
-      }
-    
-  body
-    .cover-container.d-flex.w-100.h-100.p-4.mx-auto.flex-column
-      header.masthead.mb-auto
-        .inner
-          img.masthead-brand(src='./Resources/logopngcolour.png', alt='LOGO', width='130', height='180')
-          nav.nav.nav-masthead.justify-content-center(class='display:inline-block')
-            //
-              a class="nav-link active" href="#">Contact Us</!--a>
-              <a class="nav-link" href="#">About Us</a>
-              <a class="nav-link" href="#" style="border: 1px solid white; padding-left: 2%;padding-right: 2%; border-radius: 25px;">Register</a>
-              <a class="nav-link" href="#" style="border: 1px solid white; padding-left: 2%;padding-right: 2%; border-radius: 25px;">Transportation</a>
-              </nav
-      main.inner.cover(role='main')
-        h1.cover-heading
-        p.lead
-        p.title
-          b A R E N A
-        img.stick(src='./Resources/stick.png')
-        p.intro The Annual BITS Hyderabad Sports Fest
-        p#demo.timer
-        script.
-          // Set the date we're counting down to
-          var countDownDate = new Date("Jan 1, 2020 23:59:59").getTime();
-          // Update the count down every 1 second
-          var x = setInterval(function() {
-          // Get today's date and time
-          var now = new Date().getTime();
-          // Find the distance between now and the count down date
-          var distance = countDownDate - now;
-          // Time calculations for days, hours, minutes and seconds
-          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          // Display the result in the element with id="demo"
-          document.getElementById("demo").innerHTML = days + " : " + hours + " : " +
-          minutes + "\\\\n";
-          // If the count down is finished, write some text
-          if (distance < 0) {
-          clearInterval(x);
-          document.getElementById("demo").innerHTML = "EXPIRED";
-          }
-          }, 1000);
-        p.dhm
-          | DAYS             
-          b :
-          |         HOURS      
-          b :
-          |      MINUTES
-      footer.mastfoot.mt-auto
-        .inner
-          p
+.container(style="background:url('./../Arena-2020_Resources/background2.jpg');")
+    .row
+        .col-lg-12.text-center
+        h1.title(style="font-size: 120px;\
+        position: relative;\
+        margin-top: 35%;\
+        bottom: 24.63%;\
+        font-family: 'nevis';\
+        text-align: center;") A R E N A
+    .row
+        .col-lg-6.col-lg-offset-8
+            .intro(style='position: relative;\
+            margin-left: 15%;\
+            margin-top: 12.83%;\
+            font-family: Roboto;\
+            font-style: normal;\
+            font-weight: bold;\
+            font-size: 156.25%;\
+            line-height: 41px;\
+            overflow: auto;\
+            color: gray;')
+            | The Annual BITS Hyderabad Sports Fest
+    .row
+        .col-lg-4.col-lg-offset-8(style='position: relative;\
+        margin-top: 1%;')
+            #demo.timer
+            script.
+                // Set the date we're counting down to
+                var countDownDate = new Date("Jan 22, 2020 23:59:59").getTime();
+                // Update the count down every 1 second
+                var x = setInterval(function() {
+                // Get today's date and time
+                var now = new Date().getTime();
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                // Display the result in the element with id="demo"
+                document.getElementById("demo").innerHTML = days + " : " + hours + " : "
+                + minutes + "\n"  ;
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "ARENA ALREADY STARTED";
+                }
+                }, 1000);
+    .row
+        .col-lg-4.col-lg-offset-8
+            .days
+                .col-lg-1
+                    | Days
+                .col-lg-1.col-lg-offset-2
+                    | :
+                .col-lg-1
+                    | Hours
+                .col-lg-1.col-lg-offset-2
+                    | :
+                .col-lg-1
+                    | Minutes
+    .row    
+        .col-lg-1.col-lg-offset-2
+            img.stick(src='./../Arena-2020_Resources/stick.png')
+
