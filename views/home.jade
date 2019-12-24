@@ -1,65 +1,56 @@
-.container(style="background:url('./../Arena-2020_Resources/background2.jpg');")
-    .row
-        .col-lg-12.text-center
-        h1.title(style="font-size: 120px;\
-        position: relative;\
-        margin-top: 35%;\
-        bottom: 24.63%;\
-        font-family: 'nevis';\
-        text-align: center;") A R E N A
-    .row
-        .col-lg-6.col-lg-offset-8
-            .intro(style='position: relative;\
-            margin-left: 15%;\
-            margin-top: 12.83%;\
-            font-family: Roboto;\
-            font-style: normal;\
-            font-weight: bold;\
-            font-size: 156.25%;\
-            line-height: 41px;\
-            overflow: auto;\
-            color: gray;')
-            | The Annual BITS Hyderabad Sports Fest
-    .row
-        .col-lg-4.col-lg-offset-8(style='position: relative;\
-        margin-top: 1%;')
-            #demo.timer
-            script.
-                // Set the date we're counting down to
-                var countDownDate = new Date("Jan 22, 2020 23:59:59").getTime();
-                // Update the count down every 1 second
-                var x = setInterval(function() {
-                // Get today's date and time
-                var now = new Date().getTime();
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                // Display the result in the element with id="demo"
-                document.getElementById("demo").innerHTML = days + " : " + hours + " : "
-                + minutes + "\n"  ;
-                // If the count down is finished, write some text
-                if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("demo").innerHTML = "ARENA ALREADY STARTED";
-                }
-                }, 1000);
-    .row
-        .col-lg-4.col-lg-offset-8
-            .days
-                .col-lg-1
-                    | Days
-                .col-lg-1.col-lg-offset-2
-                    | :
-                .col-lg-1
-                    | Hours
-                .col-lg-1.col-lg-offset-2
-                    | :
-                .col-lg-1
-                    | Minutes
-    .row    
-        .col-lg-1.col-lg-offset-2
-            img.stick(src='./../Arena-2020_Resources/stick.png')
+link(rel="stylesheet", href="/static/stylesheets/home.style.css")
+.wrapper.face
 
+    .container
+      .row.row1
+          .col-lg-12.text-center
+          h1.title A R E N A
+      .row.row2
+          .col-lg-8.col-lg-offset-7
+              .intro
+              | The Annual BITS Hyderabad Sports Fest
+        
+      .row.row3
+          .col-lg-5.col-lg-offset-9(style='position: relative;\
+          margin-top: 1%;')
+              #demo.timer
+              script.
+                  // Set the date we're counting down to
+                  var countDownDate = new Date("Jan 22, 2020 23:59:59").getTime();
+                  // Update the count down every 1 second
+                  var x = setInterval(function() {
+                  // Get today's date and time
+                  var now = new Date().getTime();
+                  // Find the distance between now and the count down date
+                  var distance = countDownDate - now;
+                  // Time calculations for days, hours, minutes and seconds
+                  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                  // Display the result in the element with id="demo"
+                  document.getElementById("demo").innerHTML = days + " : " + hours + " : "
+                  + minutes + "\n"  ;
+                  // If the count down is finished, write some text
+                  if (distance < 0) {
+                  clearInterval(x);
+                  document.getElementById("demo").innerHTML = "ARENA ALREADY STARTED";
+                  }
+                  }, 1000);
+        
+      .row.row4
+          .col-lg-5.col-lg-offset-9
+              .days
+                  .col-lg-1
+                      b Days
+                  .col-lg-1
+                      |    
+                  .col-lg-1
+                      b Hours
+                  .col-lg-1
+                      b    
+                  .col-lg-1
+                      b Minutes
+        
+      .row.row5
+          .col-lg-1
+              img.stick(src='/static/Arena_2020/stick.png')
