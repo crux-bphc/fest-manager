@@ -5,17 +5,14 @@
   font-style: normal;
 }
 
-.wrapper.face {
-  
-  
-}
+#page1
 .wrapper.face.landing > .container {
   background: url('/static/Arena_2020/background2.jpg') no-repeat center center fixed;
   background-size: cover;
   width: 100%;
-  height: 100%;
   overflow: hidden;
-}
+  
+  }
 .wrapper.face.landing > .container > .row1 > h1 {
   font-size: 120px;
   position: relative;
@@ -34,7 +31,7 @@
   font-weight: bold;
   font-size: 176.25%;
   line-height: 41px;
-  overflow: visible;
+  
   color:white;
 }
 .wrapper.face.landing > .container > .row3{
@@ -53,5 +50,220 @@
   position: absolute;
   left: 50px;
   bottom: -0.5px;
+  overflow: hidden;
+   
+}
+
+#page2
+@font-face {
+  font-family: 'nevis';
+  src: url('/static/Arena_2020/nevis.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.wrapper.face.landing > .container {
+  background-color: #1A0835                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
+ 
+}
+.wrapper.face.landing > .container > .row1 {
+  color: white;
+  margin-right: 5%;
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 46px;
+
+
+}
+.wrapper.face.landing > .container > .row2 {
+  color: white;
+  margin-left: 5%;
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 46px;
   
+
+}
+
+.wrapper.face.landing > .container > .row18 {
+  color: white;
+  position: absolute;
+  top: 600px;
+  margin-left: 5%;
+  float: left;
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 46px;
+
+
+}
+
+.wrapper.face.landing > .container > .prezi > .card-body {
+
+  margin-right: 5%;
+  text-align: right;
+}
+.wrapper.face.landing > .container > .prezi > .card-body > .card-text > .row3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+}                                                                                                                                                                                   
+.wrapper.face.landing > .container > .prezi > .card-body > .card-text > .row4 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .container > .prezi > .card-body > .card-text > .row5 {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #E0A56D;
+}
+.wrapper.face.landing > .container > .secb > .card-body {
+  margin-right: 5%;
+  text-align: right;
+  margin-bottom: 5%;
+}
+.wrapper.face.landing > .container > .secb > .card-body > .card-text > .row6 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .container > .secb > .card-body > .card-text > .row7 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .container > .secb > .card-body > .card-text > .row8 {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #E0A56D;
+}
+.wrapper.face.landing > .container > .secg > .card-body {
+  margin-right: 5%;
+  text-align: right;
+  margin-bottom: 5%;
+}
+.wrapper.face.landing > .container > .secg > .card-body > .card-text > .row9 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .container > .secg > .card-body > .card-text > .row10 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .container > .secg > .card-body > .card-text > .row11 {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #E0A56D;
+}
+.wrapper.face.landing > .container > .phead > .card-body {
+  margin-right: 5%;
+  text-align: right;
+  margin-bottom: 5%;
+}
+.wrapper.face.landing > .container > .phead > .card-body > .card-text > .row12 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .container > .phead > .card-body > .card-text > .row13 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .container > .phead > .card-body > .card-text > .row14 {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #E0A56D;
+}
+.wrapper.face.landing > .container > .contact{
+  width: 25%;
+  color: #FFFFFF;
+  float: left;
+  left: 25%;
+  position: absolute;
+  top: 40%;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.wrapper.face.landing > .container > .contact > .card-body > .row15{
+  margin-bottom: 5%;
+  margin-top: 7%
+}
+.wrapper.face.landing > .container > .contact > .card-body > .row16{
+  margin-bottom: 5%;
+}
+.wrapper.face.landing > .container > .contact > .card-body > .row17{
+  margin-bottom: 5%;
+}
+.wrapper.face > .container > .contact > .card-body > .row15 > .colfb > .fb{
+  width: 55%;
+  height: 55%;
+  margin-bottom: 5%;
+
+}
+.wrapper.face.landing > .container > .contact > .card-body > .row16 > .colinsta > .insta{
+  width: 55%;
+  height: 55%;
+  margin-bottom: 5%;
+  
+
+}
+.wrapper.face.landing > .container > .contact > .card-body > .row17 > .colmail > .mail{
+  width: 55%;
+  height: 55%;
+  margin-bottom: 5%;
+
+}
+.wrapper.face.landing > .container > .row18 > .colmap > .map{
+  width: 70%;
+  height: 70%;
+}
 }
