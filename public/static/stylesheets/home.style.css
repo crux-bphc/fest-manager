@@ -46,18 +46,21 @@
 .wrapper.face.landing > .scroll-wrapper > #page-1 > .container > .row4{
   font-size: 25px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
   color: white;
 }
 .wrapper.face.landing > .scroll-wrapper > #page-1 > .container > .row5 > .col-lg-1 > .stick{
   position: absolute;
   left: 50px;
   bottom: -0.5px;
+  margin-bottom: 15%;
   
 }
 .wrapper.face.landing > .scroll-wrapper > #page-2 > .container {
   background-color: #1A0835;
-  overflow: hidden;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
+  overflow: hidden;     
+  background-size: cover;
+  width: 100%;
+  height: 100%;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ;
  
 }
 .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .row1 {
@@ -85,8 +88,8 @@
 
 .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .row18 {
   color: white;
-  position: absolute;
-  top: 1450px;
+  position: relative;
+  margin-bottom: 5%;
   margin-left: 5%;
   float: left;
   font-family: Cabin;
@@ -188,7 +191,7 @@
 .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .phead > .card-body {
   margin-right: 5%;
   text-align: right;
-  margin-bottom: 5%;
+  
 }
 .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .phead > .card-body > .card-text > .row12 {
   font-family: Montserrat;
@@ -218,7 +221,7 @@
   width: 25%;
   color: #FFFFFF;
   float: left;
-  left: 25%;
+  margin-left: 10%;
   position: absolute;
   top: 40%;
   font-family: Montserrat;
@@ -230,7 +233,7 @@
 
 .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .contact > .card-body > .row15{
   margin-bottom: 5%;
-  margin-top: 860px;
+  margin-top: 245%;
 }
 .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .contact > .card-body > .row16{
   margin-bottom: 5%;
