@@ -1,58 +1,149 @@
-link(rel="stylesheet", href="/static/stylesheets/landing-home.style.css")
+link(rel="stylesheet", href="/static/stylesheets/home.style.css")
 
 .wrapper.face.landing
-
-    .container
-      .row.row1
-          .col-lg-12.text-center
-          h1.title A R E N A
-      .row.row2
-          .col-lg-8.col-lg-offset-7
-              .intro
-              | The Annual BITS Hyderabad Sports Fest
-        
-      .row.row3
-          .col-lg-5.col-lg-offset-9(style='position: relative;\
-          margin-top: 1%;')
-              #demo.timer
-              script.
-                  // Set the date we're counting down to
-                  var countDownDate = new Date("Jan 22, 2020 23:59:59").getTime();
-                  // Update the count down every 1 second
-                  var x = setInterval(function() {
-                  // Get today's date and time
-                  var now = new Date().getTime();
-                  // Find the distance between now and the count down date
-                  var distance = countDownDate - now;
-                  // Time calculations for days, hours, minutes and seconds
-                  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                  // Display the result in the element with id="demo"
-                  document.getElementById("demo").innerHTML = days + " : " + hours + " : "
-                  + minutes + "\n"  ;
-                  // If the count down is finished, write some text
-                  if (distance < 0) {
-                  clearInterval(x);
-                  document.getElementById("demo").innerHTML = "ARENA ALREADY STARTED";
-                  }
-                  }, 1000);
-        
-      .row.row4
-          .col-lg-5.col-lg-offset-9
-              .days
-                  .col-lg-1
-                      b Days
-                  .col-lg-1
-                      |    
-                  .col-lg-1                                                                                                                                         
-                      b Hours
-                  .col-lg-1
-                      b    
-                  .col-lg-1
-                      b Minutes
-        
-      .row.row5
-          .col-lg-1
-              img.stick(src='/static/Arena_2020/stick.png')
-
+    .scroll-wrapper
+        .scroll-content#page-1
+            .container
+                .row.row1
+                    .col-lg-12.text-center
+                    h1.title A R E N A
+                .row.row2
+                    .col-lg-8.col-lg-offset-7
+                        .intro
+                        | The Annual BITS Hyderabad Sports Fest
+                    
+                .row.row3
+                    .col-lg-5.col-lg-offset-9(style='position: relative;\
+                    margin-top: 1%;')
+                        #demo.timer
+                        b
+                            script.
+                                // Set the date we're counting down to
+                                var countDownDate = new Date("Jan 22, 2020 23:59:59").getTime();
+                                // Update the count down every 1 second
+                                var x = setInterval(function() {
+                                // Get today's date and time
+                                var now = new Date().getTime();
+                                // Find the distance between now and the count down date
+                                var distance = countDownDate - now;
+                                // Time calculations for days, hours, minutes and seconds
+                                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                // Display the result in the element with id="demo"
+                                document.getElementById("demo").innerHTML = days + " : " + hours + " : "
+                                + minutes + "\n"  ;
+                                // If the count down is finished, write some text
+                                if (distance < 0) {
+                                clearInterval(x);
+                                document.getElementById("demo").innerHTML = "ARENA ALREADY STARTED";
+                                }
+                                }, 1000);
+                    
+                .row.row4
+                    .col-lg-5.col-lg-offset-9
+                        .days
+                            .col-lg-1
+                                b Days
+                            .col-lg-1
+                                |    
+                            .col-lg-1                                                                                                                                         
+                                b Hours
+                            .col-lg-1
+                                b    
+                            .col-lg-1
+                                b Minutes
+                    
+                .row.row5
+                    .col-lg-1
+                        img.stick(src='/static/Arena_2020/stick.png')
+        .scroll-content#page-2
+            .container
+                .row.row1
+                    .col-lg-12.text-left
+                    p.title ABOUT US
+                .row.row2
+                    .col-lg-12.col-offset-lg-2
+                    p  
+                        |  BITS Hyderabad is proud to present its 8th annual sports fests- ARENA! 
+                        | An amalgamation of a myriad of sport events and proshows, ARENA provides an apt platform for students across the nation to showcase their talents in the field of sports. Covering a wide range of indoor and outdoor sports, from carrom and chess to cricket and football, ARENA is all about sportsmanship and learning. Playing at ARENA guarantees an experience of a lifetime, as the best teams from across the country compete to ace the tournament.
+                        | Laced with competition, fun and teamwork, ARENA is all set to welcome India's young sportsmen and women!
+        .scroll-content#page-3
+            .container
+                .row.row1
+                    .col-lg-12.text-right
+                    h1.title(style="font-size: 40px;\
+                    position: relative;\
+                    margin-top: 5%;\
+                    bottom: 5.63%;\
+                    font-family: 'nevis';\
+                    text-align: right;") CONTACT US
+                .row.row2    
+                    .col-lg-12.text-left
+                    h1.title(style="font-size: 40px;\
+                    position: relative;\
+                    margin-top: 5%;\
+                    bottom: 15.63%;\
+                    font-family: 'nevis';\
+                    text-align: left;") FIND US
+                .card.prezi
+                    .card-body
+                        .card-text
+                            .row.row3
+                                |   +91 7981720729
+                            .row.row4
+                                | Nikhil Peruri
+                            .row.row5
+                                i President
+                .card.secb
+                    .card-body
+                        .card-text
+                            .row.row6
+                                |   +91 7680993056
+                            .row.row7
+                                | Praneeth Setty
+                            .row.row8
+                                i Sports Secretary (Boys)
+                .card.secg
+                    .card-body
+                        .card-text
+                            .row.row9
+                                |   +91 7032674829
+                            .row.row10
+                                | Siri Jagarlamundi
+                            .row.row11
+                                i Sports Secretary (Girls)
+                .card.phead
+                    .card-body
+                        .card-text
+                            .row.row12
+                                |   +91 9441363744
+                            .row.row13
+                                | Sumedha Nallamilli
+                            .row.row14
+                                i Publicity Head
+                .card.contact
+                    .card-body
+                        .row.row15
+                            .col-lg-2.colfb
+                                img.fb(src='static/Arena_2020/fb.png' style="width :27px; height :27px;")
+                            .col-lg-6
+                                |  www.fb/bits.arena.com 
+                                
+                        .row.row16
+                            .col-lg-2.colinsta
+                                img.insta(src='static/Arena_2020/insta.png')
+                            .col-lg-6
+                                |  arena.bitsh 
+                                
+                        .row.row17
+                            .col-lg-2.colmail
+                                img.mail(src='static/Arena_2020/mail.png')
+                            .col-lg-10
+                                |  arena@hyderabad.bits-pilani.ac.in 
+                .row.row18
+                    .col-lg-1.colmap
+                        img.map(src='static/Arena_2020/map.png')
+                    .col-lg-4.text-left
+                        .title(style="font-family: 'nevis';\
+                        text-align: center;") LOCATE US

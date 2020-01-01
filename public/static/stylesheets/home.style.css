@@ -1,0 +1,292 @@
+@font-face {
+  font-family: 'nevis';
+  src: url('/static/Arena_2020/nevis.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.wrapper.face {
+  
+  
+}
+.wrapper.face.landing > .scroll-wrapper > #page-1 > .container {
+  background: url('/static/Arena_2020/background2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-1 > .container > .row1 > h1 {
+  font-size: 120px;
+  position: relative;
+  margin-top: 23%;
+  bottom: 24.63%;
+  font-family: 'nevis';
+  text-align: center; 
+  color: white;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-1 > .container > .row2{
+  position: relative;
+  margin-left: 5%;
+  margin-top: 6%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 176.25%;
+  line-height: 41px;
+  overflow: visible;
+  color:white;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-1 > .container > .row3{
+  margin-top: 0%;
+  color: white;
+  font-size: 70px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-1 > .container > .row4{
+  font-size: 25px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  margin-bottom: 1%;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-1 > .container > .row5 > .col-lg-1 > .stick{
+  position: absolute;
+  left: 50px;
+  bottom: -0.5px;
+  margin-bottom: 15%;
+  
+}
+.wrapper.face.landing > .scroll-wrapper > #page-2 > .container{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .row1{
+  margin-bottom: 10%;
+  margin-top: 5%;
+  margin-left: 10%;
+  color: purple;
+  font-family: nevis;
+  font-size: 60px;
+  font-weight: bolder;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .row2{
+  margin-top: 5%;
+  margin-left: 10%;
+  color: #5a489d;
+  font-family: nevis;
+  margin-right: 10%;
+  font-size: 30px;
+  margin-bottom: 8%;
+  font-weight: bold;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container {
+  background-color: #1A0835;
+  overflow: hidden;     
+  background-size: cover;
+  width: 100%;
+  height: 100%;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ;
+ 
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .row1 {
+  color: white;
+  margin-right: 5%;
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 46px;
+
+
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .row2 {
+  color: white;
+  margin-left: 5%;
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 46px;
+  
+
+}
+
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .row18 {
+  color: white;
+  position: relative;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  float: left;
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 46px;
+
+
+}
+
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .prezi > .card-body {
+
+  margin-right: 5%;
+  text-align: right;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .prezi > .card-body > .card-text > .row3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+}                                                                                                                                                                                   
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .prezi > .card-body > .card-text > .row4 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .prezi > .card-body > .card-text > .row5 {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #E0A56D;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .secb > .card-body {
+  margin-right: 5%;
+  text-align: right;
+  margin-bottom: 5%;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .secb > .card-body > .card-text > .row6 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .secb > .card-body > .card-text > .row7 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .secb > .card-body > .card-text > .row8 {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #E0A56D;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .secg > .card-body {
+  margin-right: 5%;
+  text-align: right;
+  margin-bottom: 5%;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .secg > .card-body > .card-text > .row9 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .secg > .card-body > .card-text > .row10 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .secg > .card-body > .card-text > .row11 {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #E0A56D;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .phead > .card-body {
+  margin-right: 5%;
+  text-align: right;
+  
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .phead > .card-body > .card-text > .row12 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .phead > .card-body > .card-text > .row13 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .phead > .card-body > .card-text > .row14 {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  color: #E0A56D;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .contact{
+  width: 25%;
+  color: #FFFFFF;
+  float: left;
+  margin-left: 10%;
+  position: absolute;
+  top: 135%;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .contact > .card-body > .row15{
+  margin-bottom: 5%;
+  margin-top: 245%;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .contact > .card-body > .row16{
+  margin-bottom: 5%;
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .contact > .card-body > .row17{
+  margin-bottom: 5%;
+}
+.wrapper.face.landing > .container > .scroll-wrapper > #page-3 > .contact > .card-body > .row15 > .colfb > .fb{
+  width: 55%;
+  height: 55%;
+  margin-bottom: 5%;
+
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .contact > .card-body > .row16 > .colinsta > .insta{
+  width :27px; 
+  height :27px;
+  margin-bottom: 5%;
+  
+
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .contact > .card-body > .row17 > .colmail > .mail{
+  width :27px; 
+  height :27px;
+  margin-bottom: 5%;
+
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .row18 > .colmap > .map{
+  width: 70%;
+  height: 70%;
+}
+}
