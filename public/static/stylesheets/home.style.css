@@ -79,7 +79,7 @@
   margin-right: 10%;
   font-size: 30px;
   margin-bottom: 8%;
-  font-weight: bold;
+  
 }
 .wrapper.face.landing > .scroll-wrapper > #page-3 > .container {
   background-color: #1A0835;
@@ -97,9 +97,13 @@
   font-weight: normal;
   font-size: 38px;
   line-height: 46px;
-
-
 }
+@media (max-width:344px) {
+  .wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .row1 > h1 {
+    font-size: 10px;
+  }
+}
+
 .wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .row2 {
   color: white;
   margin-left: 5%;
@@ -123,7 +127,7 @@
   font-weight: normal;
   font-size: 38px;
   line-height: 46px;
-
+  
 
 }
 
@@ -290,6 +294,32 @@
   width: 70%;
   height: 70%;
 }
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .row1 > h1{
+  color: white;
+  font-size: 40px;
+  position: relative;
+  margin-top: 5%;
+  bottom: 5.63%;
+  font-family: 'nevis';
+   text-align: right;
+}
+@media (max-width: 344px)
+{
+  .wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .row18 > .colmap > .map{
+    width: 20%;
+    height: 20%;
+  }
+}
+.wrapper.face.landing > .scroll-wrapper > #page-3 > .container > .row2 > h1{
+  font-size: 40px;
+  position: relative;
+  margin-top: 10%;
+  bottom: 15.63%;
+  left: 5%;
+  font-family: 'nevis';
+  text-align: left;
+}
+
 
 @media (max-width:344px)
 {
