@@ -81,6 +81,17 @@
   margin-bottom: 8%;
   
 }
+.wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .row3  {
+  font-size: 20px;
+  color: blue;
+  text-decoration: underline;
+  
+}
+.wrapper.face.landing > .scroll-wrapper > #page-2 > .container > .row4 {
+  font-size: 20px;
+  color: blue;
+  text-decoration: underline;
+}
 .wrapper.face.landing > .scroll-wrapper > #page-3 > .container {
   background-color: #1A0835;
   overflow: hidden;     
