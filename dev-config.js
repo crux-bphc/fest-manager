@@ -62,13 +62,13 @@ var config = {
     },
 
     strings: {
-        name: "ATMOS",
-        tagline: "Technical Fest of Bits Pilani Hyderabad Campus",
+        name: "Pearl",
+        tagline: "cultural Fest of Bits Pilani Hyderabad Campus",
         organiser: "BITS Pilani Hyderabad Campus",
         theme: "Into the Sixth Dimension",
         duration: "26th - 28th October",
-        description: "ATMOS is the annual techno-management fest of Birla Institute of Technology and Science, Pilani – Hyderabad Campus. Right from its inception in 2012, it ...",
-        keywords: "Atmos, bphc, bits, technical",
+        description: "Pearl is the annual techno-management fest of Birla Institute of Technology and Science, Pilani – Hyderabad Campus. Right from its inception in 2012, it ...",
+        keywords: "Atmos, bphc, bits, cultural",
         url: "https://atmos.bits-hyd.org/",
         image: "https://atmos.bits-hyd.org/static/images/meta.png",
         twitter: "@BITSAtmos",
