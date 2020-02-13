@@ -1,150 +1,58 @@
-link(href='/static/stylesheets/home.style.css', rel='stylesheet')
-link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
-link(href='https://fonts.googleapis.com/css?family=Oswald:700', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Roboto+Condensed', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Montserrat:400,600', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=Montserrat:300,500,700', rel='stylesheet')
-link(href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow', rel='stylesheet')
-.immersive-wrapper.hash-home
-  .scroll-wrapper
-    .scroll-content#page-1
-      .background-div
-          picture
-            source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/background.png')
-            img.background(src='/static/images/home/Mobile Version/Broken_portal/mobile_background.png')
-      .dust-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks.png')
-          img.dust-one(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks1.png')
-      .dust-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks1.png')
-          img.dust-two(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks2.png')
-        // <img src="/static/images/home/BrokenPortal/rocks1.png" class="dust-two">
-      .dust-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/rocks2.png')
-          img.dust-three(src='/static/images/home/Mobile Version/Broken_portal/mobile_rocks3.png')
-      .beam-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/beam.png')
-          img.beam(src='/static/images/home/Mobile Version/Broken_portal/mobile_beam.png')
-      .top-div
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/BrokenPortal/top.png')
-          img.top(src='/static/images/home/Mobile Version/Broken_portal/mobile_top.png')
-      .text-div
-        | INTO THE SIXTH DIMENSION
-      .text
-        .days
-          p.date 26-28
-          p.month OCTOBER
-        .social
-          a(href='https://www.facebook.com/bits.atmos')
-            i.fab.fa-facebook-f
-          a(href='https://twitter.com/bitsatmos')
-            i.fab.fa-twitter
-          a(href='https://www.instagram.com/atmos_bitsh')
-            i.fab.fa-instagram
-    .scroll-content#page-2
-      .background-wrapper
-      .places
-        .bNb BIGGER AND BETTER
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Top.png')
-          img.top(src='/static/images/home/Mobile Version/Tickets/mobile_top.png')
-        picture
-          source(media='(min-width: 480px)', srcset='/static/images/home/Tickets/Bottom.png')
-          img.bottom(src='/static/images/home/Mobile Version/Tickets/mobile_bottom.png')
-        .yr 2018
-        .nm ATMOS
-        a(href="#{config.strings.registrationLink}").tickets GET YOUR TICKETS NOW!
-    .scroll-content#page-3
-      #background
-        #building
-        #content-flex
-          #Bold
-            br
-            | ABOUT US
-            br
-          .text3
-            .para3
-              h2 ATMOS '18
-              br
-              |   The 7th iteration of ATMOS, our annual techno-management fest, returns with grandeur greater than its predecessors this 26th of October.
-              br
-              br
-              |    Since its inception in 2010, ATMOS, reputed for its quality of workshops, quizzes, lectures, technical exhibitions, and competitions, is among the fastest growing tech-fests in our country providing one of the largest platforms for students, academicians and entrepreneurs across the country to showcase their talents in the fields of science and technology. With a staggeringly high footfall and participation of students from over 200 colleges every year, ATMOS 2018, true to its theme, Into the 6th Dimension, aims to rise to a whole new dimension.
-    .scroll-content#page-4
-      a(href="/events#Workshop")#events.box
-          #event-grad.gradient
-          #event-link.links WORKSHOPS
-      a(href="/events#Competition")#competitions.box
-        #competition-grad.gradient
-        #competition-link.links COMPETITIONS
-      a(href="/events#Talk")#talks.box
-        #talk-grad.gradient
-        #talk-link.links TALKS
-    .scroll-content#page-5
-      .contactusbackground
-          .floatingitems
-            .shadow
-              img.sha(src='/static/images/home/contactus/Shadowstransparent.png')
-            .trianlge
-              img.tri(src='/static/images/home/contactus/floatingbuilding.png')
-            .cloud
-              img.cl(src='/static/images/home/contactus/cloud1.png')
-            .cloud
-              img.cl(src='/static/images/home/contactus/cloud2.png')
-            .cloud
-              img.cl(src='/static/images/home/contactus/cloud3.png')
-          .contactustext
-            .title
-              p CONTACT US
-            .between
-            .contacts
-              .contact_div
-                | Aman Syed
-                p
-                  | President
-                  br
-                  | 8790359970
-              .contact_div
-                | Yash Chokhani
-                p
-                  | Coordinator
-                  br
-                  | 8187083476
-              .contact_div
-                | Ram Dheeraj Sirgiri
-                p
-                  | Sponsorship
-                  br
-                  | 7036067666
-              .contact_div
-                | Rohith Reddy
-                p
-                  | Publicity
-                  br
-                  | 8897454710
-              .contact_div
-                | Dharmesh Singhal
-                p
-                  | Hospitality
-                  br
-                  | 7036187007
-              .contact_div
-                p
-                  | Mail us at 
-                  b atmos@hyderabad.bits-pilani.ac.in
-          .text
-            .social
-              a(href='https://www.facebook.com/bits.atmos')
-                i.fab.fa-facebook-f
-              a(href='https://twitter.com/bitsatmos')
-                i.fab.fa-twitter
-              a(href='https://www.instagram.com/atmos_bitsh')
-                i.fab.fa-instagram
-script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.inview/1.0.0/jquery.inview.min.js')
-script(src='/static/scripts/home.js')
+link(rel="stylesheet", href="/static/stylesheets/home.style.css")
+link(rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito")
+
+.wrapper.face.landing
+    .scroll-wrapper
+        .scroll-content#page-1
+            .container
+                .row#main
+                    .circle.col-sm-3.col-md-2.col-lg-3
+                        .row
+                            img(src = "/static/pearl-20/facebook.svg" alt = "fb" width = "40" height = "40" style="display:block; margin-left: 10%;margin-top:20%;")    
+                        .row 
+                            img(src = "/static/pearl-20/instagram.svg" alt = "insta" width = "40" height = "40" style="display:block; margin-left: 10%; margin-top:35%; ")
+                    #coming.col-sm-6.col-sm-offset-1
+                        picture
+                            source(srcset="/static/pearl-20/Coming_soon.png", alt="Coming Soon" media="(min-width:1000px)" )
+                            source(srcset="/static/pearl-20/Coming_soon2.png", alt="Coming Soon" media="(min-width:0px)" )
+
+                            img(src="/static/pearl-20/Coming_soon.png", alt="Coming Soon" class="centerImage")
+                        #icons.container
+                            center 
+                                    i.fa.fa-facebook-square(style="font-size:48px; color:white;") &nbsp
+                                    i.fa.fa-instagram(style="font-size:48px; color:white;")    
+                    .timer.col-sm-2(style="color:white;")
+                        .row#d
+                            b 
+                            |20 
+                        .row#dtxt
+                            b
+                            |DAYS
+                        .row#blank
+                        .row#m
+                            b
+                            |20
+                        .row#mtxt
+                            b
+                            |HOURS
+                        .row#blank
+                        .row#min
+                            b
+                            |20
+                        .row#mintxt
+                            b   
+                            |MINUTES
+                        .row#mintxt
+                            b
+                            |TO   GO
+                #ca
+                    center
+                        a(href="fest-manager/views/ambassador.jade")
+                            //- img(src="/static/pearl-20/ca.png", alt="Campus Ambassador" class="centerImage")
+                            button(type='button' class='btn')
+                                span Campus Ambassador
+                 #deaf
+                    center
+                        a(href="/")
+                           button(type='button' class='btn')
+                                span Till deaf do we part
