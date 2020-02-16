@@ -1,26 +1,27 @@
 link(rel="stylesheet", href="/static/stylesheets/home.style.css")
 link(rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito")
-
+link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 .wrapper.face.landing
     .scroll-wrapper
         .scroll-content#page-1
             .container
                 .row#main
-                    .circle.col-sm-3.col-md-2.col-lg-3
-                        .row
-                            img(src = "/static/pearl-20/facebook.svg" alt = "fb" width = "40" height = "40" style="display:block; margin-left: 10%;margin-top:20%;")    
+                    .circle.col-sm-3
+                       .row
+                            img(src = "/static/pearl-20/facebook.svg" href="https://www.facebook.com/bitspearl/" alt = "fb" width = "40" height = "40" style="display:block; margin-left: 10%;margin-top:20%;")    
                         .row 
-                            img(src = "/static/pearl-20/instagram.svg" alt = "insta" width = "40" height = "40" style="display:block; margin-left: 10%; margin-top:35%; ")
+                            img(src = "/static/pearl-20/instagram.svg" href="https://l.facebook.com/l.php?u=https%3A%2F%2Finstagram.com%2Fpearl.bitsh%3Figshid%3Dnt4slup3g4ba%26fbclid%3DIwAR32FeFrfAMQVeFnfeYEZo1JAehJeuRjdFfSCbSl9-_0dVS67gCFS5Zg4G8&h=AT1nsQjmyx3OJ4StNqpy_QFJZRCe1IzUNFuQH_e7wtnRr_XVGtwkaEbHO_t5S0uJU_yWfvrRom77AUDwFoEph3S5hzWvadrVmEQyhaPDJvLWJa-6YeqkagH3BAktAwmd-sBJxM-A7WRehYAhL0kgEA" alt = "insta" width = "40" height = "40" style="display:block; margin-left: 10%; margin-top:35%; ")
                     #coming.col-sm-6.col-sm-offset-1
-                        picture
-                            source(srcset="/static/pearl-20/Coming_soon.png", alt="Coming Soon" media="(min-width:1000px)" )
-                            source(srcset="/static/pearl-20/Coming_soon2.png", alt="Coming Soon" media="(min-width:0px)" )
+                        center
+                            picture
+                               source(srcset="/static/pearl-20/Coming_soon.png", alt="Coming Soon" media="(min-width:700px)" )
+                               source(srcset="/static/pearl-20/Coming_soon1.png", alt="Coming Soon" media="(min-width:0px)" )
 
-                            img(src="/static/pearl-20/Coming_soon.png", alt="Coming Soon" class="centerImage")
+                               img(src="/static/pearl-20/Coming_soon.png", alt="Coming Soon" class="centerImage")
                         #icons.container
                             center 
-                                    i.fa.fa-facebook-square(style="font-size:48px; color:white;") &nbsp
-                                    i.fa.fa-instagram(style="font-size:48px; color:white;")    
+                                    i.fa.fa-facebook-square(style="font-size:48px; color:white;" href="https://www.facebook.com/bitspearl/") &nbsp
+                                    i.fa.fa-instagram(style="font-size:48px; color:white;" href="https://l.facebook.com/l.php?u=https%3A%2F%2Finstagram.com%2Fpearl.bitsh%3Figshid%3Dnt4slup3g4ba%26fbclid%3DIwAR32FeFrfAMQVeFnfeYEZo1JAehJeuRjdFfSCbSl9-_0dVS67gCFS5Zg4G8&h=AT1nsQjmyx3OJ4StNqpy_QFJZRCe1IzUNFuQH_e7wtnRr_XVGtwkaEbHO_t5S0uJU_yWfvrRom77AUDwFoEph3S5hzWvadrVmEQyhaPDJvLWJa-6YeqkagH3BAktAwmd-sBJxM-A7WRehYAhL0kgEA")    
                     .timer.col-sm-2(style="color:white;")
                         .row#d
                             b 
@@ -47,12 +48,57 @@ link(rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nu
                             |TO   GO
                 #ca
                     center
-                        a(href="fest-manager/views/ambassador.jade")
+                        a(href="./ca")
                             //- img(src="/static/pearl-20/ca.png", alt="Campus Ambassador" class="centerImage")
                             button(type='button' class='btn')
                                 span Campus Ambassador
-                 #deaf
+                 //#deaf
                     center
                         a(href="/")
                            button(type='button' class='btn')
                                 span Till deaf do we part
+                
+                .row.row3
+                    .col-lg-5.col-lg-offset-9(style='position: relative;\
+                    margin-top: 1%;')
+                        #demo.timer
+                        b
+                            script.
+                                // Set the date we're counting down to
+                                var countDownDate = new Date("Mar 20, 2020 23:59:59").getTime();
+                                // Update the count down every 1 second
+                                var x = setInterval(function() {
+                                // Get today's date and time
+                                var now = new Date().getTime();
+                                // Find the distance between now and the count down date
+                                var distance = countDownDate - now;
+                                // Time calculations for days, hours, minutes and seconds
+                                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                // Display the result in the element with id="demo"
+                                document.getElementById("d").innerHTML = days;
+                                document.getElementById("m").innerHTML = hours;
+                                document.getElementById("min").innerHTML = minutes;
+                                // If the count down is finished, write some text
+                                if (distance < 0) {
+                                clearInterval(x);
+                                document.getElementById("demo").innerHTML = "PEARL ALREADY STARTED";
+                                }
+                                }, 1000);
+                    
+                //.row.row4
+                    .col-lg-5.col-lg-offset-9
+                        .days
+                            .col-lg-1
+                                b Days
+                            .col-lg-1
+                                |    
+                            .col-lg-1                                                                                                                                         
+                                b Hours
+                            .col-lg-1
+                                b    
+                            .col-lg-1
+                                b Minutes
+                    
+                
