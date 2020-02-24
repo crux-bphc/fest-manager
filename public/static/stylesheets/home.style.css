@@ -22,6 +22,7 @@
   overflow: hidden;
   }
 }
+
 @media screen and (max-width:700px){
   .wrapper.face.landing > .scroll-wrapper > #page-1 > .container {
   background: url('/static/pearl-20/bg.png') no-repeat center center fixed;
@@ -103,6 +104,16 @@
   .timer.col-sm-2{
     display: none;
   }
+  .wrapper.face.landing > .scroll-wrapper > #page-1 > .container > #ca{
+    margin-top: 55px;
+    margin-bottom: 95px;
+  }
+  .wrapper.face.landing > .scroll-wrapper > #page-1 > .container > #main > #coming{
+    margin-top: 55px;
+  }
+  .wrapper.face.landing > .scroll-wrapper > #page-1 > .container > #main > #coming > #icons{
+    margin-top: 55px;
+  }
 }
 #image2{
   display: none;
@@ -156,14 +167,30 @@
 @media screen and (min-width:768px){
   #icons{
    display: none; 
+   margin-top: 25px;
   }
 }
 @media screen and (max-width:645px){
   #image1{
     display: none;
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
   #image2{
     display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .wrapper.face.landing > .scroll-wrapper > #page-1 > .container > #ca{
+    margin-top: 95px;
+    margin-bottom: 95px;
+  }
+  .wrapper.face.landing > .scroll-wrapper > #page-1 > .container > #main > #coming{
+    margin-top: 55px;
+    
+  }
+  .wrapper.face.landing > .scroll-wrapper > #page-1 > .container > #main > #coming > #icons{
+    margin-top: 55px;
   }
 }
 @media screen and (min-width:768px){
@@ -178,7 +205,7 @@
 }
 
 
-/*                           PAGE          2                                      */
+/******************************PAGE          2**************************************/
 
 
 .wrapper.face.landing > .scroll-wrapper > #page-2 > .container{
@@ -198,6 +225,15 @@
   text-align: right;
   margin-right: 5%;
 }
+.wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #register {
+  margin-top: 10%;
+  color: rgb(80, 69, 221);
+  font-size: 25px;
+  font-family: 'Nunito';
+  line-height: 195%;
+  letter-spacing: 7px;
+}
+
 @media screen and (max-width:1250px){
   .wrapper.face.landing > .scroll-wrapper > #page-2 > .container{
     background: url('/static/pearl-20/bgwithgraffiti2.png') no-repeat ;
@@ -207,7 +243,7 @@
     overflow: hidden;
   }
   .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #main > #text {
-    margin-top: 35%;
+    /*margin-top: 35%;*/
     font-family: 'Nunito';
     font-size: 20px;
     letter-spacing: 6px;
@@ -215,6 +251,14 @@
     line-height: 190%;
     text-align: right;
     margin-right: 5%;
+  }
+  .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #register {
+    margin-top: 14%;
+    color: rgb(80, 69, 221);
+    font-size: 25px;
+    font-family: 'Nunito';
+    line-height: 195%;
+    letter-spacing: 7px;
   }
 }
 @media screen and (max-width:1100px){
@@ -234,6 +278,14 @@
     line-height: 190%;
     text-align: right;
     margin-right: 5%;
+  }
+  .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #register {
+    margin-top: 7%;
+    color: rgb(80, 69, 221);
+    font-size: 25px;
+    font-family: 'Nunito';
+    line-height: 195%;
+    letter-spacing: 7px;
   }
 }
 @media screen and (max-width:1000px){
@@ -292,6 +344,14 @@
     text-align: right;
     margin-right: 5%;
   }
+  .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #register {
+    margin-top: 150px;
+    color: rgb(80, 69, 221);
+    font-size: 25px;
+    font-family: 'Nunito';
+    line-height: 195%;
+    letter-spacing: 7px;
+  }
 }
 @media screen and (max-width:600px){
   .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #main > #text {
@@ -304,10 +364,18 @@
     text-align: right;
     margin-right: 5%;
   }
+  .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #register {
+    margin-top: 150px;
+    color: rgb(80, 69, 221);
+    font-size: 25px;
+    font-family: 'Nunito';
+    line-height: 195%;
+    letter-spacing: 7px;
+  }
 }
-@media screen and (max-width:600px){
+@media screen and (max-width:360px){
   .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #main > #text {
-    padding-top: 7%;
+    padding-top: 0%;
     font-family: 'Nunito';
     font-size: 14px;
     letter-spacing: 3.5px;
