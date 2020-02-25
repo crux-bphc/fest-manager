@@ -355,7 +355,7 @@
 }
 @media screen and (max-width:600px){
   .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #main > #text {
-    padding-top: 7%;
+    padding-top: 12%;
     font-family: 'Nunito';
     font-size: 15px;
     letter-spacing: 4px;
@@ -375,7 +375,7 @@
 }
 @media screen and (max-width:360px){
   .wrapper.face.landing > .scroll-wrapper > #page-2 > .container > #main > #text {
-    padding-top: 0%;
+    padding-top: 12%;
     font-family: 'Nunito';
     font-size: 14px;
     letter-spacing: 3.5px;
@@ -390,5 +390,3 @@
   width: 45%;
   height: 35%;
 }
-
-
