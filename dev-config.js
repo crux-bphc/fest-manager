@@ -70,7 +70,7 @@ var config = {
         description: "PEARL is the annual Cultural fest of Birla Institute of Technology and Science, Pilani – Hyderabad Campus. Right from its inception in 2012, it ...",
         keywords: "Pearl, bphc, bits, cultural",
         url: "https://bits-pearl.org/",
-        image: "https://bits-pearl.org/static/pearl-20/Pearl_2020.png",
+        image: "https://bits-pearl.org/static/pearl_20/pearl-logo.png",
         twitter: "@BITSAtmos",
         registrationLink: "https://www.google.co.in/",
     }
