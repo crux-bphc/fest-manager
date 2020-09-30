@@ -1,4 +1,4 @@
-# Fest Manager
+# Fest Manager - Awesome Application for College Fests
 
 Fest Manager is a Single Page Express Application that can be used to easily deploy websites for college fests.
 
