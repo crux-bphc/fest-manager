@@ -1,6 +1,6 @@
-# Fest Manager
+# Fest Manager:Application
 
-Fest Manager is a Single Page Express Application that can be used to easily deploy websites for college fests.
+Fest Manager is a Single Page Express Application that can be used to easily deploy websites for colleges,schools,institutes fests.
 
 **Also, the swag behind the [Atmos Website](https://bits-atmos.org).**
 
