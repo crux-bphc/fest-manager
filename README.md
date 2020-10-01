@@ -90,7 +90,7 @@ The commit message:
 
 - is written in the imperative (e.g., "Fix ...", "Add ...")
 - is kept short, while concisely explaining what the commit does.
-- is clear about what part of the code is affected -- often by prefixing with the name of the subsystem and a colon, like "express: ..." or "docs: ...".
+- is clear about what part of the code will be affected -- often by prefixing with the name of the subsystem and a colon, like "express: ..." or "docs: ...".
 - is a complete sentence, ending with a period.
 
 Good summaries:
